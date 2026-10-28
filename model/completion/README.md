@@ -106,6 +106,17 @@ which native operations execute their modular flow. A nonuniform invariant
 density supplies mathematical modular data, not an operational clock or its
 physical energy normalization.
 
+The [modular-access test](MODULAR_ACCESS.md) sharpens this boundary for the
+constructed C/E references. Their actual nontracial record blocks have a
+modular action that creates imaginary coherence from a real test input.
+Every admitted native-history operation preserves real density matrices.
+At an explicitly stated dimensionless modular parameter, any such
+implementation has normalized trace-distance error at least `1/2` on the
+fixed full support algebra. This is an exact conditional implementation
+obstruction; the separating observable is a mathematical witness, not an
+admitted native detector. Other algebras, encodings, coherent resources and
+refinements retain their own open contracts.
+
 The original q=3 scalar preparation/history remains unexecuted with its prior
 bounds. This campaign neither adopts it as executed evidence nor retires it
 from the parent program. All prior empirical exposure and negative controls

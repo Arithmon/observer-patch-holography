@@ -1,6 +1,6 @@
 # 41. What Does a Repaired World Look Like?
 
-The number to know in Butte, Montana is 5,410 feet above sea level, the elevation of the bed of Silver Bow Creek and the lowest ground anywhere in the valley. Below that line, the water standing in the old copper pit is a problem in a hole. Above it, the water is in the creek, which runs to the Clark Fork and from there to the Columbia. Since October 2019 pit water has been pumped to a treatment plant at Horseshoe Bend, cleaned and discharged to the creek, which holds the level down. The pit has sat about fifty feet under the line ever since.
+The number to know in Butte, Montana is 5,410 feet above sea level, the elevation of the bed of Silver Bow Creek and the lowest ground anywhere in the valley. Below that line, the water standing in the old copper pit stays in the pit. Above it, the water is in the creek, which runs to the Clark Fork and from there to the Columbia. Since October 2019 pit water has been pumped to a treatment plant at Horseshoe Bend, cleaned and discharged to the creek, which holds the level down. The pit has sat about fifty feet under the line ever since.
 
 The water is in the pit because in April 1982 the pumps under the hill were switched off.
 
@@ -32,7 +32,7 @@ Mismatch has an address, and chapter thirty-eight's two budgets are the machiner
 
 Ordinary life is made of that move, running in both directions, all the time. Chapter forty found the difference that matters sitting in the record, between a patch that absorbed a mismatch at its own expense and one that wrote it onto a neighbor and let the neighbor pay. The second case takes a name once two conditions are attached: the mismatch is placed on other observers, and the actor who generated it declines the burden of repairing it while having the capacity to carry it. That is **exported harm**.
 
-An exporter's own readings can be flawless. Chapter thirty-eight's bacterium retunes its receptors until every seam it has reads zero, and starves in the water it is sitting in. Butte is that arithmetic with a creek downstream of it. The books balanced, the copper went out on rail cars, the acid stayed in the hole, and nothing in the accounts was wrong, because the load had been written onto a seam the company was not reading.
+An exporter's own readings can be flawless. Chapter thirty-eight's bacterium retunes its receptors until every seam it has reads zero, and starves in the water it is sitting in. Butte is the same arithmetic at the scale of a valley. The books balanced, the copper went out on rail cars, the acid stayed in the hole, and nothing in the accounts was wrong, because the load had been written onto a seam the company was not reading.
 
 Chapter thirteen made that blindness a property of the wiring rather than a failure of attention. Two worlds that put the same packets on an observer's ports are one world to it, so a cost written onto a seam an actor does not share is unreadable to that actor at any level of diligence, which is why exported harm so rarely feels like anything from the exporting end. The reading that would report it belongs to somebody else.
 

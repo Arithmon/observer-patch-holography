@@ -1,902 +1,47 @@
-\section{Consensus, Defects, and Implementation Hiding}
+\section{The Closure Equations}
+\label{sec:closure-equations}
 
-The fixed-cutoff consensus package admits an equivalent finite patch-net formulation. Local patch descriptions agree on
-overlaps, local recovery-derived repair rules remove mismatches, and the physical output is the
-schedule-independent quotient normal form together with the induced terminal expectation
-functionals on the declared physical observable algebras. This section records the fixed-point,
-defect, and gauge-quotient statements in that language.
+Closure asks observers inside one history to read back the specification of
+that history. Two dimensionless equations make this concrete at the observer
+layer. A local equation asks one screen cell to agree with an
+electromagnetic reading of the same cell; a global equation asks a trial
+universe to reproduce its own logarithmic correctable public-record capacity.
+Each equation tests an independently produced readback map. If both hold with
+their declared selection rules, the branch admits at most one coordinate pair
+\((P,N)\). This does not prove that exactly one physical universe exists, and
+neither equation is a physical identity before its same-quantity bridge is
+constructed. This paper is the canonical place where both equations are
+defined, so the other papers of the tower cite one derivation.
 
-The consensus branch also carries a simple finite-candidate law-selection model: once one equips
-candidate repair rules with a fitness functional, replicator dynamics gives a clean toy picture in
-which more successful reconciliation laws dominate a competing pool. This is
-a finite-candidate monotonicity result. It supplies no gravity or gauge
-theorem, universality result, or literal cosmological dynamics.
+\subsection{Local closure for the pixel ratio}
+\label{sec:p-closure}
 
-On its declared fixed-cutoff branch, \emph{Reality as a Consensus Protocol: The Fixed-Point
-Computation That Implements Physics}~\cite{ophconsensus} supplies the following results:
-\begin{enumerate}[leftmargin=2em]
-\item \textbf{Constraint-code firewall.} A bare finite overlap net is a finite constraint code:
-its codewords are exactly the globally consistent states \(C=\Phi^{-1}(0)\). It is not
-automatically a QECC/topological code, and its graph min-cut does not determine code distance.
-Distance/min-cut, Knill--Laflamme resilience, spectral convergence, BFT liveness, and hardware
-speedup enter only through separate certificates.
-\item \textbf{Asynchronous confluence.} For the declared accepted repair law, the local-fit
-contract makes \(\Phi\) a Lyapunov functional, hence gives termination on the finite patch net.
-The fixed-cutoff union-collar gluing package supplies the local diamond on the physical quotient,
-and only that confluence condition together with repair completeness yields a unique
-schedule-independent normal form from a fixed initial quotient state. Same-boundary uniqueness
-requires the additional unique consistent extension condition in the preserved boundary/sector
-fiber.
-\item \textbf{Cycle obstruction and higher-gauge defects.} On the abelian branch, global
-consistency holds exactly when cycle holonomy vanishes; on the genuinely noncentral branch, the
-crossed-module gluing orbit
-\[
-q_\Sigma \in \check H^2(N_\Sigma,H_\Sigma \to G_\Sigma)
-\]
-labels the full fixed-cutoff gluing orbit. It can admit multiple strict representatives related by
-\(H_\Sigma\)-valued edge changes and need not determine one ordinary \(G_\Sigma\)-valued
-\(1\)-cocycle class. Associator strictifiability is the separate condition that this orbit admit a
-representative \((g^{\mathrm{str}},1)\); strict endpoint-only transport additionally requires at
-least one allowed strict representative with trivial represented loop holonomy.
-\item \textbf{Gauge quotient and observable-level confluence.} The repair law descends to the
-overlap-invariant quotient, and the induced terminal state on the declared physical observable
-algebras is unique there even when microscopic representatives differ by gauge or sector
-relabelings inside one quotient-local glued state.
-\item \textbf{Record algebra and stability.} On the declared fixed-cutoff observer-accessible
-operator surface, a separately declared algebra-state representation and
-L\"uders instrument make the central record projectors carry the corresponding
-Born/L\"uders rules. The projectors alone do not select that instrument, while
-approximate record projectors inherit explicit \((\varepsilon,\delta_{\mathrm{rec}})\) stability
-bounds on that same event surface. This is a theorem about the stated algebraic record interface,
-not a requirement that OPH first rebuild every mathematical ingredient from operational records alone.
-\end{enumerate}
-
-The consensus paper is equally explicit about the imported repair-law data and what sits
-outside the fixed-cutoff theorems. The declared repair step includes the
-touched-overlap local-fit contract and the union-collar gluing package on the physical quotient;
-the branch conditions above that step are repair completeness and, on the Petz branch, the stated
-support/CPTP clause. On that same fixed-cutoff surface, exact normal-form computation is
-finite-state and decidable, automatic approximate stability is only collar-local through the
-splice and record estimates, and long-run noisy approximate consensus is theorem-grade only after
-a fair-block contraction certificate is supplied for the chosen exported patch-net family. Its general stochastic conclusion is at block indices; the stated calendar-time expectation bound additionally requires deterministic block endpoints, and a finite kernel certificate requires choices adapted to the certified conditional transition law. That
-certificate boundary is not a dependency for the support-visible BW theorem, local Einstein
-branch, receipt-conditional compact-gauge reconstruction, or realized Standard Model branch.
-
-\section{Particle-Spectrum Branch}
-
-The particle branch follows the same logical order as
-\emph{The Particle Zoo under Declared Matter Premises: One Generation, Interaction Channels and Mass Diagnostics}~\cite{ophparticles}.
-The complete twelve-port response in A1 and endogenous holonomy in A2 first
-force the abstract local algebra
-\(\mathfrak u(1)\oplus\mathfrak{su}(2)\oplus\mathfrak{su}(3)\), without an
-ambient continuous gauge group. The explicit inverse-port contract separately
-gives the signed response. Applying the declared matrix-current and rank-15
-matter contracts, followed by anomaly balance and tensor descent, gives the
-exact conditional Standard Model charge lattice and maximal faithful matter image. The
-one-Higgs clauses leave the window \(3\le N_g\le5\). Under the named
-complete-band and operational-cost premises, an exact screen theorem selects
-the rank-three response band, and the declared unitary response places its
-residue at the lowest positive generator frequency. Identifying that finite
-band with three physical matter families and excluding extra light sectors
-remain separate physical attachments. The independent transportable-sector
-and Tannaka reconstruction remains a conditional classification route.
-
-\paragraph{Structural carrier and physical premises.}
-Under the declared response and matter contracts, the structural carrier
-roles and maximal faithful matter image follow from those contracts alone:
-\[
-\frac{\SU(3)\times\SU(2)\times\U(1)}{\mathbb Z_6},
-\qquad
-N_c=3,
-\qquad
-3\le N_g\le 5 .
-\]
-On a declared trace-balanced block carrier
-\(V=C\oplus W\), with \(\dim C=3\), \(\dim W=2\), and block
-hypercharges \((-1/3,1/2)\), the selected exterior package
-\[
-\Lambda^2V\oplus\Lambda^4V
-=Q\oplus u^c\oplus e^c\oplus d^c\oplus L
-\]
-is an exact one-generation Standard Model representation witness. It has the
-three one-Higgs invariant lines, cancels the gauge and mixed anomalies, and
-contains four weak doublets per generation. Hence every additive
-isomorphism-invariant load normalized by \(L_P(\mathbb C)=P\) gives
-\(L_P(\operatorname{Hom}_{SU(2)}(W,M_1))=4P\). A positive unital map between
-one-dimensional order-unit load lines is unique once the physical order units
-are identified. Complete reversible response and endogenous overlap transport
-force the abstract local Standard Model gauge Lie algebra. Under the conditional matrix-current and rank-15
-matter contracts, determinant balance, the non-vacuum exterior package, and
-the common central kernel are exact finite implications. The scalar scan fixes
-compatible charges and Yukawa channels, not scalar multiplicity. The finite
-source does not select the matrix current, matter action, or physical
-\(\mathbb Z_6\) quotient. Laboratory
-current and flux identification, removal of the omitted \(\Lambda^0V\)
-singlet and other light sectors, attachment of the \(A_5\) face module to
-physical families, scalar attachment and dynamics, four-dimensional instanton
-normalization, and continuum quantum field theory are not supplied.
-
-\begin{theorem}[A1--A2 Lie-type theorem with conditional physical landing]
-\label{thm:conditional-screen-sm-forcing}
-Assume the declared quotient-visible echosahedral carrier lineage together
-with its integer atom-counting grammar and normalized central-readback
-Hilbert--Schmidt cost. Then the counting theorem supplies the twelve unit
-ports and exact gap, while the oriented-incidence theorem supplies inverse
-pairing, proper \(A_5\) action, the rank-three frame, and
-refinement/relabeling naturality. On the named twelve-register realization,
-atomic signed record events generate integer loads. Conservative whole-unit
-repairs terminate by strict descent of \(V(N)=\sum_iN_i^2\), and their minimum
-move count is natural under rotations and the declared refinements. A
-half-unit display rescales the same event graph and threshold. The quadratic
-readback cost, dynamic move cost, load-square Lyapunov function, seam
-quadratic, and A3 Hessian are distinct objects. Their selection on an arbitrary
-A1--A3 carrier is not implied by this named realization.
-The complete-response clause in A1 and endogenous proper-carrier transport in
-A2 force the abstract local Standard Model gauge Lie algebra
-\(\mathfrak u(1)\oplus\mathfrak{su}(2)\oplus\mathfrak{su}(3)\).
-Assume further the explicit contract that inverse-port readback is a signed
-central involutive graph automorphism, together with the declared matrix
-current, rank-15 matter contract, and tensor-descent receipt. Incidence then
-determines \(J\), the admissible inverse-port responses are \(\pm J\), and the
-conditional finite certificates verify the matrix realization, refinement
-maps, anomaly-forced determinant balance, Spin lift, rank-15 exterior matter
-package, and axis/center deck descent. These implications produce the
-trace-balanced \(3+2\) block carrier with hypercharges
-\((-1/3,1/2)\) and fix the common \(\mathbb Z_6\) tensor kernel on the
-declared matter table. The scalar scan identifies compatible charges and Yukawa
-channels, not \(H=W\) or scalar multiplicity. For a physical realization, assume
-that a
-source packet reconstructs the matrix current and matter action; that a
-complete source character lattice and same-source carrier-loop-to-kernel map
-select the global quotient; that a
-source-bound refinement-natural commuting square identifies the \(A_5\)
-current group and action with the independently reconstructed Tannaka group
-and its realized matter action; that laboratory current and flux
-identification passes; that the matter contract is source-bound; that a
-scalar-multiplicity/one-Higgs receipt lands; that a source-complete
-no-extra-light-sector receipt lands; and that the \(A_5\) multiplicity is physically attached to three families with
-the selecting symmetry hidden, broken, or forgotten on the Yukawa surface.
-On a receipt-certified compact-gauge continuum/QFT landing,
-the resulting low-energy chiral package has the Standard Model physical
-global form
-\[
-\frac{\SU(3)\times\SU(2)\times\U(1)}{\mathbb Z_6}
-\]
-with the exact Standard Model hypercharge lattice, one Higgs doublet, three
-colors, three attached generations, perturbative anomaly cancellation, even
-Witten parity, and no simple-GUT \(X/Y\) gauge channel.
-\end{theorem}
-
-\begin{proof}
-The declared counting and incidence theorems produce the finite port and frame
-data on the declared carrier lineage. The A1--A2 response clauses and compact
-classification force the abstract local Standard Model gauge Lie algebra. The declared matrix-current and
-matter contracts make the exact representation, refinement, rank-15 matter,
-determinant, Spin, and descent calculations applicable. Exterior branching
-gives the five chiral multiplets
-and the scalar scan gives the compatible cubic invariant lines without a
-scalar-multiplicity claim. The anomaly and center calculations fix
-the hypercharge lattice, color triplet, and common \(\mathbb Z_6\) tensor
-kernel from those calculations alone. The source character and
-loop-to-kernel premises select the quotient. The laboratory flux premise
-attaches it to the physical spectrum. The source-bound commuting square
-identifies that group with the group
-acting through the Tannaka current. The stated completion, sector, and family receipts remove
-the otherwise available singlet, extra-sector, and family-attachment
-ambiguities. The continuum quantum-field premise completes the physical implication.
-\end{proof}
-
-This theorem is a logical implication under its premise list. Each named
-screen-to-current, cross-route identity, carrier, sector, family, and continuum
-condition is independently removable. Removing one limits the conclusion at
-the corresponding boundary.
-
-This does not determine quantum-particle masses. The specialist derivation papers separately prove that explicit
-Maxwell, perturbative pure-Yang--Mills, and pure-Einstein quadratic actions have transverse or TT
-classical massless modes on their stated backgrounds and phases. Photon, gluon, or graviton
-particle language additionally requires a positive-energy physical quantization, positive-residue
-two-point pole, and the appropriate asymptotic/deconfinement receipt.
-Separate complete-band and cost-order premises select the rank-three response
-band. Tensoring it with the declared generation table gives a conditional
-rank-\(45\) candidate; it is not a physical attachment theorem. Chirality and
-the diagonal \(\mathbb Z_6\) action come from that table. A distinct
-local-domain receipt checks the declared tensor-identity operator and
-conditional gap inheritance without source-selecting the action or
-transporting the twelve-port Spin packet. Promotion to three physical
-families requires matter-pole, continuum Spin/locality, physical seam,
-persistence, excluded-band, and complement-complete refinement receipts.
-
-\paragraph{Proof route.}
-The proof route is the one developed in
-\emph{Recovering Observer Spacetime and Einstein Dynamics from Overlap Consistency} and
-\emph{Standard Model Gauge Structure under Complete-Response and Observer-Transport Premises}~\cite{ophEinstein,ophGauge}
-and
-\emph{The Particle Zoo under Declared Matter Premises: One Generation, Interaction Channels and Mass Diagnostics}~\cite{ophparticles}.
-Complete reversible response and endogenous overlap transport force the local
-Standard Model gauge Lie algebra. Incidence determines \(J\), while the explicit
-signed-central-involutive inverse-port response contract restricts admissible
-responses to \(\pm J\). Together with the conditional matrix current and
-rank-15 matter contract, anomaly-forced determinant balance and tensor
-descent give the exact hypercharge lattice, common \(\mathbb Z_6\) kernel,
-maximal faithful matter image, and \(N_c=3\).
-The target-blind producer derives the inverse-port response, without
-selecting the matrix current. Physical
-laboratory-current and flux attachment are not supplied. Under
-the explicit compact-gauge refinement receipt, coherent bosonic
-pullback ladder, symmetry, and forgetful-fiber conditions of the Standard
-Model gauge paper, the surviving transportable edge-sector category separately
-reconstructs a compact internal symmetry group. The one-Higgs clauses give
-\(3\le N_g\le5\). The exact screen-band theorem selects rank three under its
-complete-band and operational-cost premises, and the declared unitary response
-places the selected residue at the lowest positive generator frequency.
-No physical family identification or extra-sector exclusion is supplied. The
-particle branch does not bypass the unsupplied laboratory current, cross-route
-identity, or physical family attachment.
-
-\scriptsize
-\setlength{\tabcolsep}{2pt}
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.175\textwidth}>{\raggedright\arraybackslash}p{0.165\textwidth}>{\raggedright\arraybackslash}p{0.225\textwidth}>{\raggedright\arraybackslash}p{0.325\textwidth}@{}}
-\toprule
-Sector & Result class & What is fixed here & Requirements for physical interpretation \\
-\midrule
-\endfirsthead
-\toprule
-Sector & Result class & What is fixed here & Requirements for physical interpretation \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-Carrier roles and classical modes & conditional group/content theorem plus conditional quadratic-action theorem & declared quotient, \(N_c=3\), the conditional window \(3\le N_g\le5\), and the exact rank-three screen-band selection under its named premises; two Maxwell transverse modes, \(2\dim G\) perturbative Yang--Mills modes, and two Einstein TT modes on stated branches & the rank-three band is a candidate for three physical families; physical identification requires matter-pole and laboratory attachment, while the mode counts are classical kernels and quantum particles require the Hilbert-space, pole-residue, and phase premises \\
-Electroweak bosons & exact selected-carrier chart + conditional quotient-transport implication + measured-reference inverse adapter & no nonzero source-only physical mass emitted & the selected chart, conditional value law, and inverse adapter have different provenance. The finite-carrier certificate is not emitted, the adapter is a separate reference-fitted comparison map, and no physical complex-pole pair is identified \\
-Fine-structure endpoint & source witness + mixed diagnostic + empirical closure + measurement & four distinct coordinates, detailed in the endpoint comparison & the external-data empirical interval misses the measured endpoint. A physical source-only theorem requires a no-target-leak source-derived hadronic spectral payload, target-independent map selection, and the typed same-quantity bridge \\
-Higgs/top stage & conditional downstream split theorem on the declared running, matching, and threshold surface + compare-only exact calculation & no nonzero source-only physical mass emitted & a physical mass requires the source root, physical scale, transport, running, matching, rigidity, provenance, uncertainty, and complex-pole premises. The auxiliary direct-top codomain is comparison-only \\
-Quark family & common-scale reciprocal-ray falsification + exact generic interface & no nonzero source-only physical mass emitted & reciprocal-ray closure fails across the tested common scales. Its sub-percent residuals use a target-anchored mixed-convention chart, and a lower-order ablation fits that chart better. The simulator has no Yukawa coupling or Yukawa information. Generation-blind flavor-singlet inputs produce no physical flavor-orbit selector \\
-Charged leptons & conditional construction + exact witness + face-carrier theorem & exact \(A_5/C_3\) face orbit; conditional contraction theorem; engineered finite model of the declared charged face-quotient schema & no nonzero source-only physical mass is emitted. The bounded model supplies local register state, event readback, and a central accepted/rejected record, establishing fixed-cutoff schema existence. Its dimensions, automaton, grading, clock, and response are authored inputs; no frozen receipt excludes target dependence. A separate nature/pole bridge assumes both the physical Yukawa response and singularity readout. No physical source selection, family/Yukawa attachment, interacting kernel, cofinal refinement, or pole-scheme input is supplied \\
-Neutrinos & rejected target-informed weighted-cycle candidate + diagnostic calculations & no nonzero source-only physical mass emitted; no source-level PMNS matrix, physical ordering, Majorana phases, or absolute masses are supplied & the candidate fails the NuFIT 6.1 correlated profile; its family kernel is a template, no charged-basis construction is supplied, the template basis is nearly degenerate, and its shared-basis recovery is tautological \\
-Hadrons & backend-gated nonperturbative continuation & stable-channel and readout architecture are defined & source-only masses require one production backend export bundle, then executed unquenching, runtime receipt, and production systematics \\
-\end{longtable}
-\normalsize
-
-\paragraph{Theorem boundary.}
-Structural carrier roles and the realized Standard Model branch are theorem-bearing outputs;
-classical propagation is conditional on the displayed action, background, and
-phase premises, and quantum-particle interpretation requires a physical
-Hilbert space and pole residue.
-The electroweak quantitative branch separates an exact selected-carrier chart, a conditional value
-law, and a reference-fitted inverse adapter. The quotient-transport assumptions imply the value law
-exactly, but the finite carrier does not emit their certificate. The color-balanced
-\((\sqrt{N_c}/2,N_c)\) amplitude/loop construction defines a distinct alternative model rather
-than the complete transport law. The hierarchy theorem fixes the dimensionless
-ratio \(v/E_\star\); an independently physical \(E_\star\) and a pole receipt govern any mass in
-GeV. A physical \(W/Z\) mass conclusion also requires a strict source root, a frozen
-RG/matching/scheme packet, branch rigidity, target-independent precommitment, and uncertainty control. The
-Higgs/top stage is conditional on the declared downstream surface and inherits the same
-source-root, transport, scale, scheme, rigidity, provenance, uncertainty, and complex-pole premises.
-Measured electroweak quantities are comparison data. The executed empirical hadron closure
-integrates external spectral input and misses the measured Thomson endpoint by a certified
-same-scheme interval. That payload tests the map; it does not source-close the Ward-projected
-hadronic spectral transport needed for a source-only theorem.
-
-\paragraph{The \(\alpha_U(P)\) source proof record.}
-The electroweak hierarchy used by the clock-scale branch depends first on a source readout of the
-unified diffusion coupling
-\[
-\alpha_U(P_\star).
-\]
-For a trial pixel \(P\), define
-\[
-M_U(P)=E_\star e^{-2\pi}P^{1/6},
-\qquad
-E_{\mathrm{cell}}(P)=\frac{E_\star}{\sqrt P}.
-\]
-On the realized color branch,
-\[
-N_c=3,
-\qquad
-\beta_{\mathrm{EW}}:=N_c+1=4,
-\]
-and the transmutation scale for a candidate coupling \(a\) is
-\[
-v(P,a)
-=
-E_{\mathrm{cell}}(P)
-\exp\!\left[
--\frac{2\pi}{\beta_{\mathrm{EW}}a}
-\right].
-\]
-The exterior representation theorem fixes the weak-doublet multiplicity
-\(3+1=4\), which also passes Witten parity on the realized branch. Its use as
-the electroweak transmutation coefficient \(\beta_{\mathrm{EW}}=4\) requires the
-common screen/electroweak load-carrier identification and remains declared.
-The \(\mathrm{SU}(2)\) one-loop coefficient of the realized one-Higgs branch
-is \(19/6\) and the declared unification packet's coefficient is \(1\), and neither equals \(4\).
-The integer is exact structural mathematics; no physical load-attachment
-receipt is supplied. It is not derived by dividing the 24-slot register by six.
-The source running family is
-\[
-\alpha_i^{-1}(\mu;P,a)
-=
-a^{-1}
-+
-\frac{b_i}{2\pi}
-\log\!\left(\frac{M_U(P)}{\mu}\right),
-\qquad i=1,2,3.
-\]
-The beta-coefficient packet \((b_1,b_2,b_3)\), matching convention, threshold packet, and
-renormalization convention are part of the source proof record. They are declared before any
-comparison with measured electroweak or gravitational data.
-
-The hypercharge coupling is
-\[
-\alpha_Y(\mu;P,a)=\frac35\alpha_1(\mu;P,a).
-\]
-The source \(Z\)-scale is a fixed point of the source equations, not an inserted measured mass:
-\[
-\mu_Z(P,a)
-=
-\frac{v(P,a)}{2}
-\sqrt{
-4\pi\alpha_2(\mu_Z;P,a)
-+
-4\pi\alpha_Y(\mu_Z;P,a)
-}.
-\]
-For \(G=\mathrm{SU}(2),\mathrm{SU}(3)\), define the finite representation heat-kernel sums
-\[
-Z_G(t)=\sum_R d_R e^{-tC_2(R)},
-\qquad
-\bar\ell_G(t)
-=
-\frac{1}{Z_G(t)}
-\sum_R d_R e^{-tC_2(R)}\log d_R.
-\]
-The source heat-kernel parameters are
-\[
-t_2(P,a)=4\pi^2\alpha_2(\mu_Z(P,a);P,a),
-\qquad
-t_3(P,a)=4\pi^2\alpha_3(\mu_Z(P,a);P,a).
-\]
-The unified-coupling residual is
-\[
-\Phi_U(P,a)
-:=
-\bar\ell_{\mathrm{SU}(2)}(t_2(P,a))
-+
-\bar\ell_{\mathrm{SU}(3)}(t_3(P,a))
--
-\frac{P}{4}.
-\]
-The source value is the zero
-\[
-\Phi_U(P,\alpha_U(P))=0.
-\]
-
-\begin{definition}[No-hidden-free-variable admissibility]\label{def:no-hidden-free-variable-u}
-The unified-coupling proof record is admissible only when the representation cutoffs, beta packet,
-matching prescription, threshold packet, and renormalization convention are frozen before
-comparison with measured electroweak or gravitational data:
-\[
-N_2,\quad N_3,\quad (b_1,b_2,b_3),\quad
-\hbox{matching prescription},\quad
-\hbox{threshold packet},\quad
-\hbox{renormalization convention}.
-\]
-None of these may be selected by minimizing the error against
-\[
-M_W,\quad M_Z,\quad \alpha_s(M_Z),\quad \sin^2\theta_W,\quad v_{\mathrm{exp}},
-\quad G_{\mathrm{exp}}.
-\]
-Tuning any of these objects after comparison with observed electroweak or gravitational data
-makes the hierarchy row a calibration.
-\end{definition}
-
-\begin{theorem}[No-measured-input unified-coupling proof record]\label{thm:no-input-alpha-u}
-Let
-\[
-\mathcal R_U
-=
-\bigl(
-P_\star,
-N_2,N_3,
-I_U,
-\Phi_U,
-K_U,
-a_U^{(0)},
-r_U,
-m_U,
-\mathrm{DAG}_U
-\bigr)
-\]
-be an admissible unified-coupling proof record. Here \(N_2,N_3\) are the finite
-representation cutoffs for \(\mathrm{SU}(2)\) and \(\mathrm{SU}(3)\), \(I_U\subset\mathbb R_+\)
-is the declared physical interval for \(\alpha_U\), \(\Phi_U\) is the heat-kernel closure
-residual, \(K_U\) is an interval-Newton or Krawczyk operator, \(a_U^{(0)}\) is the displayed
-candidate, \(r_U\) is the residual bound, \(m_U\) is a lower derivative bound, and
-\(\mathrm{DAG}_U\) is the dependency graph.
-
-Assume
-\[
-K_U(I_U)\subset \operatorname{int}(I_U),
-\]
-\[
-|\Phi_U(P_\star,a_U^{(0)})|\le r_U,
-\]
-\[
-|\partial_a\Phi_U(P_\star,a)|\ge m_U>0
-\qquad
-(a\in I_U),
-\]
-and assume that \(\mathrm{DAG}_U\) contains no directed path from measured electroweak masses,
-measured low-energy gauge couplings, measured \(G\), Planck area, Planck mass, measured
-\(\Lambda\), or any equivalent gravity-calibrated or electroweak-calibrated scale. Then there is
-a unique source value
-\[
-\alpha_U(P_\star)\in I_U
-\]
-such that
-\[
-\Phi_U(P_\star,\alpha_U(P_\star))=0,
-\]
-and
-\[
-|\alpha_U(P_\star)-a_U^{(0)}|
-\le
-\frac{r_U}{m_U}.
-\]
-Consequently, the electroweak hierarchy
-\[
-\frac{v}{E_\star}
-=
-P_\star^{-1/2}
-\exp\!\left[
--\frac{2\pi}{(N_c+1)\alpha_U(P_\star)}
-\right]
-\]
-is no-measured-input on this proof record.
-\end{theorem}
-
-\begin{proof}
-The residual \(\Phi_U(P_\star,a)\) is built from the source-side pixel \(P_\star\), declared
-representation cutoffs, source transmutation law, source running law, and source \(Z\)-scale
-fixed-point equation. The dependency condition excludes measured electroweak data and all
-gravity-calibrated scales. The interval-Newton/Krawczyk inclusion proves existence and uniqueness
-of a zero of \(\Phi_U(P_\star,a)\) inside \(I_U\). The residual estimate and derivative lower
-bound give
-\[
-|\alpha_U(P_\star)-a_U^{(0)}|
-\le
-\frac{|\Phi_U(P_\star,a_U^{(0)})|}{m_U}
-\le
-\frac{r_U}{m_U}.
-\]
-Substitution into the declared transmutation law gives the displayed hierarchy. The dependency
-graph contains no measured \(G\), Planck unit, measured \(M_Z\), measured \(M_W\), measured
-\(\alpha_s(M_Z)\), or measured low-energy electroweak coupling ancestor, so the emitted hierarchy
-is source-side on \(\mathcal R_U\).
-\end{proof}
-
-The theorem fixes a dimensionless ratio. It supplies neither an independently physical
-\(E_\star\) nor a mass in GeV. On the populated branch \(P_\star\) is the
-unique root of the declared local self-read map, so the downstream source
-expressions inherit that root. Their physical endpoint interpretation requires
-target-independent map selection, the typed same-quantity bridge, and the
-corresponding transport and pole constructions.
-
-\begin{lemma}[Exponential sensitivity of the hierarchy row]\label{lem:alpha-u-sensitivity}
-On the transmutation branch
-\[
-\frac{v}{E_\star}
-=
-P_\star^{-1/2}
-\exp\!\left[
--\frac{2\pi}{4\alpha_U}
-\right],
-\]
-and on a clock row whose dominant scale dependence enters through \(m_e^2\propto v^2\) in the
-leading hyperfine scaling \(\varepsilon_{\mathrm{Cs}}\sim\mathcal C_{\mathrm{Cs}}\,
-\alpha_\star^4\,m_e^2/(m_pE_\star)\), the induced
-gravity readout satisfies approximately
-\[
-\frac{\partial\ln G}{\partial \alpha_U}
-=
-\frac{2\pi}{\alpha_U^2}.
-\]
-At \(\alpha_U\simeq0.0411\),
-\[
-\frac{\partial\ln G}{\partial \alpha_U}
-\simeq
-3.7\times10^3.
-\]
-Therefore a certified relative gravity precision \(\eta_G\) requires
-\[
-|\delta\alpha_U|
-\lesssim
-\frac{\eta_G}{3.7\times10^3}.
-\]
-\end{lemma}
-
-\begin{proof}
-For \(\beta_{\mathrm{EW}}=4\),
-\[
-\ln(v/E_\star)
-=
--\frac12\ln P_\star
--
-\frac{2\pi}{4\alpha_U}.
-\]
-Thus
-\[
-\frac{\partial\ln(v/E_\star)}{\partial\alpha_U}
-=
-\frac{2\pi}{4\alpha_U^2}
-=
-\frac{\pi}{2\alpha_U^2}.
-\]
-The clock gap carries the square of the electroweak scale: in the leading hyperfine scaling
-\(\varepsilon_{\mathrm{Cs}}\propto m_e^2\propto v^2\) at fixed Yukawa, fine-structure, and
-strong-sector ratios, so
-\[
-\frac{\partial\ln \varepsilon_{\mathrm{Cs}}}{\partial\alpha_U}
-=
-2\cdot\frac{\pi}{2\alpha_U^2}
-=
-\frac{\pi}{\alpha_U^2}.
-\]
-Since the gravity row is quadratic in the clock scale,
-\[
-G\propto \varepsilon_{\mathrm{Cs}}^2,
-\]
-one obtains
-\[
-\frac{\partial\ln G}{\partial\alpha_U}
-=
-2\cdot\frac{\pi}{\alpha_U^2}
-=
-\frac{2\pi}{\alpha_U^2}.
-\]
-\end{proof}
-
-\begin{remark}[Digits policy]\label{rem:gravity-digits-policy}
-The exponential branch allows precision only to the extent that the source proof records carry
-interval bounds. The number of printed digits in \(G_{\mathrm{SI}}\) may not exceed the precision
-certified by \(\mathcal R_U\), \(\mathcal R_{\mathrm{QCD}}\), \(\mathcal R_{\mathrm{flav}}\), and
-\(\mathcal R_{\mathrm{Cs}}\). A display such as
-\[
-\varepsilon_{\mathrm{Cs}}
-=
-2\pi\nu_{\mathrm{Cs}}\sqrt{\hbar G_{\mathrm{ref}}/c^5}
-\]
-is a calibration checksum unless the full source construction emits the same interval with a no-\(G\)
-dependency graph.
-\end{remark}
-
-\paragraph{No-\(G\) clock hierarchy for the gravity scale.}
-The numerical gravity row uses the dimensionless cesium clock gap
-\[
-\varepsilon_{\mathrm{Cs}}
-:=
-\frac{\hbar\omega_{\mathrm{Cs}}}{E_\star},
-\qquad
-E_\star:=\frac{\hbar c}{\ell_\star},
-\qquad
-\omega_{\mathrm{Cs}}=2\pi\nu_{\mathrm{Cs}}.
-\]
-The size of this gap is a hierarchy problem for the OPH scale branch. The gap is represented as a
-factorized source-side readout. The source-only scale branch is accepted as no-\(G\) only when the
-gap factorizes through source-side dimensionless physics:
-\[
-\mathcal R_\gamma
-=
-\mathcal R_U
-+
-\mathcal R_\alpha
-+
-\mathcal R_{e}^{\mathrm{abs}}
-+
-\mathcal R_{\mathrm{QCD/nuc}}^{133\mathrm{Cs}}
-+
-\mathcal R_{\mathrm{atom}}^{133\mathrm{Cs}}.
-\]
-Here \(\mathcal R_U\) emits \(\alpha_U(P_\star)\) and the electroweak scale,
-\(\mathcal R_\alpha\) emits the electromagnetic coupling used by the atomic Hamiltonian,
-\(\mathcal R_e^{\mathrm{abs}}\) emits the electron absolute mass ratio,
-\(\mathcal R_{\mathrm{QCD/nuc}}^{133\mathrm{Cs}}\) emits the cesium nuclear source packet, and
-\(\mathcal R_{\mathrm{atom}}^{133\mathrm{Cs}}\) emits the hyperfine spectral gap from those
-dimensionless data.
-
-At leading OPH source level, the electroweak hierarchy is generated by the declared
-transmutation law
-\[
-\frac{v}{E_\star}
-=
-P_\star^{-1/2}
-\exp\!\left[
--\frac{2\pi}{(N_c+1)\alpha_U(P_\star)}
-\right],
-\qquad
-N_c=3.
-\]
-Thus the weak-to-UV ratio is generated from the dimensionless source data
-\(P_\star\), \(N_c\), and \(\alpha_U(P_\star)\). The cesium gap then has the schematic
-source form
-\[
-\varepsilon_{\mathrm{Cs}}
-=
-\mathcal H_{\mathrm{Cs}}
-\left(
-\alpha_\star,
-\frac{v}{E_\star},
-\frac{\Lambda_{\mathrm{QCD}}}{E_\star},
-y_e,
-y_q,
-\hbox{nuclear data},
-\hbox{atomic corrections}
-\right),
-\]
-where all arguments are dimensionless source outputs on the declared branch. In leading
-hyperfine scaling this contains the familiar structure
-\[
-\varepsilon_{\mathrm{Cs}}
-\sim
-\mathcal C_{\mathrm{Cs}}\,
-\alpha_\star^4
-\frac{m_e^2}{m_pE_\star},
-\]
-with relativistic, many-body, recoil, QED, finite-nuclear-size, and nuclear-moment corrections
-absorbed into \(\mathcal C_{\mathrm{Cs}}\).
-
-\begin{definition}[Cesium source packet]\label{def:cs-source-packet}
-A source-only cesium packet is
-\[
-\mathcal D_{\mathrm{Cs}}^{\mathrm{src}}
-=
-\left(
-\alpha_\star,\,
-\frac{m_e}{E_\star},\,
-\frac{\Lambda_{\mathrm{QCD}}}{E_\star},\,
-\{y_q\},\,
-\mathcal N_{133},\,
-\mathcal B_{\mathrm{atom}}^{\mathrm{Cs}}
-\right).
-\]
-\(\mathcal N_{133}\) contains the source-side nuclear data for \({}^{133}\mathrm{Cs}\), including
-nuclear spin, magnetic moment, magnetization distribution, charge radius, recoil data, and
-finite-size data. \(\mathcal B_{\mathrm{atom}}^{\mathrm{Cs}}\) contains the atomic many-body,
-relativistic, QED, recoil, and finite-nucleus correction package. Every object in
-\(\mathcal D_{\mathrm{Cs}}^{\mathrm{src}}\) is dimensionless and has no dependency path from
-measured \(G\), Planck area, Planck mass, Planck time, measured \(\Lambda\), or an algebraically
-equivalent gravity-calibrated scale.
-\end{definition}
-
-\begin{definition}[OPH cesium Hamiltonian]\label{def:oph-cs-hamiltonian}
-Given \(\mathcal D_{\mathrm{Cs}}^{\mathrm{src}}\), define the dimensionless cesium Hamiltonian
-\[
-\widehat H_{\mathrm{Cs}}^{\mathrm{OPH}}
-=
-\widehat H_{\mathrm{DC}}
-+
-\widehat H_{\mathrm{Breit}}
-+
-\widehat H_{\mathrm{QED}}
-+
-\widehat H_{\mathrm{recoil}}
-+
-\widehat H_{\mathrm{nuc}}
-+
-\widehat H_{\mathrm{manybody}}.
-\]
-The hats indicate that every term is measured in units of \(E_\star\), not in SI units and not in
-Planck units inferred from measured \(G\).
-\end{definition}
-
-\begin{theorem}[No-\(G\) OPH clock-hierarchy theorem]\label{thm:no-g-clock-hierarchy}
-Assume the local pixel proof selects \(P_\star\). Assume the unified-coupling proof record
-\(\mathcal R_U\) of Theorem~\ref{thm:no-input-alpha-u} emits \(\alpha_U(P_\star)\) and
-\[
-\frac{v}{E_\star}
-=
-P_\star^{-1/2}
-\exp\!\left[
--\frac{2\pi}{(N_c+1)\alpha_U(P_\star)}
-\right].
-\]
-Assume the electromagnetic endpoint branch \(\mathcal R_\alpha\) emits \(\alpha_\star\), the
-charged-lepton absolute-scale branch \(\mathcal R_e^{\mathrm{abs}}\) emits
-\[
-\frac{m_e}{E_\star}
-=
-\frac{y_e}{\sqrt2}\frac{v}{E_\star},
-\]
-the QCD/nuclear branch \(\mathcal R_{\mathrm{QCD/nuc}}^{133\mathrm{Cs}}\) emits
-\(\mathcal N_{133}\), and the atomic branch
-\(\mathcal R_{\mathrm{atom}}^{133\mathrm{Cs}}\) supplies isolated spectral enclosures
-\[
-J_{F=3},\qquad J_{F=4}
-\]
-for the source-only Hamiltonian
-\[
-\widehat H_{\mathrm{Cs}}^{\mathrm{OPH}}
-=
-\widehat H_{\mathrm{DC}}
-+
-\widehat H_{\mathrm{Breit}}
-+
-\widehat H_{\mathrm{QED}}
-+
-\widehat H_{\mathrm{recoil}}
-+
-\widehat H_{\mathrm{nuc}}
-+
-\widehat H_{\mathrm{manybody}}
-\]
-with disjoint intervals and certified hyperfine gap
-\[
-\varepsilon_{\mathrm{Cs}}
-=
-\lambda_{F=4}(\widehat H_{\mathrm{Cs}}^{\mathrm{OPH}})
--
-\lambda_{F=3}(\widehat H_{\mathrm{Cs}}^{\mathrm{OPH}}).
-\]
-Assume further that the combined dependency graph
-\[
-\mathrm{DAG}_{\mathrm{Cs}}
-=
-\mathrm{DAG}
-\left(
-\mathcal R_U,
-\mathcal R_\alpha,
-\mathcal R_e^{\mathrm{abs}},
-\mathcal R_{\mathrm{QCD/nuc}}^{133\mathrm{Cs}},
-\mathcal R_{\mathrm{atom}}^{133\mathrm{Cs}}
-\right)
-\]
-contains no directed path from
-\[
-G_{\mathrm{exp}},
-\qquad
-\ell_P^2=\frac{\hbar G}{c^3},
-\qquad
-m_P=\sqrt{\frac{\hbar c}{G}},
-\qquad
-t_P=\sqrt{\frac{\hbar G}{c^5}},
-\qquad
-\Lambda_{\mathrm{exp}},
-\qquad
-\frac{3\pi c^3}{\hbar G},
-\]
-or from any algebraically equivalent gravity-calibrated scale. Then
-\(\varepsilon_{\mathrm{Cs}}\) is a no-\(G\) hierarchy readout. Consequently
-\[
-\gamma_\star
-=
-\frac{\ell_\star\nu_{\mathrm{Cs}}}{c}
-=
-\frac{\varepsilon_{\mathrm{Cs}}}{2\pi}
-\]
-is non-circular, and
-\[
-G_{\mathrm{SI}}
-=
-\frac{c^5}{4\pi^2\hbar\nu_{\mathrm{Cs}}^2}
-\varepsilon_{\mathrm{Cs}}^2
-\]
-has no measured-\(G\) ancestor.
-\end{theorem}
-
-\begin{proof}
-\(\mathcal R_U\) emits the small weak ratio from \(P_\star\), \(N_c\), and
-\(\alpha_U(P_\star)\), all of which are dimensionless branch data. \(\mathcal R_\alpha\) emits
-the electromagnetic coupling used by the atomic Hamiltonian. \(\mathcal R_e^{\mathrm{abs}}\)
-emits the electron mass ratio. \(\mathcal R_{\mathrm{QCD/nuc}}^{133\mathrm{Cs}}\) emits the
-cesium nuclear source packet. Therefore every coefficient of
-\(\widehat H_{\mathrm{Cs}}^{\mathrm{OPH}}\) has no measured-\(G\) ancestor. The atomic branch
-gives isolated spectral enclosures for the two hyperfine levels, so the gap
-\[
-\varepsilon_{\mathrm{Cs}}
-=
-\lambda_{F=4}(\widehat H_{\mathrm{Cs}}^{\mathrm{OPH}})
--
-\lambda_{F=3}(\widehat H_{\mathrm{Cs}}^{\mathrm{OPH}})
-\]
-is well-defined and inherits the no-\(G\) dependency condition of the Hamiltonian.
-
-Finally,
-\[
-\varepsilon_{\mathrm{Cs}}
-=
-\frac{\hbar(2\pi\nu_{\mathrm{Cs}})}{\hbar c/\ell_\star}
-=
-\frac{2\pi\nu_{\mathrm{Cs}}\ell_\star}{c},
-\]
-so
-\[
-\gamma_\star=\frac{\ell_\star\nu_{\mathrm{Cs}}}{c}
-=
-\frac{\varepsilon_{\mathrm{Cs}}}{2\pi}.
-\]
-Substitution into \(G_{\mathrm{SI}}=c^3\ell_\star^2/\hbar\) gives the displayed expression
-for \(G_{\mathrm{SI}}\). The only non-display parent of the expression is the source-side
-\(\varepsilon_{\mathrm{Cs}}\) readout, so the gravity row is non-circular under the stated
-hypotheses.
-\end{proof}
-
-\begin{remark}[Clock-certificate boundary]\label{rem:cs-clock-boundary}
-The theorem above is not discharged by printing
-\[
-\varepsilon_{\mathrm{Cs}}
-=
-3.1139305134\ldots\times10^{-33}.
-\]
-That decimal is source-predictive only if it is emitted by
-\[
-\mathcal R_U
-+
-\mathcal R_\alpha
-+
-\mathcal R_e^{\mathrm{abs}}
-+
-\mathcal R_{\mathrm{QCD/nuc}}^{133\mathrm{Cs}}
-+
-\mathcal R_{\mathrm{atom}}^{133\mathrm{Cs}}.
-\]
-If instead it is computed as
-\[
-\varepsilon_{\mathrm{Cs}}^{\mathrm{cal}}
-=
-2\pi\nu_{\mathrm{Cs}}
-\sqrt{\frac{\hbar G_{\mathrm{exp}}}{c^5}},
-\]
-then it is a gravity-side calibration checksum, not a source-side clock prediction. The paper
-surface supplies the algebraic certificate shape and the \(\mathcal R_U\) numerical witness.
-The full source-only \(\mathcal R_{\mathrm{Cs}}\) branch requires the source-only
-electromagnetic endpoint, charged-lepton absolute-scale premise, source-side cesium nuclear packet,
-and atomic spectral enclosure.
-\end{remark}
-
-\begin{remark}[Hadronic and nuclear certificate boundary]\label{rem:hadronic-clock-boundary}
-The no-\(G\) SI gravity row requires an unsupplied hadronic/same-scheme
-endpoint payload in \(\mathcal R_\alpha\) and the source-side cesium QCD/nuclear packet in
-\(\mathcal R_{\mathrm{QCD/nuc}}^{133\mathrm{Cs}}\).  The displayed endpoint and
-\(\varepsilon_{\mathrm{Cs}}\) rows therefore fix those payloads for checksum and comparison
-purposes.  They are not counted as source-only OPH emissions.
-
-The source-only completion route is a Ward-projected QCD/nuclear spectral certificate from a
-dedicated OPH optical-compute backend, or an equivalent nonperturbative backend with manifest
-provenance and systematics.  Ordinary CPU/GPU runs in this paper are not the declared source
-certificate for that hadronic payload.
-\end{remark}
-
-\input{tex_fragments/OBSERVERS_N_CLOSURE_PRO5.tex}
-
-\paragraph{Outer/inner self-consistency for the pixel ratio.}\label{sec:p-closure}
-This paper is the canonical place where the local pixel ratio \(P\) is defined, so the flagship synthesis, the gauge paper and the particle paper can cite one derivation rather than duplicate it. The construction has
-six steps.
+The construction has six steps.
 \begin{enumerate}[leftmargin=2em]
 \item \textbf{Outer pixel ratio.} The outer-side local screen datum is the dimensionless area
 ratio
 \[
-P:=\frac{a_{\mathrm{cell}}}{\ell_\star^2}.
+P:=\frac{a_{\mathrm{cell}}}{\ell_\star^2},
+\qquad
+\gamma_\star=\frac{\ell_\star\nu_{\mathrm{Cs}}}{c},
+\qquad
+B_\star=\frac{3\pi}{\ell_\star^2}.
 \]
 Here \(\ell_\star^2=3\pi/B_\star\) is supplied by the selected scale certificate. After that scale
 is emitted, it is displayed in SI language as the Planck area.
-\item \textbf{Exact equilibrium benchmark.} The total/bulk/edge hierarchy has one exact
-self-similar balance point. Writing
+\item \textbf{Exact equilibrium benchmark.} Writing
 \[
 x(C):=\frac{S_{\mathrm{gen}}(C)}{S_{\mathrm{bulk}}(C)}
 =
 1+\frac{\langle L_C\rangle}{S_{\mathrm{bulk}}(C)},
 \]
 the self-similar balance condition
-\[
-\frac{S_{\mathrm{gen}}(C)}{S_{\mathrm{bulk}}(C)}
-=
-\frac{S_{\mathrm{bulk}}(C)}{\langle L_C\rangle}
-\]
-gives \(x^2-x-1=0\) and hence \(x=\varphi=(1+\sqrt5)/2\). The realized branch must sit near, but
-not exactly at, this point because exact equilibrium is too symmetric to support durable records,
-structure, and dynamics.
-\item \textbf{Outer detuning variable.} On the declared closure surface we parametrize
-the outer-side detuning by
+\(S_{\mathrm{gen}}/S_{\mathrm{bulk}}=S_{\mathrm{bulk}}/\langle L_C\rangle\)
+gives \(x^2-x-1=0\) and hence \(x=\varphi=(1+\sqrt5)/2\). The realized branch
+must sit near, and not exactly at, this point, because exact equilibrium is
+too symmetric to support durable records, structure and dynamics.
+\item \textbf{Outer detuning variable.} On the declared closure surface the
+outer-side detuning is
 \[
 \alpha_{\mathrm{ext}}(P):=\frac{P-\varphi}{\sqrt{\pi}},
 \qquad\text{equivalently}\qquad
@@ -904,9 +49,7 @@ P=\varphi+\alpha_{\mathrm{ext}}(P)\sqrt{\pi}.
 \]
 \item \textbf{Declared quantitative anchor on the trial domain.} Let \(I\subset\mathbb R_+\) be
 the declared branch interval and let
-\[
-F_{\mathrm{EW}}:I\longrightarrow\mathcal D_{\mathrm{EW}}
-\]
+\(F_{\mathrm{EW}}:I\to\mathcal D_{\mathrm{EW}}\)
 denote the declared electroweak source map. For any trial \(P\in I\), the forward electroweak branch emits
 \[
 P\longmapsto \alpha_U(P)\longmapsto (t_U(P),t_{\mathrm{tr}}(P))
@@ -914,492 +57,373 @@ P\longmapsto \alpha_U(P)\longmapsto (t_U(P),t_{\mathrm{tr}}(P))
 \longmapsto A_Z(P)=\alpha_{\mathrm{em}}^{-1}(m_Z^2;P).
 \]
 \item \textbf{Ward-projected Thomson transport.} Let \(T_Q\) be the required Ward-projected
-\(\U(1)_Q\) transport operator from the \(m_Z\)-anchor to the Thomson limit. The complete
-source-only operator is not emitted. A comparison branch may insert the measured endpoint
-\(\alpha^{-1}(0)=137.035999177(21)\), while the separate empirical branch carries the published
-hadronic compilation and returns \(136.3827548175\) on
-\([136.3670480603,136.3984651934]\). For either declared branch, define
+\(\U(1)_Q\) transport operator from the \(m_Z\)-anchor to the Thomson limit, and
 \[
 A_T(P):=
 T_Q\bigl(A_Z(P),F_{\mathrm{EW}}(P)\bigr)
 =
-\alpha_{\mathrm{Th}}^{-1}(P).
-\]
-The inner coupling used in the outer/inner closure is the coupling, not the inverse coupling:
-\[
+\alpha_{\mathrm{Th}}^{-1}(P),
+\qquad
 \alpha_{\mathrm{in}}(P):=\frac{1}{A_T(P)}.
 \]
-\item \textbf{Conditional closure.} If the typed same-quantity bridge, target-independent map-selection premise, and same-scheme endpoint transport hold, the physical pixel ratio is the fixed point for which the outer detuning equals the inner observation coupling:
+The complete source-only operator \(T_Q\) is not emitted.
+\item \textbf{Conditional closure.} If the typed same-quantity bridge, the
+target-independent map-selection premise and same-scheme endpoint transport
+hold, the physical pixel ratio is the fixed point for which the outer detuning
+equals the inner observation coupling:
 \[
-\alpha_{\mathrm{ext}}(P)=\alpha_{\mathrm{in}}(P).
-\]
-Equivalently,
-\[
-H(P):=P-\varphi-\frac{\sqrt{\pi}}{A_T(P)}=0,
-\qquad\text{or}\qquad
-P=\varphi+\frac{\sqrt{\pi}}{A_T(P)}=\varphi+\alpha_{\mathrm{in}}(P)\sqrt{\pi}.
+\boxed{P=\varphi+\frac{\sqrt\pi}{A_T(P)}},
+\qquad
+H(P):=P-\varphi-\frac{\sqrt{\pi}}{A_T(P)}=0.
 \]
 \end{enumerate}
-Writing
+
+On any declared branch interval where \(G(P)=\varphi+\sqrt\pi/A_T(P)\) is a
+self-map and a contraction, its fixed point is unique. Outward-rounded
+interval certificates verify these hypotheses, enclose one root for each
+declared map and exclude a second root across the full analytic domain: a
+domain-global certificate bounds \(\sup|G'|<1\) on every piece of a 256-piece
+subdivision of the declared numerical domain
+(\(\alpha^{-1}\in[100,200]\), both readout maps, empty exceptional set). No
+measured value is inserted into either solve. Observer-facing data may
+localize the interval; the measured endpoint cannot replace the solve.
+Conditional on the bridge, one screen cell carries two coupled roles: its
+displacement above \(\varphi\) sets the outer detuning, and the returned
+electromagnetic coupling is another reading of the same cell.
+
+\paragraph{Four fine-structure coordinates.}
+The certified source/root witness of the declared map is
+\(\alpha_{\mathrm{root}}^{-1}=136.994835177413\ldots\), with enclosure width
+\(7.2\times10^{-24}\); no derivation identifies it with a physical
+fine-structure endpoint. The certified self-consistent gauge-width fixed point
+of the declared map is \(\alpha^{-1}=137.035660136946577\ldots\). The
+mixed-provenance no-hadron diagnostic \(137.0359595136\ldots\) combines the
+inner value at the certified forward pixel
+\(P_{\mathrm{fwd}}=1.630972095858897\ldots\) with \(\alpha_U\) at the comparison
+pixel, is a fixed point of no single declared map, and is excluded from the
+physical output set. An executed empirical closure, using external
+\(e^+e^-\to\mathrm{hadrons}\) spectral data, records
 \[
-G(P):=\varphi+\frac{\sqrt{\pi}}{A_T(P)},
+\Delta\alpha_{\mathrm{had}}^{(5)}(M_Z)=0.027609\pm0.000112,
+\qquad
+\alpha_{\mathrm{emp}}^{-1}(0)=136.3827548175
 \]
-the closure problem is the fixed-point condition \(G(P)=P\).
-On any declared branch interval where this induced map is a self-map and a contraction, its
-mathematical fixed point is locally unique.
-Equivalently, the solver can use
+on \([136.3670480603,\allowbreak 136.3984651934]\); the measured endpoint
+\(137.035999177(21)\) lies outside that interval. The same-scheme anchor
+correction is \([0.6198609041,\allowbreak 0.6505569679]\) inverse-alpha units,
+and both the standard on-shell reference deficit \(0.631\) and the exact
+closure value \(0.6379\) lie inside it. The comparison pixel
+\(P_C\simeq1.6309682094\) is inferred from the measured endpoint solely for
+comparison. Measured against it, the loop residual is \(3.0\times10^{-4}\)
+relative on the source chain and \(2.5\times10^{-6}\) relative (about
+\(1.6\times10^{4}\) measurement sigma) for the certified gauge-width fixed
+point. The Ward-projected hadronic transport gives
+\(S_{\mathrm{hadronic}}\in[0.5578,1.0543]\) for the two electromagnetic
+endpoint residuals; the interval contains the zero-electroweak diagnostic
+\(0.8954\), spans about \(1.16\times10^8\) declared tolerance widths and is
+evaluated at a pixel different from the comparison pixel. These residuals
+have no valid target-blind score: the exposed target conflates total and
+residual coordinates and no decision threshold is active. A physical
+source-only endpoint requires a target-independent map choice, the typed
+same-quantity bridge, and a source-derived hadronic spectral backend with
+source QCD parameters, a quotient ensemble, Ward-normalized currents, the
+two-current spectral marginal, the same-scheme remainder and no-target-leak
+receipts. The two-current measure covers the running-\(\alpha\) marginal;
+light-by-light and rare-decay rows require higher-point and transition
+spectral sectors from the same source law.
+
+\paragraph{Scale reading of the closure.}
+If the two declared-map outputs acquire their physical identifications,
+\(P_\star\) and \(N_{\mathrm{CRC}}\) fix
+\(\Lambda_\star\ell_\star^2=3\pi/N_{\mathrm{CRC}}\) and
+\(\Lambda_\star a_{\mathrm{cell}}=3\pi P_\star/N_{\mathrm{CRC}}\), and the selected
+scale certificate supplies the SI scale product
+\(B_\star=\Lambda_\star N_{\mathrm{CRC}}=3\pi/\ell_\star^2\). Under the same
+identifications the pixel together with the \(\Lambda\)-located working
+capacity \(N_\Lambda=3.31\times10^{122}\) gives the equal-area chart count
 \[
-H(P):=P-\varphi-\frac{\sqrt{\pi}}{A_T(P)}
+K_{\mathrm{cell}}
+=\frac{A_{\mathrm{screen}}}{a_{\mathrm{cell}}}
+=\frac{4N_\Lambda}{P_\star}
+\simeq 8.12\times10^{122},
 \]
-and accept the unique zero of \(H\) on the declared branch interval. Observer-facing data may
-localize that interval. The measured endpoint cannot replace the closure solve.
+and \(8.66\times10^{122}\) at the conditional bridge capacity. This is a
+measured-side comparison display that enters neither closure. The quantity
+\(P_\star/4\simeq0.408\) nats, about \(0.588\) bits, is not
+\(\log\dim\mathcal H_{\mathrm{cell}}\) of an autonomous tensor factor: OPH
+capacity lives on shared cuts, edge centers and constrained overlap data, so no
+fixed primitive observer algebra follows from \(P_\star\) and
+\(N_{\mathrm{CRC}}\) alone. The gravity normalization comes from
+\(\ell_\star^2\), and \(P\) cancels in the Newton area-law readout.
 
-Conditional on the typed bridge, the closure interpretation assigns one screen cell two coupled roles. On the outer side it is one
-cell of the screen whose displacement above the exact self-similar equilibrium \(\varphi\) sets
-the geometric detuning. Conditional on a typed bridge identifying the returned
-electromagnetic coupling as another reading of that cell, closure requires the
-outer detuning and inner reading to agree. The pixel ratio \(P\) is the size of that cell
-in units of the scale-certificate area \(\ell_\star^2\). The fixed-point equation is the mathematical form of that
-conditional consistency statement. Neither the exact fixed-point mathematics
-nor the source certificates construct the bridge or select either certified
-\(P\) map. On the measured-endpoint comparison branch, the root is
+\subsection{The unified-coupling proof record and the clock hierarchy}
+\label{sec:alpha-u-record}
+
+The electroweak hierarchy used by the scale branch depends on a source readout
+of the unified coupling \(\alpha_U(P_\star)\). For a trial pixel \(P\) define
+\(M_U(P)=E_\star e^{-2\pi}P^{1/6}\) and \(E_{\mathrm{cell}}(P)=E_\star/\sqrt P\).
+On the color branch \(N_c=3\) and \(\beta_{\mathrm{EW}}:=N_c+1=4\), and the
+transmutation scale for a candidate coupling \(a\) is
+\(v(P,a)=E_{\mathrm{cell}}(P)\exp[-2\pi/(\beta_{\mathrm{EW}}a)]\). The exterior
+representation theorem fixes the weak-doublet multiplicity \(3+1=4\); its use
+as the transmutation coefficient requires the common screen/electroweak
+load-carrier identification and is declared. The \(\mathrm{SU}(2)\) one-loop
+coefficient of the one-Higgs branch is \(19/6\) and the declared unification
+packet's coefficient is \(1\); neither equals \(4\). The source running family
+is
 \[
-P_C\simeq1.6309682094,\qquad
-\alpha^{-1}(0)=137.035999177(21).
+\alpha_i^{-1}(\mu;P,a)
+=a^{-1}+\frac{b_i}{2\pi}\log\!\left(\frac{M_U(P)}{\mu}\right),
+\qquad i=1,2,3,
+\qquad
+\alpha_Y=\tfrac35\alpha_1,
 \]
-This is a comparison coordinate inferred from the measured endpoint. It does
-not define the pixel used by the theory. The declared source map has one
-mathematical fixed point. The same-quantity bridge and target-independent map
-selection would promote it to a physical closure point. The difference between
-the source-map root and the comparison coordinate is the loop residual:
-\(3.0\times10^{-4}\) relative on the source chain and
-\(2.5\times10^{-6}\) relative (about \(1.6\times10^{4}\) measurement sigma)
-for the certified self-consistent gauge-width fixed point
-\(\alpha^{-1}=137.035660136946577\ldots\), a certified fixed point of the declared map
-with no supplied Ward-projected hadronic transport, map selection, or
-same-quantity bridge. Distinct coordinates describe the
-comparison. The certified source/root witness is \(136.994835177413\ldots\).
-The mixed-provenance no-hadron
-diagnostic is \(137.0359595136\ldots\); it mixes the inner value at \(P_{\mathrm{fwd}}\) with
-\(\alpha_U\) at the comparison pixel, is no fixed point, and is excluded from physical output. The
-external-data empirical closure is
-\(136.3827548175\) on \([136.3670480603,136.3984651934]\), and the measured endpoint is
-\(137.035999177(21)\). The empirical interval requires a same-scheme correction in
-\([0.6198609041,0.6505569679]\) inverse-alpha units, and the standard on-shell reference
-deficit \(0.631\) lies inside that certified interval. A zero-momentum laboratory measurement sees
-the dressed \(\U(1)_Q\) current after charged-lepton vacuum polarization, confined-quark/hadron
-spectral transport, and same-scheme endpoint matching. A physical source-only
-conclusion requires the missing source-derived hadronic spectral transport and
-its dependency certificate, target-independent map selection, and the typed
-same-quantity bridge.
-
-The source-side trunk, mixed diagnostic, empirical endpoint, measurement, and
-interval have distinct provenance. Downstream quantities inherit the provenance of whichever
-declared pixel branch they use.
-The same closure equation also admits an inverse observational use case in which observers infer
-\(P\) and total screen capacity from inside the world.
-
-One source-only route studies the closure directly at zero momentum. It requires a self-contained
-hadronic transport law rather than the external empirical compilation used by the comparison.
-
-\paragraph{Non-hadron results.}
-The non-hadron results consist of conditional classical carrier modes without
-quantum mass claims, the exact electroweak selected-carrier chart, the
-conditional value-law implication, the distinct reference-fitted inverse adapter, the conditional
-downstream Higgs/top coordinate, a same-family charged witness, and the common-scale rejection of
-the reciprocal-ray quark texture. The generic quark interface has six scalar coordinates, and no
-source-derived flavor-orbit selector is emitted. The rejected weighted-cycle neutrino
-candidate is a comparison-only falsification result. Ref.~\cite{ophparticles}
-gives the exact values, premises, diagnostics, and sector boundaries.
-
-\paragraph{Extended derivation.}
-The structural-to-family route and the complete per-sector theorem boundaries
-are developed in
-\emph{The Particle Zoo under Declared Matter Premises: One Generation, Interaction Channels and Mass Diagnostics}~\cite{ophparticles}.
-
-\section{Screen Microphysics, Records, and Observer Continuation}
-
-The screen-microphysics branch gives a fixed-cutoff engineering realization. It asks
-whether some microscopic model might exist in principle and gives one explicit regulated
-carrier architecture: a federation of finite observer patches with echosahedral multi-port
-interfaces, recurrent toroidal subchannels, exposed overlap data, records, repair instruments,
-and observer-facing interfaces all made concrete at fixed cutoff. A spherical screen is used
-there only as an observer-facing regulator chart for support-visible cuts, not as a claim that
-the universe is a literal spherical quantum computer.
-
-The branch has five theorem-bearing components. First, the reference architecture itself is
-explicit. Second, the regulated patch-net embedding theorem applies on its fixed-cutoff
-object/local-interface domain, and the edge-sector thermal/Casimir branch carries an explicit
-fixed-cutoff law with a separate compact lift.
-Third, the fixed-cutoff measurement/Born-rule theorem applies on its declared operator and
-record-event surface. Fourth, the fixed-cutoff
-Bell/CHSH theorem applies on the declared two-wing surface. Fifth, the
-checkpoint/restoration observer theorem applies. The additional premises are
-packet-level quotient closure where one wants an autonomous exported dynamics,
-compact-group/Peter--Weyl bookkeeping on the electroweak and compact surfaces, fair-block contraction
-certificates for long-run noisy approximate consensus on exported packet nets, and model-family
-universality. The
-support-visible BW / geometric-modular / local-Einstein closure lives on the companion recovered-core
-theorems rather than on this fixed-cutoff engineering branch. A reconstruction of Hilbert, \(C^*\)- or von Neumann algebra
-structure, Born probabilities, trace structure, and entropy from operational records alone is
-a separate question outside this branch.
-
-\paragraph{Reference-architecture takeaway.}
-The synthesis-level point is that the regulated screen-side architecture supplies a concrete
-habitat in which local observables, overlap observables, record registers, and synchronization
-maps can all be written without pretending to identify a unique final UV completion. Hardware
-evidence enters only through a public, hash-stable evidence bundle.
-The OPH-FPE simulator provides finite-run receipts and replayable experiment
-bundles~\cite{ophfpe}. Its public exact-federation archive records the
-level-six cell rung of the geodesic icosahedral tower, \(81{,}920\) exact
-twelve-port carriers with one declared gluing of ports to neighbouring cells
-and \(2{,}580{,}480\) seams, under the integer nearest-agreement law: sixteen
-shuffled schedules from one seeded load terminate at the balanced class with
-no accepted move raising \(V=\sum_iN_i^2\), all sixteen return one quotient
-hash equal to the component multiset fixed by the initial totals, which tests
-termination at the balanced class rather than a local diamond, and a
-standalone verifier that imports no simulator code rebuilds the component
-multisets from the primitive arrays, replays one schedule from its seed, and
-recomputes every hash. The level-five to level-ten settlement receipts extend
-the run under the same conventions to \(20{,}971{,}520\) carriers and
-\(660{,}602{,}880\) seams, where all sixteen schedules reach the balanced
-class in \(84\) to \(100\) sweeps. The gluing is a declared convention; its selection from A1--A3 and refinement naturality are not derived here, and no physical clock or field attachment is asserted.
-
-A separate closure-loop archive supplies the recovery mechanism at carrier
-scale. From an event log alone, under the declared probe and operation
-grammar, a fixed recovery algorithm returns the port count, seam set, inverse
-pairing, automorphism and rotation groups of orders \(120\) and \(60\), mean
-rule, schedule, rank-three response Gram and Lie split \(1+3+8\); the
-recovered specification is instantiated with a fresh seed and recovered
-again, the invariant vector is preserved for two iterations, tetrahedral and
-octahedral controls recover their distinct specifications, and endpoint
-overwrite loses conservation and schedule-independent termination.
-Integration with the large run, selection of the source law from A1--A3, and physical realization are not supplied here.
-
-\paragraph{Imported conditional theorem from Ref.~\cite{ophmicrophysics} (Fixed-cutoff record algebra and declared Born--L\"uders package).}
-For each completed compare/write/verify slice of the regulated microphysics, the declared pointer
-and overlap-sector projectors generate a finite commutative central record algebra
+and the source \(Z\)-scale is the fixed point
+\(\mu_Z=\tfrac12 v\sqrt{4\pi\alpha_2(\mu_Z)+4\pi\alpha_Y(\mu_Z)}\). With
+\(Z_G(t)=\sum_R d_R e^{-tC_2(R)}\),
+\(\bar\ell_G(t)=Z_G(t)^{-1}\sum_R d_R e^{-tC_2(R)}\log d_R\) and
+\(t_{2,3}=4\pi^2\alpha_{2,3}(\mu_Z)\), the unified-coupling residual is
 \[
-\mathcal Z_{\mathrm{rec}}.
+\Phi_U(P,a)
+:=\bar\ell_{\mathrm{SU}(2)}(t_2)+\bar\ell_{\mathrm{SU}(3)}(t_3)-\frac{P}{4},
+\qquad
+\Phi_U(P,\alpha_U(P))=0.
 \]
-Given the supplied density-state valuation and declared L\"uders instrument,
-every observer-accessible event \(E\) in that algebra has probability
+
+\begin{definition}[No-hidden-free-variable admissibility]\label{def:no-hidden-free-variable-u}
+The unified-coupling proof record is admissible only when the representation
+cutoffs \(N_2,N_3\), the beta packet \((b_1,b_2,b_3)\), the matching
+prescription, the threshold packet and the renormalization convention are
+frozen before comparison with measured electroweak or gravitational data, and
+none is selected by minimizing an error against \(M_W\), \(M_Z\),
+\(\alpha_s(M_Z)\), \(\sin^2\theta_W\), \(v_{\mathrm{exp}}\) or \(G_{\mathrm{exp}}\).
+Tuning any of them after such a comparison makes the hierarchy row a
+calibration.
+\end{definition}
+
+\begin{theorem}[No-measured-input unified-coupling proof record]\label{thm:no-input-alpha-u}
+Let
 \[
-\mathbb P(E)=\operatorname{Tr}(\rho P_E),
+\mathcal R_U=(P_\star,N_2,N_3,I_U,\Phi_U,K_U,a_U^{(0)},r_U,m_U,\mathrm{DAG}_U)
 \]
-and the selected conditioning on \(E\) gives the operational post-measurement state
+be an admissible record, with \(I_U\subset\mathbb R_+\) the declared interval
+for \(\alpha_U\), \(K_U\) an interval-Newton or Krawczyk operator,
+\(a_U^{(0)}\) the displayed candidate, \(r_U\) a residual bound, \(m_U\) a lower
+derivative bound and \(\mathrm{DAG}_U\) the dependency graph. Assume
+\(K_U(I_U)\subset \operatorname{int}(I_U)\),
+\(|\Phi_U(P_\star,a_U^{(0)})|\le r_U\),
+\(|\partial_a\Phi_U(P_\star,a)|\ge m_U>0\) on \(I_U\), and that
+\(\mathrm{DAG}_U\) has no directed path from measured electroweak masses,
+measured low-energy gauge couplings, measured \(G\), Planck area or mass,
+measured \(\Lambda\), or any equivalent gravity- or electroweak-calibrated
+scale. Then there is a unique \(\alpha_U(P_\star)\in I_U\) with
+\(\Phi_U(P_\star,\alpha_U(P_\star))=0\) and
+\(|\alpha_U(P_\star)-a_U^{(0)}|\le r_U/m_U\), and the hierarchy
 \[
-\rho\!\mid_E = \frac{P_E \rho P_E}{\operatorname{Tr}(\rho P_E)}.
+\frac{v}{E_\star}
+=P_\star^{-1/2}\exp\!\left[-\frac{2\pi}{(N_c+1)\alpha_U(P_\star)}\right]
 \]
-The effect projectors do not determine this instrument; same-effect
-non-L\"uders instruments remain possible.
-If a practical readout instead uses projectors \(Q_a\) with commuting central reference
-projectors \(\widehat Q_a\) on the same declared slots and
+is no-measured-input on this record.
+\end{theorem}
+
+\begin{proof}
+The residual is built from \(P_\star\), the declared cutoffs and the source
+transmutation, running and \(Z\)-scale laws, and the dependency condition
+excludes measured electroweak data and gravity-calibrated scales. The
+Krawczyk inclusion gives existence and uniqueness of a zero in \(I_U\), and
+the mean-value theorem with the derivative bound gives the displayed
+distance. Substitution into the transmutation law gives the hierarchy.
+\end{proof}
+
+The theorem fixes a dimensionless ratio; it supplies no independently
+physical \(E_\star\), mass in GeV or complex propagator pole. The public
+comparison-branch certificate at \(P_C\) gives
+\(\alpha_U(P_C)=0.041124336195630495\) and
+\(v/E_\star=2.0199803239725553\times10^{-17}\), with the Krawczyk image of
+\([0.041123336195630494,\;0.041125336195630496]\) strictly inside that
+interval. The source-side diagnostic branch excludes the public Thomson
+endpoint upstream; it is a witness, not the strict interval root of the
+Ward-projected self-map. The same exponent has the local/global capacity form
 \[
-\delta_{\mathrm{rec}}=\max_a \|Q_a-\widehat Q_a\|,
+\frac{v}{E_{\mathrm{cell}}}
+=\left(\frac{N_{\mathrm{CRC}}^{\mathrm{EW}}}{\pi}\right)^{-P_\star/12},
+\qquad
+N_{\mathrm{CRC}}^{\mathrm{EW}}=\pi\exp\!\left[\frac{6\pi}{P_\star\alpha_U(P_\star)}\right],
 \]
-then
+about \(3.53235\times10^{122}\) at \(P_C\) and
+\(N_0=3.5321315434\times10^{122}\) interval-certified at \(P_{\mathrm{fwd}}\).
+
+\begin{lemma}[Exponential sensitivity of the hierarchy row]\label{lem:alpha-u-sensitivity}
+On the transmutation branch with \(\beta_{\mathrm{EW}}=4\), and on a clock row
+whose dominant scale dependence enters through \(m_e^2\propto v^2\) in the
+leading hyperfine scaling
+\(\varepsilon_{\mathrm{Cs}}\sim\mathcal C_{\mathrm{Cs}}\alpha_\star^4m_e^2/(m_pE_\star)\),
+the induced gravity readout with \(G\propto\varepsilon_{\mathrm{Cs}}^2\)
+satisfies \(\partial\ln G/\partial\alpha_U=2\pi/\alpha_U^2\), about
+\(3.7\times10^3\) at \(\alpha_U\simeq0.0411\). A certified relative gravity
+precision \(\eta_G\) therefore requires
+\(|\delta\alpha_U|\lesssim\eta_G/(3.7\times10^3)\).
+\end{lemma}
+
+\begin{proof}
+\(\partial\ln(v/E_\star)/\partial\alpha_U=\pi/(2\alpha_U^2)\); the clock gap
+carries \(v^2\) at fixed Yukawa, fine-structure and strong-sector ratios, and
+the gravity row is quadratic in the clock gap.
+\end{proof}
+
+\paragraph{No-\(G\) clock hierarchy.}
+The gravity row uses the dimensionless cesium gap
+\(\varepsilon_{\mathrm{Cs}}:=\hbar\omega_{\mathrm{Cs}}/E_\star\), with
+\(E_\star=\hbar c/\ell_\star\) and \(\omega_{\mathrm{Cs}}=2\pi\nu_{\mathrm{Cs}}\).
+A source-only cesium packet
+\(\mathcal D_{\mathrm{Cs}}^{\mathrm{src}}=(\alpha_\star,m_e/E_\star,\Lambda_{\mathrm{QCD}}/E_\star,\{y_q\},\mathcal N_{133},\mathcal B_{\mathrm{atom}}^{\mathrm{Cs}})\)
+collects dimensionless couplings, the \({}^{133}\mathrm{Cs}\) nuclear data
+\(\mathcal N_{133}\) and the atomic many-body, relativistic, QED, recoil and
+finite-nucleus correction package; the dimensionless OPH cesium Hamiltonian
+\(\widehat H_{\mathrm{Cs}}^{\mathrm{OPH}}\) is the sum of the
+Dirac--Coulomb, Breit, QED, recoil, nuclear and many-body terms in units of
+\(E_\star\).
+
+\begin{theorem}[No-\(G\) OPH clock-hierarchy theorem]\label{thm:no-g-clock-hierarchy}
+Assume the local pixel proof selects \(P_\star\); the record \(\mathcal R_U\) of
+Theorem~\ref{thm:no-input-alpha-u} emits \(\alpha_U(P_\star)\) and
+\(v/E_\star\); the electromagnetic branch \(\mathcal R_\alpha\) emits
+\(\alpha_\star\); the charged-lepton branch emits
+\(m_e/E_\star=(y_e/\sqrt2)\,v/E_\star\); the QCD/nuclear branch emits
+\(\mathcal N_{133}\); and the atomic branch supplies disjoint isolated
+spectral enclosures \(J_{F=3},J_{F=4}\) for
+\(\widehat H_{\mathrm{Cs}}^{\mathrm{OPH}}\), so that
+\(\varepsilon_{\mathrm{Cs}}=\lambda_{F=4}-\lambda_{F=3}\) is certified. If the
+combined dependency graph has no directed path from \(G_{\mathrm{exp}}\),
+\(\ell_P^2\), \(m_P\), \(t_P\), \(\Lambda_{\mathrm{exp}}\),
+\(3\pi c^3/(\hbar G)\) or an algebraically equivalent gravity-calibrated
+scale, then \(\varepsilon_{\mathrm{Cs}}\) is a no-\(G\) readout,
+\(\gamma_\star=\ell_\star\nu_{\mathrm{Cs}}/c=\varepsilon_{\mathrm{Cs}}/(2\pi)\)
+is non-circular, and
 \[
-\|[Q_a,Q_b]\|\le 4\,\delta_{\mathrm{rec}},
+G_{\mathrm{SI}}=\frac{c^5}{4\pi^2\hbar\nu_{\mathrm{Cs}}^2}\,\varepsilon_{\mathrm{Cs}}^2
 \]
-and any accessible-state perturbation \(\|\widetilde\rho-\rho\|_1\le\varepsilon\) changes each
-declared elementary record-event probability by at most \(\varepsilon+\delta_{\mathrm{rec}}\).
+has no measured-\(G\) ancestor.
+\end{theorem}
 
-The charged-family construction contains one engineered witness for this distinction. Inside a bounded
-finite patch, eight local register graphs and eight declared paths contain \(6{,}467\) matrix
-units. A noncentral event projection is read into a central two-valued accepted/rejected record,
-and sixty \(A_5\) charts verify the declared equivariance. The evidence bundle proves that the
-stipulated fixed-cutoff schema is nonempty. Its register sizes, path automaton, signs, clock, and
-response are authored, while inert ancillary stabilization does not supply a cofinal physical
-refinement. The witness therefore connects event readback to a public record at fixed cutoff; it
-does not select the charged source, recovery law, family attachment, or physical pole.
+\begin{proof}
+Every coefficient of \(\widehat H_{\mathrm{Cs}}^{\mathrm{OPH}}\) is emitted by
+the listed records and so has no measured-\(G\) ancestor; the isolated
+enclosures make the gap well defined and it inherits the dependency
+condition. Since \(\varepsilon_{\mathrm{Cs}}=2\pi\nu_{\mathrm{Cs}}\ell_\star/c\),
+substitution into \(G_{\mathrm{SI}}=c^3\ell_\star^2/\hbar\) gives the display.
+\end{proof}
 
-\paragraph{Imported theorem from Ref.~\cite{ophmicrophysics} (Fixed-cutoff Bell / CHSH package).}
-On the declared fixed-cutoff physical observable algebra, fix commuting left/right wing
-subalgebras, central binary setting registers, binary projective readouts on each wing, and a
-physical source state on the joint wing algebra. Then the compare slice carries the joint law
-\[
-p(a,b\mid x,y)
-=
-\operatorname{Tr}\!\bigl(\rho_{LR}\,P_{a|x}^{(L)}P_{b|y}^{(R)}\bigr),
-\]
-the local marginals are independent of the remote setting, the Bell correlators satisfy
-\[
-E(x,y)=\operatorname{Tr}\!\bigl(\rho_{LR}\,A_xB_y\bigr),
-\]
-and the CHSH combination obeys
-\[
-\bigl|E(0,0)+E(0,1)+E(1,0)-E(1,1)\bigr|
-\le
-2\sqrt2.
-\]
-If the source family contains an explicit two-qubit branch with the stated Pauli readouts, the
-same fixed-cutoff surface saturates \(2\sqrt2\) exactly on that branch. The source-state input
-is explicit: the theorem derives the Bell law and the Tsirelson bound from the stated
-fixed-cutoff operator surface, while Bell-pair preparation and two-qubit factor structure are
-stated branch conditions.
+Printing \(\varepsilon_{\mathrm{Cs}}=3.1139305134\ldots\times10^{-33}\) does not
+discharge the theorem. The decimal is source-predictive only when emitted by
+the five records; computed as \(2\pi\nu_{\mathrm{Cs}}\sqrt{\hbar G_{\mathrm{exp}}/c^5}\)
+it is a gravity-side calibration checksum. The source-only completion requires
+the hadronic same-scheme endpoint payload in \(\mathcal R_\alpha\), the
+charged-lepton absolute-scale premise and the source-side cesium QCD/nuclear
+packet, for example from a Ward-projected nonperturbative backend with
+manifest provenance and systematics. The printed digits of \(G_{\mathrm{SI}}\)
+may not exceed the precision these records certify.
 
-\paragraph{Imported theorem from Ref.~\cite{ophmicrophysics} (Checkpoint/restoration and observer backup).}
-For an observer patch \(P_O\), let the checkpoint data consist of the observer-facing record
-algebra, the accessible local state, the future update schedule, and the externally visible
-overlap interface data. Exact restoration reproduces the full future law of observer-accessible
-events, while an \(\varepsilon\)-accurate restoration changes that future law by at most
-\(\varepsilon\) in total variation.
+\input{tex_fragments/OBSERVERS_N_CLOSURE_PRO5.tex}
 
-\paragraph{Observer-facing conclusion.}
-The combined theorems supply a fixed-cutoff measurement interface,
-a fixed-cutoff checkpoint/restoration package, and an operational observer-identity criterion on
-observer-accessible event algebras. Stronger substrate-selection or strange-loop closure claims
-are outside the recovered theorem package.
+\paragraph{Capacity comparison coordinates.}
+The Gibbons--Hawking entropy and the Planck-2018 late-time de Sitter
+benchmark give a concrete normalization~\cite{gibbonsHawking77,planck18}:
+with \(R_{\mathrm{dS}}\simeq1.66\times10^{26}\,\mathrm m\) and
+\(\ell_P\simeq1.616\times10^{-35}\,\mathrm m\), the bare horizon ratio is
+\(N_{\mathrm{patch}}=(R_{\mathrm{dS}}/\ell_P)^2\simeq1.05\times10^{122}\), the
+entropy capacity is
+\(N_{\mathrm{scr}}=S_{\mathrm{dS}}=\pi N_{\mathrm{patch}}\simeq3.31\times10^{122}\),
+and \(\Lambda\ell_P^2\simeq2.85\times10^{-122}\). The weighted Planck
+base-\(\Lambda\)CDM read-off is \(3.3129\ldots\times10^{122}\); the certified
+electroweak bridge value \(3.5321315434\ldots\times10^{122}\) at
+\(P_{\mathrm{fwd}}\) solves the declared bridge equation, not the
+unconstructed universe-level public-record producer, and is about \(6.6\)
+percent above it. The separately premised finite-presence and Poisson carriers
+give \(3.2920978773\ldots\times10^{122}\) and \(3.3000722254\ldots\times10^{122}\),
+retrospective residuals of \(-0.63\) and \(-0.39\) percent. Exact neutral and
+multiplicative global-capacity completions share the same local survival
+datum and satisfy positive disconnected-cut composition and finite cut-count
+regrouping, yet disagree after one cut, so the finite source selects neither
+expression as a global action. Four manifest-authenticated official DESI DR2
+BAO+CMB base-\(\Lambda\)CDM chains, transformed sample by sample, give
+\(\Lambda\ell_P^2=(2.96770\mathbin{\pm}0.03978)\times10^{-122}\) with weighted
+2.5--97.5 percent interval \([2.88997,3.04530]\times10^{-122}\)
+\cite{desidr2,ophrepo}; this retains the sampled
+\(H_0\)--\(\Omega_\Lambda\) covariance and is a retrospective, target-informed
+posterior display, not an OPH likelihood or predictive pull. These
+comparisons are retrospective, and none establishes the common-carrier or
+horizon identification.
 
-\paragraph{Extended derivation.}
-The fixed-cutoff edge-law, measurement, Born-rule, Bell/CHSH, and checkpoint/restoration packages are developed in
-\emph{Federated Echosahedral Screen Microphysics: Patch Hardware, Records, and Observer Synchronization in OPH}~\cite{ophmicrophysics}.
+\paragraph{The declared candidate family.}
+The declared finite candidate family comprises the seventeen-row menu for the
+executed capacity families, the two declared \(P\) maps, one direct
+fixed-cutoff control, the common-load baseline, reserve maps, RC-LOAD, the
+construction aggregate and five hierarchy packets. Fifteen of the thirty
+entries record exact fixed-point progress: eight carry certified fixed points,
+one is conditional on its three coupling premises, and six are sublattice or
+aggregate rows. None supplies target-independent selection, a constructed
+same-quantity identification and a complete source return map together, and
+because the input catalogue, nuisance quotient, coordinate and scheme
+catalogue and candidate grammar are not frozen, no entry qualifies as a
+source-only candidate. The four multiplicative capacity-\(P\) maps fix
+whichever positive normalization seed is supplied and do not select it; the
+two additive rows have no positive fixed point. The conditional RC-LOAD
+equation has positive discriminant, maps its declared macroscopic domain into
+itself, is contractive there, has one macroscopic fixed point and excludes
+its microscopic root; its pricing law, same-quantity identity and
+target-independent selection are premises. The family does not exhaust other
+source laws.
 
-\section{Worldsheet/String Branch}
+\subsection{Comparison coordinates that are not outputs}
+\label{sec:closure-comparison-coordinates}
 
-The string/worldsheet result is a theorem-level bridge from the fixed-cutoff edge-sector law to
-the two-dimensional Yang--Mills partition function, followed by a controlled large-\(N_{\mathrm{edge}}\)
-effective-description theorem on the stated branch. The conditional
-support-visible four-dimensional Yang--Mills form and repair-gap theorems are
-separate results whose continuum identification and gap transport require
-their stated receipts.
+Several numerical rows organized by \(P\) are comparison coordinates and are
+excluded from the physical particle outputs; the particle paper gives their
+tables and verification~\cite{ophparticles}. The declared, not
+source-selected, zero-selector map gives the target-free running-chart
+coordinates \((80.330,91.119)~\mathrm{GeV}\), not physical pole masses. The
+selected carrier, conditional value law and reference-fitted inverse adapter
+give \((80.3862916924,91.1829044467)\), \((80.3770000154,91.1879780779)\) and
+\((80.3625,91.1879)~\mathrm{GeV}\); the target-conditioned closure chart has
+central coordinates \((80.373315,91.193124)~\mathrm{GeV}\). For the PDG-2026
+reference pair the exact convention map gives energy-pole masses
+\((80.3411410,91.1623040)~\mathrm{GeV}\), while the legacy
+\(\sqrt{\operatorname{Re}s}\) coordinates are
+\((80.3340218,91.1537725)~\mathrm{GeV}\). A separate strict one-loop fixture
+excludes scalar zeros in declared principal-sheet boxes and isolates one
+simple scalar zero for each of \(W\) and \(Z\) in channel-specific lower-half
+pole boxes; no certified continuation joins it to the OPH chart. The fixed
+96-entry one-loop electroweak menu excludes its own entries and says nothing
+about prescriptions outside it.
 
-\paragraph{Imported theorem (Heat-kernel edge-sector bridge).}
-Import the fixed-cutoff same-overlap edge-law package from
-\emph{Federated Echosahedral Screen Microphysics}~\cite{ophmicrophysics}.
-Under the same overlap-gauge realization and local-Gibbs/MaxEnt edge branch, together with the
-edge-Hamiltonian and one-sided-algebra hypotheses (EH-1)/(EH-2) of the fixed-cutoff edge-sector law in the gauge-structure paper (the sector
-probabilities are the one-sided \(d_R\) convention; the closed partition below is the two-sided
-\(d_R^2\) convention), the edge-sector weights satisfy
-\[
-p_R(t)\propto d_R e^{-t C_2(R)}.
-\]
-Consequently the edge partition function matches the standard two-dimensional Yang-Mills
-heat-kernel form. Osterwalder--Schrader and Wightman-strength continuum
-reconstruction for the four-dimensional Euclidean Yang--Mills form and the
-mass-gap statement require the separate support-visible compact-gauge
-premises.
-
-\paragraph{Imported proof route.}
-The microphysics source surface carries the fixed-cutoff thermal/Casimir law on the declared
-overlap interface. Peter--Weyl decomposition~\cite{peterWeyl27}
-then identifies the resulting sum with the standard heat-kernel expression for
-two-dimensional Yang-Mills on the compact-group refinement lift.
-
-\paragraph{Compact-carrier theorem.}
-Writing the closed edge partition function as
-\[
-Z_{\mathrm{edge}}(t)=\sum_R d_R^2 e^{-tC_2(R)},
-\]
-the compact carrier states the exact bridge itself as a named theorem: Peter--Weyl identifies it with the compact-group heat kernel at the identity,
-\[
-Z_{\mathrm{edge}}(t)=K_t(1).
-\]
-The Chapman--Kolmogorov gluing law for \(K_t\) is the precise sense in which collar sewing
-matches the two-dimensional Yang--Mills heat-kernel surface before any large-\(N_{\mathrm{edge}}\)
-continuation is invoked.
-The compact carrier is a partition-identity theorem on its stated branch. The four-dimensional OPH
-claim identifies the compact-gauge branch with the Euclidean Yang--Mills form and applies the
-repair-dynamics theorem on that same support-visible branch.
-
-\paragraph{Controlled large-\(N_{\mathrm{edge}}\) branch.}
-Fix a distinct large-\(N_{\mathrm{edge}}\) realization, with \(N_{\mathrm{edge}}\neq N_c=3\), and
-the fixed-\(\tau\) variable
-\[
-\tau=tN_{\mathrm{edge}}
-\]
-on a compact window \(I\). If the resulting edge free energy satisfies the Yang--Mills note's
-large-\(N_{\mathrm{edge}}\) criterion~\cite{ophyangmills}, with remainder control on \(I\), then the Gross-Taylor
-rewriting~\cite{grossTaylor93} is a controlled theorem-level worldsheet effective description of
-the edge dynamics on that branch. Critical-superstring claims, worldsheet CFT closure, anomaly
-cancellation, and full massless-spectrum matching are outside the recovered core theorem package.
-
-\paragraph{Higher-gauge continuation slot.}
-The genuinely noncentral crossed-module gluing data on cuts provide the natural continuation-level
-slot for \(B\)-field / gerbe data in any string-style reorganization of the OPH edge sector. This
-is a structural analogy only; it is not an open/closed-string boundary formalism or a
-critical-string theorem.
-
-\section{Theorem Boundaries and Conditional Continuations}
-
-This paper has the following theorem boundary:
-
-\begin{enumerate}[leftmargin=2em]
-\item The fixed-cutoff collar, higher-gauge, consensus, record, Bell/CHSH, checkpoint, and
-restoration packages are theorem-bearing on their stated finite-regulator surfaces.
-\item One supplied charged-scalar/Maxwell action with positive mass squared
-and nonnegative quartic coupling has a nonlinear real sector
-whose trajectories converge at first order to smooth Neumann solutions
-under uniform refinement and Ritz initialization
-(Theorem~\ref{thm:whitney-real-continuum-trajectory}). On its fixed volume
-mesh, the full interacting kinetic metric is complete; the declared
-Laplace--Beltrami operator has a unique self-adjoint closure and neutral
-strong-domain Gaussian states
-(Theorem~\ref{thm:whitney-interacting-quantum} and
-Proposition~\ref{prop:whitney-interacting-gaussian-state}). Exact software
-restoration supports numerical charged histories, and a Jacobi duration
-recovers model time on regular nonturning solutions at supplied energy
-(Propositions~\ref{prop:whitney-charged-record-restoration}
-and~\ref{prop:whitney-ephemeris-clock}). Physical state preparation,
-calibration and an interacting continuum quantum field theory are separate
-from these constructions.
-\item Physical UV uniqueness is quotient-level and stable under inert ancillas. OPH fixes terminal
-values on declared physical observables, not a unique microscopic representative.
-\item The Lorentz and null-modular chain is closed on the support-visible refinement/scaling
-branch by the finite cap-normal BW scaling theorem on the geometric subnet. Its two inputs are the
-finite cap-normal support/flow certificate and an independently complete
-multiresolution algebra-state comparison package on the same tower. Fixed-collar
-Markov replacement with carried \(r_{\mathrm{FR}}\), \(\delta^{\mathrm M}\), and regularized
-modular remainders, support-readable modular covariance, support-order faithfulness, BW framing,
-held-out oriented cross-ratio rigidity, and independently normalized geometric \(2\pi\)-KMS
-convergence make the cap modular automorphism geometric. The compact cap-normal theorem then
-identifies \(S^2\) with projective future null rays \(q(\Omega)=(1,\Omega)\), represents
-oriented round caps by \(n_C=(\cot\alpha,\csc\alpha\,\mathbf c)\), proves the signed incidence
-formula, and obtains \(n_{gC}=\Lambda_gn_C\) and
-\(H^3\simeq\mathrm{SO}^+(3,1)/\mathrm{SO}(3)\). This is not a finite-cell
-Lorentz-invariance claim, a one-shot upgrade from small CMI to exact Markov geometry, a proof
-that bare finite consensus produces the cap-normal certificate, or a populated/neutral-bulk
-claim. The absolute Einstein implication additionally requires one
-source-derived common-domain tower carrying the event, stress, entropy,
-uniform-asymptotic, universal-coupling, vacuum-reference, and independent-scale
-premises. No such tower is constructed or certified.
-\item Record-conditioned observer-frame estimation in \(H^3\) is a separate conditional theorem:
-calibrated modular cap responses select a frame value only when they factor through frame-local
-\(H^3\) data on a compact domain and the finite cap frame has \(\alpha>0\). Exact data identify one
-frame value; finite noisy data produce a frame ball, and a unique finite value requires a positive
-residual gap \(\Delta_{\mathrm{loc}}\). This does not locate an event, populate the event base,
-derive particle species or stress-energy, or construct chart-blind neutral bulk.
-\item The cosmological constant branch has a closed conditional implication
-layer and a bounded capacity counterfamily. The descended semantic
-checkpoint packet defines exact public capacity as the independence number of
-the compound confusability graph at finite integer dimension. Under a faithful
-carrier representation and whole-fiber scalarization it is deflationary;
-under a confusability-reflecting capacity embedding, top-down iteration selects its
-greatest fixed point, while fixed-capacity refinement injections imply
-eventual exact stabilization. A source-derived packet realizes the finite
-receipts at \(D=24\) inside its declared finite source category. Reversible, copy-collapse, two-class, and
-hidden-spectator continuations share base agreement, positivity, the carrier
-bound, and executable finite controls while giving different exact fixed
-sets. The exact verdict applies to this bounded completion class. No
-all-rung membership in the complete A1--A3 capacity-source contract or
-executable-to-Lean bridge is supplied. Direct \(N\) is not evaluable on the
-incomplete source antecedent. A positive cosmic value requires a complete
-source antecedent, one physical zero, and a universe-level carrier attachment.
-The horizon--record identification then gives
-\(\Lambda_{\mathrm{CRC}}\ell_\star^2=3\pi/N_{\mathrm{CRC}}\), and
-the common screen/electroweak load-carrier map separately gives the electroweak bridge. A
-diagonal normal-form count constructs neither the off-diagonal map nor
-deterministic closure. The operational resolution experiment is an
-independent test rather than the producer.
-\item Complete reversible response and endogenous overlap transport force the
-abstract local Standard Model gauge Lie algebra. Under the explicit
-inverse-port contract, incidence and target-blind port readback derive the
-signed response. Under the conditional matrix current and matter
-representation, anomaly-forced determinant balance and tensor descent give exact hypercharge,
-\(N_c=3\), the common \(\mathbb Z_6\) kernel, and the maximal faithful matter
-image. The source does not select the matrix current, matter action, or physical
-\(\mathbb Z_6\) quotient. Laboratory identification of the
-current and flux sectors is not supplied.
-Compact gauge reconstruction uses the theorem-produced combined
-transportability criterion and fixed-cutoff tensor-generated bosonic sector
-category. On a cofinal tail carrying the explicit compact-gauge refinement
-receipt, the bosonic refinement ladder and compatible forgetful fibers
-reconstruct a compact group from sectors with strictifiable central or
-higher-associator defects and at least one allowed trivial-holonomy strict
-representative. That is a distinct conditional classification route. Physical
-family identification and extra-sector exclusion require separate identifications.
-No laboratory current identification, equality with the Tannaka current, or
-physical matter-pole and continuum interpretation of the conditional
-rank-\(45\) family candidate is supplied.
-\item The particle branch is sector-split. Electroweak \(W/Z\) has an exact selected-carrier chart, a conditional value law whose finite-carrier certificate is not emitted, and a separate reference-fitted inverse adapter. An external strict one-loop fixture has principal-sheet scalar zero-exclusion receipts and one simple scalar zero for each of \(W\) and \(Z\) in channel-specific lower-half pole boxes and algebraic charts. No certified continuation identity or composition joins it to the OPH chart, so it supplies no physical pole or mass comparison. Higgs/top is conditional on its declared downstream surface. The reciprocal-ray quark candidate fails on dimensionless common-scale Yukawas, while the exact generic interface has six scalar coordinates and no source-derived flavor-orbit selector. Its sub-percent residuals use a target-anchored mixed-convention chart. The particle simulator contains no Yukawa coupling and returns a null calibration result. The weighted-cycle neutrino candidate is rejected, no charged-lepton source attachment is supplied despite the engineered fixed-cutoff record witness, and source-only hadron masses require a production OPH backend. The empirical hadron endpoint is an external-data validation surface rather than that backend.
-\item The string/worldsheet branch is a controlled heat-kernel
-effective-description branch. A critical-string conclusion requires a
-separate selector premise.
-\end{enumerate}
-
-\paragraph{Local unification boundary.}
-One local unification identity is explicit. There is no common theorem for
-\(c\), \(G\), \(W\), \(Z\), and \(H\). The declared local input \(P\) governs the
-electroweak/Higgs trunk and fixes the matching between cell area and edge entropy. The gravity
-normalization is emitted by the selected scale certificate, while the invariant
-causal speed \(c\) is structural from the Lorentz branch and gains its SI label only on the local
-readout package.
-
-{\centering
-\scriptsize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.11\textwidth}>{\raggedright\arraybackslash}p{0.25\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.31\textwidth}@{}}
-\toprule
-Quantity & Value & Derivation chain & Caveat \\
-\midrule
-\(c_\star\) & \(299792458~\mathrm{m/s}\) by SI definition & structural Lorentz/BW branch \(\rightarrow\) common invariant null cone/speed \(\rightarrow\) SI unit convention & the common cone and dimensionless speed equality are structural; the decimal magnitude is not predicted \\
-\(G\) & \(6.674299995910528\times10^{-11}~\mathrm{m^3\,kg^{-1}\,s^{-2}}\) on the stated local extension surface & \(\gamma_\star=\ell_\star\nu_{\mathrm{Cs}}/c\), \(B_\star=3\pi/\ell_\star^2\), \(a_{\mathrm{cell}}=P\ell_\star^2\), \(\ellbar_{\mathrm{shared}}=P/4\), \(G_{\mathrm{SI}}=c^3\ell_\star^2/\hbar\) & the pixel fixes the shared cell/edge identity and cancels in the Newton area law; the strict classical-regime clause is explicit \\
-\(M_W\) & no nonzero source-only physical mass emitted & selected carrier \(\rightarrow\) exact chart; quotient-transport assumptions \(\Rightarrow\) conditional value law; inverse target adapter separate & the finite-carrier certificate is not emitted, and no pole mass is identified \\
-\(M_Z\) & no nonzero source-only physical mass emitted & same chart, conditional law, and separate adapter & same source-certificate and pole-mass boundary \\
-\(M_H\) & no nonzero source-only physical mass emitted & double-criticality family from the gauge sector \(\rightarrow\) comparison-exposed boundary-scale candidate \((m_H,m_t)=(125.77,172.63)\)~GeV & inherits the boundary-scale selection theorem plus the source-root, physical-scale, running, matching, rigidity, provenance, uncertainty, and complex-pole premises \\
-\bottomrule
-\end{tabular}
-\par}
-
-\paragraph{Conditional electroweak comparison coordinates.}
-The evaluated strictest target-free \(W/Z\) branch is a declared,
-not source-selected zero-selector map,
-\((80.330,91.119)~\mathrm{GeV}\), with no target input and a single discrete
-two-law choice. This is a running-chart coordinate, not a physical pole-mass
-prediction. The source does not close the renormalized-vev, tadpole,
-field-content, threshold, matching, running, complex-pole, or theory-covariance
-map needed to compare it with measured resonance parameters, so no physical
-comparison is defined. For the PDG-2026 reference pair, the exact
-convention map gives energy-pole masses
-\((M_W,M_Z)=(80.3411410,91.1623040)~\mathrm{GeV}\), while the separate legacy
-coordinates \(\sqrt{\operatorname{Re}s}\) are
-\((80.3340218,91.1537725)~\mathrm{GeV}\). The running-chart coordinates have
-no OPH theory covariance, and no physical readout contract is supplied. A
-separate strict one-loop fixture has principal-sheet scalar zero-exclusion
-receipts and one simple scalar zero for each of \(W\) and \(Z\) in
-channel-specific lower-half pole boxes and algebraic charts.
-No certified continuation identity or composition joins that fixture to the
-OPH chart. The
-selected carrier, conditional value law, and reference-fitted inverse adapter give
-the downstream comparison coordinates
-\[
-\begin{array}{rcl}
-\text{selected carrier} && (80.3862916924,91.1829044467)~\mathrm{GeV},\\
-\text{conditional value law} && (80.3770000154,91.1879780779)~\mathrm{GeV},\\
-\text{reference-fitted inverse adapter} && (80.3625,91.1879)~\mathrm{GeV}.
-\end{array}
-\]
-The zero-selector output above is the target-free running chart, while the
-target-conditioned closure chart is the separate object that solves its basis
-from the measured pair and has conditional central coordinates
-\((80.373315,91.193124)~\mathrm{GeV}\).
-The Higgs/top pair is read on the double-criticality branch, whose comparison-exposed
-boundary-scale candidate \(E_\star e^{-\pi}P^{-1/6}\) gives
+The Higgs/top pair is read on the double-criticality branch, whose
+comparison-exposed boundary-scale candidate \(E_\star e^{-\pi}P^{-1/6}\) gives
 \((m_H,m_t)=(125.77,\allowbreak\,172.63)~\mathrm{GeV}\) at two loops, with
 \(m_H=125.72~\mathrm{GeV}\) on the fit-free curve at the measured top; the
 declared calibration surface
-\((125.1995304097,\allowbreak\,172.3523553288)~\mathrm{GeV}\) is a target-anchored fit.
-These coordinates are comparison-only and are not physical particle outputs.
+\((125.1995304097,\allowbreak\,172.3523553288)~\mathrm{GeV}\) is a
+target-anchored fit. The quark reciprocal-ray candidate fails its common-scale
+audit with a \(21.556\%\) held-out minimax error. The register-Clebsch
+candidate supplies the light-family coefficient-ratio menu
+\(\{1/9,1/3,3,9\}\); both FLAG 2024 rows reject every assignment under the
+retrospective conservative experimental-only rule, which excludes only the
+declared common-transport assignment family. Twelve fixed flavor candidates
+are likewise excluded without exhausting the broader selector family.
 
-The local finite package supplies the strict classical-regime clause and the exact selected-carrier
-chart. The electroweak value law is conditional on the finite quotient-transport certificate.
-The familiar-unit display split on that same surface is
-\[
-L_{\mathrm{loc}}=\sqrt{a_{\mathrm{cell}}}\,\widehat L(P),\qquad
-t_{\mathrm{loc}}=\frac{\sqrt{a_{\mathrm{cell}}}}{c}\,\widehat T(P),
-\]
-\[
-E_{\mathrm{loc}}=\frac{\hbar c}{\sqrt{a_{\mathrm{cell}}}}\,\widehat E(P),\qquad
-\Theta_{\mathrm{loc}}=\frac{\hbar c}{k_B\sqrt{a_{\mathrm{cell}}}}\,\widehat\Theta(P),
-\]
-with dimensionless \(\widehat L,\widehat T,\widehat E,\widehat\Theta\). The gravity-side
-shared-edge identity fixes the cancellation of \(P\), while the local SI readout comes from
-\(\ell_\star^2\). Meters, seconds, GeV, and Kelvin are downstream display conventions built from
-the structural \(c\) row and the familiar constants \(\hbar\), \(k_B\).
-
-\paragraph{Companion papers.}
-Detailed derivations appear in Refs.~\cite{ophEinstein,ophGauge,ophconsensus,ophmicrophysics,ophparticles,ophyangmills}.
+On the stated local extension surface the gravity row reads
+\(G=6.674299995910528\times10^{-11}~\mathrm{m^3\,kg^{-1}\,s^{-2}}\) through
+\(\gamma_\star=\ell_\star\nu_{\mathrm{Cs}}/c\), \(B_\star=3\pi/\ell_\star^2\),
+\(a_{\mathrm{cell}}=P\ell_\star^2\), \(\ellbar_{\mathrm{shared}}=P/4\) and
+\(G_{\mathrm{SI}}=c^3\ell_\star^2/\hbar\); the pixel fixes the shared cell and
+edge identity and cancels in the Newton area law. The invariant speed is
+structural from the Lorentz branch, and \(299792458~\mathrm{m/s}\) is its SI
+convention. Familiar units are display conventions:
+\(L_{\mathrm{loc}}=\sqrt{a_{\mathrm{cell}}}\,\widehat L(P)\),
+\(t_{\mathrm{loc}}=(\sqrt{a_{\mathrm{cell}}}/c)\,\widehat T(P)\),
+\(E_{\mathrm{loc}}=(\hbar c/\sqrt{a_{\mathrm{cell}}})\,\widehat E(P)\) and
+\(\Theta_{\mathrm{loc}}=(\hbar c/(k_B\sqrt{a_{\mathrm{cell}}}))\,\widehat\Theta(P)\)
+with dimensionless hatted functions.
 
 \section{Comparison with other unification approaches}
 \label{sec:unification-comparison}
@@ -1408,40 +432,19 @@ Detailed derivations appear in Refs.~\cite{ophEinstein,ophGauge,ophconsensus,oph
 
 \section{Conclusion}
 
-The premises A1--A3, gravity and gauge branches, consensus formulation,
-particle-spectrum calculation, regulated screen microphysics, fixed-cutoff
-measurement and observer results, and controlled
-large-\(N_{\mathrm{edge}}\) worldsheet effective description fit into one
-typed construction.
-
-The finite analytic core establishes schedule-independent consensus on the declared quotient,
-the conditional relativity and Einstein branches, and the local Standard
-Model gauge Lie algebra. The finite matrix current, matter image, and common
-\(\mathbb Z_6\) kernel are exact conditional realizations. The fixed-cutoff microphysics
-gives explicit record, measurement, Bell, checkpoint, and restoration interfaces. The
-worldsheet result is a controlled heat-kernel effective description under its stated
-large-\(N_{\mathrm{edge}}\) premises.
-
-The numerical maps have no continuously tunable fit dials. Interval arithmetic proves that each
-declared fixed-point map has exactly one fixed point on its stated domain. The
-declared finite candidate family comprises the seventeen-row menu for the executed capacity families,
-the two declared \(P\) maps, one direct fixed-cutoff control, the common-load baseline, reserve maps,
-RC-LOAD, the existing construction aggregate, and five hierarchy packets.
-Fifteen of the thirty entries record exact fixed-point progress: eight
-carry certified fixed points, one is conditional on its three coupling premises,
-and six are archived sublattice or aggregate rows.
-Across these thirty entries, none supplies target-independent selection,
-same-quantity construction, and the complete source return map together.
-This finite family does not exhaust other source laws.
-Physical conclusions
-require target-independent map selection, the relevant same-quantity bridges,
-the Ward-projected hadronic transport, the capacity readback map \(F\), the forward
-electroweak source chain, a source-derived flavor-orbit selector, and the corresponding pole,
-scale, family, and nonperturbative attachments. Strong CP, full flavor and CKM closure,
-charged-lepton source landing, and source-only hadron masses are not supplied.
-Refs.~\cite{ophEinstein,ophGauge,ophconsensus,ophmicrophysics,ophparticles} give the
-sector-by-sector proofs and quantitative details. The shared numerical surface is concise: the fixed point \(P_\star\)
-organizes the bosonic mass trunk and the gravity-side shared edge-entropy identity beneath the
-emitted local \(G\) row, while the same familiar-unit package reads meters and seconds from the
-single ruler \(\sqrt{a_{\mathrm{cell}}}\) together with the structural invariant speed \(c\), and
-reads GeV and Kelvin from the inverse local ruler through \(\hbar\) and \(k_B\).
+The observer layer has an inhabited finite definition, and its quantum and
+thermodynamic identities are exact finite theorems once their displayed
+inputs are supplied. Observerhood at one finite cut, the common origin of an
+event's support, record and chart coordinate, the Hamiltonian form of
+continuous private symmetry flows, the Born form of every additive effect
+valuation and the four-law package with its exact dissipation identity hold as
+stated. The decisive inputs are the same in every case: a native process must
+produce the complete effect and instrument web, the shared state and transition
+reference, the clock and energy dictionary and the capacity source
+antecedent. The closure equations make the remaining physical claim
+quantitative. The local equation has interval-certified unique roots for each
+declared map, and the global equation has an exact finite capacity theory with
+a bounded counterfamily that shows its base structure does not select a zero.
+Turning either into a physical identity requires the same-quantity bridges,
+target-independent map selection and the source-derived hadronic and capacity
+producers named above.

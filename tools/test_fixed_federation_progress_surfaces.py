@@ -104,7 +104,7 @@ def test_manuscripts_and_proof_indices_expose_the_same_nonclaims() -> None:
     standalone_index = _text("Lean/ObservableNormalForms/PROOF_INDEX.md")
 
     assert "Fixed computation federations" in component
-    assert "fixed-federation continuation" in consensus.lower()
+    assert "the fixed computation federation is the stronger device" in consensus.lower()
     flagship_words = " ".join(flagship.lower().split())
     assert (
         "input-independent compiler produces a fixed federation with immutable input ports"
@@ -113,7 +113,7 @@ def test_manuscripts_and_proof_indices_expose_the_same_nonclaims() -> None:
     assert "these statements concern canonical node repairs" in flagship_words
     assert "weak patch-frame relation can stutter fairly forever" in flagship_words
     assert "no physical scheduler, clock, energy or hardware cost follows" in flagship_words
-    assert "historical patch-frame relation" in component.lower()
+    assert "broader patch-frame relation" in component.lower()
     assert "Fixed computation-federation progress" in proof_index
     assert "finite `PublicWorld`" in proof_index
     assert "Fixed computation-federation progress" not in standalone_index

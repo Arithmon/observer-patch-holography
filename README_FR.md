@@ -70,7 +70,9 @@ de lois échoue.
   les charges d’une génération du Modèle standard et ses couplages de Higgs,
   mais aucune masse. Toutes les lois de masse testées sur le modèle exécutable
   manquent la hiérarchie mesurée des leptons, et le candidat de défaut évident
-  sur le support natif se défait après quelques réparations. Trouver un défaut
+  sur le support natif se défait après quelques réparations. Une campagne
+  finie exclut aussi la forme la plus simple de charge protégée : aucune
+  grandeur cachée du support ne commute avec toutes les réparations. Trouver un défaut
   réellement stable est l’objet de
   l’[article sur les particules](paper/deriving_the_particle_zoo_from_observer_consistency.pdf)
   et des [notes sur la réponse en masse](docs/research/OPH_PARTICLE_MASS_RESPONSE.md).
@@ -172,13 +174,13 @@ entrées.
 ## Articles
 
 - **[Observers Who Read Their Universe into Existence](flagship/from_observer_consensus_to_standard_physics.pdf)**
-  est la synthèse principale : la théorie en un seul exposé, des résultats
-  choisis en détail, le tableau de bord de la construction et l’hypothèse de
-  clôture. Citez sa version publiée, la
+  est la synthèse principale : l’hypothèse de clôture, l’hypothèse du modèle
+  exécutable et la tour des résultats, couche par couche, avec ce qu’il manque
+  à chaque couche. Citez sa version publiée, la
   [fiche PhilPapers](https://philpapers.org/rec/MUEFOC).
 - **[An Executable Observer for Observer Patch Holography](paper/executable_observer_construction.pdf)**
-  énonce la spécification, ses critères d’acceptation, ses composants
-  certifiés et la carte des prémisses.
+  énonce la spécification, les composants exécutés et les jonctions
+  ordonnées qui restent à construire.
 - **La bibliothèque de théorèmes** contient les preuves longues, du
   [consensus](paper/reality_as_consensus_protocol.pdf) et des
   [observateurs et registres](paper/observers_are_all_you_need.pdf) jusqu’à

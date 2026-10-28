@@ -12,7 +12,7 @@ Alice and Bob have been doing this since February 1978, when Rivest, Shamir and 
 
 The comfortable picture of what agreement means says that there is one street, that the street has a definite content, that each of them writes down what the street contains, and that if both of them do the job properly the two descriptions come out the same. Two people did the job properly and the descriptions came out different. No amount of care by either of them would have fixed it, because the van is opaque and Bob was on the wrong side of it.
 
-The question is harder than it looks. Take two record-keepers of the kind chapter three described, each seeing a bounded part, neither able to inspect the other's records, with no third party anywhere holding both. What would it even mean for their two accounts to agree? Something has to be demanded of them, or there is no shared world. Whatever is demanded has to be something they can check from inside their own windows, or it might as well be demanded of the weather.
+The question is harder than it looks. Take two record-keepers of the kind chapter three described, each seeing a bounded part, neither able to inspect the other's records, with no third party anywhere holding both. What would it even mean for their two accounts to agree? Something has to be demanded of them, or there is no shared world. Whatever is demanded has to be something they can check from inside their own windows.
 
 ## What can be demanded
 
@@ -36,7 +36,7 @@ On 4 July 2012, two collaborations at CERN announced that they had found a new p
 
 Those are different numbers. 126.0 is not 125.3. A reader who was told that physics had converged on a value might reasonably ask which one it converged on. Neither, is the answer. What was announced was that two intervals overlapped, and overlapping is what agreement between measurements has always meant. A measurement is a claim about a range. Two measurements agree when the ranges have points in common. The sharper the measurements, the more that agreement is worth, because the ranges are smaller and there is less room to overlap by luck.
 
-The reason there were two of them is the whole point. ATLAS and CMS sit at different places on the same ring and were built by different people to different designs. The differences are not cosmetic. ATLAS bends particle tracks with a thin two-tesla solenoid and then bends them again in three enormous air-core toroids. CMS does it with one superconducting solenoid six meters across running at 3.8 tesla, which is a different way to spend the same money. Different magnets, different detector materials, different trigger electronics, different reconstruction software, different graduate students, different arguments in different corridors.
+The reason there were two of them is the whole point. ATLAS and CMS sit at different places on the same ring and were built by different people to different designs. The differences are not cosmetic. ATLAS bends particle tracks with a thin two-tesla solenoid and then bends them again in three enormous air-core toroids. CMS does it with one superconducting solenoid six meters across running at 3.8 tesla. Different magnets, different detector materials, different trigger electronics, different reconstruction software and different teams.
 
 Each collaboration also blinded itself. The region of the data where the signal was expected to sit was masked while the analysis was being built, and unmasked only after the collaboration had committed to its procedures, so that nobody could adjust the method until the answer came out pleasing. Neither experiment tuned its analysis to the other's number.
 
@@ -70,17 +70,17 @@ It can be. The two firms have both recorded the same transaction, one of them in
 
 Two properties come free with a rate obtained that way. It can be undone, because if the rate one way is known then the rate the other way is its reciprocal. And two of them can be chained, because a rate from the first currency to the second, followed by a rate from the second to the third, is a rate from the first to the third.
 
-Chaining is where it stops being bookkeeping. Take three firms, each pair of which shares an account, so there are three rates. Convert from the first currency to the second, from the second to the third, and from the third back to the first. You have gone in a circle and arrived back where you started. The amount you are holding had better be the amount you set out with.
+Chaining is where it stops being bookkeeping. Take three firms, each pair of which shares an account, so there are three rates. Convert from the first currency to the second, from the second to the third, and from the third back to the first. You have gone in a circle and arrived back where you started. The amount you are holding should be the amount you set out with.
 
 If it is not, somebody can go round the loop repeatedly and end up with more money than they started with, having bought and sold nothing. Currency traders call this triangular arbitrage, they have machines watching for it, and when it opens it closes in milliseconds. The condition that closes it is the requirement that going around a loop of translations brings you back to yourself.
 
-That condition is the whole content of what physicists call gauge structure. Accountants make it obvious and field theory makes it look hard. It is doing the work behind electromagnetism twenty-two chapters from here. Descriptions related by a permitted relabeling say the same thing. The relabelings can be undone and chained. And every closed loop of them has to come back to the identity, or there is something to be extracted for free. The world does not offer that.
+That condition is the whole content of what physicists call gauge structure. Accountants make it obvious and field theory makes it look hard. It is doing the work behind electromagnetism twenty-two chapters from here. Descriptions related by a permitted relabeling say the same thing. The relabelings can be undone and chained. And every closed loop of them has to come back to the identity, since otherwise a round trip would produce something from nothing.
 
 ## Ninety meters
 
 In June 1792 two French astronomers left Paris in opposite directions to measure the world.
 
-France wanted a unit of length that no king had defined. The Academy of Sciences had settled on one ten-millionth of the distance from the north pole to the equator. To get it, somebody had to survey the meridian arc from Dunkirk to Barcelona by triangulation and scale up. Jean-Baptiste Delambre took the northern leg, Dunkirk down to Rodez. Pierre Méchain took the south, Rodez to Barcelona. The plan allowed a year. The survey took seven, most of them conducted through a revolution and a war, with both men repeatedly arrested by people who found a stranger on a hilltop with brass instruments and a telescope to be exactly what a spy would look like.
+France wanted a unit of length that no king had defined. The Academy of Sciences had settled on one ten-millionth of the distance from the north pole to the equator. To get it, somebody had to survey the meridian arc from Dunkirk to Barcelona by triangulation and scale up. Jean-Baptiste Delambre took the northern leg, Dunkirk down to Rodez. Pierre Méchain took the south, Rodez to Barcelona. The plan allowed a year. The survey took seven, most of them conducted through a revolution and a war, with both men repeatedly arrested as suspected spies.
 
 Méchain finished his southern latitude work at the fortress on Montjuïc, the hill above Barcelona harbour, and had earlier measured the latitude at his lodgings in the city. Both were careful measurements of the same quantity by the same excellent astronomer with the same instrument. In March 1794 he compared them and they disagreed by three seconds of arc.
 
@@ -88,7 +88,7 @@ Three seconds of arc is about a six-hundredth of the width of the full moon. On 
 
 He concealed it. When the international commission met in Paris in 1799 to fix the meter, the numbers Méchain supplied had been adjusted to remove the discrepancy. He spent the rest of his life trying to make the disagreement go away, went back into Spain in 1803 to redo the work, contracted yellow fever, and died at Castellón de la Plana on 20 September 1804 at the age of sixty. Delambre, preparing the official record of the survey afterwards, worked through the notebooks and found the alterations.
 
-Set aside the concealment, which belongs to Méchain. The structure underneath it is the one the food truck had. Two records of the same quantity failed to agree on their overlap, the leftover would not go to zero, and the one move that could have driven it to zero, going back to the hill with the instrument, had been made unavailable. He was in the position of Alice and Bob with the van permanently in the way. A mismatch that cannot be repaired does not resolve itself and does not fade. It sits there.
+Set aside the concealment, which belongs to Méchain. The structure underneath it is the one the food truck had. Two records of the same quantity failed to agree on their overlap, the leftover would not go to zero, and the one move that could have driven it to zero, going back to the hill with the instrument, had been made unavailable. He was in the position of Alice and Bob with the van permanently in the way. A mismatch that cannot be repaired does not resolve itself and does not fade.
 
 ## What the meter is
 
@@ -98,11 +98,11 @@ The quadrant they were measuring, from pole to equator, is 10,002,290 meters. Th
 
 Nothing whatever has gone wrong.
 
-Every meter stick in the world was made to match the standard, and every meter stick in the world therefore matches every other one. The definition was replaced in 1889 with a platinum-iridium bar, replaced in 1960 with a count of 1,650,763.73 wavelengths of the orange-red light of krypton-86, and replaced again in 1983 with the distance light travels in one 299,792,458th of a second. Three replacements, and the meter has never changed length, which is a peculiar thing to be able to say about a length.
+Every meter stick in the world was made to match the standard, and every meter stick in the world therefore matches every other one. The definition was replaced in 1889 with a platinum-iridium bar, replaced in 1960 with a count of 1,650,763.73 wavelengths of the orange-red light of krypton-86, and replaced again in 1983 with the distance light travels in one 299,792,458th of a second. Through three replacements the meter has kept the same length.
 
 It has never changed length because the meter was never the bar in the vault. The meter is the bundle. It is the equivalence class of every stick, wavelength and timing that counts as agreeing with every other one. A definition is a way of pointing at the bundle by holding up one member of it. Point at it with a bar, point at it with krypton, point at it with the speed of light and a clock, and you have pointed at the same bundle three times. A better representative buys precision. It has no power to change what is being represented, because it was never carrying the identity in the first place.
 
-This is why the survey's error is not embarrassing and why French commerce did not collapse in 1799. The unit's job is to let two parties translate their measurements into each other's terms. It does that job through what everybody adopts, which fixes the translation. The pole is not consulted.
+This is why the survey's error is not embarrassing and why French commerce did not collapse in 1799. The unit's job is to let two parties translate their measurements into each other's terms. It does that job through what everybody adopts, which fixes the translation. Nobody needs to go back to the pole.
 
 ## One world
 

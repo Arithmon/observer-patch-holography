@@ -28,7 +28,7 @@ The order matters here. It is the order most treatments get backwards. The invar
 
 Take a sheet of paper and draw a square on it, big enough to handle, five or six centimeters. Mark one corner with a pencil dot, and mark the same corner on the reverse side so you can find it after the square has been face down.
 
-Cut it out. Then find every way to pick it up and put it back down so that the square occupies exactly the same patch of paper it did before. The outline has to land on the outline. Where the pencil dot ends up is your business.
+Cut it out. Then find every way to pick it up and put it back down so that the square occupies exactly the same patch of paper it did before. The outline has to land on the outline. The pencil dot may end up anywhere.
 
 Most people find four and stop. The four are the rotations: leave it alone, turn it a quarter turn, turn it a half turn, turn it three quarters. Then they remember they are allowed to turn it over. There are four more: one flip about the vertical line through the middle, one about the horizontal line, and one about each of the two diagonals.
 
@@ -42,7 +42,7 @@ Leaving it alone is on the list, too. It looks like a formality, but without it,
 
 Checking the closure by hand means checking sixty-four pairs of moves. An eight-by-eight grid holds them all at once, the eight moves along the top and the same eight down the left edge. Each cell answers one question: do the move on the left, then the move along the top, and write down which of the eight you have ended up with. Sixty of the sixty-four are filled in below.
 
-Eight short names first, because writing "the flip about the diagonal that runs up to the right" sixty-four times is worse than learning a letter. Each rotation gets the number of quarter turns it is, counted counterclockwise: 0 for leaving the square alone, 1 for the quarter turn, 2 for the half turn, 3 for three quarters. Each flip gets the line it is a flip about: V for the vertical line down the middle, H for the horizontal line across it, S for the diagonal that leans like a slash, running from the bottom left corner up to the top right, and B for the diagonal leaning the other way. The four lines belong to the table rather than to the square, so they stay put while the square moves. Rows are the first move, columns the second.
+Eight short names first, to avoid writing "the flip about the diagonal that runs up to the right" sixty-four times. Each rotation gets the number of quarter turns it is, counted counterclockwise: 0 for leaving the square alone, 1 for the quarter turn, 2 for the half turn, 3 for three quarters. Each flip gets the line it is a flip about: V for the vertical line down the middle, H for the horizontal line across it, S for the diagonal that leans like a slash, running from the bottom left corner up to the top right, and B for the diagonal leaning the other way. The four lines belong to the table rather than to the square, so they stay put while the square moves. Rows are the first move, columns the second.
 
 |then|0|1|2|3|V|H|S|B|
 |-|-|-|-|-|-|-|-|-|
@@ -89,7 +89,7 @@ Those are the conditions on the paper square. Undoable is the inverse. Chaining 
 
 The overlap rule of chapter four and the symmetry of a square are one thing seen from two directions. The translations between observers form a group, in the way the moves of a square do. The question "what do Alice and Bob agree about" is the question "what does that group leave alone".
 
-Which gives a sentence that is absolutely essential to reality and, by extension, this book.
+Which gives the sentence the rest of this book depends on.
 
 A symmetry is a change that leaves a named invariant alone, so a symmetry is the claim that part of your description was never physical.
 
@@ -103,11 +103,11 @@ Latitude has an origin the planet supplies. The equator is where the spin axis s
 
 For three centuries this was treated as an unsettled question rather than an empty one. The French measured from Paris, the Spanish from Cádiz or Tenerife, the Americans from Washington, and captains carried tables for converting between them. In October 1884 forty-one delegates from twenty-six nations sat down in Washington to fix it, and on the thirteenth they voted: twenty-two in favour of Greenwich, one against, which was San Domingo, and two abstentions, which were France and Brazil. France went on printing charts from Paris for another quarter of a century.
 
-What the conference settled was a convention, and everybody in the room knew it. The tell is in the mechanism, because there is no other way to settle it. You cannot measure which meridian is the real zero, and you cannot be wrong about it either. Thanks to the vote, two charts could now be compared without arithmetic, which is worth having, and which is a different kind of thing from a fact about the planet.
+What the conference settled was a convention, and everybody in the room knew it. The tell is in the mechanism, because there is no other way to settle it. You cannot measure which meridian is the real zero, and you cannot be wrong about it either. After the vote, two charts could be compared without conversion arithmetic.
 
-Distances between places survived the vote unchanged. Distance is the invariant, the labeling was never physical, and the world's response to twenty-two votes was to carry on exactly as before.
+Distances between places survived the vote unchanged. Distance is the invariant, and the labeling was never physical.
 
-Every symmetry anybody has found in physics is that same operation run on a bigger description. Here is a change you can make to how the world is written down. Here is what survives it. Whatever did not survive was never a fact about the world. That people wrote it down for two hundred years is a fact about people.
+Every symmetry anybody has found in physics is that same operation run on a bigger description. Here is a change you can make to how the world is written down. Here is what survives it. Whatever did not survive was never a fact about the world.
 
 ## Vienna, orbit, and the Cretaceous
 
@@ -115,11 +115,11 @@ There is a symmetry so large that almost nobody notices they are assuming it.
 
 A physicist in Vienna measures how fast a ball falls. A physicist on the International Space Station, four hundred kilometers up and moving at seven and a half kilometers a second, does the same experiment in a way that accounts for the local conditions. They get different readings, because the conditions differ, and the same law relating the readings to the conditions.
 
-Do it again a hundred and fifty kilometers to the west. Same law. Do it in the Cretaceous, if you can arrange the transport: same law, and a version of this can actually be checked, because light arriving from a quasar eleven billion years old carries the spectral fingerprint of hydrogen behaving exactly as hydrogen behaves in a lamp in a basement in Vienna.
+Do it again a hundred and fifty kilometers to the west. Same law. Do it in the Cretaceous: same law, and a version of this can actually be checked, because light arriving from a quasar eleven billion years old carries the spectral fingerprint of hydrogen behaving exactly as hydrogen behaves in a lamp in a basement in Vienna.
 
 The laws do not depend on where you are. They do not depend on when you are. Those are two symmetries. Shifting everything sideways in space leaves the laws alone, and shifting everything along in time leaves the laws alone. Galileo's cabin is a third change of the same kind: put the whole laboratory into smooth motion and the laws do not notice that either, which is why the flies stayed where they were.
 
-Strip them out and watch what happens to the idea of an experiment. If the law of falling depended on where you stood, a result obtained in Vienna would say nothing about a ball in Graz, and the Graz result would say nothing about the next street. If it depended on when, a measurement made on Tuesday would say nothing about Wednesday, which is to say it would say nothing at all, because a measurement is finished before anybody can use it. Repeating an experiment would be pointless. Publishing one would be a form of gossip. The word "law" would have no work to do.
+Strip them out and watch what happens to the idea of an experiment. If the law of falling depended on where you stood, a result obtained in Vienna would say nothing about a ball in Graz, and the Graz result would say nothing about the next street. If it depended on when, a measurement made on Tuesday would say nothing about Wednesday, which is to say it would say nothing at all, because a measurement is finished before anybody can use it. Repeating an experiment would be pointless. The word "law" would have no work to do.
 
 Every experimental result anybody has ever quoted is leaning on those two symmetries. They are the reason a number obtained once is worth writing down.
 
@@ -139,7 +139,7 @@ The submissions went badly. Cauchy took the first memoir in 1829 and it never ap
 
 On the night of 29 May 1832 Galois wrote to his friend Auguste Chevalier, setting out the results and asking him to make a public request: that Jacobi or Gauss be asked to give an opinion, not on whether the theorems were true, but on whether they were important. In the margin of one page, beside an argument he had not finished, he wrote that there was something to complete in the demonstration and that he did not have the time.
 
-He was shot in a duel the following morning and died on 31 May, aged twenty. The letter was published in 1846. What was in it is taught to undergraduates in their first year, which is the ordinary fate of an idea that turns out to be the right one. It is why the eight moves of a piece of paper have a name.
+He was shot in a duel the following morning and died on 31 May, aged twenty. The letter was published in 1846. What was in it is taught to undergraduates in their first year. It is why the eight moves of a piece of paper have a name.
 
 ## The size of an atom
 
@@ -149,7 +149,7 @@ Shift everything in space: symmetry. Shift everything in time: symmetry. Rotate 
 
 The evidence is in the room. Atoms have a definite size. A hydrogen atom is about one ångström across, a ten-billionth of a meter. That number is the same in Vienna, in orbit and in the Cretaceous. It is a length built into the physics. A world without scale symmetry is exactly a world in which such a length can exist. If doubling every length left the laws alone, no size could be preferred, and nothing would distinguish the atom you have from one twice as big. Atoms would come in every size, and chemistry, which depends on atoms of a given element being interchangeable, would not be available.
 
-The consequences are structural rather than decorative. Galileo worked one of them out in 1638, in the *Two New Sciences*, and illustrated it with a drawing of a bone. Scale an animal up by a factor of ten in every direction and its weight goes up by a factor of a thousand, while the cross-section of the bones that carry the weight goes up by a hundred. The scaled animal is ten times worse off than the original, and its legs snap. Which is why you cannot design a bridge by building a small bridge and then being more ambitious. Every engineer who has tested a model in a wind tunnel has had to do arithmetic to correct for the fact that the model is not a small copy of the world. That arithmetic is a bill for a symmetry the world does not have.
+The consequences are structural rather than decorative. Galileo worked one of them out in 1638, in the *Two New Sciences*, and illustrated it with a drawing of a bone. Scale an animal up by a factor of ten in every direction and its weight goes up by a factor of a thousand, while the cross-section of the bones that carry the weight goes up by a hundred. The scaled animal is ten times worse off than the original, and its legs snap. For the same reason a bridge cannot be designed by scaling up a small one. Every engineer who has tested a model in a wind tunnel has had to do arithmetic to correct for the fact that the model is not a small copy of the world. That arithmetic is a bill for a symmetry the world does not have.
 
 So symmetry is a claim with content. The way you can tell is that it is false about scale.
 
@@ -159,7 +159,7 @@ Alice and Bob agree about the table because there is a change, from her channel 
 
 That is the same operation as the paper square, where the eight moves leave the center alone. It is the same operation as chapter four's overlaps, where the translations between records leave the shared content alone. It is the operation physics has been running since the 1830s, and each time it has been run, something everybody had taken for a property of the world has turned out to be a property of the description, and has been subtracted.
 
-There is a question left over. Alice and Bob cannot answer it between them, because two people who agree have very little to disagree about.
+There is a question left over, and Alice and Bob cannot answer it between them.
 
 Put a third person in the room. Alice agrees with Bob. Bob agrees with Charlie. Charlie agrees with Alice. Every pair compares records, finds a translation, and comes away satisfied. Each pair shares one invariant, and each pair is content.
 

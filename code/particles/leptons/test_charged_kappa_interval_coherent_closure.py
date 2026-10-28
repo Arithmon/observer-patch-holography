@@ -101,21 +101,22 @@ def test_interval_is_a_diagnostic_not_a_prediction(result):
     assert "not a source-only" in result["numerical_certificate"]["epistemic_scope"]
 
 
-def test_public_papers_use_outward_display_rounding():
+def test_public_papers_do_not_present_the_calibration_interval():
+    # The kappa interval is a calibration consistency check obtained by
+    # inverting target-anchored endpoints. The particle paper does not
+    # display it; it must not reappear there as a mass interval.
     particle_paper = (
         lane.REPO_ROOT
         / "paper"
         / "deriving_the_particle_zoo_from_observer_consistency.tex"
     ).read_text(encoding="utf-8")
-    for expected in (
+    for displayed in (
         "[0.5001,\\,0.5178]",
         "[103.40,\\,107.06]",
         "[1.7390,\\,1.8004]",
     ):
-        assert expected in particle_paper
-    for source in (particle_paper,):
-        assert "logarithmic half-width" in source
-        assert "Target-anchored" in source or "target-anchored" in source
+        assert displayed not in particle_paper
+    assert "None of these constructions is a derivation" in " ".join(particle_paper.split())
 
 
 def test_parents_cited(result):

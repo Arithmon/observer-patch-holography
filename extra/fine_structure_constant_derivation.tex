@@ -73,10 +73,12 @@
 \end{center}
 
 \begin{abstract}
-Observer Patch Holography studies a conditional same-cell equation
-\(P=\varphi+\sqrt\pi\,\alpha(0)\), relating a screen-area coordinate to an
-electromagnetic readout. Two declared trial maps have interval-certified
-unique fixed points, with inverse couplings
+This paper studies a conditional pixel fixed point for the fine-structure
+constant. The same-cell equation \(P=\varphi+\sqrt\pi\,\alpha(0)\) relates a
+screen-area coordinate to an electromagnetic readout, and a declared source
+map returns the electromagnetic readout from the same coordinate through
+declared closure coordinates and running conventions. Two declared trial
+maps have interval-certified unique fixed points, with inverse couplings
 \(136.994835177413\ldots\) and \(137.035660136947\ldots\), about 300 and
 2.5 parts per million from the CODATA 2022 value. The first transports the
 electroweak anchor to the Thomson endpoint with a declared quark-screening
@@ -85,7 +87,10 @@ loop. Replacing the ansatz by the measured hadronic spectral payload gives
 \(136.3827548\) on the interval \([136.3670481,136.3984652]\), which excludes
 the measured value; reaching it would need a hadronic shift of \(0.032244\)
 instead of the measured \(0.027609\pm0.000112\), or a same-scheme source-anchor
-bridge of about \(0.635\) inverse-alpha units.
+bridge of about \(0.635\) inverse-alpha units. The calculation is a
+conditional diagnostic, not a same-process derivation from the executable
+model: its inputs include a supplied charged-fermion spectrum, a declared
+gauge-running convention and measured hadronic spectral data.
 
 An independent entangled-pair construction due to A.~D.~Wissner-Gross gives
 the exact scalar \((79+48\sqrt2+42\sqrt3+3\sqrt6)/31104\), whose inverse is
@@ -101,64 +106,110 @@ retrospective diagnostic.
 \noindent\textbf{Keywords:} fine-structure constant, Observer-Patch Holography, pixel fixed
 point, electromagnetic coupling, Standard Model constants, hadronic vacuum polarization
 
-\input{../paper/tex_fragments/ENTANGLED_PAIR_ALPHA_CANDIDATE.tex}
+\input{../paper/tex_fragments/EXECUTABLE_COMPLETION_HYPOTHESIS.tex}
 
-\section*{What This Paper Contributes}
+\section*{This paper's hypothesis and place in the tower}
 
-The fine-structure constant is usually treated as an empirical constant. This paper
-studies it as a conditional branch readout of one OPH screen cell. The known physics is the
-low-energy Maxwell coupling, charged-lepton running, and low-energy hadronic
-spectral transport. OPH adds a declared pixel self-reference: conditional on a
-typed bridge proving that both expressions read one cell, the outside area
-coordinate \(P\) must agree with the inside electromagnetic observation scale.
+This paper carries a conditional branch at layer seven. Its hypothesis is a
+pixel fixed point: if a typed bridge proves that the detuning
+\((P-\varphi)/\sqrt\pi\) of one screen cell from the golden-ratio balance
+and the Thomson-limit coupling \(1/\ATh(P)\) returned by a declared source
+map at the same \(P\) read one cell quantity, then closure requires
+\(P=\varphi+\sqrt\pi/\ATh(P)\), and \(\alpha(0)\) is the coupling at the
+fixed point. The source map consumes declared closure coordinates and
+conventions: the golden-ratio balance point, the Gaussian width
+\(\sqrt\pi\), the \(P/4\) representation-entropy budget, the one-loop MSSM
+coefficient triple, the transmutation coefficient \(\beta_{\rm EW}=4\), a
+supplied phenomenological charged-fermion spectrum and a declared
+quark-screening ansatz. The measured hadronic spectral payload enters only
+as a replacement test of that ansatz, and the CODATA value only as the
+endpoint.
 
-The pixel map has no fitted continuous parameter. Its hadronic transport is the
-declared quark-screening ansatz \(S_{\mathrm{calc}}\approx0.887\) of Step~14, which
-carries no perturbative derivation, and its charged-spectrum transport input and branch
-selections are declared. The fixed-point existence and
-uniqueness theorem used by the calculation, together with interval certificates,
-gives each declared map a unique fixed point: the source map contracts to
-\(136.994835177413\ldots\) (300.388218 parts per million below the CODATA 2022 value, a
-retrospective endpoint gap \cite{ophpredictions}) and the self-consistent gauge-width map to
-\(137.035660136947\) (\(2.5\times10^{-6}\) relative; the declared map is
-certified, and the physical transport step is a separate premise). The
-proximity of both roots to the measured value depends on the screening ansatz: replacing
-it by the measured hadronic payload gives \(136.3827548\), whose certified interval
-excludes the measured value (Section~\ref{sec:pdg-step}), so the residual is not
-explained by missing hadronic transport, and the comparison does not identify the
-physical source of the gap. This split is the contribution: a fixed-point
-equation for the pixel branch with no adjustable form, a named boundary at the low-energy
-QCD step, and a clear boundary between a source theorem, the required map-selection
-and same-quantity premises, empirical endpoint input, and measured comparison.
+The finite results are exact: each declared map has one interval-certified
+fixed point on its maximal analytic domain; coarse register data do not
+determine the hadronic residual, and a 24-site Jacobi realization of a
+chosen residual is tautological; the conditional pure-source theorem is
+Banach's theorem under its listed premises. The calculation is not a
+same-process derivation from the executable model. That model supplies no
+physical area map for its screen cells, no Lorentzian Maxwell theory, no
+charged spectrum and no hadronic spectral measure, and it uses the source
+root only as the closure input of one detector.
+
+The open joins are a target-independent rule selecting one map, the typed
+same-cell bridge, a native area and clock dictionary for \(P\), charged
+masses from native defects, and a source-emitted Ward-current hadronic
+spectral measure with its same-scheme remainder. With the measured hadronic
+payload in place of the ansatz, the declared transport excludes the
+measured value, so the branch needs a same-scheme anchor bridge of about
+\(0.635\) inverse-alpha units. A target-independent selected map whose
+certified prediction interval, narrower than the direct rubidium
+measurement, excludes the measured value would refute the branch.
 
 \section{Introduction}
 
-The screen cell in this calculation is not free-floating. On the declared
-carrier branch of the OPH framework it is a cell of the federated screen built
-from twelve-port icosahedral carriers, the same lineage whose port algebra
-witnesses the Standard Model gauge structure in the gauge paper~\cite{oph-smgr}; the local pixel equation reads back the
-electromagnetic resolution of one such cell.
+The fine-structure constant is usually treated as an empirical constant.
+Here it is studied as a conditional readout of one screen cell. On the
+declared carrier branch the cell belongs to the federated screen built from
+twelve-port icosahedral carriers, the structure whose port algebra
+witnesses the Standard Model gauge structure in the gauge
+paper~\cite{oph-smgr}. The known physics is the low-energy Maxwell coupling,
+charged-lepton running and low-energy hadronic spectral transport.
 
 Two declared principles carry the construction. The detuning law places the
-pixel ratio off the golden-ratio balance point by the Gaussian-normalized width
-of one electromagnetic observation,
-\(P=\varphi+\sqrt\pi\,\alpha\). The constant-identification law is a declared
-closure premise: a typed bridge must prove that the fine-structure constant
-read inside the trial world and the substrate pixel readout are one quantity.
-Conditional on that bridge, the two principles leave one local variable and
-one self-read equation. Neither the exact fixed-point mathematics nor the
-source certificates construct the bridge or select between the two certified
-maps. The measured
-fine-structure constant enters only after the source calculation, as an
-endpoint test.
+pixel ratio off the golden-ratio balance point by the Gaussian-normalized
+width of one electromagnetic observation, \(P=\varphi+\sqrt\pi\,\alpha\).
+The constant-identification law is a closure premise: a typed bridge must
+prove that the fine-structure constant read inside the trial world and the
+substrate pixel readout are one quantity. Conditional on that bridge, the
+two principles leave one local variable and one self-read equation. Neither
+the fixed-point mathematics nor the source certificates construct the bridge
+or select between the two certified maps. The measured fine-structure
+constant enters only after the source calculation, as an endpoint test.
 
-There is a long history of attempts to understand \(\alpha\) from deeper structure. Jentschura and Nandori give a useful survey of first-principles attempts, including beta-function, symmetry, cutoff, and string-inspired ideas \cite{jentschura-nandori}. Golden-ratio constructions appear in historical geometric proposals \cite{heyrovska-narayan} and in semi-empirical work on electroweak and flavor mixing \cite{ciborowski}. Octonionic and exceptional-algebra approaches also produce values near \(1/137\) \cite{singh}. ArXiv papers use symbolic regression and quantum-information criteria to look for structure in Standard Model constants and electroweak parameters \cite{chekanov-kjellerstrand,liu-low-yin}. The OPH calculation belongs to this broad search for structure. Its physical interpretation requires a target-independent choice of the map, a typed bridge proving that its input and output read the same local screen cell, and same-scheme transport to the laboratory endpoint.
+Jentschura and Nandori survey first-principles attempts to understand
+\(\alpha\), including beta-function, symmetry, cutoff and string-inspired
+ideas \cite{jentschura-nandori}. Golden-ratio constructions appear in
+geometric proposals \cite{heyrovska-narayan} and in semi-empirical work on
+electroweak and flavor mixing \cite{ciborowski}. Octonionic and
+exceptional-algebra approaches also produce values near \(1/137\)
+\cite{singh}, and symbolic regression and quantum-information criteria have
+been used to look for structure in Standard Model constants and electroweak
+parameters \cite{chekanov-kjellerstrand,liu-low-yin}. The calculation here
+belongs to this search for structure. Its physical interpretation requires a
+target-independent choice of the map, a typed bridge proving that its input
+and output read the same local screen cell, and same-scheme transport to the
+laboratory endpoint.
 
 \begin{quote}\small
-\textbf{Certified source roots.} The executable source map contracts to the undressed source/root inverse coupling \(\alphainv_{\mathrm{root}}=136.994835177413\ldots\), the interval-certified unique fixed point of the declared map (public interval certificate \cite{oph-code}; enclosure width \(7.2\times10^{-24}\), \(L\le0.0724\)). The self-consistent map that adds the finite-screen unified gauge width \(\alpha_U(P)\) inside the loop has the certified fixed point \(137.035660136946577\ldots\), with relative residual \(2.5\times10^{-6}\), about \(1.6\times10^{4}\) measurement sigma. The combination \(A_{\alpha_U}^{\mathrm{fp}}=137.035959513609\ldots\) mixes the certified source root with \(\alpha_U(\Ppub)\) evaluated at the CODATA-derived comparison pixel; it is not a fixed point of a single declared map. The measured value is a downstream endpoint test and does not fix either source root.
+\textbf{Certified source roots.} The executable source map contracts to the
+undressed source/root inverse coupling
+\(\alphainv_{\mathrm{root}}=136.994835177413\ldots\), the
+interval-certified unique fixed point of the declared map (public interval
+certificate \cite{oph-code}; enclosure width \(7.2\times10^{-24}\),
+\(L\le0.0724\)), 300.388218 parts per million below the CODATA 2022 value
+\cite{ophpredictions}. Its hadronic transport is the declared
+quark-screening ansatz \(S_{\mathrm{calc}}\approx0.887\) of Step~14, which
+carries no perturbative derivation. The self-consistent map that adds the
+finite-screen unified gauge width \(\alpha_U(P)\) inside the loop has the
+certified fixed point \(137.035660136946577\ldots\), with relative residual
+\(2.5\times10^{-6}\), about \(1.6\times10^{4}\) measurement sigma. The
+combination \(A_{\alpha_U}^{\mathrm{fp}}=137.035959513609\ldots\) mixes the
+certified source root with \(\alpha_U(\Ppub)\) evaluated at the
+CODATA-derived comparison pixel; it is not a fixed point of a single
+declared map.
 
-\textbf{CODATA\slash NIST measured endpoint.} CODATA\slash NIST reports the value \(137.035999177(21)\) for \(\alphainv(0)\). The difference from \(A_{\alpha_U}^{\mathrm{fp}}\) is CODATA-minus-diagnostic bookkeeping; it is not the output of a same-scheme hadronic spectral calculation.
+\textbf{CODATA\slash NIST measured endpoint.} CODATA\slash NIST reports the
+value \(137.035999177(21)\) for \(\alphainv(0)\). The difference from
+\(A_{\alpha_U}^{\mathrm{fp}}\) is CODATA-minus-diagnostic bookkeeping; it is
+not the output of a same-scheme hadronic spectral calculation.
 \end{quote}
+
+The proximity of both roots to the measured value depends on the screening
+ansatz: replacing it by the measured hadronic payload gives
+\(136.3827548\), whose certified interval excludes the measured value
+(Section~\ref{sec:pdg-step}). The residual is therefore not explained by
+missing hadronic transport, and the comparison does not identify the
+physical source of the gap.
 
 \paragraph*{Selection exposure and numerical support.}
 Two declared maps have interval-certified fixed points. A separate
@@ -171,70 +222,52 @@ canonical pair; none of those alternatives reaches the declared relative
 distance \(2.5\times10^{-6}\). That threshold was chosen after the canonical
 distance was known. These counts describe numerical coverage, not a
 probability of accidental agreement. No exhaustive map-form menu or
-sampling measure has been specified. Even the same two certified outputs,
+sampling measure is specified. Even the same two certified outputs,
 with one inside that distance threshold, give hit probability \(1/2\) under
 equal weights and \(3/4\) under weights \((1/4,3/4)\). Those are mathematical
 counterexamples to identifying significance from output values and counts;
 neither weighting is inferred for this calculation. The measured endpoint
 therefore assigns no calibrated chance probability to the choice of map.
 
-\paragraph*{Intuitive picture: two source maps and one endpoint test.}
-The three fine-structure numbers have different provenance. The first two are
-fixed points of declared source maps, while the third is the measured endpoint:
-\[
-\text{source pixel}
-\longrightarrow
-\text{gauge-width dressed pixel}
-\longrightarrow
-\text{measured low-energy value},
-\]
-or numerically,
+\paragraph*{Provenance of the three numbers.}
+The chain
 \[
 136.994835177413\ldots
 \longrightarrow
 137.035660136946577\ldots
 \longrightarrow
-137.035999177(21).
+137.035999177(21)
 \]
-The first two values are the interval-certified fixed points of the declared
-source map and of the declared self-consistent gauge-width map
-(public interval contraction certificate \cite{oph-code}).
-The root value \(\alpha_{\mathrm{root}}^{-1}\) is the inverse coupling returned
-by the incomplete source map before the low-energy charged vacuum is attached.
-The declared outside coordinate is the detuning \((P-\varphi)/\sqrt\pi\), and
-the declared inside coordinate is the electromagnetic observation strength at
-the same trial input. A typed same-quantity bridge and target-independent map
-selection are required before their fixed point can be interpreted as one
-cell quantity. Same-scheme endpoint transport is additionally required before
-that quantity can be compared as the laboratory fine-structure constant.
+runs from the source pixel through the gauge-width dressed pixel to the
+measured low-energy value. The first two values are the interval-certified
+fixed points of the declared source map and of the declared self-consistent
+gauge-width map \cite{oph-code}; the third is the measured endpoint. The
+root value \(\alpha_{\mathrm{root}}^{-1}\) is returned by the incomplete
+source map before the low-energy charged vacuum is attached. The gauge width
+\(\alpha_U\) is the main high-scale gauge-sector width carried by the pixel:
+the weak and color representation content must fit the pixel budget
+\(P/4\), and the electroweak heat-kernel closure supplies the executable
+certificate. It supplies almost all of the inverse-alpha gap from the naked
+source value.
 
-The contribution \(\alpha_U(\Ppub)\) is the finite-screen unified gauge-width evaluated at the
-CODATA-derived comparison pixel. It is the main high-scale gauge-sector width carried by that
-pixel: the weak and color representation content must fit the pixel budget
-\(P/4\), and the electroweak heat-kernel closure supplies the executable certificate.
-Adding this comparison-pixel width to the source root gives the mixed-provenance no-hadron
-diagnostic \(A_{\alpha_U}^{\mathrm{fp}}\); that additive combination is a display packet,
-not a fixed point of any single declared map. The self-consistent reading, with
-\(\alpha_U(P)\) evaluated inside the loop, is the certified fixed point
-\(137.035660136946577\ldots\) quoted above. Both are close to the laboratory endpoint because
-the gauge width supplies almost all of the inverse-alpha gap from the naked source value.
+The factor \(C_{24,Q}\) of Step~18 is a back-solved calibration: the small
+endpoint dressing required after the gauge-width contribution is added,
+solved from the measured endpoint rather than computed from source data.
+Its excess \(\alpha_U(\Ppub)(C_{24,Q}-1)\) is a comparison residual with the
+numerical size required of the residual same-scheme low-energy hadronic
+endpoint transport; it does not compute that transport. A zero-momentum
+laboratory photon sees the Ward-projected \(\mathrm U(1)_Q\) current after
+charged-lepton vacuum polarization, confined-quark/hadron spectral
+transport, and finite endpoint matching, so the observer measures the fully
+dressed low-energy coupling, while \(A_{\alpha_U}^{\mathrm{fp}}\) is a
+mixed-provenance no-hadron diagnostic before that dressing.
 
-The factor \(C_{24,Q}\) is a back-solved calibration: the small endpoint
-dressing required after the gauge-width contribution is added, solved from the
-measured endpoint rather than computed from source data. It is near one
-because \(\alpha_U(\Ppub)\)
-supplies the large part of the correction. Its excess
-\(\alpha_U(\Ppub)(C_{24,Q}-1)\) is a comparison residual with the numerical size required of the
-residual same-scheme low-energy hadronic endpoint transport. It does not compute that transport. A zero-momentum laboratory photon does
-not probe an empty charged vacuum; it sees the Ward-projected \(\mathrm U(1)_Q\)
-current after charged-lepton vacuum polarization, confined-quark/hadron
-spectral transport, and finite endpoint matching. In short, the observer
-measures the fully dressed low-energy coupling, while
-\(A_{\alpha_U}^{\mathrm{fp}}\) is a mixed-provenance no-hadron diagnostic before that dressing.
-
-The OPH background used here is spread across three papers. The observer account is the flagship synthesis \cite{oph-synthesis}. The source map and fixed-point branch are recorded in the Standard Model gauge paper \cite{oph-smgr}. The charged-spectrum and particle-structure continuation is recorded in the particle paper \cite{oph-particle}. The references give direct GitHub links to those papers.
-
-Why this split matters: the fixed-point equation and the hadronic transport calculation answer different questions. The fixed-point equation tests closure for a declared local map. The hadronic calculation transports the electromagnetic current through low-energy QCD. A physical endpoint calculation must select the map without consulting the target, construct the same-cell bridge, and evaluate the same-scheme hadronic spectral functional from OPH source data.
+The observer account is the flagship synthesis \cite{oph-synthesis}, the
+source map and fixed-point branch are recorded in the Standard Model gauge
+paper \cite{oph-smgr}, the charged-spectrum and particle-structure
+continuation in the particle paper \cite{oph-particle}, and the
+positive-chamber balance identity used by the charged-lepton continuation in
+the Koide paper \cite{oph-koide}.
 
 \begin{proposition}[Maxwell normalization of the endpoint branch]
 On the declared electromagnetic branch used by the fixed-point equation, the Ward-projected
@@ -348,7 +381,7 @@ cell; the fixed-point theorem is conditional on that premise.
 
 The executable observer construction runs local agreement repair on a twelve-port carrier:
 each native repair event moves load across one seam and records its placement coin and the
-transferred current \cite{ophmodel}. Its physical identification with our Universe is open.
+transferred current \cite{ophmodel}. Its physical identification with our Universe is unestablished.
 
 Why this step is needed: OPH reads a dimensionless constant as a closure coordinate that finite observers locate by measurement. A declared map is then tested by comparing its certified fixed point with the measured value, and that comparison is a diagnostic.
 
@@ -658,52 +691,12 @@ C=aI+\rho(e^{i\delta}R+e^{-i\delta}R^2),
 Q=\frac{1+2(\rho/a)^2}{3},
 \]
 so \(\rho/a=1/\sqrt2\) is exactly equivalent to the empirical Koide value
-\(Q=2/3\). At balance this identity is physical throughout the positive
+\(Q=2/3\). At balance this identity holds throughout the positive
 chamber \(|\delta|\leq\pi/12\pmod{2\pi/3}\), and it does not select the phase.
-
-The finite balance normalization has a closed GNS construction. On
-\(\mathcal V_K=\mathbf1\oplus\chi\oplus\bar\chi\) with a minimal two-state
-orientation record, take the connected algebra
-\(B(\mathcal V_K\otimes\mathbb C^2)\simeq M_6(\mathbb C)\) and event
-\(E_+=P_0\otimes I_2+P_c\otimes q_+\). Its singlet and oriented charged blocks
-both have rank two. Born--L\"uders conditioning of \(I_6/6\) gives
-\(p_0=p_c=1/2\), or \(S_c-S_0=\ln2\). In the tracial GNS space,
-\(e_0,e_+,e_-\mapsto I,R,R^2\) is unitary, and the canonical square-root
-amplitude gives
-\[
- a=\sqrt{p_0},\qquad \rho=\sqrt{p_c/2},\qquad
- \frac{\rho}{a}=\frac1{\sqrt2}.
-\]
-The connected register fixes the normalization left free by the direct-sum
-MaxEnt model. Minimality of this response-local register is an explicit
-declared hypothesis. A physical charged-lepton conclusion requires
-a chiral regular-\(C_3\) carrier and faithful trace-preserving unital
-completely positive maps \(\Phi,\Psi\) between the source and physical
-response algebras, with \(\Psi\Phi=\mathrm{id}\). If they intertwine the
-block records and identify the physical GNS vector with
-\(C=(Y_e^\dagger Y_e)^{1/4}\), Kadison--Schwarz makes \(\Phi\) a
-\(*\)-monomorphism and an exact \(L^2\) isometry. It therefore carries the
-equal source block powers to the physical response. For an accepted finite
-chiral checkpoint with three left and three right family modes, positive
-kinetic metrics, and a committed neutral Higgs direction,
-\(\Phi=\operatorname{Ad}_{J_L\oplus J_E}\). With \(M_F=X_F^2\), this gives
-\[
-\widehat Y_e=\frac{\sqrt2}{v}J_LM_FJ_E^\dagger,
-\qquad
-\mathcal M_L=J_LM_FJ_L^\dagger.
-\]
-The extended branch \(\mathrm{OPH}^{+}_{\rm ch}\) adds graded physical
-completion and quotient source-law selection. Given an exhaustive declared carrier
-class with a positive winner gap, a source-closed BV/BRST continuum, and an
-interval or contraction certificate for the charged QFT self-map, it selects
-one dressed mass readout. A balanced \(C_3\) fixed point gives \(Q=2/3\); a
-\(C_3\)-symmetric fixed point with charged attenuation \(\chi_\star\) gives
-\[
-Q=\frac{1+e^{-2\chi_\star}}{3}.
-\]
-An off-plane response requires the full response operator. These are
-additional branch conditions beyond A1--A3. No \(12/24\) receipt supplies that
-physical attachment.
+The balance is a target-informed premise and the phase \(\delta\) is
+supplied. The finite tracial construction that realizes the balance, and
+the maps a physical charged-lepton reading would additionally require, are
+stated in the Koide paper~\cite{oph-koide}.
 Define three Koide roots
 \begin{equation}
 r_k=1+\sqrt2\cos\!\left(\delta+\frac{2\pi k}{3}\right),
@@ -741,7 +734,7 @@ For charged leptons the exponent vector is
 \label{eq:lepexp}
 \end{equation}
 This vector and the normalization below are declared phenomenological transport
-inputs. The premises A1--A3 do not derive
+inputs. The declared premises do not derive
 \(\bm n_e=(7,4,3)\) or the resulting determinant identity
 \(\det M_e=v(P)^3/(2\,6^{14})\). The electron entry is selected by a
 finite scan: with \(n_\tau=N_g=3\) and \(n_\mu=N_g+1=4\) fixed by the
@@ -1065,10 +1058,7 @@ or
 \end{equation}
 This \(A_{\alpha_U}^{\mathrm{fp}}\) value is comparison bookkeeping, not a source-only prediction:
 \(\alpha_{\mathrm{root}}^{-1}\) is evaluated on the source root, while \(\alpha_U(\Ppub)\) inherits
-the measured endpoint through \(\Ppub\). It is a mixed-provenance display packet (inner value
-from the certified source root plus \(\alpha_U\) at the CODATA-derived comparison pixel); it is not a fixed
-point of any single declared map. The certified self-consistent gauge-width
-fixed point is \(\alpha^{-1}=137.035660136946577\ldots\).
+the measured endpoint through \(\Ppub\), and the sum is not a fixed point of any single declared map.
 
 Compared with the CODATA/NIST central measured endpoint,
 \begin{equation}
@@ -1135,15 +1125,7 @@ transport needed for source-only closure. Equivalently,
 \(\Dhadreq^{\mathrm{fp}}=\alpha_U(\Ppub)(C_{24,Q}-1)\). The factor is not a source-emitted
 hadronic/QCD payload.
 
-Here \(A_{\mathrm C}\) is the CODATA/NIST 2022 inverse fine-structure constant \cite{nist-value,nist-2022}. The source value \(A_{\mathrm{calc}}(P_{\mathrm{root}})=\alpha_{\mathrm{root}}^{-1}\) is a reproducible source-root output \cite{oph-code}; \(A_{\alpha_U}^{\mathrm{fp}}\) mixes that root with \(\alpha_U(\Ppub)\). Equation~\eqref{eq:Dempfp} is the measured-comparison residual in inverse-alpha units.
-
-Informally: the mixed comparison diagnostic is \(137.035959513609\ldots\); the
-certified self-consistent gauge-width fixed point is \(137.035660136946577\ldots\)
-(\(2.5\times10^{-6}\) relative); and the CODATA/NIST measured value is \(137.035999177(21)\). The
-residual difference is the size required of the absent same-scheme endpoint contribution; its
-source derivation from a same-scheme hadronic spectral backend is a premise this paper does not supply.
-
-This marks the calculation boundary: closing the endpoint gap requires a source-derived hadronic spectral calculation.
+Here \(A_{\mathrm C}\) is the CODATA/NIST 2022 inverse fine-structure constant \cite{nist-value,nist-2022}. Closing the endpoint gap requires a source-derived hadronic spectral calculation, which this paper does not supply.
 
 The endpoint decomposition is
 \begin{equation}
@@ -1498,32 +1480,7 @@ result of Morel, Yao, Cladé, and Guellati-Khélifa reports
 \]
 in inverse-alpha units for the cited direct rubidium recoil interval.
 
-\section{Step 22: The CODATA/NIST Comparison Endpoint}
-
-With the CODATA/NIST measured endpoint value
-\begin{equation}
-\ATh(\Ppub)=A_{\mathrm C}=137.035999177(21),
-\end{equation}
-Eq.~\eqref{eq:G} gives the corresponding comparison pixel:
-\begin{align}
-\boxed{
-\Ppub
-=
-\decnum{1.6309682094039593248792798477826489413359828516279250606661507533907793398933432}
-}
-\\
-\boxed{
-\alpha(0)
-=
-\decnum{0.0072973525643314250302457952646916832280660213133653604957798803819933561573639928}
-}
-\\
-\boxed{
-\alphainv(0)=137.035999177(21).
-}
-\end{align}
-
-Informally: the endpoint number is the same number NIST/CODATA reports. The display exposes the OPH-side bookkeeping around that measured value. A source theorem would additionally need a target-independent map choice, the same-quantity bridge, and the low-energy same-scheme hadronic calculation.
+\input{../paper/tex_fragments/ENTANGLED_PAIR_ALPHA_CANDIDATE.tex}
 
 \section{Reproducibility}
 
@@ -1617,10 +1574,9 @@ P=1.630968209403959324879279847782648941\ldots.
 Combining the source root with the finite-screen unified gauge-width contribution evaluated at the
 CODATA-derived comparison pixel gives the mixed-provenance no-hadron diagnostic
 \[
-A_{\alpha_U}^{\mathrm{fp}}=137.035959513608567790289429464437\ldots.
+A_{\alpha_U}^{\mathrm{fp}}=137.035959513608567790289429464437\ldots,
 \]
-This mixed-provenance diagnostic combines the certified source root with \(\alpha_U\) at the
-CODATA-derived comparison pixel and is not a fixed point of a single declared map. The
+which is not a fixed point of a single declared map. The
 certified self-consistent gauge-width fixed point is
 \(\alpha^{-1}=137.035660136946577\ldots\), \(2.5\times10^{-6}\) below the measured value, about
 \(1.6\times10^{4}\) measurement sigma.
@@ -1669,7 +1625,7 @@ GitHub PDF:
 
 \bibitem{oph-particle}
 B.\ M\"uller, M.\ Poneder, A.\ Osika, K.\ Xue, and D.\ A.\ Friedman,
-\emph{The Particle Zoo under Declared Matter Premises: One Generation, Interaction Channels and Mass Diagnostics}.
+\emph{Particles as Localized Topological Defects of Native Overlap Transport: Finite Theorems, a Native Decision Test and Mass Obstructions}.
 GitHub source:
 \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2054/paper/deriving_the_particle_zoo_from_observer_consistency.tex}.
 GitHub PDF:
@@ -1682,6 +1638,11 @@ Primary files:
 \path{paper_math.py},
 \path{derive_p.py},
 \path{fine_structure_fixed_point_demo.py}.
+
+\bibitem{oph-koide}
+B.\ Mueller and B.\ de La Fourni\`ere,
+\emph{The Positive-Chamber Koide Identity for Icosahedral Face Circulants}.
+\url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2054/extra/koide_identity_from_positive_c3_face_circulants.pdf}.
 
 \bibitem{ophpredictions}
 FloatingPragma,

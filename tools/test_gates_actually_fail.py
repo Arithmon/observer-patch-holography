@@ -135,7 +135,7 @@ def test_prose_gate_keeps_register_identifiers_legal_inside_register_rows() -> N
 
 def test_main_paper_relevance_diagnostic_preserves_live_rg_routes() -> None:
     text = " ".join(
-        (ROOT / "paper/tex_fragments/PAPER.tex")
+        (ROOT / "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex")
         .read_text(encoding="utf-8")
         .split()
     )

@@ -62,19 +62,36 @@ collar stress, which vanish on the standard branch and mark where a
 conditional extension would enter.
 \end{abstract}
 
-\section{Claim boundary}
-Everything below is conditional on the branch theorems it cites. The
-\emph{transport form} used by the diagnostic calculation with the Code for
-Anisotropies in the Microwave Background (CAMB) is a theorem-conditional reduction with
-declared imports. It does not certify the initial spectrum
-(amplitude or tilt), the recombination history, the absolute Thomson
-normalization, or any likelihood statement. Those require a finite primordial
-source, a physical radial lift, active-kernel and clock receipts, and an
-immutable likelihood contract. The executable observer construction runs
-native repair, records and local event clocks on one carrier; it supplies no
-photon sector, physical clock calibration or transport continuum, so it
-discharges none of these premises~\cite{ophmodel,ophspine}. No statement in
-this note reads Planck data.
+\input{../paper/tex_fragments/EXECUTABLE_COMPLETION_HYPOTHESIS.tex}
+
+\section*{This paper's hypothesis and place in the tower}
+
+This note sits at layer seven as the transfer link between a primordial
+source and the observed acoustic sky. Its hypothesis is that photon--baryon
+transport on an OPH branch is the coarse limit of photon-class records
+continued between commits, with Thomson collisions at commits, so that the
+branch reduces to the standard Einstein--Boltzmann system plus two OPH
+interfaces, a repair-exchange rate and a collar stress, which vanish on the
+standard branch.
+
+The reduction is a conditional theorem. The geometry, the photon refinement
+convergence condition, the electromagnetic vertex and photon pole, the
+polarized collision matrix, the electron mass, the recombination history,
+the FLRW background and the initial spectrum are premises; the acoustic,
+damping and line-of-sight results are the textbook consequences of the
+reduced system. The note certifies no initial spectrum, normalization,
+recombination history or likelihood, and it reads no Planck data.
+
+For the reduction to apply, the executable model must realize on one
+process a two-polarization photon sector, its continuation between record
+commits, a physical clock and a smooth Lorentzian background. The native
+construction supplies none of these~\cite{ophmodel,ophspine}, and its
+passive repair has stationary decaying correlations and no wave propagator
+(Section~\ref{s:premises}). The reduction is refuted on a realized branch
+whose photon-class record process has a nonzero scaled quadratic-variation
+limit, since the transport is then diffusive or jump-like rather than
+Liouville flow, or whose source-level commit kernel differs from the
+Thomson functional.
 
 \section{Branch inputs}
 
@@ -82,28 +99,17 @@ this note reads Planck data.
 The observer-facing normal form carries a Lorentzian metric $g_{ab}$
 satisfying $G_{ab}+\Lambda g_{ab}=8\pi G_{\rm geom}\langle T_{ab}\rangle$,
 with $G_{\rm geom}=\ell_\star^2$ from the edge-entropy/area-law theorem and
-$\Lambda\ell_\star^2=3\pi/N_\star$ from capacity closure. Relative to the
-executable observer construction this area-law normalization is a premise:
-on the native source, regional reduced entropy grows with port count and
-mutual information per crossing seam tends to zero, and a reading of the
-whole screen's count as the area of a three-dimensional region's boundary
-requires a region map that the construction does not
-supply~\cite{ophentropy}. $N_\star$ is the
+$\Lambda\ell_\star^2=3\pi/N_\star$ from capacity closure. This area-law
+normalization is a premise: a reading of the whole screen's count as the
+area of a three-dimensional region's boundary requires a region map that the
+executable construction does not supply~\cite{ophentropy}. $N_\star$ is the
 capacity-identity estimate read from measured $\Lambda$ through a declared
 capacity-to-scale bridge; $\Lambda$ is an input to this assumption, not an
 OPH output. A physical interpretation of $N_\star$ beyond that estimate
 requires the readback map $F$ and its contraction certificate.
-The source Gram construction supplies a rank-three spatial carrier and an
-algebraic Lorentzian extension. A nonzero closed convex pointed displacement
-cone is future or past Lorentzian when the proper icosahedral rotations and
-all rapidities of one boost axis preserve it; a time orientation fixes the
-future cone. This requires operational covariance of histories, interventions
-and clock readouts, beyond the algebraic frame action. The executable carrier
-supplies one such influence bound: for a fixed seam schedule and shared
-local coins, dependence crosses at most one seam per ordered repair event,
-which gives no laboratory speed or continuum light cone~\cite{ophcausality}.
-It does not supply
-the smooth metric assumed here. This branch requires physically identified
+The executable carrier bounds dependence by one seam per ordered repair
+event, with no laboratory speed or continuum light cone~\cite{ophcausality},
+and does not supply the smooth metric assumed here. This branch requires physically identified
 events with exact order reflection or controlled vanishing causal error,
 count-to-volume convergence, a common clock and physical stress, together
 with the capacity premises. Its smooth Einstein reading additionally needs
@@ -111,15 +117,10 @@ same-family tensor-curvature convergence or the continuum
 small-ball/null-balance identification; scalar curvature alone is diagnostic.
 \end{assumption}
 
-The spacetime construction~\cite{ophEinstein} realizes a flat causal-order and count-volume limit using conservative
-Fibonacci records, complete local neighbour reads and a declared layer
-duration. Complete authenticated ancestry and interval anchors also give
-the retrospective clock $(|I|/|J|)^{1/4}$. For interior timelike diamonds
-and a nondegenerate reference interval $J$ in the same history, it converges
-to the proper-time ratio without coordinates, timestamps or density in its
-definition. The supplied event law and relative reference unit do not
-calibrate the common physical clock required by the Einstein,
-electromagnetic and cosmological transfer assumptions.
+The flat causal-order, count-volume and count-clock limit of the spacetime
+construction~\cite{ophEinstein} uses a supplied event law and a relative
+reference unit; it does not calibrate the common physical clock required by
+the Einstein, electromagnetic and cosmological transfer assumptions.
 
 \begin{assumption}[Electromagnetic action and photon pole]\label{a:qed}
 The realized branch carries the Standard Model quotient and the Maxwell
@@ -153,8 +154,8 @@ with conventions of Ma--Bertschinger (1995). Overdots are $\partial_\tau$.
 \begin{assumption}[Recombination import]\label{a:rec}
 The free-electron history $n_e(\tau)$ (equivalently $x_e(\tau)$) is computed
 from standard atomic physics (Saha/Peebles-class) using imported atomic data.
-This is the same import class as the cesium-clock wall in the gravity stack:
-it contains no CMB-target information, so it is a permissible declared input
+It is in the same import class as the atomic clock unit of the gravity
+construction: it contains no CMB-target information, so it is a permissible declared input
 under the anti-fitting rule, but it is an import, not a branch output.
 \end{assumption}
 
@@ -677,8 +678,7 @@ Dynamics from Overlap Consistency}.
 \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2054/paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.pdf}.
 
 \bibitem{ophmicro}
-B.~M\"uller et al., \emph{Federated Echosahedral Screen Microphysics: Patch
-Hardware, Records, and Observer Synchronization in Observer-Patch Holography}.
+B.~M\"uller et al., \emph{Twelve-Port Icosahedral Carriers and Native Seam Repair: The Carrier Layer of Observer-Patch Holography}.
 \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2054/paper/screen_microphysics_and_observer_synchronization.pdf}.
 
 \bibitem{ophcmb}
@@ -693,8 +693,7 @@ Finite Consensus, an Executable Observer, and Standard Physics}.
 
 \bibitem{ophspine}
 B.~Mueller, M.~Poneder, J.~Kim and D.~A.~Friedman (2026). \emph{An Executable Observer for
-Observer Patch Holography: Specification, Certified Components and
-Acceptance Criteria}.
+Observer Patch Holography: Specification, Executed Components and Ordered Joins}.
 \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2054/paper/executable_observer_construction.pdf}.
 
 \bibitem{ophmodel}

@@ -50,7 +50,7 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Dependency cone.** The events or patches that can affect a readout. Dependence crosses at most one seam per repair event, so a round in which every seam is repaired once widens the cone by at most one seam, and a sweep along a path carries a chain several seams, one event per seam.
 
-**Derived.** Obtained by arithmetic from the structure, with nothing measured fed in to produce it. A number fitted to a measurement and then read back out has been derived from the measurement, which is a different achievement.
+**Derived.** Obtained by arithmetic from the structure, with nothing measured fed in to produce it. A number fitted to a measurement and then read back out has been derived from the measurement rather than from the structure.
 
 **Direction.** The one-way character of time: the loss inside a single repair, where seven arrangements of a seam collapse into one and quantum coherence drains away for good. It is separate from causal order, which says what depends on what, and from flow, which runs both ways.
 
@@ -58,7 +58,7 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Duality.** Wave and particle are one thing at two depths of record. Between commits there is a spreading pattern with a phase whose questions refuse to commute; at a commit there is a record, and records hold ordinary numbers.
 
-**Effective description.** An account that works over a stated range, takes its constants from measurement, and can point to where it will break. Every working piece of engineering physics is one, which is why your car works.
+**Effective description.** An account that works over a stated range, takes its constants from measurement, and can point to where it will break. Every working piece of engineering physics is one.
 
 **Eigenvalue.** A grid of weights usually swings a direction round to point somewhere else. Where it merely stretches or shrinks one, that direction is the grid's own, and the factor is its eigenvalue.
 
@@ -76,7 +76,7 @@ Anode and cathode name a direction and a doorway. They say nothing whatever abou
 
 **Fiber.** All the consistent states of the world carrying one given public reading. An empty fiber makes the reading impossible, a fiber holding one state makes the reading enough to fix the world, and a fiber holding many means something besides the reading has to choose.
 
-**Field.** Two objects wear the word. One is a value assigned at every place, like the temperature through a room or the wind over an ocean; the other is a net of algebras, which is the sense the Standard Model is written in.
+**Field.** The word names two objects. One is a value assigned at every place, like the temperature through a room or the wind over an ocean; the other is a net of algebras, which is the sense the Standard Model is written in.
 
 **Fine-structure constant.** The dimensionless strength of electromagnetic interaction, near 1/137 at low energy. The shared-width trial map gives inverse coupling 137.035660. Wissner-Gross's separate entangled-pair candidate gives 137.035999189566. Their physical electromagnetic identification is the independent question stated in chapter twenty-nine.
 

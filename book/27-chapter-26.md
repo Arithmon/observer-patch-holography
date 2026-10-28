@@ -10,7 +10,7 @@ Three readings from that first memoir on electricity carry the whole argument. L
 
 Which is a fact about distance: every version of the law written down since 1785 says only how far apart two things are. What does a force law look like on a carrier that has no distances in it, and how many forces will that carrier hold? The twelve observers of chapters six through fourteen have a wiring diagram, thirty pairings saying which port is joined to which, and not one number anywhere saying how far apart anything is.
 
-Two centuries of better instruments have left the exponent where Coulomb put it, at two, out to fifteen decimal places of pure distance. The machine has no ruler in it.
+Two centuries of better instruments have left the exponent where Coulomb put it, at two, to fifteen decimal places. The carrier has no ruler in it.
 
 ## A value at every place
 
@@ -20,7 +20,7 @@ What that chart holds is a number attached to every place on it. A captain anywh
 
 That is a **field**, one value per place, and the word covers nothing else. The temperature in a room is a field. So is the wind over Halley's Atlantic, which hangs a speed and a heading at each place rather than a single number, and so is the deviation he charted, which needs only one.
 
-On the twelve-port carrier the places are the ports. Give every port a number and each seam reads the gap between its two ends, thirty readings nobody had to supply separately. Chapter twelve had the same twelve numbers standing for something else, the private labeling each observer keeps at its own port. Twelve values and thirty differences: no more furniture than Halley put on his chart, and considerably less ocean.
+On the twelve-port carrier the places are the ports. Give every port a number and each seam reads the gap between its two ends, thirty readings nobody had to supply separately. Chapter twelve had the same twelve numbers standing for something else, the private labeling each observer keeps at its own port. Twelve values and thirty differences: the same kind of structure Halley put on his chart.
 
 ## Twelve numbers that add to nothing
 
@@ -52,9 +52,9 @@ Subtract each value from the one inside it, in one-hundred-and-eightieths: thirt
 
 The potential crosses zero somewhere between the first ring and the second. A potential around an isolated charge in open space never does that, and this one has no way to avoid it: twelve numbers that must sum to nothing, with the largest of them sitting at the source, have to go negative somewhere further out.
 
-Compare what the same law costs in the ordinary setting. To write down the potential of a point charge in a laboratory you need the distance between two points, and a distance needs a coordinate system to measure in, and a coordinate system needs a space to be laid over. Three assumptions, stacked, before the first symbol goes on the paper, and not one of the three is a component anybody has found on the board.
+Compare what the same law costs in the ordinary setting. To write down the potential of a point charge in a laboratory you need the distance between two points, and a distance needs a coordinate system to measure in, and a coordinate system needs a space to be laid over. Three assumptions come before the first symbol goes on the paper, and the carrier supplies none of them.
 
-The input to that calculation was a list of thirty pairs saying which port touches which. Nothing else went in. No coordinate, no distance, no direction, no angle, no space for anything to be at, and the hop counts that organize the answer were themselves read off the same list of thirty pairs. Coulomb's shape came out of a table of who touches whom, in exact fractions with denominators small enough to check by hand.
+The input to that calculation was a list of thirty pairs saying which port touches which. Nothing else went in. No coordinate, distance, direction or angle went in, and the hop counts that organize the answer were themselves read off the same list of thirty pairs. Coulomb's shape came out of a table of who touches whom, in exact fractions with denominators small enough to check by hand.
 
 One force, worked to the last digit, out of a wiring diagram with thirty entries in it. The same thirty entries have to say how many forces there can be.
 
@@ -76,7 +76,7 @@ The useful number about a collection of dials is how many independent dials it h
 
 Counting dimensions is a way of settling questions, and chapter six ran one without calling it that. The independent loops of a wiring diagram are a collection with a dimension of its own, and edges less dots plus one reads it off: thirty less twelve plus one, nineteen. Nineteen was then the number of conditions that had to hold at once for the twelve observers to agree. Two of them refused, both facts settled before anybody drew a field on the wiring.
 
-Two more collections, the ones physicists reach for. Take an object with two slots in it, each holding a complex number, and ask for every reversible change that leaves the total size alone. Then ask the same of an object with three slots. Both counts are short enough to do on your fingers.
+Two more collections, the ones physicists reach for. Take an object with two slots in it, each holding a complex number, and ask for every reversible change that leaves the total size alone. Then ask the same of an object with three slots. Both counts are short.
 
 Each slot has a dial of its own, which turns that slot and leaves the others where they were. Each pair of slots has two more, which lean the two members of the pair against each other. Two slots: two single dials, one pair, two pair dials, four. Three slots: three single dials, three pairs, six pair dials, nine. Singles and pairs together come to the number of slots multiplied by itself, every time.
 
@@ -96,11 +96,11 @@ Put it back the way it started and do the same two moves in the other order: fli
 
 The cover is face down both times. The spine is nearest you in one case and furthest from you in the other. The two results are a half turn apart.
 
-A group in which every pair of moves gives the same result in either order is **abelian**, after Niels Henrik Abel, and one containing even a single pair that does not is non-abelian. The amplifier dial is abelian: thirty degrees then fifty is fifty degrees then thirty, and there is no third way for it to come out. Turns of a solid object in three dimensions are non-abelian. The book on the table is the demonstration. The three-dial and eight-dial collections are non-abelian for the same reason, because three of the dials in each of them are turns of exactly that kind. The single dial is the only abelian collection here.
+A group in which every pair of moves gives the same result in either order is **abelian**, after Niels Henrik Abel, and one containing even a single pair that does not is non-abelian. The amplifier dial is abelian: thirty degrees then fifty is fifty degrees then thirty. Turns of a solid object in three dimensions are non-abelian. The book on the table is the demonstration. The three-dial and eight-dial collections are non-abelian for the same reason, because three of the dials in each of them are turns of exactly that kind. The single dial is the only abelian collection here.
 
 ## Twelve dials on a closed box
 
-Back to the carrier, a box with twelve ports and no lid.
+Back to the carrier, a closed box with twelve ports.
 
 Each port holds one reading. A response is whatever the box does when the readings are disturbed: twelve numbers go in, twelve come back, and the box is the thing in between. Reversible means the twelve that came back are enough to recover the twelve that went in, so nothing was thrown away in the middle. Ask for every response of that kind the ports admit. Those responses compose, they undo, and they come in a continuous supply, which makes them dials.
 
@@ -114,7 +114,7 @@ One move of the twelve ports came out of chapter fourteen indifferent to order: 
 
 Collect, in any group, the moves that commute with every move in the group. That collection is the **center** of the group. Chapter nineteen used the same word for the questions inside an algebra that commute with every other question, which is where records live, and the property is identical, commuting with everything in sight; the difference is what is being commuted, an algebra of questions there and a group of moves here.
 
-Groups differ enormously in how much of themselves lives in the center. Settings of the single amplifier dial all commute with each other, so that group is its own center, every last move of it. Turns of a solid object in three dimensions go the other way: the book on the table showed that a quarter turn and a flip disagree about order, and if you work through the possibilities the only turn that commutes with every other one is the turn that does nothing. Its center holds a single move. The move is nothing happening, zero dials wide.
+Groups differ enormously in how much of themselves lives in the center. Settings of the single amplifier dial all commute with each other, so that group is its own center. Turns of a solid object in three dimensions go the other way: the book on the table showed that a quarter turn and a flip disagree about order, and if you work through the possibilities the only turn that commutes with every other one is the turn that does nothing. Its center holds only the move that does nothing, zero dials wide.
 
 Go back to the clause chapter four spent a section on. Two parties who cannot look a rate up anywhere outside the room have to manufacture one out of what both of them hold. The same clause binds the twelve ports harder, since nothing anywhere holds a preferred labeling of them. Any change in how the readings are labeled has to be a change the box itself can perform.
 
@@ -122,7 +122,7 @@ Take that concretely. The twelve ports carry no names of their own. Numbering th
 
 Feed a central move into that. It commutes with the relabeling, so the relabeling and its undoing slide together and cancel. The move comes back out untouched. Every change of description leaves the center exactly where it was.
 
-The sixty rotations of the wiring are changes of description. Each of them is an inside job by that same clause. So the center has to sit inside the part of the twelve readings that all sixty rotations leave fixed.
+The sixty rotations of the wiring are changes of description. By that same clause, each of them is something the box itself performs. So the center has to sit inside the part of the twelve readings that all sixty rotations leave fixed.
 
 That part is easy to find, because chapter fourteen showed the sixty rotations carry every port to every other port. A set of twelve readings that survives all sixty unchanged has to read the same at every port. One number, repeated twelve times, and one number is one dial.
 
@@ -146,7 +146,7 @@ So the center is exactly one dial, the remainder is eleven, and eleven has to be
 
 $$1 + 3 + 8 = 12$$
 
-One abelian dial, a three-dial piece and an eight-dial piece, with nothing left over and nothing borrowed. Two sums were tried. The largest number that came up in trying them was sixteen.
+One abelian dial, a three-dial piece and an eight-dial piece, with nothing left over and nothing borrowed.
 
 A simple Lie algebra has no continuous central dial, so it cannot be the complete twelve-dimensional response. Howard Georgi and Sheldon Glashow proposed in 1974 that the three forces sit inside one larger simple symmetry. The carrier has a central dial, and a simple symmetry has nowhere to put one.
 

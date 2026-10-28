@@ -46,11 +46,10 @@ multiset does not encode the spatial placement. These are not independent
 cosmological initial-condition samples or a measured causal horizon.
 
 The estimator, weighting controls, small statistics and 48 terminal-state
-hash cross-pins are preserved in the native-repair evidence package under
-\path{sim-analysis/data/codex_audit_20260925/}. The corresponding producer
-is \path{sim-analysis/scripts/codex_scale_ensemble.py}. Receipt checking
-without the remote arrays verifies provenance and retained statistics;
-recomputing their spatial readback requires those arrays.
+hash cross-pins are preserved with their producer in the native-repair
+evidence package. Receipt checking without the remote arrays verifies
+provenance and retained statistics; recomputing their spatial readback
+requires those arrays.
 
 \paragraph{Binary port-pattern census.}
 The sixty proper rotations of the twelve-port carrier act on its binary
@@ -115,8 +114,8 @@ operator-norm convergence along a common spatial subsequence, and the
 limiting generator \(A\) obeys \(\lambda_1(A)\ge3/4096\) and
 \(n/49920\le\lambda_n(A)\le3n/2\), giving heat-trace spectral dimension two
 on the two-dimensional source readout domain \cite{ophmodel,ophcontinuum}.
-The source-pinned solves and metric controls reside under
-\path{sim-analysis/codex/dynamics/} in the same evidence package.
+The source-pinned solves and metric controls reside in the same evidence
+package.
 
 \subsection{Absolute refinement covariance and nested records}
 \label{subsec:native-refinement-covariance}
@@ -161,7 +160,6 @@ variances are differences of the residual variances. Orthogonality is
 not independence. This identity concerns the same nested location; it
 does not determine covariance at separated sky positions. Parent schedules
 share initial data, and linear spatial residuals are not innovations
-conditioned on a complete observer history. The original chain receipts,
-absolute extractor and nested transformation are preserved under
-\path{sim-analysis/codex/source_derivation/innovations/} and
-\path{sim-analysis/data/refine_ensemble/} in the native-repair package.
+conditioned on a complete observer history. The chain receipts, absolute
+extractor and nested transformation are preserved in the native-repair
+package.

@@ -8,13 +8,13 @@ Across the cavity they ran an alternating electric field. If every molecule carr
 
 The cavity stayed quiet.
 
-The microphone put a ceiling on what it had failed to hear. The net charge on one molecule of sulfur hexafluoride came in below two parts in ten billion billion of the charge on a single electron. That molecule carries 146 units of atomic mass, so per unit of mass the difference between the charge on a proton and the charge on an electron sits below one part in a thousand billion billion. Hydrogen, which is one proton and one electron and nothing else, is electrically neutral to better than one part in a billion billion.
+The silence set an upper limit. The net charge on one molecule of sulfur hexafluoride came in below two parts in ten billion billion of the charge on a single electron. That molecule carries 146 units of atomic mass, so per unit of mass the difference between the charge on a proton and the charge on an electron sits below one part in a thousand billion billion. Hydrogen, which is one proton and one electron and nothing else, is electrically neutral to better than one part in a billion billion.
 
-Look at what has to be true for that. A proton is two up quarks and a down quark. The up quark carries two thirds of a unit of electric charge and the down quark carries minus one third. Two thirds plus two thirds minus one third is one. An electron contains no quarks. The strong force that binds the proton's insides passes through an electron without noticing it. The electron's charge is minus one, which is to say exactly three times the down quark's. The exactness holds past every decimal place anyone has reached.
+Look at what has to be true for that. A proton is two up quarks and a down quark. The up quark carries two thirds of a unit of electric charge and the down quark carries minus one third. Two thirds plus two thirds minus one third is one. An electron contains no quarks. The strong force that binds the proton's insides passes through an electron without noticing it. The electron's charge is minus one, exactly three times the down quark's. The exactness holds past every decimal place anyone has reached.
 
-Nobody ordered that. Write the same physics down with the down quark at minus 0.333333 and the electron at minus 1.000000 and every equation goes through unchanged. What changes is the sky: a mismatch of one part in a billion billion would leave two hydrogen atoms pushing each other apart about as hard as their gravity pulls them together, and a cloud of the stuff would blow itself apart instead of collapsing into a star.
+Nothing in the equations requires it. Write the same physics down with the down quark at minus 0.333333 and the electron at minus 1.000000 and every equation goes through unchanged. What changes is the sky: a mismatch of one part in a billion billion would leave two hydrogen atoms pushing each other apart about as hard as their gravity pulls them together, and a cloud of the stuff would blow itself apart instead of collapsing into a star.
 
-So the charges are locked to each other, across species that have nothing else in common, to a precision whose absence a microphone in Cambridge, Massachusetts was able to hear. Two questions follow. Why does matter come with exactly these charges and no others, and why does the whole list arrive three times over, in copies that differ in nothing except how heavy they are?
+So the charges are locked to each other, across species that have nothing else in common, to the precision a microphone in Cambridge, Massachusetts was able to test. Two questions follow. Why does matter come with exactly these charges and no others, and why does the whole list arrive three times over, in copies that differ in nothing except how heavy they are?
 
 ## Three colors, two weak slots
 
@@ -22,7 +22,7 @@ Chapter twenty-six counted the forces and came back with twelve directions, spli
 
 The single abelian factor carries **hypercharge**. What that dial reads on a species, combined with its position in a weak pair, gives electric charge. Electromagnetism emerges from that combination.
 
-A force that shuffles some number of slots has a fixed stock of independent moves, the square of the number of slots minus one, which chapter twenty-six counted on its fingers. Set that against the blocks: the three-dimensional block matches a force shuffling two slots, the eight-dimensional block matches a force shuffling three, and the next size up, fifteen, overshoots while three is spoken for.
+A force that shuffles some number of slots has a fixed stock of independent moves, the square of the number of slots minus one, which chapter twenty-six counted. Set that against the blocks: the three-dimensional block matches a force shuffling two slots, the eight-dimensional block matches a force shuffling three, and the next size up, fifteen, overshoots while three is spoken for.
 
 Two color slots would give a different matter pattern. Their color and anticolor representations are equivalent, and two quarks can form a color-neutral combination. Three quarks cannot: reversing every color vector changes the sign of their product, so it cannot be invariant. Three color slots instead admit both quark–antiquark pairs and an antisymmetric three-quark combination. Those are the color structures of mesons and baryons. Three slots is the smallest number for which a color and an anticolor differ.
 
@@ -66,7 +66,7 @@ The construction nevertheless has declared ingredients: the spin lift, the selec
 
 ## Dirac's holes
 
-Three of the five rows above are antiparticles. In 1928 Paul Dirac wrote an equation for the electron that respected relativity. It came with solutions of negative energy that nobody wanted. He tried for a while to identify the holes in that sea with protons, and in a paper submitted to the Royal Society on 29 May 1931 he gave that up and proposed instead a particle nobody had seen: the mass of an electron, the opposite charge. Carl Anderson photographed one at Caltech on 2 August 1932, a track in a cloud chamber curving the wrong way through a magnetic field, and the name came from an editor at *Physical Review*, who proposed it when Anderson sent the discovery paper in: positron. The pattern turned out to be general. Every species of matter has a partner with the same mass and every charge reversed, and the partner is as ordinary as the original: hospitals make positrons to order out of fluorine-18, and the pair of flashes from each annihilation is what a scanner photographs. Writing a species as its antiparticle is therefore a change of notation rather than a change of content, which is why the roster above lists an anti-up quark where a textbook table lists a right-handed up quark, and the reason for preferring one of those descriptions is cobalt.
+Three of the five rows above are antiparticles. In 1928 Paul Dirac wrote an equation for the electron that respected relativity. It came with solutions of negative energy that nobody wanted. He tried for a while to identify the holes in that sea with protons, and in a paper submitted to the Royal Society on 29 May 1931 he gave that up and proposed instead a particle nobody had seen: the mass of an electron, the opposite charge. Carl Anderson photographed one at Caltech on 2 August 1932, a track in a cloud chamber curving the wrong way through a magnetic field, and the name came from an editor at *Physical Review*, who proposed it when Anderson sent the discovery paper in: positron. The pattern turned out to be general. Every species of matter has a partner with the same mass and every charge reversed, and the partner is as ordinary as the original: hospitals make positrons to order out of fluorine-18, and the pair of flashes from each annihilation is what a scanner photographs. Writing a species as its antiparticle is therefore a change of notation rather than a change of content, which is why the roster above lists an anti-up quark where a textbook table lists a right-handed up quark, and the reason for preferring one of those descriptions comes from an experiment with cobalt.
 
 ## Wu's cobalt
 
@@ -74,7 +74,7 @@ Hold your hands out in front of you, palms down. They are the same object twice.
 
 A symmetry is the claim that some part of a description was never physical. Mirror symmetry would say that left and right are a labeling convention, and that nothing in an experiment distinguishes a world from its reflection. Until 1956 every physicist assumed it, because electricity and the strong force obey it exactly and nobody had looked anywhere else.
 
-Chien-Shiung Wu was born in Liuhe, near Shanghai, in 1912, took her doctorate at Berkeley in 1940 under Ernest Lawrence, and worked on uranium separation for the Manhattan Project at Columbia, where she stayed. She was the person other physicists went to about beta decay. In 1956 Tsung-Dao Lee and Chen Ning Yang worked out that the evidence for mirror symmetry in the weak force amounted to nothing whatever, since no experiment had ever tested it, and they brought Wu a list of things to try. She picked the decay of cobalt-60 and cancelled a trip to Geneva and the Far East that she had planned with her husband, on the grounds that somebody else would think of it.
+Chien-Shiung Wu was born in Liuhe, near Shanghai, in 1912, took her doctorate at Berkeley in 1940 under Ernest Lawrence, and worked on uranium separation for the Manhattan Project at Columbia, where she stayed. She was the person other physicists went to about beta decay. In 1956 Tsung-Dao Lee and Chen Ning Yang worked out that no experiment had ever tested mirror symmetry in the weak force, and they brought Wu a list of things to try. She picked the decay of cobalt-60 and cancelled a trip to Geneva and the Far East that she had planned with her husband, on the grounds that somebody else would think of it.
 
 The experiment needs the cobalt nuclei lined up, which needs them cold. On 4 June 1956 Wu telephoned Ernest Ambler at the National Bureau of Standards in Washington, whose group could reach three thousandths of a degree above absolute zero by adiabatic demagnetization, and asked him to collaborate. Several months went into getting the apparatus to work. The first successful run began at four minutes past noon on 27 December 1956.
 
@@ -82,9 +82,9 @@ A cobalt-60 nucleus decays by throwing out an electron. With the nuclei aligned 
 
 The electrons came out against the spin. Reverse the magnetic field and the count dropped, then climbed back to baseline over about six minutes as the sample warmed and the alignment was lost. Wu, Ambler, R. W. Hayward, D. D. Hoppes and R. P. Hudson published it in *Physical Review* volume 105, page 1413, in 1957. Lee and Yang took the Nobel Prize in Physics that year. Wu took the first Wolf Prize in Physics, in 1978.
 
-What her cobalt established is that the weak force acts on left-handed particles and declines to act on right-handed ones. Which is why the roster above is written the way it is: put every species into its left-handed form, converting the right-handed ones into their left-handed antiparticles as you go, and the list becomes a list of things the weak force either pairs up or leaves alone. The quark pair and the lepton pair are the pairs. The anti-up, the anti-down and the positron are the singles. A list of that shape differs from its own mirror image, and a list that differs from its own mirror image is called chiral.
+What her cobalt established is that the weak force acts on left-handed particles and not on right-handed ones. Which is why the roster above is written the way it is: put every species into its left-handed form, converting the right-handed ones into their left-handed antiparticles as you go, and the list becomes a list of things the weak force either pairs up or leaves alone. The quark pair and the lepton pair are the pairs. The anti-up, the anti-down and the positron are the singles. A list of that shape differs from its own mirror image, and a list that differs from its own mirror image is called chiral.
 
-Chirality is the symmetry the world conspicuously lacks. Every other structural fact about matter says that some distinction was never there; this one says that a distinction nobody put in is physical. It is why the roster has to be rewritten all in one handedness before it can be counted at all.
+Mirror symmetry is a symmetry the world lacks. Every other structural fact about matter says that some distinction was never there; this one says that a distinction nobody put in is physical. It is why the roster has to be rewritten all in one handedness before it can be counted at all.
 
 ## One thousand and twenty-four lists
 
@@ -100,7 +100,7 @@ The search asked each list for chirality and four vanishing sums. What came back
 
 ## Four sums and a count
 
-Chapter twelve proved that a force works if and only if its charge is conserved, tight enough that violating it leaves no theory at all rather than a damaged one. The quantum version of that proof comes with a bill. The bill is arithmetic.
+Chapter twelve proved that a force works if and only if its charge is conserved, tight enough that violating it leaves no theory at all rather than a damaged one. The quantum version of that proof adds conditions, and they are arithmetic.
 
 Certain sums, taken over every species on the list at once, have to come out at exactly zero. When one of them does not, the conservation law the force depends on fails and the theory stops predicting anything. Sums of this kind are called **anomalies**. A matter list either satisfies all of them or describes no possible world. Every entry contributes, so the list has to be checked whole. A species cannot be added or dropped on its own.
 
@@ -114,7 +114,7 @@ Nothing on that list was arranged to make it come out. The tags were fixed by a 
 
 The three conditions left over are cheaper. Adding the plain hypercharges of all fifteen states gives one, minus two, one, minus one and one, which is zero. Adding the hypercharges of the weak pairs gives three color copies at a sixth, a half in total, against the lepton pair's minus a half. The last condition is a count rather than a sum: a world with an odd number of weak pairs has no consistent weak force at all, which Edward Witten proved in 1982, and this generation carries four.
 
-Five conditions. A list assembled by choosing slots and adding tags meets every one. In the way physics is normally taught these conditions arrive after the fact, as a check on charges that were read off a detector, and their passing is one of the things that make the Standard Model feel like something somebody got away with. Here they are the sieve, and 1,022 of the 1,024 lists die on them.
+Five conditions. A list assembled by choosing slots and adding tags meets every one. In the way physics is normally taught these conditions arrive after the fact, as a check on charges that were read off a detector, and their passing looks like a coincidence. Here they are the sieve, and 1,022 of the 1,024 lists fail them.
 
 ## A clock with six positions
 
@@ -138,7 +138,7 @@ That is the lock. The down quark and the electron are separated by everything. T
 
 That settles the charges. The whole of it then arrives three times over.
 
-The muon is a heavier electron and nothing else: same charge, same weak behavior, same everything except a mass two hundred and seven times larger and a lifetime of two microseconds. The tau is heavier again. Behind each of them sits a full copy of the fifteen-state roster, quarks included. Isidor Rabi supplied the standard phrasing on being told about the muon, "who ordered that", and it holds for the third copy as well.
+The muon is a heavier electron and nothing else: the same charge and the same weak behavior, with a mass two hundred and seven times larger and a lifetime of two microseconds. The tau is heavier again. Behind each of them sits a full copy of the fifteen-state roster, quarks included. Isidor Rabi supplied the standard phrasing on being told about the muon, "who ordered that", and it holds for the third copy as well.
 
 Start with the floor, which comes from matter and antimatter being different at all.
 
@@ -152,9 +152,9 @@ Here N is the number of families, and the expression counts the complex phases l
 
 The ceiling comes from asymptotic freedom. Put a charge in a vacuum and the vacuum responds: pairs flicker in and out around it, orient themselves and screen it, so the charge you measure from far away is smaller than the charge close up. The strong force does the reverse, because its own carriers carry the charge they transmit, which spreads the charge outward instead of hiding it and leaves the force feebler at short range than at long. David Gross, David Politzer and Frank Wilczek worked this out in 1973. It is why quarks rattle around almost freely inside a proton while being impossible to pull out of one.
 
-Species of matter push the other way, back toward ordinary screening, and each family adds species. The tally that runs out first belongs to the weak charge. It starts at twenty-two thirds, each family costs four thirds because a family brings three colored quark pairs plus one lepton pair, the spin-zero field costs a sixth, and the total has to stay positive. Solve it and the world is permitted five families and three eighths of a family.
+Species of matter push the other way, back toward ordinary screening, and each family adds species. The tally that runs out first belongs to the weak charge. It starts at twenty-two thirds, each family costs four thirds because a family brings three colored quark pairs plus one lepton pair, the spin-zero field costs a sixth, and the total has to stay positive. Solve it and the bound is five and three eighths families.
 
-Which leaves three, four or five, and the shape of the problem is familiar to anybody who has tried to get a week into cabin luggage: a floor set by what the trip needs, a ceiling set by what the case holds, and nothing in either constraint that picks a number.
+Which leaves three, four or five: a floor set by the difference between matter and antimatter, a ceiling set by asymptotic freedom, and nothing in either constraint that picks a number.
 
 A minimum-cost family-band rule offers a candidate choice. The twelve ports of chapter fourteen sit on a solid with twenty triangular faces, the sixty rotations carry any face to any other, and each face has its own threefold rotation cycling its three corners. Something has to carry that threefold turn. Identifying the number of physical families with the width of that band is an additional attachment rule. Chapter fifteen inventoried what is available: the twelve directions break into uncuttable pieces of sizes one, three, three and five, and the piece of size one takes the same value under every rotation and can therefore carry no phase whatever. There is no irreducible piece of size four or two on that list. This restricts the proposed irreducible-band attachment; it does not exclude every other family construction.
 

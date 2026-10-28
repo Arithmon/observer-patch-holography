@@ -100,6 +100,10 @@ pair, changes the classical record or conditions on a positive-probability
 native history. The real state `diag(1/2,1/2)` attains distance one half, so
 the real-state comparison is sharp. This does not assert that every
 minimizing real state is natively preparable.
+The one-half bound concerns normalized states. For a retained success flag
+with probability `p`, the corresponding subnormalized contribution is
+bounded by `p/2`; it is not a probability-independent bound on a rare
+success branch of a complete instrument.
 
 An explicitly excluded control `diag(1,i)` maps the probe to the target
 exactly. It demonstrates the load-bearing restriction: a complex phase
@@ -121,6 +125,8 @@ quantum encoding, extra coherent registers, an added complex service,
 different reference/algebra or carrier refinement requires another map and
 is outside this exclusion. Neither a physical-clock no-go nor rejection of
 the broader executable hypothesis follows. The CP-02 gate remains open.
+In particular, a supplied non-real encoder or decoder would already change
+the admitted operations.
 
 Reproduce from the repository root:
 

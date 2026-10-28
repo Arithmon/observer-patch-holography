@@ -2,7 +2,7 @@
 
 The line the last chapter ended on has no pictures in it. It is four terms, each a whole subject folded flat, short enough to print on a coffee mug. Writing physics as symbols with nothing to look at is older than the electron by more than a century, and it started with a boast.
 
-In 1788 the widow Desaint published a book on mechanics in Paris that contained no pictures, and its author put that on the first page as though it were the attraction. Joseph-Louis Lagrange had come down from Berlin the year before. The Académie sent the manuscript to a committee of Laplace, Cousin, Legendre and Condorcet, who approved it, and Legendre read the proofs.
+In 1788 the widow Desaint published a book on mechanics in Paris that contained no pictures, and its author announced that on the first page. Joseph-Louis Lagrange had come down from Berlin the year before. The Académie sent the manuscript to a committee of Laplace, Cousin, Legendre and Condorcet, who approved it, and Legendre read the proofs.
 
 No diagrams will be found in this work, the preface opens. The methods set out in it, Lagrange goes on, call for neither constructions nor geometrical or mechanical reasoning, but only algebraic operations subject to a regular and uniform procedure.
 
@@ -14,9 +14,9 @@ The line on the mug is an object of the same kind. Two questions come with it. W
 
 On 15 April 1744, before the Académie Royale des Sciences in Paris, Pierre-Louis Moreau de Maupertuis read a paper called "Accord de différentes lois de la nature qui avaient jusqu'ici paru incompatibles", agreement between different laws of nature which had until then seemed incompatible. The laws were the ones for how light bends and how it bounces. He proposed that a single quantity, which he named the action, comes out as small as it can be whenever anything in nature changes.
 
-Two years later in Berlin, running Frederick's academy, he published "Les Loix du mouvement et du repos déduites d'un principe métaphysique". There the principle acquired a second job. Maupertuis presented it as a demonstration of a supreme being, and ranked it above the older proofs drawn from the beauty and the order of the world, on the ground that an equation is harder to argue with than a wonder.
+Two years later in Berlin, running Frederick's academy, he published "Les Loix du mouvement et du repos déduites d'un principe métaphysique". There the principle acquired a second job. Maupertuis presented it as a demonstration of a supreme being, and ranked it above the older proofs drawn from the beauty and the order of the world, on the ground that a mathematical principle was firmer evidence.
 
-The inference is the obvious one: a rule that picks the smallest total out of every total available looks like an economy. An economy has a treasurer.
+The inference is the obvious one: a rule that picks the smallest total out of every total available looks like an economy, and an economy suggests somebody managing it.
 
 Maupertuis had earned the standing to say such things by going out and getting a number. In 1736 he led an expedition to the Torne valley in Swedish Lapland to measure the length of a degree of the meridian close to the Arctic Circle. The party came home in August 1737 with a degree longer than the one measured in France, which meant the Earth is flattened at the poles, which meant Newton was right and the Cassinis were wrong. Robert Levrac-Tournières painted him afterward in a fur hat and reindeer skins with one hand pressed down on a globe, squashing it out of round. Voltaire, an admirer at that stage, addressed him as the flattener of the world and of Cassini.
 
@@ -30,15 +30,15 @@ Throw a ball across a room. It leaves your hand at one place and arrives at anot
 
 Here is the ordinary description. At each moment the ball has a position and a velocity. Gravity pulls down, which changes the velocity a little, which changes the position a little, and repeating that as finely as you like traces out the arc. The description looks forward one step at a time and needs nothing except what is true where the ball is.
 
-Here is the other one. Draw every arc you like between those two points taking the same second: the true one, one that goes twice as high and comes down in a rush, one that dawdles halfway across and then sprints, one shaped like a staircase. Score each of them with a single number. The arc the ball flies is picked out by what its score does when you nudge it.
+Here is the other one. Draw every arc you like between those two points taking the same second: the true one, one that goes twice as high, one that moves slowly at first and fast at the end. Score each of them with a single number. The arc the ball flies is picked out by what its score does when you nudge it.
 
 The scoring rule has two parts. The future appears in neither.
 
 The first part is one function. At any instant, two things about the ball matter: where it is, and how fast it is going. Feed both into a single function and it hands back a number. For a thrown ball, that function is the part that grows with speed less the part that grows with height.
 
-Both parts are countable for a ball you could actually throw. The height part is the **potential energy**, what the ball's position owes: the mass times the strength of gravity times the height. Gravity at the Earth's surface pulls at 9.81 meters per second per second, and rounding that to ten costs two percent and buys arithmetic you can do standing up, so a one-kilogram ball held a meter off the floor owes ten joules. The speed part is the **kinetic energy**, which is what the motion holds: half the mass times the square of the speed. That same ball moving at two meters per second holds two joules, and at four meters per second it holds eight, because the square is where the growth is. The function is the second of those less the first, joule for joule.
+Both parts are countable for a ball you could actually throw. The height part is the **potential energy**, what the ball's position owes: the mass times the strength of gravity times the height. Gravity at the Earth's surface pulls at 9.81 meters per second per second, and rounding that to ten costs two percent and keeps the arithmetic simple, so a one-kilogram ball held a meter off the floor owes ten joules. The speed part is the **kinetic energy**, which is what the motion holds: half the mass times the square of the speed. That same ball moving at two meters per second holds two joules, and at four meters per second it holds eight, because the square is where the growth is. The function is the second of those less the first, joule for joule.
 
-The second part is a running total. The number the function hands back is per second, so run along the arc from the first moment to the last and keep a running total of it, the way a taxi meter accumulates while the wheels turn. One arc in, one number out. Every arc on the list gets a total this way, including the ridiculous ones.
+The second part is a running total. The number the function hands back is per second, so run along the arc from the first moment to the last and keep a running total of it, the way a taxi meter accumulates while the wheels turn. One arc in, one number out. Every arc on the list gets a total this way.
 
 Selection uses slopes. Stand on a hillside and step one pace in any direction: your height changes by an amount proportional to the size of the step. Stand on the floor of the valley and step one pace: your height barely changes, because the ground under you is level, and the change you do get shrinks with the square of the step rather than with the step. The bottom of a valley is where the slope is zero.
 
@@ -58,7 +58,7 @@ $$\text{score} \;=\; 2h^{2} \;-\; 5h$$
 
 The cost grows with the square of the midpoint height and the payment grows in proportion to it, so the cost overtakes. At one midpoint height and no other, raising the peak by a hair costs exactly what it pays. There the total has slope zero. That is the height the rule selects, one and a quarter meters, where a ball airborne for a second peaks: it leaves the floor at five meters per second, sheds ten of those every second, and stops climbing after half of one. Three moments is the coarsest account of a flight with any freedom left in it, and lands on the height exactly. Cut the second into four hops instead of two and the corners of the selected shape land on a parabola, and into forty and they land on the same one.
 
-Look at what had to be in your hand to do any of that. All three sums used the landing. Fixing the speed on each hop took the ball being back on the floor at one second, and without the finish there was nothing to add up. The ball has the start. It leaves your hand with a place and a speed and no information whatever about where it comes down, and the rule says it flies the arc whose total sits at the bottom of a parabola whose shape depends on where it comes down. Something in that description knows the ending before it happens. It is not the ball. Maupertuis put a treasurer in the gap, which at least has the merit of being a mechanism.
+Look at what had to be in your hand to do any of that. All three sums used the landing. Fixing the speed on each hop took the ball being back on the floor at one second, and without the finish there was nothing to add up. The ball has the start. It leaves your hand with a place and a speed and no information whatever about where it comes down, and the rule says it flies the arc whose total sits at the bottom of a parabola whose shape depends on where it comes down. Something in that description knows the ending before it happens, and the ball does not. Maupertuis put a supreme being in the gap.
 
 The one function of where you are and how fast you are going is the **Lagrangian**. Its running total along a path is the **action**, which is the word chapter twelve used for a single number scored over a whole arrangement. This is the same object scored along a history instead of across a wiring. The rule that selects the path where wiggling changes nothing is **stationary action**.
 
@@ -90,7 +90,7 @@ Bookkeeping in this world was never a separate law added on top of the dynamics.
 
 ## A product of small numbers
 
-None of that touches Maupertuis's reading. The recipe is exact. A rule that scores whole paths and selects the flat one continues to look like a comparison, which needs the losers to be somewhere in order to lose.
+None of that touches Maupertuis's reading. The recipe is exact. A rule that scores whole paths and selects the flat one continues to look like a comparison, which seems to require the rejected paths to exist somewhere.
 
 Start again from the smallest assumption a world can be given.
 
@@ -100,13 +100,13 @@ That is the whole of the input. There is no action in it, no Lagrangian, no scor
 
 Ask about histories anyway, since a history is a thing that has happened and can be asked about. Take a list of configurations, one after another, from a start to a finish. What are the odds of that particular list? Each step carries odds of its own and the steps do not consult each other, so the odds of the list are the odds of the first step times the odds of the second times the odds of the third, all the way to the end.
 
-A product of a thousand numbers each below one is a number nobody can read. Chapter sixteen introduced the operation that fixes it: a logarithm converts multiplying into adding. Take the logarithm of each step's odds, flip the sign so the contributions come out positive, and add them along the history instead of multiplying. Written out, with the odds of the first step called p one, the odds of the second p two, and the history running to n steps:
+A product of a thousand numbers each below one is unmanageably small. Chapter sixteen introduced the operation that fixes it: a logarithm converts multiplying into adding. Take the logarithm of each step's odds, flip the sign so the contributions come out positive, and add them along the history instead of multiplying. Written out, with the odds of the first step called p one, the odds of the second p two, and the history running to n steps:
 
 $$-\log\left(p_{1}\,p_{2}\cdots p_{n}\right) \;=\; \left(-\log p_{1}\right) \;+\; \left(-\log p_{2}\right) \;+\; \cdots \;+\; \left(-\log p_{n}\right)$$
 
 On the left is one number belonging to a whole history. Check it on the smallest case: two steps, each a coin flip, so the history has odds of one in four, which is two of chapter sixteen's yes-or-no questions, one from each step. On the right are n numbers, each belonging to a single step and worked out from the two configurations that step ran between, none of them consulting any other step, and the equals sign in the middle is the line of algebra that takes the foresight out.
 
-Look at what that produces. It is a running total along a path, one contribution per step, and each contribution depends on where its step started and where it ended and on nothing else anywhere in the history. That is the shape of the thing the thrown ball was scored with, arrived at from a rule that has never heard of it.
+Look at what that produces. It is a running total along a path, one contribution per step, and each contribution depends on where its step started and where it ended and on nothing else anywhere in the history. That is the shape of the thing the thrown ball was scored with, arrived at from a rule that contains no score.
 
 A history with a large total took improbable steps. A history with the smallest total is the most probable history there is. And a history whose total does not move when you jiggle one of its interior configurations, holding the ends, is sitting on the valley floor in that direction, which is what it means to be locally most likely. **Least action and maximum probability are two readouts of one thing.**
 
@@ -126,7 +126,7 @@ Joseph Plateau lost the sight of both eyes by the end of 1843, at forty-two. Ghe
 
 Dip a bent wire in soap solution and the film stretched across it is the surface of least area that wire will hold. It looks like the answer to a question about all possible surfaces. The film has no way of finding out what any other surface would have cost. Each patch of it pulls on the patches around it, the pulling is settled locally, patch against neighbor, and when no patch is being pulled harder one way than another the film stops moving. Where it stops has the least area available. Nothing in the film has ever evaluated an area.
 
-The settling is also invisible, which is most of why the film looks clever. By the time the frame is steady in your hand the film has finished, so nobody has ever watched a soap film choose. What Plateau's family described to him across forty years was the finished surface, every time.
+The settling is also too fast to see. By the time the frame is steady in your hand the film has finished. What Plateau's family described to him across forty years was the finished surface, every time.
 
 ## The interaction coefficients
 
@@ -182,4 +182,4 @@ The freedom is one number. The added term bends with speed by any positive amoun
 
 So the line is the best compression anybody has written down. A compression is not the thing compressed. Lagrange knew what he had taken out, which is why he mentioned it in the first sentence.
 
-Hand the line to somebody with a computer and enough patience and out comes the arc of a thrown ball to as many decimal places as the ball has, the spectrum of hydrogen, the lifetime of a muon and the rate at which the sun burns. Then put the ball in their hand and push it, and watch it go. The line scores the path it takes. It says nothing whatever about why a pushed thing moves.
+Hand the line to somebody with a computer and enough patience and out comes the arc of a thrown ball to any precision wanted, the spectrum of hydrogen, the lifetime of a muon and the rate at which the sun burns. Then put the ball in their hand and push it, and watch it go. The line scores the path it takes. It says nothing whatever about why a pushed thing moves.

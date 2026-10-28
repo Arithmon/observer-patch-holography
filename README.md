@@ -64,7 +64,9 @@ proof shows that the whole class of laws cannot work.
   of one Standard Model generation and its Higgs couplings, but no masses.
   Every mass law tested on the running model misses the measured lepton
   hierarchy, and the obvious defect candidate on the native carrier falls
-  apart after a few repairs. Finding a genuinely stable defect is the work
+  apart after a few repairs. A finite campaign also rules out the simplest
+  kind of protected charge: no hidden carrier quantity commutes with every
+  repair. Finding a genuinely stable defect is the work
   of the [particle paper](paper/deriving_the_particle_zoo_from_observer_consistency.pdf)
   and the [mass-response notes](docs/research/OPH_PARTICLE_MASS_RESPONSE.md).
 - **Standard physics from finite agreement.** Under stated premises, finite
@@ -157,12 +159,13 @@ specification supplies and which it takes as inputs.
 ## Papers
 
 - **[Observers Who Read Their Universe into Existence](flagship/from_observer_consensus_to_standard_physics.pdf)**
-  is the main synthesis: the theory in one account, selected results in
-  detail, the scoreboard of the construction and the closure hypothesis. Cite
-  its released version, the [PhilPapers record](https://philpapers.org/rec/MUEFOC).
+  is the main synthesis: the closure hypothesis, the executable-model
+  hypothesis and the tower of results built on it, layer by layer, with what
+  each layer needs. Cite its released version, the
+  [PhilPapers record](https://philpapers.org/rec/MUEFOC).
 - **[An Executable Observer for Observer Patch Holography](paper/executable_observer_construction.pdf)**
-  states the specification, its acceptance criteria, its certified components
-  and the premise map.
+  states the specification, the executed components and the ordered joins
+  that remain.
 - **The theorem library** holds the long proofs, from
   [consensus](paper/reality_as_consensus_protocol.pdf) and
   [observers and records](paper/observers_are_all_you_need.pdf) to

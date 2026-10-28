@@ -37,3 +37,14 @@ python3 -m model.verify
 That replays every stored result and compares it with the fingerprint it was saved under. A result that comes out different by a single digit fails.
 
 Each construction has its own folder and its own README explaining what it computes and which command checks it. The map of all of them is `model/README.md`. Chapter twenty-two's tally, field, wave and region's clock live in the folders on observer time fields, relative observer geometry and the transfer modular probe, and the formal proofs behind the theorems are the Lean files appendix C describes.
+
+## The continuing C/E campaign
+
+The [C/E campaign](https://github.com/FloatingPragma/observer-patch-holography/tree/main/model/completion) has its own focused replay. It checks the finite-memory observer with counted record exports, the exact joint stationary reference, and the native charge and modular-access certificates:
+
+```sh
+python3 -m pytest -q -W error model/completion
+python3 tools/build_completion_program.py --check
+```
+
+The [completion plan](https://github.com/FloatingPragma/observer-patch-holography/blob/main/docs/COMPLETION_PROGRAM.md) keeps the current work in one place: the extension contract (#1135), observer services (#1136), clock operations (#1138) and the localized defect investigation (#1139). The campaign's README gives each replay and its construction contract.

@@ -1,6 +1,6 @@
 # 3. Why Would a Universe Need Anybody In It?
 
-In 1883 a science teacher at the state normal school in Whitewater, Wisconsin, got tired of janitors. The heating in the building ran off a coal boiler in the basement. The only way to find out whether a classroom was too cold was for somebody to walk into it and look at the thermometer on the wall, which happened during lessons, repeatedly, all winter. Warren Johnson's solution was a device that would notice the temperature itself and ring a bell in the boiler room. He patented it, then built a company to sell it, and that company outlived him by more than a century, which is a generous return on being annoyed.
+In 1883 a science teacher at the state normal school in Whitewater, Wisconsin, set out to keep janitors out of his classrooms. The heating in the building ran off a coal boiler in the basement. The only way to find out whether a classroom was too cold was for somebody to walk into it and look at the thermometer on the wall, which happened during lessons, repeatedly, all winter. Warren Johnson's solution was a device that would notice the temperature itself and ring a bell in the boiler room. He patented it, then built a company to sell it, and that company outlived him by more than a century.
 
 The thing he built is on your wall. It has a sensor, a number you set, and a switch. It does one thing forever: it looks at what the temperature is, looks at what you asked for, and if those two disagree it does something about it.
 
@@ -16,11 +16,11 @@ Take the job seriously. Something has to hold a description of part of the world
 
 Lewis Carroll got there first. In *Sylvie and Bruno Concluded*, published in 1893, a character called Mein Herr explains that his country's cartographers began with maps at six inches to the mile, then tried six yards to the mile, then a hundred yards, and finally arrived at the grandest idea of all, a map on the scale of a mile to the mile. It has never been spread out, he admits: the farmers objected that it would cover the whole country and shut out the sunlight. So we now use the country itself, as its own map, and I assure you it does nearly as well.
 
-That is the whole argument. A description that leaves nothing out is a duplicate. A duplicate tells you precisely as much as the original does, which is to say it does the job nearly as well and to no purpose whatever. Description begins where something gets left out. A boundary is what makes a thing a describer rather than a copy. It belongs at the top of the list rather than in a footnote about limitations.
+That is the whole argument. A description that leaves nothing out is a duplicate. A duplicate tells you precisely as much as the original does and adds nothing to it. Description begins where something gets left out. A boundary is what makes a thing a describer rather than a copy. It belongs at the top of the list rather than in a footnote about limitations.
 
 **It has to write.** A description exists where it is recorded and nowhere else, because an unrecorded one leaves the world in exactly the state it would have been in had nobody formed it. So there has to be a somewhere: a state, a mark, a position, a magnetisation, anything at all that can be in one configuration rather than another and stay that way.
 
-**It has to read what it holds, and the reading has to make a difference.** Seal the thermostat's set number behind glass where the switch cannot get at it. Every part still works. The sensor senses, the number sits there at twenty degrees, the room is cold, and the boiler stays off, because nothing in the device ever consults the number for any purpose. What is left on the wall is a thermometer and a decoration.
+**It has to read what it holds, and the reading has to make a difference.** Seal the thermostat's set number behind glass where the switch cannot get at it. Every part still works. The sensor senses, the number sits there at twenty degrees, the room is cold, and the boiler stays off, because nothing in the device ever consults the number for any purpose. What is left on the wall works as a thermometer and nothing more.
 
 So the requirement is not that a record be accurate. It is that something downstream depends on it. A mark nothing consults is a mark the world runs identically without. If the world runs identically without it then it is not describing anything, whatever it happens to say.
 
@@ -34,11 +34,11 @@ That is the list. Three items, and the third is doing most of the work.
 
 Score the thermostat.
 
-*A bounded view.* It senses temperature, at one point, in one room. It knows nothing about the pressure, the humidity, the light level, the temperature two floors up, or the weather in the next country. Its window on the world is one number wide, which is about as bounded as a view gets. Passes.
+*A bounded view.* It senses temperature, at one point, in one room. It knows nothing about the pressure, the humidity, the light level, the temperature two floors up, or the weather in the next country. Its window on the world is one number wide. Passes.
 
 *Somewhere to write.* Two places, in fact: the current reading and the number you set. Passes.
 
-*A reading that makes a difference.* This is all it does. The whole device exists to hold two numbers next to each other, consult the pair, and throw a switch on what it finds. Nothing in it is decorative. Passes emphatically.
+*A reading that makes a difference.* This is all it does. The whole device exists to hold two numbers next to each other, consult the pair, and throw a switch on what it finds. Nothing in it is decorative. Passes.
 
 Three for three. It is screwed to the wall, so it holds each of its numbers from the writing of it to the reading of it, which is all the lasting the third item asks for.
 
@@ -56,11 +56,11 @@ A sensor, a number you set and a switch meet all three in full. That is the whol
 
 The list is short enough that the omissions need saying out loud, because people reliably try to put things back on it.
 
-*Understanding.* The thermostat has no idea what temperature is, what a room is, or what it is doing. It has never formed a concept in its life. Nothing in the three mentions comprehension. Adding it would exclude every instrument in every laboratory on Earth, which would be an odd result for a theory of measurement.
+*Understanding.* The thermostat has no idea what temperature is, what a room is, or what it is doing. Nothing in the three mentions comprehension. Adding it would exclude every instrument in every laboratory on Earth from a theory of measurement.
 
 *Intention.* The thermostat does not want the room to be warm. Something wants that, and it is not the thermostat, and the device works identically whether anybody wants anything.
 
-*A model of itself.* Nothing on the list requires the record-keeper to have any representation of its own state, its own boundary, or its own existence. Warren Johnson's device never once represented Warren Johnson's device.
+*A model of itself.* Nothing on the list requires the record-keeper to have any representation of its own state, its own boundary, or its own existence.
 
 *Complexity.* Two numbers and a comparison. That is the entire specification. Any system that meets it is on the list regardless of what else it can do.
 
@@ -70,15 +70,15 @@ The list has three things on it. Anything else that gets proposed describes how 
 
 ## The worst word in physics
 
-Which brings up the vocabulary problem. It has to be handled here because a great deal of nonsense has been written on the other side of it.
+Which brings up the vocabulary problem. It has to be handled here because the word has been widely misread.
 
-The word "observer" arrived in physics through relativity, where it never meant a person and was never intended to. An observer in Einstein's sense is a coordinate frame: a convention for assigning three numbers and a time to an event. Textbooks anthropomorphise them for readability, and then have to explain that these observers are equipped with rulers laid out across all of space and clocks at every point, synchronised in advance, which is not a description of any person who has ever lived. Nobody was confused, because everybody knew the word was shorthand for bookkeeping.
+The word "observer" arrived in physics through relativity, where it never meant a person and was never intended to. An observer in Einstein's sense is a coordinate frame: a convention for assigning three numbers and a time to an event. Textbooks anthropomorphise them for readability, and then have to explain that these observers are equipped with rulers laid out across all of space and clocks at every point, synchronised in advance. Nobody was confused, because everybody knew the word was shorthand for bookkeeping.
 
-Quantum mechanics then borrowed the same word for something that had to do the measuring. The shorthand stopped being harmless. If the theory says that an observation produces a definite outcome, and "observer" sounds like it means a person, then it sounds like the theory says people produce definite outcomes by paying attention. Which is not what any version of the mathematics says, and is nonetheless what a great many people have taken away from it, including some who should have known better.
+Quantum mechanics then borrowed the same word for something that had to do the measuring. The shorthand stopped being harmless. If the theory says that an observation produces a definite outcome, and "observer" sounds like it means a person, then it sounds like the theory says people produce definite outcomes by paying attention. Which is not what any version of the mathematics says, and is nonetheless what a great many people have taken away from it.
 
 Eugene Wigner is the honourable case, because he thought it through and then changed his mind. In a 1961 essay he argued seriously that consciousness has to enter the physical description, on the grounds that a measurement apparatus can be described as a quantum system and so can the physicist looking at it, and something has to break the chain. He later abandoned the position. What did it was solipsism: if it takes a mind to make an outcome definite, whose mind, and what were the other minds looking at meanwhile.
 
-The confusion has a way of surviving its own refutation. Schrödinger invented the cat in 1935 as an attack. He was arguing that a theory which lets a radioactive atom smear a live animal across two states is producing something ridiculous. He used the word. The example was a weapon aimed at a position he rejected. It is the single most widely reproduced illustration of that position, printed on t-shirts by people explaining what quantum mechanics says. A joke about a theory has become the theory's best-known exhibit, which tells you roughly how carefully this part of physics gets read.
+The confusion has a way of surviving its own refutation. Schrödinger invented the cat in 1935 as an attack. He was arguing that a theory which lets a radioactive atom smear a live animal across two states is producing something ridiculous. He used the word. The example was a weapon aimed at a position he rejected. It is the single most widely reproduced illustration of that position, printed on t-shirts by people explaining what quantum mechanics says. A joke about a theory has become the theory's best-known exhibit.
 
 So, unambiguously, because the whole structure rests on it:
 
@@ -90,7 +90,7 @@ There is a second misreading, subtler than the first and more persistent, and th
 
 Putting observers at the bottom sounds like putting *us* at the bottom. That sounds like a demotion of the universe in favour of the people looking at it. It sounds like the world is shaped by our attention. An anthropic selection argument conditions on observers existing; it does not require their preferences to arrange the universe. The observer architecture here likewise concerns what systems can record and compare.
 
-That is the opposite of what is being said. An observer in this book does not get what it wants. It gets what it can consistently record. The second is a much harsher master than the first. The thermostat cannot decide the room is warm. It can hold a number, and the number can be wrong, and being wrong has consequences it does not choose. Everything in the next thirty chapters comes from what a bounded record-keeper is *forbidden* to do: it cannot see everything, it cannot write without limit, it cannot compare what it has no access to, and it cannot disagree with its neighbors indefinitely without something giving way.
+That is the opposite of what is being said. An observer in this book does not get what it wants. It gets what it can consistently record. The second is far more restrictive than the first. The thermostat cannot decide the room is warm. It can hold a number, and the number can be wrong, and being wrong has consequences it does not choose. Everything in the next thirty chapters comes from what a bounded record-keeper is *forbidden* to do: it cannot see everything, it cannot write without limit, it cannot compare what it has no access to, and it cannot disagree with its neighbors indefinitely without something giving way.
 
 There is a cheap way to feel the asymmetry. Set the thermostat to twenty-five degrees in January and switch the boiler off at the wall. The device will hold the number twenty-five for as long as you care to leave it, and the room will be freezing, and nothing anywhere in the arrangement will bend. A record-keeper may write whatever it likes. What it cannot do is make the comparison come out in its favour. That gap, between what a thing may write and what it finds when it checks, is where every result in this book comes from.
 

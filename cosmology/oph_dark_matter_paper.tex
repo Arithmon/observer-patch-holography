@@ -68,31 +68,50 @@ empirical full radial-acceleration interpolation authenticates the
 153-galaxy parent selection and quantifies its weighting sensitivity.
 \end{abstract}
 
-\section*{Claim Boundary}
+\input{../paper/tex_fragments/EXECUTABLE_COMPLETION_HYPOTHESIS.tex}
 
-The finite OPH results used here are the rest-frame Einstein relation on its
-named small-ball premises, the decomposition of the cap modular generator into
-a bulk part, a central part, and a collar-carried anomalous part, and the
-controlled bound on that anomalous part~\cite{ophEinstein,ophmicro}. Every
-theorem and proposition below is an algebraic or analytic consequence of
-those objects together with the premises named in the text, and each is
-checked in the Lean formalization~\cite{ophlean}. Universal coupling and the
-collar-scale premise are structure fields or named hypotheses in that
-formalization; neither is established there. The linear enclosed-mass form
-is derived inside the formalization from two named premises, deep-regime
-scale covariance and quadrature source composition, which are themselves
-structure fields; the exponential recovery envelope behind the saturation
-theorem is the conditional mixing branch of the collar-recovery claim, taken
-as a hypothesis.
+\section*{This paper's hypothesis and place in the tower}
 
-The paper supplies a finite quotient-invariant receipt localizing the
-anomalous modular energy on collars, under model premises; the continuum
-receipt for the physical cap generator, the value of the collar constant,
-the profile of the anomalous density outside the deep regime, a proof that
-the collars carrying the anomaly are galactic-scale, and a cosmological
-likelihood are not supplied. The acceleration constant \(a_0\) is a fitted comparison value.
-The frozen register FZ-01 of 17 July 2026 retains an acceleration-scale
-target registered from a reserve-survival reading: the presence reading
+This paper sits at layer seven and develops the dark-sector branch. Its
+hypothesis is that dark matter is non-luminous modular charge: under
+universal coupling geometry responds to total modular charge, and the
+anomalous modular energy carried on overlap collars that local records fail
+to recover is the gravitating dark source, with a deep-regime profile fixed
+by scale covariance and quadrature composition of independent collar
+defects.
+
+The finite results are the classification theorems, the bounded source and
+its cold dilution, compact-source saturation under a common recovery
+envelope, the erasure-record defect law, the profile characterization, the
+per-cut dictionary \(a_0=Gn^2c\), and the deep radial-acceleration and
+Tully--Fisher identities. Each is an algebraic or analytic consequence of the
+premises named where it is stated and is checked in the Lean
+formalization~\cite{ophlean}. Universal coupling, the recovery envelope, the
+collar-scale premise and the two profile premises are structure fields or
+named hypotheses there; the rest-frame Einstein relation and the cap
+generator split are imported from the spacetime and screen
+layers~\cite{ophEinstein,ophmicro}.
+Every physical conclusion is therefore a conditional implication, and the
+acceleration constant \(a_0\) is a fitted comparison value.
+
+For the branch to apply, the executable model must produce from one native
+process a cap modular generator with a bulk/collar split, a physical clock
+and energy normalization in which the collar anomaly is stress in the same
+dictionary as matter, a responsive three-dimensional geometry whose
+galactic-scale settled cuts carry an order-one defect, the cut density \(n\)
+and per-cut variance \(c\), a relativistic stress for lensing, and the
+cosmological abundance. The executable observer~\cite{ophmodel} supplies
+none of these: its
+full configuration reference has a tracial limit with trivial modular flow,
+and its native continuum is a two-dimensional screen operator without a
+radial domain~\cite{ophtimefields,ophcontinuum}. The branch is refuted by a
+proof that admitted native repair recovers every collar, since full recovery
+switches the source off (Theorem~\ref{thm:off}); by a calibrated,
+prospectively frozen galaxy likelihood that excludes the square-root deep law
+with one common constant or its Tully--Fisher exponent \(4\); or by a source
+derivation of \(n^2c\) that returns an \(a_0\) outside the measured range.
+The frozen register FZ-01 retains an acceleration-scale target from a
+reserve-survival reading: the presence reading
 \(1.184737388\times10^{-10}\,\mathrm{m\,s^{-2}}\), with survival factor
 \(1-P/24\), and the Poisson reading
 \(1.179018696\times10^{-10}\,\mathrm{m\,s^{-2}}\), with \(e^{-P/24}\). Each
@@ -101,38 +120,6 @@ reading is scored only against a held-out sub-percent determination of
 of Section~\ref{sec:data} do not score it, and no verdict is
 registered~\cite{ophladder}. The deep-regime characterization of this paper
 derives neither reading.
-No cosmological result carries an OPH falsification verdict.
-The source Gram space provides a rank-three Euclidean metric on one
-twelve-port carrier, a finite readout of that carrier's slow response
-rather than an extended space~\cite{ophmodel}. After a
-real axis is adjoined, a nonzero closed convex pointed displacement cone is
-future or past Lorentzian if it is invariant under the proper icosahedral
-rotations and all rapidities of one boost axis. Time orientation selects
-the future cone. This criterion concerns possible influence on actual
-histories, interventions and clock readouts. An algebraic action on source
-directions alone does not supply this invariance~\cite{ophEinstein}.
-
-A conservative Fibonacci-record population with complete shrinking-radius
-neighbour reads and a declared layer duration has a proved flat $1+3$
-causal-order and normalized count-volume limit. For interior timelike
-intervals, complete authenticated ancestry and anchors give the observer
-readout $(|I|/|J|)^{1/4}$, where $J$ is a nondegenerate reference interval
-in the same history. It converges to the proper-time ratio without
-coordinates, timestamps or density in the readout. The population and read
-law are specified inputs; the reference interval fixes relative units.
-The theorem supplies no physical calibration of a galactic or cosmological
-clock~\cite{ophEinstein}.
-
-The finite tensor theorem uses a separately supplied $3+1$ tensor interface,
-nine algebraic null balances, symmetry, discrete conservation and
-connectedness to obtain an Einstein-shaped identity with one constant metric
-term. Source ancestry does not select the tensor or finite-difference
-operator. Smooth promotion to Eq.~\eqref{eq:einstein} requires same-family
-tensor-curvature convergence or the continuum small-ball/null-balance
-identification; scalar-curvature convergence alone is diagnostic. A physical
-dark-sector realization must further identify the cap generator,
-galaxy-scale collars, stress and anomalous response on that same geometry,
-and provide the cosmological source and likelihood.
 
 \tableofcontents
 
@@ -144,7 +131,10 @@ G_{ab}+\Lambda g_{ab}=8\pi G\langle T_{ab}\rangle,
 \label{eq:einstein}
 \end{equation}
 where \(\langle T_{ab}\rangle\) is a supplied local, covariant, conserved
-stress on the physical branch~\cite{ophEinstein}. Finite positive-null
+stress on the physical branch~\cite{ophEinstein}. Its smooth form requires
+same-family tensor-curvature convergence or the continuum
+small-ball/null-balance identification; scalar-curvature convergence alone is
+diagnostic. Finite positive-null
 tomography exactly reconstructs a quadratic form from directional charges,
 but identifying that form with the same local stress additionally requires
 charge--stress matching, locality and covariance, and a weak Ward law. In the
@@ -661,11 +651,10 @@ exact source exponent \(4\) sits \(+2.66\) standard deviations from that
 fitted exponent on this seen sample~\cite{ophcontracts}.
 
 \paragraph{One constant.}
-Theorems~\ref{thm:rar} and \ref{thm:btfr} share one \(a_0\). A first
-comparison estimated the two constants from mismatched observables: the
-radial-acceleration diagnostic above against the fixed-exponent
-normalization \(a_0=v_f^4/(GM_b)\) built from the catalogued \(V_{\rm flat}\).
-That mixed diagnostic gave paired parent-galaxy bootstrap intervals
+Theorems~\ref{thm:rar} and \ref{thm:btfr} share one \(a_0\). A mixed
+diagnostic compares mismatched observables: the radial-acceleration fit
+above against the fixed-exponent normalization \(a_0=v_f^4/(GM_b)\) built
+from the catalogued \(V_{\rm flat}\). It gives paired parent-galaxy bootstrap intervals
 \([0.730,1.037]\times10^{-10}\,\mathrm{m\,s^{-2}}\) and
 \([1.405,1.723]\times10^{-10}\,\mathrm{m\,s^{-2}}\) with a log-ratio
 95 percent interval of \([0.180,0.317]\) dex, none of which carries a row in
@@ -715,8 +704,6 @@ velocity frame, with mean \(v_{\rm model}\sin i/\sin i_{\rm cat}\) and
 catalogue velocity errors. Equivalently, correcting observations and errors by
 \(s(i)=\sin i_{\rm cat}/\sin i\) requires a density Jacobian
 \(s(i)^n\), which cancels the Gaussian normalization \(s(i)^{-n}\).
-The schema-v3 fixed-frame receipt corrects the former v2 objective, which
-omitted that Jacobian; the original receipt is kept as historical evidence.
 Because the mass-to-light constraint is an
 astrophysical prior rather than an identified auxiliary-data likelihood,
 this is a penalized objective, not a maximum-likelihood analysis. Its
@@ -822,39 +809,25 @@ source value of \(a_0\) are the measurement-side constructions this paper does n
 
 \section{Conclusion}
 
-Under the supplied universal-coupling and physical-stress adapter the screen
-gravitates according to its total modular charge, yielding a conditional
-classification theorem: any geometric excess
-over the luminous term is represented as non-luminous modular charge. This
-does not establish that the excess is nonzero or attach a physical carrier.
-Anomalous modular energy on overlap collars is a candidate carrier supplied
-by the separate collar-recovery, source-localization, stress and conservation
-adapter, not by the finite Einstein-shape theorem. Under that adapter it is bounded by the
-recovery defect, absent at full recovery, and cold when conserved. On
-galactic-scale collars its Solar-System footprint has zero trace-free
-quadrupole and a small traceful isotropic tidal scale; the four-order Cassini
-comparison is dimensional, because that measurement does not directly bound
-the isotropic channel. Its deep-regime profile gives the radial-acceleration relation,
-flat rotation curves, and the baryonic Tully--Fisher relation with one
-constant. Under the declared fixed-mass-to-light diagnostic, the SPARC
-radial-acceleration and matched anomalous-speed channels agree on that
-constant within the paired bootstrap interval, on seen data, and the
-released penalized profile objective retains consistency at every scanned
-intra-galaxy correlation value; its contours are uncalibrated and some are
-disconnected. The separate source-bound full-RAR replay reproduces the
-published parent-galaxy selection and acceleration scale, while its simple
-weighting controls shift the fitted scale by roughly ten to fifteen percent;
-it is a custody and estimator-sensitivity result, not OPH evidence. A calibrated
-covariance and intrinsic-scatter treatment is required for a physical
-verdict; the correlation scan is a large sensitivity this paper does not resolve, not a
-ranking of the total systematic budget. The
-conditional saturation theorem gives a density-dependent asymptotic bound;
-exact finite-source absence is a premise. The profile with its unique
-constant is characterized by
-deep-regime scale covariance and quadrature composition of independent
-sources. Physical application requires attachment of the envelope, a mechanism
-selecting galactic-scale cuts, and the charge magnitude specified in
-Sections~\ref{sec:solar} and \ref{sec:deep}.
+Under universal coupling the screen gravitates according to its total
+modular charge, so any geometric excess over the luminous term is
+non-luminous modular charge; this classification does not establish that the
+excess is nonzero. Anomalous modular energy on overlap collars is a candidate
+carrier supplied by the collar-recovery, source-localization, stress and
+conservation premises, not by the finite Einstein-shape theorem. Under those
+premises it is bounded by the recovery defect, absent at full recovery, and
+cold when conserved; on galactic-scale collars its Solar-System footprint has
+zero trace-free quadrupole and a small isotropic tidal scale. Deep-regime
+scale covariance and quadrature composition characterize its profile, which
+gives the radial-acceleration relation, flat rotation curves and the baryonic
+Tully--Fisher relation with one constant. On seen SPARC data the matched
+channels agree on that constant within the paired bootstrap interval, the
+penalized profile objective stays consistent at every scanned correlation
+value with uncalibrated contours, and the source-bound full-RAR replay is a
+custody and estimator-sensitivity result. A physical verdict requires a
+calibrated covariance and intrinsic-scatter likelihood; physical application
+requires attachment of the envelope, a mechanism selecting galactic-scale
+cuts, and the charge magnitude of Section~\ref{sec:open}.
 
 \InputIfFileExists{../paper/tex_fragments/PRIOR_WORK_OPH_DARK_MATTER_PAPER.tex}{}{}
 \begin{thebibliography}{99}
@@ -873,7 +846,7 @@ OPH consensus paper.
 
 \bibitem{ophmicro}
 B. Mueller et al.,
-\emph{Federated Echosahedral Screen Microphysics: Patch Hardware, Records, and Observer Synchronization in Observer-Patch Holography}.
+\emph{Twelve-Port Icosahedral Carriers and Native Seam Repair: The Carrier Layer of Observer-Patch Holography}.
 \url{https://github.com/FloatingPragma/observer-patch-holography/blob/r2054/paper/screen_microphysics_and_observer_synchronization.pdf}
 
 \bibitem{ophcontracts}

@@ -32,9 +32,9 @@ The eligible sources are:
   [Standard Model gauge paper](../paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.pdf);
 - the exact gauge, charge, color, generation, and declared-action carrier
   claims in
-  [*The Particle Zoo under Declared Matter Premises: One Generation, Interaction Channels and Mass Diagnostics*](../paper/deriving_the_particle_zoo_from_observer_consistency.pdf);
+  [*Particles as Localized Topological Defects of Native Overlap Transport: Finite Theorems, a Native Decision Test and Mass Obstructions*](../paper/deriving_the_particle_zoo_from_observer_consistency.pdf);
 - the finite carrier and screen-sieve theorems in
-  [*Federated Echosahedral Screen Microphysics*](../paper/screen_microphysics_and_observer_synchronization.pdf);
+  [*Twelve-Port Icosahedral Carriers and Native Seam Repair*](../paper/screen_microphysics_and_observer_synchronization.pdf);
 - the substrate-neutral
   [normal-form](../extra/observable_normal_forms.pdf) and
   [finite-event-algebra](../extra/machine_checked_finite_event_algebras.pdf)
@@ -43,6 +43,34 @@ The eligible sources are:
 A claim belongs here only when its statement is complete, its hypotheses are
 explicit, the falsifier addresses the same object, and no open map or
 measurement convention can absorb the result.
+
+## Scoped decisions from the finite completion campaign
+
+The [frozen finite campaign](../model/completion/campaign.json) defines one
+bounded C/E repair and classical-memory family. Its continuing observer and
+stationary source/record references establish finite constructions under
+declared preparation, access and storage services. They supply no physical
+comparison and accept no integrated completion gate. Its exact negative
+results have the following scope:
+
+| Decision | Checked object and consequence | Outside the exclusion |
+| --- | --- | --- |
+| [Bare-source reducing charge](../model/completion/defect_algebra.md) | The complete C and E branch *-algebras are full on H78 and H66. No nontrivial Hermitian source charge commutes with every active branch. Positive repair/exploration support, tagged mixtures and classical feedback preserve this conclusion. | Forward-invariant subspaces, arbitrary expectation-fixed observables, history/controller-dependent charges, metastability, active recovery and refining carriers. Permanent halt is not continuing protection. |
+| [Specified modular action](../model/completion/MODULAR_ACCESS.md) | Unequal positive weights in the actual stationary C/E record blocks define a modular action that creates imaginary coherence from a real probe. At the stated dimensionless modular parameter, admitted real operations have normalized trace-distance error at least `1/2` on the fixed full support algebra. | Different algebras or encodings, admitted complex resources, other references and refinements. The real joint-input premise is explicit; the separating observable is an abstract witness, not a native detector. A heralded branch of probability `p` carries the subnormalized bound `p/2`. |
+
+A counterexample to either exact conclusion must satisfy its stated source,
+branch, algebra, input and output contract. A changed contract is a new
+candidate, not a counterexample to the original result. Neither exclusion
+covers every possible realization of the executable hypothesis. The full
+program's refinement and interpretation class has not been frozen, and these
+results cannot support a whole-program falsification verdict.
+
+The [next work](COMPLETION_PROGRAM.md) consequently separates a successor
+contract (#1135), realization of observer services (#1136), an actual clock
+algebra and operation contract (#1138), and a specified localized sector
+(#1139). The theorem-map and obstruction audits accompany those tasks.
+Independent component investigations cannot discharge a shared physical join
+by combining incompatible candidate versions.
 
 ## Mature Mathematical Falsifiers
 

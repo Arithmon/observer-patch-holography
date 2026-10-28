@@ -16,15 +16,15 @@ So how does a crowd of parties who cannot see each other's internal state, who s
 
 In 1982 Leslie Lamport, Robert Shostak and Marshall Pease published a paper in *ACM Transactions on Programming Languages and Systems* called "The Byzantine Generals Problem", about a group of commanders surrounding a city who must agree on whether to attack, and some of whom are traitors.
 
-Lamport wanted a nationality for the traitors that no reader would object to, and settled on Albania, which at the time was sealed tightly enough that he doubted any Albanian would ever see the paper. His colleague Jack Goldberg pointed out that there were Albanians outside Albania and that Albania might not stay sealed forever. Byzantium had the advantage of having been out of business since 1453.
+Lamport wanted a nationality for the traitors that no reader would object to, and settled on Albania, which at the time was sealed tightly enough that he doubted any Albanian would ever see the paper. His colleague Jack Goldberg pointed out that there were Albanians outside Albania and that Albania might not stay sealed forever. Byzantium, gone since 1453, raised neither problem.
 
 A **crash fault** stops. The machine dies, the process is killed, the power goes, and what everybody else sees is silence.
 
 A **Byzantine fault** keeps talking. It sends messages that are wrong, or that are inconsistent with each other, or that say one thing to one neighbor and something else to another, all of it with no outward sign that anything has happened. Malice is one way to get there and by far the least common. A memory cell that flips, a disk returning data from before the last write, a program that applied half of an update and then fell over: each of these produces a participant confidently answering questions with garbage. The confidence is the whole of the problem, because the other participants have no way to weigh it.
 
-On 18 May 2003 a vote-counting machine in Schaerbeek, in Brussels, credited one candidate in the Belgian general election with 4,096 votes that nobody had cast. No fault was ever found in the software. The official finding was a spontaneous inversion of a single bit in memory at the thirteenth position, a position worth two to the twelfth, which is 4,096. The machine reported the result the way it reported every other result, with no error, no warning and no sign of distress. The reason anyone caught it was that the municipality had returned more votes than it had voters.
+On 18 May 2003 a vote-counting machine in Schaerbeek, in Brussels, credited one candidate in the Belgian general election with 4,096 votes that nobody had cast. No fault was ever found in the software. The official finding was a spontaneous inversion of a single bit in memory at the thirteenth position, a position worth two to the twelfth, which is 4,096. The machine reported the result the way it reported every other result, with no error and no warning. The reason anyone caught it was that the municipality had returned more votes than it had voters.
 
-Crash faults are cheap to survive. You wait, you notice the silence, you carry on without the missing party. Byzantine faults are expensive. The exact price can be counted on a napkin.
+Crash faults are cheap to survive. You wait, you notice the silence, you carry on without the missing party. Byzantine faults are expensive. The exact price is a short piece of arithmetic.
 
 ## Four dots
 
@@ -46,13 +46,13 @@ In April 1985 the *Journal of the ACM* published a paper by Michael Fischer, Nan
 
 Suppose messages always arrive eventually, but with no bound on how long they take. Suppose one single participant may crash, and only crash: no lying, no corruption, one machine that stops. Then there is no deterministic protocol that guarantees both that everybody who decides decides the same thing and that everybody decides at all.
 
-The result does not say that no efficient protocol exists. It says that no protocol exists. The shape of the proof is that any such system passes through configurations from which both answers are reachable, and that a schedule delivering one message at a time can always steer it out of one such configuration and into another. Every message gets delivered. Nobody is starved. The system is kept poised forever by nothing more aggressive than a choice about the order of the mail.
+The result does not say that no efficient protocol exists. It says that no protocol exists. The shape of the proof is that any such system passes through configurations from which both answers are reachable, and that a schedule delivering one message at a time can always steer it out of one such configuration and into another. Every message gets delivered. Nobody is starved. The system is kept poised forever by nothing more than a choice about the order in which messages are delivered.
 
 Faster hardware does not fix this. Better engineering does not fix it. What the result attacks is the combination of three things: asynchrony with no bound on delay, a deterministic rule, and the demand that agreement and termination both hold always. Give up any one of them and consensus comes back.
 
 The industry actually made two of those surrenders.
 
-The first gives up asynchrony. Assume that after some unknown point, message delays are bounded by some unknown constant, an assumption Cynthia Dwork, Nancy Lynch and Larry Stockmeyer formalized in the *Journal of the ACM* in 1988 and called partial synchrony. The protocol never violates agreement, whatever the network does; it promises to finish only during the stretches when the network behaves. Every leader-based system in production is standing on this hatch, which is why every one of them has a timeout in it, and why the timeout is the parameter that operators fight about.
+The first gives up asynchrony. Assume that after some unknown point, message delays are bounded by some unknown constant, an assumption Cynthia Dwork, Nancy Lynch and Larry Stockmeyer formalized in the *Journal of the ACM* in 1988 and called partial synchrony. The protocol never violates agreement, whatever the network does; it promises to finish only during the stretches when the network behaves. Every leader-based system in production is standing on this hatch, which is why every one of them has a timeout in it, and why the timeout is the parameter that operators argue about.
 
 The second gives up determinism. Let participants flip coins, which Michael Ben-Or showed in 1983 is enough: the protocol terminates with probability one, meaning that the runs in which it goes on forever have a total weight of zero, while carrying no promise about any particular deadline.
 
@@ -118,7 +118,7 @@ Avalanche does not order transactions. It organizes them into conflict sets, whe
 
 The leader family does the opposite, and pays for it in the queue. Every transaction goes into one line whether or not it interacts with anything else in the line, which is why a payment in Lisbon waits behind a payment in Osaka that has nothing to do with it.
 
-A network of observers repairing their overlaps is in the first camp, there by construction rather than by choice. A repair happens where a comparison disagrees. Two disagreements in unrelated parts of the arrangement are not competing for anything, do not touch a common quantity, and have no order between them, which is chapter seven's partial order doing work in this world. One repair comes after another when it read a value the other one wrote. Repairs with no such read between them stand in no order at all. The rest of the arrangement is under no obligation to have an opinion about when they happened.
+A network of observers repairing their overlaps is in the first camp, there by construction rather than by choice. A repair happens where a comparison disagrees. Two disagreements in unrelated parts of the arrangement are not competing for anything, do not touch a common quantity, and have no order between them, which is chapter seven's partial order doing work in this world. One repair comes after another when it read a value the other one wrote. Repairs with no such read between them stand in no order at all. Nothing else in the arrangement assigns them an order.
 
 The local rule needs no leader, no synchronized clock and no roster beyond a patch's own neighbors. A patch proposes and checks its update from the data on its own boundary. Whether all of those local checks add up to one global agreement is the question chapter ten answers.
 

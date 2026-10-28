@@ -2960,12 +2960,12 @@
       {
         "byte_count": 3309,
         "path": "code/angular_sprint/runtime/angular_fingerprint_receipt.json",
-        "sha256": "sha256:fca09d962a3e8461d83fa7e946bbfaa6774ae476f94e1987c1097894ff2072bb"
+        "sha256": "sha256:d2c5f3a7322b057d4cbb7a4ca990280729dbbecb79780551e219263dbee475a6"
       },
       {
         "byte_count": 14010,
         "path": "code/angular_sprint/runtime/angular_template_receipt.json",
-        "sha256": "sha256:8dc13db53f53d87b8b8d7a6e896b9fa0c252152d2a355eea3045247dbcfa9d0d"
+        "sha256": "sha256:60ad083a66b0dca3a35debdefc3587f242cd37f9cddaa8072ed23df604cd5f99"
       },
       {
         "byte_count": 12252,
@@ -3123,14 +3123,14 @@
         "sha256": "sha256:a3af2c4f012b366df41e317726d9fbf2db2d2347e27d6152b67c9996acb11f28"
       },
       {
-        "byte_count": 5035,
+        "byte_count": 4968,
         "path": "code/consensus/test_sampling_and_record_boundaries.py",
-        "sha256": "sha256:9a2fffdf0190112ec6b93a573bf124a15cbcde342c9847507dbb6a0bc7d8a455"
+        "sha256": "sha256:a4e6828f1dff3bcd33e52c5e38dbcb33d20680575e16e38dc36c42b0a3617c02"
       },
       {
-        "byte_count": 4825,
+        "byte_count": 5045,
         "path": "code/consensus/test_transport_from_gluing_obstruction.py",
-        "sha256": "sha256:f0e18dfb007c39559d73442110212b2dd8dc02f75b40be9252fa17fc7edc9235"
+        "sha256": "sha256:589ddd78391fd42977576085abbf12cd1e1117398a213cfac1a9bd2dfa76a573"
       },
       {
         "byte_count": 5996,
@@ -4758,7 +4758,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:330e7dcc6b422518eee60297f74d2326e73d291a49ae3aa32610e8a24b31cbcf",
+    "files_sha256": "sha256:7c51d075a14ef4f5f4c81c916892bb30e9b89b1d9318dcde6fa62a2d7c76728d",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7667,7 +7667,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:0d2e9961d5b394fd603b11bd781a2d88b153536ccd2bc546fc1ff00d3e3327fb",
+  "inventory_sha256": "sha256:2473de6efc36a94d4713b49b7be2c645e1df93281dca4f1b5eb2e4c297c522a7",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",

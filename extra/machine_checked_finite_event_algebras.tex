@@ -148,6 +148,12 @@ checked interface: definitions bundled the way Mathlib expects, exact range
 and uniqueness theorems for both expectations, and adapters into existing
 Mathlib results.
 
+Within the OPH theory the library is a tool of the repair-mathematics layer.
+It supplies checked finite event algebras, conditional expectations and
+selective updates for the record and instrument interfaces on which
+agreement repair acts. Its theorems are finite-dimensional mathematics and
+claim nothing about which physical instruments a source process realizes.
+
 Lean declaration identifiers are printed throughout in monospaced type, for
 example \texttt{partitionPinching\_idem}; the underscore is part of the
 identifier. To locate a declaration, search for the exact printed identifier,
@@ -223,7 +229,7 @@ scoped-instance hazards, and workarounds met during construction
 (Section~\ref{sec:mathlib}).
 \end{enumerate}
 
-Two results are outside the current library. No theorem identifies an
+Two results are outside the library. No theorem identifies an
 arbitrary partition with Physlib's spectral partition. There is no rank-one
 classical-representation theorem. The CHSH bounds carry a saturation witness
 (Section~\ref{subsec:saturation}); the witness state and events are declared
@@ -958,12 +964,9 @@ fifteen-module count and scale table.
 
 The executable OPH model has the same boundary. Its diagonal native branch is a
 classical stochastic process and obeys $S\le2$ under independently chosen
-settings and local factorized responses. A replay of the deposited records of
-the Hensen experiment \cite{hensen2015} reproduces $245$ eligible trials, $196$
-wins and $S=2.42250$, with a published fixed-count tail bound near $0.03917$.
-Under that experimental contract the replay rejects the local classical reading
-of the diagonal branch; it leaves the full quantum construction untouched,
-selects no record law, and is formalized by no theorem here \cite{ophbell}.
+settings and local factorized responses; the comparison of that branch with
+the deposited records of the Hensen experiment \cite{hensen2015} belongs to
+the model and is formalized by no theorem here \cite{ophbell}.
 
 \section{An ideal static phase-POVM count fit}
 \label{sec:phase-instrument}
@@ -1228,9 +1231,8 @@ states. A balanced mixer compiled from $34$ source pulses, with one further
 phase pulse for the imaginary quadrature, prepares and detects two conjugate
 phase mixtures with plus probabilities one and zero, where real-only effects
 give one half; the coherent proper-code services it uses are declared
-\cite{ophinterface}. That attachment is a finite-matrix computation that no
-theorem here formalizes, and the phase-sensitive-effect declaration of the
-static model is unchanged.
+\cite{ophinterface}. No theorem here formalizes that computation, and the
+phase-sensitive-effect declaration of the static model is unchanged.
 
 \section{Working over Mathlib: scopes, gaps, and affordances}
 \label{sec:mathlib}

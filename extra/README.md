@@ -2,27 +2,27 @@
 
 The main reading route lives in [`paper/`](../paper/). This directory contains focused TeX papers that develop one mathematical, physical, computational, or interpretive branch in depth. Research notes written in Markdown live in [`docs/research/`](../docs/research/).
 
-## Mathematical Foundations
+The papers sit in one tower over the [executable-model hypothesis](../docs/OPH_EXECUTABLE_HYPOTHESIS.md): a simple, fully specified local repair and memory law on the proposed carrier architecture must admit continuing observers whose records have the observed quantum-field description and a common classical-gravity limit. Each layer proves finite theorems under displayed premises; a conclusion passes to the next layer only when that premise is realized on the same model process. The [completion program](../docs/COMPLETION_PROGRAM.md) lists the layers and the open joins.
 
-The [working terms](../docs/INTERPRETATION_AND_TERMS.md) distinguish the proposed
-complete-history interpretation from repair fixed points, stationary laws and
-local operational time. Mathematical, physical and psychophysical conclusions
-retain their separate premises. An operational observer need not be conscious.
+## Layer 1: repair mathematics
 
-- [Observation-Determined Normal Forms](observable_normal_forms.pdf) ([source](observable_normal_forms.tex), [bibliography](observable_normal_forms.bib)) develops stability, obstructions, and refinement for constraint and rewrite systems.
-- [Verified Projection-Event Calculus in Lean 4](machine_checked_finite_event_algebras.pdf) ([source](machine_checked_finite_event_algebras.tex), [bibliography](machine_checked_finite_event_algebras.bib)) develops the finite event surface.
-- [A Conditional Identification of the Yang–Mills Gap with a Finite Repair Gap](yang_mills_gap_clay_problem.pdf) ([source](yang_mills_gap_clay_problem.tex)) proves a certified relaxation gap for a finite collar-repair generator under a Dobrushin influence bound and tests the transfer receipt that would identify it with the Yang–Mills gap: on \(\mathbb Z_2\) lattice gauge theory the receipt holds in the free limit and fails at every tested interacting coupling. The continuum premises the Clay problem requires stay conditional.
+These two papers are standalone mathematics. They are tools of the layer in which local agreement repair reaches global consistency, and they assume no physical interpretation of their objects.
 
-## Quantitative And Physical Branches
+- [Observation-Determined Normal Forms](observable_normal_forms.pdf) ([source](observable_normal_forms.tex), [bibliography](observable_normal_forms.bib)) proves when a settled state is fixed by protected observations, how stably under refinement, which schedulers and attempt budgets reach it, and when no local repair can construct it.
+- [Verified Projection-Event Calculus in Lean 4](machine_checked_finite_event_algebras.pdf) ([source](machine_checked_finite_event_algebras.tex), [bibliography](machine_checked_finite_event_algebras.bib)) is a Lean library of finite projection events, partition expectations, Lüders updates and CHSH bounds used by the record and instrument interfaces.
 
-- [The Positive-Chamber Koide Identity for Icosahedral Face Circulants](koide_identity_from_positive_c3_face_circulants.pdf) ([source](koide_identity_from_positive_c3_face_circulants.tex)) proves the exact positive-eigenvalue identity \(Q=1/3+(2/3)(|b|/a)^2\) and the conditional finite tracial Gelfand–Naimark–Segal balance. Physical charged-family attachment, phase, and numerical mass ratios are open; the target-informed numerical near-match is diagnostic.
-- [The de Sitter Time-Advance Sign from a Finite Screen with Fixed Capacity](de_sitter_time_advance_sign_from_fixed_screen_capacity.pdf) ([source](de_sitter_time_advance_sign_from_fixed_screen_capacity.tex)) proves the pure-de-Sitter shock normalization, finite entropy maximum, uniform capacity-transfer law, analytic curvature, and line-graph spectrum identity. The time-advance interpretation is conditional on an explicit physical dictionary.
-- [The Fine-Structure Constant as an OPH Pixel Fixed Point](fine_structure_constant_derivation.pdf) ([source](fine_structure_constant_derivation.tex)) develops the interval-certified local closure calculations and independently reconstructs [A. D. Wissner-Gross's entangled-qudit candidate](https://alexwg.org/publications/ChainTheoryAlpha.pdf). The original spectral construction is credited to him; its physical electromagnetic identity and proposed same-cell attachment are conditional.
+The [working terms](../docs/INTERPRETATION_AND_TERMS.md) distinguish the proposed complete-history interpretation from repair fixed points, stationary laws and local operational time. An operational observer need not be conscious.
 
-The string-vacuum selector and the patch-net model of cognition left the
-active set; their sources and last built PDFs are in
-[`paper/archive/`](../paper/archive/), listed in the
-[paper set](../docs/PAPER_SET.md).
+## Layers 5 to 7: conditional physical supplements
+
+These papers carry conditional branches, diagnostics and retrospective comparisons. Each states its hypothesis, what it proves unconditionally, and what the executable model must realize before the physical reading applies. None is a same-process derivation from the executable model.
+
+- [A Conditional Identification of the Yang–Mills Gap with a Finite Repair Gap](yang_mills_gap_clay_problem.pdf) ([source](yang_mills_gap_clay_problem.tex)) supplements the gauge layer. It proves a certified relaxation gap for a finite collar-repair generator under a Dobrushin influence bound and tests the transfer receipt that would identify it with the pure Yang–Mills gap: on \(\mathbb Z_2\) lattice gauge theory the receipt holds in the free limit and fails at every tested interacting coupling. A positive repair gap or finite level spacing is not a physical mass gap, the full theory with a massless photon has no positive global vacuum gap, and the continuum premises a Clay-level construction requires stay conditional.
+- [The Positive-Chamber Koide Identity for Icosahedral Face Circulants](koide_identity_from_positive_c3_face_circulants.pdf) ([source](koide_identity_from_positive_c3_face_circulants.tex)) supplements the matter layer. It proves the exact positive-eigenvalue identity \(Q=1/3+(2/3)(|b|/a)^2\) and the conditional finite tracial Gelfand–Naimark–Segal balance. The balance that gives Koide's \(2/3\) is a premise read from the measured charged-lepton triple, the phase is supplied, and the physical charged-family attachment is unconstructed; the tau-mass window is a conditional postdiction under a registered decision rule.
+- [The de Sitter Time-Advance Sign from a Finite Screen with Fixed Capacity](de_sitter_time_advance_sign_from_fixed_screen_capacity.pdf) ([source](de_sitter_time_advance_sign_from_fixed_screen_capacity.tex)) supplements the gravity and cosmology layers. It proves the pure de Sitter shock normalization, the finite entropy maximum, the uniform capacity-transfer law, the analytic curvature and the line-graph spectrum identity. The time-advance sign and the fixed-capacity equation of state are conditional on fixed screen capacity and an explicit horizon-area dictionary that the executable model must realize.
+- [The Fine-Structure Constant as an OPH Pixel Fixed Point](fine_structure_constant_derivation.pdf) ([source](fine_structure_constant_derivation.tex)) is a conditional layer-seven diagnostic. Two declared closure maps have interval-certified fixed points; they use declared closure coordinates, a gauge-running convention and a supplied charged spectrum, and with the measured hadronic spectral input in place of the screening ansatz the endpoint excludes the measured value. The paper also reconstructs [A. D. Wissner-Gross's entangled-qudit candidate](https://alexwg.org/publications/ChainTheoryAlpha.pdf). The original spectral construction is credited to him; its physical electromagnetic identity and proposed same-cell attachment are conditional.
+
+Archived manuscripts, including the string-vacuum selector and the patch-net model of cognition, are kept with their last built PDFs in [`paper/archive/`](../paper/archive/) and listed in the [paper set](../docs/PAPER_SET.md).
 
 All root-level TeX papers in this directory can be rebuilt from the repository root with:
 

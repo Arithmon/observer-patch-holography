@@ -2,7 +2,7 @@
 
 What is not in the record is not in the world. Continental procedure keeps the sentence as a maxim, in Latin, quod non est in actis, non est in mundo, and a courtroom is a machine for living by it.
 
-A trial does not ask what is inside a witness's head, partly because there is no instrument for getting at it and partly because the contents turn out to depend on how you ask. What a trial produces instead is a record: the words actually spoken in the room, written down as they are spoken by somebody employed to write down words. Exhibits go into it. Private recollection does not, and neither does anything a juror happens to know from outside.
+A trial does not ask what is inside a witness's head, partly because there is no instrument for getting at it and partly because the contents turn out to depend on how you ask. What a trial produces instead is a record: the words actually spoken in the room, written down as they are spoken by a court reporter. Exhibits go into it. Private recollection does not, and neither does anything a juror happens to know from outside.
 
 The record is a physical object made by a person under load. The Registered Professional Reporter certification, from the National Court Reporters Association, requires taking down two speakers at 225 words a minute with 95 percent accuracy, on a keyboard with 22 keys, which is fewer keys than there are letters and is the reason the output is phonetic rather than alphabetical. Everything a court later does with the case runs through what came off those 22 keys.
 
@@ -74,7 +74,7 @@ The check is a procedure with a four-line specification. Take any state at all, 
 
 The third demand is the one doing the work, and the one an ordinary repair procedure fails. Returning the same answer for two states with the same record forbids the procedure from consulting anything the record does not contain, including which state it was handed and which repairs it happened to run. Hand it an ambiguous reading and no procedure meets all four, because the third requires one answer and the second requires two.
 
-Bottom is a proof that the fiber is empty, which is not what a search reports when it runs out of patience. On the twelve-patch net you can hold the proof in your hand. Add up the entries around each of the nineteen loops in the arithmetic where one and one make zero. Two of the sums come out one. A loop summing to one demands that some coin differ from itself. Nineteen sums settle four thousand and ninety-six settings without a coin being set, and they name the two loops the obstruction sits in, which no amount of running through the settings would.
+Bottom is a proof that the fiber is empty, which a search that stops without finding anything does not supply. On the twelve-patch net you can hold the proof in your hand. Add up the entries around each of the nineteen loops in the arithmetic where one and one make zero. Two of the sums come out one. A loop summing to one demands that some coin differ from itself. Nineteen sums settle four thousand and ninety-six settings without a coin being set, and they name the two loops the obstruction sits in, which no amount of running through the settings would.
 
 A normal form in chapter nine's sense was what a process stops at, which made it a statement about the process. This one is a statement about the reading: the settled state is determined by the record rather than by the path, so it is an **observation-determined normal form**. Two observers who agree on the record agree on the world. They can be handed the record by anybody, in any order, having watched none of the repairs.
 
@@ -136,6 +136,6 @@ There is no single endpoint that the whole thing is heading toward. The terminal
 
 Which is the whole of what a jury does. It is handed a record it did not choose. The verdict follows from the record. Hand it a different record and a different verdict follows, with no less force. Twelve people, one transcript, and a verdict that belongs to the transcript rather than to any of them.
 
-So look at what the settled world is made of. Thirty entries, each one a comparison between two patches, none of them a property of either patch on its own. The coins were the things in this world, in the sense that they were what the patches actually held, and the coins are the part that came out in the wash: two settings of them produce every entry identically, and the answer is stated about the pair rather than about either member.
+So look at what the settled world is made of. Thirty entries, each one a comparison between two patches, none of them a property of either patch on its own. The coins were the things in this world, in the sense that they were what the patches actually held, and the coins are the part that dropped out: two settings of them produce every entry identically, and the answer is stated about the pair rather than about either member.
 
 Thirty entries survived the procedure. Twelve coins did not appear anywhere in the answer. The record map never once returned a coin.

@@ -8,94 +8,95 @@
 # here resolves to a tracked source.
 
 shared_fragments:
-  paper/tex_fragments/PAPER.tex:
-    role: recovered-core section shared by two derivation papers
+  paper/tex_fragments/EXECUTABLE_COMPLETION_HYPOTHESIS.tex:
+    role: shared tower panel stating the executable-model hypothesis, the tower layers and the stopping rules
     included_by:
+      - from_observer_consensus_to_standard_physics
+      - executable_observer_construction
+      - reality_as_consensus_protocol
+      - observers_are_all_you_need
       - recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency
       - deriving_standard_model_gauge_structure_from_observer_overlap_consistency
-    branch_switches:
-      - OPHEinsteinDerivationPaper
-      - OPHStandardModelDerivationPaper
+      - deriving_the_particle_zoo_from_observer_consistency
+      - screen_microphysics_and_observer_synchronization
+  paper/tex_fragments/PAPER.tex:
+    role: recovered-core section and Einstein chain of the spacetime paper
+    included_by:
+      - recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency
     name_cited_under_pins:
       - code/a5_closure manifests
       - one frozen custody record
 
 papers:
   executable_observer_construction:
-    role: construction paper for the executable observer
+    role: tower layers 2-4 as executed on one process
     lead_material:
-      - completion target and acceptance criteria
-      - specification of carrier, native repair law, observer algebra, services and closure inputs
-      - certified finite observer, field detectors and common interacting source
-      - premise map, retained audit controls and open connections
+      - the executable-model hypothesis at the level a finite execution tests
+      - specification of carrier, native repair law, memory, observer algebra, services and scheduler
+      - executed finite observer, fields and clocks on one process
+      - premise map, negative controls, and the ordered joins with acceptance and stopping tests
     detailed_status_home:
       - exact results and boundaries of each executed component
       - discharged versus supplied theorem antecedents
     avoid_repeating:
       - long proofs of the theorem library
-      - the informal account and closure discussion of the flagship synthesis
+      - the informal account of the flagship synthesis
 
   observers_are_all_you_need:
-    role: theorem library for observers, records and the closure equations
+    role: tower layer 3, observers, records and the closure equations
     lead_material:
-      - informal OPH picture
-      - premises A1-A3 and the closure hypothesis in words
-      - pixel ratio P and calibrated capacity N_scr with N_patch distinction
-      - lane-level result map
+      - observers as continuing native processes with records and feedback
+      - quantum and thermodynamic identities from that observer structure
+      - closure equations for P and N
     detailed_status_home:
-      - late cross-lane theorem boundary
-      - companion-paper map for the complete Einstein and gauge derivations
+      - observer-layer theorems and their premises
     avoid_repeating:
-      - complete Einstein and Standard Model gauge derivation chains
-      - full per-sector particle tables
-      - full specialist-paper dependency DAGs
-      - microphysics packet-level engineering details
+      - Einstein and gauge derivation chains
+      - particle mass analysis
 
   recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency:
-    role: complete observer-spacetime and Einstein derivation
+    role: tower layers 4 and 6, clocks, causal order, geometry and the Einstein implication
     lead_material:
-      - recovered-core premises A1-A3 and theorem inputs
-      - celestial screen and observer-frame reconstruction
-      - source-derived causal poset and ambient 1+3 carrier, physical-continuum certificate,
-        stress, generalized-entropy, and Einstein chain
+      - Einstein dynamics as the coarse response of the same process
+      - source-derived causal order and count clocks
+      - the null-balance and tensor-completion implication and its realization premises G1-G6
     detailed_status_home:
-      - finite, analytic, scaling, and physical premise boundaries
+      - finite, analytic, scaling and physical premise boundaries
+      - static radial product null-balance failure
     avoid_repeating:
-      - full synthesis lane inventory
-      - detailed particle continuation numerics
+      - gauge reconstruction
+      - particle mass analysis
 
   deriving_standard_model_gauge_structure_from_observer_overlap_consistency:
-    role: complete Standard Model gauge reconstruction
+    role: tower layer 5, gauge half
     lead_material:
-      - categorical edge-sector and Tannaka route
-      - incidence and target-blind finite-current route
+      - gauge structure as overlap transport
+      - compact Lie type of the complete response under its premises
       - conditional matter image and global-form boundary
     detailed_status_home:
       - both gauge proof routes and their identification boundary
-      - finite representation-menu scope and source-completeness boundary
     avoid_repeating:
       - Einstein derivation chain
-      - detailed particle continuation numerics
+      - particle mass analysis
 
   deriving_the_particle_zoo_from_observer_consistency:
-    role: particle-sector derivation and per-sector audit
+    role: tower layer 5, matter half
     lead_material:
-      - P-driven particle reconstruction
-      - structural carriers
-      - electroweak, Higgs/top, quark, charged-lepton, neutrino, and hadron lanes
+      - stable massive matter as localized topological defects of native overlap transport
+      - holonomy-frustration seed and native topology facts
+      - native decision test and mass-from-maintenance obstructions
     detailed_status_home:
-      - particle claim-tier tables
-      - exact-output and execution-boundary sections
+      - defect criteria and open joins with stopping tests
     avoid_repeating:
-      - full recovered-core proof ledger
-      - screen-microphysics packet construction
+      - gauge classification proofs
+      - target-informed calibrations presented as derivations
 
   reality_as_consensus_protocol:
-    role: fixed-cutoff consensus and quotient-normal-form theorem surface
+    role: tower layer 1, the mathematics of local agreement repair
     lead_material:
-      - finite patch-net repair
-      - defect hierarchy
-      - quotient confluence
+      - finite patch-net repair and quotient confluence
+      - holonomy frustration as the residue local repair cannot remove
+      - implementation hiding as the seed of the gauge layer
     detailed_status_home:
       - fixed-cutoff theorem and non-universality boundary
     avoid_repeating:
@@ -103,18 +104,16 @@ papers:
       - Lorentz and Einstein proof details
 
   screen_microphysics_and_observer_synchronization:
-    role: federated patch-carrier implementation and observer-record surface
+    role: tower layer 2, the carrier architecture
     lead_material:
-      - echosahedral multi-port patch carriers
-      - toroidal local recurrence
-      - fixed-cutoff records, Born-Luders rules, Bell/CHSH surface, and checkpoint restoration
-      - public hardware evidence rule
+      - twelve-port icosahedral carriers and the native seam rule
+      - record laws, rank-three slow-response band, federation and routing
+      - carrier transport and the defect obligation
     detailed_status_home:
-      - claim taxonomy, public evidence rule, validation program, and theorem-package sections
+      - carrier spectra, central records and synchronization theorems
     avoid_repeating:
       - Standard Model dependency checklist
-      - full particle claim-tier audit
-      - hidden or private hardware evidence
+      - particle mass analysis
 
 focused_papers:
   de_sitter_time_advance_sign_from_fixed_screen_capacity:
@@ -145,7 +144,7 @@ focused_papers:
     detailed_status_home:
       - physical family-attachment boundary
       - open phase and numerical mass ratios
-      - historically target-informed numerical diagnostic
+      - target-informed numerical diagnostic
       - W5 residual-stabilizer nonpredictivity
     avoid_repeating:
       - physical charged-lepton prediction language

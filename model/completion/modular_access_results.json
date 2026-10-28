@@ -4,9 +4,11 @@
     "This excludes implementing the stated nontrivial modular action on the fixed source-basis full support algebra of these two references using the frozen operational grammar.",
     "The real pair probe tests an all-input map on that algebra; it is not claimed to be preparable by the admitted diagonal-input native grammar.",
     "PauliY is a mathematical trace-distance witness, not an executed or admitted native detector.",
+    "The 1/2 bound compares normalized outputs; an unnormalized success branch of probability p contributes a p/2 bound when its success flag is retained.",
     "On the accessible commutative record algebra the modular automorphism flow is trivial; the result does not rule out its identity implementation.",
     "A new complex phase resource, a different quantum encoding, additional coherent registers, different reference/algebra, or carrier refinement changes the tested contract and is not excluded here.",
     "Supplied joint ancillary states must be real; individually real marginals would not suffice if they conceal complex joint correlations.",
+    "A supplied non-real encoder or decoder is also outside the declared native implementation grammar.",
     "This is not a no-go for every modular-clock construction, a physical clock calibration, or the broader executable hypothesis."
   ],
   "campaign": {
@@ -221,7 +223,7 @@
   "source_sha256": {
     "model/common_source/native_defect_decision.py": "d3c9293c3494b104f3a0926d088377984ec296f127bf29b60bb7d4a7cde81373",
     "model/completion/adaptive_reference.py": "b7acada7572f55c81fa8754658d3f7d592ee007dc38d2a421ba6d19de8247804",
-    "model/completion/modular_access.py": "c02cad9e4b131aeffeb4170d4d4b52c2c1782f6b1b5b8033104f0383d6a58e32",
+    "model/completion/modular_access.py": "8a5cfc4d77b697deab832507e8dbf216c768ed27ac08673d3169822cb93af9d9",
     "model/completion/observer.py": "eb5eed38e765996f62a4900557bac2061e0c0c8b696e143948bc071e02ef1d18",
     "model/completion/observer_reference.py": "524570bd381505b18e32cea14b7cca5c16239641da6cc0567724cd535afaea9c",
     "model/completion/stationary_reference.py": "e46bad71aea43212f86bd59de547e38c2306783f8d8cc3a8e7620888d2613f6b",

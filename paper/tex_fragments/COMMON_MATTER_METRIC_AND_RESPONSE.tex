@@ -1,12 +1,13 @@
 \section{A common matter metric and its gravitational response}
 \label{sec:common-matter-metric-response}
 
-The counts, ranks and identities quoted in this section are retained in the
-receipts of the matter and common-field contracts,
-\path{model/observer_particles/results/}.
-
-The conditional scalar description supplies a concrete dictionary for
-comparing matter and geometry. Write its four-dimensional coefficient density
+This section is the interface of the executed construction with the
+gravitational layer of the tower. The conditional scalar description supplies
+a concrete dictionary for comparing matter and geometry, and the same
+dictionary yields the static-product control that any responsive geometry
+must overcome. The counts, ranks and identities quoted here are retained in
+the receipts of the matter and common-field contracts of the public
+repository. Write its four-dimensional coefficient density
 and metric as
 \[
  C=\mu\operatorname{diag}(-1,1,a),\qquad
@@ -107,6 +108,7 @@ and which records enter its bulk term.
 \subsection{A fixed-product obstruction and a necessary dynamic response}
 
 \begin{proposition}[Radial null response of the static product]
+\label{prop:static-product}
 For a smooth metric
 \[
  g=f(x,y)\operatorname{diag}(-1,1,h(x,y)),\qquad f>0,
@@ -163,9 +165,9 @@ or a solution of the full Einstein system. The alternative finite
 nine-null theorem also requires its independent balances; a pointwise
 tetrad map alone does not supply them.
 
-The exact block, null-stress and focusing algebra is formalized in
-\path{Lean/Screen/ObserverFieldInterfaces.lean}. Specific source matrices,
-curvature identities, complete finite records and approximation controls are
-executed in \path{model/observer_particles/}. Their conditional realization
-does not establish observed Standard Model masses or generalized-entropy
-stationarity on a physical refinement family.
+The exact block, null-stress and focusing algebra is formalized in the Lean
+library of the public repository, and the source matrices, curvature
+identities, complete finite records and approximation controls are executed
+with the observer-particle model. Their conditional realization establishes
+neither observed Standard Model masses nor generalized-entropy stationarity
+on a physical refinement family.

@@ -102,9 +102,9 @@ declared inputs.
 ## The paper set
 
 - The [flagship synthesis](../flagship/from_observer_consensus_to_standard_physics.tex)
-  gives the account, develops selected results and states the closure
-  hypothesis in full.
+  gives the account, states the closure and executable-model hypotheses and
+  walks through the tower of results layer by layer.
 - The [executable observer paper](../paper/executable_observer_construction.tex)
-  states the specification, its acceptance criteria, its certified components
-  and the premise map.
+  states the specification, the executed components and the ordered joins
+  that remain.
 - The theorem library holds the long proofs: consensus, observers and records, gauge structure, matter, screen microphysics, and spacetime with Einstein dynamics.

@@ -1,7 +1,6 @@
 \paragraph{Finite covariant-net consequences and limitations.}
 The finite observer net determines a category of event regions and causal
-embeddings together with a covariant observable functor
-(\path{Lean/QFT/LocallyCovariantLimit.lean}).  Its causal embeddings are
+embeddings together with a covariant observable functor~\cite{ophrepo}.  Its causal embeddings are
 proof-only order data, so the category is thin and carries no Lorentzian
 geometry.  In particular, these carriers provide no region reflection,
 antiunitary conjugation, distinguished vacuum, spin structure, symmetry-group
@@ -9,8 +8,8 @@ action, Lorentzian Cauchy-embedding class, translation action, or spectrum condi
 Consequently they lack the data needed to formulate CPT, spin--statistics,
 relative-Cauchy
 stress response, or Haag--Ruelle scattering.  These are limitations of the
-mathematical carrier, not negative theorems about QFTs built from richer data
-(\path{Lean/QFT/InheritanceMatrix.lean}).
+mathematical carrier, not negative theorems about QFTs built from richer
+data.
 
 The same module encodes seven structural questions and kernel-checks their
 partition by mathematical conclusion.  Four of them (CPT, spin--statistics,
@@ -24,8 +23,7 @@ statement about what follows from the specified carrier.
 
 The finite sector theorem has a narrower exact content.  Every bijective
 localized endomorphism of the witness net is inner and hence equivalent to the
-identity under the declared finite equivalence relation
-(\path{Lean/QFT/SectorInheritance.lean}).  This does not constitute DHR
+identity under the declared finite equivalence relation.  This does not constitute DHR
 reconstruction: the carrier supplies no source-selected vacuum
 representation, quasi-local net, transportability structure, or reconstructed
 gauge group.  The selected tower states nevertheless induce mathematical GNS
@@ -44,25 +42,12 @@ identity.  On the constructed example net, however, every functional is KMS
 for every grading-preserving flow at every complex time, while every
 pointwise-continuous group of star automorphisms of the public record
 algebra is the identity, a statement that leaves continuous row-stochastic
-public semigroups untouched
-(\path{Lean/QFT/StructuralInheritance.lean}).  The finite Gibbs identity
+public semigroups untouched.  The finite Gibbs identity
 therefore does not establish thermality of the observer net.
-
-The one-step transport interface and common triple-observer carrier below
-give exact finite evolution and marginal identities
-(\path{Lean/QFT/PathTimeSliceInterface.lean};
-\path{Lean/QFT/TripleCarrierJoin.lean}). The full operator embeddings on the
-same carrier share an exact noncommutative hinge and intertwine all 31
-adjacent source-row permutations; ordered products give coherent finite
-interval transport (\path{Lean/QFT/TripleCarrierOperatorJoin.lean}). These
-are supplied tensor and path-read adapters. They carry no Cauchy geometry,
-physical time, source-selected quantum dynamics or state-preserving
-tower/refinement morphism, and imply neither a relative-Cauchy stress
-response nor a physical time-slice theorem.
 
 Natural powers give one exact constraint on a fixed-cutoff scattering
 construction: in every Hausdorff topological group, $g^n\to a$ forces
-$g=1$ (\path{Lean/QFT/FiniteUnitaryScatteringNoGo.lean}).  Hence a nontrivial exact
+$g=1$.  Hence a nontrivial exact
 unitary update at fixed finite cutoff cannot itself settle to an ordinary
 matrix-topology large-time limit.  The same module proves
 $(g^n)^{-1}g^n=1$, so relative evolution can converge even when the individual

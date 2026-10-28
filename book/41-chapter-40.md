@@ -2,7 +2,7 @@
 
 The first big interdisciplinary conference on consciousness was organized by an anesthesiologist.
 
-Stuart Hameroff worked in anesthesia at the University of Arizona Medical Center, and in April 1994 he convened a meeting in Tucson called Toward a Scientific Basis for Consciousness, which put philosophers, neuroscientists and psychologists in the same rooms for a week. He spent his working days putting patients under and waking them again. The meeting was about what consciousness is.
+Stuart Hameroff worked in anesthesia at the University of Arizona Medical Center, and in April 1994 he convened a meeting in Tucson called Toward a Scientific Basis for Consciousness, which put philosophers, neuroscientists and psychologists in the same rooms for a week. He spent his working days putting patients under and waking them again.
 
 The talk people were repeating in the corridors came from a philosopher a year out of his doctorate, holding a fellowship in a philosophy, neuroscience and psychology program at Washington University in St. Louis. David Chalmers opened by splitting the subject in two. The split was a list.
 
@@ -24,7 +24,7 @@ Chalmers put the sharpest form of the first question two years later, in a book 
 
 The argument runs three lines. Such a creature is conceivable, and Chalmers set the standard in those words: it certainly seems that a coherent situation is described, and I can discern no contradiction in the description. Whatever is conceivable in that sense is possible. And if a world physically identical to this one can lack experience, then experience is something over and above the physical facts, and physics by itself does not reach it.
 
-The twin writes the paper about zombies. It sits down, works through the conceivability argument, publishes it in a journal and answers the objections. There is nothing it is like to be the author. Chalmers grants that without flinching, because the twin does everything he does.
+The twin writes the paper about zombies. It sits down, works through the conceivability argument, publishes it in a journal and answers the objections. There is nothing it is like to be the author. Chalmers grants that, because the twin does everything he does.
 
 The zombie argument keeps the entire physical organization, every register and every causal dependency, and removes experience. An identity theory rejects the separation outright: if experience is a kind of physical organization, a duplicate of the organization is a duplicate of the experience. That is the position this chapter takes.
 
@@ -70,7 +70,7 @@ Owned, because the capacity being spent belongs to the observer and comes out of
 
 That sentence is a claim about experience, laid on top of the definition of an observer. A thermostat's bounded feedback is a long way from a person's organization, and the distance depends on how the self-reading is organized as well as on how much of it there is.
 
-Which cells implement which coordinate, why activity in one part of the visual cortex reads as color while activity a few centimeters away reads as motion, what a stroke takes away when it takes a coordinate away, how many coordinates a mouse reads on itself, and at which point in an anesthesiologist's induction a person stops reading any, are questions for people with electrodes and scanners.
+Which cells implement which coordinate, why activity in one part of the visual cortex reads as color while activity a few centimeters away reads as motion, what a stroke takes away when it takes a coordinate away, how many coordinates a mouse reads on itself, and at which point in an anesthesiologist's induction a person stops reading any, are experimental questions.
 
 A coordinate the public record leaves out cannot be recovered from that record when its fiber holds different values. A different intervention or a richer interface can learn more, and learning about an episode is a different thing from undergoing it.
 

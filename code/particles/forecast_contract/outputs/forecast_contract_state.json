@@ -334,15 +334,15 @@
   {
    "classification": "ACTIVE_REGISTER_ROW__REGISTERED_PENDING_FREEZE",
    "forecast_use": "Use only under the live registered comparison protocol: no comparison protocol is frozen",
-   "owning_issue": 1025,
+   "owning_issue": 1147,
    "registry_kind": "active_register",
    "registry_status": "registered_pending_freeze",
    "surface": "FZ-03"
   },
   {
    "classification": "ACTIVE_REGISTER_ROW__REGISTERED_PENDING_FREEZE",
-   "forecast_use": "Use only under the live registered comparison protocol: No cosmological comparison is registered. The bounded counterfamily consumes no target and remains outside scoring. A source-positive direct capacity requires the universal complete-source membership and executable-to-Lean bridge, the inhabited common Einstein/de Sitter tower and horizon-record attachment, and final physical integration, all owned by #1026 (historical lanes #736 and #729, closed). Issue #1025 must register the exposure-typed scientific comparison contract before any new data are examined. The public cosmological value predates this campaign, so any such comparison is retrospective.",
-   "owning_issue": 1025,
+   "forecast_use": "Use only under the live registered comparison protocol: No cosmological comparison is registered. The bounded counterfamily consumes no target and remains outside scoring. A source-positive direct capacity requires the universal complete-source membership and executable-to-Lean bridge, the inhabited common Einstein/de Sitter tower and horizon-record attachment, and final physical integration, all owned by #1134 (historical lanes #736 and #729, closed). Issue #1147 must register the exposure-typed scientific comparison contract before any new data are examined. The public cosmological value predates this campaign, so any such comparison is retrospective.",
+   "owning_issue": 1147,
    "registry_kind": "active_register",
    "registry_status": "registered_pending_freeze",
    "surface": "FZ-05"
@@ -414,7 +414,7 @@
   {
    "classification": "ACTIVE_REGISTER_ROW__REGISTERED_PENDING_FREEZE",
    "forecast_use": "Use only under the live registered comparison protocol: no comparison protocol is frozen; the draft is not anchorable until a source-derived transition, common strain/readout likelihood or sufficient likelihood product, detector-frame nuisance convention using M_det=(1+z)M_source for observed hertz, normalized pre-data integer prior or explicit finite submodel, event list and cuts, selection and trials model, spin-dependent Page/greybody normalization, no-comb reference, and estimator convergence receipt exist. Published posterior samples alone are not a likelihood or evidence. Events published after a future anchoring are the only eligible class; GW150914 and GW250114 remain seen audit-only data. The FZ-01 erratum's registration obligation remains open and nothing of FZ-01 or FZ-06 is altered",
-   "owning_issue": 1025,
+   "owning_issue": 1147,
    "registry_kind": "active_register",
    "registry_status": "registered_pending_freeze",
    "surface": "FZ-14"
@@ -481,7 +481,7 @@
   "candidate_inventory_sha256": "sha256:12c8a569a92f265f0b033a9df4b20fa59adce6c05b8d63d918e81ce553731752",
   "contract_schema_sha256": "sha256:518ca92a84a073f25f0e967e8b4cedf92f7243d56d6c9e10c958cbe9a460ae62",
   "forecast_freeze_policy_sha256": "sha256:ae9508d362de40dec25c2935d96606ce3cb4d9d7d40f255b6c00576abeb9b2c5",
-  "frozen_prediction_register_sha256": "sha256:c5c5a504cc131ad5645c01f9e7d8cacc7bda055a0e786fdbeadfa66359ca19df",
+  "frozen_prediction_register_sha256": "sha256:11bff1e460104d12f344a8ad8c409f5e040fdd18605a806b58c00cff19159980",
   "module_sha256": "sha256:27cf76a626733e58c5246d13d87cb8ce0904b954f63887fd03d7c73399441a35"
  },
  "potential_upgrade_routes": {
@@ -505,5 +505,5 @@
   "rule": "This C1 draft orders its static seed rows by candidate_class, integer selection_priority, and candidate_id. It is not the C3 ranking contract. Before any C3 candidate generation or evaluation, a successor policy must pin the complete issue-647 grammar, numerical weights, eligibility, tie breaker, skip policy, exposure class, direct-N non-reentry rule, and campaign-wide one-comparison stop.",
   "status": "DRAFT_UNFROZEN"
  },
- "state_sha256": "sha256:486055d66577a02ef4d2ce70e419640a3ca483e3614166f8fb986f205d8de35b"
+ "state_sha256": "sha256:ac91312d702f4ab5e2a796fdb15510e9ddc5e8d318a61d88e6da08b0042acb99"
 }

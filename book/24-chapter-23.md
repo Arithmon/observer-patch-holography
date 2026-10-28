@@ -2,7 +2,7 @@
 
 A solid-state drive has no moving parts, and it gets warm while it is being written to. Most of that warmth is ordinary electrical loss, and engineers shave it down every year. Underneath it sits a floor that no engineering removes, in any machine anybody has built.
 
-The first limit of that kind turned up in steam. In 1824 a French military engineer of twenty-eight paid a Paris publisher named Bachelier to print six hundred copies of a book about steam engines, and then waited for a scientific community that did not read it. Sadi Carnot's *Reflections on the Motive Power of Fire* runs to a hundred and eighteen pages and asks the question every engine builder in Europe wanted answered, which is how much work you can get out of a fire.
+The first limit of that kind turned up in steam. In 1824 a French military engineer of twenty-eight paid a Paris publisher named Bachelier to print six hundred copies of a book about steam engines, which the scientific community of the time did not read. Sadi Carnot's *Reflections on the Motive Power of Fire* runs to a hundred and eighteen pages and asks the question every engine builder in Europe wanted answered, which is how much work you can get out of a fire.
 
 His answer has no pistons in it. The most work any engine whatever can deliver, per unit of heat it swallows, is fixed by two numbers: the temperature of the thing it takes the heat from and the temperature of the thing it dumps the remainder into.
 
@@ -14,17 +14,17 @@ Carnot got that while believing heat was a weightless fluid called caloric, whic
 
 Cholera reached Paris in the spring of 1832 and killed something near twenty thousand people in the city that year. Carnot caught it on 24 August and was dead within the day, at thirty-six. His belongings were burned as a precaution against contagion, and nearly all of his papers went with them. What survived was a set of working notes his brother Hippolyte published in 1878, in which the fluid had been quietly dropped.
 
-Look at what the surviving formula says. An engine's ceiling depends on the temperatures and on nothing else. That is a peculiar thing for a fact about brass and steam to be. Chapter twenty-one reached the same quantity from the other end, out of an algebra and a state, with no furnace anywhere in the argument. So what is a temperature a count of, and what is the floor under the warm drive made of?
+Look at what the surviving formula says. An engine's ceiling depends on the temperatures and on nothing else. Chapter twenty-one reached the same quantity from the other end, out of an algebra and a state, with no furnace anywhere in the argument. So what is a temperature a count of, and what is the floor under the warm drive made of?
 
 ## The doorkeeper
 
-On 11 December 1867 James Clerk Maxwell wrote to Peter Guthrie Tait describing a way to break the second law of thermodynamics using a very small employee.
+On 11 December 1867 James Clerk Maxwell wrote to Peter Guthrie Tait describing a way to break the second law of thermodynamics using a hypothetical being.
 
 Take a box of gas at one uniform temperature, divide it with a wall, and put a door in the wall. Temperature is an average: some molecules in there are moving fast and some slow. Station a being at the door with good eyes and a light touch. When a fast molecule approaches from the left, it opens the door and lets it through to the right. When a slow one approaches from the right, it opens the door and lets it through to the left. The door is weightless and frictionless, so opening and closing it costs nothing.
 
 Wait. The right side heats up and the left side cools down, out of a box that started uniform. Then run Carnot's engine off the difference, and run it again, forever, in a box that nobody has done any work on.
 
-Maxwell called his employee a finite being and later grumbled that it was really more of a valve. William Thomson named it a demon in *Nature* in 1874, meaning the word in its Greek sense, a spirit working quietly in the background.
+Maxwell called it a finite being and later wrote that it was really a valve. William Thomson named it a demon in *Nature* in 1874, meaning the word in its Greek sense, a spirit working quietly in the background.
 
 The demon survived every attempt to kill it for sixty-two years, because every attempt went looking in the wrong place. People examined the door, the hinges, the light the demon needed to see by. Leo Szilard moved the search in 1929, in a paper in *Zeitschrift für Physik* whose title says where he was looking: on the decrease of entropy in a thermodynamic system by the intervention of intelligent beings. He stripped the gas down to a single molecule in a box, with a partition dropped in the middle. The demon looks, records which side the molecule is on, and uses that one recorded fact to let the molecule push the partition outward and lift a weight. The work per cycle comes out as the temperature times the logarithm of two, out of a box at one temperature, from one bit of recorded information.
 
@@ -34,18 +34,18 @@ $$E \geq k_B T \ln 2$$
 
 E is the energy released as heat when one bit is erased, T is the temperature of the surroundings the erasing device sits in, and the constant converts a temperature in kelvin into an energy in joules. The logarithm of two is chapter sixteen's one question, the one you ask to tell two possibilities apart.
 
-Put a room temperature into it, three hundred kelvin, and the bill for erasing one bit comes to 2.87 divided by ten to the twenty-first, in joules. A single photon of green light at a wavelength of 550 nanometers carries 3.61 divided by ten to the nineteenth, in joules, which is enough to pay off about a hundred and twenty-six bits.
+Put a room temperature into it, three hundred kelvin, and the bill for erasing one bit comes to 2.87 divided by ten to the twenty-first, in joules. A single photon of green light at a wavelength of 550 nanometers carries 3.61 divided by ten to the nineteenth, in joules, which is enough energy to erase about a hundred and twenty-six bits.
 
 Charles Bennett finished the demon in a review of the thermodynamics of computation in
 1982. The demon's memory is finite. It can run a few cycles free, filling that memory with
 records of which side each molecule was on, and then it is full, and to take another
 measurement it has to clear space. Clearing the space costs at least the temperature times the logarithm of two per bit, which is everything the molecule paid it. The demon was never
-an engine. It was a machine borrowing against its own memory. The loan came due at the
-same rate every time.
+an engine. It was a machine borrowing against its own memory, and clearing that memory cost the
+same every cycle.
 
 Antoine Bérut and colleagues put the number on a bench in 2012 and published it in *Nature*. A silica bead about two micrometers across, held in an optical trap shaped into two wells, one well for zero and one for one. Push the bead into a known well and you have erased a bit. Measure the heat that leaves. As the erasure cycles were slowed down, the mean heat per erasure came down onto that value and did not go below it.
 
-Chapter three listed three requirements for anything that counts as an observer, said that writing a record costs energy, and left the price standing as a bill. That is the price.
+Chapter three listed three requirements for anything that counts as an observer, said that writing a record costs energy, and left the price unstated. That is the price.
 
 ## Four laws, numbered out of order
 
@@ -63,7 +63,7 @@ The second law arrived in chapter sixteen, in a laboratory in Canberra with a la
 
 The third law is the one popular accounts skip. Walther Nernst put it to the Göttingen Academy in December 1905: as a system is cooled toward absolute zero, its entropy approaches a fixed floor. The floor is set by how many arrangements the system has at its lowest energy. One such arrangement and the floor is zero. Many, and it is the logarithm of how many, and sits there down to the last fraction of a degree.
 
-Ordinary ice does this. Each oxygen atom in ice has four hydrogens near it, two close and two further off, and there are many ways to satisfy that rule across a whole crystal without ever violating it locally, which is chapter six's triangle of frustrated neighbors wearing a different mineral. Linus Pauling counted the arrangements in 1935 and got a floor of 0.805 calories per degree per mole. William Giauque and J. W. Stout measured the heat capacity of ice down to fifteen degrees above absolute zero and reported 0.82, give or take 0.05, in a paper of 1936. That is 3.4 joules per kelvin per mole of entropy that stays in a block of ice at the bottom of the temperature scale.
+Ordinary ice does this. Each oxygen atom in ice has four hydrogens near it, two close and two further off, and there are many ways to satisfy that rule across a whole crystal without ever violating it locally, the same kind of frustration as chapter six's triangle of neighbors. Linus Pauling counted the arrangements in 1935 and got a floor of 0.805 calories per degree per mole. William Giauque and J. W. Stout measured the heat capacity of ice down to fifteen degrees above absolute zero and reported 0.82, give or take 0.05, in a paper of 1936. That is 3.4 joules per kelvin per mole of entropy that stays in a block of ice at the bottom of the temperature scale.
 
 The other half of the third law is a prohibition. You cannot reach absolute zero in a finite number of steps, however good your refrigerator, because each step takes a fraction of what is left rather than a fixed amount. A sodium gas at the Massachusetts Institute of Technology was cooled in 2003 to 450 picokelvin, give or take 80, which is four hundred and fifty trillionths of a degree above a floor nobody reaches.
 
@@ -97,7 +97,7 @@ Chapter sixteen's detailed fluctuation relation leans on one extra condition: me
 
 The second law does not need it. The cheapest way to see that is a machine with three states and a permanent circulation in it.
 
-Label three states one, two and three. From each state, the rule is: stay where you are with probability one half, or step clockwise to the next state with probability one half. There is no counterclockwise move at all. Nothing in this machine can go from state two to state one, ever, except the long way through state three, which takes four steps on average.
+Label three states one, two and three. From each state, the rule is: stay where you are with probability one half, or step clockwise to the next state with probability one half. There is no counterclockwise move at all. Nothing in this machine can go from state two to state one except the long way through state three, which takes four steps on average.
 
 Check what it does to the flat description that puts a third of the weight on each state. State one receives half of its own third, from staying, and half of state three's third, from the clockwise step. That is a third. So is every other state, by the same count. The flat description does not move, which makes it the reference.
 
@@ -115,7 +115,7 @@ Settling a disagreement lowers entropy. Every comparison in the world that comes
 
 Nothing is violated by that. The second law is about the distance between a description and the reference. That distance is the quantity that never climbs. The bare entropy of a description is a different number. A settling process drives it down by one bit each time it settles a bit. A rule that only ever lowers entropy carries none of the second law's content. That is why the three-state loop had to be scored on its distance from the flat description rather than on its entropy.
 
-The bit had to go somewhere. Reset a memory in contact with a reservoir and the lost bit leaves as heat of at least the reservoir's temperature times the logarithm of two, with temperature in energy units. Copying the old readings somewhere first only postpones the bill, for Bennett's reason: the copy sits in a finite memory, and clearing that memory costs the same. Chapter sixteen showed that a commit discards which of seven arrangements the seam used to hold, and priced it at 2.807 bits of the world's ability to say what it used to hold. The same commit has an energy attached: 2.807 bits of erasure at three hundred kelvin costs 8.06 divided by ten to the twenty-first joules, expelled as heat, per seam, per commit, forever, everywhere in a universe that is making a public record out of private disagreements. That is the price against a reservoir at three hundred kelvin, and a colder world pays less.
+The bit had to go somewhere. Reset a memory in contact with a reservoir and the lost bit leaves as heat of at least the reservoir's temperature times the logarithm of two, with temperature in energy units. Copying the old readings somewhere first only postpones the cost, for Bennett's reason: the copy sits in a finite memory, and clearing that memory costs the same. Chapter sixteen showed that a commit discards which of seven arrangements the seam used to hold, and priced it at 2.807 bits of the world's ability to say what it used to hold. The same commit has an energy attached: 2.807 bits of erasure at three hundred kelvin costs 8.06 divided by ten to the twenty-first joules, expelled as heat, per seam and per commit, in a universe that is making a public record out of private disagreements. That is the price against a reservoir at three hundred kelvin, and a colder world pays less.
 
 ## Five instruments, one quantity
 
@@ -123,4 +123,4 @@ The same number has been read off five different instruments by five sets of peo
 
 An engine reads it as the heat it took in divided by the temperature it took it at. That ratio is what Carnot's ceiling is a statement about. A gas reads it as Boltzmann's count of the arrangements a coarse description fails to distinguish. A memory reads it as Shannon's count of the questions it takes to identify what is stored, and Landauer's price per question. A horizon reads it as an area, in square meters, the strangest of the five. And a public record reads it as what a settled disagreement threw away, the one this world is built out of.
 
-Every record ever written has been paid for in heat, at the temperature of whatever wrote it. The heat leaves through the edge of the region holding the record, putting a bill on the edge rather than on the volume inside it. Ask how many records a region of space can hold, and the answer comes back in square meters. Chapter twenty-nine counts them for the largest region an observer has.
+Every record ever written has been paid for in heat, at the temperature of whatever wrote it. The heat leaves through the edge of the region holding the record, so the cost falls on the edge rather than on the volume inside it. Ask how many records a region of space can hold, and the answer comes back in square meters. Chapter twenty-nine counts them for the largest region an observer has.

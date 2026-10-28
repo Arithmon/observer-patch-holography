@@ -22,6 +22,7 @@ def fixture_root(tmp_path):
         paths.update(row["evidence"])
     bound_rows = [row for stage in source["stages"] for row in stage.get("progress_evidence", [])]
     bound_rows += [row["contract"] for row in source.get("component_campaigns", [])]
+    bound_rows += source.get("next_wave", {}).get("evidence", [])
     for row in bound_rows:
         paths.update((row["path"], row["independent_check"]))
     for name in paths:
@@ -136,3 +137,70 @@ def test_component_progress_cannot_change_scope_or_lose_custody(fixture_root, da
     change(fixture_root, program.PROGRAM, mutate)
     with pytest.raises(ValueError):
         program.load_program(fixture_root)
+
+
+def test_next_wave_uses_four_existing_owners_without_acceptance_promotion(fixture_root):
+    data, hypothesis = program.load_program(fixture_root)
+    wave = data["next_wave"]
+    assert {(row["gate"], row["issue"]) for row in wave["owners"]} == {
+        ("CP-00", 1135), ("CP-01", 1136), ("CP-02", 1138), ("CP-03", 1139)}
+    assert {row["gate"] for row in wave["embedded_reviews"]} == {"CP-13", "CP-12"}
+    assert not wave["changes_frozen_campaign"]
+    assert not wave["successor_class_frozen"]
+    assert wave["physical_comparison_count_added"] == 0
+    assert all(stage["status"] != "ACCEPTED" for stage in data["stages"])
+    assert data["boundary_status"] == "NOT_FROZEN"
+    rendered = program.render(data, hypothesis)
+    assert "## Next four parallel workstreams" in rendered
+    assert wave["acceptance_policy"] in rendered
+    assert all(row["deliverable"] in rendered for row in wave["owners"])
+    by_id = {stage["id"]: stage for stage in data["stages"]}
+    for owner in wave["owners"]:
+        issue = program.render_issue(by_id[owner["gate"]], data)
+        assert owner["deliverable"] in issue
+        assert owner["join_condition"] in issue
+
+
+@pytest.mark.parametrize("damage", ["duplicate_owner", "wrong_issue", "missing_evidence",
+                                  "wrong_baseline", "unilateral_primitive", "successor_freeze",
+                                  "physical_comparison", "accepted_assignment", "review_owner",
+                                  "empty_deliverable", "stale_evidence"])
+def test_next_wave_cannot_lose_ownership_or_silently_widen_scope(fixture_root, damage):
+    def mutate(data):
+        wave = data["next_wave"]
+        if damage == "duplicate_owner":
+            wave["owners"][1] = deepcopy(wave["owners"][0])
+        elif damage == "wrong_issue":
+            wave["owners"][0]["issue"] = 1147
+        elif damage == "missing_evidence":
+            wave["owners"][0]["evidence"] = ["UNBOUND"]
+        elif damage == "wrong_baseline":
+            wave["shared_interface"]["baseline_contract"] = "other_campaign.json"
+        elif damage == "unilateral_primitive":
+            wave["shared_interface"]["unilateral_primitive_changes_allowed"] = True
+        elif damage == "successor_freeze":
+            wave["successor_class_frozen"] = True
+        elif damage == "physical_comparison":
+            wave["physical_comparison_count_added"] = 1
+        elif damage == "accepted_assignment":
+            wave["status"] = "ACCEPTED"
+        elif damage == "review_owner":
+            wave["embedded_reviews"][0]["issue"] = 9999
+        elif damage == "empty_deliverable":
+            wave["owners"][0]["deliverable"] = ""
+        else:
+            wave["evidence"][0]["sha256"] = "0" * 64
+    change(fixture_root, program.PROGRAM, mutate)
+    with pytest.raises(ValueError):
+        program.load_program(fixture_root)
+
+
+def test_readiness_distinguishes_work_underway_from_acceptance_dependencies(fixture_root):
+    data, _ = program.load_program(fixture_root)
+    by_id = {stage["id"]: stage for stage in data["stages"]}
+    assert program.readiness(by_id["CP-00"], data) == "In progress"
+    assert program.readiness(by_id["CP-02"], data) == "In progress; acceptance awaiting CP-01, CP-13"
+    not_started = deepcopy(by_id["CP-00"])
+    not_started["status"] = "OPEN"
+    assert program.readiness(not_started, data) == "Ready to start"
+    assert program.readiness(by_id["CP-04"], data) == "Awaiting CP-02, CP-03"

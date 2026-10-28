@@ -13,6 +13,7 @@ on:
       - 'claims/falsification_matrix.csv'
       - 'claims/novelty_matrix.csv'
       - 'paper/tex_fragments/PAPER.tex'
+      - 'paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex'
       - 'tools/test_post_r2029_audit_surfaces.py'
       - 'requirements.txt'
       - 'pytest.ini'

@@ -525,10 +525,11 @@ def test_fz05_assigns_attachment_and_comparison_to_physics_lanes():
     fz05 = next(row for row in register["rows"] if row["id"] == "FZ-05")
     assert all(issue in fz05["content"] for issue in ("#729", "#736"))
     assert "historical lane" in fz05["content"]
-    assert fz05["owning_issue"] == 1025
+    assert fz05["owning_issue"] == fz_tool.PENDING_TEST_OWNER
     assert "retrospective" in fz05["comparison_protocol"].lower()
     assert all(
-        issue in fz05["kill_band"] for issue in ("#729", "#736", "#1026", "#1025")
+        issue in fz05["kill_band"] for issue in (
+            "#729", "#736", f"#{fz_tool.COMMON_MODEL_OWNER}", f"#{fz_tool.PENDING_TEST_OWNER}")
     )
 
     fz05["content"] = "A positive finite N is a cosmological prediction."
@@ -600,20 +601,30 @@ def test_pending_owners_are_current_and_frozen_owners_are_historical():
         for row in rows
         if row["owning_issue"] is not None
     } == {
-        "FZ-03": 1025,
-        "FZ-05": 1025,
+        "FZ-03": fz_tool.PENDING_TEST_OWNER,
+        "FZ-05": fz_tool.PENDING_TEST_OWNER,
         "FZ-10": 546,
         "FZ-11": 655,
         "FZ-12": 666,
         "FZ-13": 1025,
-        "FZ-14": 1025,
+        "FZ-14": fz_tool.PENDING_TEST_OWNER,
         "FZ-15": 1025,
     }
     rendered = fz_tool.render(register, fz_tool.validate(register))
-    assert "[#1025](https://github.com" in rendered
+    assert f"[#{fz_tool.PENDING_TEST_OWNER}](https://github.com" in rendered
     assert "historical [#546]" in rendered
     assert "A pending row's owning issue is open" in rendered
     assert "current V3" not in rendered
+
+
+@pytest.mark.parametrize("identifier", ["FZ-03", "FZ-05", "FZ-14"])
+def test_pending_rows_cannot_retain_the_superseded_test_owner(identifier):
+    register = live_register()
+    row = next(row for row in register["rows"] if row["id"] == identifier)
+    assert row["status"] == "registered_pending_freeze"
+    row["owning_issue"] = 1025
+    with pytest.raises(SystemExit, match="one of the open issues"):
+        fz_tool.validate(register)
 
 
 def test_pending_row_content_can_change_before_freeze():
