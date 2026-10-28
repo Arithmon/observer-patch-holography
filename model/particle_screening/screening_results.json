@@ -91,7 +91,7 @@
     "unrestricted_sharp_q1_minimax_worst_single_port_distance": "8/225"
   },
   "campaign_id": "particle-screening-20261028-v1",
-  "campaign_sha256": "0179374d08adbf2e36b29524a1cc2678d7028bb3afd159573b3e33b1e3450cbb",
+  "campaign_sha256": "1d5eb2ce29c41a80f3e3e6bf90388ba99daff2b537f9267063171afa2d2f6b8d",
   "cap_minimax": {
     "attainer": "diagonal reference conditioned on q; uniform within its q sector",
     "cap_menu": "all ten-choose-k exterior subsets for each k=1..10",
@@ -382,9 +382,9 @@
     "model/observer_time_fields/spatial_dynamics.py": "16a87eb2f63b91db972f8f0bed59ac98df47ba87a4072548714f6f33dca89c01",
     "model/particle_screening/README.md": "62f972fd6af38ebac89fe81d2826073ea3169e5c002d1b676acd988962e47b34",
     "model/particle_screening/__init__.py": "d5da9ef7d372bf137525fcbbb331aca31b475e2711879a9f99f497877d062b52",
-    "model/particle_screening/campaign.json": "0179374d08adbf2e36b29524a1cc2678d7028bb3afd159573b3e33b1e3450cbb",
-    "model/particle_screening/screening.py": "91dcdcb7cdda9a4d3bd0d8f033a383afcf737c7ac2980b33d34fcd19d76258d7",
-    "model/particle_screening/test_screening.py": "2e361b5a77ecf78559fc456c3d29d04b429dd7b8ad3a7829de7ab221b16ae1c0",
+    "model/particle_screening/campaign.json": "1d5eb2ce29c41a80f3e3e6bf90388ba99daff2b537f9267063171afa2d2f6b8d",
+    "model/particle_screening/screening.py": "7fda107721574f80f2e048ff441beef2a4c2206a95b6defa04f8dd5004f6690c",
+    "model/particle_screening/test_screening.py": "6106f4a5ff764d499ad87caab2514cb536653039177f1ac8eaaeda834a223b2b",
     "model/physical_space_time/__init__.py": "7981b2a9e4f2275ad2dcd8e49602c9e17b4984aa5abfa02c99ff98108e7868b0",
     "model/physical_space_time/ancestry_green.py": "6d469a066bd9843830377a1cfb61be01fa3a61405b124147742bff04ebc3857e",
     "model/physical_space_time/construction.py": "6d4ef05c636e8d1cd404a5a433fc89174527f631dd53046706d38ee4e707c934",

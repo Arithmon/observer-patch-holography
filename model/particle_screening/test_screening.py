@@ -206,6 +206,8 @@ def test_campaign_pins_predecessors_and_science_hash(tmp_path, monkeypatch):
     original = json.loads((s.HERE/"campaign.json").read_text())
     monkeypatch.setattr(s, "HERE", tmp_path)
     for key, value in (("integrated_gate_accepted", True),
+                       ("whole_program_frozen", True),
+                       ("boundary_status", "UNFROZEN"),
                        ("physical_comparison_count_added", False),
                        ("science_result_sha256", "0"*64)):
         candidate = dict(original)

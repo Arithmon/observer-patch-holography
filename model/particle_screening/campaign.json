@@ -1,4 +1,5 @@
 {
+  "boundary_status": "FROZEN_DIAGNOSTIC_CONTRACT",
   "campaign_id": "particle-screening-20261028-v1",
   "integrated_gate_accepted": false,
   "native_family_changed": false,
@@ -15,5 +16,6 @@
   },
   "schema": "oph.particle_screening.campaign.v1",
   "science_result_sha256": "39c301dd0bfb0f90308f085defe435428d1d836246555e1224597e536a75953e",
-  "scope": "FINITE_COMPONENT_DIAGNOSTICS"
+  "scope": "FINITE_COMPONENT_DIAGNOSTICS",
+  "whole_program_frozen": false
 }

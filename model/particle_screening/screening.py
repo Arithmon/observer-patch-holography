@@ -353,6 +353,8 @@ def campaign_binding(science):
                 "campaign_id": "particle-screening-20261028-v1",
                 "predecessor_git_commit": "7ab50c9fa326b86344ba0dda6ca56804eb094fb7",
                 "scope": "FINITE_COMPONENT_DIAGNOSTICS",
+                "whole_program_frozen": False,
+                "boundary_status": "FROZEN_DIAGNOSTIC_CONTRACT",
                 "integrated_gate_accepted": False,
                 "native_family_changed": False,
                 "physical_comparison_count_added": 0}
