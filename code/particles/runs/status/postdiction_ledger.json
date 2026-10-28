@@ -46,7 +46,7 @@
     },
     "parents": {
       "claims/claim_registry.yaml": "9e32422b915cc9061f259532586d48d7793e0d201a601dcb281ac53e5b14c666",
-      "claims/completion_program.json": "37a71a8d48889d419a676e3626f3648aec40c210fe71abb50bbc3df822d58fd3",
+      "claims/completion_program.json": "c8f6c32e3c830b8748dc589c82071ebadfabadd63989659c6c41b3b4bb8cb6b1",
       "claims/executable_model_hypothesis.json": "1855a611870a64b3d97fbaa8759385761dda9130a1517233193af2c7f170cd2b",
       "docs/OPH_EXECUTABLE_HYPOTHESIS.md": "c503247a2b333c2e27b3eba865d47f2d15c966a5052eceb4aadb14fc9002f35a"
     },
@@ -770,7 +770,7 @@
             ],
             "gate": "CP-02",
             "issue": 1138,
-            "join_condition": "Conditional ensemble expectations and model-conditioned count inversion are distinct from a monotone individual readout or a calibrated physical duration. Distinct repair laws and references cannot be combined without a new compatibility proof; physical calibration and source selection remain open in both branches.",
+            "join_condition": "Conditional ensemble expectations and model-conditioned count inversion are distinct from a monotone individual readout or a calibrated physical duration. Distinct repair laws and references cannot be combined without a new compatibility proof; both branches require independently justified physical calibration and source selection.",
             "may_start_now": "Reuse the compiled parameter-one words, complete stopping instruments and shared-event cross-product test. The biased-law branch supplies exact preparation, stationary FIFO and modular-service composition under its own fixed contract.",
             "title": "Calibrate accessible continuing clock readouts",
             "why_now": "Four shared source checkpoints have ordered ensemble means; their raw probability readouts fail an affine comparison, while model inversion recovers their shared count. The separate endpoint-biased family prepares a unique quantum reference and implements its compatible full-scheduler modular readout."

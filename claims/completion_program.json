@@ -1319,7 +1319,7 @@
         "why_now": "Four shared source checkpoints have ordered ensemble means; their raw probability readouts fail an affine comparison, while model inversion recovers their shared count. The separate endpoint-biased family prepares a unique quantum reference and implements its compatible full-scheduler modular readout.",
         "deliverable": "A continuing clock protocol with finite-sample inference, operational shared events, compatible regional reference and a justified time/action calibration.",
         "may_start_now": "Reuse the compiled parameter-one words, complete stopping instruments and shared-event cross-product test. The biased-law branch supplies exact preparation, stationary FIFO and modular-service composition under its own fixed contract.",
-        "join_condition": "Conditional ensemble expectations and model-conditioned count inversion are distinct from a monotone individual readout or a calibrated physical duration. Distinct repair laws and references cannot be combined without a new compatibility proof; physical calibration and source selection remain open in both branches.",
+        "join_condition": "Conditional ensemble expectations and model-conditioned count inversion are distinct from a monotone individual readout or a calibrated physical duration. Distinct repair laws and references cannot be combined without a new compatibility proof; both branches require independently justified physical calibration and source selection.",
         "evidence": [
           "shared_event_clock",
           "clock_count_inference",
