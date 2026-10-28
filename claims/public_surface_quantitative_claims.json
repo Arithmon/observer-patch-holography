@@ -855,6 +855,38 @@
           }
         }
       ]
+    },
+    {
+      "path": "model/active_code_energy/README.md",
+      "heading": "## A common current rate for both code supports",
+      "label_column": "Comparison ensemble",
+      "comparison_column": "Code excess",
+      "rows": [
+        {
+          "label": "Stationary co-moving `q=1` ensemble",
+          "role": "conditional_branch",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
+          }
+        },
+        {
+          "label": "Fixed-core `q=1` conditional reference",
+          "role": "conditional_branch",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
+          }
+        },
+        {
+          "label": "Full fixed-core transported reference",
+          "role": "conditional_branch",
+          "lane": {
+            "kind": "registry_claim",
+            "claim_id": "OPH-MODEL-NATIVE-PROCESS-RECOVERY"
+          }
+        }
+      ]
     }
   ]
 }
