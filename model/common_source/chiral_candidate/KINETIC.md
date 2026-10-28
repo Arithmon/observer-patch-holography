@@ -75,7 +75,7 @@ trial Higgs norm $v=\Omega$ is supplied; spontaneous selection of that norm
 has not been demonstrated.
 
 Changing the hole spin basis by
-$V=\operatorname{diag}(I,\epsilon\otimes I_{45})$ displays
+$V=\mathrm{diag}(I,\epsilon\otimes I_{45})$ displays
 
 ```math
 V\mathcal H(p)V^\dagger=
@@ -92,7 +92,7 @@ all-left $u^c,d^c,e^c$ component. It is not a newly introduced mirror field.
 ## Spin, chiral currents and charge
 
 The raw Nambu rotation generators are
-$S_i=\operatorname{diag}(\sigma_i/2,-\sigma_i^T/2)\otimes I_{45}$.
+$S_i=\mathrm{diag}(\sigma_i/2,-\sigma_i^T/2)\otimes I_{45}$.
 They satisfy $[S_i,S_j]=i\epsilon_{ijk}S_k$ and
 $\sum_iS_i^2=3I/4$. In the spin-conjugated basis both blocks transform by
 $\sigma_i/2$. For $p\ne0$, $S\cdot p/|p|$ commutes with the free
@@ -103,7 +103,7 @@ so definite chirality is not a massive energy eigenstate.
 
 Each of the 12 anti-Hermitian internal currents $T$ acts on the kinetic
 operator as $I_2\otimes T$ and commutes with it. On the raw Nambu symbol it
-acts as $\operatorname{diag}(I_2\otimes T,I_2\otimes T^*)$. A fixed Higgs
+acts as $\mathrm{diag}(I_2\otimes T,I_2\otimes T^*)$. A fixed Higgs
 background preserves a current exactly when
 
 ```math
@@ -118,7 +118,7 @@ in the action. The floating rank in `report()` is a diagnostic of the supplied
 current span, not a separate exact rank certificate.
 
 Electric charge is
-$Q_N=\operatorname{diag}(I_2\otimes Q,-I_2\otimes Q^T)$, where
+$Q_N=\mathrm{diag}(I_2\otimes Q,-I_2\otimes Q^T)$, where
 $Q=T_3+Y$ in the all-left convention. It commutes with $\mathcal H$.
 Charge is classified with its projectors: arbitrary eigenvectors in degenerate
 energy subspaces are not reliable charge labels. This internal normalization
@@ -169,7 +169,7 @@ from the actual electric-charge and weak-Casimir projectors. The label of a
 component alone is not used as evidence for its current action.
 
 Let $J_+$ denote that internal matrix. Its Nambu action is
-$\operatorname{diag}(I_2\otimes J_+,-I_2\otimes J_+^T)$. On the
+$\mathrm{diag}(I_2\otimes J_+,-I_2\otimes J_+^T)$. On the
 physical charge $-1$ sector, $J_+^\dagger J_+$ is the projector onto
 the charged left-doublet block. It vanishes on the charge-conjugated-singlet
 hole block. At zero Higgs norm and nonzero momentum, positive-energy
@@ -229,7 +229,7 @@ needed. It does not use the empty encoded Fock vacuum as the physical vacuum.
 
 For distinct $p$ and $-p$, an actual source has CAR annihilators
 $(\chi(p),\chi(-p))$, with one-body matrix
-$\operatorname{diag}(h(p),h(-p))$ and antisymmetric pairing
+$\mathrm{diag}(h(p),h(-p))$ and antisymmetric pairing
 
 ```math
 \Delta_{p,-p}=\begin{pmatrix}0&\Delta\\-\Delta^T&0\end{pmatrix}.
@@ -247,7 +247,7 @@ $h_{\rm naive}(k)=-c\sum_i\sigma_i\sin k_i$ has a zero at every
 $k_i\in\{0,\pi\}$: eight nodes. The chirality of its linearization is
 
 ```math
-\operatorname{sign}\det\!\left[-c\,\operatorname{diag}(\cos k_i)\right]
+\mathrm{sign}\det\!\left[-c\,\mathrm{diag}(\cos k_i)\right]
 =-(-1)^{\#\pi}.
 ```
 

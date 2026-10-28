@@ -15,8 +15,8 @@
     },
     "deriving_the_particle_zoo_from_observer_consistency": {
       "pdf_path": "paper/deriving_the_particle_zoo_from_observer_consistency.pdf",
-      "sha256": "efd90b3d926650706c4395c5887e27ad4e3fdf1fe9ebc415336b45dd77b26dfe",
-      "size_bytes": 385915
+      "sha256": "9d80eaecf9bfacda42d61badd2c12b6b12f011f887df5614d2fb358a157f41a2",
+      "size_bytes": 386670
     },
     "executable_observer_construction": {
       "pdf_path": "paper/executable_observer_construction.pdf",

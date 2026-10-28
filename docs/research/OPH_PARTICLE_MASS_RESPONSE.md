@@ -55,11 +55,11 @@ and [same-current matter implementation](../../model/common_source/native_matter
 identify the actual maps rather than relying on an abstract Lie-algebra match.
 
 The declared spin lift sends a six-state generator
-$D=\operatorname{diag}(A,\widehat w)$ to
+$D=\mathrm{diag}(A,\widehat w)$ to
 
 ```math
-L(D)=\operatorname{diag}\left(A,-\frac{i}{2}w\cdot\sigma-
-                              \frac{\operatorname{tr}A}{2}I_2\right).
+L(D)=\mathrm{diag}\left(A,-\frac{i}{2}w\cdot\sigma-
+                              \frac{\mathrm{tr}A}{2}I_2\right).
 ```
 
 The nonvacuum even exterior module
@@ -285,7 +285,7 @@ produces a positive trace-one coefficient
 
 ```math
 Y=\sum_k\pi_kP_k,\qquad
-\operatorname{eig}(Y)\ \propto\ 1:195.11703757:3579.82624571.
+\mathrm{eig}(Y)\ \propto\ 1:195.11703757:3579.82624571.
 ```
 
 These are dimensionless coefficients. The light-axis history C then EC has two
@@ -365,7 +365,7 @@ $D\in\{1,C,E,CE\}$ their first-order coefficients are
 
 ```math
 Z_D=\sum_{m,r}\pi_mw_r\chi_D(r)P_{\mathrm{new}(m,r)},\qquad
-\operatorname{tr}Z_D\in\{1,p_s,q_s,p_sq_s\}.
+\mathrm{tr}Z_D\in\{1,p_s,q_s,p_sq_s\}.
 ```
 
 Event and destination are correlated: $Z_C=Y-(1-p)P_{\rm reset}$, generally
@@ -495,7 +495,7 @@ law. A proposed fix must identify the violated equation or hypothesis.
 | Risk | Required check |
 | --- | --- |
 | Reusing an abstract theorem on another object | Exhibit the actual state sector, generator/control map, representation and both Higgs components; retain the control-menu and spin-cover premises |
-| Cooling confused with a Hamiltonian filter | Compute the channel and dual. For rank-three $P$, $\Phi(\rho)=P\rho P+\operatorname{tr}((I-P)\rho)P/3$ has $\Phi^*(B)=PBP+\operatorname{tr}(PB)(I-P)/3$, not $B\mapsto PBP$. Its classical Kraus branches lose relative triplet phase |
+| Cooling confused with a Hamiltonian filter | Compute the channel and dual. For rank-three $P$, $\Phi(\rho)=P\rho P+\mathrm{tr}((I-P)\rho)P/3$ has $\Phi^*(B)=PBP+\mathrm{tr}(PB)(I-P)/3$, not $B\mapsto PBP$. Its classical Kraus branches lose relative triplet phase |
 | Missing records or conditioning | Retain raw, reset, complement, timeout and zero outcomes. Compare full laws to source replay; normalization or a matching digest alone is insufficient |
 | Averaging substituted for execution | Separate correlated finite memory, stationary first-order coefficients and the static mean-feedback service; charge finite mixing, averaging and per-step implementation errors |
 | Wrong kinetic or pairing convention | Check all-left conjugation/transposition, physical CAR ordering, both chiralities/tastes and full Nambu multiplicities. Obtain mass and kinetic terms from the same inverse response |
@@ -519,6 +519,13 @@ fitting a function of a family feature does not supply that process.
 The source object is chosen before the spectrum: one localized excitation or
 protected sector, with the same reference, admissible repairs, charges,
 propagation and detector/clock interpretation throughout. The
+preferred working hypothesis is a persistent localized topological defect in
+native overlap transport, with its excess maintenance action/energy producing
+the same rest energy measured by propagation. Its native invariant and
+energy/clock map remain to be constructed; stable massive matter is the first
+target, with unstable defect excitations requiring derived decay channels.
+The [concrete hypothesis and tests](OPH_FIELD_RECONSTRUCTION.md#leading-working-hypothesis-localized-defects-of-native-repair)
+keep this proposal separate from established results. The
 [native defect decision](../../model/common_source/native_defect_decision.py)
 has now tested the natural double-load candidate on the actual 78-state C/E
 domain. It is transient, and the binary 66-state class has no nonconstant

@@ -59,6 +59,45 @@ This is a counterexample to inferring a topological sector from a dispersion
 relation alone. Whether a microscopic realization of an effective particle
 is a defect is an additional question about that source realization.
 
+## Leading working hypothesis: localized defects of native repair
+
+The preferred concrete mechanism to develop is **a localized, persistent
+topological defect in the native overlap/transport structure**. Its continued
+maintenance by the same repair process would account for its rest energy.
+This is the research hypothesis being prioritized; a native realization and
+its physical mass relation are not yet established.
+
+The proposed object is a bounded core whose surrounding records approach the
+reference regime, but whose boundary transport carries a nontrivial invariant
+that ordinary admitted local repairs cannot erase. The obstruction is to
+trivializing the transport relative to that reference, not a permission for
+observers to disagree about the same measured event. Moving the core must
+transport its charge. Allowed creation, annihilation, fusion and decay must
+follow from the same source law, rather than from freezing selected seams
+or supplying punctures to protect an assigned label.
+
+The initial target is stable massive matter. Unstable species could be
+metastable or internal defect excitations with derived decay channels.
+Massless propagation and gauge interactions must also be tested in the same
+construction; their meaning cannot be supplied by selecting unrelated
+numerical modes.
+
+| Part of the hypothesis | Concrete test |
+| --- | --- |
+| Defect identity | Exhibit an actual native state/observable sector and a boundary charge invariant under the admitted repairs; derive its coefficient group and transport rules |
+| Persistence and localization | Retain the full law and show that the core persists or has a controlled lifetime, with reference-like response outside it; distinguish active recovery from autonomous protection |
+| Maintenance and energy | Derive the defect's excess action/energy relative to the reference using a calibrated local clock, with all kinetic terms from that same process |
+| Mass and propagation | In a justified local relativistic regime, recover the same rest energy from propagation and dispersion; the rest-mass relation uses the common signal speed, not a conversion fitted per species |
+| Particle identity | Obtain spin/statistics, charges, current couplings and any family structure on those same defects or excitations, before comparing mass ratios |
+
+The tested double-load configuration fails this persistence requirement,
+including its quantum collision subspace. The actively corrected matching
+code supplies persistent information but does not yet supply the proposed
+topological charge or maintenance-energy map. Neither is identified with a
+physical particle at present. The next positive result must construct a
+native defect sector that passes these tests; the response diagnostics below
+are tools for testing its eventual field interpretation.
+
 ## Choose one source object before comparing masses
 
 The different quantities already calculated are not interchangeable particle
@@ -72,7 +111,7 @@ definitions. Their roles must stay visible in every spectrum table.
 | Finite CAR addition/removal poles | Excitations of the specified interacting finite law, with residues and charge | Physical spatial, gauge, spin/statistics, continuum and mass matching |
 | Supplied Weyl/Nambu symbols, staggered/dimer gaps and Hubbard thresholds | Separate conditional field or interaction benchmarks | A derivation from one selected native source object; their numbers cannot be pooled into a spectrum |
 | Running charts and calibrated mass coordinates | Parameterization, matching controls and empirical comparison | Independent selection of source couplings and physical readout |
-| Topological defects | A possible mechanism to investigate | No native defect classification and defect-maintenance-to-mass map is presently established |
+| Topological defects | Leading native mechanism to develop, initially for stable massive matter | No native defect classification and defect-maintenance-to-mass map is presently established |
 
 A candidate identification must name **one excitation or sector of one
 continuing source process** before its mass comparison. Specify the reference
@@ -220,7 +259,7 @@ For fermionic interpolators O_a in a stationary finite system, the retarded
 anticommutator response has the spectral form
 
 ```math
-G_{ab}(z)=\sum_n\frac{R_{n,ab}}{z-\omega_n},\qquad \operatorname{Im}z>0.
+G_{ab}(z)=\sum_n\frac{R_{n,ab}}{z-\omega_n},\qquad \mathrm{Im}z>0.
 ```
 
 The complete residues, reference state and signed frequencies are part of

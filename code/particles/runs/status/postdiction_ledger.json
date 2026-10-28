@@ -96,7 +96,7 @@
   },
   "fixed_spectral_cross_scale_comparison": {
     "artifact_ref": "model/empirical_diagnostics/cross_scale_results.json",
-    "artifact_sha256": "65394c10642f7a9e2dc177fa6960d9477bba142e20846ffd648aae3eaff4d1c3",
+    "artifact_sha256": "8e591f0188bf9dc97827630d91a431d22d15bfcaf566b5cfd7c2f093b4562d3f",
     "attribution": {
       "OPH_contribution": "Independent reconstruction and complete-outcome, support-alignment and normalized-readout controls; physical electromagnetic identification remains conditional.",
       "author": "A. D. Wissner-Gross",
@@ -203,11 +203,11 @@
     "parents": {
       "chiral": {
         "path": "model/common_source/chiral_candidate/results.json",
-        "sha256": "d0782adcf5a00c3583e6df4deb0385e8471d8a78a3394f597d3fde7040138c08"
+        "sha256": "825ec9d29283bed8a99936b64aa30b00dc0f5a2ddabe4d0909aee9f48ee44621"
       },
       "native": {
         "path": "model/common_source/native_defect_decision_results.json",
-        "sha256": "c655eeda8409328c2be4cfcbf12413ad7e2a923f3d700b0c308926a457b7fe62"
+        "sha256": "a918398f47c07e82dbfd4db45f972949374abbe972c414e24bdd1eee0456d118"
       },
       "particle": {
         "path": "model/common_source/particle_identification/results.json",
