@@ -7,6 +7,13 @@ evidence needed to accept or stop each stage. The packages below are retained
 components and controls; they do not constitute separate particle definitions
 or a completed physical realization.
 
+The [first bounded completion campaign](completion/README.md) executes a
+continuing C/E observer with explicit memory export, constructs its stationary
+source/record reference, and certifies an obstruction to nontrivial source
+charges commuting with every active native branch. It tests a declared family
+of mixtures, repair delays and classical memory policies. The field, physical
+clock, defect and gravity joins remain open.
+
 The [particle and common-field package](observer_particles/README.md)
 computes conditional internal matter multiplets and one-Higgs interactions
 from declared response operators, and tests scalar, CAR and vector

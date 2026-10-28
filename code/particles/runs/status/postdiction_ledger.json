@@ -46,12 +46,32 @@
     },
     "parents": {
       "claims/claim_registry.yaml": "04f813369fb364de9355c569ac27c72872908cc11b093284f4cf1b05a79fad88",
-      "claims/completion_program.json": "e94d30af7844688da164800019a03301a6b9fa10db00a7f1c37d65736627570b",
+      "claims/completion_program.json": "4b02149f634756ed89913cf3663b94b3ebca58d34632a08e6576d38d77401bd3",
       "claims/executable_model_hypothesis.json": "1855a611870a64b3d97fbaa8759385761dda9130a1517233193af2c7f170cd2b",
       "docs/OPH_EXECUTABLE_HYPOTHESIS.md": "c503247a2b333c2e27b3eba865d47f2d15c966a5052eceb4aadb14fc9002f35a"
     },
     "program": {
       "boundary_status": "NOT_FROZEN",
+      "component_campaigns": [
+        {
+          "contract": {
+            "independent_check": "model/completion/test_family.py",
+            "path": "model/completion/campaign.json",
+            "scope": "Frozen finite C/E mixture, positive repair/selection and bounded classical-memory family. The parent refinement and physical-interpretation boundary remains open.",
+            "sha256": "6b12ab2491a801473e79917b0684fa6ead988056a1a8ee205e30c178271424ad"
+          },
+          "id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
+          "scope": "FINITE_COMPONENT_FAMILY",
+          "supports": [
+            "CP-00",
+            "CP-01",
+            "CP-13",
+            "CP-02",
+            "CP-03"
+          ],
+          "whole_program_frozen": false
+        }
+      ],
       "continuing_issues": {
         "audit": 1033,
         "broad_obstruction_search": 1078
@@ -180,8 +200,17 @@
             "EMH-5"
           ],
           "obstruction": "If the declared class is empty or jointly inconsistent, prove that exclusion. An unbounded unspecified escape class makes a whole-program no-go unarmed; an unfinished freeze is not confirmation or falsification.",
+          "progress_evidence": [
+            {
+              "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
+              "independent_check": "model/completion/test_family.py",
+              "path": "model/completion/campaign.json",
+              "scope": "Frozen finite C/E mixture, positive repair/selection and bounded classical-memory family. The parent refinement and physical-interpretation boundary remains open.",
+              "sha256": "6b12ab2491a801473e79917b0684fa6ead988056a1a8ee205e30c178271424ad"
+            }
+          ],
           "requires": [],
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "title": "Freeze the executable program class and decision contract"
         },
         {
@@ -212,10 +241,19 @@
             "EMH-2"
           ],
           "obstruction": "A source-access, coherence, retention or resource impossibility rejects the tested implementation class. Escalate to the whole frozen program only if CP-12 proves that every admitted implementation is covered.",
+          "progress_evidence": [
+            {
+              "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
+              "independent_check": "model/completion/test_observer.py",
+              "path": "model/completion/observer_results.json",
+              "scope": "Exact continuing C/E and delayed-mixture observer instruments, six-attempt executions, arbitrary-reference certificate, FIFO exports, full-buffer halt and resource accounting. Preparation and physical services remain supplied.",
+              "sha256": "f7d4623dfed41cb40ec254cf43c3542faa4227b6690f8552bb055f94f9ec7c98"
+            }
+          ],
           "requires": [
             "CP-00"
           ],
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "title": "Execute one continuing native observer with accounted resources"
         },
         {
@@ -248,11 +286,20 @@
             "EMH-4"
           ],
           "obstruction": "A required premise combination with no admissible common realization routes to CP-12. An unused theorem is not a no-go; a false theorem refutes its statement, and becomes a whole-program obstruction only if indispensable premises or every allowed realization are thereby excluded.",
+          "progress_evidence": [
+            {
+              "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
+              "independent_check": "model/completion/test_theorem_map.py",
+              "path": "model/completion/theorem_map.json",
+              "scope": "Eleven actual theorem/model mappings with twelve source bindings; fixed-mixture stationarity is distinguished from correlated adaptive scheduling, and all downstream physical premises remain explicit.",
+              "sha256": "8bc72b378e50255d0823cd384b2b02618bc1e16ca6ad6e282ab84c2bd1fe3e00"
+            }
+          ],
           "requires": [
             "CP-00",
             "CP-01"
           ],
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "title": "Integrate finite theorems and curate the active proof chain"
         },
         {
@@ -281,11 +328,34 @@
             "EMH-1"
           ],
           "obstruction": "Prove whether the frozen preparation/access grammar forces trivial modular action, incompatible regional flows or no admissible physical clock map. A failed chosen reference alone is a candidate obstruction.",
+          "progress_evidence": [
+            {
+              "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
+              "independent_check": "model/completion/test_adaptive_reference.py",
+              "path": "model/completion/adaptive_reference_results.json",
+              "scope": "Exact two-attempt counterexample to importing the uniform source reference under current-record feedback: 30 changed entries, maximum deviation 1/960.",
+              "sha256": "cc00e070d7502c0398b85350d66fe517611fb9619c0b02c9fc106440e97f23a2"
+            },
+            {
+              "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
+              "independent_check": "model/completion/test_stationary_reference.py",
+              "path": "model/completion/stationary_reference_results.json",
+              "scope": "Exact unique classical stationary law on the 129-state recurrent support of the 132-state source/current-bit kernel; its 66-state source marginal is positive and nonuniform. No quantum uniqueness or implemented clock is inferred.",
+              "sha256": "a00cbe1b42cdd16b62f5477a38ac69d43630127d9f1245270a86088093d2e2c2"
+            },
+            {
+              "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
+              "independent_check": "model/completion/test_observer_reference.py",
+              "path": "model/completion/observer_reference_results.json",
+              "scope": "Exact stationary lift through the actual repair-only C/E full-record FIFO instruments, with 128/192 positive record blocks and 4218 positive diagonal entries each. Stationarity concerns the finite marginal, not growing exported history; support faithfulness does not supply modular access.",
+              "sha256": "93cf85341543063cefe57a274e8b89bc3ce5f17bd7018f8f23787507f2d1fa50"
+            }
+          ],
           "requires": [
             "CP-01",
             "CP-13"
           ],
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "title": "Construct the continuing regime, faithful reference and local modular clocks"
         },
         {
@@ -312,11 +382,20 @@
             "EMH-3"
           ],
           "obstruction": "An exhaustive invariant/localization no-go over every sector and allowed refinement in the frozen defect class stops that mechanism. The existing classical and collision-subspace exclusions do not exhaust arbitrary quantum/history sectors.",
+          "progress_evidence": [
+            {
+              "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
+              "independent_check": "model/completion/test_defect_algebra.py",
+              "path": "model/completion/defect_algebra_results.json",
+              "scope": "Exact all-branch full-matrix-algebra certificate for C and E on H78/H66, excluding nontrivial source-only charges commuting with every active branch. History-dependent charges, arbitrary expectation-fixed observables, metastability and refining defects are not excluded.",
+              "sha256": "fea796822e7aefa433a79e28368b71f2a13d59ec75df43e94d39685127840add"
+            }
+          ],
           "requires": [
             "CP-01",
             "CP-13"
           ],
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "title": "Exhibit a localized native defect and its protecting invariant"
         },
         {
@@ -609,7 +688,7 @@
         }
       ],
       "state_policy": "Issue closure alone is not scientific acceptance. A gate requires source-bound acceptance evidence and accepted predecessors. Existing component successes do not mark these integrated gates complete.",
-      "status": "PLANNED_NOT_COMPLETED",
+      "status": "IN_PROGRESS_NOT_COMPLETED",
       "stop_policy": "Freeze the allowed program class in CP-00; CP-12 owns coverage and stopping decisions. Logical inconsistency, universal joint-realization exclusion or an unavoidable empirical contradiction can reject that entire class. Scope changes create a new program version; budget/value stops are not falsification.",
       "superseded_issues": [
         {

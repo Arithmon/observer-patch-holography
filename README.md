@@ -31,119 +31,48 @@ rule, the agreement condition and the executable specification; the
 [working terms](docs/INTERPRETATION_AND_TERMS.md) explain the timeless view
 and the clocks inside it.
 
-## The executable completion program
+## The executable hypothesis
 
-The concrete hypothesis is that one simple local repair and memory law on
-the proposed carrier architecture supports continuing observers whose
-records have the observed interacting 3+1-dimensional field description,
-and whose common matter, clocks and geometry realize the Einstein premises.
-The preferred matter mechanism is localized topological defects, with excess
-maintenance dynamics determining the same rest energy measured in propagation
-and gravitational stress. Stable matter, unstable excitations and massless
-modes need their own explicit identification in this same process.
+The concrete bet is a program. One simple local repair and memory law,
+running on a network of twelve-port carriers, should produce observers whose
+shared records look like our world: interacting quantum fields in 3+1
+dimensions, and gravity on large scales. Particles are meant to be knots in
+that network, localized defects that local repairs cannot undo, and their
+mass is the extra upkeep they cost.
 
-The [hypothesis and physical qualifications](docs/OPH_EXECUTABLE_HYPOTHESIS.md)
-state the target: a massless photon makes the full theory gapless; modular
-flow needs a physical clock map; and a conditional Einstein theorem needs
-its premises realized. These are proposed outcomes, not results of the
-current implementation. Closure alone does not guarantee this particular law.
-
-The [completion program and dependency DAG](docs/COMPLETION_PROGRAM.md)
-organize the next work into gates with acceptance evidence, obstruction
-scope and stopping rules. The first gate freezes the allowed program class;
-a universal obstruction or an exclusive empirical contradiction can stop
-that entire class. A candidate failure cannot be promoted to that verdict
-without the coverage proof. The generated
-[postdiction ledger](docs/POSTDICTION_LEDGER.md) tracks this target alongside
-the separate retained results.
-
-This program builds on the existing modular-clock candidate, native
-rank-three response geometry and conditional 3+1 field construction. Their
-[retained foundations and remaining joins](docs/COMPLETION_PROGRAM.md#existing-foundations-to-extend)
-are tracked explicitly. A theorem-integration gate maps the finite results
-to the actual model, assigns proofs of their premises and curates unneeded
-branches out of the active path.
+That is the target. The [hypothesis](docs/OPH_EXECUTABLE_HYPOTHESIS.md) says
+what would count as success, and the
+[completion program](docs/COMPLETION_PROGRAM.md) splits the work into gates
+with stopping rules. Either the pieces join up on one running process, or a
+proof shows that the whole class of laws cannot work.
 
 ## Highlights
 
-- **An observer that runs.** A twelve-port observer retains its records and
-  uses them to choose the next repair, changing the final occupation from
-  1/6 to 35/264. Native repairs supply bounded state preparation and current
-  readout; compiled controls let overlapping observers read one common
-  reference and its active modular clock, retaining disturbance and failures.
-  Complete state tomography makes that reference identifiable, and a declared
-  repair schedule derives its entropy maximum at two conserved occupation
-  moments. Native census histories also give coherent entropy stationarity
-  through adaptive repairs, with exact recovery and information-loss domains,
-  coin costs and timeouts kept explicit. A separate finite quantum process joins electric flux, charged
-  matter and a scalar field with recorded feedback. Refining screens support
-  Gaussian field limits and waves of finite speed.
-- **A Lorentzian scalar field as the observers' effective description.** On
-  a declared radial product over a refining screen, one action determines
-  field correlations, response and an active modular clock. For any finite
-  measurement menu and positive tolerance, one smooth static (1+3)-dimensional
-  Lorentzian scalar field theory approximates those joint readouts. A finite
-  interacting projection has source-executed quantum readouts and a controlled
-  occupation limit. The radial design, interaction coupling, preparation and
-  physical units remain inputs; the radius derived from native current
-  records does not select the field's radial direction. The
+- **An observer that runs.** A twelve-port observer keeps its records and
+  uses them to choose its next repair. Overlapping observers read a common
+  reference and its clock, a finite quantum process joins electric flux,
+  charged matter and a scalar field, and refining screens give Gaussian
+  field limits and waves of finite speed.
+- **A Lorentzian scalar field from the observers' records.** On a declared
+  radial extension of the refining screen, one action fixes correlations,
+  response and a modular clock, and a smooth (1+3)-dimensional scalar field
+  theory reproduces any finite set of joint readouts. The radial direction
+  and the physical units are inputs. The
   [integrated verdict](model/CONSTRUCTION.md#integrated-effective-description)
-  states the construction's scope.
-- **Particle fields and mass measurements.** A declared spin lift supplies
-  the internal charges of one Standard Model generation and its allowed Higgs
-  interactions. Native incidence also supplies record-correctable objects
-  carrying the actual geometric triplets on two carriers. Their tested
-  exchange responses have a 17-dimensional algebra and fail the gauge
-  theorem's complete 12-current premise. A specified coherent control law
-  realizes twelve closed currents on that same carrier, with an explicit
-  spin/exterior lift and Higgs channels. The control-menu boundary and lift
-  remain inputs. Exact coherent filtering gives an invertible control map
-  into this same algebra; ordinary state cooling does not implement that
-  Hamiltonian filter. A separate native-record controller acts on all eighteen
-  exchange-plus-phase currents. Every finite filter stays invertible; only
-  a joint limit of increasing bias and update count approaches twelve
-  observable currents under bounded drives. Its baths, feedback rule and
-  actuators are supplied, and physical current completeness remains open.
-  Calibrated fields reproduce supplied running masses in
-  simulated observer records. A separate native correlation and exchange
-  construction gives fermion modes and interactions. Specified phase and
-  exchange controls also derive a free three-dimensional relativistic field,
-  with two Dirac copies per sector, and execute finite detector histories.
-  Both its free gaps and a separate interaction-dressed pole construction
-  fail the measured lepton hierarchy. Repeated correction has a controlled coherent limit.
-  Fixed record-driven Higgs feedback also produces unequal couplings without
-  mass inputs, but an analytic bound excludes its charged-lepton hierarchy
-  for every trigger frequency in its stationary averaged mass family.
-  Its native implementation recovers the specified coefficient from complete
-  fixed-basis detector records with separate source and inversion errors.
-  Two-rotation feedback also fails the hierarchy; a full selector
-  bath retains additional low charged responses.
-  A complete twelve-state record memory resolves three unequal coefficients
-  with a finite-angle inverse. A common gauge-covariant interaction makes its
-  rates sector dependent using the actual Higgs supports. All three tested
-  geometric interaction angles fail the charged hierarchies. The coefficients
-  attach to the same finite Weyl/Higgs action, with a separate fixed-detector
-  inverse; this supplies no physical mass prediction.
-  An incidence-defined repair source-executes a protected three-level
-  family band and matches the finite theorem's projector. Original-carrier
-  loop phases and a current-mediated auxiliary response also fail the
-  lepton hierarchy; changing the latter's positive strengths cannot fix its
-  identification with the lowest subthreshold poles.
-  The same currents also support source-compiled local matter transport and
-  a conditional continuum comparison in a chosen gauge background, retaining
-  both Dirac copies and both chiralities.
-  Source selection of the physical masses, a chiral interacting continuum
-  and joint gravitational dynamics remain unproved.
-  [Mass-response research](docs/research/OPH_PARTICLE_MASS_RESPONSE.md) and
-  [matter contracts](model/observer_particles/DERIVATION.md) give the evidence
-  and construction assumptions.
+  has the details.
+- **Particles are the big open piece.** The finite theory gives the charges
+  of one Standard Model generation and its Higgs couplings, but no masses.
+  Every mass law tested on the running model misses the measured lepton
+  hierarchy, and the obvious defect candidate on the native carrier falls
+  apart after a few repairs. Finding a genuinely stable defect is the work
+  of the [particle paper](paper/deriving_the_particle_zoo_from_observer_consistency.pdf)
+  and the [mass-response notes](docs/research/OPH_PARTICLE_MASS_RESPONSE.md).
 - **Standard physics from finite agreement.** Under stated premises, finite
-  theorems give the specification familiar structure: public records that do
-  not depend on the order of repairs; the Born rule and the Tsirelson bound on
-  completed records; a carrier that is three-dimensional in its slow response;
-  the Standard Model gauge Lie algebra and a conditional anomaly-free matter
-  representation; a (1+3)-dimensional causal order with count-based proper
-  time; and the Einstein equation from null balance.
+  theorems give public records that do not depend on the order of repairs,
+  the Born rule and the Tsirelson bound, a carrier that is three-dimensional
+  in its slow response, the Standard Model gauge Lie algebra with an
+  anomaly-free matter representation, a (1+3)-dimensional causal order and
+  the Einstein equation from null balance.
 - **Mathematics you can check.** The [Lean library](Lean/) contains more than
   12700 public theorems and lemmas with no admitted proofs, and every retained
   computational receipt is replayed under continuous integration.
@@ -161,19 +90,7 @@ branches out of the active path.
 
 **Agreement with the full range of observed measurement statistics has not
 been established.** The theorems hold under stated premises, and the
-executable observer is a candidate judged by declared acceptance criteria. The
-sections below say which premises the construction supplies and which remain
-inputs.
-
-A joint finite vacuum/geometry test on the native angular screen finds that
-the bare regional entropy and boundary area vary with the same sign at fixed
-slab volume. It excludes a positive bare-area stationarity attachment for
-that slab; the physical small-ball generalized entropy and stress dictionary
-remain separate from this calculation.
-A specified free fermion vacuum supplies a half-space modular/stress relation
-and a bare planar entropy density. These use the same field action and an
-independent spatial cut; they do not establish joint metric stationarity or
-a physical Newton constant.
+executable observer is a candidate judged by declared acceptance criteria.
 
 ## Run the observer
 

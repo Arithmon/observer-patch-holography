@@ -1071,6 +1071,17 @@ restricted exploration and refinement require their own compatible joins.
 Completion-program gate acceptance still requires its declared predecessor
 contracts; this component does not discharge CP01, CP02 or CP13 as a whole.
 
+The [finite native-only campaign](../completion/README.md) has a different
+access contract. Its [stationary-reference obstruction](../completion/MODULAR_ACCESS.md)
+excludes nontrivial modular implementation on the tested fixed full algebra
+using its real operations alone. The compiled complex phase services here
+are additional declared controls, so this continuation does not discharge
+that obstruction or implement that campaign's joint stationary reference.
+The adaptive coherence bound applies to its actual repair events when the
+exploration floor is retained; identity holds do not count as repair events.
+The same repair count must be guaranteed on every compared branch. Halted
+or unfinished histories cannot be discarded or replaced by an expected count.
+
 ## Replay
 
 ```sh

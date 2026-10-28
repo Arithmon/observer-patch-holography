@@ -65,6 +65,26 @@ def load_program(root: Path = ROOT, *, allow_unlinked: bool = False) -> tuple[di
     require(len(ids) == len(set(ids)) and set(ids) == {f"CP-{i:02d}" for i in range(14)},
             "missing or duplicate completion gate")
     by_id = {stage["id"]: stage for stage in stages}
+    campaigns = program.get("component_campaigns", [])
+    require(isinstance(campaigns, list), "invalid component campaigns")
+    campaign_ids = set()
+    for campaign in campaigns:
+        identifier = campaign.get("id")
+        require(isinstance(identifier, str) and identifier and identifier not in campaign_ids,
+                "missing or duplicate component campaign")
+        campaign_ids.add(identifier)
+        require(campaign.get("scope") == "FINITE_COMPONENT_FAMILY"
+                and campaign.get("whole_program_frozen") is False,
+                "component campaign cannot freeze the whole program")
+        require(bool(campaign.get("supports")) and set(campaign["supports"]) <= set(ids),
+                "unmapped component campaign")
+        bound_evidence(root, [campaign.get("contract")])
+        contract = json.loads(local_file(root, campaign["contract"]["path"]).read_text())
+        require(contract.get("campaign_id") == identifier
+                and contract.get("scope") == campaign["scope"]
+                and contract.get("whole_program_frozen") is False
+                and contract.get("physical_comparison_count_added") == 0,
+                "component campaign contract scope changed")
     claims = json.loads(local_file(root, "claims/claim_registry.yaml").read_text())["claims"]
     claim_ids = {row["claim_id"] for row in claims}
     foundations = program.get("foundations", [])
@@ -92,6 +112,11 @@ def load_program(root: Path = ROOT, *, allow_unlinked: bool = False) -> tuple[di
                 and bool(stage.get("obligations")), "unmapped hypothesis obligation")
         for path in stage["evidence"]:
             local_file(root, path)
+        if stage.get("progress_evidence"):
+            bound_evidence(root, stage["progress_evidence"])
+            require(all(row.get("campaign_id") in campaign_ids
+                        for row in stage["progress_evidence"]),
+                    "component progress lacks a registered campaign")
         if stage["status"] == "ACCEPTED":
             bound_evidence(root, stage.get("accepted_evidence"))
             require(all(by_id[dep]["status"] == "ACCEPTED" for dep in deps),
@@ -192,8 +217,18 @@ def render(program: dict, hypothesis: dict) -> str:
               "conditional 3+1 field construction based on the native response "
               "structure. The slow band's rank three and the native screen's "
               "spectral dimension two are distinct facts; the supplied radial "
-              "extension remains part of that field construction's contract.", "",
-             "## Next work and dependencies", "",
+              "extension remains part of that field construction's contract.", ""]
+    if program.get("component_campaigns"):
+        lines += ["## Current bounded investigations", "",
+                  "These source-bound component campaigns record actual progress without "
+                  "accepting dependent gates or freezing the larger program. Their "
+                  "exact exclusions do not cover untested histories or refinements.", ""]
+        for campaign in program["component_campaigns"]:
+            contract = campaign["contract"]
+            lines += [f"- [{campaign['id']}](../{contract['path']}): {contract['scope']} "
+                      f"Owning gates: {', '.join(campaign['supports'])}."]
+        lines += [""]
+    lines += ["## Next work and dependencies", "",
              "Start with CP-00. It must identify the law/resource/interpretation class "
              "whose complete exclusion would stop this program. Component investigations "
              "can continue provisionally; their results cannot discharge a dependent gate "
@@ -231,6 +266,10 @@ def render(program: dict, hypothesis: dict) -> str:
         lines += [f"- {row}" for row in stage["acceptance"]]
         lines += ["", "Obstruction/stopping test: " + stage["obstruction"], "", "Retained starting evidence:", ""]
         lines += [f"- [{Path(path).name}](../{path})" for path in stage["evidence"]]
+        if stage.get("progress_evidence"):
+            lines += ["", "Current component progress (not gate acceptance):", ""]
+            lines += [f"- [{Path(row['path']).name}](../{row['path']}): {row['scope']}"
+                      for row in stage["progress_evidence"]]
         lines += ["", "Earlier related work: " + ", ".join(issue_link(number) for number in stage["legacy_issues"]) + ".", ""]
     lines += ["## Working organization", "",
               program["legacy_issue_policy"] + " Live observer code, "

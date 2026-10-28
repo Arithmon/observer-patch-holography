@@ -22,11 +22,11 @@ The existing modular-clock candidate, rank-three response geometry and condition
 
 | Gate | Task | Status | Issue |
 | --- | --- | --- | --- |
-| CP-00 | Freeze the executable program class and decision contract | OPEN | [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135) |
-| CP-01 | Execute one continuing native observer with accounted resources | OPEN | [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136) |
-| CP-13 | Integrate finite theorems and curate the active proof chain | OPEN | [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137) |
-| CP-02 | Construct the continuing regime, faithful reference and local modular clocks | OPEN | [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) |
-| CP-03 | Exhibit a localized native defect and its protecting invariant | OPEN | [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) |
+| CP-00 | Freeze the executable program class and decision contract | IN_PROGRESS | [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135) |
+| CP-01 | Execute one continuing native observer with accounted resources | IN_PROGRESS | [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136) |
+| CP-13 | Integrate finite theorems and curate the active proof chain | IN_PROGRESS | [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137) |
+| CP-02 | Construct the continuing regime, faithful reference and local modular clocks | IN_PROGRESS | [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) |
+| CP-03 | Exhibit a localized native defect and its protecting invariant | IN_PROGRESS | [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) |
 | CP-04 | Derive common defect maintenance energy, kinetics and conserved stress | OPEN | [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) |
 | CP-05 | Transport the same defects and derive particle identity and currents | OPEN | [#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141) |
 | CP-06 | Obtain one interacting chiral 3+1 field description from native records | OPEN | [#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142) |

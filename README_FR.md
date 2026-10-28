@@ -35,58 +35,45 @@ et la spécification exécutable ; le
 [guide des termes](docs/INTERPRETATION_AND_TERMS.md) explique la vision
 intemporelle et les horloges qu’elle contient.
 
+## L’hypothèse exécutable
+
+Le pari concret est un programme. Une seule loi locale simple de réparation et
+de mémoire, exécutée sur un réseau de supports à douze ports, doit produire des
+observateurs dont les registres partagés ressemblent à notre monde : des champs
+quantiques en interaction en 3+1 dimensions, et la gravitation aux grandes
+échelles. Les particules y seraient des nœuds du réseau, des défauts localisés
+que les réparations locales ne peuvent pas défaire, et leur masse serait le
+coût d’entretien supplémentaire qu’ils imposent.
+
+C’est l’objectif. L’[hypothèse](docs/OPH_EXECUTABLE_HYPOTHESIS.md) dit ce qui
+compterait comme un succès, et le [programme d’achèvement](docs/COMPLETION_PROGRAM.md)
+découpe le travail en étapes avec des règles d’arrêt : soit les pièces se
+rejoignent sur un même processus, soit une preuve montre que toute la classe
+de lois échoue.
+
 ## Points forts
 
-- **Un observateur qui fonctionne.** Un observateur à douze ports conserve
-  ses registres et s’en sert pour choisir la réparation suivante, ce qui fait
-  passer l’occupation finale de 1/6 à 35/264. Les réparations natives
-  fournissent une préparation d’état bornée et la lecture du courant ; des
-  contrôles compilés permettent à des observateurs qui se recouvrent de lire
-  une même référence et son horloge modulaire active, en conservant les
-  perturbations et les échecs. Une tomographie d’état complète rend cette
-  référence identifiable, et un calendrier de réparation déclaré dérive son
-  maximum d’entropie à deux moments d’occupation conservés. Les registres de
-  recensement natifs donnent aussi une identité de stationnarité de l’entropie
-  comptée au fil de réparations adaptatives, avec le coût des tirages et les
-  erreurs d’expiration explicités. Un processus quantique fini distinct réunit
-  le flux électrique, la matière chargée et un champ scalaire avec une
-  rétroaction enregistrée. Les écrans qui se raffinent admettent des limites
-  de champ gaussiennes et des ondes de vitesse finie.
-- **Un champ scalaire lorentzien comme description effective des
-  observateurs.** Sur un produit radial déclaré au-dessus d’un écran qui se
-  raffine, une seule action détermine les corrélations du champ, sa réponse et
-  une horloge modulaire active. Pour tout menu fini de mesures et toute
-  tolérance positive, une seule théorie lisse et statique d’un champ scalaire
-  lorentzien en dimension (1+3) approche ces lectures conjointes. Une
-  projection finie en interaction a des lectures quantiques exécutées à la
-  source et une limite d’occupation contrôlée. La structure radiale, le
-  couplage d’interaction, la préparation et les unités physiques restent des
-  entrées ; le rayon dérivé des registres de courant natifs ne sélectionne pas
-  la direction radiale du champ. Le
-  [bilan intégré](model/CONSTRUCTION.md#integrated-effective-description)
-  énonce la portée de la construction.
-- **Champs de particules et mesures de masse.** Un relèvement de spin déclaré
-  fournit les charges internes d’une génération du Modèle standard et ses
-  interactions de Higgs permises. Une loi de contrôle spécifiée réalise douze
-  courants fermés sur les mêmes triplets géométriques ; son menu de contrôle
-  reste une hypothèse. Un contrôleur distinct agit sur les dix-huit courants
-  d’échange et de phase. Chaque filtre fini reste inversible ; une limite
-  conjointe du biais et du nombre de mises à jour approche douze courants
-  observables sous des commandes bornées. Les bains et la rétroaction sont
-  fournis ; la complétude physique des courants reste ouverte.
-  Des champs calibrés reproduisent les masses
-  fournies dans des registres simulés. Une construction distincte par
-  corrélation native et échange produit des modes fermioniques et leurs
-  interactions. Des contrôles de phase et d’échange spécifiés dérivent aussi
-  un champ relativiste libre à trois dimensions, avec deux copies de Dirac
-  par secteur, et exécutent des histoires finies de détecteurs. Ses écarts
-  libres et les pôles d’une construction interactive distincte échouent
-  au test de la hiérarchie des leptons.
-  La correction répétée admet une limite cohérente contrôlée. La dérivation
-  des masses physiques, du continuum chiral interactif et de la dynamique
-  gravitationnelle conjointe reste ouverte.
-  [Recherche sur les masses](docs/research/OPH_PARTICLE_MASS_RESPONSE.md) et
-  [contrats de matière](model/observer_particles/DERIVATION.md).
+- **Un observateur qui fonctionne.** Un observateur à douze ports conserve ses
+  registres et s’en sert pour choisir sa prochaine réparation. Des observateurs
+  qui se chevauchent lisent une référence commune et son horloge, un processus
+  quantique fini réunit flux électrique, matière chargée et champ scalaire, et
+  les écrans raffinés donnent des limites de champ gaussiennes et des ondes de
+  vitesse finie.
+- **Un champ scalaire lorentzien à partir des registres.** Sur une extension
+  radiale déclarée de l’écran raffiné, une seule action fixe corrélations,
+  réponse et horloge modulaire, et une théorie lisse de champ scalaire en
+  dimension (1+3) reproduit tout ensemble fini de lectures conjointes. La
+  direction radiale et les unités physiques sont des entrées. Le
+  [verdict intégré](model/CONSTRUCTION.md#integrated-effective-description)
+  donne les détails.
+- **Les particules sont la grande pièce manquante.** La théorie finie donne
+  les charges d’une génération du Modèle standard et ses couplages de Higgs,
+  mais aucune masse. Toutes les lois de masse testées sur le modèle exécutable
+  manquent la hiérarchie mesurée des leptons, et le candidat de défaut évident
+  sur le support natif se défait après quelques réparations. Trouver un défaut
+  réellement stable est l’objet de
+  l’[article sur les particules](paper/deriving_the_particle_zoo_from_observer_consistency.pdf)
+  et des [notes sur la réponse en masse](docs/research/OPH_PARTICLE_MASS_RESPONSE.md).
 - **La physique standard à partir d’un accord fini.** Sous des prémisses
   énoncées, des théorèmes finis donnent à la spécification des structures
   familières : des registres publics indépendants de l’ordre des réparations ;
@@ -113,8 +100,6 @@ intemporelle et les horloges qu’elle contient.
 **L’accord avec l’ensemble des statistiques de mesure observées n’est pas
 établi.** Les théorèmes valent sous des prémisses énoncées, et l’observateur
 exécutable est un candidat jugé selon des critères d’acceptation déclarés.
-Les sections ci-dessous indiquent quelles prémisses la construction fournit
-et lesquelles restent des entrées.
 
 ## Lancer l’observateur
 

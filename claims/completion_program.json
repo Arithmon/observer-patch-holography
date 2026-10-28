@@ -1,7 +1,7 @@
 {
   "schema": "oph.completion_program.v1",
   "program_id": "OPH-EXECUTABLE-COMPLETION-2026-10-28",
-  "status": "PLANNED_NOT_COMPLETED",
+  "status": "IN_PROGRESS_NOT_COMPLETED",
   "boundary_status": "NOT_FROZEN",
   "hypothesis": "claims/executable_model_hypothesis.json",
   "umbrella_issue": 1134,
@@ -111,7 +111,7 @@
         "EMH-4",
         "EMH-5"
       ],
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "issue": 1135,
       "deliverable": "A versioned, content-bound class of admissible carrier/refinement, repair and memory laws, record instruments, resources, preparations, clocks and interpretation maps; one target and exposure record fixed before validation.",
       "acceptance": [
@@ -131,7 +131,16 @@
         1078,
         1026
       ],
-      "accepted_evidence": []
+      "accepted_evidence": [],
+      "progress_evidence": [
+        {
+          "path": "model/completion/campaign.json",
+          "sha256": "6b12ab2491a801473e79917b0684fa6ead988056a1a8ee205e30c178271424ad",
+          "independent_check": "model/completion/test_family.py",
+          "scope": "Frozen finite C/E mixture, positive repair/selection and bounded classical-memory family. The parent refinement and physical-interpretation boundary remains open.",
+          "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1"
+        }
+      ]
     },
     {
       "id": "CP-01",
@@ -143,7 +152,7 @@
         "EMH-1",
         "EMH-2"
       ],
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "issue": 1136,
       "deliverable": "One replayable native repair/memory process that prepares, acts, reads, retains records and continues on overlapping accessible regions, with every service and failure branch accounted.",
       "acceptance": [
@@ -165,7 +174,16 @@
         1076,
         1026
       ],
-      "accepted_evidence": []
+      "accepted_evidence": [],
+      "progress_evidence": [
+        {
+          "path": "model/completion/observer_results.json",
+          "sha256": "f7d4623dfed41cb40ec254cf43c3542faa4227b6690f8552bb055f94f9ec7c98",
+          "independent_check": "model/completion/test_observer.py",
+          "scope": "Exact continuing C/E and delayed-mixture observer instruments, six-attempt executions, arbitrary-reference certificate, FIFO exports, full-buffer halt and resource accounting. Preparation and physical services remain supplied.",
+          "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1"
+        }
+      ]
     },
     {
       "id": "CP-13",
@@ -180,7 +198,7 @@
         "EMH-3",
         "EMH-4"
       ],
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "issue": 1137,
       "deliverable": "A theorem-to-model integration and relevance review in the existing premise map: each result needed by the completion chain has an owning gate and an explicit model-premise proof obligation; irrelevant branches leave the active path.",
       "acceptance": [
@@ -202,7 +220,16 @@
         1026,
         1078
       ],
-      "accepted_evidence": []
+      "accepted_evidence": [],
+      "progress_evidence": [
+        {
+          "path": "model/completion/theorem_map.json",
+          "sha256": "8bc72b378e50255d0823cd384b2b02618bc1e16ca6ad6e282ab84c2bd1fe3e00",
+          "independent_check": "model/completion/test_theorem_map.py",
+          "scope": "Eleven actual theorem/model mappings with twelve source bindings; fixed-mixture stationarity is distinguished from correlated adaptive scheduling, and all downstream physical premises remain explicit.",
+          "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1"
+        }
+      ]
     },
     {
       "id": "CP-02",
@@ -214,7 +241,7 @@
       "obligations": [
         "EMH-1"
       ],
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "issue": 1138,
       "deliverable": "A same-process reference/state regime, observer algebras and implemented modular histories with compatible local clock and energy normalization maps.",
       "acceptance": [
@@ -235,7 +262,30 @@
         1077,
         1026
       ],
-      "accepted_evidence": []
+      "accepted_evidence": [],
+      "progress_evidence": [
+        {
+          "path": "model/completion/adaptive_reference_results.json",
+          "sha256": "cc00e070d7502c0398b85350d66fe517611fb9619c0b02c9fc106440e97f23a2",
+          "independent_check": "model/completion/test_adaptive_reference.py",
+          "scope": "Exact two-attempt counterexample to importing the uniform source reference under current-record feedback: 30 changed entries, maximum deviation 1/960.",
+          "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1"
+        },
+        {
+          "path": "model/completion/stationary_reference_results.json",
+          "sha256": "a00cbe1b42cdd16b62f5477a38ac69d43630127d9f1245270a86088093d2e2c2",
+          "independent_check": "model/completion/test_stationary_reference.py",
+          "scope": "Exact unique classical stationary law on the 129-state recurrent support of the 132-state source/current-bit kernel; its 66-state source marginal is positive and nonuniform. No quantum uniqueness or implemented clock is inferred.",
+          "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1"
+        },
+        {
+          "path": "model/completion/observer_reference_results.json",
+          "sha256": "93cf85341543063cefe57a274e8b89bc3ce5f17bd7018f8f23787507f2d1fa50",
+          "independent_check": "model/completion/test_observer_reference.py",
+          "scope": "Exact stationary lift through the actual repair-only C/E full-record FIFO instruments, with 128/192 positive record blocks and 4218 positive diagonal entries each. Stationarity concerns the finite marginal, not growing exported history; support faithfulness does not supply modular access.",
+          "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1"
+        }
+      ]
     },
     {
       "id": "CP-03",
@@ -247,7 +297,7 @@
       "obligations": [
         "EMH-3"
       ],
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "issue": 1139,
       "deliverable": "An actual native state/observable sector with a localized core, reference-like exterior and a boundary charge invariant under the full admitted repair law.",
       "acceptance": [
@@ -266,7 +316,16 @@
         1026,
         1078
       ],
-      "accepted_evidence": []
+      "accepted_evidence": [],
+      "progress_evidence": [
+        {
+          "path": "model/completion/defect_algebra_results.json",
+          "sha256": "fea796822e7aefa433a79e28368b71f2a13d59ec75df43e94d39685127840add",
+          "independent_check": "model/completion/test_defect_algebra.py",
+          "scope": "Exact all-branch full-matrix-algebra certificate for C and E on H78/H66, excluding nontrivial source-only charges commuting with every active branch. History-dependent charges, arbitrary expectation-fixed observables, metastability and refining defects are not excluded.",
+          "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1"
+        }
+      ]
     },
     {
       "id": "CP-04",
@@ -577,6 +636,26 @@
     {
       "issue": 1025,
       "owner": 1147
+    }
+  ],
+  "component_campaigns": [
+    {
+      "id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
+      "scope": "FINITE_COMPONENT_FAMILY",
+      "whole_program_frozen": false,
+      "supports": [
+        "CP-00",
+        "CP-01",
+        "CP-13",
+        "CP-02",
+        "CP-03"
+      ],
+      "contract": {
+        "path": "model/completion/campaign.json",
+        "sha256": "6b12ab2491a801473e79917b0684fa6ead988056a1a8ee205e30c178271424ad",
+        "independent_check": "model/completion/test_family.py",
+        "scope": "Frozen finite C/E mixture, positive repair/selection and bounded classical-memory family. The parent refinement and physical-interpretation boundary remains open."
+      }
     }
   ]
 }

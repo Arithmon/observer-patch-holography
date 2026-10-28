@@ -1,7 +1,7 @@
 {
   "description": "Native Palm, entropy-completed and common-cap references with regional modular algebras, certified source clocks and complete observer readouts.",
   "files": {
-    "README.md": "b1d6b9d8c349322b0e9a8507f37abdc18245e0407b472af240055d436303dcc5",
+    "README.md": "249ce8cd0903d4ab0b16393aad7b8038b15f7a179fcb3bcdb51d8c20ececf864",
     "__init__.py": "e3008596e022bdcfb81b8c3dcaeefdfc9d8dfade97cff2256234402dec6860c6",
     "__main__.py": "bd5ff6e8aa70cc3d74a79a41d0ebdef04d17cdf2addbfc6475487204ef6f2d16",
     "cap_local_clock.py": "ccc4bf54b67866a59adb7904d1e3c19a4325ce53dc8963ed68848b83065510e8",

@@ -20,10 +20,19 @@ def fixture_root(tmp_path):
     paths = {hypothesis["contract"]}
     for row in source["stages"] + source["foundations"]:
         paths.update(row["evidence"])
+    bound_rows = [row for stage in source["stages"] for row in stage.get("progress_evidence", [])]
+    bound_rows += [row["contract"] for row in source.get("component_campaigns", [])]
+    for row in bound_rows:
+        paths.update((row["path"], row["independent_check"]))
     for name in paths:
         target = tmp_path / name
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text("Independent fixture evidence: " + name + "\n")
+    for campaign in source.get("component_campaigns", []):
+        name = campaign["contract"]["path"]
+        (tmp_path / name).write_text((program.ROOT / name).read_text())
+    for row in bound_rows:
+        row["sha256"] = hashlib.sha256((tmp_path / row["path"]).read_bytes()).hexdigest()
     for name, value in ((program.PROGRAM, source), (program.HYPOTHESIS, hypothesis),
                         ("claims/claim_registry.yaml", {"claims": source_claims})):
         p = tmp_path / name
@@ -46,7 +55,7 @@ def test_retained_foundations_do_not_promote_integrated_gates(fixture_root):
     assert any("3+1" in row["title"] for row in view["retained_foundations"])
     assert all(row["canonical_claim_status"] for row in view["retained_foundations"])
     assert all(row["source_sha256"] for row in view["retained_foundations"])
-    assert all(row["status"] == "OPEN" for row in view["program"]["stages"])
+    assert all(row["status"] in {"OPEN", "IN_PROGRESS"} for row in view["program"]["stages"])
     assert view["hypothesis"]["comparison_count_added"] == 0
     assert "not scientific gate acceptance" in view["verification"]
 
@@ -112,3 +121,18 @@ def test_committed_issue_and_dag_view_is_current():
     data, hypothesis = program.load_program()
     assert (program.ROOT / program.OUTPUT).read_text() == program.render(data, hypothesis)
     assert all(row["issue"] for row in data["stages"])
+
+
+@pytest.mark.parametrize("damage", ["custody", "unmapped", "promotion"])
+def test_component_progress_cannot_change_scope_or_lose_custody(fixture_root, damage):
+    def mutate(data):
+        campaign = data["component_campaigns"][0]
+        if damage == "custody":
+            campaign["contract"]["sha256"] = "0" * 64
+        elif damage == "promotion":
+            campaign["whole_program_frozen"] = True
+        else:
+            next(row for row in data["stages"] if row.get("progress_evidence"))["progress_evidence"][0]["campaign_id"] = "UNKNOWN"
+    change(fixture_root, program.PROGRAM, mutate)
+    with pytest.raises(ValueError):
+        program.load_program(fixture_root)
