@@ -26,41 +26,6 @@ explicit observation map connects them.
 | Uncalibrated coefficients | Complete record laws determine the specified feedback coefficients; blind inverses recover them | The tested coefficients do not reproduce the charged spectrum |
 | Propagation and measurement | Finite CAR fields, charge/current identities, complete detector controls, and restricted continuum comparisons | One same-process physical chiral field, controlled interactions and physical units |
 
-## Native candidate and the mass question
-
-The [exchange-sector packet](../../model/exchange_sector/README.md) gives the
-smallest current live candidate on binary H66: a conserved *source/core*
-overlap `q`, an exact two-dimensional `q=1` code, and a source-executed
-one-seam recovery with explicit core-reset and archive cost. Its all-seam
-correctability is an exact finite code theorem; the executed recovery
-demonstration uses the declared `(0,5)` seam. A sharp `q=1` state differs by
-at least `4/9` from the transported reference on the full ten-port exterior.
-An uninterrupted positive odd closed exchange flag has rank-one source input
-domain, so it cannot carry an unknown coherent qubit through a final decoder.
-Intermediate active recovery changes that grammar. These facts leave physical
-localization and coherent exchange statistics open.
-
-For this code, complete uniform-seam C/E records give movement probability
-`1/6` per *attempt*, versus `5/33` for the uniform-source reference: an
-excess `1/66`. Relative to the separately supplied fixed-core three-charge
-reference, the excess is `17/1125`. Neither statistic includes the coherent
-recovery work or a calibrated duration. The
-[co-moving balance result](../../model/clock_defect_energy/REFERENCE_BALANCE.md)
-has a stationary joint source/core measure, but the native gradient form of
-its conserved charge is exactly zero. Its sector probabilities therefore do
-not select a rest-energy splitting.
-
-The [positive current form and product-mode comparison](../../model/clock_defect_energy/MODE_ENERGY.md)
-remain reusable finite checks. The product mode's rest gap and independent
-curvature approach the same mass-shell value under source-word subdivision;
-that mode is on a separately declared field source and has no identified map
-to the active `q=1` code. To use `E=mc^2` for a particle here, one same
-localized excitation must supply a reference-subtracted rest action, a moving
-kinetic response with common signal speed and calibrated clock, and conserved
-stress. Setting `m=E/c^2` before those independent checks would only rename an
-assumed energy. No particle species or mass in SI units is identified by the
-current candidate.
-
 Read the [particle paper](../../paper/deriving_the_particle_zoo_from_observer_consistency.tex)
 for the mathematical argument. The [model construction criteria](../../model/CONSTRUCTION.md),
 [checked premise map](../../model/PREMISES.md) and

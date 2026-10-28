@@ -155,6 +155,9 @@ Their state spaces and scheduling premises differ. The
 [sharp exchange-sector packet](../model/exchange_sector/README.md) tests the
 full exterior, odd closed histories and an actively corrected code, with
 recovery costs retained. The
+[current native particle/mass join](research/OPH_NATIVE_PARTICLE_MASS_JOIN.md)
+keeps these candidate results and their physical boundary beside the earlier
+source-bound mass audit. The
 [completion plan](COMPLETION_PROGRAM.md) tracks the shared remaining joins.
 These finite results add no physical comparison or integrated gate acceptance.
 
