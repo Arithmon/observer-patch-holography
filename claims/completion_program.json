@@ -211,7 +211,7 @@
         },
         {
           "path": "model/clock_defect_energy/clock_services_results.json",
-          "sha256": "bc380fae20247cd0a72867d4290d7eb4950e37480692e14866591677f0ef1081",
+          "sha256": "e79c07379ab8f5254f5deafd5437444b03cf48cf7427b6cd3bd4c513f6035da4",
           "independent_check": "model/clock_defect_energy/test_clock_services.py",
           "scope": "Executes and rationally certifies all 66 parameter-four transported-core source words, adding 62 declared services with counted ROM, pulses, loads/exports and complete abort/reference outputs. Complete native-record covariance and exported-history tests preserve the prior unavailable-service result under its original menu; physical apparatus remains supplied.",
           "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1"
@@ -264,14 +264,14 @@
         },
         {
           "path": "model/clock_defect_energy/clock_services_results.json",
-          "sha256": "bc380fae20247cd0a72867d4290d7eb4950e37480692e14866591677f0ef1081",
+          "sha256": "e79c07379ab8f5254f5deafd5437444b03cf48cf7427b6cd3bd4c513f6035da4",
           "independent_check": "model/clock_defect_energy/test_clock_services.py",
           "scope": "Executes and rationally certifies all 66 parameter-four transported-core source words, adding 62 declared services with counted ROM, pulses, loads/exports and complete abort/reference outputs. Complete native-record covariance and exported-history tests preserve the prior unavailable-service result under its original menu; physical apparatus remains supplied.",
           "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1"
         },
         {
           "path": "model/clock_defect_energy/joint_clock_results.json",
-          "sha256": "30f44c8fade820d750492a7107cd2b2ab497cd8f7415bab18ea5120c989f3854",
+          "sha256": "3d3c21144ae5d68bf9f855bbc6296c3d2c9e22f71d71ce977e02447888e4226d",
           "independent_check": "model/clock_defect_energy/test_joint_clock.py",
           "scope": "Complete C/E histories use a shared native incident count to drive repeated transported clock words and a separate protected coherent field walk, retaining preparation flags, source exports, both field outcomes and untouched references. A matched-marginal control changes the joint law. The coherent services and event/parameter dictionary are explicit; equal generators and laboratory calibration are not assumed.",
           "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1"
@@ -357,14 +357,14 @@
         },
         {
           "path": "model/clock_defect_energy/clock_wave_results.json",
-          "sha256": "bd24d505b15b2b041b9a8e3bf7b12a0623d603b12a5350d42f93902e490dcdc2",
+          "sha256": "19d54b4ae1dde553ff50db9dfd69358bbd904056531351f18fd9a02910e518d2",
           "independent_check": "model/clock_defect_energy/test_clock_wave.py",
           "scope": "Replays the existing native-return reconstruction sigma_wave proportional to exp(-arccos K), finite-cap bounds and complete quadrature-record clock inference, with a conditional clock-to-wave uncertainty map. The negative checks reject substituting PR1149's different three-charge reference into that dictionary; they imply neither a general clock/wave obstruction nor a executed joint instrument or physical calibration.",
           "campaign_id": "OPH-CLOCK-DEFECT-ENERGY-2026-10-28-v1"
         },
         {
           "path": "model/clock_defect_energy/joint_clock_results.json",
-          "sha256": "30f44c8fade820d750492a7107cd2b2ab497cd8f7415bab18ea5120c989f3854",
+          "sha256": "3d3c21144ae5d68bf9f855bbc6296c3d2c9e22f71d71ce977e02447888e4226d",
           "independent_check": "model/clock_defect_energy/test_joint_clock.py",
           "scope": "Complete C/E histories use a shared native incident count to drive repeated transported clock words and a separate protected coherent field walk, retaining preparation flags, source exports, both field outcomes and untouched references. A matched-marginal control changes the joint law. The coherent services and event/parameter dictionary are explicit; equal generators and laboratory calibration are not assumed.",
           "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1"
@@ -1021,7 +1021,7 @@
       },
       {
         "path": "model/clock_defect_energy/clock_wave_results.json",
-        "sha256": "bd24d505b15b2b041b9a8e3bf7b12a0623d603b12a5350d42f93902e490dcdc2",
+        "sha256": "19d54b4ae1dde553ff50db9dfd69358bbd904056531351f18fd9a02910e518d2",
         "independent_check": "model/clock_defect_energy/test_clock_wave.py",
         "scope": "Replays the existing native-return reconstruction sigma_wave proportional to exp(-arccos K), finite-cap bounds and complete quadrature-record clock inference, with a conditional clock-to-wave uncertainty map. The negative checks reject substituting PR1149's different three-charge reference into that dictionary; they imply neither a general clock/wave obstruction nor a executed joint instrument or physical calibration.",
         "campaign_id": "OPH-CLOCK-DEFECT-ENERGY-2026-10-28-v1",
@@ -1053,7 +1053,7 @@
       },
       {
         "path": "model/clock_defect_energy/clock_services_results.json",
-        "sha256": "bc380fae20247cd0a72867d4290d7eb4950e37480692e14866591677f0ef1081",
+        "sha256": "e79c07379ab8f5254f5deafd5437444b03cf48cf7427b6cd3bd4c513f6035da4",
         "independent_check": "model/clock_defect_energy/test_clock_services.py",
         "scope": "Executes and rationally certifies all 66 parameter-four transported-core source words, adding 62 declared services with counted ROM, pulses, loads/exports and complete abort/reference outputs. Complete native-record covariance and exported-history tests preserve the prior unavailable-service result under its original menu; physical apparatus remains supplied.",
         "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1",
@@ -1061,7 +1061,7 @@
       },
       {
         "path": "model/clock_defect_energy/joint_clock_results.json",
-        "sha256": "30f44c8fade820d750492a7107cd2b2ab497cd8f7415bab18ea5120c989f3854",
+        "sha256": "3d3c21144ae5d68bf9f855bbc6296c3d2c9e22f71d71ce977e02447888e4226d",
         "independent_check": "model/clock_defect_energy/test_joint_clock.py",
         "scope": "Complete C/E histories use a shared native incident count to drive repeated transported clock words and a separate protected coherent field walk, retaining preparation flags, source exports, both field outcomes and untouched references. A matched-marginal control changes the joint law. The coherent services and event/parameter dictionary are explicit; equal generators and laboratory calibration are not assumed.",
         "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1",
