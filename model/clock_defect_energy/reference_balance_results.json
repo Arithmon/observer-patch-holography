@@ -15,6 +15,7 @@
       "2": "2/45"
     },
     "core_metadata_is_an_intrinsic_source_charge": false,
+    "existing_fixed_core_continuation_stationary_claimed": false,
     "joint_reversible_movement_edges_checked": 19800,
     "joint_source_core_states": 4356,
     "localized_particle_or_fermionic_phase_identified": false,
@@ -24,7 +25,8 @@
     },
     "source_and_core_marginals_uniform": true,
     "source_observable_quadratic_form": "2/33",
-    "stationary_for_uniform_seam_selection": true
+    "stationary_for_uniform_seam_selection": true,
+    "uniform_core_and_conditional_source_preparation_supplied": true
   },
   "domain": "unconditioned complete native C/E population repair on binary H66; fixed faithful diagonal reference for two declared cores",
   "native_movement_edges": 300,
@@ -81,11 +83,11 @@
   },
   "source_sha256": {
     "Lean/Geometry/SourceActionMeasure.lean": "802361b7efc592b84d2df4d00506818a9d9354fd239b94eaf63e26792ea3a73d",
-    "model/clock_defect_energy/REFERENCE_BALANCE.md": "bf157c816e64f564542777a64de34aa96c9c35f44781dfe0507493579f880f50",
+    "model/clock_defect_energy/REFERENCE_BALANCE.md": "722702dd637a87d60ccdf0a42679492167a235608e0dd3bdc3bfc9e47ecf7e6a",
     "model/clock_defect_energy/continuation.py": "2b2d16fa74aae0552fcb28f91bc6d3a4adc849a6d75df21a48015d202afc5293",
     "model/clock_defect_energy/defect_history.py": "b0976dcd8266e0d3aa85d8d84b41c85e7504192884e01299c6ed23346d2ca4fb",
-    "model/clock_defect_energy/reference_balance.py": "37b10f7198d3ab95e02c8eb17cfe980878d6b8ef005d00b84875bd680ee19b0a",
-    "model/clock_defect_energy/test_reference_balance.py": "0ce0a3bc85c6253cdd7ef75e94b7d3053abb18aee1c943e65f5927eb0a2dbea8",
+    "model/clock_defect_energy/reference_balance.py": "1fe4efc30c32ce9754174dfbd04287b94f4a5ae6ee846f0e1a4de2581508c93b",
+    "model/clock_defect_energy/test_reference_balance.py": "64f815d5e95760d27fad82b12f8507acf6c749a20f903cef509b0c2322d0445e",
     "model/completion/observer.py": "ad0ccc68f93a02c2d624af66bae90eed1777d9e975875c92f87d6e1f2177aae2",
     "model/native_modular_reference/history_transport.py": "b08eaf256d6d7a078c44f9e762594581daa1c8bc529bf8bf0b6a47223689c8bf",
     "model/observer/record_recovery.py": "0ad1c23cac53bbcf00c32ada6ce01660466b4e9c71e5e58a0226a0bf5609a193"

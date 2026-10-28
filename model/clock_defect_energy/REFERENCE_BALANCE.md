@@ -44,6 +44,9 @@ stress follows from either measure alone.
 There is a positive joint result under **uniform seam selection**. Include the
 already counted classical two-port core label `c` and update it by the same
 recorded seam transposition as the source pair `x` whenever current is nonzero.
+The stationary ensemble additionally requires a uniform initial core and the
+conditional source reference `sigma_c`; that preparation is supplied, not
+executed by the existing fixed-core continuation.
 On the `66 × 66 = 4,356` source/core states, set
 
 ```text

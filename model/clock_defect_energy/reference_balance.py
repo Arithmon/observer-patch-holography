@@ -95,6 +95,8 @@ def co_moving() -> dict:
         "classical_core_metadata_states": len(cores),
         "source_and_core_marginals_uniform": True,
         "stationary_for_uniform_seam_selection": True,
+        "uniform_core_and_conditional_source_preparation_supplied": True,
+        "existing_fixed_core_continuation_stationary_claimed": False,
         "joint_reversible_movement_edges_checked": edge_checks,
         "co_moving_charge_sector_probabilities": {str(q): str(value) for q, value in sector.items()},
         "raw_kraus_source_core_pair_checks": kraus_pair_checks,
