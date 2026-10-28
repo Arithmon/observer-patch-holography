@@ -124,12 +124,15 @@ def _compare(expected, actual, path="root"):
     elif isinstance(expected, float):
         # Full-register polar/SVD errors accumulate across 100 attempts and
         # vary by several 1e-9 across BLAS backends. Keep that allowance on
-        # the accumulated diagnostic; the source-composition gate is below
-        # 1e-6 and exact fields still match.
+        # the accumulated diagnostic. The producer enforces a 1e-8 raw-replay
+        # gate, independent tests require composition below 1e-6, and exact
+        # fields still match.
         if path.endswith(".encoded_t_attempt_operator_error_upper.100"):
             abs_tol = 1e-8
         elif path.startswith("root.source_composition."):
             abs_tol = 1e-9
+        elif path.startswith("root.source_replay."):
+            abs_tol = 1e-10
         else:
             abs_tol = 1e-12
         if not math.isclose(expected, actual, rel_tol=1e-6, abs_tol=abs_tol):
