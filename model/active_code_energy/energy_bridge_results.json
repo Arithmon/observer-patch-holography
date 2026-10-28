@@ -165,16 +165,18 @@
           }
         ]
       },
+      "particle_campaign_id": "particle-screening-20261028-v1",
       "source_pulse_recovery_executed": false
     },
     "source_executed_repair_seam": [
       0,
       5
     ],
+    "uniform_seam_activity_and_one_seam_executed_recovery_form_one_protocol": false,
     "uniform_source_or_stationary_q1_background": "5/33"
   },
   "campaign_id": "active-code-energy-20261028-v1",
-  "contract_sha256": "01ff6387efd499d674ee0e81b021868dc1ead6f614c264f83b295d3227ade2db",
+  "contract_sha256": "aad4536c5289381ca61e0aad60699f1f420cf5aa6c8006f51601f7dae3cd22dd",
   "cp04_accepted": false,
   "independent_product_mode_control": {
     "ideal_kinetic_curvature": "1/a",
@@ -224,7 +226,8 @@
         }
       }
     },
-    "statement": "arbitrary positive sector reweightings are stationary; q-only action offsets have zero native gradient form"
+    "statement": "arbitrary positive sector reweightings are stationary; q-only action offsets have zero native gradient form",
+    "stationarity_scope": "reduced diagonal source/core population law under uniform seams; no stationary retained archive"
   },
   "source_sha256": {
     "Lean/Dynamics/WardLimitManifest.lean": "6bae06ce219aa104014a3094298c3f376586cc54d03223b534b94a95565a6b0d",
@@ -233,11 +236,11 @@
     "Lean/Geometry/SourceActionMeasure.lean": "802361b7efc592b84d2df4d00506818a9d9354fd239b94eaf63e26792ea3a73d",
     "Lean/Screen/RegionalContinuity.lean": "fa00c3aed6580174519e1d828ad81572d7ac7b759a3274dbc60e99761d76bd28",
     "Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean": "646f2b7865b6d14a21a05b08013c35848fd3380d89cfffa2fff6b390786c9a22",
-    "model/active_code_energy/README.md": "04341ca719703dcd9b1d7292bd94a6eba09cc28318d6e2f51523b3ec124aafbd",
+    "model/active_code_energy/README.md": "dd102831d87c4e4b375e33494038897f0c1b3792a363daeb2422da9f911d0b55",
     "model/active_code_energy/__init__.py": "78d9126fe87e2cd176cfcd5b2fa37aceda69f10b3b5b848110b590b1ce703c93",
-    "model/active_code_energy/campaign.json": "01ff6387efd499d674ee0e81b021868dc1ead6f614c264f83b295d3227ade2db",
-    "model/active_code_energy/energy_bridge.py": "e2fde2c0d438792da4631550b181c83a82a57c4f7b62460f30bb5997ca843bff",
-    "model/active_code_energy/test_energy_bridge.py": "f3771acb206e9f6740837bf7afea207782d56958c13e37e73898d3e70d9dd0c3",
+    "model/active_code_energy/campaign.json": "aad4536c5289381ca61e0aad60699f1f420cf5aa6c8006f51601f7dae3cd22dd",
+    "model/active_code_energy/energy_bridge.py": "5827e26cc323060b6ed7d9a0d23c874a3d4cef9acee6310e5eee34550db0e36e",
+    "model/active_code_energy/test_energy_bridge.py": "f4de128765f5a8939cfec1161d2f8cd55aca5b655cea9b0fc01a1e783cbe53cc",
     "model/clock_defect_energy/defect_history.py": "b0976dcd8266e0d3aa85d8d84b41c85e7504192884e01299c6ed23346d2ca4fb",
     "model/clock_defect_energy/mode_energy_results.json": "56f1cbf9e3509fb43940cd9dc4d37eadda110f903031ca0db0314e8767a1db00",
     "model/clock_defect_energy/reference_balance.py": "6695eddff9a93667193c307d80d349c36d685b4dfd717f9191035c989b73940d",
@@ -247,6 +250,11 @@
     "model/exchange_sector/sector.py": "5f6b51ce146cdb78c61f7836239a36c1de03a486593a24f2d40f8c3bb06898c0",
     "model/exchange_sector/sector_results.json": "e9a6213d7c30a07e9402cd4a5f31cb92e5ac1a92b14dceb7e2151d30e4f296f7",
     "model/observer/record_recovery.py": "0ad1c23cac53bbcf00c32ada6ce01660466b4e9c71e5e58a0226a0bf5609a193",
-    "model/observer/source_discrimination/circuit.py": "327b537d01901c223e375cfff6dce882cb9a73f6a3b36e5019750e801377dd7e"
+    "model/observer/source_discrimination/circuit.py": "327b537d01901c223e375cfff6dce882cb9a73f6a3b36e5019750e801377dd7e",
+    "model/particle_screening/README.md": "62f972fd6af38ebac89fe81d2826073ea3169e5c002d1b676acd988962e47b34",
+    "model/particle_screening/campaign.json": "1d5eb2ce29c41a80f3e3e6bf90388ba99daff2b537f9267063171afa2d2f6b8d",
+    "model/particle_screening/screening.py": "7fda107721574f80f2e048ff441beef2a4c2206a95b6defa04f8dd5004f6690c",
+    "model/particle_screening/screening_results.json": "3970b65a26e313ddff2f25cbc1647e23740d5dae0857183f44be095c6b77adc8",
+    "model/particle_screening/test_screening.py": "6106f4a5ff764d499ad87caab2514cb536653039177f1ac8eaaeda834a223b2b"
   }
 }

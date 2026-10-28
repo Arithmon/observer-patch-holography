@@ -1,4 +1,5 @@
 {
+  "boundary_status": "FROZEN_DIAGNOSTIC_CONTRACT",
   "campaign_id": "active-code-energy-20261028-v1",
   "integrated_gate_accepted": false,
   "native_family_changed": false,
@@ -22,6 +23,12 @@
     "model/exchange_sector/sector.py": "5f6b51ce146cdb78c61f7836239a36c1de03a486593a24f2d40f8c3bb06898c0",
     "model/exchange_sector/sector_results.json": "e9a6213d7c30a07e9402cd4a5f31cb92e5ac1a92b14dceb7e2151d30e4f296f7",
     "model/observer/record_recovery.py": "0ad1c23cac53bbcf00c32ada6ce01660466b4e9c71e5e58a0226a0bf5609a193",
-    "model/observer/source_discrimination/circuit.py": "327b537d01901c223e375cfff6dce882cb9a73f6a3b36e5019750e801377dd7e"
-  }
+    "model/observer/source_discrimination/circuit.py": "327b537d01901c223e375cfff6dce882cb9a73f6a3b36e5019750e801377dd7e",
+    "model/particle_screening/README.md": "62f972fd6af38ebac89fe81d2826073ea3169e5c002d1b676acd988962e47b34",
+    "model/particle_screening/campaign.json": "1d5eb2ce29c41a80f3e3e6bf90388ba99daff2b537f9267063171afa2d2f6b8d",
+    "model/particle_screening/screening.py": "7fda107721574f80f2e048ff441beef2a4c2206a95b6defa04f8dd5004f6690c",
+    "model/particle_screening/screening_results.json": "3970b65a26e313ddff2f25cbc1647e23740d5dae0857183f44be095c6b77adc8",
+    "model/particle_screening/test_screening.py": "6106f4a5ff764d499ad87caab2514cb536653039177f1ac8eaaeda834a223b2b"
+  },
+  "whole_program_frozen": false
 }

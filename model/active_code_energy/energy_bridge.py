@@ -17,6 +17,7 @@ from tools import strict_json
 from ..clock_defect_energy import defect_history, reference_balance
 from ..common_source import encoded_memory as memory, native_routing as routing
 from ..exchange_sector import sector
+from ..particle_screening import screening
 from ..observer import record_recovery as records
 from ..observer.source_discrimination import circuit
 
@@ -34,6 +35,11 @@ BASE_SOURCES = (
     "model/common_source/native_routing.py",
     "model/observer/record_recovery.py",
     "model/observer/source_discrimination/circuit.py",
+    "model/particle_screening/campaign.json",
+    "model/particle_screening/README.md",
+    "model/particle_screening/screening.py",
+    "model/particle_screening/screening_results.json",
+    "model/particle_screening/test_screening.py",
     "Lean/Geometry/SourceActionMeasure.lean",
     "Lean/Geometry/InternalEnergyInertia.lean",
     "Lean/Geometry/ProperTimeInternalAction.lean",
@@ -48,14 +54,9 @@ PACKET_SOURCES = (
     "model/active_code_energy/README.md",
     "model/active_code_energy/campaign.json",
 )
-# The independently proposed screened successor uses the same fixed core.
-# Its all-seam KL/recovery-existence proof is owned by the particle packet;
-# only its native-current cost is tested here. No source pulse recovery for it
-# is asserted by this packet.
-SCREENED_SUPPORTS = (
-    ((0, 2), (1, 3), (0, 4), (1, 6)),
-    ((0, 3), (1, 2), (0, 6), (1, 4)),
-)
+# Import the particle packet's canonical code geometry. Its all-seam KL
+# certificate is source-bound below; only its current is tested here.
+SCREENED_SUPPORTS = screening.sharp_code(sector.CORE)
 
 
 def digest(path: str) -> str:
@@ -69,6 +70,8 @@ def campaign_binding() -> dict:
         "campaign_id": "active-code-energy-20261028-v1",
         "predecessor_git_commit": "7ab50c9fa326b86344ba0dda6ca56804eb094fb7",
         "scope": "FINITE_COMPONENT_DIAGNOSTICS",
+        "boundary_status": "FROZEN_DIAGNOSTIC_CONTRACT",
+        "whole_program_frozen": False,
         "native_family_changed": False,
         "physical_comparison_count_added": 0,
         "integrated_gate_accepted": False,
@@ -177,12 +180,20 @@ def sector_reweighting() -> dict:
         "relative_modular_gap_shift_q1_minus_q0": "-log(2)",
         "at_one_declared_common_beta_relative_energy_gap_shift": "-log(2)/beta",
         "one_physical_beta_or_energy_action_selected": False,
+        "stationarity_scope": "reduced diagonal source/core population law under uniform seams; no stationary retained archive",
         "statement": "arbitrary positive sector reweightings are stationary; q-only action offsets have zero native gradient form",
     }
 
 
 def active_code_work() -> dict:
     """Count currents for both codes; recovery resources for the old code."""
+    particle = strict_json.load(ROOT / "model/particle_screening/screening_results.json")
+    if (SCREENED_SUPPORTS is None
+            or [[list(pair) for pair in col] for col in SCREENED_SUPPORTS]
+            != particle["all_seam_code_geometry"]["edge_core_code_columns"]
+            or not particle["all_seam_code_geometry"]["arbitrary_reference_exact_recovery_exists_per_retained_flag"]
+            or particle["all_seam_code_geometry"]["source_encoder_and_recovery_compiled_for_this_new_code"] is not False):
+        raise ArithmeticError("screened candidate differs from the source-bound particle packet")
     pairs, *_ = defect_history.geometry()
     kernel = reference_balance.kernel("C")
     activity = {pair: 1-kernel[i][i] for i, pair in enumerate(pairs)}
@@ -274,6 +285,7 @@ def active_code_work() -> dict:
         "source_executed_repair_seam": list(sector.SEAM),
         "prior_source_executed_code_nonzero_current_per_uniform_seam_attempt": str(code_activity),
         "screened_successor_code": {
+            "particle_campaign_id": particle["campaign_id"],
             "logical_columns": screened_rows,
             "any_logical_input_nonzero_current_per_uniform_seam_attempt": "1/6",
             "basis_supports_all_have_same_degree": 10,
@@ -289,6 +301,7 @@ def active_code_work() -> dict:
         "excess_over_fixed_core_unconditional_reference_per_attempt": str(code_activity-fixed_reference_background),
         "mean_native_current_excess_times_declared_cost_epsilon": "epsilon/66 per attempted uniform-seam repair",
         "power_with_supplied_attempt_interval_delta_tau": "epsilon/(66*delta_tau)",
+        "uniform_seam_activity_and_one_seam_executed_recovery_form_one_protocol": False,
         "prior_source_executed_code_recovery_laws": laws,
         "physical_cost_per_pulse_or_current_supplied": False,
         "kinetic_curvature_for_same_code_measured": False,

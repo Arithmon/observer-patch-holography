@@ -19,6 +19,7 @@ def test_sector_reweighting_shifts_modular_contrast_without_changing_currents():
     assert all(row["conditional_q1_source_marginal_each_state"] == "1/66" for row in rows.values())
     assert all(row["nonconstant_q_potential_native_gradient_form"] == "0" for row in rows.values())
     assert result["relative_modular_gap_shift_q1_minus_q0"] == "-log(2)"
+    assert "no stationary retained archive" in result["stationarity_scope"]
 
 
 def test_native_activity_from_incidence_independent_of_bridge_kernel():
@@ -33,6 +34,7 @@ def test_native_activity_from_incidence_independent_of_bridge_kernel():
     assert [degree[pairs.index(pair)] for pair in code] == [10] * 4
     screened = (((0, 2), (1, 3), (0, 4), (1, 6)),
                 ((0, 3), (1, 2), (0, 6), (1, 4)))
+    assert bridge.SCREENED_SUPPORTS == screened
     assert [[degree[pairs.index(pair)] for pair in logical] for logical in screened] == [[10] * 4] * 2
     assert F(sum(degree), 66 * 60) == F(5, 33)
     q1 = [i for i, pair in enumerate(pairs) if len(set(pair) & {0, 1}) == 1]
@@ -42,6 +44,7 @@ def test_native_activity_from_incidence_independent_of_bridge_kernel():
     assert work["prior_source_executed_code_nonzero_current_per_uniform_seam_attempt"] == "1/6"
     assert work["screened_successor_code"]["any_logical_input_nonzero_current_per_uniform_seam_attempt"] == "1/6"
     assert work["screened_successor_code"]["source_pulse_recovery_executed"] is False
+    assert not work["uniform_seam_activity_and_one_seam_executed_recovery_form_one_protocol"]
     for columns in work["screened_successor_code"]["native_core_motion_by_law_and_logical_column"].values():
         assert columns == [{"core_value_change_per_uniform_seam_attempt": "1/15",
                             "transported_core_exits_native_seam_set_per_attempt": "1/30"}] * 2

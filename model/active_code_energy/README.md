@@ -75,7 +75,9 @@ positive factors `f(q)`, the normalized measure
 pi_f(x,c) = f(q(x,c))*pi(x,c) / sum_{x,c} f(q(x,c))*pi(x,c)
 ```
 
-is stationary for **the same** uniform-seam C/E transition law. Every
+is stationary for **the same reduced diagonal source/core population law**
+under uniform-seam C/E repair. The growing retained archive is not assigned
+a stationary law. Every
 movement edge and its reverse have equal probability, and both endpoints
 have the same `q`. Self-loops add no constraint. The receipt checks all
 `300 × 66 = 19,800` edge/core pairs for `f=(1,1,1)` and `f=(1,2,1)`,
@@ -118,6 +120,10 @@ record-selected recovery have these exact per-attempt counts:
 | --- | ---: | ---: | ---: |
 | C | `386,739` | `52,670` | `439,409` |
 | E | `386,742` | `89,999/2` | `863,483/2` |
+
+This one-seam executed protocol is a different schedule from the uniform-seam
+activity diagnostic above. These numbers cannot be added into one implemented
+uniform-seam maintenance action or used as a compiled all-seam recovery cost.
 
 The classical core value changes on reset with probability `1/4` after
 recovery. One 15-bit status/old/new core entry is appended per non-abort
