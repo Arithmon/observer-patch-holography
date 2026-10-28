@@ -902,7 +902,7 @@ def test_alpha_row_values_match_endpoint(result):
     assert row["cross_class_agreement"]["independently_evaluated_class_count"] == 0
     assert "does not identify the physical source" in row["reading"]
     assert row["historical_owner_issues"] == [736]
-    assert row["live_owner_issues"] == [1026]
+    assert row["live_owner_issues"] == [1134]
     assert "historical_context_issues" not in row
 
 
@@ -949,7 +949,7 @@ def test_alpha_closure_rows_match_the_contraction_certificate(result):
         )
         assert row["tier"] == "T2_conditional"
         assert row["historical_owner_issues"] == [736]
-        assert row["live_owner_issues"] == [1026]
+        assert row["live_owner_issues"] == [1134]
         assert ledger._rel("p_interval_contraction") in row["artifact_refs"]
 
 
@@ -1018,7 +1018,7 @@ def test_lepton_rows_match_parents_and_contain_witness(result):
         "charged_leptons_kappa_coherent",
     ):
         assert rows[row_id]["historical_owner_issues"] == [736]
-        assert rows[row_id]["live_owner_issues"] == [1026]
+        assert rows[row_id]["live_owner_issues"] == [1134]
         assert "historical_context_issues" not in rows[row_id]
 
 
@@ -1049,7 +1049,7 @@ def test_quark_section_is_obstruction_plus_conditional_texture(result):
     ] is True
     assert "cabibbo_gst_sqrt_md_over_ms" in texture["values"]
     assert obstruction["historical_owner_issues"] == [736]
-    assert obstruction["live_owner_issues"] == [1026]
+    assert obstruction["live_owner_issues"] == [1134]
     assert "historical_context_issues" not in obstruction
     rscc = rows["quark_conditional_rscc_comparison"]
     parent = json.loads(ledger.PARENTS["conditional_quark_comparison"].read_text(encoding="utf-8"))
