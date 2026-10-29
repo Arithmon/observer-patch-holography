@@ -1,5 +1,6 @@
 """Independent receipt custody and hostile-output checks for exchange statistics."""
 from copy import deepcopy
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -159,6 +160,37 @@ def test_warm_geometry_cache_cannot_accept_an_invalid_source_manifest(monkeypatc
     for owner in (packet.statistics_topology, packet.statistics, packet.statistics_service):
         monkeypatch.setattr(owner, 'certificate', premature_calculation)
     with pytest.raises(ValueError, match='pinned native geometry source has changed'):
+        packet.report()
+
+
+def test_consistent_source_and_manifest_update_requires_a_fresh_interpreter(monkeypatch):
+    geometry = packet.slow_geometry
+    loaded = geometry.source()
+    carrier = geometry.ARCHIVE/'oph_exact/carrier.py'
+    changed_carrier = carrier.read_bytes()+b'\ndef rotations(): return ()\n'
+    spec = strict_json.load(geometry.SPEC)
+    spec['source_sha256']['oph_exact/carrier.py'] = hashlib.sha256(changed_carrier).hexdigest()
+    changes = {carrier: changed_carrier, geometry.SPEC: json.dumps(spec).encode('utf8')}
+    original_bytes, original_text = Path.read_bytes, Path.read_text
+
+    def changed_bytes(path):
+        return changes[path] if path in changes else original_bytes(path)
+
+    def changed_text(path, *args, **kwargs):
+        return changes[path].decode('utf8') if path in changes else original_text(path, *args, **kwargs)
+
+    def premature_calculation():
+        raise AssertionError('changed loaded sources must be rejected before scientific calculation')
+
+    monkeypatch.setattr(Path, 'read_bytes', changed_bytes)
+    monkeypatch.setattr(Path, 'read_text', changed_text)
+    geometry.source.cache_clear()
+    # The manifest is internally valid, but importlib still returns old code.
+    assert geometry.source() is loaded
+    assert len(loaded.rotations()) == 60
+    for owner in (packet.statistics_topology, packet.statistics, packet.statistics_service):
+        monkeypatch.setattr(owner, 'certificate', premature_calculation)
+    with pytest.raises(ValueError, match='fresh interpreter'):
         packet.report()
 
 

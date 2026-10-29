@@ -87,6 +87,12 @@ def compare(actual, expected):
         raise ValueError("exchange statistics receipt differs from complete replay")
 
 
+# A valid new manifest does not reload modules already held by Python.
+# Canonical replay uses a fresh interpreter; a repeated API call must fail
+# closed if its source tree has changed since this packet was imported.
+_IMPORTED_SOURCE_BINDINGS = source_bindings()
+
+
 def contract():
     path = HERE / "statistics_contract.json"
     if hashlib.sha256(path.read_bytes()).hexdigest() != CONTRACT_SHA256:
@@ -102,6 +108,8 @@ def report():
     # in that interpreter; hashing changed bytes is not their validation.
     slow_geometry.source.cache_clear()
     slow_geometry.source()
+    if pins != _IMPORTED_SOURCE_BINDINGS:
+        raise ValueError('exchange sources changed since import; use a fresh interpreter')
     topology = statistics_topology.certificate()
     instruments = statistics.certificate()
     execution = statistics_service.certificate()

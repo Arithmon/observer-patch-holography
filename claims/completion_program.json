@@ -358,7 +358,7 @@
         },
         {
           "path": "model/exchange_sector/statistics_results.json",
-          "sha256": "0ee30395983d9051808a591dedb9632922757b84093f7396fab24c9ebb1678c1",
+          "sha256": "4dae0171a6b8af0f30616d5cae90851a97763f6e4e3f12b6572a073cae243457",
           "independent_check": "model/exchange_sector/test_statistics_packet.py",
           "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
           "campaign_id": "native-exchange-statistics-20261029-v1"
@@ -668,7 +668,7 @@
         },
         {
           "path": "model/exchange_sector/statistics_results.json",
-          "sha256": "0ee30395983d9051808a591dedb9632922757b84093f7396fab24c9ebb1678c1",
+          "sha256": "4dae0171a6b8af0f30616d5cae90851a97763f6e4e3f12b6572a073cae243457",
           "independent_check": "model/exchange_sector/test_statistics_packet.py",
           "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
           "campaign_id": "native-exchange-statistics-20261029-v1"
@@ -970,7 +970,7 @@
         },
         {
           "path": "model/exchange_sector/statistics_results.json",
-          "sha256": "0ee30395983d9051808a591dedb9632922757b84093f7396fab24c9ebb1678c1",
+          "sha256": "4dae0171a6b8af0f30616d5cae90851a97763f6e4e3f12b6572a073cae243457",
           "independent_check": "model/exchange_sector/test_statistics_packet.py",
           "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
           "campaign_id": "native-exchange-statistics-20261029-v1"
@@ -1212,7 +1212,7 @@
         },
         {
           "path": "model/exchange_sector/statistics_results.json",
-          "sha256": "0ee30395983d9051808a591dedb9632922757b84093f7396fab24c9ebb1678c1",
+          "sha256": "4dae0171a6b8af0f30616d5cae90851a97763f6e4e3f12b6572a073cae243457",
           "independent_check": "model/exchange_sector/test_statistics_packet.py",
           "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
           "campaign_id": "native-exchange-statistics-20261029-v1"
@@ -2621,7 +2621,7 @@
       {
         "id": "exchange_statistics",
         "path": "model/exchange_sector/statistics_results.json",
-        "sha256": "0ee30395983d9051808a591dedb9632922757b84093f7396fab24c9ebb1678c1",
+        "sha256": "4dae0171a6b8af0f30616d5cae90851a97763f6e4e3f12b6572a073cae243457",
         "independent_check": "model/exchange_sector/test_statistics_packet.py",
         "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
         "campaign_id": "native-exchange-statistics-20261029-v1"
