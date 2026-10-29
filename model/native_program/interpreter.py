@@ -595,19 +595,33 @@ def occupation_partial_trace(density, ports, keep):
 
     This CP restriction is not the static coordinate-site mean R and is not
     asserted to commute with native dynamics across the retained boundary.
+    Like execute, this accepts arbitrary exact rational operators, with a
+    complex operator represented by separate real and imaginary calls. It
+    validates the carrier, not positivity or normalization of a preparation.
     """
     _integer(ports, 1, 4096)
-    if type(keep) is not tuple or tuple(sorted(set(keep))) != keep:
+    if type(keep) is not tuple:
         raise ValueError('canonical retained port subset required')
     for port in keep:
         _integer(port, 0, ports-1)
+    if tuple(sorted(set(keep))) != keep:
+        raise ValueError('canonical retained port subset required')
+    if type(density) is not dict:
+        raise ValueError('finite sparse source/reference operator required')
     mask = sum(1 << p for p in keep)
     output = defaultdict(F)
-    for (i, a, j, b), coefficient in density.items():
+    for key, coefficient in density.items():
+        if type(key) is not tuple or len(key) != 4:
+            raise ValueError('operator key must be source,reference,source,reference')
+        for index in key:
+            _integer(index)
+        i, a, j, b = key
         if max(i, j) >= 1 << ports:
             raise ValueError('occupation state exceeds the finite carrier')
+        if type(coefficient) not in (int, F):
+            raise ValueError('exact rational coefficients required; apply real and imaginary parts separately')
         if i & ~mask == j & ~mask:
             ii = sum(((i >> p) & 1) << k for k, p in enumerate(keep))
             jj = sum(((j >> p) & 1) << k for k, p in enumerate(keep))
-            output[ii, a, jj, b] += coefficient
+            output[ii, a, jj, b] += F(coefficient)
     return dict(output)
