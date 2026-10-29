@@ -28,6 +28,55 @@ def test_fresh_complete_report_matches_retained_receipt(result):
         assert hashlib.sha256((packet.ROOT / name).read_bytes()).hexdigest() == digest
 
 
+def test_fresh_runtime_imports_including_geometry_initializers_are_bound():
+    script = """
+import json
+from pathlib import Path
+import sys
+from model.particle_screening import mobile_packet as packet
+packet.mobile.rotations()
+pins = packet.source_bindings()
+loaded = {Path(module.__file__).resolve().relative_to(packet.ROOT).as_posix()
+          for module in tuple(sys.modules.values())
+          if getattr(module, '__file__', None)
+          and Path(module.__file__).resolve().is_relative_to(packet.ROOT)}
+print(json.dumps(sorted(loaded - pins.keys())))
+"""
+    run = subprocess.run([sys.executable, "-c", script], cwd=packet.ROOT,
+                         capture_output=True, text=True, timeout=60)
+    assert run.returncode == 0, run.stderr
+    assert json.loads(run.stdout) == []
+    pins = packet.source_bindings()
+    assert "evidence/native_geometric_source_20260925/spec.json" in pins
+    assert "model/relativistic_scalar/__init__.py" in pins
+
+
+@pytest.mark.parametrize("name", (
+    "evidence/native_geometric_source_20260925/spec.json",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/carrier.py",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_fpe/dynamics/__init__.py",
+))
+def test_geometry_byte_changes_cannot_reuse_retained_custody(monkeypatch, result, name):
+    original = Path.read_bytes
+    changed = packet.ROOT / name
+    monkeypatch.setattr(Path, "read_bytes", lambda path: original(path) + (
+        b"\n" if path == changed else b""))
+    pins = packet.source_bindings()
+    assert pins[name] != result["source_sha256"][name]
+    with pytest.raises(ValueError, match="differs from complete source replay"):
+        packet.compare({**result, "source_sha256": pins}, result)
+
+
+def test_source_change_during_execution_cannot_receive_a_new_binding(monkeypatch):
+    pins = iter(({"source": "before"}, {"source": "after"}))
+    monkeypatch.setattr(packet, "source_bindings", lambda: next(pins))
+    monkeypatch.setattr(packet.mobile, "exact_certificate", lambda: {})
+    monkeypatch.setattr(packet.mobile_service, "report", lambda: {})
+    monkeypatch.setattr(packet, "admit", lambda value: value)
+    with pytest.raises(ArithmeticError, match="source files changed during replay"):
+        packet.report()
+
+
 @pytest.mark.parametrize("damage", ["reset", "count", "scope", "boolean", "custody", "missing"])
 def test_comparison_rejects_forged_science_costs_scope_and_custody(result, damage):
     value = deepcopy(result)

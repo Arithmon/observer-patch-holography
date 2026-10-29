@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import ast
 from fractions import Fraction as F
 import hashlib
 import json
@@ -29,6 +30,8 @@ OWN_SOURCES = (
     "model/particle_screening/test_mobile_service.py",
     "model/particle_screening/test_mobile_packet.py",
     "docs/research/OPH_NATIVE_PARTICLE_MASS_JOIN.md",
+    "evidence/native_geometric_source_20260925/spec.json",
+    "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/carrier.py",
 )
 
 
@@ -40,12 +43,45 @@ def contract():
 
 
 def source_bindings():
-    # Reuse the compiled predecessor's complete imported source closure.
+    # The geometry loader imports an archived package outside the predecessor's
+    # model/tools closure. Include that package's eager initializers as well as
+    # recursive imports, independently of the current process's module caches.
     # No predecessor receipt is accepted as a replacement for this execution.
-    result = predecessor.source_bindings()
-    for name in OWN_SOURCES:
-        result[name] = hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
-    return dict(sorted(result.items()))
+    roots = ((mobile.slow_geometry.ARCHIVE, {"oph_exact", "oph_fpe"}),
+             (ROOT, {"model", "tools"}))
+    pending = [ROOT / name for name in (*predecessor.source_bindings(), *OWN_SOURCES)]
+    seen = set()
+    while pending:
+        path = pending.pop()
+        if path in seen:
+            continue
+        seen.add(path)
+        if path.suffix != ".py":
+            continue
+        owner = next(root for root, _ in roots if path.is_relative_to(root))
+        parts = path.relative_to(owner).with_suffix("").parts
+        package = parts[:-1]
+        # Importing a.b.c also executes a/__init__.py and a/b/__init__.py.
+        pending.extend(init for i in range(1, len(package)+1)
+                       if (init := owner.joinpath(*package[:i], "__init__.py")).is_file())
+        for node in ast.walk(ast.parse(path.read_text(encoding="utf-8"))):
+            candidates = []
+            if isinstance(node, ast.Import):
+                candidates.extend(tuple(alias.name.split(".")) for alias in node.names)
+            elif isinstance(node, ast.ImportFrom):
+                base = package[:len(package)-node.level+1] if node.level else ()
+                base += tuple(node.module.split(".")) if node.module else ()
+                candidates.append(base)
+                candidates.extend(base+tuple(alias.name.split("."))
+                                  for alias in node.names if alias.name != "*")
+            for candidate in candidates:
+                for root, prefixes in roots:
+                    if candidate and candidate[0] in prefixes:
+                        module = root.joinpath(*candidate)
+                        pending.extend(found for found in (module.with_suffix(".py"), module / "__init__.py")
+                                       if found.is_file())
+    return {path.relative_to(ROOT).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
+            for path in sorted(seen)}
 
 
 def admission_intervals():
@@ -92,8 +128,11 @@ def admit(diagnostics):
 
 def report():
     frozen = contract()
+    pins = source_bindings()
     exact = mobile.exact_certificate()
     executed = admit(mobile_service.report())
+    if source_bindings() != pins:
+        raise ArithmeticError("mobile source files changed during replay")
     return {
         "schema": "oph.mobile_screened_memory.receipt.v1",
         "campaign_id": CAMPAIGN,
@@ -108,7 +147,7 @@ def report():
         "integrated_gate_accepted": False,
         "physical_comparison_count_added": 0,
         "physical_particle_identification": False,
-        "source_sha256": source_bindings(),
+        "source_sha256": pins,
     }
 
 

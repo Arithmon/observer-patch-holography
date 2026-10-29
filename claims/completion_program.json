@@ -287,7 +287,7 @@
         },
         {
           "path": "model/particle_screening/mobile_results.json",
-          "sha256": "0a27e47a1d9ab8062443c3abc2e9c4a1154c58a73c67a1c57942f75556ba4f76",
+          "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08",
           "independent_check": "model/particle_screening/test_mobile_packet.py",
           "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
           "campaign_id": "mobile-screened-memory-20261029-v1"
@@ -470,7 +470,7 @@
         },
         {
           "path": "model/particle_screening/mobile_results.json",
-          "sha256": "0a27e47a1d9ab8062443c3abc2e9c4a1154c58a73c67a1c57942f75556ba4f76",
+          "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08",
           "independent_check": "model/particle_screening/test_mobile_packet.py",
           "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
           "campaign_id": "mobile-screened-memory-20261029-v1"
@@ -705,7 +705,7 @@
         },
         {
           "path": "model/particle_screening/mobile_results.json",
-          "sha256": "0a27e47a1d9ab8062443c3abc2e9c4a1154c58a73c67a1c57942f75556ba4f76",
+          "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08",
           "independent_check": "model/particle_screening/test_mobile_packet.py",
           "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
           "campaign_id": "mobile-screened-memory-20261029-v1"
@@ -854,7 +854,7 @@
       "progress_evidence": [
         {
           "path": "model/particle_screening/mobile_results.json",
-          "sha256": "0a27e47a1d9ab8062443c3abc2e9c4a1154c58a73c67a1c57942f75556ba4f76",
+          "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08",
           "independent_check": "model/particle_screening/test_mobile_packet.py",
           "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
           "campaign_id": "mobile-screened-memory-20261029-v1"
@@ -1830,7 +1830,7 @@
       },
       {
         "path": "model/particle_screening/mobile_results.json",
-        "sha256": "0a27e47a1d9ab8062443c3abc2e9c4a1154c58a73c67a1c57942f75556ba4f76",
+        "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08",
         "independent_check": "model/particle_screening/test_mobile_packet.py",
         "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
         "campaign_id": "mobile-screened-memory-20261029-v1",

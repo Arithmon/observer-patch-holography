@@ -80,7 +80,10 @@ def code_matrix(core):
     """Actually execute the source words on both unknown logical columns."""
     core = mobile._legal(core)
     _validate_address_access()
-    return _code_matrix(core)
+    # Read-only array data does not freeze ndarray shape/stride metadata.
+    # Detach the public result, including its bytes, so neither it nor its
+    # .base chain exposes the source-amplitude cache to caller mutation.
+    return routing._immutable(_code_matrix(core))
 
 
 @lru_cache(maxsize=60)

@@ -1,5 +1,6 @@
 """Independent complete-output and source-word tests for mobile recovery."""
 from fractions import Fraction as F
+import warnings
 
 import numpy as np
 import pytest
@@ -162,6 +163,30 @@ def test_nonfinite_source_output_is_not_hidden_in_a_maximum(monkeypatch, replay)
     monkeypatch.setattr(service, "apply_recovery", lambda *args: np.full_like(args[-1], np.nan))
     with pytest.raises((ArithmeticError, np.linalg.LinAlgError)):
         service.execute_stopped_history(service.witness_schedules()["motion_then_forbidden_reset"])
+
+
+def test_public_code_array_metadata_cannot_poison_nonprototype_encoding():
+    # Bytes-backed arrays prohibit data writes but still permit changing
+    # shape metadata. A fresh view alone would expose the cache through .base.
+    core = (0, 5)
+    assert core not in service.PROTOTYPES
+    exposed = service.code_matrix(core)
+    expected = exposed.copy()
+    logical = np.asarray([1., 1j])/np.sqrt(2)
+    before = service.encoding(core, logical)
+    assert not exposed.flags.writeable
+    # New NumPy releases warn about this hostile metadata operation. Capture
+    # only its deliberate deprecation; production calls keep -W error.
+    with warnings.catch_warnings(record=True) as emitted:
+        warnings.simplefilter("always", DeprecationWarning)
+        exposed.shape = (1024,)
+    assert all(isinstance(warning.message, DeprecationWarning)
+               and "Setting the shape" in str(warning.message) for warning in emitted)
+    fresh = service.code_matrix(core)
+    assert fresh.shape == (512, 2)
+    assert not np.shares_memory(exposed, fresh)
+    np.testing.assert_array_equal(fresh, expected)
+    np.testing.assert_array_equal(service.encoding(core, logical), before)
 
 
 @pytest.mark.parametrize("warm", (False, True))
