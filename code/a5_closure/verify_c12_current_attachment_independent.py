@@ -19,6 +19,8 @@ from verify_galois_port_frame_independent import ZERO, ONE, add, sub, mul, div, 
 
 ROOT = Path(__file__).resolve().parents[2]
 BASELINE = '343ea42c64fb783c84c9fb4e461aa3c8ce054107'
+# Current prerequisite receipt; historical work baseline remains above.
+PRIOR_COMMIT = '4007436ae34456ccf26fd4e9df5e00f1f4c038fa'
 SOURCE_COMMIT = prior.SOURCE_COMMIT
 INPUTS = sorted(set(prior.INPUTS + [
     'model/observer/native.py', 'model/observer/quantum_mixing.py',
@@ -102,7 +104,7 @@ def native_profile(seams):
 
 def verify(packet, root=ROOT):
     pins = custody(INPUTS, SOURCE_COMMIT, 'FloatingPragma/observer-patch-holography', root)
-    previous = custody(PRIOR_FILES, BASELINE, 'Arithmon/observer-patch-holography', root)
+    previous = custody(PRIOR_FILES, PRIOR_COMMIT, 'FloatingPragma/observer-patch-holography', root)
     frozen = m.load(root/'code/a5_closure/manifests/marked_triplet_attachment_reference.json')
     frame = m.source_frame(root)
     vertices = m.response_vertices()

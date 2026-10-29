@@ -17,6 +17,8 @@ from model.identifiability_checks import rule_observability
 from model.predictions import inverse_clock, prepared_clock
 
 BASELINE = '343ea42c64fb783c84c9fb4e461aa3c8ce054107'
+# Current prerequisite receipt; historical work baseline remains above.
+PRIOR_COMMIT = '4007436ae34456ccf26fd4e9df5e00f1f4c038fa'
 SOURCE_COMMIT = prior.SOURCE_COMMIT
 INPUTS = sorted(set(prior.INPUTS + [
     'model/observer/native.py', 'model/observer/quantum_mixing.py',
@@ -185,7 +187,7 @@ def preparation(lap):
 
 def build():
     source_pins = custody(INPUTS, SOURCE_COMMIT, 'FloatingPragma/observer-patch-holography')
-    prior_pins = custody(PRIOR_FILES, BASELINE, 'Arithmon/observer-patch-holography')
+    prior_pins = custody(PRIOR_FILES, PRIOR_COMMIT, 'FloatingPragma/observer-patch-holography')
     _, g, lap, join = native_join()
     branch = rule_observability.intertwining_certificate()
     require(branch['matrix_units_checked'] == 182520, 'complete native diagonal-block control')
