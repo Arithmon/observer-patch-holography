@@ -232,7 +232,9 @@
         "model/particle_clock/results.json",
         "model/biased_reset/results.json",
         "model/native_program/results.json",
-        "model/completion/program_class_v2_review.json"
+        "model/completion/program_class_v2_review.json",
+        "model/recovery_elision/variant.py",
+        "model/biased_code_universality/universality.py"
       ],
       "legacy_issues": [
         1077,
@@ -337,6 +339,20 @@
           "independent_check": "model/particle_screening/test_mobile_packet.py",
           "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
           "campaign_id": "mobile-screened-memory-20261029-v1"
+        },
+        {
+          "path": "model/recovery_elision/variant.py",
+          "sha256": "1bdad1ff9b5ebaca633731f32129a95b83cdb3aafe7a32cc8a9413cd45743c4f",
+          "independent_check": "model/recovery_elision/test_variant.py",
+          "scope": "Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.",
+          "campaign_id": "OPH-INTEGRATION-RECOVERY-ELISION-2026-10-29-v1"
+        },
+        {
+          "path": "model/biased_code_universality/universality.py",
+          "sha256": "96954ded805c207154047ee665f0dc2883dab0e7bd824978b3dcaa1faee1c98d",
+          "independent_check": "model/biased_code_universality/test_universality.py",
+          "scope": "Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.",
+          "campaign_id": "OPH-INTEGRATION-BIASED-CODE-UNIVERSALITY-2026-10-29-v1"
         }
       ]
     },
@@ -390,7 +406,10 @@
         "model/native_localization/results.json",
         "model/band_clock/results.json",
         "model/completion/acceptance_audit.py",
-        "model/completion/program_class_v2_review.json"
+        "model/completion/program_class_v2_review.json",
+        "model/pair_cyclic_control/control.py",
+        "model/recovery_elision/variant.py",
+        "model/biased_code_universality/universality.py"
       ],
       "legacy_issues": [
         1033,
@@ -540,7 +559,7 @@
         },
         {
           "path": "model/bound_pair/results.json",
-          "sha256": "55d345e338b7507b898f7edb435441495fdf76edf1baab9410a75e25c139f407",
+          "sha256": "a34167129f2d69f993bf9eab0a51560383c1e595aa3e5f27e10beb203b32b85e",
           "independent_check": "model/bound_pair/test_mass.py",
           "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
@@ -575,7 +594,7 @@
         },
         {
           "path": "model/field_tastes/results.json",
-          "sha256": "79c0e9c243ac04b825a52a421d8f908a3353f7b4e2c0edef4cdb44b0181732e6",
+          "sha256": "75854f5af506fa5f6ea19c936d182bbe56cea00234bee755d67b3ff71735c08e",
           "independent_check": "model/field_tastes/test_tastes.py",
           "scope": "Same-action contact coupling tests complete momentum pockets, retained mirror modes and interaction leakage; exclusions apply to the declared projection at fixed lattice coupling, not every chiral regulator or continuum limit.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
@@ -614,6 +633,27 @@
           "independent_check": "model/particle_screening/test_mobile_packet.py",
           "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
           "campaign_id": "mobile-screened-memory-20261029-v1"
+        },
+        {
+          "path": "model/pair_cyclic_control/control.py",
+          "sha256": "1515601c5d8d70f1a2dc4a203c06c4bd13a3220ef9a9b4919280a79655becd35",
+          "independent_check": "model/pair_cyclic_control/test_control.py",
+          "scope": "Exact seven-state contact-domain reduction and rational pole enclosure; the separate spectral helper sharpens only the full-field rate-error term. Full spatial histories and physical field/reference premises remain.",
+          "campaign_id": "OPH-INTEGRATION-PAIR-CYCLIC-CONTROL-2026-10-29-v1"
+        },
+        {
+          "path": "model/recovery_elision/variant.py",
+          "sha256": "1bdad1ff9b5ebaca633731f32129a95b83cdb3aafe7a32cc8a9413cd45743c4f",
+          "independent_check": "model/recovery_elision/test_variant.py",
+          "scope": "Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.",
+          "campaign_id": "OPH-INTEGRATION-RECOVERY-ELISION-2026-10-29-v1"
+        },
+        {
+          "path": "model/biased_code_universality/universality.py",
+          "sha256": "96954ded805c207154047ee665f0dc2883dab0e7bd824978b3dcaa1faee1c98d",
+          "independent_check": "model/biased_code_universality/test_universality.py",
+          "scope": "Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.",
+          "campaign_id": "OPH-INTEGRATION-BIASED-CODE-UNIVERSALITY-2026-10-29-v1"
         }
       ]
     },
@@ -792,7 +832,9 @@
         "model/moving_defect/results.json",
         "model/bound_pair/results.json",
         "model/biased_reset/results.json",
-        "model/native_localization/results.json"
+        "model/native_localization/results.json",
+        "model/recovery_elision/variant.py",
+        "model/biased_code_universality/universality.py"
       ],
       "legacy_issues": [
         1026,
@@ -866,7 +908,7 @@
         },
         {
           "path": "model/bound_pair/results.json",
-          "sha256": "55d345e338b7507b898f7edb435441495fdf76edf1baab9410a75e25c139f407",
+          "sha256": "a34167129f2d69f993bf9eab0a51560383c1e595aa3e5f27e10beb203b32b85e",
           "independent_check": "model/bound_pair/test_mass.py",
           "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
@@ -891,6 +933,20 @@
           "independent_check": "model/particle_screening/test_mobile_packet.py",
           "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
           "campaign_id": "mobile-screened-memory-20261029-v1"
+        },
+        {
+          "path": "model/recovery_elision/variant.py",
+          "sha256": "1bdad1ff9b5ebaca633731f32129a95b83cdb3aafe7a32cc8a9413cd45743c4f",
+          "independent_check": "model/recovery_elision/test_variant.py",
+          "scope": "Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.",
+          "campaign_id": "OPH-INTEGRATION-RECOVERY-ELISION-2026-10-29-v1"
+        },
+        {
+          "path": "model/biased_code_universality/universality.py",
+          "sha256": "96954ded805c207154047ee665f0dc2883dab0e7bd824978b3dcaa1faee1c98d",
+          "independent_check": "model/biased_code_universality/test_universality.py",
+          "scope": "Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.",
+          "campaign_id": "OPH-INTEGRATION-BIASED-CODE-UNIVERSALITY-2026-10-29-v1"
         }
       ]
     },
@@ -936,7 +992,8 @@
         "model/field_stress/results.json",
         "model/native_localization/results.json",
         "model/band_clock/results.json",
-        "model/completion/acceptance_audit.py"
+        "model/completion/acceptance_audit.py",
+        "model/pair_cyclic_control/control.py"
       ],
       "legacy_issues": [
         1026,
@@ -1017,7 +1074,7 @@
         },
         {
           "path": "model/bound_pair/results.json",
-          "sha256": "55d345e338b7507b898f7edb435441495fdf76edf1baab9410a75e25c139f407",
+          "sha256": "a34167129f2d69f993bf9eab0a51560383c1e595aa3e5f27e10beb203b32b85e",
           "independent_check": "model/bound_pair/test_mass.py",
           "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
@@ -1056,6 +1113,13 @@
           "independent_check": "model/completion/test_acceptance_audit.py",
           "scope": "Exact noninteger pair-gap witness excludes an eta-calibrated invariant modular intertwiner from every finite independent native reference product. Approximate generator error exceeds1/24. Correlated references and counted alternative services are outside this exclusion.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
+        },
+        {
+          "path": "model/pair_cyclic_control/control.py",
+          "sha256": "1515601c5d8d70f1a2dc4a203c06c4bd13a3220ef9a9b4919280a79655becd35",
+          "independent_check": "model/pair_cyclic_control/test_control.py",
+          "scope": "Exact seven-state contact-domain reduction and rational pole enclosure; the separate spectral helper sharpens only the full-field rate-error term. Full spatial histories and physical field/reference premises remain.",
+          "campaign_id": "OPH-INTEGRATION-PAIR-CYCLIC-CONTROL-2026-10-29-v1"
         }
       ]
     },
@@ -1105,7 +1169,7 @@
         },
         {
           "path": "model/bound_pair/results.json",
-          "sha256": "55d345e338b7507b898f7edb435441495fdf76edf1baab9410a75e25c139f407",
+          "sha256": "a34167129f2d69f993bf9eab0a51560383c1e595aa3e5f27e10beb203b32b85e",
           "independent_check": "model/bound_pair/test_mass.py",
           "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
@@ -1149,7 +1213,8 @@
         "model/interacting_field/results.json",
         "model/field_regions/results.json",
         "model/field_tastes/results.json",
-        "model/band_clock/results.json"
+        "model/band_clock/results.json",
+        "model/pair_cyclic_control/control.py"
       ],
       "legacy_issues": [
         1026,
@@ -1174,7 +1239,7 @@
         },
         {
           "path": "model/field_tastes/results.json",
-          "sha256": "79c0e9c243ac04b825a52a421d8f908a3353f7b4e2c0edef4cdb44b0181732e6",
+          "sha256": "75854f5af506fa5f6ea19c936d182bbe56cea00234bee755d67b3ff71735c08e",
           "independent_check": "model/field_tastes/test_tastes.py",
           "scope": "Same-action contact coupling tests complete momentum pockets, retained mirror modes and interaction leakage; exclusions apply to the declared projection at fixed lattice coupling, not every chiral regulator or continuum limit.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
@@ -1185,6 +1250,13 @@
           "independent_check": "model/band_clock/test_clock.py",
           "scope": "Complete moving8128-state field sector driven by native record-derived rate using counted local source words; uniform ideal-word halfdiamond bound<0.038565. Supplied global Gibbs reference and rate-transfer service are explicit; native reference inheritance and physical calibration are not established.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
+        },
+        {
+          "path": "model/pair_cyclic_control/control.py",
+          "sha256": "1515601c5d8d70f1a2dc4a203c06c4bd13a3220ef9a9b4919280a79655becd35",
+          "independent_check": "model/pair_cyclic_control/test_control.py",
+          "scope": "Exact seven-state contact-domain reduction and rational pole enclosure; the separate spectral helper sharpens only the full-field rate-error term. Full spatial histories and physical field/reference premises remain.",
+          "campaign_id": "OPH-INTEGRATION-PAIR-CYCLIC-CONTROL-2026-10-29-v1"
         }
       ]
     },
@@ -1222,7 +1294,7 @@
       "progress_evidence": [
         {
           "path": "model/bound_pair/results.json",
-          "sha256": "55d345e338b7507b898f7edb435441495fdf76edf1baab9410a75e25c139f407",
+          "sha256": "a34167129f2d69f993bf9eab0a51560383c1e595aa3e5f27e10beb203b32b85e",
           "independent_check": "model/bound_pair/test_mass.py",
           "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
@@ -1415,7 +1487,7 @@
       "progress_evidence": [
         {
           "path": "model/bound_pair/results.json",
-          "sha256": "55d345e338b7507b898f7edb435441495fdf76edf1baab9410a75e25c139f407",
+          "sha256": "a34167129f2d69f993bf9eab0a51560383c1e595aa3e5f27e10beb203b32b85e",
           "independent_check": "model/bound_pair/test_mass.py",
           "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
@@ -1429,7 +1501,7 @@
         },
         {
           "path": "model/field_tastes/results.json",
-          "sha256": "79c0e9c243ac04b825a52a421d8f908a3353f7b4e2c0edef4cdb44b0181732e6",
+          "sha256": "75854f5af506fa5f6ea19c936d182bbe56cea00234bee755d67b3ff71735c08e",
           "independent_check": "model/field_tastes/test_tastes.py",
           "scope": "Same-action contact coupling tests complete momentum pockets, retained mirror modes and interaction leakage; exclusions apply to the declared projection at fixed lattice coupling, not every chiral regulator or continuum limit.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
@@ -1775,6 +1847,57 @@
         "independent_check": "model/particle_screening/test_mobile_packet.py",
         "scope": "Complete uniform-seam C/E moving-memory operation and optimal core-reset objective, with exact-code domain and coherent services explicit.",
         "campaign_id": "mobile-screened-memory-20261029-v1"
+      }
+    },
+    {
+      "id": "OPH-INTEGRATION-PAIR-CYCLIC-CONTROL-2026-10-29-v1",
+      "scope": "FINITE_COMPONENT_FAMILY",
+      "whole_program_frozen": false,
+      "supports": [
+        "CP-04",
+        "CP-06",
+        "CP-13"
+      ],
+      "contract": {
+        "path": "model/pair_cyclic_control/campaign.json",
+        "sha256": "bed736864c47127262fee88b7573af07fdbfa7adfcfa7d15419b5a7e268757cc",
+        "independent_check": "model/pair_cyclic_control/test_control.py",
+        "scope": "Exact seven-state contact-domain reduction and rational pole enclosure; the separate spectral helper sharpens only the full-field rate-error term. Full spatial histories and physical field/reference premises remain.",
+        "campaign_id": "OPH-INTEGRATION-PAIR-CYCLIC-CONTROL-2026-10-29-v1"
+      }
+    },
+    {
+      "id": "OPH-INTEGRATION-RECOVERY-ELISION-2026-10-29-v1",
+      "scope": "FINITE_COMPONENT_FAMILY",
+      "whole_program_frozen": false,
+      "supports": [
+        "CP-01",
+        "CP-03",
+        "CP-13"
+      ],
+      "contract": {
+        "path": "model/recovery_elision/campaign.json",
+        "sha256": "610c62d78a7822eb3a2023e543743f096be862194f5fb22e5b20a7ea1cd4a5c2",
+        "independent_check": "model/recovery_elision/test_variant.py",
+        "scope": "Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.",
+        "campaign_id": "OPH-INTEGRATION-RECOVERY-ELISION-2026-10-29-v1"
+      }
+    },
+    {
+      "id": "OPH-INTEGRATION-BIASED-CODE-UNIVERSALITY-2026-10-29-v1",
+      "scope": "FINITE_COMPONENT_FAMILY",
+      "whole_program_frozen": false,
+      "supports": [
+        "CP-01",
+        "CP-03",
+        "CP-13"
+      ],
+      "contract": {
+        "path": "model/biased_code_universality/campaign.json",
+        "sha256": "25adb17e1146d03e7e9494daa2c239798059a5d358070a8bf32d5101ffea72ef",
+        "independent_check": "model/biased_code_universality/test_universality.py",
+        "scope": "Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.",
+        "campaign_id": "OPH-INTEGRATION-BIASED-CODE-UNIVERSALITY-2026-10-29-v1"
       }
     }
   ],
@@ -2330,7 +2453,7 @@
       {
         "id": "bound_pair",
         "path": "model/bound_pair/results.json",
-        "sha256": "55d345e338b7507b898f7edb435441495fdf76edf1baab9410a75e25c139f407",
+        "sha256": "a34167129f2d69f993bf9eab0a51560383c1e595aa3e5f27e10beb203b32b85e",
         "independent_check": "model/bound_pair/test_mass.py",
         "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
         "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
@@ -2370,7 +2493,7 @@
       {
         "id": "field_tastes",
         "path": "model/field_tastes/results.json",
-        "sha256": "79c0e9c243ac04b825a52a421d8f908a3353f7b4e2c0edef4cdb44b0181732e6",
+        "sha256": "75854f5af506fa5f6ea19c936d182bbe56cea00234bee755d67b3ff71735c08e",
         "independent_check": "model/field_tastes/test_tastes.py",
         "scope": "Same-action contact coupling tests complete momentum pockets, retained mirror modes and interaction leakage; exclusions apply to the declared projection at fixed lattice coupling, not every chiral regulator or continuum limit.",
         "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
@@ -2414,6 +2537,30 @@
         "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
         "campaign_id": "mobile-screened-memory-20261029-v1",
         "id": "mobile_screened_memory"
+      },
+      {
+        "path": "model/pair_cyclic_control/control.py",
+        "sha256": "1515601c5d8d70f1a2dc4a203c06c4bd13a3220ef9a9b4919280a79655becd35",
+        "independent_check": "model/pair_cyclic_control/test_control.py",
+        "scope": "Exact seven-state contact-domain reduction and rational pole enclosure; the separate spectral helper sharpens only the full-field rate-error term. Full spatial histories and physical field/reference premises remain.",
+        "campaign_id": "OPH-INTEGRATION-PAIR-CYCLIC-CONTROL-2026-10-29-v1",
+        "id": "pair_cyclic_control"
+      },
+      {
+        "path": "model/recovery_elision/variant.py",
+        "sha256": "1bdad1ff9b5ebaca633731f32129a95b83cdb3aafe7a32cc8a9413cd45743c4f",
+        "independent_check": "model/recovery_elision/test_variant.py",
+        "scope": "Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.",
+        "campaign_id": "OPH-INTEGRATION-RECOVERY-ELISION-2026-10-29-v1",
+        "id": "recovery_elision"
+      },
+      {
+        "path": "model/biased_code_universality/universality.py",
+        "sha256": "96954ded805c207154047ee665f0dc2883dab0e7bd824978b3dcaa1faee1c98d",
+        "independent_check": "model/biased_code_universality/test_universality.py",
+        "scope": "Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.",
+        "campaign_id": "OPH-INTEGRATION-BIASED-CODE-UNIVERSALITY-2026-10-29-v1",
+        "id": "biased_code_universality"
       }
     ]
   },

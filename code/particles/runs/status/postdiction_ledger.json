@@ -45,8 +45,8 @@
       "status": "PROPOSED_NOT_ESTABLISHED"
     },
     "parents": {
-      "claims/claim_registry.yaml": "5f9120c30e30cbf0b08bcb88f4a5a1828f4eaf9ec83940ffe7936fe200a005ed",
-      "claims/completion_program.json": "4e172e08af3f147fa57a4b625c85e665a0a130a831f5cbe64da4bd4a556d7502",
+      "claims/claim_registry.yaml": "8b78a75c9adff061e95de7bfaf2d56e01ba20c8a4c2edc04f0289c50488cc2c0",
+      "claims/completion_program.json": "ba90b29a47c92dc46f00d729bb80762998315a9823901f9618e24537ff2a0d23",
       "claims/executable_model_hypothesis.json": "1855a611870a64b3d97fbaa8759385761dda9130a1517233193af2c7f170cd2b",
       "docs/OPH_EXECUTABLE_HYPOTHESIS.md": "c503247a2b333c2e27b3eba865d47f2d15c966a5052eceb4aadb14fc9002f35a"
     },
@@ -55,13 +55,13 @@
         "independent_check": "model/completion/independent_program_review.py",
         "path": "model/completion/program_class_v2_review.json",
         "scope": "Independent exact class, actual declared-service observer and17attachment theorem-map review. Closes no canonical physical premise or downstream particle/field/gravity gate.",
-        "sha256": "d6717e2296cf6933c263d03e68ed0f5d0f982cc1c451009f4dacd5b02e2abc11"
+        "sha256": "1960a5e43b1892d80232b65a2c1c54cb2dec8314d5e4da65a0f77271ab9ec376"
       },
       "adopted_class": {
         "independent_check": "model/completion/test_program_class_v2.py",
         "path": "model/completion/program_class_v2.json",
         "scope": "Reviewed successor executable class with actual native/program interfaces, resource ceilings, all71retrospective observations, physical targets, calibration/error/exposure and stop/version rules. No physical prediction or class exclusion is claimed.",
-        "sha256": "725e0a9b74f991dbd64fb367c313c040c2f9edbe7b76694dcaf01ba89de30453"
+        "sha256": "c2b589a668f5ddbcc8957893aa968cdb2058129655c13d34d4db9a18b908386c"
       },
       "boundary_status": "FROZEN",
       "component_campaigns": [
@@ -371,6 +371,57 @@
             "CP-01",
             "CP-03",
             "CP-05",
+            "CP-13"
+          ],
+          "whole_program_frozen": false
+        },
+        {
+          "contract": {
+            "campaign_id": "OPH-INTEGRATION-PAIR-CYCLIC-CONTROL-2026-10-29-v1",
+            "independent_check": "model/pair_cyclic_control/test_control.py",
+            "path": "model/pair_cyclic_control/campaign.json",
+            "scope": "Exact seven-state contact-domain reduction and rational pole enclosure; the separate spectral helper sharpens only the full-field rate-error term. Full spatial histories and physical field/reference premises remain.",
+            "sha256": "bed736864c47127262fee88b7573af07fdbfa7adfcfa7d15419b5a7e268757cc"
+          },
+          "id": "OPH-INTEGRATION-PAIR-CYCLIC-CONTROL-2026-10-29-v1",
+          "scope": "FINITE_COMPONENT_FAMILY",
+          "supports": [
+            "CP-04",
+            "CP-06",
+            "CP-13"
+          ],
+          "whole_program_frozen": false
+        },
+        {
+          "contract": {
+            "campaign_id": "OPH-INTEGRATION-RECOVERY-ELISION-2026-10-29-v1",
+            "independent_check": "model/recovery_elision/test_variant.py",
+            "path": "model/recovery_elision/campaign.json",
+            "scope": "Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.",
+            "sha256": "610c62d78a7822eb3a2023e543743f096be862194f5fb22e5b20a7ea1cd4a5c2"
+          },
+          "id": "OPH-INTEGRATION-RECOVERY-ELISION-2026-10-29-v1",
+          "scope": "FINITE_COMPONENT_FAMILY",
+          "supports": [
+            "CP-01",
+            "CP-03",
+            "CP-13"
+          ],
+          "whole_program_frozen": false
+        },
+        {
+          "contract": {
+            "campaign_id": "OPH-INTEGRATION-BIASED-CODE-UNIVERSALITY-2026-10-29-v1",
+            "independent_check": "model/biased_code_universality/test_universality.py",
+            "path": "model/biased_code_universality/campaign.json",
+            "scope": "Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.",
+            "sha256": "25adb17e1146d03e7e9494daa2c239798059a5d358070a8bf32d5101ffea72ef"
+          },
+          "id": "OPH-INTEGRATION-BIASED-CODE-UNIVERSALITY-2026-10-29-v1",
+          "scope": "FINITE_COMPONENT_FAMILY",
+          "supports": [
+            "CP-01",
+            "CP-03",
             "CP-13"
           ],
           "whole_program_frozen": false
@@ -933,7 +984,7 @@
             "independent_check": "model/bound_pair/test_mass.py",
             "path": "model/bound_pair/results.json",
             "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
-            "sha256": "de0b4ed00bd0636749d385e4fdc861d290c2a90a065833bc41c9e35c57e071d2"
+            "sha256": "a34167129f2d69f993bf9eab0a51560383c1e595aa3e5f27e10beb203b32b85e"
           },
           {
             "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
@@ -965,7 +1016,7 @@
             "independent_check": "model/completion/test_finite_attachment_map.py",
             "path": "model/completion/finite_attachment_map.json",
             "scope": "Exhaustive ownership and relevance navigation for the existing 84-premise register, with source-bound finite model attachments and explicit unresolved construction/acceptance joins. It is not a new audit of every Lean module or discharge of global physical premises.",
-            "sha256": "9cc1a2138725400ef002944f4417421ef6add2395813f6d5d235830ebb36bfd8"
+            "sha256": "afe959bd883bec0c36468b56c6df1e7f6cafa21bf656ec73ed98482b8d3a7dad"
           },
           {
             "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
@@ -973,14 +1024,14 @@
             "independent_check": "model/field_tastes/test_tastes.py",
             "path": "model/field_tastes/results.json",
             "scope": "Same-action contact coupling tests complete momentum pockets, retained mirror modes and interaction leakage; exclusions apply to the declared projection at fixed lattice coupling, not every chiral regulator or continuum limit.",
-            "sha256": "c9a3d1c62a46ede9f5730b6bad7e0020d0b07d9dd2869d2e5b00585d1e347e0d"
+            "sha256": "75854f5af506fa5f6ea19c936d182bbe56cea00234bee755d67b3ff71735c08e"
           },
           {
             "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
             "id": "biased_reset",
             "independent_check": "model/biased_reset/test_reset.py",
             "path": "model/biased_reset/results.json",
-            "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the pending fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
+            "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the reviewed fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
             "sha256": "db4964d122ffefbf04a7479112307d342a2cf60c3a36f441244e74668069e1ae"
           },
           {
@@ -1014,6 +1065,30 @@
             "path": "model/particle_screening/mobile_results.json",
             "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
             "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08"
+          },
+          {
+            "campaign_id": "OPH-INTEGRATION-PAIR-CYCLIC-CONTROL-2026-10-29-v1",
+            "id": "pair_cyclic_control",
+            "independent_check": "model/pair_cyclic_control/test_control.py",
+            "path": "model/pair_cyclic_control/control.py",
+            "scope": "Exact seven-state contact-domain reduction and rational pole enclosure; the separate spectral helper sharpens only the full-field rate-error term. Full spatial histories and physical field/reference premises remain.",
+            "sha256": "1515601c5d8d70f1a2dc4a203c06c4bd13a3220ef9a9b4919280a79655becd35"
+          },
+          {
+            "campaign_id": "OPH-INTEGRATION-RECOVERY-ELISION-2026-10-29-v1",
+            "id": "recovery_elision",
+            "independent_check": "model/recovery_elision/test_variant.py",
+            "path": "model/recovery_elision/variant.py",
+            "scope": "Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.",
+            "sha256": "1bdad1ff9b5ebaca633731f32129a95b83cdb3aafe7a32cc8a9413cd45743c4f"
+          },
+          {
+            "campaign_id": "OPH-INTEGRATION-BIASED-CODE-UNIVERSALITY-2026-10-29-v1",
+            "id": "biased_code_universality",
+            "independent_check": "model/biased_code_universality/test_universality.py",
+            "path": "model/biased_code_universality/universality.py",
+            "scope": "Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.",
+            "sha256": "96954ded805c207154047ee665f0dc2883dab0e7bd824978b3dcaa1faee1c98d"
           }
         ],
         "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-29-v9",
@@ -1032,7 +1107,7 @@
             "join_condition": "Spectral isolation under the supplied Hamiltonian is not invariance under every native repair branch; active information transport and trivial band topology do not supply the required defect invariant.",
             "may_start_now": "Use complete band wavepackets and all-outcome active memory/reset controls with their explicit law and reference differences.",
             "title": "Complete localized native protection and its field-state attachment",
-            "why_now": "The same interacting pair moves in an isolated band, while native active memory and its pending reset extension have distinct protection laws."
+            "why_now": "The same interacting pair moves in an isolated band, while native active memory and its reviewed reset extension have distinct protection laws."
           },
           {
             "deliverable": "Source-derived maintenance energy and kinetic response with one justified physical normalization and the stress map consumed by gravity.",
@@ -1097,12 +1172,12 @@
             "Use source-bound finite theorem applications only after checking the exact state, algebra, branch, clock and domain hypotheses. The local repair family inherits the full branch algebra, and the odd closed-history limit assumes uninterrupted native records.",
             "The Ramsey service compiles the density representation with its proven intertwiner; the full binary arc unitary, physical time and storage hardware remain additional obligations.",
             "A sharp relational sector, active quantum memory, exchange-history parity and positive current form are separate observations. Identify one localized matter state, rest action, kinetic response, common clock and conserved stress before a particle or mass claim.",
-            "Keep prior failures, empirical exposure, computational budgets and full-program acceptance gates unchanged until a versioned CP-00/CP-12 decision contract is accepted.",
+            "Preserve prior failures, empirical exposure, computational budgets and the accepted CP-00 class. A change to that class requires a reviewed successor contract; CP-12 applies its declared stopping rules without promoting component evidence to physical completion.",
             "The active moving code has explicit opposite-core stops and modular leakage. Retain every stop and its resource cost; no reset or success conditioning may substitute for transport.",
             "The stochastic-matrix kinetic parent and recovered modular generator are different operators. A shared residual symmetry is not an action/clock identification.",
             "Exact fixed-source symmetry and finite-record inference have different quantifiers. The current/matter lift and source-triplet family attachment require their stated maps.",
             "The interacting CAR field uses a supplied lattice/action and exact N=2 sector. Retain all naive Weyl nodes; fixed-spacing infinite volume is not the chiral spatial continuum.",
-            "PR1151 is merged. DraftPR1152 is the integration branch; pending draftPR1153 headaec9f14e4bad62cff1c388aea3bb7bd763e479e5 and PR1128 head78c4eb137cf3bf20e7c1d907561f2f2abe22cbf4 retain separate law and source-service interfaces. The latest1153changes harden detached cache arrays and recursive source custody; its scientific fair-coin mobile theorem is unchanged.",
+            "PR1151 is merged. The reviewed changes from PR1152, PR1153 head aec9f14e4bad62cff1c388aea3bb7bd763e479e5, and PR1128 head 78c4eb137cf3bf20e7c1d907561f2f2abe22cbf4 are combined for integration review. Their endpoint-biased native observer, fair-coin mobile-memory law, and operational triplet attachment retain distinct source, reference, and service premises. This integration statement does not assert that these three pull requests have merged on GitHub.",
             "The bound pair uses the supplied Weyl-contact action throughout transport, spectrum, charge and curvature. Its topology is trivial, its physical species is unassigned, and its coordinate kinetic/rest mass mismatch cannot be removed by one unit conversion.",
             "The inherited native clock is faithful on the supplied invariant M2corner. Full-band rate transfer is executed under a separately supplied global Gibbs reference; finite independent native reference copies cannot provide the exact same inherited field clock.",
             "Finite CAR restrictions and energy/entropy identities must not be relabeled physical geometry, Lorentz stress, generalized-entropy stationarity or an interacting chiral continuum."
@@ -1135,13 +1210,13 @@
               "independent_check": "model/completion/test_program_class_v2.py",
               "path": "model/completion/program_class_v2.json",
               "scope": "Reviewed successor executable class with actual native/program interfaces, resource ceilings, all71retrospective observations, physical targets, calibration/error/exposure and stop/version rules. No physical prediction or class exclusion is claimed.",
-              "sha256": "725e0a9b74f991dbd64fb367c313c040c2f9edbe7b76694dcaf01ba89de30453"
+              "sha256": "c2b589a668f5ddbcc8957893aa968cdb2058129655c13d34d4db9a18b908386c"
             },
             {
               "independent_check": "model/completion/independent_program_review.py",
               "path": "model/completion/program_class_v2_review.json",
               "scope": "Independent exact class, actual declared-service observer and17attachment theorem-map review. Closes no canonical physical premise or downstream particle/field/gravity gate.",
-              "sha256": "d6717e2296cf6933c263d03e68ed0f5d0f982cc1c451009f4dacd5b02e2abc11"
+              "sha256": "1960a5e43b1892d80232b65a2c1c54cb2dec8314d5e4da65a0f77271ab9ec376"
             }
           ],
           "deliverable": "A versioned, content-bound class of admissible carrier/refinement, repair and memory laws, record instruments, resources, preparations, clocks and interpretation maps; one target and exposure record fixed before validation.",
@@ -1229,13 +1304,13 @@
               "independent_check": "model/completion/independent_program_review.py",
               "path": "model/native_program/results.json",
               "scope": "Literal continuing native observer member, complete source/reference instruments, record-only controls, FIFO/exports/stops, preparation/readout chain and independently recomputed counted services. Full-field physics and external apparatus realization remain unestablished.",
-              "sha256": "41b1538d8be726412cbe437b4124a408769119aabde7f0fa2fb2e7eccdaaa2c0"
+              "sha256": "8977247b2eef523118a961f023c596d1302073c1f6a9f0e3edb0ac767988edb1"
             },
             {
               "independent_check": "model/completion/independent_program_review.py",
               "path": "model/completion/program_class_v2_review.json",
               "scope": "Independent exact class, actual declared-service observer and17attachment theorem-map review. Closes no canonical physical premise or downstream particle/field/gravity gate.",
-              "sha256": "d6717e2296cf6933c263d03e68ed0f5d0f982cc1c451009f4dacd5b02e2abc11"
+              "sha256": "1960a5e43b1892d80232b65a2c1c54cb2dec8314d5e4da65a0f77271ab9ec376"
             }
           ],
           "deliverable": "One replayable native repair/memory process that prepares, acts, reads, retains records and continues on overlapping accessible regions, with every service and failure branch accounted.",
@@ -1254,7 +1329,9 @@
             "model/particle_clock/results.json",
             "model/biased_reset/results.json",
             "model/native_program/results.json",
-            "model/completion/program_class_v2_review.json"
+            "model/completion/program_class_v2_review.json",
+            "model/recovery_elision/variant.py",
+            "model/biased_code_universality/universality.py"
           ],
           "id": "CP-01",
           "issue": 1136,
@@ -1343,7 +1420,7 @@
               "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
               "independent_check": "model/biased_reset/test_reset.py",
               "path": "model/biased_reset/results.json",
-              "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the pending fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
+              "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the reviewed fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
               "sha256": "db4964d122ffefbf04a7479112307d342a2cf60c3a36f441244e74668069e1ae"
             },
             {
@@ -1352,6 +1429,20 @@
               "path": "model/particle_screening/mobile_results.json",
               "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
               "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08"
+            },
+            {
+              "campaign_id": "OPH-INTEGRATION-RECOVERY-ELISION-2026-10-29-v1",
+              "independent_check": "model/recovery_elision/test_variant.py",
+              "path": "model/recovery_elision/variant.py",
+              "scope": "Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.",
+              "sha256": "1bdad1ff9b5ebaca633731f32129a95b83cdb3aafe7a32cc8a9413cd45743c4f"
+            },
+            {
+              "campaign_id": "OPH-INTEGRATION-BIASED-CODE-UNIVERSALITY-2026-10-29-v1",
+              "independent_check": "model/biased_code_universality/test_universality.py",
+              "path": "model/biased_code_universality/universality.py",
+              "scope": "Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.",
+              "sha256": "96954ded805c207154047ee665f0dc2883dab0e7bd824978b3dcaa1faee1c98d"
             }
           ],
           "requires": [
@@ -1373,13 +1464,13 @@
               "independent_check": "model/completion/test_finite_attachment_map.py",
               "path": "model/completion/finite_attachment_map.json",
               "scope": "Complete84premise ownership/relevance review,17inspected finite attachments with12realized instances, corrected active routes and explicit finite CP01 joins. Allcanonicalphysicaldischarge statuses preserved.",
-              "sha256": "9cc1a2138725400ef002944f4417421ef6add2395813f6d5d235830ebb36bfd8"
+              "sha256": "afe959bd883bec0c36468b56c6df1e7f6cafa21bf656ec73ed98482b8d3a7dad"
             },
             {
               "independent_check": "model/completion/independent_program_review.py",
               "path": "model/completion/program_class_v2_review.json",
               "scope": "Independent exact class, actual declared-service observer and17attachment theorem-map review. Closes no canonical physical premise or downstream particle/field/gravity gate.",
-              "sha256": "d6717e2296cf6933c263d03e68ed0f5d0f982cc1c451009f4dacd5b02e2abc11"
+              "sha256": "1960a5e43b1892d80232b65a2c1c54cb2dec8314d5e4da65a0f77271ab9ec376"
             }
           ],
           "deliverable": "A theorem-to-model integration and relevance review in the existing premise map: each result needed by the completion chain has an owning gate and an explicit model-premise proof obligation; irrelevant branches leave the active path.",
@@ -1409,7 +1500,10 @@
             "model/native_localization/results.json",
             "model/band_clock/results.json",
             "model/completion/acceptance_audit.py",
-            "model/completion/program_class_v2_review.json"
+            "model/completion/program_class_v2_review.json",
+            "model/pair_cyclic_control/control.py",
+            "model/recovery_elision/variant.py",
+            "model/biased_code_universality/universality.py"
           ],
           "id": "CP-13",
           "issue": 1137,
@@ -1557,7 +1651,7 @@
               "independent_check": "model/bound_pair/test_mass.py",
               "path": "model/bound_pair/results.json",
               "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
-              "sha256": "de0b4ed00bd0636749d385e4fdc861d290c2a90a065833bc41c9e35c57e071d2"
+              "sha256": "a34167129f2d69f993bf9eab0a51560383c1e595aa3e5f27e10beb203b32b85e"
             },
             {
               "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
@@ -1585,20 +1679,20 @@
               "independent_check": "model/completion/test_finite_attachment_map.py",
               "path": "model/completion/finite_attachment_map.json",
               "scope": "Exhaustive ownership and relevance navigation for the existing 84-premise register, with source-bound finite model attachments and explicit unresolved construction/acceptance joins. It is not a new audit of every Lean module or discharge of global physical premises.",
-              "sha256": "9cc1a2138725400ef002944f4417421ef6add2395813f6d5d235830ebb36bfd8"
+              "sha256": "afe959bd883bec0c36468b56c6df1e7f6cafa21bf656ec73ed98482b8d3a7dad"
             },
             {
               "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
               "independent_check": "model/field_tastes/test_tastes.py",
               "path": "model/field_tastes/results.json",
               "scope": "Same-action contact coupling tests complete momentum pockets, retained mirror modes and interaction leakage; exclusions apply to the declared projection at fixed lattice coupling, not every chiral regulator or continuum limit.",
-              "sha256": "c9a3d1c62a46ede9f5730b6bad7e0020d0b07d9dd2869d2e5b00585d1e347e0d"
+              "sha256": "75854f5af506fa5f6ea19c936d182bbe56cea00234bee755d67b3ff71735c08e"
             },
             {
               "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
               "independent_check": "model/biased_reset/test_reset.py",
               "path": "model/biased_reset/results.json",
-              "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the pending fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
+              "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the reviewed fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
               "sha256": "db4964d122ffefbf04a7479112307d342a2cf60c3a36f441244e74668069e1ae"
             },
             {
@@ -1628,6 +1722,27 @@
               "path": "model/particle_screening/mobile_results.json",
               "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
               "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08"
+            },
+            {
+              "campaign_id": "OPH-INTEGRATION-PAIR-CYCLIC-CONTROL-2026-10-29-v1",
+              "independent_check": "model/pair_cyclic_control/test_control.py",
+              "path": "model/pair_cyclic_control/control.py",
+              "scope": "Exact seven-state contact-domain reduction and rational pole enclosure; the separate spectral helper sharpens only the full-field rate-error term. Full spatial histories and physical field/reference premises remain.",
+              "sha256": "1515601c5d8d70f1a2dc4a203c06c4bd13a3220ef9a9b4919280a79655becd35"
+            },
+            {
+              "campaign_id": "OPH-INTEGRATION-RECOVERY-ELISION-2026-10-29-v1",
+              "independent_check": "model/recovery_elision/test_variant.py",
+              "path": "model/recovery_elision/variant.py",
+              "scope": "Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.",
+              "sha256": "1bdad1ff9b5ebaca633731f32129a95b83cdb3aafe7a32cc8a9413cd45743c4f"
+            },
+            {
+              "campaign_id": "OPH-INTEGRATION-BIASED-CODE-UNIVERSALITY-2026-10-29-v1",
+              "independent_check": "model/biased_code_universality/test_universality.py",
+              "path": "model/biased_code_universality/universality.py",
+              "scope": "Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.",
+              "sha256": "96954ded805c207154047ee665f0dc2883dab0e7bd824978b3dcaa1faee1c98d"
             }
           ],
           "requires": [
@@ -1801,7 +1916,9 @@
             "model/moving_defect/results.json",
             "model/bound_pair/results.json",
             "model/biased_reset/results.json",
-            "model/native_localization/results.json"
+            "model/native_localization/results.json",
+            "model/recovery_elision/variant.py",
+            "model/biased_code_universality/universality.py"
           ],
           "id": "CP-03",
           "issue": 1139,
@@ -1883,13 +2000,13 @@
               "independent_check": "model/bound_pair/test_mass.py",
               "path": "model/bound_pair/results.json",
               "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
-              "sha256": "de0b4ed00bd0636749d385e4fdc861d290c2a90a065833bc41c9e35c57e071d2"
+              "sha256": "a34167129f2d69f993bf9eab0a51560383c1e595aa3e5f27e10beb203b32b85e"
             },
             {
               "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
               "independent_check": "model/biased_reset/test_reset.py",
               "path": "model/biased_reset/results.json",
-              "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the pending fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
+              "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the reviewed fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
               "sha256": "db4964d122ffefbf04a7479112307d342a2cf60c3a36f441244e74668069e1ae"
             },
             {
@@ -1905,6 +2022,20 @@
               "path": "model/particle_screening/mobile_results.json",
               "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
               "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08"
+            },
+            {
+              "campaign_id": "OPH-INTEGRATION-RECOVERY-ELISION-2026-10-29-v1",
+              "independent_check": "model/recovery_elision/test_variant.py",
+              "path": "model/recovery_elision/variant.py",
+              "scope": "Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.",
+              "sha256": "1bdad1ff9b5ebaca633731f32129a95b83cdb3aafe7a32cc8a9413cd45743c4f"
+            },
+            {
+              "campaign_id": "OPH-INTEGRATION-BIASED-CODE-UNIVERSALITY-2026-10-29-v1",
+              "independent_check": "model/biased_code_universality/test_universality.py",
+              "path": "model/biased_code_universality/universality.py",
+              "scope": "Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.",
+              "sha256": "96954ded805c207154047ee665f0dc2883dab0e7bd824978b3dcaa1faee1c98d"
             }
           ],
           "requires": [
@@ -1943,7 +2074,8 @@
             "model/field_stress/results.json",
             "model/native_localization/results.json",
             "model/band_clock/results.json",
-            "model/completion/acceptance_audit.py"
+            "model/completion/acceptance_audit.py",
+            "model/pair_cyclic_control/control.py"
           ],
           "id": "CP-04",
           "issue": 1140,
@@ -2034,7 +2166,7 @@
               "independent_check": "model/bound_pair/test_mass.py",
               "path": "model/bound_pair/results.json",
               "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
-              "sha256": "de0b4ed00bd0636749d385e4fdc861d290c2a90a065833bc41c9e35c57e071d2"
+              "sha256": "a34167129f2d69f993bf9eab0a51560383c1e595aa3e5f27e10beb203b32b85e"
             },
             {
               "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
@@ -2070,6 +2202,13 @@
               "path": "model/completion/acceptance_audit.py",
               "scope": "Exact noninteger pair-gap witness excludes an eta-calibrated invariant modular intertwiner from every finite independent native reference product. Approximate generator error exceeds1/24. Correlated references and counted alternative services are outside this exclusion.",
               "sha256": "dd7cdd1ae6f1b915afc6e30b573a47c7027cbf8bd9500d8c07e2076ada42d1ec"
+            },
+            {
+              "campaign_id": "OPH-INTEGRATION-PAIR-CYCLIC-CONTROL-2026-10-29-v1",
+              "independent_check": "model/pair_cyclic_control/test_control.py",
+              "path": "model/pair_cyclic_control/control.py",
+              "scope": "Exact seven-state contact-domain reduction and rational pole enclosure; the separate spectral helper sharpens only the full-field rate-error term. Full spatial histories and physical field/reference premises remain.",
+              "sha256": "1515601c5d8d70f1a2dc4a203c06c4bd13a3220ef9a9b4919280a79655becd35"
             }
           ],
           "requires": [
@@ -2122,7 +2261,7 @@
               "independent_check": "model/bound_pair/test_mass.py",
               "path": "model/bound_pair/results.json",
               "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
-              "sha256": "de0b4ed00bd0636749d385e4fdc861d290c2a90a065833bc41c9e35c57e071d2"
+              "sha256": "a34167129f2d69f993bf9eab0a51560383c1e595aa3e5f27e10beb203b32b85e"
             },
             {
               "campaign_id": "mobile-screened-memory-20261029-v1",
@@ -2156,7 +2295,8 @@
             "model/interacting_field/results.json",
             "model/field_regions/results.json",
             "model/field_tastes/results.json",
-            "model/band_clock/results.json"
+            "model/band_clock/results.json",
+            "model/pair_cyclic_control/control.py"
           ],
           "id": "CP-06",
           "issue": 1142,
@@ -2190,7 +2330,7 @@
               "independent_check": "model/field_tastes/test_tastes.py",
               "path": "model/field_tastes/results.json",
               "scope": "Same-action contact coupling tests complete momentum pockets, retained mirror modes and interaction leakage; exclusions apply to the declared projection at fixed lattice coupling, not every chiral regulator or continuum limit.",
-              "sha256": "c9a3d1c62a46ede9f5730b6bad7e0020d0b07d9dd2869d2e5b00585d1e347e0d"
+              "sha256": "75854f5af506fa5f6ea19c936d182bbe56cea00234bee755d67b3ff71735c08e"
             },
             {
               "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
@@ -2198,6 +2338,13 @@
               "path": "model/band_clock/results.json",
               "scope": "Complete moving8128-state field sector driven by native record-derived rate using counted local source words; uniform ideal-word halfdiamond bound<0.038565. Supplied global Gibbs reference and rate-transfer service are explicit; native reference inheritance and physical calibration are not established.",
               "sha256": "c9954b4563a1d1a1ee24aafcd6bf43ae57c77eadd6cbadc3e02dbdff193ba639"
+            },
+            {
+              "campaign_id": "OPH-INTEGRATION-PAIR-CYCLIC-CONTROL-2026-10-29-v1",
+              "independent_check": "model/pair_cyclic_control/test_control.py",
+              "path": "model/pair_cyclic_control/control.py",
+              "scope": "Exact seven-state contact-domain reduction and rational pole enclosure; the separate spectral helper sharpens only the full-field rate-error term. Full spatial histories and physical field/reference premises remain.",
+              "sha256": "1515601c5d8d70f1a2dc4a203c06c4bd13a3220ef9a9b4919280a79655becd35"
             }
           ],
           "requires": [
@@ -2240,7 +2387,7 @@
               "independent_check": "model/bound_pair/test_mass.py",
               "path": "model/bound_pair/results.json",
               "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
-              "sha256": "de0b4ed00bd0636749d385e4fdc861d290c2a90a065833bc41c9e35c57e071d2"
+              "sha256": "a34167129f2d69f993bf9eab0a51560383c1e595aa3e5f27e10beb203b32b85e"
             }
           ],
           "requires": [
@@ -2433,7 +2580,7 @@
               "independent_check": "model/bound_pair/test_mass.py",
               "path": "model/bound_pair/results.json",
               "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
-              "sha256": "de0b4ed00bd0636749d385e4fdc861d290c2a90a065833bc41c9e35c57e071d2"
+              "sha256": "a34167129f2d69f993bf9eab0a51560383c1e595aa3e5f27e10beb203b32b85e"
             },
             {
               "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
@@ -2447,13 +2594,13 @@
               "independent_check": "model/field_tastes/test_tastes.py",
               "path": "model/field_tastes/results.json",
               "scope": "Same-action contact coupling tests complete momentum pockets, retained mirror modes and interaction leakage; exclusions apply to the declared projection at fixed lattice coupling, not every chiral regulator or continuum limit.",
-              "sha256": "c9a3d1c62a46ede9f5730b6bad7e0020d0b07d9dd2869d2e5b00585d1e347e0d"
+              "sha256": "75854f5af506fa5f6ea19c936d182bbe56cea00234bee755d67b3ff71735c08e"
             },
             {
               "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
               "independent_check": "model/biased_reset/test_reset.py",
               "path": "model/biased_reset/results.json",
-              "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the pending fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
+              "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the reviewed fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
               "sha256": "db4964d122ffefbf04a7479112307d342a2cf60c3a36f441244e74668069e1ae"
             }
           ],
@@ -2553,7 +2700,7 @@
         ],
         "id": "F-03",
         "source_sha256": {
-          "model/CONSTRUCTION.md": "358572a20321d6129709670fabb82245d744d9c7cb9f64167d4827ff2e808cce",
+          "model/CONSTRUCTION.md": "bf4c2130fbd7f77292f9247e83bc7e1695b6f70ecb654a666d742de642764888",
           "model/observer_time_fields/continuum_dynamics.py": "667c79896bd1748b492b9fce3dadbdb4e10f62d130359e5cf45ace70de4214c5",
           "model/relative_observer_geometry/README.md": "d589aab43927fe479375e41f6abd2fb6225fd949d8e76ec0486b055c2bbb4ca2"
         },

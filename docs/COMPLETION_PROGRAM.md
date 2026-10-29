@@ -44,6 +44,9 @@ These source-bound component campaigns record actual progress without accepting 
 - [OPH-DEFECT-ACTION-PARTICLE-FIELD-2026-10-29-v1](../model/completion/four_lane_campaign.json): Four bounded component advances on the pending record-clock baseline: active moving memory, record-inferred interacting kinetic parent, exact particle/family obstructions and a supplied interacting 3D lattice CAR field. Actual joins and scoped failures remain explicit; no integrated gate or physical comparison is accepted. Owning gates: CP-03, CP-04, CP-05, CP-06, CP-13, CP-12.
 - [OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1](../model/completion/particle_premise_campaign.json): Four selected issues and the common local action, finite interfaces, pending-draft boundaries and complete-criteria closure policy. No integrated gate or physical comparison is accepted. Owning gates: CP-01, CP-02, CP-03, CP-04, CP-05, CP-06, CP-07, CP-08, CP-09, CP-12, CP-13.
 - [mobile-screened-memory-20261029-v1](../model/particle_screening/mobile_contract.json): Complete uniform-seam C/E moving-memory operation and optimal core-reset objective, with exact-code domain and coherent services explicit. Owning gates: CP-01, CP-03, CP-05, CP-13.
+- [OPH-INTEGRATION-PAIR-CYCLIC-CONTROL-2026-10-29-v1](../model/pair_cyclic_control/campaign.json): Exact seven-state contact-domain reduction and rational pole enclosure; the separate spectral helper sharpens only the full-field rate-error term. Full spatial histories and physical field/reference premises remain. Owning gates: CP-04, CP-06, CP-13.
+- [OPH-INTEGRATION-RECOVERY-ELISION-2026-10-29-v1](../model/recovery_elision/campaign.json): Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection. Owning gates: CP-01, CP-03, CP-13.
+- [OPH-INTEGRATION-BIASED-CODE-UNIVERSALITY-2026-10-29-v1](../model/biased_code_universality/campaign.json): Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved. Owning gates: CP-01, CP-03, CP-13.
 
 ## Next four parallel workstreams
 
@@ -264,6 +267,8 @@ Retained starting evidence:
 - [results.json](../model/biased_reset/results.json)
 - [results.json](../model/native_program/results.json)
 - [program_class_v2_review.json](../model/completion/program_class_v2_review.json)
+- [variant.py](../model/recovery_elision/variant.py)
+- [universality.py](../model/biased_code_universality/universality.py)
 
 Reviewed acceptance evidence:
 
@@ -284,6 +289,8 @@ Current component progress (not gate acceptance):
 - [results.json](../model/particle_clock/results.json): An explicit supplied isometry maps the same N=2 eta pair and dark reference to a native M2 corner. Complete compiled herald/continuation/record-clock/energy histories retain all stops and a finite unconditional error bound. Full spatial encoding and physical calibration are not established.
 - [results.json](../model/biased_reset/results.json): Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the reviewed fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.
 - [mobile_results.json](../model/particle_screening/mobile_results.json): Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.
+- [variant.py](../model/recovery_elision/variant.py): Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.
+- [universality.py](../model/biased_code_universality/universality.py): Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.
 
 Earlier related work: [#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077), [#1076](https://github.com/FloatingPragma/observer-patch-holography/issues/1076), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026).
 
@@ -331,6 +338,9 @@ Retained starting evidence:
 - [results.json](../model/band_clock/results.json)
 - [acceptance_audit.py](../model/completion/acceptance_audit.py)
 - [program_class_v2_review.json](../model/completion/program_class_v2_review.json)
+- [control.py](../model/pair_cyclic_control/control.py)
+- [variant.py](../model/recovery_elision/variant.py)
+- [universality.py](../model/biased_code_universality/universality.py)
 
 Reviewed acceptance evidence:
 
@@ -368,6 +378,9 @@ Current component progress (not gate acceptance):
 - [results.json](../model/band_clock/results.json): Complete moving8128-state field sector driven by native record-derived rate using counted local source words; uniform ideal-word halfdiamond bound<0.038565. Supplied global Gibbs reference and rate-transfer service are explicit; native reference inheritance and physical calibration are not established.
 - [acceptance_audit.py](../model/completion/acceptance_audit.py): Exact noninteger pair-gap witness excludes an eta-calibrated invariant modular intertwiner from every finite independent native reference product. Approximate generator error exceeds1/24. Correlated references and counted alternative services are outside this exclusion.
 - [mobile_results.json](../model/particle_screening/mobile_results.json): Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.
+- [control.py](../model/pair_cyclic_control/control.py): Exact seven-state contact-domain reduction and rational pole enclosure; the separate spectral helper sharpens only the full-field rate-error term. Full spatial histories and physical field/reference premises remain.
+- [variant.py](../model/recovery_elision/variant.py): Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.
+- [universality.py](../model/biased_code_universality/universality.py): Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.
 
 Earlier related work: [#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 
@@ -452,6 +465,8 @@ Retained starting evidence:
 - [results.json](../model/bound_pair/results.json)
 - [results.json](../model/biased_reset/results.json)
 - [results.json](../model/native_localization/results.json)
+- [variant.py](../model/recovery_elision/variant.py)
+- [universality.py](../model/biased_code_universality/universality.py)
 
 Current component progress (not gate acceptance):
 
@@ -468,6 +483,8 @@ Current component progress (not gate acceptance):
 - [results.json](../model/biased_reset/results.json): Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the reviewed fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.
 - [results.json](../model/native_localization/results.json): Faithful native coherence with reference-identical complete tape/exterior, exact contrast lifetime, zero modular-energy excess and arbitrary-code exterior/clock exclusions. Its core is immobile; no topological particle or mass is assigned.
 - [mobile_results.json](../model/particle_screening/mobile_results.json): Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.
+- [variant.py](../model/recovery_elision/variant.py): Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.
+- [universality.py](../model/biased_code_universality/universality.py): Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.
 
 Earlier related work: [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 
@@ -508,6 +525,7 @@ Retained starting evidence:
 - [results.json](../model/native_localization/results.json)
 - [results.json](../model/band_clock/results.json)
 - [acceptance_audit.py](../model/completion/acceptance_audit.py)
+- [control.py](../model/pair_cyclic_control/control.py)
 
 Current component progress (not gate acceptance):
 
@@ -527,6 +545,7 @@ Current component progress (not gate acceptance):
 - [results.json](../model/native_localization/results.json): Faithful native coherence with reference-identical complete tape/exterior, exact contrast lifetime, zero modular-energy excess and arbitrary-code exterior/clock exclusions. Its core is immobile; no topological particle or mass is assigned.
 - [results.json](../model/band_clock/results.json): Complete moving8128-state field sector driven by native record-derived rate using counted local source words; uniform ideal-word halfdiamond bound<0.038565. Supplied global Gibbs reference and rate-transfer service are explicit; native reference inheritance and physical calibration are not established.
 - [acceptance_audit.py](../model/completion/acceptance_audit.py): Exact noninteger pair-gap witness excludes an eta-calibrated invariant modular intertwiner from every finite independent native reference product. Approximate generator error exceeds1/24. Correlated references and counted alternative services are outside this exclusion.
+- [control.py](../model/pair_cyclic_control/control.py): Exact seven-state contact-domain reduction and rational pole enclosure; the separate spectral helper sharpens only the full-field rate-error term. Full spatial histories and physical field/reference premises remain.
 
 Earlier related work: [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 
@@ -588,6 +607,7 @@ Retained starting evidence:
 - [results.json](../model/field_regions/results.json)
 - [results.json](../model/field_tastes/results.json)
 - [results.json](../model/band_clock/results.json)
+- [control.py](../model/pair_cyclic_control/control.py)
 
 Current component progress (not gate acceptance):
 
@@ -595,6 +615,7 @@ Current component progress (not gate acceptance):
 - [results.json](../model/field_regions/results.json): Actual signed CAR restrictions retain local N=0,1,2, references and every history outcome; CP expectations and cube embeddings compose. Exact Hamiltonian compression does not intertwine dynamics. Fixed-spacing locality is not physical Lorentz geometry.
 - [results.json](../model/field_tastes/results.json): Same-action contact coupling tests complete momentum pockets, retained mirror modes and interaction leakage; exclusions apply to the declared projection at fixed lattice coupling, not every chiral regulator or continuum limit.
 - [results.json](../model/band_clock/results.json): Complete moving8128-state field sector driven by native record-derived rate using counted local source words; uniform ideal-word halfdiamond bound<0.038565. Supplied global Gibbs reference and rate-transfer service are explicit; native reference inheritance and physical calibration are not established.
+- [control.py](../model/pair_cyclic_control/control.py): Exact seven-state contact-domain reduction and rational pole enclosure; the separate spectral helper sharpens only the full-field rate-error term. Full spatial histories and physical field/reference premises remain.
 
 Earlier related work: [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 

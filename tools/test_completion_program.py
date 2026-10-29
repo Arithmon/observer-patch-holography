@@ -39,6 +39,12 @@ def fixture_root(tmp_path):
     for campaign in source.get("component_campaigns", []):
         name = campaign["contract"]["path"]
         (tmp_path / name).write_text((program.ROOT / name).read_text())
+        contract = json.loads((tmp_path/name).read_text())
+        if contract.get('schema') == 'oph.integration_simplification.v1':
+            for dependency in contract['source_bindings']:
+                target = tmp_path/dependency
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes((program.ROOT/dependency).read_bytes())
     for row in bound_rows:
         row["sha256"] = hashlib.sha256((tmp_path / row["path"]).read_bytes()).hexdigest()
     for name, value in ((program.PROGRAM, source), (program.HYPOTHESIS, hypothesis),
@@ -139,6 +145,29 @@ def test_dependency_narrative_uses_actual_class_acceptance(status):
     rendered = program.render(data, hypothesis)
     assert ('CP-00 has accepted the reviewed executable' in rendered) == (status == 'ACCEPTED')
     assert ('CP-00 must identify the complete law/resource/interpretation class' in rendered) == (status != 'ACCEPTED')
+
+
+@pytest.mark.parametrize('damage', ['changed_dependency', 'omitted_dependency', 'omitted_initializer', 'omitted_archive'])
+def test_integration_campaign_rejects_transitive_source_custody_damage(fixture_root,damage):
+    data = json.loads((fixture_root/program.PROGRAM).read_text())
+    row = next(c for c in data['component_campaigns']
+               if 'RECOVERY-ELISION' in c['id'])
+    path = fixture_root/row['contract']['path']
+    contract = json.loads(path.read_text())
+    dependency = ('model/moving_defect/__init__.py' if damage == 'omitted_initializer'
+                  else 'model/moving_defect/transport.py')
+    if damage == 'omitted_archive':
+        dependency = next(name for name in contract['source_bindings'] if name.startswith('evidence/'))
+    assert dependency in contract['source_bindings']
+    if damage == 'changed_dependency':
+        (fixture_root/dependency).write_text((fixture_root/dependency).read_text()+'\n# changed dependency\n')
+    else:
+        del contract['source_bindings'][dependency]
+        path.write_text(json.dumps(contract))
+        row['contract']['sha256'] = hashlib.sha256(path.read_bytes()).hexdigest()
+        (fixture_root/program.PROGRAM).write_text(json.dumps(data))
+    with pytest.raises(ValueError, match='integration source custody'):
+        program.load_program(fixture_root)
 
 
 @pytest.mark.parametrize("damage", ["custody", "unmapped", "promotion"])

@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import argparse
+import ast
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
 
@@ -36,6 +38,78 @@ def bound_evidence(root: Path, rows: list) -> None:
                 f"decision evidence custody changed: {row.get('path')}")
         local_file(root, row.get("independent_check"))
         require(bool(row.get("scope")), "missing evidence scope")
+
+
+def integration_source_paths(root: Path, contract: dict) -> set[str]:
+    """Repository Python closure, including function imports and eager parents."""
+    document = local_file(root, contract.get('domain_and_proof'))
+    paths = {document.relative_to(root).as_posix(), 'model/requirements.txt'}
+    paths.update(p.relative_to(root).as_posix() for p in document.parent.glob('*.py'))
+    paths.update(contract.get('independent_checks', []))
+    receipts = contract.get('source_receipts', [])
+    require(isinstance(receipts, list) and bool(receipts),
+            'integration source custody requires owning source receipts')
+    for name in receipts:
+        receipt = json.loads(local_file(root, name).read_text())
+        inherited = receipt.get('source_bindings', receipt.get('source_sha256'))
+        require(isinstance(inherited, dict) and bool(inherited),
+                f'integration source receipt has no source manifest: {name}')
+        paths.add(name)
+        paths.update(inherited)
+    pending = list(paths)
+    visited = set()
+
+    def add_module(name):
+        if not name.startswith(('model.', 'tools.')):
+            return
+        stem = name.replace('.', '/')
+        candidates = [stem+'.py', stem+'/__init__.py']
+        parts = stem.split('/')
+        candidates.extend('/'.join(parts[:end])+'/__init__.py'
+                          for end in range(1, len(parts)))
+        for candidate in candidates:
+            if (root/candidate).is_file() and candidate not in paths:
+                paths.add(candidate)
+                pending.append(candidate)
+
+    while pending:
+        name = pending.pop()
+        if name in visited or not name.endswith('.py'):
+            continue
+        visited.add(name)
+        module = name.removesuffix('.py').replace('/', '.')
+        package = (module.removesuffix('.__init__') if module.endswith('.__init__')
+                   else module.rpartition('.')[0])
+        add_module(module)
+        for node in ast.walk(ast.parse(local_file(root, name).read_text())):
+            if isinstance(node, ast.Import):
+                for alias in node.names:
+                    add_module(alias.name)
+            elif isinstance(node, ast.ImportFrom):
+                target = '.'*node.level+(node.module or '')
+                target = importlib.util.resolve_name(target, package) if node.level else target
+                add_module(target)
+                for alias in node.names:
+                    add_module(target+'.'+alias.name)
+    return paths
+
+
+def validate_integration_sources(root: Path, contract: dict) -> None:
+    paths = integration_source_paths(root, contract)
+    bindings = contract.get('source_bindings')
+    require(isinstance(bindings, dict) and paths <= set(bindings),
+            'integration source custody omits a transitive dependency')
+    for name, expected in bindings.items():
+        require(hashlib.sha256(local_file(root, name).read_bytes()).hexdigest() == expected,
+                f'integration source custody changed: {name}')
+    for name in contract['source_receipts']:
+        receipt = json.loads(local_file(root, name).read_text())
+        inherited = receipt.get('source_bindings', receipt.get('source_sha256'))
+        require(all(bindings.get(path) == expected for path, expected in inherited.items()),
+                f'integration source custody differs from owning receipt: {name}')
+    require(contract.get('integrated_gate_accepted') is False
+            and contract.get('source_law_changed') is False,
+            'integration simplification cannot accept a gate or change its source law')
 
 
 def validate_next_wave(root: Path, wave: dict, by_id: dict, campaigns: list) -> None:
@@ -151,6 +225,8 @@ def load_program(root: Path = ROOT, *, allow_unlinked: bool = False) -> tuple[di
                 and contract.get("whole_program_frozen") is False
                 and contract.get("physical_comparison_count_added") == 0,
                 "component campaign contract scope changed")
+        if contract.get('schema') == 'oph.integration_simplification.v1':
+            validate_integration_sources(root, contract)
         if campaign["scope"] == "FINITE_COMPONENT_DIAGNOSTICS":
             require(contract.get("boundary_status") == "FROZEN_DIAGNOSTIC_CONTRACT"
                     and contract.get("integrated_gate_accepted") is False
