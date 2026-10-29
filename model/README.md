@@ -76,6 +76,17 @@ constructions against shared spatial and metric contracts. Its
 state which theorem inputs are constructed and which physical identifications
 remain separate.
 
+The [operational triplet-attachment audit](../docs/research/MARKED_TRIPLET_OPERATIONAL_ATTACHMENT_AUDIT.md)
+checks native preparation, continuing instruments, bare-cap clocks and full
+state tomography. The six-level source compiler and its proper-code services
+implement native controls, and current readout attaches the native load
+history to the spatial slow quotient. These capabilities do not supply a
+common state/observable interface and covariant transport of complete
+instruments between the spatial and internal triplets. A source-derived
+interface preserving the marking, preparations, records, failures and
+untouched references is required before an operational triplet comparison
+or physical embedding selection follows.
+
 The source-pinned [particle mass-response audit](../docs/research/OPH_PARTICLE_MASS_RESPONSE.md)
 tests a declared Weyl–Higgs action through its charged field and observer
 clock. Its measured finite gaps do not reproduce the charged-lepton hierarchy.
