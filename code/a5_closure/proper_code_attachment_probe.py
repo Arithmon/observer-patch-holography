@@ -20,7 +20,9 @@ from galois_port_frame_certificate import F, Z, O, encode, mm, transpose, requir
 from model.observer.source_scalar import compiler
 
 BASELINE = 'a44330802c726037f88356f9f62044184ed429a5'
-SOURCE_COMMIT = '53e365b248a4611bb911e75d7afae0f52bfd8675'
+HISTORICAL_SOURCE_COMMIT = '53e365b248a4611bb911e75d7afae0f52bfd8675'
+# Reviewed integration: detached Fraction returns only; see INTEGRATION_2026-10-29.md.
+SOURCE_COMMIT = '3f650db7a625f0df66495bdaea4332861507f5d4'
 REFERENCE = ROOT/'code/a5_closure/receipts/proper_code_attachment_probe.json'
 COMPILER = 'model/observer/source_scalar/compiler.py'
 INPUTS = sorted(set(marked.INPUTS + [
@@ -159,7 +161,7 @@ def drift_report():
     require(hashlib.sha256(old).hexdigest() == pins['DERIVATION.md'], 'historical derivation custody')
     delta = ''.join(difflib.unified_diff(old.decode().splitlines(True),
         (ROOT/'code/source_selection_model/DERIVATION.md').read_text().splitlines(True),
-        fromfile=old_commit, tofile=SOURCE_COMMIT))
+        fromfile=old_commit, tofile=HISTORICAL_SOURCE_COMMIT))
     return {'pins': rows, 'mismatches': [p for p, r in rows.items() if r['actual'] != r['expected']],
             'pinned_derivation_commit': old_commit,
             'derivation_diff_sha256': hashlib.sha256(delta.encode()).hexdigest(),

@@ -17,7 +17,9 @@ from verify_galois_port_frame_independent import ZERO, ONE, add, sub, mul, div, 
 
 ROOT = Path(__file__).resolve().parents[2]
 BASELINE = 'a44330802c726037f88356f9f62044184ed429a5'
-SOURCE_COMMIT = '53e365b248a4611bb911e75d7afae0f52bfd8675'
+HISTORICAL_SOURCE_COMMIT = '53e365b248a4611bb911e75d7afae0f52bfd8675'
+# Reviewed integration: detached Fraction returns only; see INTEGRATION_2026-10-29.md.
+SOURCE_COMMIT = '3f650db7a625f0df66495bdaea4332861507f5d4'
 REFERENCE = ROOT/'code/a5_closure/receipts/proper_code_attachment_probe.json'
 COMPILER = 'model/observer/source_scalar/compiler.py'
 INPUTS = sorted(set(m.INPUTS + [
@@ -205,7 +207,7 @@ def verify(packet, root=ROOT):
     m.need(hashlib.sha256(old_text).hexdigest() == old['DERIVATION.md'], 'historical derivation object')
     delta = ''.join(difflib.unified_diff(old_text.decode().splitlines(True),
         (root/'code/source_selection_model/DERIVATION.md').read_text().splitlines(True),
-        fromfile=old_commit, tofile=SOURCE_COMMIT))
+        fromfile=old_commit, tofile=HISTORICAL_SOURCE_COMMIT))
     expected = encoded({'schema': 'oph.proper-code-attachment-probe.v1',
         'work_baseline': BASELINE, 'source_pins': pins,
         'implementation_sha256': {p: hashlib.sha256((root/p).read_bytes()).hexdigest() for p in IMPLEMENTATIONS},
