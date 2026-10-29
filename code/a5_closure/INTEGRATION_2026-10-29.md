@@ -38,6 +38,13 @@ verdict must remain exactly equal. Producers and independent verifiers retain
 their strict byte comparisons against the new pinned commits. An arbitrary
 future source modification is still rejected; this is no hash bypass.
 
+The current source inventory also refreshes its complete directory snapshot.
+The only added path is this note; the sixteen changed paths are the four
+probes, their independent verifiers, receipts and explanatory pages reviewed
+here. Every candidate, classification, qualification, scope, source pin and
+implementation pin in that inventory remains exactly unchanged. Only its
+directory snapshot and the resulting inventory digest change.
+
 The retained conclusions remain bounded: proper-code export alone does not
 identify spatial loads with quantum states; coherent native access does not
 provide a source-derived spatial decoder; and the clean-register decoder

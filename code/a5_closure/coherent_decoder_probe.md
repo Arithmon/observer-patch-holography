@@ -1,5 +1,7 @@
 # COHERENT-DECODER-0: fixed-template, clean-register feasibility
 
+Current receipt custody was reviewed on 29 October 2026 in the [integration note](INTEGRATION_2026-10-29.md). The baseline narrative below records the original investigation; current source and prerequisite pins are recorded in the refreshed receipt. All scientific results, resource counts and scope verdicts are unchanged.
+
 Date: 2026-10-24. Work baseline and fetched fork:
 `eee3b6a2e0051e88d53053b5af1defbc0fb86988`.
 Fetched upstream main and merge-base:

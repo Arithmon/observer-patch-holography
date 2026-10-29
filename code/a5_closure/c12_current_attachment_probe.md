@@ -1,5 +1,7 @@
 # Native-current identification with the protected C12 work register
 
+Current receipt custody was reviewed on 29 October 2026 in the [integration note](INTEGRATION_2026-10-29.md). The baseline narrative below records the original investigation; current source and prerequisite pins are recorded in the refreshed receipt. All scientific results, resource counts and scope verdicts are unchanged.
+
 Work baseline: `343ea42c64fb783c84c9fb4e461aa3c8ce054107`. Scientific source
 bytes remain pinned to upstream `53e365b248a4611bb911e75d7afae0f52bfd8675`.
 Overall verdict: **SOURCE_INTERFACE_UNDERDETERMINED**, with the exact scoped

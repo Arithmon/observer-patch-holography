@@ -1,5 +1,7 @@
 # Proper-code compiler attachment probe
 
+Current receipt custody was reviewed on 29 October 2026 in the [integration note](INTEGRATION_2026-10-29.md). The baseline narrative below records the original investigation; current source and prerequisite pins are recorded in the refreshed receipt. All scientific results, resource counts and scope verdicts are unchanged.
+
 Verdict: **SOURCE_INTERFACE_UNDERDETERMINED**. Work baseline:
 `a44330802c726037f88356f9f62044184ed429a5`; scientific source bytes:
 `FloatingPragma/observer-patch-holography@53e365b248a4611bb911e75d7afae0f52bfd8675`.

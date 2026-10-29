@@ -1,5 +1,7 @@
 # Coherent native access on the fixed marked GV code
 
+Current receipt custody was reviewed on 29 October 2026 in the [integration note](INTEGRATION_2026-10-29.md). The baseline narrative below records the original investigation; current source and prerequisite pins are recorded in the refreshed receipt. All scientific results, resource counts and scope verdicts are unchanged.
+
 Verdict: **COHERENT_ACCESS_WITHOUT_ATTACHMENT**.
 Work starts from `3800f801283078b6b86c23bbb9b85b545a70b69c` on
 `arithmon/oph-operational-attachment-0`, with a clean checkout. Fetch and live
