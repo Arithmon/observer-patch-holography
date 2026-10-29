@@ -914,7 +914,7 @@
     "model/event_circulation/__main__.py": "f8819b5e3b13a38ed3de801a1a0312f0729f70a22a1e6323d7f925598658966a",
     "model/event_circulation/construction.py": "b3a53c02034fab7a24e77a35313257bc321dda1c4a52ef2a25f9b70616edf2ba",
     "model/federated_observer/source.py": "4a91b7f254fcee89c93b1ce3e9972ec0c809290ec987dbc87fcb0392319e549d",
-    "model/local_repair_family/README.md": "eb9d2bcf4cacf284c506f7baaa9c0cd0f67c12ddd30cd95e2ddd2c33518c14bc",
+    "model/local_repair_family/README.md": "e714c02c1d5fdd8a1e99de1aa8d78614ee92c74166ccbeee72755c69e1d006da",
     "model/local_repair_family/campaign.json": "83334963514064b24be063f9afec26eb0463a512e28a03fd9b5232fadbc51c20",
     "model/local_repair_family/continuing.py": "48687fd65a762e2587f75b79478e15f8b3e3981c76c03a173de50cdd13938f08",
     "model/local_repair_family/local_bias.py": "4902174ac8b27c1d8111bc3942cf5cd1024a07999d77f272cbfa1f1242876755",
