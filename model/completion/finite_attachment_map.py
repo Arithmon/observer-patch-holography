@@ -16,7 +16,7 @@ PATH = Path('model/completion/finite_attachment_map.json')
 CLASSES = {'realized_on_claimed_domain','required_but_conditional',
            'alternative_branch','redundant','irrelevant_to_target','needs_correction'}
 INTERFACES = {'state','algebra','operation','clock','refinement'}
-REALIZED = {f'FA-{n:02d}' for n in range(1,8)} | {'FA-13'}
+REALIZED = {f'FA-{n:02d}' for n in range(1,8)} | {f'FA-{n:02d}' for n in range(13,18)}
 
 
 def canonical_contract(row):
@@ -37,8 +37,8 @@ def validate(packet, root=ROOT):
     register=strict_json.load(root/'tracking/premise_register.json')
     program=strict_json.load(root/'claims/completion_program.json')
     owners={row['id']:row['issue'] for row in program['stages']}
-    require(packet.get('schema')=='oph.finite_attachment_map.v1','wrong attachment schema')
-    require(packet.get('full_gate_accepted') is False and
+    require(packet.get('schema')=='oph.finite_attachment_map.v2','wrong attachment schema')
+    require(packet.get('gate_acceptance_owner') == 'claims/completion_program.json' and
             packet.get('physical_comparison_count_added')==0 and
             packet.get('canonical_premises_discharged')==[], 'scope promotion forbidden')
     require(packet.get('selected_issues')==[1139,1140,1142,1137], 'selected issue ownership changed')
@@ -76,7 +76,7 @@ def validate(packet, root=ROOT):
             snapshot.get('lean_module_count')==len(existing['lean_files']), 'navigation inventory mismatch')
     applications=packet.get('attachments',[])
     identifiers=[a.get('id') for a in applications]
-    require(len(identifiers)==len(set(identifiers)) and set(identifiers)=={f'FA-{n:02d}' for n in range(1,14)},
+    require(len(identifiers)==len(set(identifiers)) and set(identifiers)=={f'FA-{n:02d}' for n in range(1,18)},
             'missing or duplicate finite attachment')
     for a in applications:
         require(a.get('classification') in CLASSES,'unclassified finite attachment')
@@ -94,11 +94,18 @@ def validate(packet, root=ROOT):
     review=packet.get('issue_closure_review',{})
     require(set(review)=={'1139','1140','1142','1137'},'missing issue closure review')
     for n,row in review.items():
-        require(row.get('close_issue') is False and row.get('unfulfilled_acceptance') and
-                row.get('unaccepted_predecessors'),f'unsupported issue closure: {n}')
+        require(row.get('close_issue') is False, f'map cannot close its own issue: {n}')
+        if n == '1137':
+            require(row.get('required_predecessors') == ['CP-00','CP-01'] and
+                    row.get('finite_map_review_complete') is True and row.get('closure_policy'),
+                    'CP13 closure requires independently accepted predecessors and review')
+        else:
+            require(row.get('unfulfilled_acceptance') and row.get('unaccepted_predecessors'),
+                    f'unsupported construction closure: {n}')
+    accepted = next(s for s in program['stages'] if s['id']=='CP-13')['status']=='ACCEPTED'
     return {'canonical_premises':len(rows),'finite_obligations_realized':len(REALIZED),
             'canonical_premises_discharged':0,'classifications':dict(Counter(r['classification'] for r in rows)),
-            'full_gate_accepted':False}
+            'full_gate_accepted':accepted, 'gate_acceptance_owner':packet['gate_acceptance_owner']}
 
 
 def main():

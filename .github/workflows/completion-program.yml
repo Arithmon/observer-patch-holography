@@ -30,6 +30,9 @@ on:
       - 'model/field_stress/**'
       - 'model/field_tastes/**'
       - 'model/biased_reset/**'
+      - 'model/band_clock/**'
+      - 'model/native_localization/**'
+      - 'model/native_program/**'
       - '.github/workflows/completion-program.yml'
   pull_request:
     paths:
@@ -59,6 +62,9 @@ on:
       - 'model/field_stress/**'
       - 'model/field_tastes/**'
       - 'model/biased_reset/**'
+      - 'model/band_clock/**'
+      - 'model/native_localization/**'
+      - 'model/native_program/**'
       - '.github/workflows/completion-program.yml'
   workflow_dispatch:
 
@@ -92,4 +98,11 @@ jobs:
       - run: python -m model.field_stress --check model/field_stress/results.json
       - run: python -m model.field_tastes --check model/field_tastes/results.json
       - run: python -m model.biased_reset --check model/biased_reset/results.json
+      - run: python -m pytest -q -W error model/band_clock model/native_localization model/native_program
+      - run: python -m model.band_clock --check model/band_clock/results.json
+      - run: python -m model.native_localization.experiment --check model/native_localization/results.json
+      - run: python -m model.native_program.receipt --check model/native_program/results.json
+      - run: python -m model.completion.acceptance_audit --check
+      - run: python -m model.completion.program_class_v2 --check
+      - run: python -m model.completion.independent_program_review
       - run: python -m model.completion.finite_attachment_map --check

@@ -13,9 +13,9 @@ def packet():
 def test_complete_canonical_ownership_and_realized_finite_domains():
     result=validate(packet())
     assert result['canonical_premises']==84
-    assert result['finite_obligations_realized']==8
+    assert result['finite_obligations_realized']==12
     assert result['canonical_premises_discharged']==0
-    assert not result['full_gate_accepted']
+    assert result['gate_acceptance_owner']=='claims/completion_program.json'
 
 
 @pytest.mark.parametrize('damage',[
@@ -35,7 +35,7 @@ def test_review_mutations_fail_closed(damage):
     elif damage=='canonical_promotion': p['canonical_premises_discharged']=['PR-23']
     elif damage=='unproved_closure': p['issue_closure_review']['1137']['close_issue']=True
     elif damage=='missing_attachment': p['attachments'].pop()
-    elif damage=='wrong_classification': p['attachments'][-2]['classification']='realized_on_claimed_domain'
+    elif damage=='wrong_classification': next(a for a in p['attachments'] if a['id']=='FA-12')['classification']='realized_on_claimed_domain'
     else: p['existing_navigation_coverage']['contract_coverage_sha256']='0'*64
     with pytest.raises(ValueError):validate(p)
 
@@ -58,4 +58,4 @@ def test_no_implicit_deletion_or_theorem_error_from_failed_transfers():
     corrected=next(a for a in p['attachments'] if a['id']=='FA-09')
     assert corrected['classification']=='needs_correction'
     assert 'identification' in corrected['title']
-    assert p['issue_closure_review']['1137']['unaccepted_predecessors']==['CP-00','CP-01']
+    assert p['issue_closure_review']['1137']['required_predecessors']==['CP-00','CP-01']

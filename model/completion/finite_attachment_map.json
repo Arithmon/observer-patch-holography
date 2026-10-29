@@ -1,5 +1,5 @@
 {
-  "schema": "oph.finite_attachment_map.v1",
+  "schema": "oph.finite_attachment_map.v2",
   "as_of": "2026-10-29",
   "gate": "CP-13",
   "selected_issues": [
@@ -9,15 +9,14 @@
     1137
   ],
   "canonical_registry": "tracking/premise_register.json",
-  "full_gate_accepted": false,
   "physical_comparison_count_added": 0,
   "canonical_premises_discharged": [],
-  "finite_obligations_realized": 8,
-  "scope": "Exhaustive ownership/relevance review of all 84 canonical premise rows for the declared same-action particle/field campaign, plus thirteen inspected theorem/model attachments. This is not a fresh proof audit of every imported theorem or tracked Lean module.",
+  "finite_obligations_realized": 12,
+  "scope": "Exhaustive ownership/relevance review of all84canonical premise rows for the declared particle/field and native-coherence campaigns, plus17inspected theorem/model attachments. This is not a fresh proof audit of every imported theorem or tracked Lean module.",
   "existing_navigation_coverage": {
-    "claim_count": 345,
+    "claim_count": 346,
     "lean_module_count": 662,
-    "contract_coverage_sha256": "8f8c49138783d903525510770e6289ec8e433b36544c96b98d45172f1be93e68",
+    "contract_coverage_sha256": "9246369b5d720f95e1e3b592df27f1b9e3c3e456c967eb162b9c36b9dcae19f7",
     "note": "Existing typed coverage retained without changing scientific entailment or claim-consumer edges."
   },
   "canonical_ownership": [
@@ -56,7 +55,7 @@
       "name": "operational effect additivity",
       "contract_sha256": "264eab996bb1e05387ee67b7af0e536d4b2617598a87456a65d13b864e67d7fc",
       "preserved_discharge_status": "declared",
-      "classification": "required_but_conditional",
+      "classification": "alternative_branch",
       "owners": [
         "CP-01",
         "CP-13"
@@ -65,7 +64,7 @@
         1136,
         1137
       ],
-      "reason": "Trace-pairing readout is supplied in these instruments. It obeys additivity, but the broader source selection of every coexistent effect and valuation is not inferred from a finite detector table."
+      "reason": "The declared-quantum CP01 member proves finite trace additivity directly and does not invoke Busch-Gleason to select its valuation. The global source-selected cross-context valuation obligation and non-Born countermodels remain registered and undischarged for eventual source-derived physical interpretation; FA17 supplies only the declared finite instance."
     },
     {
       "premise": "PR-04",
@@ -1004,14 +1003,14 @@
       "name": "source-produced phase preparation and readback provenance",
       "contract_sha256": "868f134f0ae435636b73afc663c79981b5b3de45bcc458c1660e750c98c39864",
       "preserved_discharge_status": "obstructed",
-      "classification": "required_but_conditional",
+      "classification": "alternative_branch",
       "owners": [
         "CP-01"
       ],
       "issues": [
         1136
       ],
-      "reason": "Literal coherent source words and full-output custody are checked, but diagonal bare C/E repair still cannot generate the needed coherent apparatus. Selection/initialization of those controls and the spatial field encoding remain explicit."
+      "reason": "The declared-service CP01 member binds its finite software preparation, literal source words, complete outputs and costs. It neither derives coherent services from diagonal bare repair nor invokes external physical producer authentication. The canonical common-source preparation/provenance obstruction remains registered and undischarged for eventual source-derived physical interpretation; FA17 proves only the admitted finite service instance."
     },
     {
       "premise": "PR-66",
@@ -1488,6 +1487,45 @@
         "def report"
       ],
       "boundary": "A selected faithful Gibbs density on the full physical N=2,K=0 fiber; even observables only. No local continuum OS reconstruction or native thermal preparation."
+    },
+    "native_localization": {
+      "path": "model/native_localization/localization.py",
+      "anchors": [
+        "def initial_density",
+        "def trajectory_certificate",
+        "def exact_code_certificate",
+        "def source_execution"
+      ],
+      "boundary": "Known faithful coherence with complete-history exterior equality; its core is immobile and modular-energy excess zero. Exact arbitrary-code restrictions have a separate domain."
+    },
+    "band_clock": {
+      "path": "model/band_clock/clock.py",
+      "anchors": [
+        "class ClockField",
+        "def error_budget",
+        "def reference_report",
+        "def execute"
+      ],
+      "boundary": "Counted full-sector source words use a supplied global Gibbs reference and rate-transfer service. The ideal-word half-diamond bound is separate from floating diagnostics and hardware error."
+    },
+    "inherited_clock": {
+      "path": "model/completion/acceptance_audit.py",
+      "anchors": [
+        "def native_levels",
+        "def tensor_multiplicities",
+        "def exact_pair_moments",
+        "def spectral_certificate"
+      ],
+      "boundary": "Every finite independent canonical native product, eta-calibrated invariant isometry and a specified two-level field domain; correlated or changed references and counted nonisometric services escape."
+    },
+    "native_program": {
+      "path": "model/native_program/receipt.py",
+      "anchors": [
+        "def instrument_certificate",
+        "def native_witness",
+        "def original_observer_witness"
+      ],
+      "boundary": "Declared quantum representation, input preparation and counted coherent service. The exact branch certificate extends to arbitrary references but is not a source-selection or physical-apparatus proof."
     }
   },
   "attachments": [
@@ -1952,6 +1990,145 @@
       "proof_kind": "Analytic finite spectral-sum/Gram proof and independent direct-trace numerical tests.",
       "new_lean_inhabitant": false,
       "physical_identification": false
+    },
+    {
+      "id": "FA-14",
+      "title": "Native exterior-matched coherence, contrast lifetime and arbitrary exact-code limits",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-03",
+        "CP-04"
+      ],
+      "reviewed_sources": [
+        "native_localization"
+      ],
+      "interface": {
+        "state": "Faithful H66 native state with reference diagonal and coherent blocks theta_k/7505 [[25,8],[8,8]] on core{1,7}; every exterior correlation retained.",
+        "algebra": "Full native M66 and complete classical records; exterior by actual partial trace. Exact-code consequences separately quantify arbitrary logical dimension>=2.",
+        "operation": "Full tagged all30seam C/E instruments, literal known-mixture preparation and128raw C-then-E histories on512source rows.",
+        "clock": "Native attempt count n for contrast lifetime; dimensionless modular s for phase log25/8. No physical clock identification.",
+        "refinement": "One native carrier; finite-history induction is uniform in history length. No spatial continuum or carrier growth claim."
+      },
+      "conclusion": "An explicit faithful localized coherence has reference-identical tape/exterior, exact finite contrast lifetime and zero modular-energy excess; arbitrary exact codes obey exterior and clock exclusions.",
+      "remaining": [
+        "Native protected boundary charge and motion of the same excitation; physical energy and lifetime calibration."
+      ],
+      "witnesses": [
+        "model/native_localization/README.md",
+        "model/native_localization/results.json"
+      ],
+      "countercontrols": [
+        "model/native_localization/test_localization.py"
+      ],
+      "proof_kind": "Explicit analytic finite-domain argument with independent exact arithmetic and complete source checks.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-15",
+      "title": "Complete moving-band source control with record-derived rate",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-02",
+        "CP-04",
+        "CP-06"
+      ],
+      "reviewed_sources": [
+        "band_clock",
+        "pair_fiber"
+      ],
+      "interface": {
+        "state": "Full8128-dimensional periodic N2 action and band packet entangled with reference qubit; global faithful Gibbs state is an additional supplied reference.",
+        "algebra": "Complete N2 matrix algebra including cross-momentum units and all scattering/taste sectors.",
+        "operation": "Counted compiled local hopping/contact words, FSWAP routes, allfour occupation-pointer outputs and identical input-preserving stops.",
+        "clock": "Native counts infer beta_hat; explicit rate service sets model t=-beta_hat*s. Uniform ideal-word average halfdiamond bound<0.038565 for|s|<=1.",
+        "refinement": "Fixed L4 spatial box; temporal product formula has explicit all-input error and source cost. No spatial continuum proof."
+      },
+      "conclusion": "The same finite moving band has a complete source-controlled observation protocol with a reference-uniform error bound under a declared common-reference premise.",
+      "remaining": [
+        "Source selection/preparation of the full Gibbs reference, band packet preparation, physical clock/energy dictionary and interacting chiral continuum."
+      ],
+      "witnesses": [
+        "model/band_clock/README.md",
+        "model/band_clock/results.json"
+      ],
+      "countercontrols": [
+        "model/band_clock/test_clock.py",
+        "model/band_clock/test_replay.py"
+      ],
+      "proof_kind": "Explicit analytic finite-domain argument with independent exact arithmetic and complete source checks.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-16",
+      "title": "Finite-independent-copy inherited clock exclusion",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-02",
+        "CP-04",
+        "CP-12"
+      ],
+      "reviewed_sources": [
+        "inherited_clock",
+        "pair_fiber"
+      ],
+      "interface": {
+        "state": "Any finite independent product of canonical native reference; comparison field domain contains eta dark state and zero-momentum isolated pair.",
+        "algebra": "Full modular-invariant isometric domain, including coherence between the two compared eigenstates.",
+        "operation": "Exact inherited modular generator; approximate intertwining permits arbitrary isometry and scalar offset with residual>1/24.",
+        "clock": "Common eta calibration beta*U=log25/8; field Hamiltonian model t and modular s explicitly related. No laboratory unit.",
+        "refinement": "All finite product counts and even periodic field sides>=4. No correlated-reference or alternative-service exclusion."
+      },
+      "conclusion": "Exact rational moments give13/12<E_pair/U<3/2, excluding integer-spaced inherited native generators and yielding a size-independent residual lower bound.",
+      "remaining": [
+        "Other correlated references, other port weights, nonisometric services and source-selected physical clock require separate construction; this is not a whole-program no-go."
+      ],
+      "witnesses": [
+        "docs/COMPLETION_ACCEPTANCE_AUDIT_2026-10-29.md",
+        "model/completion/acceptance_audit.py"
+      ],
+      "countercontrols": [
+        "model/completion/test_acceptance_audit.py"
+      ],
+      "proof_kind": "Explicit analytic finite-domain argument with independent exact arithmetic and complete source checks.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-17",
+      "title": "Declared finite valuation and complete continuing observer theorem instance",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-01",
+        "CP-13"
+      ],
+      "reviewed_sources": [
+        "native_program",
+        "finite_repair"
+      ],
+      "interface": {
+        "state": "Declared native H66 reference and prepared probe on the bound continuing record-clock member; short independent witness entangled with an untouched reference.",
+        "algebra": "Full native source and direct-sum complete classical tape; trace valuation v(E)=Tr(rho E) gives additivity by linearity. Explicit regional occupation restrictions retain every local total.",
+        "operation": "Exact rational partial-injection branches with sum K* K=I on H78/H66, allseams/C/E; finite-memory record-only control, complete FIFO/export/stop and literal source-word services.",
+        "clock": "Native attempt counts, record-derived dimensionless modular phase, source-pulse counts and host limits are distinct. No physical calibration claimed.",
+        "refinement": "Independent product and full binary-federation carriers have typed membership; actual intercell transfer and CP regional restriction witnesses. Static address refinement is not dynamic intertwining."
+      },
+      "conclusion": "The finite observer theorem antecedents have an actual source-bound declared-service instance; no source-derived Born selection or physical provenance conclusion is invoked.",
+      "remaining": [
+        "Physical selection of representation and coherent services, source-produced public-effect/provenance obligations and every field/particle/gravity attachment remain with their canonical contracts."
+      ],
+      "witnesses": [
+        "model/native_program/README.md",
+        "model/native_program/results.json",
+        "docs/EXECUTABLE_PROGRAM_CLASS_V2_PROPOSAL.md"
+      ],
+      "countercontrols": [
+        "model/native_program/test_interpreter.py"
+      ],
+      "proof_kind": "Exact complete-effect and partial-injection certificate, explicit service words, retained continuing observer, independent endpoint and hostile-admission tests.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
     }
   ],
   "cleanup": {
@@ -1976,7 +2153,7 @@
         "CP-13"
       ],
       "unfulfilled_acceptance": [
-        "A reference-like exterior and a boundary charge invariant under the complete admitted native repair law.",
+        "A boundary charge invariant under the complete admitted native repair law and a controlled defect sector. The exterior-matched faithful coherence has an immobile core and zero modular-energy excess.",
         "The closed-H bound band and active native code are distinct realizations; no common native topological defect is established."
       ]
     },
@@ -2005,15 +2182,13 @@
     },
     "1137": {
       "close_issue": false,
-      "unaccepted_predecessors": [
+      "closure_policy": "Close on merge only after source-bound independent review and accepted CP00/CP01 joins are recorded by the completion registry. This map cannot accept its own gate.",
+      "required_predecessors": [
         "CP-00",
         "CP-01"
       ],
-      "unfulfilled_acceptance": [
-        "The full executable program class is not frozen and its continuing-observer predecessor is not accepted.",
-        "The reviewed map is complete for the named finite campaign; active proof-chain cleanup and actual common-process attachments must be rechecked when those predecessor domains are fixed."
-      ],
-      "finite_map_review_complete": true
+      "finite_map_review_complete": true,
+      "acceptance_scope": "Ownership, exact finite interfaces, relevance and active-route cleanup; downstream physical premises remain conditional."
     }
   },
   "source_bindings": {
@@ -2030,8 +2205,8 @@
     "model/bound_pair/fiber.py": "a5a21df2e5e6a4c71c66feaff2436390e357da8ae019df794280577afa48a49e",
     "model/bound_pair/identity.py": "16b73761ae95475d8d8292e372d7450b661a61eebba7cb977a18fb44d8252e44",
     "model/bound_pair/mass.py": "45ab64c1b74d060e4ae380c9f5f5896ca7d1d7a84c18c022c9bd2e3d99735034",
-    "model/completion/finite_attachment_map.py": "d0bd04fb34d3b71979086713a8f42d6e6919d7b2a0ffe60f7b37506d851892b3",
-    "model/completion/test_finite_attachment_map.py": "bc00a16b24156cfc4ff5eac0913b330e075dec5e08662d0525a3cbd30134997b",
+    "model/completion/finite_attachment_map.py": "8414ba1a8e727883e1d1a577e14c3a55df6d7239836f800bea0d85382942475c",
+    "model/completion/test_finite_attachment_map.py": "aa5d4f505b55acb786e5be2d442474ac29fbb741e194950e7b95789a256d20c3",
     "model/field_regions/README.md": "5073a68fc7c604335ad9aeac76ea0fd509857a73fb088148e66e0764cd6005ae",
     "model/field_regions/regions.py": "82620a99ed565ab0371295700f828151133d863d92e7fb12330d57a3a7603dc9",
     "model/field_stress/README.md": "8e5b2d4bf9f49d782512c17c6ccda0b2e54d69255a5d169154ba53c6c5c6c213",
@@ -2042,6 +2217,19 @@
     "model/field_tastes/thermal.py": "2bac9c523952296832e6943bafa4749cada43e2f8d72fa1084aa20451fa53a13",
     "model/interacting_field/lattice.py": "b6233c890898ecebd84fa19ee95a95f28bdce11d7dfcd0c72be2aaedfaad692e",
     "model/particle_clock/README.md": "d77051b64b97e0e5ff66f9ddd2729fb2297adf2d540f1bc809a8c582a57455e6",
-    "model/particle_clock/clock.py": "0e7ade1e52928aa0657720af4854cc67d1766eafff6d8cf4718628e71f338816"
+    "model/particle_clock/clock.py": "0e7ade1e52928aa0657720af4854cc67d1766eafff6d8cf4718628e71f338816",
+    "model/native_localization/localization.py": "026efb631b902366038fa7713e0b9b3b0c0a76aac856e289f2b4569dee39f431",
+    "model/band_clock/clock.py": "b4a75be11fa7be50ec5ccd72f8fc43be697468e02e340de2d22d6b5e349cf5b2",
+    "model/completion/acceptance_audit.py": "dd7cdd1ae6f1b915afc6e30b573a47c7027cbf8bd9500d8c07e2076ada42d1ec",
+    "model/native_localization/results.json": "eba1771dce527ac4d5aa3bb1cc0a3c6cf5ab89ea2946ae62d43e5463bed8732f",
+    "model/band_clock/results.json": "c9954b4563a1d1a1ee24aafcd6bf43ae57c77eadd6cbadc3e02dbdff193ba639",
+    "model/native_program/receipt.py": "9f507a9f2e14ee628fa3fa420e5b3ba393ccd8d9b5ca475314da0d12e3bc3cfd",
+    "model/native_program/results.json": "41b1538d8be726412cbe437b4124a408769119aabde7f0fa2fb2e7eccdaaa2c0"
+  },
+  "gate_acceptance_owner": "claims/completion_program.json",
+  "predecessor_review": {
+    "commit": "c35b09c099e5950f736befcf126c654542d78e15",
+    "path": "model/completion/finite_attachment_map.json",
+    "scope": "Historical13attachment campaign review retained at its original commit; successor distinguishes finite declared-service CP01 instances from source-derived physical premises."
   }
 }

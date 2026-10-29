@@ -1,0 +1,84 @@
+{
+  "CP03_CP04_CP06_accepted": false,
+  "EMH1_through_EMH5_established": false,
+  "canonical_physical_premises_discharged": [],
+  "checks": [
+    {
+      "command": "python -m pytest -q -W error model/band_clock",
+      "passed": 23
+    },
+    {
+      "command": "python -m pytest -q -W error model/native_localization",
+      "passed": 28
+    },
+    {
+      "command": "python -m pytest -q -W error model/native_program",
+      "passed": 29
+    },
+    {
+      "command": "python -m pytest -q -W error model/completion/test_acceptance_audit.py",
+      "passed": 16
+    },
+    {
+      "command": "python -m pytest -q -W error model/completion/test_finite_attachment_map.py model/completion/test_program_class_v2.py",
+      "passed": 38
+    },
+    {
+      "command": "python -m model.native_program.receipt --check model/native_program/results.json",
+      "verdict": "PASS"
+    },
+    {
+      "command": "python -m model.band_clock --check model/band_clock/results.json",
+      "verdict": "PASS"
+    },
+    {
+      "command": "python -m model.native_localization.experiment --check model/native_localization/results.json",
+      "verdict": "PASS"
+    },
+    {
+      "command": "python -m model.completion.finite_attachment_map --check",
+      "verdict": "PASS"
+    }
+  ],
+  "independent_channel_check": {
+    "checked_branch_matrix_units": 802080,
+    "command": "python -m model.completion.independent_program_review",
+    "complete_endpoint_instruments": 120,
+    "expected_rule": "independent floor/ceiling arithmetic and total-two basis enumeration",
+    "input": "normalized full source/reference maximally entangled Choi state",
+    "raw_blocks_including_zeros": 3000,
+    "verdict": "PASS"
+  },
+  "recommended_gates": [
+    "CP-00",
+    "CP-01",
+    "CP-13"
+  ],
+  "requires_registry_acceptance_and_predecessor_joins": true,
+  "review_date": "2026-10-29",
+  "reviewed_contract_digest": "44838185ed56d1f9b7a8ca235766977d7814f44c53cb2f849668b2829dfe83df",
+  "schema": "oph.program_class_independent_review.v1",
+  "scope": "CP00 executable class, CP01 declared-service continuing observer, CP13 theorem ownership and active-route cleanup; acceptance on this exact finite scope only",
+  "scope_corrections": [
+    "Declared trace linearity does not discharge global source-selected PR03 additivity.",
+    "Counted coherent source services do not discharge canonical PR65 passive-source/provenance obligations.",
+    "Original q3 scalar recipe not adopted in V2; historical unexecuted/not-obstructed evidence preserved.",
+    "Full occupation tensor product is ambient; native federation programs declare one global occupation sector.",
+    "Record-derived full-band clock needs a supplied globally normalized Gibbs reference.",
+    "Native exterior-matched coherence has an immobile core and zero modular-energy excess."
+  ],
+  "selected_issue_ready_for_closure_on_merge": 1137,
+  "source_bindings": {
+    "docs/PROGRAM_CLASS_V2_INDEPENDENT_REVIEW_2026-10-29.md": "490e1236b67e1eaaaf34461b9723f9adfb7786bd6a517ef8e0fefccbf1b96510",
+    "model/band_clock/results.json": "c9954b4563a1d1a1ee24aafcd6bf43ae57c77eadd6cbadc3e02dbdff193ba639",
+    "model/completion/acceptance_audit.py": "dd7cdd1ae6f1b915afc6e30b573a47c7027cbf8bd9500d8c07e2076ada42d1ec",
+    "model/completion/finite_attachment_map.json": "9cc1a2138725400ef002944f4417421ef6add2395813f6d5d235830ebb36bfd8",
+    "model/completion/finite_attachment_map.py": "8414ba1a8e727883e1d1a577e14c3a55df6d7239836f800bea0d85382942475c",
+    "model/completion/independent_program_review.py": "ec4e30b6e7c858538fa391db84a40a770f829c54d987dd2b147d22fdd40153ac",
+    "model/completion/test_acceptance_audit.py": "eefeb82b3db0bf89f4e1d049ad5aa30b0461c51eef497d22d5c8842a05a432c8",
+    "model/completion/test_finite_attachment_map.py": "aa5d4f505b55acb786e5be2d442474ac29fbb741e194950e7b95789a256d20c3",
+    "model/native_localization/results.json": "eba1771dce527ac4d5aa3bb1cc0a3c6cf5ab89ea2946ae62d43e5463bed8732f",
+    "model/native_program/results.json": "41b1538d8be726412cbe437b4124a408769119aabde7f0fa2fb2e7eccdaaa2c0"
+  },
+  "verdict": "PASS"
+}

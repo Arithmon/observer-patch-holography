@@ -345,7 +345,8 @@
     "OPH-OBSERVER-STATIC-PRODUCT-RESPONSE-CONTROL",
     "OPH-ENTANGLED-PAIR-ALPHA-CANDIDATE",
     "OPH-NATIVE-FAMILY-RECORD-PROTOCOL",
-    "OPH-MODEL-WEYL-CONTACT-FINITE-PAIR"
+    "OPH-MODEL-WEYL-CONTACT-FINITE-PAIR",
+    "OPH-MODEL-NATIVE-LOCALIZED-COHERENCE"
   ],
   "edges": [
     {
@@ -3022,6 +3023,11 @@
       "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
       "to": "OPH-MODEL-WEYL-CONTACT-FINITE-PAIR",
       "role": "reuses source compiler and complete-instrument methods; does not import the earlier scalar action, reference or physical dictionary"
+    },
+    {
+      "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+      "to": "OPH-MODEL-NATIVE-LOCALIZED-COHERENCE",
+      "role": "Reuses the complete native instruments, source compiler and exact-code support result. It does not import the supplied field action or its energy dictionary."
     }
   ]
 }

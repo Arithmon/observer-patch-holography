@@ -357,11 +357,14 @@ def render(program: dict, hypothesis: dict) -> str:
               "| Whole-program falsification | Verified contradiction in indispensable premises, exclusion of every frozen realization of a required join, or an unavoidable independently excluded prediction | Stop the frozen program; any premise/class change starts a new version |",
               "| Inconclusive | Open maps, incomplete coverage or an unsuccessful finite search | No confirmation and no impossibility claim |",
               "| Resource/value stop | A declared budget or return threshold is reached | A research stop, not scientific falsification |", "",
-              "The boundary is **not frozen**, so no whole-program exclusion "
-              "is claimed. Broad closure alone does not guarantee this specific C/E "
-              "candidate, and an indefinitely enlarged escape class cannot be declared "
-              "exhausted. Freezing CP-00 makes the tested formulation and its possible "
-              "rejection explicit. Changing it never erases an earlier verdict.", "",
+              ("The executable class is **frozen** by the reviewed CP-00 contract. "
+               "No whole-program exclusion is claimed; it would need a proof covering "
+               "every admitted realization of the mandatory target conjunction. "
+               "A changed class requires a successor version with prior evidence preserved."
+               if program['boundary_status']=='FROZEN' else
+               "The boundary is **not frozen**, so no whole-program exclusion is claimed. "
+               "Freezing CP-00 must specify the admitted class and its decision contract. "
+               "Changing it never erases an earlier verdict."), "",
               "Every obstruction records target revision, mandatory premises, quantified "
               "class, evidence and independent check, coverage, surviving escape routes "
               "and the exact consequence. Issue closure alone is not scientific acceptance. "
@@ -377,6 +380,10 @@ def render(program: dict, hypothesis: dict) -> str:
         lines += [f"- {row}" for row in stage["acceptance"]]
         lines += ["", "Obstruction/stopping test: " + stage["obstruction"], "", "Retained starting evidence:", ""]
         lines += [f"- [{Path(path).name}](../{path})" for path in stage["evidence"]]
+        if stage.get("accepted_evidence"):
+            lines += ["", "Reviewed acceptance evidence:", ""]
+            lines += [f"- [{Path(row['path']).name}](../{row['path']}): {row['scope']}"
+                      for row in stage['accepted_evidence']]
         if stage.get("progress_evidence"):
             lines += ["", "Current component progress (not gate acceptance):", ""]
             lines += [f"- [{Path(row['path']).name}](../{row['path']}): {row['scope']}"

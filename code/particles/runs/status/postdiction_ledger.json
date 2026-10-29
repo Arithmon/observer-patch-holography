@@ -45,19 +45,31 @@
       "status": "PROPOSED_NOT_ESTABLISHED"
     },
     "parents": {
-      "claims/claim_registry.yaml": "46fa152aa5603b5d1c0fb418b7ff4f034108bcd31220e7f8bfef8df5cdbe531b",
-      "claims/completion_program.json": "f09f2a266509e6d2d018b9cb55d511309c9b9b77f3f0acf94eb5b8029661147b",
+      "claims/claim_registry.yaml": "5f9120c30e30cbf0b08bcb88f4a5a1828f4eaf9ec83940ffe7936fe200a005ed",
+      "claims/completion_program.json": "6b07c95f62a99183b77ca0cf19d23dd1980bfedc86a9a60db1902a0ba1e22235",
       "claims/executable_model_hypothesis.json": "1855a611870a64b3d97fbaa8759385761dda9130a1517233193af2c7f170cd2b",
       "docs/OPH_EXECUTABLE_HYPOTHESIS.md": "c503247a2b333c2e27b3eba865d47f2d15c966a5052eceb4aadb14fc9002f35a"
     },
     "program": {
-      "boundary_status": "NOT_FROZEN",
+      "acceptance_review": {
+        "independent_check": "model/completion/independent_program_review.py",
+        "path": "model/completion/program_class_v2_review.json",
+        "scope": "Independent exact class, actual declared-service observer and17attachment theorem-map review. Closes no canonical physical premise or downstream particle/field/gravity gate.",
+        "sha256": "d6717e2296cf6933c263d03e68ed0f5d0f982cc1c451009f4dacd5b02e2abc11"
+      },
+      "adopted_class": {
+        "independent_check": "model/completion/test_program_class_v2.py",
+        "path": "model/completion/program_class_v2.json",
+        "scope": "Reviewed successor executable class with actual native/program interfaces, resource ceilings, all71retrospective observations, physical targets, calibration/error/exposure and stop/version rules. No physical prediction or class exclusion is claimed.",
+        "sha256": "725e0a9b74f991dbd64fb367c313c040c2f9edbe7b76694dcaf01ba89de30453"
+      },
+      "boundary_status": "FROZEN",
       "component_campaigns": [
         {
           "contract": {
             "independent_check": "model/completion/test_family.py",
             "path": "model/completion/campaign.json",
-            "scope": "Frozen finite C/E mixture, positive repair/selection and bounded classical-memory family. The parent refinement and physical-interpretation boundary remains open.",
+            "scope": "Frozen finite C/E mixture, positive repair/selection and bounded classical-memory family. The parent refinement and physical-interpretation boundary is not established.",
             "sha256": "6b12ab2491a801473e79917b0684fa6ead988056a1a8ee205e30c178271424ad"
           },
           "id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
@@ -112,7 +124,7 @@
           "contract": {
             "independent_check": "model/local_repair_family/test_local_bias.py",
             "path": "model/local_repair_family/campaign.json",
-            "scope": "Bounded endpoint-biased C/E family and conditional product-pair reference. The carrier, physical target and program-wide decision contract remain open.",
+            "scope": "Bounded endpoint-biased C/E family and conditional product-pair reference. The carrier, physical target and program-wide decision contract are not established.",
             "sha256": "83334963514064b24be063f9afec26eb0463a512e28a03fd9b5232fadbc51c20"
           },
           "id": "OPH-LOCAL-PLACEMENT-FAMILY-2026-10-28-v1",
@@ -128,7 +140,7 @@
           "contract": {
             "independent_check": "model/clock_defect_energy/test_ramsey_service.py",
             "path": "model/clock_defect_energy/ramsey_campaign.json",
-            "scope": "Source-pulse controlled Ramsey service on the finite density sector, complete C/E joint outputs and counted continuation. Physical duration and full-wave realization remain open.",
+            "scope": "Source-pulse controlled Ramsey service on the finite density sector, complete C/E joint outputs and counted continuation. Physical duration and full-wave realization are not established.",
             "sha256": "0dbf1c5cc30105216efece5e2270fa3f377d4bfe63f65233cbad1eb8391f4573"
           },
           "id": "OPH-SOURCE-RAMSEY-JOIN-2026-10-28-v1",
@@ -160,7 +172,7 @@
           "contract": {
             "independent_check": "model/particle_screening/test_screening.py",
             "path": "model/particle_screening/campaign.json",
-            "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity remain open.",
+            "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity are not established.",
             "sha256": "1d5eb2ce29c41a80f3e3e6bf90388ba99daff2b537f9267063171afa2d2f6b8d"
           },
           "id": "particle-screening-20261028-v1",
@@ -191,7 +203,7 @@
           "contract": {
             "independent_check": "model/clock_defect_energy/test_clock_count_inference.py",
             "path": "model/clock_defect_energy/clock_count_inference_campaign.json",
-            "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open.",
+            "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration is not established.",
             "sha256": "16b4fb47f2a2eca7a646ac70a6972d412a5d184893115fbabe456174f2037585"
           },
           "id": "OPH-CLOCK-COUNT-INFERENCE-2026-10-28-v1",
@@ -207,7 +219,7 @@
           "contract": {
             "independent_check": "model/screened_recovery/test_protocol.py",
             "path": "model/screened_recovery/campaign.json",
-            "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter remains open.",
+            "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter is not established.",
             "sha256": "ce28d024888b4e0405ff08436a87fce40affb07dc39c1b5ffc0d68765e410610"
           },
           "id": "screened-recovery-20261028-v1",
@@ -445,13 +457,13 @@
       "hypothesis": "claims/executable_model_hypothesis.json",
       "legacy_issue_policy": "Issues #1025, #1026, #1076 and #1077 are superseded by the new completion owners and closed as not planned, not as scientifically completed. Their evidence and unfinished contracts remain linked. The ongoing audit #1033 and broad obstruction search #1078 stay open.",
       "next_wave": {
-        "acceptance_policy": "The four selected open issues are CP-03, CP-04, CP-06 and CP-13. Eight additional worker assignments develop and independently review their particle, field, theorem, source-interface and publication evidence. All integrated acceptance dependencies remain unchanged; complete criteria are required for issue closure.",
+        "acceptance_policy": "The selected issues were CP03,CP04,CP06 andCP13. The independent review accepts CP13 on the versioned CP00/CP01 predecessors, with closure on merge. CP03/04/06 retain their original unfulfilled physical construction criteria. Component counts never establish whole-program completion.",
         "changes_frozen_campaign": false,
         "deferred_gates": [
           "CP-10",
           "CP-11"
         ],
-        "deferred_reason": "Physical Einstein composition and joint empirical validation still require accepted particle, field, geometry and common normalization joins. Finite components and scoped exclusions do not supply those predecessors.",
+        "deferred_reason": "Physical Einstein composition and joint empirical validation require accepted particle, field, geometry and common normalization joins. Finite components and scoped exclusions do not supply those predecessors.",
         "embedded_reviews": [
           {
             "evidence": [
@@ -461,7 +473,7 @@
             ],
             "gate": "CP-00",
             "issue": 1135,
-            "role": "Maintain the bounded law/refinement and decision contract, with the unchanged C/E and endpoint-biased alternatives distinguished. These finite joins do not freeze the full physical program."
+            "role": "Preserve the independently reviewed V2 class, source membership, fixed retrospective target/error contract and all prior exposure. Any primitive or target change requires a reviewed successor."
           },
           {
             "evidence": [
@@ -473,7 +485,7 @@
             ],
             "gate": "CP-01",
             "issue": 1136,
-            "role": "Review complete continuing observer service and resource accounting for the compiled Ramsey and active-recovery protocols; predecessor acceptance remains open."
+            "role": "Preserve the accepted declared-service continuing observer and its complete-source membership/resource proof. Additional particle and field maps need their own same-process construction; physical apparatus is supplied."
           },
           {
             "evidence": [
@@ -500,7 +512,7 @@
             ],
             "gate": "CP-02",
             "issue": 1138,
-            "role": "Preserve the record-derived continuing clock and review its actual compatibility with moving codes and proposed kinetic/field actions; common physical calibration remains open."
+            "role": "Preserve the record-derived continuing clock and review its actual compatibility with moving codes and proposed kinetic/field actions; common physical calibration is not established."
           },
           {
             "evidence": [
@@ -542,7 +554,7 @@
             "id": "family",
             "independent_check": "model/completion/test_family.py",
             "path": "model/completion/campaign.json",
-            "scope": "Frozen finite C/E mixture, positive repair/selection and bounded classical-memory family. The parent refinement and physical-interpretation boundary remains open.",
+            "scope": "Frozen finite C/E mixture, positive repair/selection and bounded classical-memory family. The parent refinement and physical-interpretation boundary is not established.",
             "sha256": "6b12ab2491a801473e79917b0684fa6ead988056a1a8ee205e30c178271424ad"
           },
           {
@@ -734,7 +746,7 @@
             "id": "particle_screening_campaign",
             "independent_check": "model/particle_screening/test_screening.py",
             "path": "model/particle_screening/campaign.json",
-            "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity remain open.",
+            "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity are not established.",
             "sha256": "1d5eb2ce29c41a80f3e3e6bf90388ba99daff2b537f9267063171afa2d2f6b8d"
           },
           {
@@ -742,7 +754,7 @@
             "id": "particle_screening",
             "independent_check": "model/particle_screening/test_screening.py",
             "path": "model/particle_screening/screening_results.json",
-            "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity remain open.",
+            "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity are not established.",
             "sha256": "3970b65a26e313ddff2f25cbc1647e23740d5dae0857183f44be095c6b77adc8"
           },
           {
@@ -766,7 +778,7 @@
             "id": "clock_count_inference_campaign",
             "independent_check": "model/clock_defect_energy/test_clock_count_inference.py",
             "path": "model/clock_defect_energy/clock_count_inference_campaign.json",
-            "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open.",
+            "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration is not established.",
             "sha256": "16b4fb47f2a2eca7a646ac70a6972d412a5d184893115fbabe456174f2037585"
           },
           {
@@ -774,7 +786,7 @@
             "id": "clock_count_inference",
             "independent_check": "model/clock_defect_energy/test_clock_count_inference.py",
             "path": "model/clock_defect_energy/clock_count_inference_results.json",
-            "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open.",
+            "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration is not established.",
             "sha256": "1e4af9694e9051eb81bc63fb200555b5fc597c20438d368b62c3596b5fcdf7bd"
           },
           {
@@ -782,7 +794,7 @@
             "id": "screened_recovery_campaign",
             "independent_check": "model/screened_recovery/test_protocol.py",
             "path": "model/screened_recovery/campaign.json",
-            "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter remains open.",
+            "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter is not established.",
             "sha256": "ce28d024888b4e0405ff08436a87fce40affb07dc39c1b5ffc0d68765e410610"
           },
           {
@@ -790,7 +802,7 @@
             "id": "screened_recovery",
             "independent_check": "model/screened_recovery/test_protocol.py",
             "path": "model/screened_recovery/screened_recovery_results.json",
-            "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter remains open.",
+            "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter is not established.",
             "sha256": "6fcbddf4c20408870d62561373b823d9bbee6befcf75a2ab15a42d864d7ec749"
           },
           {
@@ -910,7 +922,7 @@
             "id": "particle_clock",
             "independent_check": "model/particle_clock/test_clock.py",
             "path": "model/particle_clock/results.json",
-            "scope": "An explicit supplied isometry maps the same N=2 eta pair and dark reference to a native M2 corner. Complete compiled herald/continuation/record-clock/energy histories retain all stops and a finite unconditional error bound. Full spatial encoding and physical calibration remain open.",
+            "scope": "An explicit supplied isometry maps the same N=2 eta pair and dark reference to a native M2 corner. Complete compiled herald/continuation/record-clock/energy histories retain all stops and a finite unconditional error bound. Full spatial encoding and physical calibration are not established.",
             "sha256": "114cf1b49b1b80b21edebabf9d2258b81432c4a35d1409ab613ac0e0402700bb"
           },
           {
@@ -926,7 +938,7 @@
             "id": "field_stress",
             "independent_check": "model/field_stress/test_energy.py",
             "path": "model/field_stress/results.json",
-            "scope": "Exact local energy continuity and interaction-dependent boundary flux on the full finite field; same-action quantum Gibbs/entropy identity and regional bare-energy countercontrol. Lorentz stress, null geometry, area variation and Einstein premises remain open.",
+            "scope": "Exact local energy continuity and interaction-dependent boundary flux on the full finite field; same-action quantum Gibbs/entropy identity and regional bare-energy countercontrol. Lorentz stress, null geometry, area variation and Einstein premises are not established.",
             "sha256": "34e3d3184f727b7c881711defdd0d5d98c083e9de29263ad86872bd9c6db8fff"
           },
           {
@@ -935,7 +947,7 @@
             "independent_check": "model/completion/test_finite_attachment_map.py",
             "path": "model/completion/finite_attachment_map.json",
             "scope": "Exhaustive ownership and relevance navigation for the existing 84-premise register, with source-bound finite model attachments and explicit unresolved construction/acceptance joins. It is not a new audit of every Lean module or discharge of global physical premises.",
-            "sha256": "eb148813ffef423f44b3694554ea6e05162b57f7e00206d41f337b3362db0e00"
+            "sha256": "9cc1a2138725400ef002944f4417421ef6add2395813f6d5d235830ebb36bfd8"
           },
           {
             "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
@@ -952,16 +964,41 @@
             "path": "model/biased_reset/results.json",
             "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the pending fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
             "sha256": "db4964d122ffefbf04a7479112307d342a2cf60c3a36f441244e74668069e1ae"
+          },
+          {
+            "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+            "id": "native_localization",
+            "independent_check": "model/native_localization/test_localization.py",
+            "path": "model/native_localization/results.json",
+            "scope": "Faithful native coherence with reference-identical complete tape/exterior, exact contrast lifetime, zero modular-energy excess and arbitrary-code exterior/clock exclusions. Its core is immobile; no topological particle or mass is assigned.",
+            "sha256": "eba1771dce527ac4d5aa3bb1cc0a3c6cf5ab89ea2946ae62d43e5463bed8732f"
+          },
+          {
+            "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+            "id": "band_clock",
+            "independent_check": "model/band_clock/test_clock.py",
+            "path": "model/band_clock/results.json",
+            "scope": "Complete moving8128-state field sector driven by native record-derived rate using counted local source words; uniform ideal-word halfdiamond bound<0.038565. Supplied global Gibbs reference and rate-transfer service are explicit; native reference inheritance and physical calibration are not established.",
+            "sha256": "c9954b4563a1d1a1ee24aafcd6bf43ae57c77eadd6cbadc3e02dbdff193ba639"
+          },
+          {
+            "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+            "id": "inherited_clock",
+            "independent_check": "model/completion/test_acceptance_audit.py",
+            "path": "model/completion/acceptance_audit.py",
+            "scope": "Exact noninteger pair-gap witness excludes an eta-calibrated invariant modular intertwiner from every finite independent native reference product. Approximate generator error exceeds1/24. Correlated references and counted alternative services are outside this exclusion.",
+            "sha256": "dd7cdd1ae6f1b915afc6e30b573a47c7027cbf8bd9500d8c07e2076ada42d1ec"
           }
         ],
-        "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-29-v8",
+        "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-29-v9",
         "owners": [
           {
             "deliverable": "A localized native excitation with reference-like exterior and the full-law protecting invariant or controlled lifetime, attached to the actual field excitation.",
             "evidence": [
               "bound_pair",
               "moving_defect",
-              "particle_premise_contract"
+              "particle_premise_contract",
+              "native_localization"
             ],
             "gate": "CP-03",
             "issue": 1139,
@@ -975,28 +1012,32 @@
             "evidence": [
               "bound_pair",
               "particle_clock",
-              "field_stress"
+              "field_stress",
+              "band_clock",
+              "native_localization",
+              "inherited_clock"
             ],
             "gate": "CP-04",
             "issue": 1140,
             "join_condition": "Supplied U and c, coordinate masses and one corner clock do not select a physical full-field dictionary. Preserve the proved same-speed relativistic mismatch and regional modular countercontrol.",
             "may_start_now": "Use the bound-pair energy/residue identity, exact curvature interval, complete clock records and interaction-dependent local energy conservation.",
             "title": "Complete the common particle energy, propagation and stress dictionary",
-            "why_now": "One excitation now has exact energy splitting, independent curvature, a native M2 clock attachment and same-action finite energy currents."
+            "why_now": "One excitation has exact energy splitting, independent curvature, a native M2 clock attachment and same-action finite energy currents."
           },
           {
             "deliverable": "A same-process chiral effective or continuum field description with all modes, currents, interactions, reference and complete intervention errors controlled.",
             "evidence": [
               "bound_pair",
               "field_regions",
-              "interacting_field"
+              "interacting_field",
+              "band_clock"
             ],
             "gate": "CP-06",
             "issue": 1142,
             "join_condition": "A finite band or infinite-volume fixed lattice is not a chiral continuum. No unwanted mode can be dropped without a derived complete-law decoupling map.",
             "may_start_now": "Retain every Weyl taste and scattering output; test the contact interaction against the proposed momentum-sector removal and compose the existing regional history maps.",
             "title": "Complete the interacting chiral field and observable-domain comparison",
-            "why_now": "Complete interacting histories, CAR regional maps and same-excitation spectral measures can now test actual mode removal rather than a pole list alone."
+            "why_now": "Complete interacting histories, CAR regional maps and same-excitation spectral measures can test actual mode removal rather than a pole list alone."
           },
           {
             "deliverable": "A complete current ownership/relevance map, verified concrete attachments, corrected active theorem routes and a criterion-by-criterion acceptance audit.",
@@ -1004,18 +1045,21 @@
               "particle_premise_contract",
               "particle_clock",
               "field_regions",
-              "field_stress"
+              "field_stress",
+              "band_clock",
+              "native_localization",
+              "inherited_clock"
             ],
             "gate": "CP-13",
             "issue": 1137,
-            "join_condition": "Map completion does not prove downstream physics. Closure also requires the declared accepted CP-00/CP-01 predecessor joins; no issue closes merely because a finite subtask passes.",
+            "join_condition": "Independent review accepts this map and its CP00/CP01 predecessor joins. The closure on merge covers ownership/interfaces/cleanup only; future physical theorem premises remain unproved.",
             "may_start_now": "Inspect the exact theorem statements and the full premise inventory, preserving existing proof provenance and classifying every current obligation.",
-            "title": "Complete and audit the active finite theorem-to-model chain",
+            "title": "Maintain the accepted finite theorem-to-model chain",
             "why_now": "Actual CAR, clock and stress/entropy constructions identify finite premises that can be instantiated and expose incompatible substitutions."
           }
         ],
         "physical_comparison_count_added": 0,
-        "rationale": "Concentrate four open issues on one actual interacting excitation and its finite theorem interfaces. A moving bound-pair band, common finite clock corner, CAR regional maps and energy/entropy identities now have explicit same-action attachments. Complete particle, chiral field and physical gravity joins remain required; complementary draft PRs remain separate until reviewed and merged.",
+        "rationale": "Advance the same moving interacting pair to full-sector record-rate control, construct and delimit an actual native exterior-matched coherence, and complete the executable predecessor and finite-theorem acceptance review. Physical species, protected defect, common energy calibration and chiral continuum obligations retain their exact domains. CP00/CP01/CP13 acceptance is recorded separately after source-bound independent review; the four-issue assignment itself grants no acceptance.",
         "scope": "SOURCE_BOUND_COMPONENT_WORK_WITH_OPEN_ACCEPTANCE_JOINS",
         "shared_interface": {
           "baseline_campaign_id": "OPH-RECORD-DERIVED-CONTINUING-CLOCK-v1",
@@ -1031,9 +1075,9 @@
             "The stochastic-matrix kinetic parent and recovered modular generator are different operators. A shared residual symmetry is not an action/clock identification.",
             "Exact fixed-source symmetry and finite-record inference have different quantifiers. The current/matter lift and source-triplet family attachment require their stated maps.",
             "The interacting CAR field uses a supplied lattice/action and exact N=2 sector. Retain all naive Weyl nodes; fixed-spacing infinite volume is not the chiral spatial continuum.",
-            "PR1151 is merged. PR1152 remains a draft integration branch; pending PR1153 head504b48cb20e3e85c620638bc83b08def8a20830e and PR1128 head78c4eb137cf3bf20e7c1d907561f2f2abe22cbf4 retain their independent scoped interfaces.",
+            "PR1151 is merged. DraftPR1152 is the integration branch; pending draftPR1153 headaec9f14e4bad62cff1c388aea3bb7bd763e479e5 and PR1128 head78c4eb137cf3bf20e7c1d907561f2f2abe22cbf4 retain separate law and source-service interfaces. The latest1153changes harden detached cache arrays and recursive source custody; its scientific fair-coin mobile theorem is unchanged.",
             "The bound pair uses the supplied Weyl-contact action throughout transport, spectrum, charge and curvature. Its topology is trivial, its physical species is unassigned, and its coordinate kinetic/rest mass mismatch cannot be removed by one unit conversion.",
-            "The native clock attachment is faithful only on the supplied invariant M2 field corner. Full-field encoding, same-process Gibbs preparation and physical clock calibration remain separate obligations.",
+            "The inherited native clock is faithful on the supplied invariant M2corner. Full-band rate transfer is executed under a separately supplied global Gibbs reference; finite independent native reference copies cannot provide the exact same inherited field clock.",
             "Finite CAR restrictions and energy/entropy identities must not be relabeled physical geometry, Lorentz stress, generalized-entropy stationarity or an interacting chiral continuum."
           ],
           "same_process_required": true,
@@ -1042,7 +1086,13 @@
         "status": "PLANNED_PROVISIONAL_PARALLEL_WORK",
         "successor_class_frozen": false
       },
-      "program_id": "OPH-EXECUTABLE-COMPLETION-2026-10-28",
+      "predecessor_program": {
+        "commit": "c35b09c099e5950f736befcf126c654542d78e15",
+        "path": "claims/completion_program.json",
+        "prior_failures_and_exposure_preserved": true,
+        "program_id": "OPH-EXECUTABLE-COMPLETION-2026-10-28"
+      },
+      "program_id": "OPH-EXECUTABLE-COMPLETION-2026-10-29-v2",
       "schema": "oph.completion_program.v1",
       "scope": "One native repair/memory construction realizing the requested field, particle and coarse-scale gravity target; full-Universe/internal-closure claims require their additional explicit obligations.",
       "stages": [
@@ -1053,13 +1103,28 @@
             "Provide the actual source interface and resource boundary; separate the first field/particle/gravity milestone from unfulfilled full-Universe and internal-closure obligations.",
             "Bind all retained failures and prior empirical exposure. Record a new program version for any later change of mandatory premises or admissible class."
           ],
-          "accepted_evidence": [],
+          "accepted_evidence": [
+            {
+              "independent_check": "model/completion/test_program_class_v2.py",
+              "path": "model/completion/program_class_v2.json",
+              "scope": "Reviewed successor executable class with actual native/program interfaces, resource ceilings, all71retrospective observations, physical targets, calibration/error/exposure and stop/version rules. No physical prediction or class exclusion is claimed.",
+              "sha256": "725e0a9b74f991dbd64fb367c313c040c2f9edbe7b76694dcaf01ba89de30453"
+            },
+            {
+              "independent_check": "model/completion/independent_program_review.py",
+              "path": "model/completion/program_class_v2_review.json",
+              "scope": "Independent exact class, actual declared-service observer and17attachment theorem-map review. Closes no canonical physical premise or downstream particle/field/gravity gate.",
+              "sha256": "d6717e2296cf6933c263d03e68ed0f5d0f982cc1c451009f4dacd5b02e2abc11"
+            }
+          ],
           "deliverable": "A versioned, content-bound class of admissible carrier/refinement, repair and memory laws, record instruments, resources, preparations, clocks and interpretation maps; one target and exposure record fixed before validation.",
           "evidence": [
             "model/CANDIDATES.md",
             "model/CONSTRUCTION.md",
             "docs/INTERPRETATION_AND_TERMS.md",
-            "model/local_repair_family/README.md"
+            "model/local_repair_family/README.md",
+            "model/completion/program_class_v2.json",
+            "model/completion/program_class_v2_review.json"
           ],
           "id": "CP-00",
           "issue": 1135,
@@ -1081,7 +1146,7 @@
               "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
               "independent_check": "model/completion/test_family.py",
               "path": "model/completion/campaign.json",
-              "scope": "Frozen finite C/E mixture, positive repair/selection and bounded classical-memory family. The parent refinement and physical-interpretation boundary remains open.",
+              "scope": "Frozen finite C/E mixture, positive repair/selection and bounded classical-memory family. The parent refinement and physical-interpretation boundary is not established.",
               "sha256": "6b12ab2491a801473e79917b0684fa6ead988056a1a8ee205e30c178271424ad"
             },
             {
@@ -1121,7 +1186,7 @@
             }
           ],
           "requires": [],
-          "status": "IN_PROGRESS",
+          "status": "ACCEPTED",
           "title": "Freeze the executable program class and decision contract"
         },
         {
@@ -1132,7 +1197,20 @@
             "Prove every theorem premise assigned to this gate on the actual model and retained domain; bind the state, algebra, operations, clock and refinement maps in the existing premise ledger before invoking the conclusion.",
             "Retain the original #1077 q=3 common-code scalar preparation/history as unexecuted, with its mathematical/resource bounds. Complete it if adopted, or explicitly retire it from the active program through CP-00/CP-13 without relabeling it executed or obstructed."
           ],
-          "accepted_evidence": [],
+          "accepted_evidence": [
+            {
+              "independent_check": "model/completion/independent_program_review.py",
+              "path": "model/native_program/results.json",
+              "scope": "Literal continuing native observer member, complete source/reference instruments, record-only controls, FIFO/exports/stops, preparation/readout chain and independently recomputed counted services. Full-field physics and external apparatus realization remain unestablished.",
+              "sha256": "41b1538d8be726412cbe437b4124a408769119aabde7f0fa2fb2e7eccdaaa2c0"
+            },
+            {
+              "independent_check": "model/completion/independent_program_review.py",
+              "path": "model/completion/program_class_v2_review.json",
+              "scope": "Independent exact class, actual declared-service observer and17attachment theorem-map review. Closes no canonical physical premise or downstream particle/field/gravity gate.",
+              "sha256": "d6717e2296cf6933c263d03e68ed0f5d0f982cc1c451009f4dacd5b02e2abc11"
+            }
+          ],
           "deliverable": "One replayable native repair/memory process that prepares, acts, reads, retains records and continues on overlapping accessible regions, with every service and failure branch accounted.",
           "evidence": [
             "model/observer/README.md",
@@ -1147,7 +1225,9 @@
             "model/clock_defect_energy/shared_event_clock/results.json",
             "model/local_repair_family/README.md",
             "model/particle_clock/results.json",
-            "model/biased_reset/results.json"
+            "model/biased_reset/results.json",
+            "model/native_program/results.json",
+            "model/completion/program_class_v2_review.json"
           ],
           "id": "CP-01",
           "issue": 1136,
@@ -1194,14 +1274,14 @@
               "campaign_id": "OPH-CLOCK-COUNT-INFERENCE-2026-10-28-v1",
               "independent_check": "model/clock_defect_energy/test_clock_count_inference.py",
               "path": "model/clock_defect_energy/clock_count_inference_results.json",
-              "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open.",
+              "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration is not established.",
               "sha256": "1e4af9694e9051eb81bc63fb200555b5fc597c20438d368b62c3596b5fcdf7bd"
             },
             {
               "campaign_id": "screened-recovery-20261028-v1",
               "independent_check": "model/screened_recovery/test_protocol.py",
               "path": "model/screened_recovery/screened_recovery_results.json",
-              "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter remains open.",
+              "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter is not established.",
               "sha256": "6fcbddf4c20408870d62561373b823d9bbee6befcf75a2ab15a42d864d7ec749"
             },
             {
@@ -1229,7 +1309,7 @@
               "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
               "independent_check": "model/particle_clock/test_clock.py",
               "path": "model/particle_clock/results.json",
-              "scope": "An explicit supplied isometry maps the same N=2 eta pair and dark reference to a native M2 corner. Complete compiled herald/continuation/record-clock/energy histories retain all stops and a finite unconditional error bound. Full spatial encoding and physical calibration remain open.",
+              "scope": "An explicit supplied isometry maps the same N=2 eta pair and dark reference to a native M2 corner. Complete compiled herald/continuation/record-clock/energy histories retain all stops and a finite unconditional error bound. Full spatial encoding and physical calibration are not established.",
               "sha256": "114cf1b49b1b80b21edebabf9d2258b81432c4a35d1409ab613ac0e0402700bb"
             },
             {
@@ -1243,7 +1323,7 @@
           "requires": [
             "CP-00"
           ],
-          "status": "IN_PROGRESS",
+          "status": "ACCEPTED",
           "title": "Execute one continuing native observer with accounted resources"
         },
         {
@@ -1254,7 +1334,20 @@
             "Remove redundant/irrelevant results from active derivation and headline routes. Archive/deprecate with provenance when appropriate; delete only after caller/import, claim, receipt and publication checks. Correct false statements openly and preserve frozen evidence.",
             "Gate acceptance here establishes the reviewed map and cleanup, not discharge of future physical premises. The owning construction gates must later prove and bind their assigned premises before invoking each theorem."
           ],
-          "accepted_evidence": [],
+          "accepted_evidence": [
+            {
+              "independent_check": "model/completion/test_finite_attachment_map.py",
+              "path": "model/completion/finite_attachment_map.json",
+              "scope": "Complete84premise ownership/relevance review,17inspected finite attachments with12realized instances, corrected active routes and explicit finite CP01 joins. Allcanonicalphysicaldischarge statuses preserved.",
+              "sha256": "9cc1a2138725400ef002944f4417421ef6add2395813f6d5d235830ebb36bfd8"
+            },
+            {
+              "independent_check": "model/completion/independent_program_review.py",
+              "path": "model/completion/program_class_v2_review.json",
+              "scope": "Independent exact class, actual declared-service observer and17attachment theorem-map review. Closes no canonical physical premise or downstream particle/field/gravity gate.",
+              "sha256": "d6717e2296cf6933c263d03e68ed0f5d0f982cc1c451009f4dacd5b02e2abc11"
+            }
+          ],
           "deliverable": "A theorem-to-model integration and relevance review in the existing premise map: each result needed by the completion chain has an owning gate and an explicit model-premise proof obligation; irrelevant branches leave the active path.",
           "evidence": [
             "model/PREMISES.md",
@@ -1278,7 +1371,11 @@
             "model/field_stress/results.json",
             "model/completion/finite_attachment_map.json",
             "model/field_tastes/results.json",
-            "model/biased_reset/results.json"
+            "model/biased_reset/results.json",
+            "model/native_localization/results.json",
+            "model/band_clock/results.json",
+            "model/completion/acceptance_audit.py",
+            "model/completion/program_class_v2_review.json"
           ],
           "id": "CP-13",
           "issue": 1137,
@@ -1362,7 +1459,7 @@
               "campaign_id": "particle-screening-20261028-v1",
               "independent_check": "model/particle_screening/test_screening.py",
               "path": "model/particle_screening/screening_results.json",
-              "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity remain open.",
+              "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity are not established.",
               "sha256": "3970b65a26e313ddff2f25cbc1647e23740d5dae0857183f44be095c6b77adc8"
             },
             {
@@ -1376,14 +1473,14 @@
               "campaign_id": "OPH-CLOCK-COUNT-INFERENCE-2026-10-28-v1",
               "independent_check": "model/clock_defect_energy/test_clock_count_inference.py",
               "path": "model/clock_defect_energy/clock_count_inference_results.json",
-              "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open.",
+              "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration is not established.",
               "sha256": "1e4af9694e9051eb81bc63fb200555b5fc597c20438d368b62c3596b5fcdf7bd"
             },
             {
               "campaign_id": "screened-recovery-20261028-v1",
               "independent_check": "model/screened_recovery/test_protocol.py",
               "path": "model/screened_recovery/screened_recovery_results.json",
-              "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter remains open.",
+              "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter is not established.",
               "sha256": "6fcbddf4c20408870d62561373b823d9bbee6befcf75a2ab15a42d864d7ec749"
             },
             {
@@ -1432,7 +1529,7 @@
               "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
               "independent_check": "model/particle_clock/test_clock.py",
               "path": "model/particle_clock/results.json",
-              "scope": "An explicit supplied isometry maps the same N=2 eta pair and dark reference to a native M2 corner. Complete compiled herald/continuation/record-clock/energy histories retain all stops and a finite unconditional error bound. Full spatial encoding and physical calibration remain open.",
+              "scope": "An explicit supplied isometry maps the same N=2 eta pair and dark reference to a native M2 corner. Complete compiled herald/continuation/record-clock/energy histories retain all stops and a finite unconditional error bound. Full spatial encoding and physical calibration are not established.",
               "sha256": "114cf1b49b1b80b21edebabf9d2258b81432c4a35d1409ab613ac0e0402700bb"
             },
             {
@@ -1446,7 +1543,7 @@
               "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
               "independent_check": "model/field_stress/test_energy.py",
               "path": "model/field_stress/results.json",
-              "scope": "Exact local energy continuity and interaction-dependent boundary flux on the full finite field; same-action quantum Gibbs/entropy identity and regional bare-energy countercontrol. Lorentz stress, null geometry, area variation and Einstein premises remain open.",
+              "scope": "Exact local energy continuity and interaction-dependent boundary flux on the full finite field; same-action quantum Gibbs/entropy identity and regional bare-energy countercontrol. Lorentz stress, null geometry, area variation and Einstein premises are not established.",
               "sha256": "34e3d3184f727b7c881711defdd0d5d98c083e9de29263ad86872bd9c6db8fff"
             },
             {
@@ -1454,7 +1551,7 @@
               "independent_check": "model/completion/test_finite_attachment_map.py",
               "path": "model/completion/finite_attachment_map.json",
               "scope": "Exhaustive ownership and relevance navigation for the existing 84-premise register, with source-bound finite model attachments and explicit unresolved construction/acceptance joins. It is not a new audit of every Lean module or discharge of global physical premises.",
-              "sha256": "eb148813ffef423f44b3694554ea6e05162b57f7e00206d41f337b3362db0e00"
+              "sha256": "9cc1a2138725400ef002944f4417421ef6add2395813f6d5d235830ebb36bfd8"
             },
             {
               "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
@@ -1469,13 +1566,34 @@
               "path": "model/biased_reset/results.json",
               "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the pending fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
               "sha256": "db4964d122ffefbf04a7479112307d342a2cf60c3a36f441244e74668069e1ae"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/native_localization/test_localization.py",
+              "path": "model/native_localization/results.json",
+              "scope": "Faithful native coherence with reference-identical complete tape/exterior, exact contrast lifetime, zero modular-energy excess and arbitrary-code exterior/clock exclusions. Its core is immobile; no topological particle or mass is assigned.",
+              "sha256": "eba1771dce527ac4d5aa3bb1cc0a3c6cf5ab89ea2946ae62d43e5463bed8732f"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/band_clock/test_clock.py",
+              "path": "model/band_clock/results.json",
+              "scope": "Complete moving8128-state field sector driven by native record-derived rate using counted local source words; uniform ideal-word halfdiamond bound<0.038565. Supplied global Gibbs reference and rate-transfer service are explicit; native reference inheritance and physical calibration are not established.",
+              "sha256": "c9954b4563a1d1a1ee24aafcd6bf43ae57c77eadd6cbadc3e02dbdff193ba639"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/completion/test_acceptance_audit.py",
+              "path": "model/completion/acceptance_audit.py",
+              "scope": "Exact noninteger pair-gap witness excludes an eta-calibrated invariant modular intertwiner from every finite independent native reference product. Approximate generator error exceeds1/24. Correlated references and counted alternative services are outside this exclusion.",
+              "sha256": "dd7cdd1ae6f1b915afc6e30b573a47c7027cbf8bd9500d8c07e2076ada42d1ec"
             }
           ],
           "requires": [
             "CP-00",
             "CP-01"
           ],
-          "status": "IN_PROGRESS",
+          "status": "ACCEPTED",
           "title": "Integrate finite theorems and curate the active proof chain"
         },
         {
@@ -1580,7 +1698,7 @@
               "campaign_id": "OPH-CLOCK-COUNT-INFERENCE-2026-10-28-v1",
               "independent_check": "model/clock_defect_energy/test_clock_count_inference.py",
               "path": "model/clock_defect_energy/clock_count_inference_results.json",
-              "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration remains open.",
+              "scope": "A complete source clock/field instrument strictly improves inference of its shared native incident count over the clock detector alone. Rational risk bounds, finite preparation and abort accounting retain the dimensionless event-count scope; physical calibration is not established.",
               "sha256": "1e4af9694e9051eb81bc63fb200555b5fc597c20438d368b62c3596b5fcdf7bd"
             },
             {
@@ -1608,7 +1726,7 @@
               "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
               "independent_check": "model/particle_clock/test_clock.py",
               "path": "model/particle_clock/results.json",
-              "scope": "An explicit supplied isometry maps the same N=2 eta pair and dark reference to a native M2 corner. Complete compiled herald/continuation/record-clock/energy histories retain all stops and a finite unconditional error bound. Full spatial encoding and physical calibration remain open.",
+              "scope": "An explicit supplied isometry maps the same N=2 eta pair and dark reference to a native M2 corner. Complete compiled herald/continuation/record-clock/energy histories retain all stops and a finite unconditional error bound. Full spatial encoding and physical calibration are not established.",
               "sha256": "114cf1b49b1b80b21edebabf9d2258b81432c4a35d1409ab613ac0e0402700bb"
             }
           ],
@@ -1641,7 +1759,8 @@
             "model/moving_defect/README.md",
             "model/moving_defect/results.json",
             "model/bound_pair/results.json",
-            "model/biased_reset/results.json"
+            "model/biased_reset/results.json",
+            "model/native_localization/results.json"
           ],
           "id": "CP-03",
           "issue": 1139,
@@ -1693,14 +1812,14 @@
               "campaign_id": "particle-screening-20261028-v1",
               "independent_check": "model/particle_screening/test_screening.py",
               "path": "model/particle_screening/screening_results.json",
-              "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity remain open.",
+              "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity are not established.",
               "sha256": "3970b65a26e313ddff2f25cbc1647e23740d5dae0857183f44be095c6b77adc8"
             },
             {
               "campaign_id": "screened-recovery-20261028-v1",
               "independent_check": "model/screened_recovery/test_protocol.py",
               "path": "model/screened_recovery/screened_recovery_results.json",
-              "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter remains open.",
+              "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter is not established.",
               "sha256": "6fcbddf4c20408870d62561373b823d9bbee6befcf75a2ab15a42d864d7ec749"
             },
             {
@@ -1731,6 +1850,13 @@
               "path": "model/biased_reset/results.json",
               "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the pending fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
               "sha256": "db4964d122ffefbf04a7479112307d342a2cf60c3a36f441244e74668069e1ae"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/native_localization/test_localization.py",
+              "path": "model/native_localization/results.json",
+              "scope": "Faithful native coherence with reference-identical complete tape/exterior, exact contrast lifetime, zero modular-energy excess and arbitrary-code exterior/clock exclusions. Its core is immobile; no topological particle or mass is assigned.",
+              "sha256": "eba1771dce527ac4d5aa3bb1cc0a3c6cf5ab89ea2946ae62d43e5463bed8732f"
             }
           ],
           "requires": [
@@ -1766,7 +1892,10 @@
             "model/record_action/results.json",
             "model/bound_pair/results.json",
             "model/particle_clock/results.json",
-            "model/field_stress/results.json"
+            "model/field_stress/results.json",
+            "model/native_localization/results.json",
+            "model/band_clock/results.json",
+            "model/completion/acceptance_audit.py"
           ],
           "id": "CP-04",
           "issue": 1140,
@@ -1813,7 +1942,7 @@
               "campaign_id": "particle-screening-20261028-v1",
               "independent_check": "model/particle_screening/test_screening.py",
               "path": "model/particle_screening/screening_results.json",
-              "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity remain open.",
+              "scope": "Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity are not established.",
               "sha256": "3970b65a26e313ddff2f25cbc1647e23740d5dae0857183f44be095c6b77adc8"
             },
             {
@@ -1827,7 +1956,7 @@
               "campaign_id": "screened-recovery-20261028-v1",
               "independent_check": "model/screened_recovery/test_protocol.py",
               "path": "model/screened_recovery/screened_recovery_results.json",
-              "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter remains open.",
+              "scope": "The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter is not established.",
               "sha256": "6fcbddf4c20408870d62561373b823d9bbee6befcf75a2ab15a42d864d7ec749"
             },
             {
@@ -1863,15 +1992,36 @@
               "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
               "independent_check": "model/particle_clock/test_clock.py",
               "path": "model/particle_clock/results.json",
-              "scope": "An explicit supplied isometry maps the same N=2 eta pair and dark reference to a native M2 corner. Complete compiled herald/continuation/record-clock/energy histories retain all stops and a finite unconditional error bound. Full spatial encoding and physical calibration remain open.",
+              "scope": "An explicit supplied isometry maps the same N=2 eta pair and dark reference to a native M2 corner. Complete compiled herald/continuation/record-clock/energy histories retain all stops and a finite unconditional error bound. Full spatial encoding and physical calibration are not established.",
               "sha256": "114cf1b49b1b80b21edebabf9d2258b81432c4a35d1409ab613ac0e0402700bb"
             },
             {
               "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
               "independent_check": "model/field_stress/test_energy.py",
               "path": "model/field_stress/results.json",
-              "scope": "Exact local energy continuity and interaction-dependent boundary flux on the full finite field; same-action quantum Gibbs/entropy identity and regional bare-energy countercontrol. Lorentz stress, null geometry, area variation and Einstein premises remain open.",
+              "scope": "Exact local energy continuity and interaction-dependent boundary flux on the full finite field; same-action quantum Gibbs/entropy identity and regional bare-energy countercontrol. Lorentz stress, null geometry, area variation and Einstein premises are not established.",
               "sha256": "34e3d3184f727b7c881711defdd0d5d98c083e9de29263ad86872bd9c6db8fff"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/native_localization/test_localization.py",
+              "path": "model/native_localization/results.json",
+              "scope": "Faithful native coherence with reference-identical complete tape/exterior, exact contrast lifetime, zero modular-energy excess and arbitrary-code exterior/clock exclusions. Its core is immobile; no topological particle or mass is assigned.",
+              "sha256": "eba1771dce527ac4d5aa3bb1cc0a3c6cf5ab89ea2946ae62d43e5463bed8732f"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/band_clock/test_clock.py",
+              "path": "model/band_clock/results.json",
+              "scope": "Complete moving8128-state field sector driven by native record-derived rate using counted local source words; uniform ideal-word halfdiamond bound<0.038565. Supplied global Gibbs reference and rate-transfer service are explicit; native reference inheritance and physical calibration are not established.",
+              "sha256": "c9954b4563a1d1a1ee24aafcd6bf43ae57c77eadd6cbadc3e02dbdff193ba639"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/completion/test_acceptance_audit.py",
+              "path": "model/completion/acceptance_audit.py",
+              "scope": "Exact noninteger pair-gap witness excludes an eta-calibrated invariant modular intertwiner from every finite independent native reference product. Approximate generator error exceeds1/24. Correlated references and counted alternative services are outside this exclusion.",
+              "sha256": "dd7cdd1ae6f1b915afc6e30b573a47c7027cbf8bd9500d8c07e2076ada42d1ec"
             }
           ],
           "requires": [
@@ -1950,7 +2100,8 @@
             "model/interacting_field/README.md",
             "model/interacting_field/results.json",
             "model/field_regions/results.json",
-            "model/field_tastes/results.json"
+            "model/field_tastes/results.json",
+            "model/band_clock/results.json"
           ],
           "id": "CP-06",
           "issue": 1142,
@@ -1985,6 +2136,13 @@
               "path": "model/field_tastes/results.json",
               "scope": "Same-action contact coupling tests complete momentum pockets, retained mirror modes and interaction leakage; exclusions apply to the declared projection at fixed lattice coupling, not every chiral regulator or continuum limit.",
               "sha256": "c9a3d1c62a46ede9f5730b6bad7e0020d0b07d9dd2869d2e5b00585d1e347e0d"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/band_clock/test_clock.py",
+              "path": "model/band_clock/results.json",
+              "scope": "Complete moving8128-state field sector driven by native record-derived rate using counted local source words; uniform ideal-word halfdiamond bound<0.038565. Supplied global Gibbs reference and rate-transfer service are explicit; native reference inheritance and physical calibration are not established.",
+              "sha256": "c9954b4563a1d1a1ee24aafcd6bf43ae57c77eadd6cbadc3e02dbdff193ba639"
             }
           ],
           "requires": [
@@ -2107,7 +2265,7 @@
               "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
               "independent_check": "model/field_stress/test_energy.py",
               "path": "model/field_stress/results.json",
-              "scope": "Exact local energy continuity and interaction-dependent boundary flux on the full finite field; same-action quantum Gibbs/entropy identity and regional bare-energy countercontrol. Lorentz stress, null geometry, area variation and Einstein premises remain open.",
+              "scope": "Exact local energy continuity and interaction-dependent boundary flux on the full finite field; same-action quantum Gibbs/entropy identity and regional bare-energy countercontrol. Lorentz stress, null geometry, area variation and Einstein premises are not established.",
               "sha256": "34e3d3184f727b7c881711defdd0d5d98c083e9de29263ad86872bd9c6db8fff"
             }
           ],
@@ -2186,7 +2344,7 @@
             "Run in parallel once CP-00 is fixed; reject circular mappings, hidden supplied services and combinations of incompatible benchmark branches throughout the DAG."
           ],
           "accepted_evidence": [],
-          "deliverable": "A continuing obstruction review across every gate, with exact scope, class coverage, independent checks and an explicit stop/continue verdict. The broad obstruction search #1078 remains open and owns that continuing research; this gate applies its scoped evidence to the new program decisions.",
+          "deliverable": "A continuing obstruction review across every gate, with exact scope, class coverage, independent checks and an explicit stop/continue verdict. The broad obstruction search #1078 is not established and owns that continuing research; this gate applies its scoped evidence to the new program decisions.",
           "evidence": [
             "docs/OPH_FALSIFICATION_PROGRAM.md",
             "docs/OPH_EXECUTABLE_HYPOTHESIS.md",
@@ -2224,7 +2382,7 @@
               "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
               "independent_check": "model/field_stress/test_energy.py",
               "path": "model/field_stress/results.json",
-              "scope": "Exact local energy continuity and interaction-dependent boundary flux on the full finite field; same-action quantum Gibbs/entropy identity and regional bare-energy countercontrol. Lorentz stress, null geometry, area variation and Einstein premises remain open.",
+              "scope": "Exact local energy continuity and interaction-dependent boundary flux on the full finite field; same-action quantum Gibbs/entropy identity and regional bare-energy countercontrol. Lorentz stress, null geometry, area variation and Einstein premises are not established.",
               "sha256": "34e3d3184f727b7c881711defdd0d5d98c083e9de29263ad86872bd9c6db8fff"
             },
             {

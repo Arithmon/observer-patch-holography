@@ -8,7 +8,7 @@ Retained alternatives, calibrations and rejected candidates have separate domain
 
 ## Completion target and retained foundations
 
-The [executable hypothesis](OPH_EXECUTABLE_HYPOTHESIS.md) asks one native process to supply observer clocks, defect/maintenance energy, interacting field/particle observations and realized Einstein premises. The [completion DAG and issue owners](COMPLETION_PROGRAM.md) order the missing joins. Program `OPH-EXECUTABLE-COMPLETION-2026-10-28` has boundary `NOT_FROZEN` and decision `NOT_DECIDED`.
+The [executable hypothesis](OPH_EXECUTABLE_HYPOTHESIS.md) asks one native process to supply observer clocks, defect/maintenance energy, interacting field/particle observations and realized Einstein premises. The [completion DAG and issue owners](COMPLETION_PROGRAM.md) order the missing joins. Program `OPH-EXECUTABLE-COMPLETION-2026-10-29-v2` has boundary `FROZEN` and decision `NOT_DECIDED`.
 
 The existing modular-clock candidate, rank-three response geometry and conditional 3+1 field construction are retained foundations, together with finite interaction histories and the conditional Einstein kernel. They are components to extend, not work to restart. The local band's rank three does not alone derive three field-space dimensions: the native screen is two-dimensional and the radial extension retains its declared inputs. Physical clock calibration and the common interacting defect/energy/gravity joins remain open.
 
@@ -22,9 +22,9 @@ The existing modular-clock candidate, rank-three response geometry and condition
 
 | Gate | Task | Status | Issue |
 | --- | --- | --- | --- |
-| CP-00 | Freeze the executable program class and decision contract | IN_PROGRESS | [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135) |
-| CP-01 | Execute one continuing native observer with accounted resources | IN_PROGRESS | [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136) |
-| CP-13 | Integrate finite theorems and curate the active proof chain | IN_PROGRESS | [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137) |
+| CP-00 | Freeze the executable program class and decision contract | ACCEPTED | [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135) |
+| CP-01 | Execute one continuing native observer with accounted resources | ACCEPTED | [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136) |
+| CP-13 | Integrate finite theorems and curate the active proof chain | ACCEPTED | [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137) |
 | CP-02 | Construct the continuing regime, faithful reference and local modular clocks | IN_PROGRESS | [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) |
 | CP-03 | Exhibit a localized native defect and its protecting invariant | IN_PROGRESS | [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) |
 | CP-04 | Derive common defect maintenance energy, kinetics and conserved stress | IN_PROGRESS | [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) |

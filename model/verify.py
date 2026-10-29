@@ -308,6 +308,9 @@ REPLAYS = (
     ("model.field_stress", None, "model/field_stress/results.json"),
     ("model.field_tastes", None, "model/field_tastes/results.json"),
     ("model.biased_reset", None, "model/biased_reset/results.json"),
+    ("model.band_clock", None, "model/band_clock/results.json"),
+    ("model.native_localization.experiment", None, "model/native_localization/results.json"),
+    ("model.native_program.receipt", None, "model/native_program/results.json"),
 )
 
 

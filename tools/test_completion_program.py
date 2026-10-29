@@ -13,6 +13,13 @@ import build_completion_program as program
 def fixture_root(tmp_path):
     source = json.loads((program.ROOT / program.PROGRAM).read_text())
     hypothesis = json.loads((program.ROOT / program.HYPOTHESIS).read_text())
+    # These mutation cases exercise a provisional program. Live reviewed gate
+    # acceptance is checked separately against the actual bound artifacts.
+    source['boundary_status'] = 'NOT_FROZEN'
+    for stage in source['stages']:
+        if stage['status'] == 'ACCEPTED':
+            stage['status'] = 'IN_PROGRESS'
+        stage['accepted_evidence'] = []
     claims = json.loads((program.ROOT / "claims/claim_registry.yaml").read_text())["claims"]
     needed = {row["claim_id"] for row in source["foundations"]}
     source_claims = [{"claim_id": row["claim_id"], "status": row["status"]}
@@ -271,3 +278,20 @@ def test_diagnostic_contract_cannot_change_scope_even_with_updated_hash(fixture_
     (fixture_root / program.PROGRAM).write_text(json.dumps(data))
     with pytest.raises(ValueError):
         program.load_program(fixture_root)
+
+
+def test_live_reviewed_class_observer_and_map_acceptance_preserve_physics_boundary():
+    from model.completion import program_class_v2
+    live, hypothesis = program.load_program(program.ROOT)
+    stages = {s['id']: s for s in live['stages']}
+    assert {key for key, row in stages.items() if row['status']=='ACCEPTED'} == {
+        'CP-00', 'CP-01', 'CP-13'}
+    assert live['boundary_status']=='FROZEN' and live['decision']=='NOT_DECIDED'
+    contract = json.loads((program.ROOT/program_class_v2.PATH).read_text())
+    result = program_class_v2.validate(contract, program.ROOT)
+    assert result['adoption']=='ADOPTED_AFTER_REVIEW' and not result['adoption_blockers']
+    assert result['physical_obligations_discharged']==[]
+    assert all(row['status']=='NOT_ESTABLISHED' for row in hypothesis['obligations'])
+    review_path = contract['adoption']['independent_review']['path']
+    for gate in ('CP-00', 'CP-01', 'CP-13'):
+        assert review_path in {e['path'] for e in stages[gate]['accepted_evidence']}

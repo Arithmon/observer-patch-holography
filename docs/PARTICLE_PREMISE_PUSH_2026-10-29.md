@@ -57,7 +57,7 @@ parameter, not to laboratory seconds.
 
 An exact rational moment expansion encloses the pair-band curvature near
 eta. The coordinate kinetic mass is approximately `59.8663608`, while
-`U/c²=64`. Already the elementary bounds give
+`U/c²=64`. the elementary bounds give
 `17/16 <= U kappa/c² <= 14/13`; the sharper interval gives approximately
 `1.06904777858`. Thus this candidate fails the same-speed relativistic
 mass relation. A common clock and length rescaling preserves that ratio.
@@ -74,7 +74,7 @@ the native active-memory route. It extends the existing biased code family
 through every forbidden-core flag, checks all 43,200 raw flags, and proves
 an optimal asymptotic reset rate of `1/203.025378...` within that declared
 family. A complete compiled motion--reset--motion path retains the logical
-state and its reference. The stationary core distribution still has about
+state and its reference. The stationary core distribution has about
 61.76 percent of its mass on clock-incompatible codes. Thus continuation
 does not establish the missing fixed-clock particle identification. The
 [pending-PR compatibility review](../model/completion/PENDING_PR_COMPATIBILITY.md)
@@ -114,11 +114,11 @@ the actual theorem fields, owning gates, finite witnesses and unresolved
 global obligations. It preserves the distinction between existing Lean
 implications, analytic arguments, exact finite arithmetic and numerical
 source replay. No numerical receipt is relabeled a Lean proof.
-It assigns owners to all 84 canonical premises and inspects 13 concrete
-attachments. Eight finite obligations are realized on their stated domains;
+It assigns owners to all 84 canonical premises and inspects 17 concrete
+attachments. Twelve finite obligations are realized on their stated domains;
 zero canonical physical-premise discharge statuses are promoted.
 
-## What issue closure would still require
+## What issue closure would require
 
 The selected issues retain their original contracts. CP-03 needs a native
 localized sector with a reference-like exterior and the admitted-law
@@ -133,3 +133,29 @@ No new physical comparison is registered, no failed candidate is erased,
 and no whole-program obstruction is inferred. Source custody, mutation
 controls, complete outputs and workflow replays accompany the retained
 results so that further work can build on the actual common interfaces.
+
+## Complete-band rate transfer and direct native localization
+
+The [complete-band clock](../model/band_clock/README.md) extends the same
+interacting action to a record-rate-driven source history on all 8,128 states,
+including all 64 pair momenta, scattering states and Weyl tastes. Its uniform
+ideal-word average halfdiamond bound is below 0.038565 for |s|<=1. The additional
+global Gibbs reference is supplied, and local pulse contractions plus counted
+routes are distinguished from a literal 26 million-pulse global replay.
+The [inherited-clock exclusion](COMPLETION_ACCEPTANCE_AUDIT_2026-10-29.md)
+shows that finite independent copies of the old native reference cannot
+provide the exact same full-field clock at the eta calibration.
+
+The [native localization](../model/native_localization/README.md) is a different
+state on the actual biased carrier. Its full exterior and every joint native
+tape/exterior history equal the reference, with exact finite contrast lifetime.
+Its core stays fixed and its modular-energy excess is zero. Arbitrary exact
+codes also face the exterior lower bound 96/395 and inherited-clock leakage.
+These are explicit restrictions on combining protection, localization, motion
+and energy in one excitation.
+
+The [typed native programs](../model/native_program/README.md) and
+[V2 class/observer contract](EXECUTABLE_PROGRAM_CLASS_V2_PROPOSAL.md) supply
+concrete CP-00/CP-01 predecessor evidence for CP-13. The original q=3 scalar
+prototype is not adopted in V2; its historical unexecuted status is preserved.
+The physical field, species, mass and gravity targets are unchanged.

@@ -171,6 +171,21 @@ def test_completion_candidate_receipts_have_replay_custody_and_workflow_coverage
         assert sources and all((verify.ROOT/path).is_file() for path in sources)
 
 
+def test_full_band_and_native_localization_receipts_are_mandatory():
+    workflow = yaml.safe_load((verify.ROOT/'.github/workflows/completion-program.yml').read_text())
+    commands = [step['run'] for step in workflow['jobs']['program']['steps'] if 'run' in step]
+    events = workflow.get('on', workflow.get(True))
+    for package, module in [('band_clock', 'model.band_clock'),
+                            ('native_localization', 'model.native_localization.experiment'),
+                            ('native_program', 'model.native_program.receipt')]:
+        receipt = f'model/{package}/results.json'
+        assert (module, None, receipt) in verify.REPLAYS
+        assert f'python -m {module} --check {receipt}' in commands
+        assert any('python -m pytest' in c and f'model/{package}' in c for c in commands)
+        for event in ('push', 'pull_request'):
+            assert f'model/{package}/**' in events[event]['paths']
+
+
 @pytest.mark.parametrize('index', range(6))
 def test_missing_dedicated_transfer_fails_on_every_ci_shard(index):
     declaration = tuple(replay for replay in verify.REPLAYS if replay != verify.OCCUPATION_TRANSFER_REPLAY)
