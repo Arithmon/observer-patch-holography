@@ -56,7 +56,7 @@
   ],
   "requires_registry_acceptance_and_predecessor_joins": true,
   "review_date": "2026-10-29",
-  "reviewed_contract_digest": "239503f1be1204be6a10c8c6ca824991d2f044ea74dab2c6207c80cc0dfada1a",
+  "reviewed_contract_digest": "71a174305f0c421632ce5ba015a959172022ffb525fb926d1f91411e24aff84a",
   "schema": "oph.program_class_independent_review.v1",
   "scope": "CP00 executable class, CP01 declared-service continuing observer, CP13 theorem ownership and active-route cleanup; acceptance on this exact finite scope only",
   "scope_corrections": [
@@ -72,13 +72,13 @@
     "docs/PROGRAM_CLASS_V2_INDEPENDENT_REVIEW_2026-10-29.md": "c22860b380c6f49cabc15be459e9d52241f227690c176af248797cfad99940f1",
     "model/band_clock/results.json": "c9954b4563a1d1a1ee24aafcd6bf43ae57c77eadd6cbadc3e02dbdff193ba639",
     "model/completion/acceptance_audit.py": "dd7cdd1ae6f1b915afc6e30b573a47c7027cbf8bd9500d8c07e2076ada42d1ec",
-    "model/completion/finite_attachment_map.json": "afe959bd883bec0c36468b56c6df1e7f6cafa21bf656ec73ed98482b8d3a7dad",
+    "model/completion/finite_attachment_map.json": "d51ae895f92029a1cd6a76c442a25dc0fb1b9a68f4d43700c1b7601eecb08838",
     "model/completion/finite_attachment_map.py": "471e5de0ed6d448fe73b1585f9ca87eb8dcc94020f4ed759bae514d6cb99761b",
     "model/completion/independent_program_review.py": "ec4e30b6e7c858538fa391db84a40a770f829c54d987dd2b147d22fdd40153ac",
     "model/completion/test_acceptance_audit.py": "eefeb82b3db0bf89f4e1d049ad5aa30b0461c51eef497d22d5c8842a05a432c8",
     "model/completion/test_finite_attachment_map.py": "b71bf57b0f26e7cd70941f9da42c70dcb5e7d8584033ad3dcd1f3c89791dccd9",
     "model/native_localization/results.json": "eba1771dce527ac4d5aa3bb1cc0a3c6cf5ab89ea2946ae62d43e5463bed8732f",
-    "model/native_program/results.json": "8977247b2eef523118a961f023c596d1302073c1f6a9f0e3edb0ac767988edb1"
+    "model/native_program/results.json": "54bcae85ab991a51403cd4275822e6ef1564afba39d5699287882c648da0728a"
   },
   "verdict": "PASS",
   "audit_refresh": {

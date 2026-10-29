@@ -1,6 +1,6 @@
 {
   "campaign_id": "screened-transport-20261028-v1",
-  "contract_sha256": "358c5317bef9f3197b6b56c9e1cf9c352d65ffb574368cc1a11ec3f5355e5d2e",
+  "contract_sha256": "f16af5090c11bb2e7891f6817b5fa33886403c2bd59fc9d27ad4d09ed65cbe5a",
   "corrected_cycle": {
     "common_logical_phase_or_rest_gap_fixed_by_channel": false,
     "continuous_momentum_or_coherent_dispersion_constructed": false,
@@ -373,8 +373,8 @@
     "Lean/Geometry/ProperTimeInternalAction.lean": "8933451e0b96b0f1a339ca7912dd7e1c26cde321b5144440ee7127fd95a76307",
     "Lean/Geometry/SourceActionMeasure.lean": "802361b7efc592b84d2df4d00506818a9d9354fd239b94eaf63e26792ea3a73d",
     "Lean/Screen/RegionalContinuity.lean": "fa00c3aed6580174519e1d828ad81572d7ac7b759a3274dbc60e99761d76bd28",
-    "model/clock_defect_energy/mode_energy_results.json": "56f1cbf9e3509fb43940cd9dc4d37eadda110f903031ca0db0314e8767a1db00",
-    "model/clock_defect_energy/reference_balance_results.json": "5d32d1949061d6af1a421d94d4c9db075387bb2e14f7f63f35b5ff38656b15e1",
+    "model/clock_defect_energy/mode_energy_results.json": "f38cfc2a1d3759f24124e78f2113e166341589b8f4f9ed56bc51394c0379ac4c",
+    "model/clock_defect_energy/reference_balance_results.json": "5c1783f24c6ec74b1fa59a5fd8f50a8796c769f3c2d47dd6a67d79790c61e837",
     "model/observer/record_recovery.py": "0ad1c23cac53bbcf00c32ada6ce01660466b4e9c71e5e58a0226a0bf5609a193",
     "model/observer/source_discrimination/circuit.py": "327b537d01901c223e375cfff6dce882cb9a73f6a3b36e5019750e801377dd7e",
     "model/particle_screening/screening.py": "7fda107721574f80f2e048ff441beef2a4c2206a95b6defa04f8dd5004f6690c",
@@ -387,7 +387,7 @@
     "model/screened_recovery/test_protocol.py": "ea8f3cf323660398b0fe3bc9e21c673e3c772fdf7bfe0293cda654ad55455cf9",
     "model/screened_transport/README.md": "c3a2682d6e623a156ccfe504bf8de594178ae712eeaeb9d6f81b17401f51ad1d",
     "model/screened_transport/__init__.py": "ed06f7ce24037ac2e4cbc00e7ed65f7216ded0a839eca299f41f10deb0768bce",
-    "model/screened_transport/campaign.json": "358c5317bef9f3197b6b56c9e1cf9c352d65ffb574368cc1a11ec3f5355e5d2e",
+    "model/screened_transport/campaign.json": "f16af5090c11bb2e7891f6817b5fa33886403c2bd59fc9d27ad4d09ed65cbe5a",
     "model/screened_transport/test_transport.py": "5a148bbeaeb28010401553536bc4c2257bb5f6319a0aa0ee3a0614d77465986b",
     "model/screened_transport/transport.py": "0f8d71595034ff584541e51fd4c3b71f50446b18d807159c500723b3ef849e0a"
   }

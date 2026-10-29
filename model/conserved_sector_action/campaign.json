@@ -26,7 +26,7 @@
     "model/clock_defect_energy/defect_history.py": "b0976dcd8266e0d3aa85d8d84b41c85e7504192884e01299c6ed23346d2ca4fb",
     "model/clock_defect_energy/joins_contract.py": "9e8cc2ec87c207d83d864e4c5fd587da45844a2cd8c5833aa9a429f557f3cd6a",
     "model/clock_defect_energy/reference_balance.py": "6695eddff9a93667193c307d80d349c36d685b4dfd717f9191035c989b73940d",
-    "model/clock_defect_energy/reference_balance_results.json": "5d32d1949061d6af1a421d94d4c9db075387bb2e14f7f63f35b5ff38656b15e1",
+    "model/clock_defect_energy/reference_balance_results.json": "5c1783f24c6ec74b1fa59a5fd8f50a8796c769f3c2d47dd6a67d79790c61e837",
     "model/common_source/native_join.py": "5103e163bfec42ea0a5c87647c4ff8998846cbdbc6fde8c33cb4a89581c38be0",
     "model/common_source/slow_geometry.py": "91e808e06cc4fd883429405f3454dc53ee48eab7152eac36db93591749eebf38",
     "model/completion/family.py": "8aa8384f1a86af9531a4eeea7517b2d710bba4cce9b139660bfff482bf5e6d10",

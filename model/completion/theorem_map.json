@@ -2,7 +2,7 @@
   "campaign": {
     "campaign_id": "OPH-CE-FINITE-MEMORY-2026-10-28-v1",
     "path": "model/completion/campaign.json",
-    "sha256": "6b12ab2491a801473e79917b0684fa6ead988056a1a8ee205e30c178271424ad"
+    "sha256": "d2df07c02cb729d106060661dd910230dccb5ce56501217c735abd08969f3522"
   },
   "canonical_registry": "tracking/premise_register.json",
   "evidence": [
@@ -389,7 +389,7 @@
       "reviewed_anchors": [
         "The retained q=3 eight-mode preparation/history uses the same 8,192-level"
       ],
-      "sha256": "358572a20321d6129709670fabb82245d744d9c7cb9f64167d4827ff2e808cce"
+      "sha256": "bf4c2130fbd7f77292f9247e83bc7e1695b6f70ecb654a666d742de642764888"
     },
     "dephasing": {
       "path": "Lean/Geometry/SourceRepairInstrument.lean",
