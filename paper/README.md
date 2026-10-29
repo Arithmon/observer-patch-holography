@@ -28,13 +28,29 @@ The current-source previews also include the
 [28 October finite C/E campaign](../model/completion/README.md): continuing
 record-buffer operation with accounted exports, an exact stationary reference
 lifted to the actual complete records, and scoped branch-charge and modular-
-access obstructions. These results leave all integrated completion gates open.
+access obstructions. This finite campaign alone grants no integrated gate acceptance.
 The construction paper gives the detailed observer/reference join; the shared
-summary in every primary paper preserves the same scope. The next parallel
-tasks are [the class contract (#1135)](https://github.com/FloatingPragma/observer-patch-holography/issues/1135),
-[observer services (#1136)](https://github.com/FloatingPragma/observer-patch-holography/issues/1136),
-[accessible clocks (#1138)](https://github.com/FloatingPragma/observer-patch-holography/issues/1138),
-and [the defect sector (#1139)](https://github.com/FloatingPragma/observer-patch-holography/issues/1139).
+summary in every primary paper preserves the same scope. The current previews
+also include the [same-action bound-pair construction](../model/bound_pair/README.md),
+its complete native clock corner, regional CAR maps and finite energy/entropy
+identities. One composite has verified motion, spectral protection,
+charge and complete spectral records. Its band is topologically trivial,
+physical species and units remain unassigned, and the same-speed relativistic
+mass relation fails. The interaction also prevents exact isolation of one
+Weyl momentum pocket by deleting the rest. The papers state these results
+alongside the remaining field and Einstein premises.
+
+The four selected tasks are [native defect protection (#1139)](https://github.com/FloatingPragma/observer-patch-holography/issues/1139),
+[common energy and kinetics (#1140)](https://github.com/FloatingPragma/observer-patch-holography/issues/1140),
+[an interacting chiral field (#1142)](https://github.com/FloatingPragma/observer-patch-holography/issues/1142),
+and [finite-theorem integration (#1137)](https://github.com/FloatingPragma/observer-patch-holography/issues/1137).
+The original acceptance criteria and predecessor requirements remain in force.
+The [independent V2 review](../docs/PROGRAM_CLASS_V2_INDEPENDENT_REVIEW_2026-10-29.md)
+accepts the executable class, counted finite observer and theorem map. The PR closes their issues on merge. Canonical physical
+premises and the particle, energy and chiral-field gates are not discharged.
+The previews include the complete-band rate transfer and direct native
+localization results, with their added-reference, immobility and zero-energy
+boundaries.
 
 | Paper | Role |
 | --- | --- |

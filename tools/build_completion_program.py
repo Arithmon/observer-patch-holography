@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import argparse
+import ast
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
 
@@ -36,6 +38,78 @@ def bound_evidence(root: Path, rows: list) -> None:
                 f"decision evidence custody changed: {row.get('path')}")
         local_file(root, row.get("independent_check"))
         require(bool(row.get("scope")), "missing evidence scope")
+
+
+def integration_source_paths(root: Path, contract: dict) -> set[str]:
+    """Repository Python closure, including function imports and eager parents."""
+    document = local_file(root, contract.get('domain_and_proof'))
+    paths = {document.relative_to(root).as_posix(), 'model/requirements.txt'}
+    paths.update(p.relative_to(root).as_posix() for p in document.parent.glob('*.py'))
+    paths.update(contract.get('independent_checks', []))
+    receipts = contract.get('source_receipts', [])
+    require(isinstance(receipts, list) and bool(receipts),
+            'integration source custody requires owning source receipts')
+    for name in receipts:
+        receipt = json.loads(local_file(root, name).read_text())
+        inherited = receipt.get('source_bindings', receipt.get('source_sha256'))
+        require(isinstance(inherited, dict) and bool(inherited),
+                f'integration source receipt has no source manifest: {name}')
+        paths.add(name)
+        paths.update(inherited)
+    pending = list(paths)
+    visited = set()
+
+    def add_module(name):
+        if not name.startswith(('model.', 'tools.')):
+            return
+        stem = name.replace('.', '/')
+        candidates = [stem+'.py', stem+'/__init__.py']
+        parts = stem.split('/')
+        candidates.extend('/'.join(parts[:end])+'/__init__.py'
+                          for end in range(1, len(parts)))
+        for candidate in candidates:
+            if (root/candidate).is_file() and candidate not in paths:
+                paths.add(candidate)
+                pending.append(candidate)
+
+    while pending:
+        name = pending.pop()
+        if name in visited or not name.endswith('.py'):
+            continue
+        visited.add(name)
+        module = name.removesuffix('.py').replace('/', '.')
+        package = (module.removesuffix('.__init__') if module.endswith('.__init__')
+                   else module.rpartition('.')[0])
+        add_module(module)
+        for node in ast.walk(ast.parse(local_file(root, name).read_text())):
+            if isinstance(node, ast.Import):
+                for alias in node.names:
+                    add_module(alias.name)
+            elif isinstance(node, ast.ImportFrom):
+                target = '.'*node.level+(node.module or '')
+                target = importlib.util.resolve_name(target, package) if node.level else target
+                add_module(target)
+                for alias in node.names:
+                    add_module(target+'.'+alias.name)
+    return paths
+
+
+def validate_integration_sources(root: Path, contract: dict) -> None:
+    paths = integration_source_paths(root, contract)
+    bindings = contract.get('source_bindings')
+    require(isinstance(bindings, dict) and paths <= set(bindings),
+            'integration source custody omits a transitive dependency')
+    for name, expected in bindings.items():
+        require(hashlib.sha256(local_file(root, name).read_bytes()).hexdigest() == expected,
+                f'integration source custody changed: {name}')
+    for name in contract['source_receipts']:
+        receipt = json.loads(local_file(root, name).read_text())
+        inherited = receipt.get('source_bindings', receipt.get('source_sha256'))
+        require(all(bindings.get(path) == expected for path, expected in inherited.items()),
+                f'integration source custody differs from owning receipt: {name}')
+    require(contract.get('integrated_gate_accepted') is False
+            and contract.get('source_law_changed') is False,
+            'integration simplification cannot accept a gate or change its source law')
 
 
 def validate_next_wave(root: Path, wave: dict, by_id: dict, campaigns: list) -> None:
@@ -151,6 +225,8 @@ def load_program(root: Path = ROOT, *, allow_unlinked: bool = False) -> tuple[di
                 and contract.get("whole_program_frozen") is False
                 and contract.get("physical_comparison_count_added") == 0,
                 "component campaign contract scope changed")
+        if contract.get('schema') == 'oph.integration_simplification.v1':
+            validate_integration_sources(root, contract)
         if campaign["scope"] == "FINITE_COMPONENT_DIAGNOSTICS":
             require(contract.get("boundary_status") == "FROZEN_DIAGNOSTIC_CONTRACT"
                     and contract.get("integrated_gate_accepted") is False
@@ -313,7 +389,7 @@ def render(program: dict, hypothesis: dict) -> str:
              f"Program: `{program['program_id']}`. Boundary: `{program['boundary_status']}`. "
              f"Decision: `{program['decision']}`. No integrated gate is accepted by opening an issue.", "",
              "## Existing foundations to extend", "",
-             "The integrated gates remain open, but the program starts from retained "
+             "Physical construction gates remain open, but the program starts from retained "
              "positive constructions. The rows below link to existing canonical claims; "
              "they are reuse/navigation bindings, not new proof-discharge assertions. "
              "Preserve these capabilities while constructing the missing joins.", "",
@@ -337,13 +413,23 @@ def render(program: dict, hypothesis: dict) -> str:
                       f"Owning gates: {', '.join(campaign['supports'])}."]
         lines += [""]
     lines += render_next_wave(program)
+    class_accepted = next(stage for stage in program['stages']
+                          if stage['id'] == 'CP-00')['status'] == 'ACCEPTED'
+    boundary_summary = (
+        "CP-00 has accepted the reviewed executable law/resource/interpretation class. "
+        "The CP-01 observer and CP-13 theorem map retain their declared finite "
+        "scope and separate acceptance criteria. Dependent physical gates require their own constructions and predecessor "
+        "mappings. CP-12 audits every stage within that class; a whole-program exclusion "
+        "must cover every admitted realization of its mandatory target conjunction."
+        if class_accepted else
+        "CP-00 must identify the complete law/resource/interpretation class "
+        "whose exclusion would stop this program. The frozen finite campaign "
+        "does not supply that larger boundary. Component investigations "
+        "can continue provisionally; their results cannot discharge a dependent gate "
+        "without the predecessor mappings. CP-12 audits every stage in parallel "
+        "within each declared scope; a whole-program decision requires its frozen class.")
     lines += ["## Next work and dependencies", "",
-             "CP-00 must identify the complete law/resource/interpretation class "
-             "whose exclusion would stop this program. The frozen finite campaign "
-             "does not supply that larger boundary. Component investigations "
-             "can continue provisionally; their results cannot discharge a dependent gate "
-             "without the predecessor mappings. CP-12 audits every stage in parallel "
-             "within each declared scope; a whole-program decision requires its frozen class.", "",
+             boundary_summary, "",
              mermaid(program), "",
              "| Gate | Research task | Work status / acceptance prerequisites | Issue |", "| --- | --- | --- | --- |"]
     for stage in program["stages"]:
@@ -357,11 +443,14 @@ def render(program: dict, hypothesis: dict) -> str:
               "| Whole-program falsification | Verified contradiction in indispensable premises, exclusion of every frozen realization of a required join, or an unavoidable independently excluded prediction | Stop the frozen program; any premise/class change starts a new version |",
               "| Inconclusive | Open maps, incomplete coverage or an unsuccessful finite search | No confirmation and no impossibility claim |",
               "| Resource/value stop | A declared budget or return threshold is reached | A research stop, not scientific falsification |", "",
-              "The boundary is **not frozen**, so no whole-program exclusion "
-              "is claimed. Broad closure alone does not guarantee this specific C/E "
-              "candidate, and an indefinitely enlarged escape class cannot be declared "
-              "exhausted. Freezing CP-00 makes the tested formulation and its possible "
-              "rejection explicit. Changing it never erases an earlier verdict.", "",
+              ("The executable class is **frozen** by the reviewed CP-00 contract. "
+               "No whole-program exclusion is claimed; it would need a proof covering "
+               "every admitted realization of the mandatory target conjunction. "
+               "A changed class requires a successor version with prior evidence preserved."
+               if program['boundary_status']=='FROZEN' else
+               "The boundary is **not frozen**, so no whole-program exclusion is claimed. "
+               "Freezing CP-00 must specify the admitted class and its decision contract. "
+               "Changing it never erases an earlier verdict."), "",
               "Every obstruction records target revision, mandatory premises, quantified "
               "class, evidence and independent check, coverage, surviving escape routes "
               "and the exact consequence. Issue closure alone is not scientific acceptance. "
@@ -377,6 +466,10 @@ def render(program: dict, hypothesis: dict) -> str:
         lines += [f"- {row}" for row in stage["acceptance"]]
         lines += ["", "Obstruction/stopping test: " + stage["obstruction"], "", "Retained starting evidence:", ""]
         lines += [f"- [{Path(path).name}](../{path})" for path in stage["evidence"]]
+        if stage.get("accepted_evidence"):
+            lines += ["", "Reviewed acceptance evidence:", ""]
+            lines += [f"- [{Path(row['path']).name}](../{row['path']}): {row['scope']}"
+                      for row in stage['accepted_evidence']]
         if stage.get("progress_evidence"):
             lines += ["", "Current component progress (not gate acceptance):", ""]
             lines += [f"- [{Path(row['path']).name}](../{row['path']}): {row['scope']}"

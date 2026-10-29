@@ -995,6 +995,22 @@ between the spatial and internal domains. The frozen source baseline is
 `879ed37ad2c1933ecb6dd8f54271362ee3f4d41c`; it is replayed on integration
 baseline `7b0997b4a8a425679d9e2946f82c86cd92289059`.
 
+### Source-bound operational attachment audit
+
+The [capability audit](../docs/research/MARKED_TRIPLET_OPERATIONAL_ATTACHMENT_AUDIT.md)
+includes the native preparation, continuing instruments, bare-cap clocks and
+full state tomography at source revision
+`53e365b248a4611bb911e75d7afae0f52bfd8675`. The six-level source compiler and
+its declared proper-code services implement native controls. The existing
+current readout also attaches the native load history to the spatial slow
+quotient. These connections do not specify a common state/observable
+interface and covariant transport of complete instruments for the spatial
+and internal triplets. The scoped verdict is
+`NO_SOURCE_BOUND_OPERATIONAL_ATTACHMENT_IN_AUDITED_SOURCES`; no operational
+triplet-discrimination law or physical embedding selection follows. A derived
+interface preserving the marking, preparations, records, failures and
+untouched references would reopen that comparison.
+
 ### Gauge scale and conditional transport
 
 The native counter and clock fix record quantities in native units. Positive

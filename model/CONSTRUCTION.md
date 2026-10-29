@@ -1776,6 +1776,12 @@ requires a unique designed implementation.
 | [#1089: feedback class](https://github.com/FloatingPragma/observer-patch-holography/issues/1089) | At fixed load `I_odd/2`, the rational number-preserving exchange gives endpoint probabilities `769/1250` and `481/1250`, difference `144/625`. Four Kraus operators certify CPTP; its private commutant has dimension one, excluding every single-product exponential representation, including alternate logarithm branches. | Preserve the all-input reduced-load and single-product no-feedback theorems within their stated classes. The escape is a finite channel control; importing geometry, current or clock semantics requires a common observable map. |
 | [#1090: configuration equilibrium](https://github.com/FloatingPragma/observer-patch-holography/issues/1090) | For `A=I+L_path3`, the positive `ε=±1/16` controls retain the normalized configuration Gibbs marginal but change the full reference and vacuum. For stiffness response `Y=γ(A+εA²)`, `Y13=γε` and the third-mode fit residual is `6γε`; actual acceleration is `−Yq`. | The same-capacity inertia theorem retains its premise. Separate this configuration-only control from the native/N4 counterpair, which fixes the full quantum reference and normalized geometry but changes finite kinetics. Neither supplies two physical realizations. |
 
+The historical #1088 control uses `closed_paths[1]` of its frozen response
+fixture. The [marked-triplet certificate](../code/a5_closure/marked_triplet_attachment_certificate.py)
+transports a different frozen order-five element and has slow trace
+`(1+sqrt(5))/2` and lower trace `(1−sqrt(5))/2`. Both exclude the same-action
+identification; character signs must be compared at the same marking.
+
 The [independent joint reconstruction](../code/programme_obstruction_audit/joint_independent.py)
 checks the marked path and occupation identities; the
 [independent channel reconstruction](../code/programme_obstruction_audit/channel_independent.py)
