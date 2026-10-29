@@ -13,6 +13,13 @@ import build_completion_program as program
 def fixture_root(tmp_path):
     source = json.loads((program.ROOT / program.PROGRAM).read_text())
     hypothesis = json.loads((program.ROOT / program.HYPOTHESIS).read_text())
+    # These mutation cases exercise a provisional program. Live reviewed gate
+    # acceptance is checked separately against the actual bound artifacts.
+    source['boundary_status'] = 'NOT_FROZEN'
+    for stage in source['stages']:
+        if stage['status'] == 'ACCEPTED':
+            stage['status'] = 'IN_PROGRESS'
+        stage['accepted_evidence'] = []
     claims = json.loads((program.ROOT / "claims/claim_registry.yaml").read_text())["claims"]
     needed = {row["claim_id"] for row in source["foundations"]}
     source_claims = [{"claim_id": row["claim_id"], "status": row["status"]}
@@ -32,6 +39,12 @@ def fixture_root(tmp_path):
     for campaign in source.get("component_campaigns", []):
         name = campaign["contract"]["path"]
         (tmp_path / name).write_text((program.ROOT / name).read_text())
+        contract = json.loads((tmp_path/name).read_text())
+        if contract.get('schema') == 'oph.integration_simplification.v1':
+            for dependency in contract['source_bindings']:
+                target = tmp_path/dependency
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes((program.ROOT/dependency).read_bytes())
     for row in bound_rows:
         row["sha256"] = hashlib.sha256((tmp_path / row["path"]).read_bytes()).hexdigest()
     for name, value in ((program.PROGRAM, source), (program.HYPOTHESIS, hypothesis),
@@ -124,6 +137,39 @@ def test_committed_issue_and_dag_view_is_current():
     assert all(row["issue"] for row in data["stages"])
 
 
+@pytest.mark.parametrize('status', ['ACCEPTED', 'IN_PROGRESS'])
+def test_dependency_narrative_uses_actual_class_acceptance(status):
+    data = json.loads((program.ROOT/program.PROGRAM).read_text())
+    hypothesis = json.loads((program.ROOT/program.HYPOTHESIS).read_text())
+    next(stage for stage in data['stages'] if stage['id'] == 'CP-00')['status'] = status
+    rendered = program.render(data, hypothesis)
+    assert ('CP-00 has accepted the reviewed executable' in rendered) == (status == 'ACCEPTED')
+    assert ('CP-00 must identify the complete law/resource/interpretation class' in rendered) == (status != 'ACCEPTED')
+
+
+@pytest.mark.parametrize('damage', ['changed_dependency', 'omitted_dependency', 'omitted_initializer', 'omitted_archive'])
+def test_integration_campaign_rejects_transitive_source_custody_damage(fixture_root,damage):
+    data = json.loads((fixture_root/program.PROGRAM).read_text())
+    row = next(c for c in data['component_campaigns']
+               if 'RECOVERY-ELISION' in c['id'])
+    path = fixture_root/row['contract']['path']
+    contract = json.loads(path.read_text())
+    dependency = ('model/moving_defect/__init__.py' if damage == 'omitted_initializer'
+                  else 'model/moving_defect/transport.py')
+    if damage == 'omitted_archive':
+        dependency = next(name for name in contract['source_bindings'] if name.startswith('evidence/'))
+    assert dependency in contract['source_bindings']
+    if damage == 'changed_dependency':
+        (fixture_root/dependency).write_text((fixture_root/dependency).read_text()+'\n# changed dependency\n')
+    else:
+        del contract['source_bindings'][dependency]
+        path.write_text(json.dumps(contract))
+        row['contract']['sha256'] = hashlib.sha256(path.read_bytes()).hexdigest()
+        (fixture_root/program.PROGRAM).write_text(json.dumps(data))
+    with pytest.raises(ValueError, match='integration source custody'):
+        program.load_program(fixture_root)
+
+
 @pytest.mark.parametrize("damage", ["custody", "unmapped", "promotion"])
 def test_component_progress_cannot_change_scope_or_lose_custody(fixture_root, damage):
     def mutate(data):
@@ -148,19 +194,20 @@ def test_component_progress_must_belong_to_campaign_supported_gate(fixture_root)
         program.load_program(fixture_root)
 
 
-def test_next_wave_uses_three_existing_owners_without_acceptance_promotion(fixture_root):
+def test_next_wave_uses_four_existing_owners_without_acceptance_promotion(fixture_root):
     data, hypothesis = program.load_program(fixture_root)
     wave = data["next_wave"]
     assert {(row["gate"], row["issue"]) for row in wave["owners"]} == {
-        ("CP-02", 1138), ("CP-03", 1139), ("CP-04", 1140)}
-    assert {row["gate"] for row in wave["embedded_reviews"]} == {"CP-00", "CP-01", "CP-13", "CP-12"}
+        ("CP-03", 1139), ("CP-04", 1140), ("CP-06", 1142), ("CP-13", 1137)}
+    assert {row["gate"] for row in wave["embedded_reviews"]} == {
+        "CP-00", "CP-01", "CP-02", "CP-05", "CP-07", "CP-08", "CP-09", "CP-12"}
     assert not wave["changes_frozen_campaign"]
     assert not wave["successor_class_frozen"]
     assert wave["physical_comparison_count_added"] == 0
     assert all(stage["status"] != "ACCEPTED" for stage in data["stages"])
     assert data["boundary_status"] == "NOT_FROZEN"
     rendered = program.render(data, hypothesis)
-    assert "## Next three parallel workstreams" in rendered
+    assert "## Next four parallel workstreams" in rendered
     assert wave["acceptance_policy"] in rendered
     assert all(row["deliverable"] in rendered for row in wave["owners"])
     by_id = {stage["id"]: stage for stage in data["stages"]}
@@ -270,3 +317,20 @@ def test_diagnostic_contract_cannot_change_scope_even_with_updated_hash(fixture_
     (fixture_root / program.PROGRAM).write_text(json.dumps(data))
     with pytest.raises(ValueError):
         program.load_program(fixture_root)
+
+
+def test_live_reviewed_class_observer_and_map_acceptance_preserve_physics_boundary():
+    from model.completion import program_class_v2
+    live, hypothesis = program.load_program(program.ROOT)
+    stages = {s['id']: s for s in live['stages']}
+    assert {key for key, row in stages.items() if row['status']=='ACCEPTED'} == {
+        'CP-00', 'CP-01', 'CP-13'}
+    assert live['boundary_status']=='FROZEN' and live['decision']=='NOT_DECIDED'
+    contract = json.loads((program.ROOT/program_class_v2.PATH).read_text())
+    result = program_class_v2.validate(contract, program.ROOT)
+    assert result['adoption']=='ADOPTED_AFTER_REVIEW' and not result['adoption_blockers']
+    assert result['physical_obligations_discharged']==[]
+    assert all(row['status']=='NOT_ESTABLISHED' for row in hypothesis['obligations'])
+    review_path = contract['adoption']['independent_review']['path']
+    for gate in ('CP-00', 'CP-01', 'CP-13'):
+        assert review_path in {e['path'] for e in stages[gate]['accepted_evidence']}

@@ -5,7 +5,7 @@
   "whole_program_frozen": false,
   "native_family_changed": false,
   "service_inventory_extended": true,
-  "predecessor_git_commit": "fbd7e7de6292588951946337f550786d33baf643",
+  "predecessor_git_commit": "991c23a5d64c140dd497a24cd9ef5ee138d93a17",
   "carrier": "Binary total-two H66 in the existing full512-address source register; one additional coherent path bit for the loop interferometer.",
   "deformations": "The existing collision-free native configuration graph, one-particle face triangles and disjoint-move squares. Higher deleted-product cells are auxiliary proof data and add no new path relations.",
   "statistics_domain": "Flat unitary connections on this fixed two-particle configuration complex. Irreducible characters are +1 and -1; the choice is not inferred from classical populations.",

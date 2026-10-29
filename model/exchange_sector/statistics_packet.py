@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 OUTPUT = HERE / "statistics_results.json"
 CAMPAIGN = "native-exchange-statistics-20261029-v1"
-CONTRACT_SHA256 = '1a63f55c547d59600eb26e62d039462f444736694f3e2dcada633b6fdf26baeb'
+CONTRACT_SHA256 = 'fe979eb6e059f059d3196b785bdf578e71371bcc60fc6e3af68e6862aea1349b'
 OWN_SOURCES = (
     "model/exchange_sector/statistics.py",
     "model/exchange_sector/statistics_service.py",

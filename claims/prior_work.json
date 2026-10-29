@@ -8632,6 +8632,21 @@
       "note": "Symmetry-adapted normal modes. Dover reprint of the 1955 McGraw-Hill edition."
     },
     {
+      "key": "winkler2006repulsively",
+      "type": "article",
+      "author": "Winkler, K. and Thalhammer, G. and Lang, F. and Grimm, R. and Hecker Denschlag, J. and Daley, A. J. and Kantian, A. and Buechler, H. P. and Zoller, P.",
+      "title": "Repulsively bound atom pairs in an optical lattice",
+      "journal": "Nature",
+      "volume": "441",
+      "pages": "853--856",
+      "year": "2006",
+      "doi": "10.1038/nature04918",
+      "eprint": "cond-mat/0605196",
+      "verified": true,
+      "verification_source": "https://arxiv.org/abs/cond-mat/0605196",
+      "note": "Established repulsively bound lattice pairs; the present packet supplies a distinct Weyl-contact CAR realization and finite source-observation attachments."
+    },
+    {
       "key": "wiseman2009quantum",
       "type": "book",
       "author": "Wiseman, Howard M. and Milburn, Gerard J.",

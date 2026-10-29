@@ -85,6 +85,7 @@ def test_every_new_research_receipt_has_a_canonical_replay():
         ('model.clock_defect_energy.shared_event_clock.run', None, 'model/clock_defect_energy/shared_event_clock/results.json'),
         ('model.screened_transport.transport', None, 'model/screened_transport/transport_results.json'),
         ('model.exchange_sector.statistics_packet', None, 'model/exchange_sector/statistics_results.json'),
+        ('model.particle_screening.mobile_packet', None, 'model/particle_screening/mobile_results.json'),
     }.issubset(verify.REPLAYS)
 
 
@@ -147,7 +148,9 @@ def test_completion_candidate_receipts_have_replay_custody_and_workflow_coverage
         assert 'model/clock_defect_energy/**' in paths
         assert 'model/local_repair_family/**' in paths
     commands = [step['run'] for step in workflow['jobs']['program']['steps'] if 'run' in step]
-    pytest_command, = (command for command in commands if 'python -m pytest' in command)
+    pytest_commands = [command for command in commands if 'python -m pytest' in command]
+    assert pytest_commands
+    pytest_command = '\n'.join(pytest_commands)
     assert 'model/particle_screening' in pytest_command
     assert 'model/active_code_energy' in pytest_command
     assert 'model/screened_recovery' in pytest_command
@@ -155,6 +158,40 @@ def test_completion_candidate_receipts_have_replay_custody_and_workflow_coverage
     assert 'model/screened_transport' in pytest_command
     assert 'model/clock_defect_energy' in pytest_command
     assert 'model/local_repair_family' in pytest_command
+    for packet in ('moving_defect', 'record_action', 'particle_obstruction', 'interacting_field'):
+        assert f'model/{packet}' in pytest_command
+        for event in ('push', 'pull_request'):
+            assert f'model/{packet}/**' in events[event]['paths']
+    for command in ('python -m model.moving_defect.experiment --check',
+                    'python -m model.record_action.action --check',
+                    'python -m model.particle_obstruction.classification --check',
+                    'python -m model.interacting_field --check model/interacting_field/results.json'):
+        assert command in commands
+    for packet in ('bound_pair', 'particle_clock', 'field_regions', 'field_stress', 'field_tastes', 'biased_reset'):
+        assert f'model/{packet}' in pytest_command
+        receipt_path=f'model/{packet}/results.json'
+        assert (f'model.{packet}',None,receipt_path) in verify.REPLAYS
+        assert f'python -m model.{packet} --check {receipt_path}' in commands
+        for event in ('push','pull_request'):
+            assert f'model/{packet}/**' in events[event]['paths']
+        receipt=json.loads((verify.ROOT/receipt_path).read_text())
+        sources=receipt['source_sha256' if packet=='particle_clock' else 'source_bindings']
+        assert sources and all((verify.ROOT/path).is_file() for path in sources)
+
+
+def test_full_band_and_native_localization_receipts_are_mandatory():
+    workflow = yaml.safe_load((verify.ROOT/'.github/workflows/completion-program.yml').read_text())
+    commands = [step['run'] for step in workflow['jobs']['program']['steps'] if 'run' in step]
+    events = workflow.get('on', workflow.get(True))
+    for package, module in [('band_clock', 'model.band_clock'),
+                            ('native_localization', 'model.native_localization.experiment'),
+                            ('native_program', 'model.native_program.receipt')]:
+        receipt = f'model/{package}/results.json'
+        assert (module, None, receipt) in verify.REPLAYS
+        assert f'python -m {module} --check {receipt}' in commands
+        assert any('python -m pytest' in c and f'model/{package}' in c for c in commands)
+        for event in ('push', 'pull_request'):
+            assert f'model/{package}/**' in events[event]['paths']
 
 
 @pytest.mark.parametrize('index', range(6))

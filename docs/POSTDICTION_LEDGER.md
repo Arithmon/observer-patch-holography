@@ -8,7 +8,7 @@ Retained alternatives, calibrations and rejected candidates have separate domain
 
 ## Completion target and retained foundations
 
-The [executable hypothesis](OPH_EXECUTABLE_HYPOTHESIS.md) asks one native process to supply observer clocks, defect/maintenance energy, interacting field/particle observations and realized Einstein premises. The [completion DAG and issue owners](COMPLETION_PROGRAM.md) order the missing joins. Program `OPH-EXECUTABLE-COMPLETION-2026-10-28` has boundary `NOT_FROZEN` and decision `NOT_DECIDED`.
+The [executable hypothesis](OPH_EXECUTABLE_HYPOTHESIS.md) asks one native process to supply observer clocks, defect/maintenance energy, interacting field/particle observations and realized Einstein premises. The [completion DAG and issue owners](COMPLETION_PROGRAM.md) order the missing joins. Program `OPH-EXECUTABLE-COMPLETION-2026-10-29-v2` has boundary `FROZEN` and decision `NOT_DECIDED`.
 
 The existing modular-clock candidate, rank-three response geometry and conditional 3+1 field construction are retained foundations, together with finite interaction histories and the conditional Einstein kernel. They are components to extend, not work to restart. The local band's rank three does not alone derive three field-space dimensions: the native screen is two-dimensional and the radial extension retains its declared inputs. Physical clock calibration and the common interacting defect/energy/gravity joins remain open.
 
@@ -22,20 +22,20 @@ The existing modular-clock candidate, rank-three response geometry and condition
 
 | Gate | Task | Status | Issue |
 | --- | --- | --- | --- |
-| CP-00 | Freeze the executable program class and decision contract | IN_PROGRESS | [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135) |
-| CP-01 | Execute one continuing native observer with accounted resources | IN_PROGRESS | [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136) |
-| CP-13 | Integrate finite theorems and curate the active proof chain | IN_PROGRESS | [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137) |
+| CP-00 | Freeze the executable program class and decision contract | ACCEPTED | [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135) |
+| CP-01 | Execute one continuing native observer with accounted resources | ACCEPTED | [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136) |
+| CP-13 | Integrate finite theorems and curate the active proof chain | ACCEPTED | [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137) |
 | CP-02 | Construct the continuing regime, faithful reference and local modular clocks | IN_PROGRESS | [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) |
 | CP-03 | Exhibit a localized native defect and its protecting invariant | IN_PROGRESS | [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) |
 | CP-04 | Derive common defect maintenance energy, kinetics and conserved stress | IN_PROGRESS | [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) |
 | CP-05 | Transport the same defects and derive particle identity and currents | IN_PROGRESS | [#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141) |
-| CP-06 | Obtain one interacting chiral 3+1 field description from native records | OPEN | [#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142) |
-| CP-07 | Freeze the physical dictionary and derive the matched particle spectrum | OPEN | [#1143](https://github.com/FloatingPragma/observer-patch-holography/issues/1143) |
-| CP-08 | Construct responsive geometry and causal clocks on the same source | OPEN | [#1144](https://github.com/FloatingPragma/observer-patch-holography/issues/1144) |
-| CP-09 | Realize the joint modular, stress and entropy premises G1--G6 | OPEN | [#1145](https://github.com/FloatingPragma/observer-patch-holography/issues/1145) |
+| CP-06 | Obtain one interacting chiral 3+1 field description from native records | IN_PROGRESS | [#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142) |
+| CP-07 | Freeze the physical dictionary and derive the matched particle spectrum | IN_PROGRESS | [#1143](https://github.com/FloatingPragma/observer-patch-holography/issues/1143) |
+| CP-08 | Construct responsive geometry and causal clocks on the same source | IN_PROGRESS | [#1144](https://github.com/FloatingPragma/observer-patch-holography/issues/1144) |
+| CP-09 | Realize the joint modular, stress and entropy premises G1--G6 | IN_PROGRESS | [#1145](https://github.com/FloatingPragma/observer-patch-holography/issues/1145) |
 | CP-10 | Compose the realized Einstein response with matter and clock readouts | OPEN | [#1146](https://github.com/FloatingPragma/observer-patch-holography/issues/1146) |
 | CP-11 | Run joint independent physical tests and decide the completion milestone | OPEN | [#1147](https://github.com/FloatingPragma/observer-patch-holography/issues/1147) |
-| CP-12 | Audit obstructions and apply candidate, class and program stopping rules | OPEN | [#1148](https://github.com/FloatingPragma/observer-patch-holography/issues/1148) |
+| CP-12 | Audit obstructions and apply candidate, class and program stopping rules | IN_PROGRESS | [#1148](https://github.com/FloatingPragma/observer-patch-holography/issues/1148) |
 
 CP-13 maps the finite theorems to the actual model and assigns premise proofs to the owning gates; irrelevant/redundant branches leave the active chain with provenance preserved. CP-12 owns scoped obstruction and stopping decisions. A whole-program no-go requires coverage of every frozen admissible realization; a failed candidate or exhausted budget is not that verdict. Program structure and source custody only; not scientific gate acceptance or a new physical comparison.
 
