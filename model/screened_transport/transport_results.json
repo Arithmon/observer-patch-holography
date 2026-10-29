@@ -1,6 +1,6 @@
 {
   "campaign_id": "screened-transport-20261028-v1",
-  "contract_sha256": "42f164fecc29c4c87f374a3b604c90de1f34d1ac2dd6a3d46a747f49fe3cc77b",
+  "contract_sha256": "358c5317bef9f3197b6b56c9e1cf9c352d65ffb574368cc1a11ec3f5355e5d2e",
   "corrected_cycle": {
     "common_logical_phase_or_rest_gap_fixed_by_channel": false,
     "continuous_momentum_or_coherent_dispersion_constructed": false,
@@ -379,16 +379,16 @@
     "model/observer/source_discrimination/circuit.py": "327b537d01901c223e375cfff6dce882cb9a73f6a3b36e5019750e801377dd7e",
     "model/particle_screening/screening.py": "7fda107721574f80f2e048ff441beef2a4c2206a95b6defa04f8dd5004f6690c",
     "model/particle_screening/screening_results.json": "3970b65a26e313ddff2f25cbc1647e23740d5dae0857183f44be095c6b77adc8",
-    "model/screened_recovery/README.md": "bf60d95b1717eca6fc68484c30cefbeee01c2bf219d29a91af4522039be1593c",
+    "model/screened_recovery/README.md": "791c91d9e4963b684273ab5ec00e4a8675c6e70e1d9b2972f8cebef910071ad9",
     "model/screened_recovery/campaign.json": "ce28d024888b4e0405ff08436a87fce40affb07dc39c1b5ffc0d68765e410610",
-    "model/screened_recovery/experiment.py": "d71b3e6afef07712980b3481a3566d46732e52fac9e75097df540921c74425f4",
-    "model/screened_recovery/protocol.py": "97e701fc92052c7fd82eaca22e1c119ed4a005450bf78456219b5d32ce38e43c",
-    "model/screened_recovery/screened_recovery_results.json": "f4fba628f0cecba4e181d984dea1ffc07018f995bc07fe3665f117ab5c8e0f85",
-    "model/screened_recovery/test_protocol.py": "8514eb76426a5dc22cfeb163471db1b737b491618b949583d1e87ed70d0be8c1",
-    "model/screened_transport/README.md": "78fbae8b41c6c48f39b285ddb1ebc0452e646cfaff20e16f4430e3c38eb98b69",
+    "model/screened_recovery/experiment.py": "fc224938a4dcd59f76281217663582630927e78f2556c4af1ad013e29ce47e06",
+    "model/screened_recovery/protocol.py": "d523398d59f5e9a80bb8a5b1c6f6982a1e30799a6288f927ece741fb686d4d34",
+    "model/screened_recovery/screened_recovery_results.json": "6fcbddf4c20408870d62561373b823d9bbee6befcf75a2ab15a42d864d7ec749",
+    "model/screened_recovery/test_protocol.py": "ea8f3cf323660398b0fe3bc9e21c673e3c772fdf7bfe0293cda654ad55455cf9",
+    "model/screened_transport/README.md": "c3a2682d6e623a156ccfe504bf8de594178ae712eeaeb9d6f81b17401f51ad1d",
     "model/screened_transport/__init__.py": "ed06f7ce24037ac2e4cbc00e7ed65f7216ded0a839eca299f41f10deb0768bce",
-    "model/screened_transport/campaign.json": "42f164fecc29c4c87f374a3b604c90de1f34d1ac2dd6a3d46a747f49fe3cc77b",
+    "model/screened_transport/campaign.json": "358c5317bef9f3197b6b56c9e1cf9c352d65ffb574368cc1a11ec3f5355e5d2e",
     "model/screened_transport/test_transport.py": "5a148bbeaeb28010401553536bc4c2257bb5f6319a0aa0ee3a0614d77465986b",
-    "model/screened_transport/transport.py": "6d6b09109c54a8635cdcc81d7607923036cf70d32639d9371ba8be1f201e7852"
+    "model/screened_transport/transport.py": "0f8d71595034ff584541e51fd4c3b71f50446b18d807159c500723b3ef849e0a"
   }
 }

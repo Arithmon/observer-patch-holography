@@ -17,8 +17,13 @@ explicit. The delayed mixed member requires a separate stationary solve.
 
 The separate [bounded local placement family](local_repair_family/README.md)
 uses endpoint-weighted C/E coins with a fixed source-independent seam
-selector to preserve a nonuniform faithful product reference and its
-recordwise modular covariance. The supplied weights and
+selector to prepare a unique nonuniform quantum reference and its stationary
+source/FIFO lift. The [combined observer](local_repair_family/observer.py)
+gives an exact preparation error below10^-6 after1601 attempts and composes
+the same repairs with a source-executed modular clock. C, E and their tagged
+mixture retain a nonzero clock signal under the full seam scheduler. The
+actual source-reference flow, supported FIFO flow and correlated exported
+archive have distinct checked domains. The supplied weights and
 changed coin law are explicit. This finite family does not reproduce the
 earlier transported three-charge reference with endpoint-only reversible
 rates, create a bare-source protecting charge, or freeze the full physical

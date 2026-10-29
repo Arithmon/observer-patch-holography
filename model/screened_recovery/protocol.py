@@ -31,6 +31,25 @@ DIMENSION = 2
 assert SUPPORTS is not None and all(len(row) == 4 for row in SUPPORTS)
 
 
+def _diagnostic(value, label, upper=None):
+    if type(value) is not float or not math.isfinite(value) or value < 0:
+        raise ArithmeticError(f'nonfinite or negative numerical diagnostic: {label}')
+    if upper is not None and value > upper:
+        raise ArithmeticError(f'numerical diagnostic exceeds its gate: {label}')
+    return value
+
+
+def _diagnostic_tree(value, label):
+    if type(value) is float:
+        _diagnostic(value, label)
+    elif type(value) is dict:
+        for key, item in value.items():
+            _diagnostic_tree(item, f'{label}.{key}')
+    elif type(value) in (list, tuple):
+        for index, item in enumerate(value):
+            _diagnostic_tree(item, f'{label}.{index}')
+
+
 def _label(law, seam, coin, raw):
     law = routing._candidate(law)
     if type(seam) is not tuple or seam not in SEAMS:
@@ -415,11 +434,12 @@ def source_composition_report():
     macro_errors = {}
     for inverse in (False, True):
         actual, guard = routing._executed_macro(inverse)
-        macro_errors[inverse] = (float(np.linalg.norm(actual-exact_flip, 2))
-                                 +guard["projection_change"])
+        residual = _diagnostic(float(np.linalg.norm(actual-exact_flip, 2)), 'macro target')
+        change = _diagnostic(guard['projection_change'], 'macro polar change')
+        macro_errors[inverse] = _diagnostic(residual+change, 'complete macro')
     exact_ix = np.asarray([[0, 1j], [1j, 0]])
-    xerror = max(float(np.linalg.norm(
-        compiler.native_pulse("X", sign*math.pi/2)[:2, :2]-sign*exact_ix, 2))
+    xerror = max(_diagnostic(float(np.linalg.norm(
+        compiler.native_pulse("X", sign*math.pi/2)[:2, :2]-sign*exact_ix, 2)), 'X conjugation')
                  for sign in (1, -1))
     mixing = {}
     for count in (1, 2, 3, 4):
@@ -430,9 +450,10 @@ def source_composition_report():
                                for kind, angle, targets in reversed(literal[0])):
             raise ArithmeticError("mixing inverse is not the emitted reversed word")
         synthesis = record_code._mixing_synthesis_report(count, *literal)
+        _diagnostic_tree(synthesis, f'mixing synthesis {count}')
         mixing[count] = synthesis
     mixing_logs = {(count, inverse): (
-        record_code._word_log_error(_mixing_word(count, inverse))
+        _diagnostic(record_code._word_log_error(_mixing_word(count, inverse)), 'mixing word log')
         +math.log1p(mixing[count]["uniform_target_unitary_completion_error_upper"]))
         for count in (1, 2, 3, 4) for inverse in (False, True)}
 
@@ -444,10 +465,10 @@ def source_composition_report():
     encoder_log = permutation_log(_encoder_permutation())+mixing_logs[4, False]
     decoder_log = permutation_log(_encoder_permutation(), True)+mixing_logs[4, True]
     coin = np.asarray([[1., -1.], [1., 1.]])/math.sqrt(2)
-    coin_error = float(np.linalg.norm(compiler.native_pulse("Y", -math.pi/4)[:2, :2]-coin, 2))
+    coin_error = _diagnostic(float(np.linalg.norm(compiler.native_pulse("Y", -math.pi/4)[:2, :2]-coin, 2)), 'fair coin')
     rows = {}
     for law in ("C", "E"):
-        native_error = max(record_code._native_dilation_error(law, coin_bit)
+        native_error = max(_diagnostic(record_code._native_dilation_error(law, coin_bit), 'native dilation')
                            for coin_bit in (0, 1))
         worst_log = 0.
         for seam in SEAMS:
@@ -462,7 +483,7 @@ def source_composition_report():
                         recovery_log = (
                             permutation_log(_branch_permutation(law, seam, coin_bit, raw), True)
                             +mixing_logs[count, True]+encoder_log)
-                    worst_log = max(worst_log, prefix+recovery_log)
+                    worst_log = max(worst_log, _diagnostic(prefix+recovery_log, 'corrected attempt log'))
         rows[law] = {
             "maximum_one_corrected_attempt_log_error": worst_log,
             "maximum_one_corrected_attempt_operator_error": math.expm1(worst_log),
@@ -471,9 +492,11 @@ def source_composition_report():
             "all_thirty_seams_and_raw_control_blocks_counted": True,
             "complete_local_native_dilation_error": native_error,
         }
-    if any(row["encoded_t_attempt_operator_error_upper"]["100"] > 1e-4
-           for row in rows.values()):
-        raise ArithmeticError("numerical source composition diagnostic exceeds its gate")
+    _diagnostic_tree(rows, 'source composition')
+    for row in rows.values():
+        _diagnostic(row['encoded_t_attempt_operator_error_upper']['100'], '100-attempt composition', 1e-4)
+    _diagnostic(math.expm1(encoder_log), 'encoder composition', 1e-8)
+    _diagnostic(math.expm1(decoder_log), 'decoder composition', 1e-8)
     return {
         "method": "product(1+factor_operator_error)-1; max over retained classical control blocks",
         "forward_full512_macro_operator_error_plus_polar_change": macro_errors[False],
@@ -512,26 +535,31 @@ def source_replay_report():
     """
     code = code_matrix()
     target = ideal_code_matrix()
-    encoder_error = float(np.linalg.norm(code-target, 2))
+    encoder_error = _diagnostic(float(np.linalg.norm(code-target, 2)), 'source encoder', 1e-8)
     samples = []
     # The E branch moves the co-moving core from (0,1) to (1,5); the source
     # recovery returns the fixed code and the classical core is then reset.
     schedule = (("C", (0, 1), 0, 0), ("E", (0, 5), 0, 5))
     state, probability = code, F(1)
     for law, seam, coin, raw in schedule:
+        incoming_probability = probability
         state, all_raw, native_output = _selected_source_step(law, seam, coin, raw, state)
         p = branch_weight(law, seam, coin, raw)
         probability *= p
         expected = math.sqrt(float(probability))*target
         raw_norm = sum(float(np.linalg.norm(b["amplitude"])**2)/2 for b in all_raw)
+        _diagnostic(raw_norm, 'raw instrument mass')
+        _diagnostic(abs(raw_norm-float(incoming_probability)), 'raw instrument mass residual', 1e-8)
+        gram_error = _diagnostic(float(np.linalg.norm(
+            native_output.conj().T@native_output-float(probability)*np.eye(2), 2)), 'post-native Gram', 1e-8)
+        corrected_error = _diagnostic(float(np.linalg.norm(state-expected, 2)), 'corrected source branch', 1e-8)
         samples.append({
             "law": law, "seam": list(seam), "coin": coin, "raw": raw,
             "branch_weight_exact": str(p), "cumulative_branch_weight_exact": str(probability),
             "retained_raw_slots": len(all_raw),
             "raw_instrument_total_probability_for_two_input_columns": raw_norm,
-            "post_native_column_gram_error": float(np.linalg.norm(
-                native_output.conj().T@native_output-float(probability)*np.eye(2), 2)),
-            "corrected_against_exact_code_operator_error": float(np.linalg.norm(state-expected, 2)),
+            "post_native_column_gram_error": gram_error,
+            "corrected_against_exact_code_operator_error": corrected_error,
             "core_archive": archive_entry(law, seam, coin, raw),
         })
     all_branch = {}
@@ -548,8 +576,9 @@ def source_replay_report():
                     for logical, row in enumerate(rows):
                         image[list(row), logical] = 1/math.sqrt(8)
                     output = apply_recovery(law, seam, coin, raw, image)
-                    error = float(np.linalg.norm(
-                        output-math.sqrt(float(branch_weight(law, seam, coin, raw)))*target, 2))
+                    error = _diagnostic(float(np.linalg.norm(
+                        output-math.sqrt(float(branch_weight(law, seam, coin, raw)))*target, 2)),
+                        'full512 source recovery', 1e-8)
                     maximum = max(maximum, error)
                     count_hist[count] += 1
                     checked += 1

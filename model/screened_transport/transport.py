@@ -282,7 +282,8 @@ def main() -> None:
     args = parser.parse_args()
     result = report()
     if args.write:
-        args.write.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+        args.write.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n",
+                              encoding="utf-8", newline="\n")
     elif args.check:
         actual = strict_json.load(args.check)
         if json.dumps(actual, sort_keys=True, allow_nan=False) != json.dumps(result, sort_keys=True, allow_nan=False):
