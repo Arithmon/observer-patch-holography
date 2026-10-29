@@ -147,6 +147,16 @@ def local_error(gate):
 
 
 def resources(lattice, duration, steps, segments=2):
+    """Count a positive integer number of complete evolution segments.
+
+    Resource admission uses the same duration and split-count domain as
+    execution. Negative or fractional counts cannot represent a source word.
+    """
+    duration = real(duration, 'model time')
+    if type(steps) is not int or steps < 1:
+        raise ValueError('positive integer split count required')
+    if type(segments) is not int or segments < 1:
+        raise ValueError('positive integer segment count required')
     dt = duration/(2*steps)
     counts = {key: 0 for key in COUNT_KEYS}
     swap = gaussian.local_gate('fswap')

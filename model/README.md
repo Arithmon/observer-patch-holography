@@ -59,6 +59,9 @@ The [theorem map](completion/THEOREM_MAP.md),
 [finite theorem applications](clock_defect_energy/THEOREM_JOINS.md) and scoped obstruction
 review accompany all three lanes. The reviewed finite map resolves #1137;
 physical clock, mass spectrum and gravitational realization remain open.
+The [foundation audit](../docs/MODEL_FOUNDATION_AUDIT_2026-10-29.md) records
+the smaller exact native-history evaluator, reduced full-field pulse schedule
+and energy/reference compatibility conditions before mass attachment.
 The [integration audit](../docs/MODEL_INTEGRATION_AUDIT_2026-10-29.md) records
 the exact contact reduction, recovery elision, all-code biased reset result
 and the limitations of composing a memory with a separate clock.

@@ -1,5 +1,11 @@
 # Pending branch interfaces for the particle/premise push
 
+Historical review note: PRs 1128, 1152 and 1153 were integrated into main
+on 29 October 2026. The revision-specific comparisons below preserve the
+earlier review context. Current integrated scope is recorded in the
+[integration audit](../../docs/MODEL_INTEGRATION_AUDIT_2026-10-29.md) and
+[foundation audit](../../docs/MODEL_FOUNDATION_AUDIT_2026-10-29.md).
+
 This note pins the open branch review to public revisions rather than
 treating draft content as a merged theorem. It changes no source primitive,
 reference, decoder or accepted completion gate.
