@@ -141,3 +141,22 @@ def test_apply_retains_native_operator_domain_validation():
                      {(0, True, 0, 0): F(1)}, {(0, 0, 0, 0): float('nan')}):
         with pytest.raises(ValueError):
             apply_history(compiled, operator)
+
+
+def test_compiler_rejects_a_branch_that_splits_one_tag(monkeypatch):
+    # Tagged diagonals would not identify a scalar partial injection if one
+    # input tag could produce two diagonal outputs. Do not let dict(map)
+    # silently discard one image if the underlying kernel ever changes.
+    from dataclasses import replace
+
+    execute = native.execute
+
+    def split_tag(*args, **kwargs):
+        history = execute(*args, **kwargs)
+        branch = replace(history.branches[0], density={
+            (0, 0, 0, 0): F(1, 2), (1, 0, 1, 0): F(1, 2)})
+        return replace(history, branches=(branch, *history.branches[1:]))
+
+    monkeypatch.setattr(native, 'execute', split_tag)
+    with pytest.raises(ArithmeticError, match='partial injection'):
+        compile_history(native.program(commands=[fixed()]))

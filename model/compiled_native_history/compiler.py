@@ -117,7 +117,8 @@ def compile_history(program, *, max_columns=MAX_COMPILED_COLUMNS,
                 raise ArithmeticError('native branch changed its independent source tag')
             partial.append((source, output))
             weights.add(weight)
-        if len(weights) > 1 or len({out for _, out in partial}) != len(partial):
+        if (len(weights) > 1 or len({source for source, _ in partial}) != len(partial)
+                or len({out for _, out in partial}) != len(partial)):
             raise ArithmeticError('native history is not a scalar-weighted partial injection')
         weight = next(iter(weights), F(0))
         if weight < 0:
