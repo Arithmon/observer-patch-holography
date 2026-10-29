@@ -11,7 +11,11 @@ generator
 where `E` is partition pinching.  It proves that the fixed algebra of `L` is
 exactly the partition commutant when `gamma` is nonzero.  For nonnegative real
 `gamma`, the same generator is written in the declared finite GKSL form with
-the partition projectors as jump operators and common rate `gamma`.
+the partition projectors as jump operators and common rate `gamma`. A trace
+energy identity discharges no-cancellation for any finite family with
+nonnegative rates, including noncommuting pinchings. With strictly positive
+rates the stable algebra is their commutant intersection, without a separate
+no-cancellation hypothesis. The signed-rate theorem retains that hypothesis.
 
 The file formalizes the displayed matrix identity, not a general predicate of
 complete positivity or a bundled CPTP semigroup.  In particular, neither the
@@ -22,6 +26,7 @@ CP/CPTP interface.
 namespace OPH.Dynamics
 
 open Matrix
+open scoped ComplexOrder
 
 variable {n k : ℕ}
 
@@ -129,15 +134,71 @@ theorem multiCollarGenerator_apply
       ∑ c, conditionalExpectationGenerator (gamma c) (part c) X := by
   simp [multiCollarGenerator]
 
-/-- Explicit no-cancellation premise for a sum of collar generators.  This
-is not automatic for arbitrary linear maps; a future Hilbert-space
-dissipativity package may discharge it from positivity and self-adjointness. -/
+/-- Explicit no-cancellation premise for a sum of collar generators. It is
+not automatic for signed rates; `multiCollarNoCancellation_of_nonneg`
+discharges it for nonnegative rates using the trace residual identity. -/
 def MultiCollarNoCancellation
     (gamma : C → ℝ)
     (part : C → EventAlgebra.ProjectivePartition n k) : Prop :=
   ∀ X : CMat n,
     multiCollarGenerator gamma part X = 0 →
       ∀ c, conditionalExpectationGenerator (gamma c) (part c) X = 0
+
+/-- The trace pairing with a pinching generator is minus its weighted
+squared residual. No commutation between different partitions is needed. -/
+theorem trace_conditionalExpectationGenerator_residual
+    (gamma : ℝ) (part : EventAlgebra.ProjectivePartition n k)
+    (X : CMat n) :
+    (Xᴴ * conditionalExpectationGenerator gamma part X).trace =
+      -(gamma : ℂ) *
+        ((X - EventAlgebra.partitionPinching part X)ᴴ *
+          (X - EventAlgebra.partitionPinching part X)).trace := by
+  have hTT :
+      ((EventAlgebra.partitionPinching part X)ᴴ *
+          EventAlgebra.partitionPinching part X).trace =
+        (Xᴴ * EventAlgebra.partitionPinching part X).trace := by
+    have h := EventAlgebra.trace_conjTranspose_partitionPinching_mul part X
+      (EventAlgebra.partitionPinching part X)
+    rwa [EventAlgebra.partitionPinching_idem part X] at h
+  have hpy := EventAlgebra.trace_partitionPinching_pythagoras part X
+  rw [hTT] at hpy
+  rw [conditionalExpectationGenerator_apply, mul_smul_comm, trace_smul,
+    mul_sub, trace_sub, hpy]
+  simp only [smul_eq_mul]
+  ring
+
+/-- Nonnegative pinching rates discharge no-cancellation from the trace
+energy identity. Zero-rate terms are included; arbitrary signed rates do
+not satisfy this implication. -/
+theorem multiCollarNoCancellation_of_nonneg
+    (gamma : C → ℝ) (hgamma : ∀ c, 0 ≤ gamma c)
+    (part : C → EventAlgebra.ProjectivePartition n k) :
+    MultiCollarNoCancellation gamma part := by
+  intro X hsum
+  have hpair :
+      (Xᴴ * multiCollarGenerator gamma part X).trace = 0 := by
+    rw [hsum, mul_zero, trace_zero]
+  rw [multiCollarGenerator_apply, Finset.mul_sum, trace_sum] at hpair
+  simp_rw [trace_conditionalExpectationGenerator_residual] at hpair
+  have hzero :
+      (∑ c, (gamma c : ℂ) *
+        ((X - EventAlgebra.partitionPinching (part c) X)ᴴ *
+          (X - EventAlgebra.partitionPinching (part c) X)).trace) = 0 := by
+    simpa only [neg_mul, Finset.sum_neg_distrib, neg_eq_zero] using hpair
+  have hnonneg : ∀ c : C, 0 ≤ (gamma c : ℂ) *
+      ((X - EventAlgebra.partitionPinching (part c) X)ᴴ *
+        (X - EventAlgebra.partitionPinching (part c) X)).trace := by
+    intro c
+    exact mul_nonneg (RCLike.ofReal_nonneg.mpr (hgamma c))
+      (posSemidef_conjTranspose_mul_self _).trace_nonneg
+  intro c
+  have hc := (Finset.sum_eq_zero_iff_of_nonneg
+    (fun c (_ : c ∈ Finset.univ) => hnonneg c)).mp hzero c (Finset.mem_univ c)
+  rcases mul_eq_zero.mp hc with hrate | hresidual
+  · rw [conditionalExpectationGenerator_apply, hrate, zero_smul]
+  · have hfix := trace_conjTranspose_mul_self_eq_zero_iff.mp hresidual
+    have hfix' := sub_eq_zero.mp hfix
+    rw [conditionalExpectationGenerator_apply, ← hfix', sub_self, smul_zero]
 
 /-- Under explicit nonzero-rate and no-cancellation premises, the stable
 algebra of the summed generator is exactly the intersection of the collar
@@ -159,6 +220,17 @@ theorem multiCollarGenerator_eq_zero_iff_stableIntersection
     exact (conditionalExpectationGenerator_eq_zero_iff_mem_commutant
       (hgamma c) (part c) X).mpr (h c)
 
+/-- Strictly positive rates identify the stable algebra of the summed
+pinching generator without a separate no-cancellation premise. -/
+theorem multiCollarGenerator_eq_zero_iff_stableIntersection_of_pos
+    (gamma : C → ℝ) (hgamma : ∀ c, 0 < gamma c)
+    (part : C → EventAlgebra.ProjectivePartition n k) (X : CMat n) :
+    multiCollarGenerator gamma part X = 0 ↔
+      ∀ c, X ∈ (part c).commutant :=
+  multiCollarGenerator_eq_zero_iff_stableIntersection gamma
+    (fun c => ne_of_gt (hgamma c)) part
+    (multiCollarNoCancellation_of_nonneg gamma (fun c => le_of_lt (hgamma c)) part) X
+
 end MultiCollar
 
 end OPH.Dynamics
@@ -166,3 +238,6 @@ end OPH.Dynamics
 #print axioms OPH.Dynamics.conditionalExpectationGenerator_eq_projectorGKSL
 #print axioms OPH.Dynamics.conditionalExpectationGenerator_eq_zero_iff_mem_commutant
 #print axioms OPH.Dynamics.multiCollarGenerator_eq_zero_iff_stableIntersection
+#print axioms OPH.Dynamics.trace_conditionalExpectationGenerator_residual
+#print axioms OPH.Dynamics.multiCollarNoCancellation_of_nonneg
+#print axioms OPH.Dynamics.multiCollarGenerator_eq_zero_iff_stableIntersection_of_pos
