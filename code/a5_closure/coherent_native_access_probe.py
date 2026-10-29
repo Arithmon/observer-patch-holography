@@ -15,6 +15,8 @@ from galois_port_frame_certificate import F, Z, O, encode, mm, transpose, requir
 from model.native_interface import tomography, pointer
 
 BASELINE = '3800f801283078b6b86c23bbb9b85b545a70b69c'
+# Reviewed current prerequisites, separate from the historical work baseline.
+PRIOR_COMMIT = 'c56513aeadba2aa9b5848b75e150036f7a51e282'
 SOURCE_COMMIT = previous.SOURCE_COMMIT
 INPUTS = sorted(set(previous.INPUTS + [
     'model/compiled_native_interface/construction.py',
@@ -235,7 +237,7 @@ def pointer_probe():
 
 def build():
     pins = previous.custody(INPUTS, SOURCE_COMMIT, 'FloatingPragma/observer-patch-holography')
-    old = previous.custody(PRIOR_FILES, BASELINE, 'Arithmon/observer-patch-holography')
+    old = previous.custody(PRIOR_FILES, PRIOR_COMMIT, 'FloatingPragma/observer-patch-holography')
     packet = exact_probe()
     return encode({'schema': 'oph.coherent-native-access-probe.v1', 'work_baseline': BASELINE,
         'source_pins': pins, 'prior_probe_pins': old,

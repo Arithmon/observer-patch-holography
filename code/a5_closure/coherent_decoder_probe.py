@@ -13,6 +13,8 @@ from model.native_interface import tomography
 
 ROOT = Path(__file__).resolve().parents[2]
 BASELINE = 'eee3b6a2e0051e88d53053b5af1defbc0fb86988'
+# Reviewed exact-value-preserving source update; retain the work baseline.
+SOURCE_COMMIT = '3f650db7a625f0df66495bdaea4332861507f5d4'
 REFERENCE = ROOT/'code/a5_closure/receipts/coherent_decoder_probe.json'
 PATHS = sorted(set(previous.INPUTS + [
     'model/compiled_native_interface/construction.py',
@@ -25,7 +27,7 @@ PATHS = sorted(set(previous.INPUTS + [
 
 
 def build():
-    pins = previous.custody(PATHS, BASELINE, 'Arithmon/observer-patch-holography')
+    pins = previous.custody(PATHS, SOURCE_COMMIT, 'FloatingPragma/observer-patch-holography')
     states = previous.native.states(binary=True)
     g = [[6*x[p]-1 for p in range(12)] for x in states]
     action_check = previous.slow_pair(g)
