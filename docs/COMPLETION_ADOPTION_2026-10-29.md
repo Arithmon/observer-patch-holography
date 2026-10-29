@@ -6,7 +6,8 @@ CP-00, CP-01 and CP-13 are accepted for their stated construction scope.
 PR #1152 closes [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135),
 [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136)
 and [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137)
-on merge. No merge is part of this update.
+on merge. The subsequent [integration audit](MODEL_INTEGRATION_AUDIT_2026-10-29.md)
+combines all three reviewed PRs and records the corrections and simplifications.
 
 Of the four selected issues, this completes CP-13's integration and cleanup
 contract. CP-03, CP-04 and CP-06 retain their physical construction obligations.
@@ -71,9 +72,9 @@ section. All eight primary paper previews are refreshed, all 21 registered
 paper builds pass their existing warning gates, and the new particle pages
 have been visually checked.
 
-Mario's draft PR #1153 remains separate. Its reviewed current head
-`aec9f14e4bad62cff1c388aea3bb7bd763e479e5` adds cache and recursive source-custody
-hardening to its fair-coin mobile-memory result. That law and its reset theorem
-are distinct from the retained biased reset service. No claim here assumes
-the draft has been merged, and no source result is silently transferred across
-their law or reference boundary.
+Mario's reviewed PR #1153 at `aec9f14e4bad62cff1c388aea3bb7bd763e479e5`
+is included in the integration with PR #1128 and this observer work.
+Its fair-coin law and finite-horizon reset theorem retain their scope.
+The separately proved positive-coin transfer extends the biased asymptotic
+result to arbitrary exact codes; it does not substitute the fair kernel or
+transfer physical clock, exterior or energy properties.

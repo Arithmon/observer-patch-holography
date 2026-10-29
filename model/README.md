@@ -52,13 +52,16 @@ recorded-history transport and finite theorem maps as pinned dependencies:
 | [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) | The [screening packet](particle_screening/README.md) gives exact exterior-cap limits and an improved all-seam correctable q=1 qubit. Its worst one-port distance is the optimal `61/450` for an edge core, while its full exterior remains at least `4/9` away. Its [compiled recovery](screened_recovery/README.md) executes all 208 positive branches with explicit core reset; a localized particle remains open. |
 | [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) | The [same-code calculation](active_code_energy/README.md) gives current rate `1/6` per uniform-seam attempt. Positive sector reweightings preserve native stationary dynamics and leave the rest-gap assignment free. The [same-code transport](screened_transport/README.md) has positive transient current covariance but identity corrected logical transfer. [Conserved-sector theorems](conserved_sector_action/README.md) quantify the remaining reference freedom. A rest gap, kinetics and stress remain open. |
 
-The bounded-law owner #1135 retains the [endpoint-biased family](local_repair_family/README.md)
-and the open carrier/refinement and decision contract. The continuing-observer
-owner #1136 reviews compiled services and memory across the three workstreams.
+The [accepted executable class and observer](../docs/COMPLETION_ADOPTION_2026-10-29.md)
+resolve the finite contracts of #1135 and #1136, including declared services,
+resource ceilings and the carrier/refinement boundary.
 The [theorem map](completion/THEOREM_MAP.md),
 [finite theorem applications](clock_defect_energy/THEOREM_JOINS.md) and scoped obstruction
-review accompany all three lanes. No integrated completion gate, physical clock,
-mass spectrum or gravitational realization is accepted by these finite results.
+review accompany all three lanes. The reviewed finite map resolves #1137;
+physical clock, mass spectrum and gravitational realization remain open.
+The [integration audit](../docs/MODEL_INTEGRATION_AUDIT_2026-10-29.md) records
+the exact contact reduction, recovery elision, all-code biased reset result
+and the limitations of composing a memory with a separate clock.
 The [SI dictionary](clock_defect_energy/SI_UNITS.md) attaches metres, seconds,
 joules and kilograms only under its explicit clock and energy-frequency inputs.
 

@@ -6,8 +6,11 @@ binds eleven reviewed results to twelve existing source files, their inspected
 statement/proof anchors and SHA-256 hashes. These are scoped attachments to the
 existing [premise register](../../tracking/premise_register.json) and
 [generated premise map](../PREMISES.md), not a replacement scientific ledger.
-CP-13 and CP-02 remain in progress: the full observer, refinement and physical
-dictionary joins are not discharged.
+This is the 28 October component review. The subsequent
+[accepted finite map](../../docs/COMPLETION_ADOPTION_2026-10-29.md) resolves
+CP-13's integration contract. CP-02 and the physical refinement/dictionary
+joins remain open; the earlier campaign's restricted service domain is
+preserved below.
 
 The [finite campaign](campaign.json) fixes the original total-two carrier,
 tagged C/E mixtures, identity holds, positive repair/exploration floors and

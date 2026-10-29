@@ -7,8 +7,9 @@ works on [CP-03 / #1139](https://github.com/FloatingPragma/observer-patch-hologr
 and [CP-13 / #1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137).
 The [contract](../model/completion/particle_premise_campaign.json) and
 [completion ledger](COMPLETION_PROGRAM.md) preserve all integrated acceptance
-dependencies. The working changes belong to PR #1152. PR #1151 is merged;
-the complementary draft PRs #1153 and #1128 remain separate pending inputs.
+dependencies. PR #1151 is merged. The [integration audit](MODEL_INTEGRATION_AUDIT_2026-10-29.md)
+combines PR #1152 with the reviewed PRs #1153 and #1128 while preserving
+their distinct laws and interface premises.
 
 ## One excitation, with actual joins
 

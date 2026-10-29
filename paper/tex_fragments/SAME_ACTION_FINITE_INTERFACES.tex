@@ -64,21 +64,46 @@ construction is recorded in \texttt{model/bound\_pair},
 The endpoint-biased 60-code process also continues through every
 forbidden antipodal flag by a supplied coherent decode/re-encode service.
 It preserves the unknown logical state and keeps boundary, zero and abort
-outcomes. For this fixed code family, the exact absorption potential
+outcomes. Positive endpoint coins leave the exact flagged-code conditions
+unchanged. Every all-seam correctable sharp-$q=1$ source qubit, without
+persistent ancillary storage of its logical state, has both core
+occupation compressions equal to $I_2/2$, so its core kernel is independent
+of the history-selected code. For this entire class, the exact absorption potential
 $h(c)=1+\sum_dQ(c,d)h(d)$ has a unique maximum
 $H\simeq203.025378$ attempted repairs at core $(0,1)$.
 Every counted reset raises $h$ by at most $H$, so telescoping gives
 $\mathbb E N_n\ge\max\{0,(n-h(c_0))/H\}$. Resetting only at the
 boundary to $(0,1)$ attains asymptotic rate $1/H$. Exact Bellman checks
 through horizon 64 are recorded separately from this all-horizon
-asymptotic argument. Active recovery follows every repair attempt;
+asymptotic argument. The compiled family attains the bound; arbitrary exact
+code choices cannot improve it under the same law and reset contract.
+Active recovery is supplied after every repair attempt;
 neither reset counts nor source-pulse counts are physical energy.
 The complementary fair-coin mobile-memory construction has a different
-law and a mean edge excursion of 150 attempts. Its rotation-equivariant
-encoders and exact-code-class theorem are not imported into the biased
-claim. Neither controlled memory is the interacting field pair or a
+law and a mean edge excursion of 150 attempts. Its finite-horizon theorem
+is separate from the biased asymptotic result. Neither controlled memory is the interacting field pair or a
 native topological particle. The complete service and its bounds are
-retained in \texttt{model/biased\_reset}.
+retained in \texttt{model/biased\_reset} and
+\texttt{model/biased\_code\_universality}. A separately certified variant
+omits 3,120 identity recoveries among 11,580 positive flags, saving about
+48,391 supplied pulses per stationary native attempt. It preserves the
+admitted logical/reference channel and does not change the reset rate.
+
+\paragraph{Smaller exact controls and a separate clock.}
+At side four and zero total momentum, the contact-generated cyclic
+subspace has seven dimensions. Its free spectral weights are
+$(1,3,3,2,3,3,1)/16$ at energies
+$2c(-\sqrt3,-\sqrt2,-1,0,1,\sqrt2,\sqrt3)$.
+The resulting rank-one resolvent gives exact rational pole enclosures
+and intertwines complete contact/complement histories with arbitrary
+references. Other spatial observations require the full field sector.
+This control is implemented in \texttt{model/pair\_cyclic\_control}.
+
+A corrected memory branch and a clock instrument on a separate factor
+compose exactly, including correlated logical/clock/reference inputs.
+The clock requires its preparation, control, readout and event association;
+the tensor identity does not establish a stationary product reference,
+physical duration, dispersion relation or memory mass.
 
 \paragraph{Extension and obstruction for the full band.}
 The same native record-rate estimator drives counted local source words on

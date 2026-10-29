@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 733,
+  "surface_count": 737,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1161,6 +1161,11 @@
       "allowlisted": false
     },
     {
+      "path": "docs/MODEL_INTEGRATION_AUDIT_2026-10-29.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "docs/OPH_EXECUTABLE_HYPOTHESIS.md",
       "glob": "docs/**/*.md",
       "allowlisted": false
@@ -1412,6 +1417,11 @@
     },
     {
       "path": "model/band_clock/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/biased_code_universality/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
@@ -2131,6 +2141,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/pair_cyclic_control/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/particle_clock/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -2217,6 +2232,11 @@
     },
     {
       "path": "model/record_laws/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/recovery_elision/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
