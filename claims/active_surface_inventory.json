@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 737,
+  "surface_count": 745,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -1421,6 +1421,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/band_clock_budget/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/biased_code_universality/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -1741,6 +1746,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/compiled_native_history/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/compiled_native_interface/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -1756,12 +1766,12 @@
       "allowlisted": false
     },
     {
-      "path": "model/completion/PENDING_PR_COMPATIBILITY.md",
+      "path": "model/completion/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
     {
-      "path": "model/completion/README.md",
+      "path": "model/completion/SAME_PROCESS_INTERFACES.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
@@ -1792,6 +1802,11 @@
     },
     {
       "path": "model/empirical_diagnostics/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/energy_identifiability/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
@@ -1842,6 +1857,16 @@
     },
     {
       "path": "model/field_tastes/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/full_fock_field/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/gauged_field/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
@@ -1957,6 +1982,11 @@
     },
     {
       "path": "model/native_equilibration/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/native_fixed_algebra/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
@@ -2237,6 +2267,16 @@
     },
     {
       "path": "model/recovery_elision/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/reference_observation/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/regional_modular/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },

@@ -15,7 +15,7 @@ OUTPUT=HERE/'results.json'
 
 def source_bindings():
     paths=set(SOURCES)|{p.relative_to(ROOT).as_posix() for p in HERE.glob('*.py')}|{
-        'model/biased_reset/README.md','model/completion/PENDING_PR_COMPATIBILITY.md'}
+        'model/biased_reset/README.md','model/completion/SAME_PROCESS_INTERFACES.md'}
     return {name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in sorted(paths)}
 
 

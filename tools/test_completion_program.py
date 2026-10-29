@@ -194,20 +194,20 @@ def test_component_progress_must_belong_to_campaign_supported_gate(fixture_root)
         program.load_program(fixture_root)
 
 
-def test_next_wave_uses_four_existing_owners_without_acceptance_promotion(fixture_root):
+def test_next_wave_uses_five_existing_owners_without_acceptance_promotion(fixture_root):
     data, hypothesis = program.load_program(fixture_root)
     wave = data["next_wave"]
     assert {(row["gate"], row["issue"]) for row in wave["owners"]} == {
-        ("CP-03", 1139), ("CP-04", 1140), ("CP-06", 1142), ("CP-13", 1137)}
+        ("CP-02", 1138), ("CP-03", 1139), ("CP-04", 1140), ("CP-05", 1141), ("CP-06", 1142)}
     assert {row["gate"] for row in wave["embedded_reviews"]} == {
-        "CP-00", "CP-01", "CP-02", "CP-05", "CP-07", "CP-08", "CP-09", "CP-12"}
+        "CP-00", "CP-01", "CP-07", "CP-08", "CP-09", "CP-12", "CP-13"}
     assert not wave["changes_frozen_campaign"]
     assert not wave["successor_class_frozen"]
     assert wave["physical_comparison_count_added"] == 0
     assert all(stage["status"] != "ACCEPTED" for stage in data["stages"])
     assert data["boundary_status"] == "NOT_FROZEN"
     rendered = program.render(data, hypothesis)
-    assert "## Next four parallel workstreams" in rendered
+    assert "## Next five parallel workstreams" in rendered
     assert wave["acceptance_policy"] in rendered
     assert all(row["deliverable"] in rendered for row in wave["owners"])
     by_id = {stage["id"]: stage for stage in data["stages"]}

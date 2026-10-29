@@ -109,7 +109,7 @@ The source law differs from the fair law in pending
 Its fair-control stopping means are150 and120, and a reset to any edge
 attains rate1/150. This package does not import that PR's rotation-equivariant
 encoder family or its every-code finite-horizon theorem into the biased law.
-The [compatibility note](../completion/PENDING_PR_COMPATIBILITY.md) records
+The [compatibility note](../completion/SAME_PROCESS_INTERFACES.md) records
 the exact boundaries and pending revisions.
 
 Continuation does not fix the reference-like exterior obstruction. Nor does

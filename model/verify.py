@@ -309,6 +309,7 @@ REPLAYS = (
     ("model.field_tastes", None, "model/field_tastes/results.json"),
     ("model.biased_reset", None, "model/biased_reset/results.json"),
     ("model.band_clock", None, "model/band_clock/results.json"),
+    ("model.band_clock_budget", None, "model/band_clock_budget/results.json"),
     ("model.native_localization.experiment", None, "model/native_localization/results.json"),
     ("model.native_program.receipt", None, "model/native_program/results.json"),
     ("model.particle_screening.mobile_packet", None,

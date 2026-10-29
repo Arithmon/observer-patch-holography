@@ -170,3 +170,46 @@ The executable sources, complete records and proof boundaries are retained
 in the public \texttt{bound\_pair}, \texttt{particle\_clock},
 \texttt{field\_regions}, \texttt{field\_stress} and
 \texttt{field\_tastes} model packages.
+
+\subsection{The same pair's gauge current and contact residue}
+
+Couple the same hopping block to a supplied link phase,
+$h_{xy}(A)=e^{iA_{xy}}ic\sigma_a/2$. The complete CAR action obeys
+$H(A+d\alpha)=G(\alpha)H(A)G(\alpha)^*$ with
+$G=\exp(i\sum_x\alpha_xN_x)$. Its number current is
+$J_{x\to y}=\partial_{A_{xy}}H=i(B_{xy}-B_{xy}^*)$, and
+$i[H,N_x]+\sum_yJ_{x\to y}=0$. These identities retain nonflat links,
+all tastes and the separated-pair space; the charge is CAR number, not an
+identified electromagnetic normalization.
+
+Let $P$ retain all onsite pairs, $Q=I-P$, $B=PTQ$ and $D=QTQ$, where
+$T=d\Gamma(h)$. For $E>\|D\|$, the exact contact operator is
+\[
+ F(E)=UI+B(E-D)^{-1}B^*,\qquad
+ X(E)=(E-D)^{-1}B^*,\qquad M(E)=I+X(E)^*X(E).
+\]
+A contact vector $u$ with $F(E)u=Eu$ reconstructs the full eigenstate
+$(u,Xu)$. Its norm and contact residue involve $M$, and its exact current is
+\[
+ \langle J\rangle
+ =\frac{u^*(\partial_A F)u}{u^*M u},\qquad
+ M=I-\partial_EF.
+\]
+For a simple eigenvalue this also equals $dE/dA$. Omitting the metric gives
+an incorrect current by omitting the virtual separated-pair norm.
+
+At leading order $H_{\rm pair}^{(2)}=UI+BB^*/U$, two CAR hopping orders
+give $(BB^*)_{xy}=2\det h_{xy}$ and hence
+$(H_{\rm pair}^{(2)})_{xy}=c^2e^{2iA_{xy}}/(2U)$.
+This derives charge-two pair transport on the same action. If
+$b\ge\|T\|,\|D\|$ and $C\ge\|BB^*\|$, its controlled remainder is
+\[
+ \|F(E)-H_{\rm pair}^{(2)}\|
+ \le C\left(\left|\frac1E-\frac1U\right|
+              +\frac{b}{E(E-b)}\right),\qquad E>b.
+\]
+The complete-field response need not have the leading pair model's half-flux
+period. The source and independent current/residue checks in
+\texttt{model/gauged\_field} retain that countercontrol. Link selection,
+physical clock and vacuum calibration, native protection and the chiral
+continuum remain separate requirements.

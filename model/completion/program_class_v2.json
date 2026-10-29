@@ -7,8 +7,8 @@
     "independent_review": {
       "verdict": "PASS",
       "path": "model/completion/program_class_v2_review.json",
-      "sha256": "1960a5e43b1892d80232b65a2c1c54cb2dec8314d5e4da65a0f77271ab9ec376",
-      "reviewed_contract_digest": "239503f1be1204be6a10c8c6ca824991d2f044ea74dab2c6207c80cc0dfada1a"
+      "sha256": "47e9be10577f4cdc71a0e0cfe27185fea46bef19eb821b74719af7e09a541410",
+      "reviewed_contract_digest": "0c1ea893dc2b10107286481ce22e8dca527d920f46be0a2c0e55e53c38b6b84d"
     }
   },
   "predecessor": {
@@ -289,11 +289,11 @@
     "source_hashes": {
       "model/native_program/README.md": "b9a5c3473f0ce8caedc3dffa78cd35d1696fe9298eef1306c304e91648d96b1c",
       "model/native_program/__init__.py": "daedcdc14150d8e259d6a6e9205258c98ba9c947cfc7aa6fef154026f490a454",
-      "model/native_program/interpreter.py": "97fc26baa6bf9ca981c5453667824d7652108844fc6620cece4d8ace74dbdb35",
+      "model/native_program/interpreter.py": "312dfd30f67e27dbb697bcd5419d9c00ae1be1631c112570954e39091fbc27e8",
       "model/native_program/members.py": "311dc18d0af0ea41fc330cf6652cbc5f48dba57eb3696e0bca8352a84e8663f3",
       "model/native_program/receipt.py": "9f507a9f2e14ee628fa3fa420e5b3ba393ccd8d9b5ca475314da0d12e3bc3cfd",
-      "model/native_program/results.json": "8977247b2eef523118a961f023c596d1302073c1f6a9f0e3edb0ac767988edb1",
-      "model/native_program/test_interpreter.py": "93615362cb70ff1a17fb212c2acd33a889fa4952e0173009f436c7ad32b77f0d"
+      "model/native_program/results.json": "89fcad6b42291b1e657456759c765801c7687e74ccdf107587efacc3f23dcf3c",
+      "model/native_program/test_interpreter.py": "22d71d85a76c709b2880ac3a441222e4c22347363ac827e4ece265a503fabe7e"
     },
     "member_receipt": "model/native_program/results.json",
     "independent_check": "model/native_program/test_interpreter.py",

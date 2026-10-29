@@ -47,26 +47,29 @@ These source-bound component campaigns record actual progress without accepting 
 - [OPH-INTEGRATION-PAIR-CYCLIC-CONTROL-2026-10-29-v1](../model/pair_cyclic_control/campaign.json): Exact seven-state contact-domain reduction and rational pole enclosure; the separate spectral helper sharpens only the full-field rate-error term. Full spatial histories and physical field/reference premises remain. Owning gates: CP-04, CP-06, CP-13.
 - [OPH-INTEGRATION-RECOVERY-ELISION-2026-10-29-v1](../model/recovery_elision/campaign.json): Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection. Owning gates: CP-01, CP-03, CP-13.
 - [OPH-INTEGRATION-BIASED-CODE-UNIVERSALITY-2026-10-29-v1](../model/biased_code_universality/campaign.json): Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved. Owning gates: CP-01, CP-03, CP-13.
+- [OPH-COMMON-FIELD-INTERFACES-v1](../model/completion/component_interfaces.json): Complete native-history evaluation, common-reference observations and conservation bounds, full-Fock interacting lattice dynamics, and same-pair gauge/current/residue attachment. Physical action, clock, vacuum and chiral-continuum joins remain explicit. Owning gates: CP-01, CP-02, CP-03, CP-04, CP-05, CP-06, CP-09, CP-13.
 
-## Next four parallel workstreams
+## Next five parallel workstreams
 
-Assignment: `OPH-COMPLETION-NEXT-WAVE-2026-10-29-v9`. This plans provisional work; it does not select or freeze a successor law, change the retained campaign or accept a gate.
+Assignment: `OPH-COMPLETION-NEXT-WAVE-2026-10-29-v10`. This plans provisional work; it does not select or freeze a successor law, change the retained campaign or accept a gate.
 
-Advance the same moving interacting pair to full-sector record-rate control, construct and delimit an actual native exterior-matched coherence, and complete the executable predecessor and finite-theorem acceptance review. Physical species, protected defect, common energy calibration and chiral continuum obligations retain their exact domains. CP00/CP01/CP13 acceptance is recorded separately after source-bound independent review; the four-issue assignment itself grants no acceptance.
+Join the current native reference/conservation results, complete interacting CAR field and same-pair gauge response across five construction owners. Source selection of the physical action, protected matter, vacuum/clock calibration and chiral continuum remain acceptance requirements.
 
 | Owner | Next concrete result | Why this comes next |
 | --- | --- | --- |
-| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) / CP-03: Complete localized native protection and its field-state attachment | A localized native excitation with reference-like exterior and the full-law protecting invariant or controlled lifetime, attached to the actual field excitation. | The same interacting pair moves in an isolated band, while native active memory and its reviewed reset extension have distinct protection laws. |
-| [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) / CP-04: Complete the common particle energy, propagation and stress dictionary | Source-derived maintenance energy and kinetic response with one justified physical normalization and the stress map consumed by gravity. | One excitation has exact energy splitting, independent curvature, a native M2 clock attachment and same-action finite energy currents. |
-| [#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142) / CP-06: Complete the interacting chiral field and observable-domain comparison | A same-process chiral effective or continuum field description with all modes, currents, interactions, reference and complete intervention errors controlled. | Complete interacting histories, CAR regional maps and same-excitation spectral measures can test actual mode removal rather than a pole list alone. |
-| [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137) / CP-13: Maintain the accepted finite theorem-to-model chain | A complete current ownership/relevance map, verified concrete attachments, corrected active theorem routes and a criterion-by-criterion acceptance audit. | Actual CAR, clock and stress/entropy constructions identify finite premises that can be instantiated and expose incompatible substitutions. |
+| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) / CP-02: Implement compatible reference observations and local clocks | Native implementation of the common-reference observation effects and compatible local clock/energy maps with all preparation and disturbance costs. | One reference gives an exact observation tower without factorization; the native reference has uniform conditional conservation and exogenous convergence bounds. |
+| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) / CP-03: Complete localized native protection and its field-state attachment | A localized native excitation with reference-like exterior and the full-law protecting invariant or controlled lifetime, attached to the actual field excitation. | The native source-only conservation boundary has an exact robust gap; active and relational sectors remain available, while the supplied field pair has a current/residue attachment. |
+| [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) / CP-04: Complete the common particle energy, propagation and stress dictionary | Source-derived maintenance energy and kinetic response with one justified physical normalization and the stress map consumed by gravity. | The same interacting pair has an exact gauge-current, energy-derivative and residue map; fixed-sector energy identifiability and vacuum calibration are explicitly separated. |
+| [#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141) / CP-05: Attach particle transport, charges and currents on one native process | A native particle/field map with physical accessible currents and spin/statistics content, including leakage, all tastes and actual source services. | The same interacting pair has exact gauge covariance, charge-two effective hopping and a residue-normalized current matched to its full eigenstate. |
+| [#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142) / CP-06: Complete the interacting chiral field and observable-domain comparison | A same-process chiral effective or continuum field description with all modes, currents, interactions, reference and complete intervention errors controlled. | The supplied interacting action has complete Fock execution and controlled fixed-spacing thermodynamic local dynamics, leaving source selection, chiral decoupling and physical continuum comparison as concrete targets. |
 
 Parallel starting work and the required joins:
 
-- **CP-03 / [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139):** Use complete band wavepackets and all-outcome active memory/reset controls with their explicit law and reference differences. Spectral isolation under the supplied Hamiltonian is not invariance under every native repair branch; active information transport and trivial band topology do not supply the required defect invariant. Starting evidence: [bound pair](../model/bound_pair/results.json), [moving defect](../model/moving_defect/results.json), [particle premise contract](../model/completion/particle_premise_campaign.json), [native localization](../model/native_localization/results.json), [mobile screened memory](../model/particle_screening/mobile_results.json).
-- **CP-04 / [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140):** Use the bound-pair energy/residue identity, exact curvature interval, complete clock records and interaction-dependent local energy conservation. Supplied U and c, coordinate masses and one corner clock do not select a physical full-field dictionary. Preserve the proved same-speed relativistic mismatch and regional modular countercontrol. Starting evidence: [bound pair](../model/bound_pair/results.json), [particle clock](../model/particle_clock/results.json), [field stress](../model/field_stress/results.json), [band clock](../model/band_clock/results.json), [native localization](../model/native_localization/results.json), [inherited clock](../model/completion/acceptance_audit.py).
-- **CP-06 / [#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142):** Retain every Weyl taste and scattering output; test the contact interaction against the proposed momentum-sector removal and compose the existing regional history maps. A finite band or infinite-volume fixed lattice is not a chiral continuum. No unwanted mode can be dropped without a derived complete-law decoupling map. Starting evidence: [bound pair](../model/bound_pair/results.json), [field regions](../model/field_regions/results.json), [interacting field](../model/interacting_field/results.json), [band clock](../model/band_clock/results.json).
-- **CP-13 / [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137):** Inspect the exact theorem statements and the full premise inventory, preserving existing proof provenance and classifying every current obligation. Independent review accepts this map and its CP00/CP01 predecessor joins. The closure on merge covers ownership/interfaces/cleanup only; future physical theorem premises remain unproved. Starting evidence: [particle premise contract](../model/completion/particle_premise_campaign.json), [particle clock](../model/particle_clock/results.json), [field regions](../model/field_regions/results.json), [field stress](../model/field_stress/results.json), [band clock](../model/band_clock/results.json), [native localization](../model/native_localization/results.json), [inherited clock](../model/completion/acceptance_audit.py).
+- **CP-02 / [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138):** Use the explicit Petz-transpose effects and their complete-reference tests, native GNS bounds and the reduced full-field rate schedule. Reference-preserving observation composition is not local retraction, modular covariance, physical seconds or preparation of a global field Gibbs state. Starting evidence: [reference observation](../model/reference_observation/observation.py), [native fixed algebra](../model/native_fixed_algebra/fixed.py), [band clock budget](../model/band_clock_budget/budget.py), [energy identifiability](../model/energy_identifiability/certificate.py).
+- **CP-03 / [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139):** Use complete band wavepackets and all-outcome active memory/reset controls with their explicit law and reference differences. Spectral isolation under the supplied Hamiltonian is not invariance under every native repair branch; active information transport and trivial band topology do not supply the required defect invariant. Starting evidence: [bound pair](../model/bound_pair/results.json), [moving defect](../model/moving_defect/results.json), [particle premise contract](../model/completion/particle_premise_campaign.json), [native localization](../model/native_localization/results.json), [mobile screened memory](../model/particle_screening/mobile_results.json), [native fixed algebra](../model/native_fixed_algebra/fixed.py), [gauged field](../model/gauged_field/links.py).
+- **CP-04 / [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140):** Use the bound-pair energy/residue identity, exact curvature interval, complete clock records and interaction-dependent local energy conservation. Supplied U and c, coordinate masses and one corner clock do not select a physical full-field dictionary. Preserve the proved same-speed relativistic mismatch and regional modular countercontrol. Starting evidence: [bound pair](../model/bound_pair/results.json), [particle clock](../model/particle_clock/results.json), [field stress](../model/field_stress/results.json), [band clock](../model/band_clock/results.json), [native localization](../model/native_localization/results.json), [inherited clock](../model/completion/acceptance_audit.py), [gauged field](../model/gauged_field/links.py), [energy identifiability](../model/energy_identifiability/certificate.py).
+- **CP-05 / [#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141):** Use complete Peierls-link Ward identities and the exact Feshbach current/residue map, keeping separated-pair and native active-memory domains explicit. CAR number charge and supplied external links do not select electromagnetic normalization, a dynamical gauge field, a physical species or native protection. Starting evidence: [gauged field](../model/gauged_field/links.py), [full fock field](../model/full_fock_field/field.py), [bound pair](../model/bound_pair/results.json), [particle obstruction](../model/particle_obstruction/results.json).
+- **CP-06 / [#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142):** Retain every Weyl taste and scattering output; test the contact interaction against the proposed momentum-sector removal and compose the existing regional history maps. A finite band or infinite-volume fixed lattice is not a chiral continuum. No unwanted mode can be dropped without a derived complete-law decoupling map. Starting evidence: [bound pair](../model/bound_pair/results.json), [field regions](../model/field_regions/results.json), [interacting field](../model/interacting_field/results.json), [band clock](../model/band_clock/results.json), [full fock field](../model/full_fock_field/field.py), [gauged field](../model/gauged_field/links.py).
 
 Shared source interface:
 
@@ -79,24 +82,23 @@ Shared source interface:
 - The active moving code has explicit opposite-core stops and modular leakage. Retain every stop and its resource cost; no reset or success conditioning may substitute for transport.
 - The stochastic-matrix kinetic parent and recovered modular generator are different operators. A shared residual symmetry is not an action/clock identification.
 - Exact fixed-source symmetry and finite-record inference have different quantifiers. The current/matter lift and source-triplet family attachment require their stated maps.
-- The interacting CAR field uses a supplied lattice/action and exact N=2 sector. Retain all naive Weyl nodes; fixed-spacing infinite volume is not the chiral spatial continuum.
-- PR1151 is merged. The reviewed changes from PR1152, PR1153 head aec9f14e4bad62cff1c388aea3bb7bd763e479e5, and PR1128 head 78c4eb137cf3bf20e7c1d907561f2f2abe22cbf4 are combined for integration review. Their endpoint-biased native observer, fair-coin mobile-memory law, and operational triplet attachment retain distinct source, reference, and service premises. This integration statement does not assert that these three pull requests have merged on GitHub.
+- The interacting CAR field has a full-Fock extension and a fixed-spacing thermodynamic local limit under its supplied action. Retain all Weyl tastes; the chiral spatial-continuum and physical state/clock selection remain separate.
+- The endpoint-biased native observer, fair-coin active memory and operational triplet attachment have distinct source, reference and service contracts; their maps must be supplied explicitly.
 - The bound pair uses the supplied Weyl-contact action throughout transport, spectrum, charge and curvature. Its topology is trivial, its physical species is unassigned, and its coordinate kinetic/rest mass mismatch cannot be removed by one unit conversion.
 - The inherited native clock is faithful on the supplied invariant M2corner. Full-band rate transfer is executed under a separately supplied global Gibbs reference; finite independent native reference copies cannot provide the exact same inherited field clock.
 - Finite CAR restrictions and energy/entropy identities must not be relabeled physical geometry, Lorentz stress, generalized-entropy stationarity or an interacting chiral continuum.
 
-The selected issues were CP03,CP04,CP06 andCP13. The independent review accepts CP13 on the versioned CP00/CP01 predecessors, with closure on merge. CP03/04/06 retain their original unfulfilled physical construction criteria. Component counts never establish whole-program completion.
+CP00, CP01 and CP13 retain their independently accepted finite scope. CP02 through CP06 remain construction gates: component proofs and controlled lattice dynamics do not by themselves establish the required physical same-process joins.
 
 Review stays inside these workstreams:
 
 - CP-00 / [#1135](https://github.com/FloatingPragma/observer-patch-holography/issues/1135): Preserve the independently reviewed V2 class, source membership, fixed retrospective target/error contract and all prior exposure. Any primitive or target change requires a reviewed successor.
 - CP-01 / [#1136](https://github.com/FloatingPragma/observer-patch-holography/issues/1136): Preserve the accepted declared-service continuing observer and its complete-source membership/resource proof. Additional particle and field maps need their own same-process construction; physical apparatus is supplied.
 - CP-12 / [#1148](https://github.com/FloatingPragma/observer-patch-holography/issues/1148): Audit each stopped-code, kinetic/reference, anomaly/family and regulator exclusion within its stated class; retain the surviving alternatives and all earlier empirical exposure.
-- CP-02 / [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138): Preserve the record-derived continuing clock and review its actual compatibility with moving codes and proposed kinetic/field actions; common physical calibration is not established.
-- CP-05 / [#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141): Audit actual CAR charges, current couplings, spin and statistics while leaving physical matter assignments explicit.
 - CP-07 / [#1143](https://github.com/FloatingPragma/observer-patch-holography/issues/1143): Retain complete spectral measures, scattering complements, coordinate conventions and physical matching gaps.
 - CP-08 / [#1144](https://github.com/FloatingPragma/observer-patch-holography/issues/1144): Review signed regional algebra maps and finite box embeddings without promoting supplied geometry.
 - CP-09 / [#1145](https://github.com/FloatingPragma/observer-patch-holography/issues/1145): Review exact energy continuity and quantum entropy attachments against every unresolved G1--G6 field.
+- CP-13 / [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137): Maintain the accepted finite theorem map, including the nonnegative pinching no-cancellation proof and the exact domains of new source/reference/field constructions. Canonical physical premises keep their own discharge requirements.
 
 Physical Einstein composition and joint empirical validation require accepted particle, field, geometry and common normalization joins. Finite components and scoped exclusions do not supply those predecessors.
 
@@ -269,6 +271,8 @@ Retained starting evidence:
 - [program_class_v2_review.json](../model/completion/program_class_v2_review.json)
 - [variant.py](../model/recovery_elision/variant.py)
 - [universality.py](../model/biased_code_universality/universality.py)
+- [compiler.py](../model/compiled_native_history/compiler.py)
+- [README.md](../model/compiled_native_history/README.md)
 
 Reviewed acceptance evidence:
 
@@ -291,6 +295,7 @@ Current component progress (not gate acceptance):
 - [mobile_results.json](../model/particle_screening/mobile_results.json): Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.
 - [variant.py](../model/recovery_elision/variant.py): Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.
 - [universality.py](../model/biased_code_universality/universality.py): Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.
+- [compiler.py](../model/compiled_native_history/compiler.py): Exact complete-history partial-map evaluator with shared controller/FIFO/stops and arbitrary references; host storage reduction only.
 
 Earlier related work: [#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077), [#1076](https://github.com/FloatingPragma/observer-patch-holography/issues/1076), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026).
 
@@ -341,6 +346,16 @@ Retained starting evidence:
 - [control.py](../model/pair_cyclic_control/control.py)
 - [variant.py](../model/recovery_elision/variant.py)
 - [universality.py](../model/biased_code_universality/universality.py)
+- [compiler.py](../model/compiled_native_history/compiler.py)
+- [README.md](../model/compiled_native_history/README.md)
+- [retraction.py](../model/regional_modular/retraction.py)
+- [README.md](../model/regional_modular/README.md)
+- [observation.py](../model/reference_observation/observation.py)
+- [README.md](../model/reference_observation/README.md)
+- [fixed.py](../model/native_fixed_algebra/fixed.py)
+- [README.md](../model/native_fixed_algebra/README.md)
+- [field.py](../model/full_fock_field/field.py)
+- [README.md](../model/full_fock_field/README.md)
 
 Reviewed acceptance evidence:
 
@@ -381,6 +396,11 @@ Current component progress (not gate acceptance):
 - [control.py](../model/pair_cyclic_control/control.py): Exact seven-state contact-domain reduction and rational pole enclosure; the separate spectral helper sharpens only the full-field rate-error term. Full spatial histories and physical field/reference premises remain.
 - [variant.py](../model/recovery_elision/variant.py): Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.
 - [universality.py](../model/biased_code_universality/universality.py): Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.
+- [compiler.py](../model/compiled_native_history/compiler.py): Exact complete-history partial-map evaluator with shared controller/FIFO/stops and arbitrary references; host storage reduction only.
+- [retraction.py](../model/regional_modular/retraction.py): Exact faithful regional retraction criterion and 117/16 boundary witness; ordinary restrictions and reduced clocks remain valid.
+- [observation.py](../model/reference_observation/observation.py): Common-reference UCP Petz-transpose observations with exact nested tower; neither local retraction nor modular covariance is assumed.
+- [fixed.py](../model/native_fixed_algebra/fixed.py): All-input source-only H66 conservation exclusion and exact GNS contraction/near-conservation bounds; joint feedback, active recovery and physical energy are separate.
+- [field.py](../model/full_fock_field/field.py): All-number full-Fock source construction and fixed-spacing interacting thermodynamic local dynamics with rational locality bounds; no chiral spatial-continuum or native action selection.
 
 Earlier related work: [#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 
@@ -414,6 +434,14 @@ Retained starting evidence:
 - [clock_count_inference_results.json](../model/clock_defect_energy/clock_count_inference_results.json)
 - [results.json](../model/clock_defect_energy/shared_event_clock/results.json)
 - [results.json](../model/particle_clock/results.json)
+- [observation.py](../model/reference_observation/observation.py)
+- [README.md](../model/reference_observation/README.md)
+- [fixed.py](../model/native_fixed_algebra/fixed.py)
+- [README.md](../model/native_fixed_algebra/README.md)
+- [certificate.py](../model/energy_identifiability/certificate.py)
+- [README.md](../model/energy_identifiability/README.md)
+- [budget.py](../model/band_clock_budget/budget.py)
+- [README.md](../model/band_clock_budget/README.md)
 
 Current component progress (not gate acceptance):
 
@@ -431,6 +459,10 @@ Current component progress (not gate acceptance):
 - [observer_results.json](../model/local_repair_family/observer_results.json): Unique quantum product reference with exact finite preparation, stationary source/FIFO access, same-law source modular clock and positive complete-scheduler response. The actual prepared source flow has a finite logarithm bound; supplied coherent services, port weights and physical calibration remain explicit. No integrated gate or physical comparison is accepted.
 - [record_clock_results.json](../model/local_repair_family/record_clock_results.json): Complete31,457,280-event continuing native acquisition identifies relative product-reference weights with held-out cycle checks. Exact record-box mixing and source-compiled phase bounds control complete future readouts and the actual prepared source-marginal clock. Source-weight selection, coherent hardware, physical calibration and refining matter/gravity joins are separate obligations.
 - [results.json](../model/particle_clock/results.json): An explicit supplied isometry maps the same N=2 eta pair and dark reference to a native M2 corner. Complete compiled herald/continuation/record-clock/energy histories retain all stops and a finite unconditional error bound. Full spatial encoding and physical calibration are not established.
+- [observation.py](../model/reference_observation/observation.py): Common-reference UCP Petz-transpose observations with exact nested tower; neither local retraction nor modular covariance is assumed.
+- [fixed.py](../model/native_fixed_algebra/fixed.py): All-input source-only H66 conservation exclusion and exact GNS contraction/near-conservation bounds; joint feedback, active recovery and physical energy are separate.
+- [certificate.py](../model/energy_identifiability/certificate.py): Sector/fiber energy-offset conditions, same-history zero energy and fixed-number vacuum-comparison boundary; no physical calibration.
+- [budget.py](../model/band_clock_budget/budget.py): Full 8,128-state 21-step schedule saves9,019,648 supplied pulses under the previous complete error ceiling; preparation and physical calibration remain separate.
 
 Earlier related work: [#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026).
 
@@ -467,6 +499,8 @@ Retained starting evidence:
 - [results.json](../model/native_localization/results.json)
 - [variant.py](../model/recovery_elision/variant.py)
 - [universality.py](../model/biased_code_universality/universality.py)
+- [fixed.py](../model/native_fixed_algebra/fixed.py)
+- [README.md](../model/native_fixed_algebra/README.md)
 
 Current component progress (not gate acceptance):
 
@@ -485,6 +519,7 @@ Current component progress (not gate acceptance):
 - [mobile_results.json](../model/particle_screening/mobile_results.json): Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.
 - [variant.py](../model/recovery_elision/variant.py): Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.
 - [universality.py](../model/biased_code_universality/universality.py): Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.
+- [fixed.py](../model/native_fixed_algebra/fixed.py): All-input source-only H66 conservation exclusion and exact GNS contraction/near-conservation bounds; joint feedback, active recovery and physical energy are separate.
 
 Earlier related work: [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 
@@ -526,6 +561,10 @@ Retained starting evidence:
 - [results.json](../model/band_clock/results.json)
 - [acceptance_audit.py](../model/completion/acceptance_audit.py)
 - [control.py](../model/pair_cyclic_control/control.py)
+- [links.py](../model/gauged_field/links.py)
+- [README.md](../model/gauged_field/README.md)
+- [certificate.py](../model/energy_identifiability/certificate.py)
+- [README.md](../model/energy_identifiability/README.md)
 
 Current component progress (not gate acceptance):
 
@@ -546,6 +585,8 @@ Current component progress (not gate acceptance):
 - [results.json](../model/band_clock/results.json): Complete moving8128-state field sector driven by native record-derived rate using counted local source words; uniform ideal-word halfdiamond bound<0.038565. Supplied global Gibbs reference and rate-transfer service are explicit; native reference inheritance and physical calibration are not established.
 - [acceptance_audit.py](../model/completion/acceptance_audit.py): Exact noninteger pair-gap witness excludes an eta-calibrated invariant modular intertwiner from every finite independent native reference product. Approximate generator error exceeds1/24. Correlated references and counted alternative services are outside this exclusion.
 - [control.py](../model/pair_cyclic_control/control.py): Exact seven-state contact-domain reduction and rational pole enclosure; the separate spectral helper sharpens only the full-field rate-error term. Full spatial histories and physical field/reference premises remain.
+- [links.py](../model/gauged_field/links.py): Exact CAR link covariance and Ward identities; the Feshbach norm metric joins charge-two pair transport, current and residue on one full eigenstate.
+- [certificate.py](../model/energy_identifiability/certificate.py): Sector/fiber energy-offset conditions, same-history zero energy and fixed-number vacuum-comparison boundary; no physical calibration.
 
 Earlier related work: [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 
@@ -573,12 +614,15 @@ Retained starting evidence:
 - [README.md](../model/particle_obstruction/README.md)
 - [results.json](../model/particle_obstruction/results.json)
 - [results.json](../model/bound_pair/results.json)
+- [links.py](../model/gauged_field/links.py)
+- [README.md](../model/gauged_field/README.md)
 
 Current component progress (not gate acceptance):
 
 - [results.json](../model/particle_obstruction/results.json): All 376 source-current anomaly traces classify arbitrary integer signed copies of the declared five-block matter lift. The actual fixed clock source has C2 symmetry and three distinct positive response moments; conditional invariant Yukawas retain an isolated family and zero three-family CP mixing.
 - [results.json](../model/bound_pair/results.json): One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.
 - [mobile_results.json](../model/particle_screening/mobile_results.json): Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.
+- [links.py](../model/gauged_field/links.py): Exact CAR link covariance and Ward identities; the Feshbach norm metric joins charge-two pair transport, current and residue on one full eigenstate.
 
 Earlier related work: [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 
@@ -608,6 +652,10 @@ Retained starting evidence:
 - [results.json](../model/field_tastes/results.json)
 - [results.json](../model/band_clock/results.json)
 - [control.py](../model/pair_cyclic_control/control.py)
+- [field.py](../model/full_fock_field/field.py)
+- [README.md](../model/full_fock_field/README.md)
+- [links.py](../model/gauged_field/links.py)
+- [README.md](../model/gauged_field/README.md)
 
 Current component progress (not gate acceptance):
 
@@ -616,6 +664,8 @@ Current component progress (not gate acceptance):
 - [results.json](../model/field_tastes/results.json): Same-action contact coupling tests complete momentum pockets, retained mirror modes and interaction leakage; exclusions apply to the declared projection at fixed lattice coupling, not every chiral regulator or continuum limit.
 - [results.json](../model/band_clock/results.json): Complete moving8128-state field sector driven by native record-derived rate using counted local source words; uniform ideal-word halfdiamond bound<0.038565. Supplied global Gibbs reference and rate-transfer service are explicit; native reference inheritance and physical calibration are not established.
 - [control.py](../model/pair_cyclic_control/control.py): Exact seven-state contact-domain reduction and rational pole enclosure; the separate spectral helper sharpens only the full-field rate-error term. Full spatial histories and physical field/reference premises remain.
+- [field.py](../model/full_fock_field/field.py): All-number full-Fock source construction and fixed-spacing interacting thermodynamic local dynamics with rational locality bounds; no chiral spatial-continuum or native action selection.
+- [links.py](../model/gauged_field/links.py): Exact CAR link covariance and Ward identities; the Feshbach norm metric joins charge-two pair transport, current and residue on one full eigenstate.
 
 Earlier related work: [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 
@@ -696,10 +746,16 @@ Retained starting evidence:
 - [from_observer_consensus_to_standard_physics.tex](../flagship/from_observer_consensus_to_standard_physics.tex)
 - [PHYSICAL_AUDIT.md](../model/PHYSICAL_AUDIT.md)
 - [results.json](../model/field_stress/results.json)
+- [retraction.py](../model/regional_modular/retraction.py)
+- [README.md](../model/regional_modular/README.md)
+- [observation.py](../model/reference_observation/observation.py)
+- [README.md](../model/reference_observation/README.md)
 
 Current component progress (not gate acceptance):
 
 - [results.json](../model/field_stress/results.json): Exact local energy continuity and interaction-dependent boundary flux on the full finite field; same-action quantum Gibbs/entropy identity and regional bare-energy countercontrol. Lorentz stress, null geometry, area variation and Einstein premises are not established.
+- [retraction.py](../model/regional_modular/retraction.py): Exact faithful regional retraction criterion and 117/16 boundary witness; ordinary restrictions and reduced clocks remain valid.
+- [observation.py](../model/reference_observation/observation.py): Common-reference UCP Petz-transpose observations with exact nested tower; neither local retraction nor modular covariance is assumed.
 
 Earlier related work: [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 

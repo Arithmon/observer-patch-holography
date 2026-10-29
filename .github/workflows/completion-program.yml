@@ -36,6 +36,14 @@ on:
       - 'model/pair_cyclic_control/**'
       - 'model/recovery_elision/**'
       - 'model/biased_code_universality/**'
+      - 'model/energy_identifiability/**'
+      - 'model/regional_modular/**'
+      - 'model/band_clock_budget/**'
+      - 'model/compiled_native_history/**'
+      - 'model/reference_observation/**'
+      - 'model/native_fixed_algebra/**'
+      - 'model/gauged_field/**'
+      - 'model/full_fock_field/**'
       - '.github/workflows/completion-program.yml'
   pull_request:
     paths:
@@ -71,6 +79,14 @@ on:
       - 'model/pair_cyclic_control/**'
       - 'model/recovery_elision/**'
       - 'model/biased_code_universality/**'
+      - 'model/energy_identifiability/**'
+      - 'model/regional_modular/**'
+      - 'model/band_clock_budget/**'
+      - 'model/compiled_native_history/**'
+      - 'model/reference_observation/**'
+      - 'model/native_fixed_algebra/**'
+      - 'model/gauged_field/**'
+      - 'model/full_fock_field/**'
       - '.github/workflows/completion-program.yml'
   workflow_dispatch:
 
@@ -106,6 +122,9 @@ jobs:
       - run: python -m model.biased_reset --check model/biased_reset/results.json
       - run: python -m pytest -q -W error model/band_clock model/native_localization model/native_program
       - run: python -m pytest -q -W error model/pair_cyclic_control model/recovery_elision model/biased_code_universality
+      - run: python -m pytest -q -W error model/energy_identifiability model/regional_modular model/band_clock_budget model/compiled_native_history
+      - run: python -m pytest -q -W error model/reference_observation model/native_fixed_algebra model/gauged_field model/full_fock_field
+      - run: python -m model.band_clock_budget --check model/band_clock_budget/results.json
       - run: python -m model.band_clock --check model/band_clock/results.json
       - run: python -m model.native_localization.experiment --check model/native_localization/results.json
       - run: python -m model.native_program.receipt --check model/native_program/results.json
