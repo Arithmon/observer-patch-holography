@@ -393,16 +393,23 @@ archived paper *Paradise as Fixed-Point Consensus* (source in
   `EventAlgebra/TwoScalePublicRepair.lean`,
   `Thermodynamics/PoissonizedRepair.lean`,
   `Thermodynamics/PoissonizedRepairOperatorExp.lean`,
-  `Dynamics/ConditionalExpectationGenerator.lean`): sorry-free finite linear
+  `Dynamics/ConditionalExpectationGenerator.lean`,
+  `Dynamics/ChoiCPTP.lean`): sorry-free finite linear
   and matrix algebra. Partition averaging has an explicit normalized Kraus
   family and preserves trace. An idempotent publicization map has exact
   public/residual decomposition, multiplicative relaxation composition,
   exponential semigroup, generator-flow identities, and the literal
   `NormedSpace.exp` formula for bounded idempotent endomorphisms on real Banach
-  spaces. Partition pinching has the displayed projector-rate dissipator form and a stable algebra equal
-  to the commutant at nonzero rate; the multi-collar intersection requires an
-  explicit no-cancellation premise. No formal CP/CPTP predicate, physical rate,
-  clock, or source channel follows. See `B2_PUBLICIZATION_DYNAMICS.md`.
+  spaces. Partition pinching has the displayed projector-rate dissipator form
+  and a stable algebra equal to the commutant at nonzero rate. Its trace
+  residual identity proves no-cancellation for nonnegative rates, and strictly
+  positive rates give the multi-collar commutant intersection without a
+  commuting-partition hypothesis. The signed-rate theorem retains a separate
+  no-cancellation premise. A formal complete-positivity predicate and Kraus
+  criterion certify averaging, pinching, and relaxation with nonnegative rate
+  and time as CPTP; an exact transpose Choi control refutes the weaker
+  positivity-only inference. No physical rate, clock calibration, or
+  source-selected channel follows. See `B2_PUBLICIZATION_DYNAMICS.md`.
 - B3 finite public/private dynamics (`Dynamics/PublicMarkov.lean`,
   `Dynamics/PublicAutomorphism.lean`, `Dynamics/PrivateInner.lean`): sorry-free
   finite algebra and analysis. Under

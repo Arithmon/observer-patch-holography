@@ -164,12 +164,18 @@ surface for the OPH consensus layer. Contents:
   `EventAlgebra/TwoScalePublicRepair.lean`,
   `Thermodynamics/PoissonizedRepair.lean`,
   `Thermodynamics/PoissonizedRepairOperatorExp.lean`, and
-  `Dynamics/ConditionalExpectationGenerator.lean`. It proves normalized
+  `Dynamics/ConditionalExpectationGenerator.lean`, and
+  `Dynamics/ChoiCPTP.lean`. It proves normalized
   averaging Kraus data, trace preservation, exact residual relaxation and
   semigroup laws, a generator flow equation, the literal bounded-operator
   exponential formula, the projector-rate matrix dissipator identity, and the
-  stable commutant. The formal CP/CPTP predicate, multi-collar no-cancellation
-  proof, source-derived rate, clock, and physical channel are not supplied. See
+  stable commutant. A trace residual identity discharges multi-collar
+  no-cancellation for nonnegative rates; strictly positive rates give the
+  commutant intersection without requiring commuting pinchings. The signed-rate
+  theorem retains its separate no-cancellation premise. The formal amplified-
+  positivity predicate certifies averaging, pinching, and nonnegative-rate,
+  nonnegative-time relaxation as CPTP, with a transpose Choi negative control.
+  Source selection, physical rate and clock calibration remain open. See
   `B2_PUBLICIZATION_DYNAMICS.md`.
 - A sorry-free bounded B3 public/private dynamics package in
   `Dynamics/PublicMarkov.lean` and `Dynamics/PrivateInner.lean`. Positive
