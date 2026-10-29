@@ -45,8 +45,8 @@
       "status": "PROPOSED_NOT_ESTABLISHED"
     },
     "parents": {
-      "claims/claim_registry.yaml": "9e32422b915cc9061f259532586d48d7793e0d201a601dcb281ac53e5b14c666",
-      "claims/completion_program.json": "2141a875193d64c171aa7a0b00b9f5dfa454a89b8726a48282c633840de115ac",
+      "claims/claim_registry.yaml": "efc1a41bc38e90d8079cd214918d571f74aa9395c7e53537b17281eb9f727906",
+      "claims/completion_program.json": "de697290c8ef15910f048d46aad1adce641aa0a9f4217627997ab720a0974bc6",
       "claims/executable_model_hypothesis.json": "1855a611870a64b3d97fbaa8759385761dda9130a1517233193af2c7f170cd2b",
       "docs/OPH_EXECUTABLE_HYPOTHESIS.md": "c503247a2b333c2e27b3eba865d47f2d15c966a5052eceb4aadb14fc9002f35a"
     },
@@ -667,7 +667,7 @@
             "independent_check": "model/active_code_energy/test_energy_bridge.py",
             "path": "model/active_code_energy/energy_bridge_results.json",
             "scope": "The canonical screened code has native current rate 1/6 per uniform-seam attempt. Positive conserved-sector reweightings preserve stationary dynamics and leave formal Gibbs energy contrasts free. Prior-code fixed-seam recovery pulses retain their own protocol.",
-            "sha256": "d59512d3d37c2f6a5ef80e3b36aa20a90a3bb8d365049dc8f33e535d2320bbfd"
+            "sha256": "ccf14798e728ba42b29e87405ae42d2fe7854bc3caa7f50dc38e1456b5682f7a"
           },
           {
             "campaign_id": "OPH-CLOCK-COUNT-INFERENCE-2026-10-28-v1",
@@ -747,7 +747,7 @@
             "independent_check": "model/conserved_sector_action/test_sector_action.py",
             "path": "model/conserved_sector_action/sector_action_results.json",
             "scope": "A Lean theorem proves stationary reweighting, conditional cancellation and zero sector-potential gradient for every positive conserved-sector factor. Exact checks bind its premises to all 4356 native source/core states; the full native kernel is checked in Python rather than encoded as a Lean value.",
-            "sha256": "1b4507100033ae181cad0b187e90540c076e968c50daf7dcd5a6b1912e1f8026"
+            "sha256": "b4f43448724801b37edc498bfc10faf095e758f285147ffb1650212c7a162c1a"
           },
           {
             "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1",
@@ -1125,7 +1125,7 @@
               "independent_check": "model/active_code_energy/test_energy_bridge.py",
               "path": "model/active_code_energy/energy_bridge_results.json",
               "scope": "The canonical screened code has native current rate 1/6 per uniform-seam attempt. Positive conserved-sector reweightings preserve stationary dynamics and leave formal Gibbs energy contrasts free. Prior-code fixed-seam recovery pulses retain their own protocol.",
-              "sha256": "d59512d3d37c2f6a5ef80e3b36aa20a90a3bb8d365049dc8f33e535d2320bbfd"
+              "sha256": "ccf14798e728ba42b29e87405ae42d2fe7854bc3caa7f50dc38e1456b5682f7a"
             },
             {
               "campaign_id": "OPH-CLOCK-COUNT-INFERENCE-2026-10-28-v1",
@@ -1160,7 +1160,7 @@
               "independent_check": "model/conserved_sector_action/test_sector_action.py",
               "path": "model/conserved_sector_action/sector_action_results.json",
               "scope": "A Lean theorem proves stationary reweighting, conditional cancellation and zero sector-potential gradient for every positive conserved-sector factor. Exact checks bind its premises to all 4356 native source/core states; the full native kernel is checked in Python rather than encoded as a Lean value.",
-              "sha256": "1b4507100033ae181cad0b187e90540c076e968c50daf7dcd5a6b1912e1f8026"
+              "sha256": "b4f43448724801b37edc498bfc10faf095e758f285147ffb1650212c7a162c1a"
             },
             {
               "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1",
@@ -1474,7 +1474,7 @@
               "independent_check": "model/active_code_energy/test_energy_bridge.py",
               "path": "model/active_code_energy/energy_bridge_results.json",
               "scope": "The canonical screened code has native current rate 1/6 per uniform-seam attempt. Positive conserved-sector reweightings preserve stationary dynamics and leave formal Gibbs energy contrasts free. Prior-code fixed-seam recovery pulses retain their own protocol.",
-              "sha256": "d59512d3d37c2f6a5ef80e3b36aa20a90a3bb8d365049dc8f33e535d2320bbfd"
+              "sha256": "ccf14798e728ba42b29e87405ae42d2fe7854bc3caa7f50dc38e1456b5682f7a"
             },
             {
               "campaign_id": "screened-recovery-20261028-v1",
@@ -1495,7 +1495,7 @@
               "independent_check": "model/conserved_sector_action/test_sector_action.py",
               "path": "model/conserved_sector_action/sector_action_results.json",
               "scope": "A Lean theorem proves stationary reweighting, conditional cancellation and zero sector-potential gradient for every positive conserved-sector factor. Exact checks bind its premises to all 4356 native source/core states; the full native kernel is checked in Python rather than encoded as a Lean value.",
-              "sha256": "1b4507100033ae181cad0b187e90540c076e968c50daf7dcd5a6b1912e1f8026"
+              "sha256": "b4f43448724801b37edc498bfc10faf095e758f285147ffb1650212c7a162c1a"
             }
           ],
           "requires": [
