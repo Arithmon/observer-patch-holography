@@ -1993,9 +1993,9 @@
         "sha256": "sha256:01a0e5a867febc03fa3e84ee6831734b13be19596375e8b13d26fcb7cf78889e"
       },
       {
-        "byte_count": 3251,
+        "byte_count": 4421,
         "path": "code/a5_closure/INTEGRATION_2026-10-29.md",
-        "sha256": "sha256:774c24f7ef510c09b322e0dbf045e0519d79f93de68af935a00669f32a7f814d"
+        "sha256": "sha256:8d7e493b2952a01550f521525c027170cb60d340f4384e75414d16f618f6903b"
       },
       {
         "byte_count": 38447,
@@ -4868,7 +4868,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:e395de8ab2826845e9e97381521163677e7f9fb357fc043893e752f6b2cdb4bc",
+    "files_sha256": "sha256:60878aa3fbe2561f877e2c8c8a0f56e68fa60252c599e11ae02756fc51ff9c1e",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7777,7 +7777,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:26d516cc04fdb9bc8003e84f287ff70262824ae6dd8fb03e13a206c57e01a7c3",
+  "inventory_sha256": "sha256:f4df3838c3ae4a156c10325970fa9356a3aab6cc25cde9367772b5a1be3d1029",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",

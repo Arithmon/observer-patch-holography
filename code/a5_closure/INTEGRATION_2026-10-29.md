@@ -50,3 +50,23 @@ identify spatial loads with quantum states; coherent native access does not
 provide a source-derived spatial decoder; and the clean-register decoder
 obstruction applies to the fixed finite template grammar. No spectral-gap
 operator map, physical particle or calibrated mass is added by integration.
+
+## A word-length-independent corollary inside the fixed grammar
+
+The clean-register decoder proof uses field closure, not a search through
+the 31-block resource envelope. Every exact ideal template in the declared
+alphabet has matrix entries in `F = Q(i,sqrt(2))`. Any finite product of
+these templates, and its adjoint, still has entries in `F`. If such a unitary
+decoded the GV code into the declared clean receiver, its code projector
+would be `U* P_receiver U`, with all entries in `F`, since the clean receiver
+projector has rational entries. The independently reconstructed GV projector
+has entry `1/20 + sqrt(5)/100`, outside `F` because
+`Q(sqrt(5)) intersect Q(i,sqrt(2)) = Q`.
+
+Thus the same exact clean-register obstruction holds for every finite word
+length in this fixed template alphabet. The receipt's 31-block admitted
+resource envelope and its replay are unchanged. This analytic corollary does
+not cover arbitrary angles, approximate decoders, nontrivial residual states,
+postselection, a changed code or another alphabet. It does not exclude the
+broader executable program class. No new decoder search or source execution
+is claimed by the corollary.
