@@ -27,7 +27,7 @@ def test_complete_reference_execution_and_counts(packet):
     assert {k:actual[k] for k in ('routes','route_steps','executed_events','executed_reads','consumer_claims')} == {
         "routes":298,"route_steps":2215,"executed_events":149760,"executed_reads":13479912,"consumer_claims":8}
     assert actual['balanced_routes']==161 and actual['balanced_steps']>0
-    assert actual['downstream_claims']==146
+    assert actual['downstream_claims']==148
 
 
 def test_dark_source_context_does_not_transfer_dense_m1_or_physical_admission():
@@ -114,6 +114,24 @@ def test_native_family_descendant_retains_its_declared_feedback_contract():
     assert len(links) == 1 and links[0]['from'] == 'OPH-MODEL-COMMON-SOURCE-EXECUTION'
     assert 'New feedback and interaction services remain explicitly declared' in links[0]['role']
     assert 'no earlier source compilation or continuum claim is inherited' in links[0]['role']
+
+
+@pytest.mark.parametrize('name,assumption', [
+    ('OPH-MODEL-WEYL-CONTACT-FINITE-PAIR',
+     'declared_Weyl_contact_CAR_action_and_fixed_spatial_lattice'),
+    ('OPH-MODEL-NATIVE-LOCALIZED-COHERENCE',
+     'declared_biased_native_coherence_and_complete_scheduler'),
+])
+def test_particle_clock_and_native_coherence_do_not_inherit_dense_m1(name, assumption):
+    downstream = audit.downstream_audit()
+    row = downstream['claims'][name]
+    assert assumption in row['assumptions']
+    assert 'declared_coherent_proper_code_services_and_analogue_source_controls' in row['assumptions']
+    assert row['disposition'] == 'existing_contract_retained_without_automatic_transfer'
+    assert not (set(row['assumptions']) & audit.KEYS)
+    links = [edge for edge in downstream['links'] if edge['to'] == name]
+    assert len(links) == 1 and links[0]['from'] == 'OPH-MODEL-COMMON-SOURCE-EXECUTION'
+    assert 'does not import' in links[0]['role']
 
 
 @pytest.mark.parametrize('name,protocol', [

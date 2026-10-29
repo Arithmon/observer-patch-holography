@@ -77,3 +77,12 @@ stationarity to either claim.
 This is the completed necessity decision for these named consumers. The
 positive results and explicit counterexample are the deliverables; a promise
 to derive the missing physical source later is not part of their proof.
+
+
+The finite Weyl/contact pair and native localized-coherence claims are further
+source-compiler descendants. The former supplies its lattice, interacting
+CAR action, Gibbs reference and clock-transfer services; the latter supplies
+its biased carrier, known faithful preparation and exact flagged-code domain.
+Neither inherits the dense M1 read law, a physical continuum, particle mass
+or source-selected field interpretation from these contextual dependencies.
+The current closure audit retains their full assumptions and edge roles.

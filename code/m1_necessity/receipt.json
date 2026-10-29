@@ -1749,6 +1749,15 @@
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "590a4533fff61eb35648626faf8ad84616b45c04495a8c7a7f4e0ddf57af8ff9"
       },
+      "OPH-MODEL-NATIVE-LOCALIZED-COHERENCE": {
+        "assumptions": [
+          "declared_biased_native_coherence_and_complete_scheduler",
+          "declared_coherent_proper_code_services_and_analogue_source_controls",
+          "declared_exact_all_seam_flagged_code_domain"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "7cc234acf58db42c304351c4c225e120810a7a5d70bbad5c164d9cd822781b5a"
+      },
       "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT": {
         "assumptions": [
           "declared_published_oscillator_readout_protocol",
@@ -1788,6 +1797,17 @@
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
         "original_claim_sha256": "4eb037c3c9963016e5a72bbf061d25c35a2c4bae1860798f3e33743fa1076fd0"
+      },
+      "OPH-MODEL-WEYL-CONTACT-FINITE-PAIR": {
+        "assumptions": [
+          "declared_Weyl_contact_CAR_action_and_fixed_spatial_lattice",
+          "declared_complete_two_fermion_sector_and_boundary_conditions",
+          "declared_coherent_proper_code_services_and_analogue_source_controls",
+          "supplied_same_number_field_to_native_corner_isometry",
+          "declared_finite_Gibbs_reference"
+        ],
+        "disposition": "existing_contract_retained_without_automatic_transfer",
+        "original_claim_sha256": "ebac085ce3d30442c90b207ce91e601c754211be07f26c2519576ea429f0ac41"
       },
       "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM": {
         "assumptions": [
@@ -2986,6 +3006,11 @@
       },
       {
         "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+        "role": "Reuses the complete native instruments, source compiler and exact-code support result. It does not import the supplied field action or its energy dictionary.",
+        "to": "OPH-MODEL-NATIVE-LOCALIZED-COHERENCE"
+      },
+      {
+        "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
         "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification",
         "to": "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT"
       },
@@ -2998,6 +3023,11 @@
         "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
         "role": "inherits source compiler and complete recorded instrument methods, not the earlier charged action or its physical identification",
         "to": "OPH-MODEL-SPATIAL-INTERACTION-EXECUTION"
+      },
+      {
+        "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+        "role": "reuses source compiler and complete-instrument methods; does not import the earlier scalar action, reference or physical dictionary",
+        "to": "OPH-MODEL-WEYL-CONTACT-FINITE-PAIR"
       },
       {
         "from": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
@@ -3981,10 +4011,10 @@
     "Lean/Geometry/M1Necessity.lean": "2b282b25fe3f82153d2780366b36e6eea8cd4f7685d0e08a9ebd15355062ff98",
     "Lean/Geometry/M1NecessityAxiomAudit.lean": "41f1652a454b94dde7f3a198b4c45badba075a54d13f4ed5a23ac533c3c4f677",
     "code/m1_necessity/BALANCED_REPLACEMENT.md": "166af4d120d3dae4f3d077d1160434d4650d7dc5cc7c48d56c8f7f1defb95fce",
-    "code/m1_necessity/CONSUMERS.md": "ec8fbe9f40a3207480b72dfe306b3c8eef4b6efdb43f075786087b16dce2e5c0",
+    "code/m1_necessity/CONSUMERS.md": "87bc0c2bc9f70e8f697802ba3d958547605c152bddb035e5dc1675eec64bf5d2",
     "code/m1_necessity/CONTRACT.md": "f3186f4911ea004fcad0058dbc0a526d359c623d42bdb4bf279fc6dd43ea1670",
     "code/m1_necessity/DERIVATION.md": "13754829bb642c0e48c4ae8cfb8f69d56baa8de90c36dfcb18ae0ff0a8dcca9c",
-    "code/m1_necessity/README.md": "95f77d76da576480fd44490e80fb53cd5f03e52e8ac7f2fb6b45648edd64e8ac",
+    "code/m1_necessity/README.md": "7e3b526e07995cfeb797cd832205a2095cc939ca1f5de5e19e8e79123c713d83",
     "code/m1_necessity/SPECTRAL_COMPLETION.md": "1e633dcbe37a26401ef7c81c158f47d164b5ffb03ae6631da4e42b431ea19f54",
     "code/m1_necessity/__init__.py": "a49a6656f96a30bd6343e498a0ca5302dae30515d4cf458d45c172933a0247ac",
     "code/m1_necessity/audit.py": "d6a0df2ca2ab885fa8cb7c527f3a74ac17b748847524f4cec7d8df7a049a50c0",
@@ -3993,9 +4023,9 @@
     "code/m1_necessity/build.py": "02da13ead4ae1dda4bbce10d2d54fd3868e11a9c772675df85fedb8f85af9bd6",
     "code/m1_necessity/check.py": "5b32a5391dbbdd4f2ea428b8913ff0f7359234757eaa675f85d40e49a42d26e3",
     "code/m1_necessity/consumers.json": "388204f13cda0b8fbe804ef544cdaf7092a2dbc64e90f5849ba4fc3ed7569996",
-    "code/m1_necessity/downstream.json": "7b8b4f79737c69103e7fc44834597ddfc40258af40bfd3755e0eb9ecf9991b82",
+    "code/m1_necessity/downstream.json": "b8df9cd99dca15268e8b0282df6daabb0cee56adf000e59d58c81ebfe7e70b9c",
     "code/m1_necessity/model.py": "8193f1ebd30f00ee4ba5616839899b2dac86e6ee9ca2f3dfd71fe2022f65cb89",
-    "code/m1_necessity/test_necessity.py": "3abc88d7d01daf7a2b7d6e4862d051b41e1c3153ef9246373bde049ae642cb20",
+    "code/m1_necessity/test_necessity.py": "fd59a6f372e9fe7085eeffbaef3eff8e16b51acbd9a647d8e78a3a4d760951c3",
     "code/m1_necessity/verify.py": "b49005bbb65ceee876ba76dd3242dcc7e6729bcc35c1e54a1050b5832ddff3f0",
     "paper/tex_fragments/CROSSING_READ_AREA_LAW.tex": "7407e8a7e107ecbc444f5e1354cd648767213e00cfb9269b9365917a4f2988a0",
     "paper/tex_fragments/M1_NECESSITY.tex": "b153dca6015888c4db7968b4610f933b05e058b4198b36664e91171bb6c7f2c2",
