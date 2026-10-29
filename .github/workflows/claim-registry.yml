@@ -16,6 +16,7 @@ on:
       - "README_FR.md"
       - "tools/check_claim_registry.py"
       - "tools/build_claim_views.py"
+      - "code/audit/test_basis_principle_boundaries.py"
       - "tracking/premise_register.json"
       - "docs/**"
       - "Lean/**"
@@ -37,6 +38,7 @@ on:
       - "README_FR.md"
       - "tools/check_claim_registry.py"
       - "tools/build_claim_views.py"
+      - "code/audit/test_basis_principle_boundaries.py"
       - "tracking/premise_register.json"
       - "docs/**"
       - "Lean/**"
@@ -79,6 +81,9 @@ jobs:
 
       - name: Validate registry
         run: python3 tools/check_claim_registry.py
+
+      - name: Check closure and response-premise countermodels
+        run: python3 -W error code/audit/test_basis_principle_boundaries.py
 
       - name: Validate model–theorem premise map
         run: |

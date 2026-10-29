@@ -1,7 +1,9 @@
 # The OPH basis
 
-Observer Patch Holography has one hypothesis, one rule that follows from it,
-one condition that defines what is shared, and one executable specification.
+Observer Patch Holography proposes a closure hypothesis, an operational
+agreement condition and an executable specification. It also adopts
+state-selection and response-endogeneity principles, motivated by the
+requirement of internal realization but not deduced from closure alone.
 The conditional theorems of the [theorem library](../paper/README.md) keep
 their displayed premises; the [premise map](../model/PREMISES.md) records the
 connections between those premises and the executable specification and
@@ -31,20 +33,33 @@ instantaneous fixed state, stationary distribution and continuing regime.
 
 ## The no-outside rule
 
-A self-contained structure has no external vantage point from which a premise
-could be imposed. The rule has three applications.
+A self-contained realization accounts for its operations and information
+access within the structure. This motivates the following justification
+policy and two additional constitutive principles. Their mathematical
+content is stated separately: absence of an external implementer does not
+by itself select a state or the connected group that implements rechartings.
 
-- **Justification.** A premise is justified when observers recover it and the
+- **Justification policy.** A premise is justified operationally when observers recover it and the
   specification that implements it runs and reproduces their measurements.
   The carrier, the observer algebra, the repair law and the closure
-  coordinates P and N owe no further a-priori argument, and construction
-  choices need no uniqueness theorem.
-- **State selection.** No information may be assumed beyond the recovered
-  constraints. The selected state is the least informative one relative to
-  the recovered reference under every observer-visible constraint.
-- **Transformations.** Every change of description that observers can make is
-  implemented by the structure's own operations: each proper recharting of a
-  carrier is realized from inside its complete reversible response.
+  coordinates P and N must meet that test; a construction choice needs no
+  uniqueness theorem unless uniqueness is part of its claim.
+- **State-selection principle (A3).** On the declared feasible state space,
+  exact reference, observer cover and positive weights, adopt the least
+  informative state relative to that reference under every observer-visible
+  constraint. This is a constitutive selection law. A fixed-point equation
+  alone supplies neither its relative-entropy objective nor its reference.
+- **Response-endogeneity principle (part of A2).** On the complete-response
+  branch, require each proper carrier recharting to be implemented by the
+  connected reversible response group, up to a unitary centralizer acting
+  trivially on the response algebra. This is stronger than implementation by
+  some internal operation: an internally available disconnected operation
+  can act nontrivially on an abelian current algebra, whose inner action is
+  trivial.
+
+The conditional entropy-selection and gauge-type theorems retain these
+principles as premises. Closure and operational agreement do not prove their
+necessity; a physical application must also realize them on the same source.
 
 ## The agreement condition
 
@@ -72,10 +87,10 @@ of the completion target.
 
 The exposition enters at the executable specification, because it is
 concrete and because observers stand there, holding records and inferring.
-The order of justification puts the hypothesis first, because it is what
-exempts the specification from outside justification. The structure itself
-has no first element in either sense, and there is no starting point in a
-timeless loop.
+The hypothesis specifies the internal-realization contract; the adopted
+principles and executable choices then have to satisfy their stated
+mathematical and empirical tests. The structure itself has no first element
+in either sense, and there is no starting point in a timeless loop.
 
 ## Theorem-library premises
 
@@ -85,8 +100,8 @@ name parts of the basis above.
 | Library label | Registry name | Part of the basis |
 | --- | --- | --- |
 | A1 | `observer_screen_architecture` | The carrier, federation and complete-response layer of the executable specification |
-| A2 | `observer_meaning_agreement` | The agreement condition, with the transformation application of the rule as its endogeneity clause |
-| A3 | `conditional_maximum_randomness` | The state-selection application of the rule |
+| A2 | `observer_meaning_agreement` | The agreement condition, together with the adopted response-endogeneity principle |
+| A3 | `conditional_maximum_randomness` | The adopted state-selection principle on its declared reference and constraint space |
 
 The [premise reference](AXIOM_REFERENCE.md) gives the formal statements of
 A1, A2 and A3; it is retained byte-identical for pinned receipts, and its

@@ -480,7 +480,7 @@
     {
       "from": "OPH-CONS-D1",
       "to": "OPH-CONS-REFINEMENT-MODULI",
-      "role": "supplies finite-stage normalizers; uniform inverse/residual moduli, Lipschitz restrictions, compatible inputs, vanishing solver errors, completeness, and cofinally vanishing tails remain explicit"
+      "role": "supplies finite-stage normalizers; attained consistency-error-bound witnesses, uniform inverse/residual moduli, Lipschitz restrictions, compatible inputs, vanishing solver errors, completeness, and cofinally vanishing tails remain explicit"
     },
     {
       "from": "OPH-OBS-PATCH-DEF",

@@ -3,6 +3,7 @@ from fractions import Fraction as F
 import pytest
 
 from .sector_action import certify_kernel, native_kernel
+from . import sector_action as action
 
 
 def fixture():
@@ -45,3 +46,30 @@ def test_nonstochastic_row_is_rejected():
 def test_physical_law_must_be_explicit():
     with pytest.raises(ValueError, match="expected C or E"):
         native_kernel("other")
+
+
+def test_frozen_predecessor_receipt_has_an_explicit_exact_capture():
+    bindings = action.predecessor_bindings()
+    assert set(bindings) == set(action.BASE_SOURCES)
+    assert bindings[action.PREDECESSOR_ENERGY_SOURCE] == action.PREDECESSOR_ENERGY_SHA256
+    current = action.source_bindings()
+    assert action.PREDECESSOR_ENERGY_SOURCE not in current
+    assert current[action.PREDECESSOR_ENERGY_CAPTURE] == action.PREDECESSOR_ENERGY_SHA256
+
+
+def test_changed_predecessor_capture_is_rejected(monkeypatch, tmp_path):
+    original = (action.ROOT/action.PREDECESSOR_ENERGY_CAPTURE).read_bytes()
+    changed = tmp_path/action.PREDECESSOR_ENERGY_CAPTURE
+    changed.parent.mkdir(parents=True)
+    changed.write_bytes(original+b'\n')
+    monkeypatch.setattr(action, 'ROOT', tmp_path)
+    with pytest.raises(ValueError, match="predecessor capture changed"):
+        action.report()
+
+
+def test_live_energy_receipt_does_not_replace_the_frozen_input(monkeypatch):
+    original = action.digest
+    monkeypatch.setattr(action, 'digest', lambda path: '0'*64
+                        if path == action.PREDECESSOR_ENERGY_SOURCE else original(path))
+    assert action.predecessor_bindings()[action.PREDECESSOR_ENERGY_SOURCE] == action.PREDECESSOR_ENERGY_SHA256
+    assert action.PREDECESSOR_ENERGY_SOURCE not in action.source_bindings()

@@ -236,7 +236,7 @@
     "Lean/Geometry/SourceActionMeasure.lean": "802361b7efc592b84d2df4d00506818a9d9354fd239b94eaf63e26792ea3a73d",
     "Lean/Screen/RegionalContinuity.lean": "fa00c3aed6580174519e1d828ad81572d7ac7b759a3274dbc60e99761d76bd28",
     "Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean": "646f2b7865b6d14a21a05b08013c35848fd3380d89cfffa2fff6b390786c9a22",
-    "model/active_code_energy/README.md": "dd102831d87c4e4b375e33494038897f0c1b3792a363daeb2422da9f911d0b55",
+    "model/active_code_energy/README.md": "b30d199e99bd80c05e4a2101132ba008cd3f3ad0b3f4779b68df181778fb81bc",
     "model/active_code_energy/__init__.py": "78d9126fe87e2cd176cfcd5b2fa37aceda69f10b3b5b848110b590b1ce703c93",
     "model/active_code_energy/campaign.json": "aad4536c5289381ca61e0aad60699f1f420cf5aa6c8006f51601f7dae3cd22dd",
     "model/active_code_energy/energy_bridge.py": "5827e26cc323060b6ed7d9a0d23c874a3d4cef9acee6310e5eee34550db0e36e",

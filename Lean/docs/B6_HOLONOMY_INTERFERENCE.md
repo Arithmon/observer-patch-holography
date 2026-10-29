@@ -23,6 +23,16 @@ ordered group-valued transport. Its exact results are:
   unity, and the result transports through a supplied cyclic-sector
   homomorphism.
 
+Path multiplication is chronological: if `p` is followed by `q`, its
+comparison matrix is `U_p U_q`, and path reversal gives `U_p^-1`. With the
+paper's column-component interpretation, `U_ij` compares chart `j` to chart
+`i`; forward column transport is the adjoint comparison. The ratio for two
+paths with common endpoints is `U_p U_q^-1`, the holonomy of `p` followed by
+the reverse of `q` at the initial chart. A frame change
+`U_ij -> V_i U_ij V_j^-1` conjugates this ratio at that initial chart. This
+agrees with the strict triangle condition `U_ij U_jk = U_ik` and the paper's
+central-defect convention.
+
 The local-flat example is a four-vertex path/face control with exactly two
 declared triangular faces and a separate undeclared, unfilled loop. It does
 not claim that every possible triangle is a face or flat, and proves no

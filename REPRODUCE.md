@@ -17,7 +17,13 @@ python -m pytest -q -W error model
 ```
 
 The verifier checks the artifact manifests and replays every receipt declared
-in `model/verify.py`. The finite observer contributes the exact native observer, its
+in `model/verify.py`. Its replay inventory is narrower than the set of all
+retained results: native-link selection and holonomy reconstruction, for
+example, are replayed by their model regression tests. Run both commands;
+neither artifact hashing nor one replay command replaces the other tests.
+The standalone source-field and particle checks used by CI are listed below.
+
+The finite observer contributes the exact native observer, its
 quantum mixing and record capacity, a 20,000-trial sequential run, complete
 record recovery, the P-dependent binary detector with 200,000 trials and
 the observer-local incident-tick calculation. The field detectors
@@ -103,8 +109,25 @@ conditional software tests; the scalar action, Born readout and model-time
 convention are supplied, and independent physical comparison is separate.
 
 The [Runnable observer model workflow](.github/workflows/observer-model.yml)
-runs this gate on Linux and Windows for changes to the model and its source
-dependencies. This supplements the source-frozen mandatory runner below.
+runs the verifier and model regressions on Linux and Windows for changes to
+the model and its source dependencies. It also executes the following
+standalone source-field and particle checks in the model environment:
+
+```sh
+python code/source_scalar_time_refinement/verify_source_scalar_time_refinement.py
+python -m model.common_source.repair_field_attachment --check model/common_source/repair_field_attachment_results.json
+python -m model.common_source.native_staggered_field --check model/common_source/native_staggered_field_results.json
+python -m model.common_source.native_field_history --check model/common_source/native_field_history_results.json
+python -m model.common_source.native_charged_spectrum --check model/common_source/native_charged_spectrum_results.json
+python -m model.common_source.native_code_transport --check model/common_source/native_code_transport_results.json
+python -m model.common_source.native_charged_spectroscopy --check model/common_source/native_charged_spectroscopy_results.json
+python -m model.native_equilibration.wedge_modular --check model/native_equilibration/wedge_modular_results.json
+python -B model/observer_particles/run.py --verify-only
+python -B model/observer_particles/run.py
+```
+
+Together these commands reproduce the workflow's separate gates; running
+only `model.verify` does not. They supplement the source-frozen mandatory runner below.
 Neither that runner nor a bare `python -m pytest` includes the new `model/`
 tests: invoke the model commands explicitly when changing this implementation.
 The finite observer construction is executable with declared apparatus and

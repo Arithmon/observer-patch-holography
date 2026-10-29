@@ -53,9 +53,10 @@ when consolidating documents.
 
 ## Basis And Paper Set
 
-- [The OPH Basis](BASIS.md) states the closure hypothesis, the no-outside
-  rule, the agreement condition and the executable specification, and how the
-  theorem-library premises A1, A2 and A3 relate to them.
+- [The OPH Basis](BASIS.md) distinguishes the closure hypothesis,
+  internal-realization policy, agreement, adopted state-selection and
+  response-endogeneity principles, and executable specification, and explains
+  how the theorem-library premises A1, A2 and A3 relate to them.
 - [The Paper Set](PAPER_SET.md) records the model milestone, the role of each
   paper and the archived papers.
 - [Executable Hypothesis](OPH_EXECUTABLE_HYPOTHESIS.md) states the common

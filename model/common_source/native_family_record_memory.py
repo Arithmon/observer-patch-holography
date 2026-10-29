@@ -34,15 +34,24 @@ RAW_LABELS = tuple((cc, cr, ec, er) for cc in (0, 1) for cr in range(4)
 
 
 def _number(value):
-    value = s.Rational(str(value)) if isinstance(value, (float, np.floating)) else s.sympify(value)
-    if value.free_symbols or value.is_real is False or not math.isfinite(float(value)):
+    try:
+        value = s.Rational(str(value)) if isinstance(value, (float, np.floating)) else s.sympify(value)
+    except (s.SympifyError, TypeError, ValueError, OverflowError) as exc:
+        raise ValueError('a finite real event factor with no free parameters is required') from exc
+    if (not isinstance(value, s.Expr) or value.free_symbols
+            or value.is_number is not True or value.is_real is not True
+            or value.is_finite is not True):
         raise ValueError('a finite real event factor with no free parameters is required')
     return value
 
 
 def _probability(value, *, strict_upper=False):
     value = _number(value)
-    if float(value) < 0 or float(value) > 1 or (strict_upper and float(value) >= 1):
+    # Exact probabilities must not cross a domain boundary through float
+    # rounding or underflow. Unknown orderings do not certify the domain.
+    complement = 1 - value
+    upper_admitted = complement.is_positive if strict_upper else complement.is_nonnegative
+    if value.is_nonnegative is not True or upper_admitted is not True:
         raise ValueError('event probability outside its declared domain')
     return value
 

@@ -173,8 +173,10 @@ This is the finite-matrix subbranch needed to derive the local Gibbs form of Lem
 
 \textbf{Central-defect subbranch.} Assume the overlap centers are identified with one fixed
 abelian unitary coefficient group \(Z_\Sigma\) on which overlap transport acts trivially. Choose
-unitary overlap implementers with \(U_{ji}=U_{ij}^{-1}\). On triple overlaps, when the failure of
-strict coherence is central, define
+unitary overlap implementers with \(U_{ji}=U_{ij}^{-1}\). Our comparison-map
+convention is that \(U_{ij}\) maps chart-\(j\) column components to chart-\(i\)
+components; comparison products follow the chronological order of path labels.
+On triple overlaps, when the failure of strict coherence is central, define
 
 \[
 \Omega_{ijk}:=U_{ij}U_{jk}U_{ki}=z_{ijk},
@@ -1049,8 +1051,15 @@ g_{ij} g_{jk} = \partial(h_{ijk}) g_{ik},
 and on quadruple overlaps,
 
 \[
-h_{jkl} h_{ijl} = (g_{ij} \triangleright h_{ikl}) h_{ijk}.
+h_{ijk} h_{ikl} = (g_{ij} \triangleright h_{jkl}) h_{ijl}.
 \]
+
+The order follows by comparing \((g_{ij}g_{jk})g_{kl}\) with
+\(g_{ij}(g_{jk}g_{kl})\): their defect factors are respectively
+\(\partial(h_{ijk}h_{ikl})\) and
+\(\partial((g_{ij}\triangleright h_{jkl})h_{ijl})\).
+Coherence of the chosen \(2\)-morphisms requires the displayed equality in
+\(H\). Equality after applying \(\partial\) is a weaker condition.
 
 Gauge changes act by 1- and 2-cochains in the standard way for crossed-module cohomology.
 
@@ -1124,7 +1133,23 @@ of Theorem 3.4b rather than a uniquely defined holonomy attached to \(q_\Sigma\)
 
 \textbf{Proof sketch.} Pair-overlap rechartings are inner, while triple-overlap associators strictify to compact crossed-module data. Finite-dimensional unitary \(\mathcal T_\Sigma\)-modules decompose semisimply, and Schur matching leaves only diagonal left/right blocks. Crossed-module cohomology classifies the higher defect; Theorem 3.4b separately tests the ordinary loop holonomy that remains after strictification. QED.
 
-\textbf{Theorem 3.4b (TransportabilityFromOverlapGluing).} Fix a connected cut \(\Sigma\) and a finite regulator charting nerve \(N_\Sigma\). Transport of a collar charge is defined by the path composite in the overlap recharting groupoid: along \(p=(i_0\to\cdots\to i_m)\), the charge block is moved by \(U_p=U_{i_{m-1}i_m}\cdots U_{i_0i_1}\). This construction uses the overlap unitary transition system itself, not an added DHR transportability assumption.
+\textbf{Theorem 3.4b (TransportabilityFromOverlapGluing).} Fix a connected cut
+\(\Sigma\) and a finite regulator charting nerve \(N_\Sigma\). Comparison
+transport of a collar charge is the path composite in the overlap recharting
+groupoid: along \(p=(i_0\to\cdots\to i_m)\),
+\(U_p=U_{i_0i_1}\cdots U_{i_{m-1}i_m}\) compares terminal-chart column
+components to initial-chart components. Forward column transport is
+\(U_p^\dagger\). Write \(p\ast q\) for first following \(p\), then \(q\),
+and \(\overline p\) for path reversal; thus
+\(U_{p\ast q}=U_pU_q\) and \(U_{\overline p}=U_p^{-1}\).
+The residual comparison for paths \(p,p'\) with common endpoints is
+\(U_pU_{p'}^{-1}=U_{p\ast\overline{p'}}\), a loop at their common initial
+chart. A frame change \(U_{ij}\mapsto V_iU_{ij}V_j^\dagger\) gives
+\(U_p\mapsto V_{i_0}U_pV_{i_m}^\dagger\), and hence conjugates closed-loop
+holonomy at its base chart. These conventions agree with
+\(U_{ij}U_{jk}=U_{ik}\) on a strict triangle. This construction uses the
+overlap unitary transition system itself, not an added DHR transportability
+assumption.
 
 After a central or crossed-module strictification, let \(U^{\mathrm{str}}\) denote a resulting
 genuine edge \(1\)-cocycle. Write \(\mathcal C_\alpha\) for the full transported collar-charge block,

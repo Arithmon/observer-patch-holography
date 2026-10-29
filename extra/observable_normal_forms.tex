@@ -80,8 +80,9 @@ Confluence asks whether reductions from one source rejoin. Many reconstruction
 problems ask a different question: whether states with the same observable
 boundary settle to the same public output. This paper gives certificates for
 that stronger comparison after silent representation changes are quotiented
-away. Two moduli turn residual and observation errors into an endpoint bound
-that survives arbitrary refinement depth, and compatible finite levels
+away. With attained consistency-error witnesses, two moduli turn residual
+and observation errors into an endpoint bound that survives arbitrary
+refinement depth, and compatible finite levels
 define a solver-independent projective limit. The paper also proves repair
 and symmetry obstructions and gives a checkable conditional-expectation
 resampling projector. For a declared finite scheduler, four nested
@@ -187,9 +188,12 @@ For a residual $\Phi$ and an observation map $B$, we define intrinsic moduli $\e
 \end{split}
 \end{equation}
 At zero residual the bound is exact by definition.  Across all finite metric systems, the coefficient $2$ in the equal-residual specialization cannot be lowered.
+The sharp form uses nearest consistent points; on general metric spaces the
+attained-witness certificate of \cref{def:attained-metric-certificate} is an
+explicit hypothesis.
 
 \item \textbf{Uniform refinement towers.}
-One-step approximate naturality follows from consistency and observation defects.  We distinguish same-level receipt-conditioned agreement from genuinely cross-level comparison.  An anchor-optimized theorem compares independently computed outputs at arbitrary refinement levels after restriction to a common level.  Compatible nested inputs leave only the intervening defect segment, and summable pathwise defects yield an implementation-independent projective limit.  A counterexample shows that stagewise injectivity is not enough without a uniform inverse modulus.
+One-step approximate naturality follows from consistency and observation defects on the stated attained-witness domain.  We distinguish same-level receipt-conditioned agreement from genuinely cross-level comparison.  An anchor-optimized theorem compares independently computed outputs at arbitrary refinement levels after restriction to a common level.  Compatible nested inputs leave only the intervening defect segment, and summable pathwise defects yield an implementation-independent projective limit.  Counterexamples separate an unattained distance bound from the needed witness and show that stagewise injectivity is not enough without a uniform inverse modulus.
 
 \item \textbf{Repair and selection obstructions.}
 A total exact local repair preserving an exterior collar exists if and only if the local consistency relation projects surjectively onto that collar.  For a finite scheduler, four nested protected-behavior sets and their complementary cuts isolate fiber, positive-reach, almost-sure, and endpoint-selection obstructions.  On the canonical OPH adaptive branch, every attempt stream stabilizes after finitely many genuine changes, pathwise weak fairness is sufficient for normality, and work conservation gives an initial-mismatch bound on the normal horizon.  Counting stutter as positive attempt cost separates that bound from cumulative capacity: no single mismatch-only attempt horizon uniformly bounds all normalizing schedulers, bounded waste gives a quantitative upper horizon, and two nonisomorphic canonical finite sources make the work-conserving threshold sharp.  Completeness and confluence are explicit requirements for a consistent canonical endpoint.  The underlying finite Markov, weighted-rewriting, and fair-termination facts are standard; the contribution is the source-bound protected-observation certificate, the adaptive attempt/cost classification, and their exact connection to the existing behavior-cut and public-endpoint interfaces.  On a finite full-support probability space, observation-fiber resampling is the weighted orthogonal conditional-expectation projector and has a finite matrix recognition receipt.  A stabilizer obstruction prevents an equivariant selector on ambiguous fibers.
@@ -1028,10 +1032,14 @@ Let
 be an inverse sequence of nonempty metric spaces with Lipschitz restriction
 maps, with
 $\rho_{m,n}=\rho_{n+1,n}\circ\cdots\circ\rho_{m,m-1}$.  Let
-$N_n:Q_n\to Q_n$ be normalizers.  This subsection deliberately restarts with general metric spaces; the
+$N_n:Q_n\to Q_n$ be normalizers: they land in $C_n$, fix $C_n$ and satisfy
+$B_nN_n=B_n$ on the admissible domains. This subsection deliberately restarts with general metric spaces; the
 finite-or-compact ambient assumption used for the preceding uniform-family
 examples is not retained.  Completeness is imposed only where a Cauchy
-estimate is converted into a coordinate limit.
+estimate is converted into a coordinate limit. The telescope below requires
+actual one-step distance bounds, not consistency-error witnesses. Generating
+those bounds from residual or solver receipts requires the additional
+certificate stated after the telescope.
 Assume the following pathwise and uniform one-step normalization defects are
 finite:
 \[
@@ -1087,16 +1095,63 @@ sufficient condition is
 \]
 \end{corollary}
 
-Combining \cref{thm:one-step-naturality} with \cref{thm:tower} gives an explicit tower certificate in terms of residual, observation, and Lipschitz data at each stage.
+\begin{definition}[Attained metric certificate at a level]
+\label{def:attained-metric-certificate}
+At level $n$, let $\Phi_n:Q_n\to\mathbb R_{\ge0}$ have zero set $C_n$,
+let $B_n$ be $L_n$-Lipschitz with $L_n\ge0$, and let
+$\eta_n,\omega_n:\mathbb R_{\ge0}\to\mathbb R_{\ge0}$ be nondecreasing
+with $\eta_n(0)=\omega_n(0)=0$. The certificate consists of
+\begin{align}
+ \Phi_n(q)\le\delta
+ &\Longrightarrow\quad
+ \exists c\in C_n:\ d_n(q,c)\le\eta_n(\delta)
+ &&(q\in Q_n,\ \delta\ge0),\label{eq:attained-error-witness}\\
+ d_n(c,c')
+ &\le\omega_n\!\left(d_{\cB_n}(B_nc,B_nc')\right)
+ &&(c,c'\in C_n).\label{eq:inverse-observation-certificate}
+\end{align}
+The witnesses in \eqref{eq:attained-error-witness} are part of the
+hypothesis. The weaker inequality
+$\dist_n(q,C_n)\le\eta_n(\Phi_n(q))$ does not supply them on an arbitrary
+metric space. Finite systems, and compact systems under the continuity
+hypotheses of \cref{prop:compact-extension}, supply the certificate with
+their intrinsic moduli because a nearest consistent point exists. A general
+metric system may instead supply any moduli with the displayed properties.
+The certificate may be restricted to the residual and observation ranges
+used in a particular estimate.
+\end{definition}
+
+The three-point proof of \cref{thm:one-step-naturality} applies on a general
+metric stage whenever \eqref{eq:attained-error-witness} supplies its chosen
+consistent point. Combining that proof with \cref{thm:tower} gives the
+following residual-generated certificate.
 
 \begin{corollary}[Modulus-generated tower certificate]\label{cor:modulus-tower}
-Suppose the $n$th restriction map has consistency defect $\delta_n$ and observation defect $\eps_n$, and let
+Suppose each coarse level has an attained metric certificate as in
+\cref{def:attained-metric-certificate}, the $n$th restriction map has
+consistency defect $\delta_n$ and observation defect $\eps_n$, and let
 \[
  a_n^*:=\eta_n(\delta_n)+
  \omega_n\!\left(2\eps_n+L_n\eta_n(\delta_n)\right).
 \]
 Then \eqref{eq:tower} holds with $a_j$ replaced by $a_j^*$.
 \end{corollary}
+
+\begin{proof}
+For $q\in Q_{n+1}$ put $y=\rho_{n+1,n}N_{n+1}q$ and
+$z=N_n\rho_{n+1,n}q$. The consistency defect gives
+$\Phi_n(y)\le\delta_n$; \eqref{eq:attained-error-witness} supplies
+$c\in C_n$ with $d_n(y,c)\le\eta_n(\delta_n)$. Observation preservation
+and the two observation-defect inequalities give
+$d_{\cB_n}(B_nc,B_nz)\le L_n\eta_n(\delta_n)+2\eps_n$.
+Apply \eqref{eq:inverse-observation-certificate} to $c,z$ and add the first
+distance. This bounds each actual $\alpha_n(q)$ by $a_n^*$, as required.
+\end{proof}
+
+For all receipt estimates below, through
+\cref{cor:cofinal-projective}, assume an attained metric certificate at
+every involved level. These hypotheses are separate from the bare
+telescoping and exact inverse-limit statements.
 
 \begin{definition}[Run-specific approximate solver receipt]
 At level $m$, an output $\widehat x_m\in Q_m$ produced from
@@ -1119,7 +1174,8 @@ displayed run-specific evidence.
 \end{definition}
 
 \begin{lemma}[Receipt-to-exact comparison]\label{lem:receipt-to-exact}
-If $\widehat x_m$ has receipt $(\delta_m,\beta_m)$ relative to $q_m$, then
+At a level with the stated attained metric certificate, if
+$\widehat x_m$ has receipt $(\delta_m,\beta_m)$ relative to $q_m$, then
 \begin{equation}\label{eq:receipt-to-exact}
  d_m(\widehat x_m,N_mq_m)
  \le e_m(\delta_m,\beta_m).
@@ -1127,14 +1183,62 @@ If $\widehat x_m$ has receipt $(\delta_m,\beta_m)$ relative to $q_m$, then
 \end{lemma}
 
 \begin{proof}
-The exact normal form has residual zero and preserves the observation of
-$q_m$.  Apply the heterogeneous two-output estimate to $\widehat x_m$ and
-$N_mq_m$, using $\eta_m(0)=0$.
+Choose $c\in C_m$ using \eqref{eq:attained-error-witness}, so that
+$d_m(\widehat x_m,c)\le\eta_m(\delta_m)$. The exact state $N_mq_m$ lies
+in $C_m$ and has observation $B_mq_m$. The receipt and the Lipschitz bound
+therefore give
+\[
+ d_{\cB_m}(B_mc,B_mN_mq_m)
+ \le L_m\eta_m(\delta_m)+\beta_m.
+\]
+Apply \eqref{eq:inverse-observation-certificate} to the two consistent
+states and add $d_m(\widehat x_m,c)$. This proof uses no compactness beyond
+the explicit witness hypothesis.
 \end{proof}
+
+\begin{example}[A distance bound without an attained witness]
+\label{ex:unattained-receipt}
+Let $Q=\{x,y,c_n:n\ge1\}$ be the star-tree metric with hub $x$, a leaf
+$y$ at length four and leaves $c_n$ at lengths $a_n=1+1/n$. Thus
+\[
+ d(x,y)=4,\quad d(x,c_n)=a_n,\quad d(y,c_n)=4+a_n,\quad
+ d(c_n,c_k)=a_n+a_k\quad(n\ne k).
+\]
+All distinct points are at least distance one apart, so $Q$ is bounded and
+complete and $C=Q\setminus\{x\}$ is closed. Take $\Phi(x)=1$ and
+$\Phi|_C=0$. Let the observation space be a second complete bounded star
+with hub $0$ and leaves $p_n$ at lengths $a_n$; set
+$B(x)=B(y)=0$ and $B(c_n)=p_n$. This map is $1$-Lipschitz.
+The rewrite relation with its sole step $x\to y$ terminates, is confluent
+and preserves $B$. Its exact normalizer is $N(x)=y$, $N|_C=\id$, and
+$B|_C$ is injective. Using suprema for the intrinsic moduli, the residual
+distance modulus nevertheless has
+$\eta(1)=\dist(x,C)=1$, with no point of $C$ attaining that distance.
+Every distinct pair in $B(C)$ has observation distance greater than one,
+so its inverse modulus satisfies $\omega(r)=0$ for $0\le r\le1$; in
+particular the system is stably observable-determined at zero.
+
+For the receipt $\widehat x=q=x$, $\delta=1$, $\beta=0$, substituting
+these intrinsic distance moduli without
+\eqref{eq:attained-error-witness} would give the false bound
+$d(x,Nx)=4\le1+\omega(1)=1$. A singleton fine level $\{u\}$ with identity
+normalizer and restriction $\rho(u)=x$ likewise has consistency defect one,
+observation defect zero and actual normalizer defect $d(x,y)=4$, whereas
+the unwitnessed modulus-generated formula would give one.
+Thus completeness, closedness, continuity,
+stable observability and actual terminating confluence do not replace the
+attained-witness hypothesis. On the finite cutoff with $c_1,\ldots,c_M$,
+the attained residual radius is instead $a_M>1$ and
+$\omega(a_M)=4+a_M$; the certified bound is then $4+2a_M\ge4$.
+An epsilon-slack distance bound can be used on general spaces, but its sharp
+zero-slack limit requires a right-limit envelope or the appropriate
+continuity of $\omega$ at the argument used by the estimate.
+\end{example}
 
 \begin{proposition}[Same-level implementation agreement]
 \label{prop:same-level-implementations}
-Let $n\le m$.  If $\widehat x_m$ and $\widehat y_m$ are outputs on the same
+Under the stated metric-certificate hypotheses, let $n\le m$. If
+$\widehat x_m$ and $\widehat y_m$ are outputs on the same
 input $q_m$ with receipts $(\delta_m,\beta_m)$ and
 $(\delta'_m,\beta'_m)$, then
 \[
@@ -1194,7 +1298,7 @@ Summing these inequalities proves the claim.
 
 \begin{corollary}[Fine-to-coarse solver certificate]
 \label{cor:fine-to-coarse-solver}
-For $m\ge n$ and an output $\widehat x_m$ with receipt
+Under the stated metric-certificate hypotheses, for $m\ge n$ and an output $\widehat x_m$ with receipt
 $(\delta_m,\beta_m)$ relative to $q_m$,
 \[
 \begin{split}
@@ -1216,7 +1320,8 @@ Use \cref{lem:receipt-to-exact}, apply $\rho_{m,n}$, and then use
 
 \begin{theorem}[Anchored cross-level solver comparison]
 \label{thm:anchored-cross-level}
-Let $n\le h\le\min\{m,\ell\}$.  Let $q_m\in Q_m$ and
+Under the stated metric-certificate hypotheses, let
+$n\le h\le\min\{m,\ell\}$. Let $q_m\in Q_m$ and
 $q_\ell\in Q_\ell$, and suppose $\widehat x_m$ and $\widehat y_\ell$
 have receipts $(\delta_m,\beta_m)$ and
 $(\delta'_\ell,\beta'_\ell)$, respectively.  Define the protected
@@ -1293,7 +1398,7 @@ domain.
 
 \begin{corollary}[Cofinal projective implementation independence]
 \label{cor:cofinal-projective}
-Assume every $Q_n$ is complete and every restriction map is nonexpansive.
+Retain the stated attained metric certificates. Assume every $Q_n$ is complete and every restriction map is nonexpansive.
 Let $q=(q_n)\in\varprojlim Q_n$ be a compatible admissible input and suppose
 its pathwise exact-normalizer defects are summable:
 \[

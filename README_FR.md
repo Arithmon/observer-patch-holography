@@ -213,12 +213,20 @@ entrées.
 ## Reproduire et vérifier
 
 Le [guide de reproduction](REPRODUCE.md) lance la suite de vérification depuis
-un clone propre. Le vérificateur du modèle rejoue chaque reçu conservé :
+un clone propre. Le vérificateur du modèle contrôle les empreintes des
+artefacts et rejoue les reçus déclarés dans `model/verify.py` ; la suite de
+régression vérifie aussi des résultats conservés séparément et des cas adverses :
 
 ```sh
 python -m pip install -r model/requirements.txt
 python -m model.verify
+python -m pytest -q -W error model
 ```
+
+Le guide donne aussi les contrôles autonomes des particules et des champs
+sources utilisés par le [workflow de l’observateur](.github/workflows/observer-model.yml).
+Ces contrôles ont des portées distinctes ; le vérificateur seul ne constitue
+pas la validation complète du modèle.
 
 La [bibliothèque Lean](Lean/) se compile avec Lake, l’[index de la documentation](docs/README.md)
 donne les registres et les politiques, et le [livre](book/) offre un chemin

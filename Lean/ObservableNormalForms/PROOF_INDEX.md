@@ -55,8 +55,8 @@ Status legend:
 | Exact naturality, `cor:exact-naturality` | `exact_naturality_from_uniqueness` | ✅ | No metric assumptions needed. |
 | Consistency-model perturbation, `cor:model-perturbation` | none | ⬜ | Hausdorff perturbation wrapper not encoded. |
 | Telescoping refinement bound, `thm:tower` | `telescoping_refinement_bound` | 🟡 | Arbitrary-depth metric telescope. A dependent family of stage types and restriction compositions is not packaged. |
-| Summable/modulus tower corollaries, `cor:summable`, `cor:modulus-tower` | none | ⬜ | Not encoded. |
-| Receipt-to-exact comparison, `lem:receipt-to-exact` | `heterogeneous_two_output_estimate` | 🟡 | Follows by the manuscript specialization; a dedicated receipt structure/wrapper is not encoded. |
+| Summable/modulus tower corollaries, `cor:summable`, `cor:modulus-tower` | none | ⬜ | Not encoded. The residual-generated corollary requires attained consistency-error witnesses; the bare telescope consumes actual one-step distances. |
+| Receipt-to-exact comparison, `lem:receipt-to-exact` | `heterogeneous_two_output_estimate` | 🟡 | Manuscript specialization with `ErrorBoundWitness`, inverse-observation and Lipschitz certificates. A distance-to-set infimum alone is insufficient; the dedicated receipt wrapper is not encoded. |
 | Same-level implementation agreement, `prop:same-level-implementations` | `same_level_implementation_agreement` | ✅ | Full metric/Lipschitz core with no refinement-tail term. |
 | Pathwise telescope to an anchor, `lem:pathwise-anchor` | `telescoping_refinement_bound` | 🟡 | The arbitrary chain sum is proved; path-dependent `α_j` and dependent restrictions are not packaged. |
 | Fine-to-coarse certificate, `cor:fine-to-coarse-solver` | `projective_implementation_bound_from_tower_receipt` | 🟡 | Solver receipt plus an exact-tower receipt under a Lipschitz restriction. |

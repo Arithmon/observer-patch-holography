@@ -172,8 +172,12 @@ their scientific focus, and READMEs give the short positive case.
 
 ## Basis and premises
 
-- A surface that states the basis gives one hypothesis, one rule, one
-  condition and one specification, and cites `docs/BASIS.md`. A surface that
+- A technical surface that states the basis distinguishes the closure
+  hypothesis, operational agreement, the executable specification and the
+  adopted state-selection and response-endogeneity principles, and cites
+  `docs/BASIS.md`. Internal realization motivates the latter principles;
+  closure alone does not entail an entropy minimizer or inner action on the
+  connected response algebra. A surface that
   states a theorem premise A1, A2 or A3 pairs it with both forms in the same
   local context: one plain-language sentence, then the concise formal
   statement, then what the premise constrains, then what it does not imply,

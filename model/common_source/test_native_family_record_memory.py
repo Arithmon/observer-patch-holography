@@ -87,6 +87,66 @@ def test_supplied_interaction_factors_preserve_exact_expressions_and_scope(data)
         m.architecture_from_factors(1, q)
 
 
+@pytest.mark.parametrize('p,q', [
+    (-s.Rational(1, 10**400), s.Rational(1, 2)),
+    (-s.Rational(1, 10**20), s.Rational(1, 2)),
+    (1, s.Rational(1, 2)),
+    (1+s.Rational(1, 10**20), s.Rational(1, 2)),
+    (s.Rational(1, 2), -s.Rational(1, 10**400)),
+    (s.Rational(1, 2), 1+s.Rational(1, 10**20)),
+    (s.Rational(1, 2), 1+s.Rational(1, 10**400)),
+])
+def test_exact_out_of_domain_factors_cannot_construct_signed_transitions(p, q):
+    with pytest.raises(ValueError, match='declared domain'):
+        m.architecture_from_factors(p, q)
+
+
+def test_exact_near_boundary_values_keep_their_domain_without_float_coercion():
+    tiny = s.Rational(1, 10**400)
+    assert m._probability(tiny, strict_upper=True) == tiny
+    assert m._probability(1-tiny, strict_upper=True) == 1-tiny
+    assert m._probability(0, strict_upper=True) == 0
+    assert m._probability(1) == 1
+    assert m._probability(np.float64('0.125')) == s.Rational(1, 8)
+    assert m._probability(s.sqrt(2)/2) == s.sqrt(2)/2
+
+
+@pytest.mark.parametrize('p,q', [
+    (0, 1),
+    (s.Rational(1, 2), 1),
+    (1-s.Rational(1, 10**20), s.Rational(1, 2)),
+])
+def test_admitted_endpoint_and_near_endpoint_kernels_are_exactly_stochastic(p, q):
+    result = m.architecture_from_factors(p, q)
+    assert result['p'] == p and result['q'] == q
+    assert all(entry.is_nonnegative is True for entry in result['T'])
+    assert all(sum(result['T'][:, column]) == 1 for column in range(12))
+    assert result['T']*result['stationary'] == result['stationary']
+    assert sum(result['stationary']) == 1
+
+
+@pytest.mark.parametrize('value', [
+    s.nan, s.oo, -s.oo, s.zoo, s.I, s.Symbol('p', real=True),
+    s.Function('unknown_factor', real=True, finite=True)(0),
+    np.float64('nan'), np.float64('inf'), True, None,
+])
+def test_nonfinite_nonreal_or_undetermined_factors_fail_closed(value):
+    with pytest.raises(ValueError, match='finite real event factor'):
+        m.architecture_from_factors(s.Rational(1, 2), value)
+
+
+def test_raw_record_weights_reject_negative_underflow_even_when_normalized(data):
+    rows = list(data['records'])
+    zero = next(i for i, row in enumerate(rows) if row[-1] == 0)
+    positive = next(i for i, row in enumerate(rows) if row[-1] > 0)
+    tiny = s.Rational(1, 10**400)
+    rows[zero] = (*rows[zero][:-1], -tiny)
+    rows[positive] = (*rows[positive][:-1], rows[positive][-1]+tiny)
+    assert sum(row[-1] for row in rows) == 1
+    with pytest.raises(ValueError, match='declared domain'):
+        m.transition_from_records(rows)
+
+
 def test_all1536_effective_kraus_factors_preserve_every_memory_input(data):
     factors, labels = m.raw_instrument_factors(1/64)
     assert factors.shape == (1536, 6, 6) and labels.shape == (1536, 6)

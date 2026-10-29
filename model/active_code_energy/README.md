@@ -34,12 +34,17 @@ The nonzero-current
 effect is diagonal on these supports, so **every logical input in either
 code** has rate `10/60 = 1/6` per attempted uniform-seam repair for C and E.
 This supplies the same candidate's native activity for the new screened
-particle lane. It does not transfer the old source recovery implementation
-to the new code; that recovery has only an algebraic existence proof so far.
+particle lane. This packet's recovery implementation below belongs to the
+prior code. At its recorded boundary, screened-code recovery was an algebraic
+existence result. The subsequent [screened recovery](../screened_recovery/README.md)
+executes the screened encoder and all 208 positive source-recovery branches;
+[screened transport](../screened_transport/README.md) joins that recovery to
+the same uniform-seam schedule and an explicit core-label reset.
 The screened code's transported core changes value on `1/15` of uniformly
 selected seam/coin attempts and leaves the native seam set on `1/30`, for
 either law and either logical input. These are native metadata probabilities,
-not an executed screened-code reset or its energy cost.
+not an energy cost. The successor supplies the reset protocol and compiler
+resource counts; a physical rest-energy interpretation remains open.
 
 The charge-matched stationary co-moving `q=1` reference has uniform source
 marginal, so its current rate is `5/33`; the code excess is exactly `1/66`
@@ -131,7 +136,16 @@ attempt, including entries with no value change. These are source compiler
 resource counts, not action, joules, dissipated work or an energy per
 calibrated observer-clock interval. The prior packet also shows that omitting
 the explicit core reset leaves only `7/8` in sharp `q=1` after correction.
-No corresponding pulse recovery has been executed for the screened code.
+These older one-seam counts remain the boundary of this diagnostic. The
+subsequent screened-code protocol executes its own encoder, routing, recovery
+and core reset, with uniform-seam mean native-plus-recovery counts
+`37,499,681/60` for C and `36,870,437/60` for E per attempted repair.
+Its [resource ledger](../screened_recovery/README.md#core-transport-and-service-cost)
+and [full corrected cycle](../screened_transport/README.md#the-full-corrected-cycle-has-a-flat-logical-channel)
+belong to that successor and do not replace the one-seam values above.
+The retained `source_pulse_recovery_executed: false` field describes this
+packet's screened-code implementation boundary, rather than the status of
+the later construction. Neither packet assigns rest energy to pulse counts.
 
 The separate 240-port product-field control has an ideal rest gap and an
 independently differentiated radial-symbol curvature satisfying its own

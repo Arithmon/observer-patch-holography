@@ -51,10 +51,32 @@ PACKET_SOURCES = (
     "model/conserved_sector_action/README.md",
     "model/conserved_sector_action/campaign.json",
 )
+# The campaign predates later documentation and receipt-source updates. Keep
+# its exact predecessor receipt rather than rebinding that frozen input to
+# a newer live receipt. All other campaign inputs remain live and exact.
+PREDECESSOR_ENERGY_SOURCE = "model/active_code_energy/energy_bridge_results.json"
+PREDECESSOR_ENERGY_CAPTURE = "model/conserved_sector_action/predecessor/energy_bridge_results.json"
+PREDECESSOR_ENERGY_SHA256 = "d59512d3d37c2f6a5ef80e3b36aa20a90a3bb8d365049dc8f33e535d2320bbfd"
 
 
 def digest(path: str) -> str:
     return hashlib.sha256((ROOT / path).read_bytes()).hexdigest()
+
+
+def predecessor_bindings() -> dict[str, str]:
+    """Resolve only the campaign's named historical receipt to its capture."""
+    if digest(PREDECESSOR_ENERGY_CAPTURE) != PREDECESSOR_ENERGY_SHA256:
+        raise ValueError("sector action predecessor capture changed")
+    return {name: PREDECESSOR_ENERGY_SHA256 if name == PREDECESSOR_ENERGY_SOURCE
+            else digest(name) for name in BASE_SOURCES}
+
+
+def source_bindings() -> dict[str, str]:
+    """Bind current code and actual input files, including the frozen capture."""
+    current = {name: digest(name) for name in (*BASE_SOURCES, *PACKET_SOURCES)
+               if name != PREDECESSOR_ENERGY_SOURCE}
+    current[PREDECESSOR_ENERGY_CAPTURE] = digest(PREDECESSOR_ENERGY_CAPTURE)
+    return dict(sorted({**sector.source_bindings(), **current}.items()))
 
 
 def native_kernel(law: str) -> tuple[list[dict[int, F]], tuple[int, ...]]:
@@ -146,7 +168,7 @@ def report() -> dict:
     if any(type(campaign.get(k)) is not type(v) or campaign[k] != v
            for k, v in required.items()):
         raise ValueError("sector action campaign changed")
-    if campaign.get("source_sha256") != {p: digest(p) for p in BASE_SOURCES}:
+    if campaign.get("source_sha256") != predecessor_bindings():
         raise ValueError("sector action predecessor binding changed")
     kernels = {law: native_kernel(law) for law in ("C", "E")}
     if kernels["C"] != kernels["E"]:
@@ -161,8 +183,14 @@ def report() -> dict:
     return {
         "schema": "oph.conserved_sector_action.results.v1",
         "campaign_id": campaign["campaign_id"],
-        "source_sha256": dict(sorted({**sector.source_bindings(),
-            **{p: digest(p) for p in (*BASE_SOURCES, *PACKET_SOURCES)}}.items())),
+        "source_sha256": source_bindings(),
+        "predecessor_evidence": {
+            "frozen_source_path": PREDECESSOR_ENERGY_SOURCE,
+            "captured_path": PREDECESSOR_ENERGY_CAPTURE,
+            "sha256": PREDECESSOR_ENERGY_SHA256,
+            "predecessor_git_commit": campaign["predecessor_git_commit"],
+            "role": "historical campaign input; distinct from the current energy receipt",
+        },
         "laws": laws,
         "complete_raw_quantum_source_core_pair_checks": quantum["raw_kraus_source_core_pair_checks"],
         "theorem_module": "OPH.ConservedSectorAction",

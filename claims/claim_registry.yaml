@@ -5,7 +5,7 @@
   "claims": [
     {
       "claim_id": "OPH-SYN-FORMAL-BASIS",
-      "statement": "OPH is formulated in terms of finite or regulated observer-accessible algebras, states, record algebras, visible restrictions, repair instruments, and generalized entropy.",
+      "statement": "OPH is formulated in terms of finite or regulated observer-accessible algebras, states, record algebras, visible restrictions, repair instruments, and generalized entropy. The formulation keeps conditional state selection and connected-response endogeneity as separately adopted constitutive premises, rather than claiming that internal realization alone derives them.",
       "owner_paper": "paper/observers_are_all_you_need.tex",
       "tier": "formal_basis",
       "assumptions": [
@@ -18,10 +18,13 @@
         "Born_trace_probability",
         "generalized_entropy_formalism"
       ],
-      "oph_specific_delta": "The primitive package is assembled as an observer-facing patch federation with visible restrictions and repair/checkpoint structure.",
+      "oph_specific_delta": "The primitive package is assembled as an observer-facing patch federation with visible restrictions and repair/checkpoint structure. The closure proposal, operational agreement, adopted state-selection and response-endogeneity principles, and executable choices have separate mathematical roles.",
       "novelty_type": "formal_construction",
       "evidence": [
-        "paper/observers_are_all_you_need.tex"
+        "paper/observers_are_all_you_need.tex",
+        "docs/BASIS.md",
+        "flagship/from_observer_consensus_to_standard_physics.tex",
+        "code/audit/test_basis_principle_boundaries.py"
       ],
       "falsifier": "A top-level OPH theorem requires hidden carrier coordinates that are not expressible through the declared observer-facing quotient.",
       "scope_if_false": "The synthesis ontology falls; branch-local theorem statements must be restated in the hidden-coordinate theory that replaces the formal basis.",
@@ -480,13 +483,14 @@
     },
     {
       "claim_id": "OPH-CONS-REFINEMENT-MODULI",
-      "statement": "One-step normalizer defects telescope through arbitrary refinement depth with the displayed Lipschitz-amplified sum. Uniform settled-output and projective-limit conclusions require family-uniform residual and inverse-observation moduli plus a cofinally vanishing or summable tail; stagewise injectivity or stagewise error bounds alone are insufficient.",
+      "statement": "One-step normalizer defects telescope through arbitrary refinement depth with the displayed Lipschitz-amplified sum. Residual and inverse-observation moduli generate one-step or solver-receipt bounds on general metric spaces only with attained consistency-error-bound witnesses at each used level; finite or compact consistent sets provide such witnesses under the stated continuity hypotheses. Uniform settled-output and projective-limit conclusions additionally require family-uniform moduli plus a cofinally vanishing or summable tail; stagewise injectivity, completeness, or distance-to-consistency infima alone are insufficient.",
       "owner_paper": "extra/observable_normal_forms.tex",
       "tier": "quantitative_refinement_theorem",
       "assumptions": [
         "declared_Lipschitz_restriction_maps",
         "family_uniform_observation_Lipschitz_bound",
         "family_uniform_residual_modulus",
+        "attained_consistency_error_bound_witnesses",
         "family_uniform_inverse_observation_modulus",
         "cofinally_vanishing_or_summable_refinement_tail",
         "complete_coordinate_spaces_for_projective_limits",
@@ -497,7 +501,7 @@
         "metric_triangle_inequality",
         "Cauchy_completeness"
       ],
-      "oph_specific_delta": "The receipt architecture distinguishes finite-stage exact naturality, run-specific solver error, family-uniform moduli, and the projective tail instead of treating more refinement levels as automatic convergence.",
+      "oph_specific_delta": "The receipt architecture distinguishes finite-stage exact naturality, attained consistency-error-bound witnesses, run-specific solver error, family-uniform moduli, and the projective tail. A complete noncompact counterexample with a stable observation inverse shows why an unattained distance infimum cannot replace the witness.",
       "novelty_type": "quantitative_certificate_architecture",
       "evidence": [
         "extra/observable_normal_forms.tex",
@@ -506,9 +510,10 @@
         "Lean/ObservableNormalForms/README.md",
         "code/consensus/verify_issue_517_proof_obligations.py",
         "code/consensus/runs/issue_517_proof_obligations.json",
-        "code/consensus/test_issue_517_proof_obligations.py"
+        "code/consensus/test_issue_517_proof_obligations.py",
+        "code/audit/test_recurrent_proof_boundaries.py"
       ],
-      "falsifier": "A declared Lipschitz refinement tower violates the telescope, or one of the family-uniform or cofinal conclusions survives the finite description of its parametric counterfamily after the corresponding modulus, tail, completeness, compatibility, or vanishing-error premise is removed.",
+      "falsifier": "A declared Lipschitz refinement tower violates the telescope; a modulus-generated comparison fails despite its attained-witness hypotheses; or a family-uniform/cofinal conclusion survives the supplied counterfamily after its corresponding witness, modulus, tail, completeness, compatibility, or vanishing-error premise is removed.",
       "scope_if_false": "The quantitative refinement-limit conclusions fall; fixed-cutoff finite normal-form uniqueness remains separate.",
       "status": "telescope_Lean_proved__uniform_family_and_cofinal_theorems_paper_proved__parametric_counterfamily_schemas_executable",
       "claim_class": "conditional_implication",
@@ -518,7 +523,7 @@
         "consumed": [],
         "open": [],
         "boundary": [],
-        "rationale": "This abstract stability theorem uses paper-local Lipschitz, uniformity, completeness, and tail hypotheses and neither selects a source law nor invokes a registered physical bridge."
+        "rationale": "This abstract stability theorem uses paper-local Lipschitz, attained-witness, uniformity, completeness, and tail hypotheses and neither selects a source law nor invokes a registered physical bridge."
       }
     },
     {
@@ -4650,7 +4655,7 @@
     },
     {
       "claim_id": "OPH-FINITE-HOLONOMY-CHARACTER-PHASE",
-      "statement": "For reversal-compatible group-valued labels on endpoint-typed finite paths, the ordered transport ratio of two paths with common endpoints is exactly the holonomy of the closed ratio loop. Every one-dimensional unitary character sends this identity to an exact relative phase. Vertex recharting conjugates based holonomy, so its conjugacy class, every class-function value, and nontriviality are invariant; raw holonomy is guaranteed invariant when the structure group is abelian, while character phase is invariant for arbitrary groups. An explicit four-vertex path/face control has trivial holonomy on its two declared triangular faces and nontrivial holonomy and two-arm relative phase on a separate undeclared, unfilled loop. This does not establish a simplicial or Cech complex, puncture, or noncontractibility. If a loop holonomy factors through a supplied Multiplicative (ZMod n) sector, every character phase is an nth root of unity. The edge labels, faces, character, sector map, and factorization are inputs. The Aharonov--Bohm terminology is only an algebraic two-path analogy. No observer-source connection, physical gauge field, spacetime loop, flux, charge, laboratory path, detector, or fringe is constructed.",
+      "statement": "For reversal-compatible group-valued labels on endpoint-typed finite paths, chronological transport uses U01 U12 ... with Uij Ujk = Uik on a strict triangle. The ordered transport ratio of two paths with common endpoints is exactly the holonomy of the closed ratio loop. Every one-dimensional unitary character sends this identity to an exact relative phase. Vertex recharting conjugates based holonomy, so its conjugacy class, every class-function value, and nontriviality are invariant; raw holonomy is guaranteed invariant when the structure group is abelian, while character phase is invariant for arbitrary groups. An explicit four-vertex path/face control has trivial holonomy on its two declared triangular faces and nontrivial holonomy and two-arm relative phase on a separate undeclared, unfilled loop. This does not establish a simplicial or Cech complex, puncture, or noncontractibility. If a loop holonomy factors through a supplied Multiplicative (ZMod n) sector, every character phase is an nth root of unity. The edge labels, faces, character, sector map, and factorization are inputs. The Aharonov--Bohm terminology is only an algebraic two-path analogy. No observer-source connection, physical gauge field, spacetime loop, flux, charge, laboratory path, detector, or fringe is constructed.",
       "owner_paper": "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
       "tier": "exact_bounded_finite_holonomy_character_phase_and_cyclic_quantization",
       "assumptions": [
@@ -4671,7 +4676,8 @@
       "evidence": [
         "paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex",
         "Lean/Screen/HolonomyInterference.lean",
-        "Lean/docs/B6_HOLONOMY_INTERFERENCE.md"
+        "Lean/docs/B6_HOLONOMY_INTERFERENCE.md",
+        "code/audit/test_recurrent_proof_boundaries.py"
       ],
       "falsifier": "The finite packet fails if path reversal is not inverse transport, a common-endpoint transport ratio differs from the closed-loop holonomy, the character relative-phase identity or rechart invariance fails, either declared local face of the explicit control is nonflat, its global phase is trivial, or a supplied cyclic-sector character value is not an nth root of unity.",
       "scope_if_false": "Only the bounded B6 path, phase, control, or cyclic-quantization packet falls. No physical gauge connection, flux, interference experiment, continuum gauge theory, or frozen prediction is asserted by this claim.",
@@ -16185,7 +16191,7 @@
       },
       "depends_on": [],
       "matrix_summary": {
-        "oph_specific_delta": "Observer-facing patch federation with repair and checkpoint structure, with carrier architecture represented only through its declared observer-visible signature",
+        "oph_specific_delta": "The primitive package is assembled as an observer-facing patch federation with visible restrictions and repair/checkpoint structure. The closure proposal, operational agreement, adopted state-selection and response-endogeneity principles, and executable choices have separate mathematical roles.",
         "falsifier": "A top-level theorem depends on hidden carrier data outside the declared signature"
       }
     },
@@ -16600,19 +16606,19 @@
       },
       "owner_section": "Observable normal-forms uniform-family and refinement sections plus executable receipt",
       "falsifiers": {
-        "physical_identification": "No source-derived refinement family supplies the declared uniform moduli, compatible inputs, complete spaces, and vanishing tail/error receipts",
+        "physical_identification": "No source-derived refinement family supplies the declared attained consistency witnesses, uniform moduli, compatible inputs, complete spaces, and vanishing tail/error receipts",
         "phenomenological": "A promoted continuum or settled-output claim lacks the required uniform receipt or fails under further refinement",
-        "mathematical": "A declared Lipschitz refinement tower violates the telescope, or one of the family-uniform or cofinal conclusions survives the finite description of its parametric counterfamily after the corresponding modulus, tail, completeness, compatibility, or vanishing-error premise is removed"
+        "mathematical": "A declared Lipschitz refinement tower violates the telescope; a modulus-generated comparison fails despite its attained-witness hypotheses; or a family-uniform/cofinal conclusion survives the supplied counterfamily after its corresponding witness, modulus, tail, completeness, compatibility, or vanishing-error premise is removed."
       },
       "depends_on": [
         {
           "claim_id": "OPH-CONS-D1",
-          "role": "supplies finite-stage normalizers; uniform inverse/residual moduli, Lipschitz restrictions, compatible inputs, vanishing solver errors, completeness, and cofinally vanishing tails remain explicit"
+          "role": "supplies finite-stage normalizers; attained consistency-error-bound witnesses, uniform inverse/residual moduli, Lipschitz restrictions, compatible inputs, vanishing solver errors, completeness, and cofinally vanishing tails remain explicit"
         }
       ],
       "matrix_summary": {
-        "oph_specific_delta": "Separates finite-stage normalizer defects, family-uniform conditioning, solver receipts, compatible projective inputs, and cofinal tails, with finite descriptions of parametric infinite counterfamilies for every removed premise",
-        "falsifier": "A declared tower violates the telescope or a uniform/cofinal conclusion survives removal of its named modulus, tail, completeness, compatibility, or vanishing-error premise"
+        "oph_specific_delta": "The receipt architecture distinguishes finite-stage exact naturality, attained consistency-error-bound witnesses, run-specific solver error, family-uniform moduli, and the projective tail. A complete noncompact counterexample with a stable observation inverse shows why an unattained distance infimum cannot replace the witness.",
+        "falsifier": "A declared Lipschitz refinement tower violates the telescope; a modulus-generated comparison fails despite its attained-witness hypotheses; or a family-uniform/cofinal conclusion survives the supplied counterfamily after its corresponding witness, modulus, tail, completeness, compatibility, or vanishing-error premise is removed."
       }
     },
     "OPH-CONS-PROTECTED-BEHAVIOR-PROFILE": {

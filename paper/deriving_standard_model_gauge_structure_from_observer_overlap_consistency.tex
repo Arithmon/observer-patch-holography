@@ -391,9 +391,15 @@ compensators, and checks that the dynamics preserves that identification.
 \subsection{Transport from overlap gluing}
 
 At a fixed regulator the overlap rechartings of a connected cut \(\Sigma\)
-form a compact unitary transition system, and transport of a collar charge
-along an overlap path \(p=(i_0\to\cdots\to i_m)\) is the composite
-\(U_p=U_{i_{m-1}i_m}\cdots U_{i_0i_1}\). Gauge-as-gluing, the tree and loop
+form a compact unitary transition system. We use chronological multiplication
+of comparison maps: \(U_{ij}\) maps components in chart \(j\) to components
+in chart \(i\), so an overlap path \(p=(i_0\to\cdots\to i_m)\) has
+\(U_p=U_{i_0i_1}\cdots U_{i_{m-1}i_m}\). Thus \(U_p\) compares the terminal
+chart to the initial chart; forward transport of column components is
+\(U_p^\dagger\). If \(p\ast q\) means first following \(p\), then \(q\),
+the conventions are \(U_{p\ast q}=U_pU_q\) and
+\(U_{\overline p}=U_p^{-1}\) for the reversed path \(\overline p\).
+Gauge-as-gluing, the tree and loop
 lemmas and the transportability theorem are proved in the spacetime
 paper~\cite{ophEinstein}. The gauge route consumes the following exact
 criterion.
@@ -439,9 +445,11 @@ hypotheses place it in \(Z_\Sigma\). Comparing \((U_{ij}U_{jk})U_{kl}\) with
 central multiplier unchanged. A central edge rephasing
 \(U_{ij}\mapsto a_{ij}^{-1}U_{ij}\) replaces \(z\) by the corresponding
 coboundary, so \([z]=0\) is equivalent to removing all triangle multipliers.
-For two paths \(p,p'\) with common endpoints, the residual discrepancy is the
-holonomy of the closed loop \(p'^{-1}p\); it vanishes for every pair exactly
-when the displayed holonomy representation is trivial. Conversely, strict
+For two paths \(p,p'\) with common endpoints, the residual comparison
+\(U_pU_{p'}^{-1}\) is the holonomy of the closed loop
+\(p\ast\overline{p'}\), based at their common initial chart. It is the
+identity for every pair exactly when the displayed holonomy representation
+is trivial. Conversely, strict
 path independence makes every triangle comparison and every represented loop
 action trivial.
 \end{proof}

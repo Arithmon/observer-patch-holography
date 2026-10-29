@@ -19,7 +19,7 @@ needs from the model and what would refute it.
 
 | Layer | Hypothesis | Papers |
 | --- | --- | --- |
-| 0. Closure and agreement | One history reads itself into existence; agreement on shared records defines the public world | [Flagship](../flagship/from_observer_consensus_to_standard_physics.tex) |
+| 0. Closure and agreement | One history reads itself into existence; agreement defines the public world; state selection and response endogeneity are additional adopted principles | [Flagship](../flagship/from_observer_consensus_to_standard_physics.tex) |
 | 1. Repair mathematics | Local agreement repair reaches global consistency; nonzero cycle holonomy is the residue local repair cannot remove | [Reality as a Consensus Protocol](../paper/reality_as_consensus_protocol.tex), [Observable normal forms](../extra/observable_normal_forms.tex), [Finite event algebras](../extra/machine_checked_finite_event_algebras.tex) |
 | 2. Carrier and repair law | Federated twelve-port icosahedral carriers with native C/E seam repair are the substrate | [Twelve-Port Icosahedral Carriers and Native Seam Repair](../paper/screen_microphysics_and_observer_synchronization.tex) |
 | 3. Executable observer | Observers are continuing native processes that prepare, read, retain and act on records | [An Executable Observer for Observer Patch Holography](../paper/executable_observer_construction.tex), [Observers Are All You Need](../paper/observers_are_all_you_need.tex) |
@@ -58,6 +58,38 @@ needs from the model and what would refute it.
   with every complete C/E branch; real native operations cannot implement the
   nontrivial modular action of the constructed reference on its full support
   algebra; no measured particle spectrum is derived.
+
+## Contributions and retained inputs
+
+The tower is a construction target, not a claim that every layer is
+realized. The following map identifies the result to assess in each paper
+and the inputs that cannot be inferred from its place in the tower. The
+papers give the hypotheses, proofs, evidence and comparison with prior work;
+standard results used in a new interface remain standard results.
+
+| Paper | Achieved contribution | Retained inputs or open physical identification |
+| --- | --- | --- |
+| [Flagship synthesis](../flagship/from_observer_consensus_to_standard_physics.tex) | A common specification, selected conditional results, negative controls and ordered completion tests | The synthesis constructs no common realized Standard Model and gravity theory; closure, state selection and response endogeneity have distinct logical content |
+| [Executable observer](../paper/executable_observer_construction.tex) | Finite record-controlled operations, complete outcome laws, continuing observer/reference constructions and scoped error bounds | Supplied coherent services, preparations, actions, clocks and physical units retain their individual contracts |
+| [Consensus protocol](../paper/reality_as_consensus_protocol.tex) | Protected-observation normal forms, accepted repair, provenance and quantitative finite/refinement interfaces | Termination, confluence, scheduler and protected-record hypotheses must hold on the actual source; Newman's theorem is an imported ingredient |
+| [Observers and records](../paper/observers_are_all_you_need.tex) | Finite record, entropy, capacity and instrument constructions with explicit composition boundaries | Quantum algebra, reference, energy calibration and field actions are premises where supplied; familiar quantum and thermal identities do not alone select a physical source |
+| [Spacetime and Einstein dynamics](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex) | Finite causal/count interfaces, null tomography, tensor completion and same-metric obstruction tests | The geometric/stress/entropy balance and common physical clock require a source realization; the static radial product fails the tested null balance |
+| [Gauge structure](../paper/deriving_standard_model_gauge_structure_from_observer_overlap_consistency.tex) | Compact Lie-type selection under complete-response/endogeneity premises and a specified matter/tensor witness | Complete source currents, physical chirality, matter selection, global form and field dynamics remain separate obligations |
+| [Particle defects](../paper/deriving_the_particle_zoo_from_observer_consistency.tex) | Tests and obstructions for native defect, maintenance-energy and family candidates | No stable physical particle sector or measured mass spectrum follows from the failed candidates or supplied representation |
+| [Carrier and seam repair](../paper/screen_microphysics_and_observer_synchronization.tex) | Exact carrier incidence, classical seam rule, record-law classification and rank-three response | The selected architecture, response menu and physical spatial/refinement interpretation remain explicit |
+| [Finite event algebra](../extra/machine_checked_finite_event_algebras.tex) | A checked projection-event API, expectation range/uniqueness results and measurement/CHSH adapters | The underlying finite quantum algebra is supplied; the contribution is formalization and interface design, not a new quantum probability law |
+| [Observation-determined normal forms](../extra/observable_normal_forms.tex) | Observable reconstruction, stability/receipt and refinement certificates with necessity counterexamples | Each quantitative estimate retains its stated error-bound witnesses and domain hypotheses; it assumes no physical interpretation |
+| [de Sitter capacity](../extra/de_sitter_time_advance_sign_from_fixed_screen_capacity.tex) | Finite entropy, capacity-transfer, shock-normalization and spectrum identities | Horizon-area, capacity, mass and dynamical-shock identifications are conditional |
+| [Fine-structure fixed point](../extra/fine_structure_constant_derivation.tex) | Interval-certified roots of declared maps and independent reconstruction of the credited entangled-pair scalar | Target-independent map selection, common coupling normalization and Thomson identification require physical derivations; the measured-payload endpoint misses the measured coupling |
+| [Koide circulant identity](../extra/koide_identity_from_positive_c3_face_circulants.tex) | Positive-chamber algebra and a conditional finite tracial balance | Balance was target informed; the phase and physical charged-family/mass attachment are not derived |
+| [Yang--Mills gap identification](../extra/yang_mills_gap_clay_problem.tex) | Finite repair floors, rate comparisons and failed interacting transfer tests | Physical gap transfer and the four-dimensional continuum certificate contain the unresolved Yang--Mills construction |
+| [Vacuum and structure formation](../cosmology/oph_cosmological_vacuum_and_structure_formation.tex) | Finite ensemble/vacuum interfaces and native-density comparison boundaries | A selected physical vacuum, cosmological source and scale are not supplied by the finite conditional constructions |
+| [Finite-source cosmology](../cosmology/oph_cosmology_finite_source_cmb_program.tex) | Conditional source spectra, radial-identification criteria and exact finite population controls | The physical source, primordial embedding, scale and transfer map remain required |
+| [Candidate inflation-free branch](../cosmology/oph_inflation_without_inflaton_observer_screen_synchronization.tex) | Exact record-density expansion on a declared population and conditional tilt/flatness criteria | The population, expansion profile and generator density are supplied; an inflation replacement is a target, not an achieved result |
+| [Photon--baryon transfer](../cosmology/oph_boltzmann_transport_derivation.tex) | A common convention and conditional transfer interface reproducing standard Boltzmann transport | Geometry, photon/collision physics, masses and recombination are imported; no new transport dynamics or source spectrum is derived on the standard branch |
+| [Dark sector](../cosmology/oph_dark_matter_paper.tex) | Conditional charge/saturation/profile identities and explicit retrospective comparisons | Collar stress, abundance and universal coupling need physical realization; the deep law uses stated scaling/composition premises and fitted acceleration scale |
+| [Black-hole ledger](../cosmology/oph_black_hole_information_ledger.tex) | Finite record-channel identities and declared crossing-count scaling | The horizon-entropy coefficient, thermality and physical information-return mechanism are not established |
+| [Data and likelihood contracts](../cosmology/oph_cosmology_data_likelihood_contracts.tex) | Explicit comparison classes, data contracts and independently replayed retrospective values | Exposure, calibration and supplied cosmology remain visible; a posterior comparison is not a derivation of its source model |
 
 ## How the papers change
 

@@ -213,12 +213,19 @@ specification supplies and which it takes as inputs.
 ## Reproduce and verify
 
 The [reproduction guide](REPRODUCE.md) runs the verification suite from a
-clean clone. The model verifier replays every retained receipt:
+clean clone. The model verifier checks artifact bindings and replays the
+receipt inventory declared in `model/verify.py`; the model regression suite
+also checks separately retained results and adversarial cases:
 
 ```sh
 python -m pip install -r model/requirements.txt
 python -m model.verify
+python -m pytest -q -W error model
 ```
+
+The guide also lists the standalone particle and source-field checks used by
+the [observer workflow](.github/workflows/observer-model.yml). These checks
+have distinct scopes; the verifier alone is not the complete model gate.
 
 The [Lean library](Lean/) builds with Lake, the [documentation index](docs/README.md)
 lists the registers and policies, and the [book](book/) gives a longer road

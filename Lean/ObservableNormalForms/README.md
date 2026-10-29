@@ -182,7 +182,17 @@ the audit. The artifact machine-checks why they matter:
    the result with an extended-real distance.
 
 `Refinement.lean` proves the arbitrary-depth metric telescope and the
-receipt-composition cores.  The manuscript's family-uniform inverse and
+receipt-composition cores. `Stability.ErrorBoundWitness` requires an actual
+consistent state within the certified residual radius; a distance-to-set
+infimum alone is insufficient. The manuscript's general-metric receipt and
+modulus-generated tower estimates explicitly consume that attained-witness
+certificate. Finite or compact stage systems supply it through nearest
+points. The complete bounded star-metric counterexample in the manuscript
+shows that completeness, closed consistency and a stable observation inverse
+alone do not supply it. The bare telescope instead consumes actual one-step
+distances and needs no such attainment premise.
+
+The manuscript's family-uniform inverse and
 residual moduli are not represented by a separate Lean declaration here.
 Finite descriptions of their parametric infinite counterfamilies are instead
 recomputed by

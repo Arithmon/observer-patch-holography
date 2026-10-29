@@ -41,9 +41,16 @@ stationarity and the native gradient do not determine them or a rest mass.
 
 The [receipt](sector_action_results.json) distinguishes exact Python checks
 of the actual 4,356-state model from Lean's proof of the general implication.
+The frozen [campaign](campaign.json) retains its original energy-bridge input
+under [an exact predecessor capture](predecessor/energy_bridge_results.json),
+byte-identical to that input at the campaign's recorded predecessor commit.
+Its specifically named historical path resolves to this capture; every other
+campaign source is checked against its live bytes. The current receipt binds
+the capture's actual path separately from the current energy-bridge receipt,
+so later documentation updates do not rewrite the campaign or its evidence.
 The full native kernel is not encoded as a Lean value. Mutation tests reject
-charge leakage, missing holds, an invalid reference and a disconnected
-purported sector. No clock calibration, physical energy or integrated
+charge leakage, missing holds, an invalid reference, a disconnected
+purported sector and a changed predecessor capture. No clock calibration, physical energy or integrated
 completion gate is accepted.
 
 ```sh
