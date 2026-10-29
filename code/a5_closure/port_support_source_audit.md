@@ -54,8 +54,9 @@ every current or possible source implementation.
 
 Environment: Python 3.14.4; installed Lean 4.29.1, commit
 `f72c35b3f637c8c6571d353742168ab66cc22c00`, matching `Lean/lean-toolchain`.
-No Lean source was changed or compiled. No toolchain, dependency or venv
-was installed. No heavy pool was rerun. No paper, memory file or canonical
+No Lean source was changed. The bounded packet needs no Lean build;
+subsequent automatic cache-build failures are described in the CI follow-up.
+No toolchain or venv was installed. No heavy pool was rerun. No paper, memory file or canonical
 result JSON was changed.
 
 ## Claim adjudication
@@ -259,7 +260,7 @@ not a relative-attachment selection theorem.
 | Reader style and `git diff --check` | Passed. |
 | Source-current inventory | Canonical snapshot regenerated and both replays checked before the integration commit; only the snapshot and its digest change. |
 | Mandatory zero-based shard 8/10 | Passed. Cache-write warnings under the read-only sandbox were nonfatal. |
-| Mandatory zero-based shard 9/10 | Launched; the full legacy-ledger fixture is still running at this integration commit. Initial read-only error in the legacy A5 JSON regeneration was rerun with authorized worktree writes. Final outcome belongs in the delivery record. |
+| Mandatory zero-based shard 9/10 | Initial broad local run stopped after fixture errors from a failed automatic Lean rebuild in the local cache. This is distinct from the postdiction projection drift diagnosed below; no full local shard-9 success or fresh Lean kernel check is claimed. |
 | Remote CI | Must be checked on the delivered commit; no all-green claim from local checks. |
 
 The builder commands were `python3 -B tools/build_premise_register.py --check`,
@@ -275,6 +276,45 @@ Mandatory commands use
 and index 9, with `PYTHONDONTWRITEBYTECODE=1`, `OPENBLAS_NUM_THREADS=1` and
 `OMP_NUM_THREADS=1`. Logs are `/tmp/oph-port-support-shard8.log` and
 `/tmp/oph-port-support-shard9.log`. No full/certificate-heavy mode was used.
+
+## Fork CI repair follow-up, 2026-10-29
+
+The full PR checks on `6a9223ad8aaeab21130ddc9a9fd032f45c543773` exposed
+fourteen failures beyond the passing dedicated interface workflow. All
+twelve observer-construction jobs failed before executing the model:
+`origin` on the Arithmon fork did not have the canonical `r2053` tag. The
+workflow now fetches it from FloatingPragma and verifies its peeled commit
+against `model/common_source/mass_response/results.json`. The recorded
+commit remains `e2a6fb78bfe4302ace257ab1d1f7305dc4367ed1`; the canonical tag
+object is `a0c109d2a004bc5e5ebfa765fce8edf274ccae39`. Both were checked
+against the upstream ref. A wrong peeled commit is rejected by a new
+negative test. All 331 model verification/sharding tests and all 1,414
+artifact bindings pass locally. No release tag was changed or published.
+
+The two mandatory-shard-2 failures were deterministic postdiction-ledger
+drift. A complete canonical rebuild into temporary outputs changed exactly
+one JSON leaf:
+`executable_completion_program.retained_foundations[2].source_sha256["model/CONSTRUCTION.md"]`.
+Its new value binds the explanatory port/support paragraph added by this
+branch. The Markdown and every other JSON value are unchanged. The committed
+ledger is copied from that complete producer output; its hash is not
+manually edited. No scientific result or acceptance status changes.
+
+Local postdiction regeneration uses the same documented Python-only
+witness-custody path as the mandatory CI: `certify_stability` checks the
+current Lean source manifest, generated-witness hash and exact payload,
+while Lean CI owns fresh kernel replay. The local installed Lake otherwise
+attempts a rebuild against an incomplete Mathlib cache and fails. For this
+Python-only replay the test process uses `ELAN_HOME=/usr` and a PATH without
+the installed Lake, retaining `/home/galerie/.local/bin` for the official
+OpenTimestamps parser. This installs nothing, changes no verifier, and
+claims no fresh Lean build. The shared Python-3.12 launcher is a dangling
+old temporary-install symlink; local Python remains 3.14.4.
+
+The source inventory is regenerated after this follow-up; its candidate
+classifications and scientific verdicts remain unchanged. Final remote
+status must be read on the delivered repair commit rather than inferred
+from the earlier dedicated-workflow success.
 
 ## Next minimal scientific step
 
