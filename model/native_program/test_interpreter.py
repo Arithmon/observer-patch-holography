@@ -111,6 +111,20 @@ def test_feedback_reads_only_the_retained_current():
             assert branch.record.seam == expected
 
 
+@pytest.mark.parametrize('repeat', [2, 3, 65, 100])
+def test_intrinsic_FIFO_timeout_ends_execution_before_later_resource_limits(repeat):
+    initial = entangled()
+    value = p.program(commands=[{'op': 'hold', 'repeat': repeat}, fixed()], overflow='halt')
+    output = p.execute(value, initial, max_steps=2)
+    assert output.status == 'FIFO_TIMEOUT'
+    assert output.attempted_steps == output.resources['attempts_executed'] == 2
+    assert len(output.branches) == 1
+    branch = output.branches[0]
+    assert branch.record.kind == 'FIFO_TIMEOUT' and branch.halted
+    assert branch.density == initial
+    assert branch.memory == (p.Record('hold'),) and branch.archive == ()
+
+
 @pytest.mark.parametrize('mutation', ['hidden_selector', 'future_operation', 'underreport', 'boolean_cost', 'overflow'])
 def test_admission_rejects_forged_controls_or_resources(mutation):
     value = p.program(commands=[fixed()])

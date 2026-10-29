@@ -432,6 +432,11 @@ def execute(value, density, *, max_branches=MAX_EVALUATED_BRANCHES, max_steps=MA
     steps, stopped = 0, False
     for command in value['commands']:
         for repetition in range(command['repeat']):
+            # A retained intrinsic terminal outcome ends execution. Later
+            # literal commands cannot consume attempts or replace that outcome
+            # with a host resource stop.
+            if all(branch.halted for branch in branches):
+                break
             if steps >= max_steps:
                 stopped = True; break
             sizes = []
@@ -448,7 +453,7 @@ def execute(value, density, *, max_branches=MAX_EVALUATED_BRANCHES, max_steps=MA
             branches = tuple(result for branch in branches for result in (
                 (branch,) if branch.halted else _outcomes(value, command, branch.density, branch.memory, branch.archive, repetition=repetition)))
             steps += 1
-        if stopped:
+        if stopped or all(branch.halted for branch in branches):
             break
     if stopped:
         branches = tuple(branch if branch.halted else Outcome(Record('RESOURCE_STOP'), branch.density,
