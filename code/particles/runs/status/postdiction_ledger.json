@@ -45,8 +45,8 @@
       "status": "PROPOSED_NOT_ESTABLISHED"
     },
     "parents": {
-      "claims/claim_registry.yaml": "efc1a41bc38e90d8079cd214918d571f74aa9395c7e53537b17281eb9f727906",
-      "claims/completion_program.json": "4c58c529081e8a60e8e7df8deb1323a9962fe488f1fec80425d0ec38a4e29354",
+      "claims/claim_registry.yaml": "46fa152aa5603b5d1c0fb418b7ff4f034108bcd31220e7f8bfef8df5cdbe531b",
+      "claims/completion_program.json": "f09f2a266509e6d2d018b9cb55d511309c9b9b77f3f0acf94eb5b8029661147b",
       "claims/executable_model_hypothesis.json": "1855a611870a64b3d97fbaa8759385761dda9130a1517233193af2c7f170cd2b",
       "docs/OPH_EXECUTABLE_HYPOTHESIS.md": "c503247a2b333c2e27b3eba865d47f2d15c966a5052eceb4aadb14fc9002f35a"
     },
@@ -320,6 +320,30 @@
             "CP-12"
           ],
           "whole_program_frozen": false
+        },
+        {
+          "contract": {
+            "independent_check": "model/completion/test_particle_premise_joins.py",
+            "path": "model/completion/particle_premise_campaign.json",
+            "scope": "Four selected issues and the common local action, finite interfaces, pending-draft boundaries and complete-criteria closure policy. No integrated gate or physical comparison is accepted.",
+            "sha256": "70aa8b276e1af6299d16311c949a1084f4d2109fe5112389a5f47351168112ff"
+          },
+          "id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+          "scope": "FINITE_COMPONENT_DIAGNOSTICS",
+          "supports": [
+            "CP-01",
+            "CP-02",
+            "CP-03",
+            "CP-04",
+            "CP-05",
+            "CP-06",
+            "CP-07",
+            "CP-08",
+            "CP-09",
+            "CP-12",
+            "CP-13"
+          ],
+          "whole_program_frozen": false
         }
       ],
       "continuing_issues": {
@@ -421,16 +445,13 @@
       "hypothesis": "claims/executable_model_hypothesis.json",
       "legacy_issue_policy": "Issues #1025, #1026, #1076 and #1077 are superseded by the new completion owners and closed as not planned, not as scientifically completed. Their evidence and unfinished contracts remain linked. The ongoing audit #1033 and broad obstruction search #1078 stay open.",
       "next_wave": {
-        "acceptance_policy": "These are four provisional component assignments under CP-03 through CP-06. CP-00, CP-01, CP-02, CP-13 and CP-12 review their shared inputs and missing joins. All integrated gates retain their original dependencies and remain open; no physical comparison or whole-program verdict is added.",
+        "acceptance_policy": "The four selected open issues are CP-03, CP-04, CP-06 and CP-13. Eight additional worker assignments develop and independently review their particle, field, theorem, source-interface and publication evidence. All integrated acceptance dependencies remain unchanged; complete criteria are required for issue closure.",
         "changes_frozen_campaign": false,
         "deferred_gates": [
-          "CP-07",
-          "CP-08",
-          "CP-09",
           "CP-10",
           "CP-11"
         ],
-        "deferred_reason": "A matched particle spectrum and realized gravity require the common localized state, action, clock, matter, field and stress dictionary. Existing positive conditional field and Einstein results retain their own domains.",
+        "deferred_reason": "Physical Einstein composition and joint empirical validation still require accepted particle, field, geometry and common normalization joins. Finite components and scoped exclusions do not supply those predecessors.",
         "embedded_reviews": [
           {
             "evidence": [
@@ -453,23 +474,6 @@
             "gate": "CP-01",
             "issue": 1136,
             "role": "Review complete continuing observer service and resource accounting for the compiled Ramsey and active-recovery protocols; predecessor acceptance remains open."
-          },
-          {
-            "evidence": [
-              "conserved_sector_action",
-              "screened_recovery",
-              "shared_event_clock",
-              "screened_transport",
-              "theorem_map",
-              "record_derived_clock",
-              "moving_defect",
-              "record_action",
-              "particle_obstruction",
-              "interacting_field"
-            ],
-            "gate": "CP-13",
-            "issue": 1137,
-            "role": "Maintain exact theorem/source/reference bindings for all four component advances and the explicit missing joins. Separate exact Python/symbolic identities, analytic arguments, compiled numerical diagnostics and existing Lean implications."
           },
           {
             "evidence": [
@@ -497,6 +501,39 @@
             "gate": "CP-02",
             "issue": 1138,
             "role": "Preserve the record-derived continuing clock and review its actual compatibility with moving codes and proposed kinetic/field actions; common physical calibration remains open."
+          },
+          {
+            "evidence": [
+              "bound_pair",
+              "particle_obstruction"
+            ],
+            "gate": "CP-05",
+            "issue": 1141,
+            "role": "Audit actual CAR charges, current couplings, spin and statistics while leaving physical matter assignments explicit."
+          },
+          {
+            "evidence": [
+              "bound_pair"
+            ],
+            "gate": "CP-07",
+            "issue": 1143,
+            "role": "Retain complete spectral measures, scattering complements, coordinate conventions and physical matching gaps."
+          },
+          {
+            "evidence": [
+              "field_regions"
+            ],
+            "gate": "CP-08",
+            "issue": 1144,
+            "role": "Review signed regional algebra maps and finite box embeddings without promoting supplied geometry."
+          },
+          {
+            "evidence": [
+              "field_stress"
+            ],
+            "gate": "CP-09",
+            "issue": 1145,
+            "role": "Review exact energy continuity and quantum entropy attachments against every unresolved G1--G6 field."
           }
         ],
         "evidence": [
@@ -851,69 +888,134 @@
             "path": "model/interacting_field/results.json",
             "scope": "Source-compiled quartic CAR interactions produce detector-reconstructed non-Gaussian four-point response and complete feedback histories through 343 sites. Analytic ideal bounds compare the exact two-particle sector to the same fixed-spacing infinite lattice. All 8 naive Weyl nodes, supplied action and unjoined native clock remain.",
             "sha256": "cd98d7640e1e893c5d183535f2ad57362473e3c7549b77e2843e37b1e2bc395c"
+          },
+          {
+            "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+            "id": "particle_premise_contract",
+            "independent_check": "model/completion/test_particle_premise_joins.py",
+            "path": "model/completion/particle_premise_campaign.json",
+            "scope": "Four selected issues and the common local action, finite interfaces, pending-draft boundaries and complete-criteria closure policy. No integrated gate or physical comparison is accepted.",
+            "sha256": "70aa8b276e1af6299d16311c949a1084f4d2109fe5112389a5f47351168112ff"
+          },
+          {
+            "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+            "id": "bound_pair",
+            "independent_check": "model/bound_pair/test_mass.py",
+            "path": "model/bound_pair/results.json",
+            "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
+            "sha256": "de0b4ed00bd0636749d385e4fdc861d290c2a90a065833bc41c9e35c57e071d2"
+          },
+          {
+            "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+            "id": "particle_clock",
+            "independent_check": "model/particle_clock/test_clock.py",
+            "path": "model/particle_clock/results.json",
+            "scope": "An explicit supplied isometry maps the same N=2 eta pair and dark reference to a native M2 corner. Complete compiled herald/continuation/record-clock/energy histories retain all stops and a finite unconditional error bound. Full spatial encoding and physical calibration remain open.",
+            "sha256": "114cf1b49b1b80b21edebabf9d2258b81432c4a35d1409ab613ac0e0402700bb"
+          },
+          {
+            "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+            "id": "field_regions",
+            "independent_check": "model/field_regions/test_regions.py",
+            "path": "model/field_regions/results.json",
+            "scope": "Actual signed CAR restrictions retain local N=0,1,2, references and every history outcome; CP expectations and cube embeddings compose. Exact Hamiltonian compression does not intertwine dynamics. Fixed-spacing locality is not physical Lorentz geometry.",
+            "sha256": "02acf8262f11badcc19f68c5abe2c52feaa957b6ad2fc91dcf751d653c3d765b"
+          },
+          {
+            "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+            "id": "field_stress",
+            "independent_check": "model/field_stress/test_energy.py",
+            "path": "model/field_stress/results.json",
+            "scope": "Exact local energy continuity and interaction-dependent boundary flux on the full finite field; same-action quantum Gibbs/entropy identity and regional bare-energy countercontrol. Lorentz stress, null geometry, area variation and Einstein premises remain open.",
+            "sha256": "34e3d3184f727b7c881711defdd0d5d98c083e9de29263ad86872bd9c6db8fff"
+          },
+          {
+            "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+            "id": "finite_attachment_map",
+            "independent_check": "model/completion/test_finite_attachment_map.py",
+            "path": "model/completion/finite_attachment_map.json",
+            "scope": "Exhaustive ownership and relevance navigation for the existing 84-premise register, with source-bound finite model attachments and explicit unresolved construction/acceptance joins. It is not a new audit of every Lean module or discharge of global physical premises.",
+            "sha256": "eb148813ffef423f44b3694554ea6e05162b57f7e00206d41f337b3362db0e00"
+          },
+          {
+            "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+            "id": "field_tastes",
+            "independent_check": "model/field_tastes/test_tastes.py",
+            "path": "model/field_tastes/results.json",
+            "scope": "Same-action contact coupling tests complete momentum pockets, retained mirror modes and interaction leakage; exclusions apply to the declared projection at fixed lattice coupling, not every chiral regulator or continuum limit.",
+            "sha256": "c9a3d1c62a46ede9f5730b6bad7e0020d0b07d9dd2869d2e5b00585d1e347e0d"
+          },
+          {
+            "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+            "id": "biased_reset",
+            "independent_check": "model/biased_reset/test_reset.py",
+            "path": "model/biased_reset/results.json",
+            "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the pending fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
+            "sha256": "db4964d122ffefbf04a7479112307d342a2cf60c3a36f441244e74668069e1ae"
           }
         ],
-        "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-29-v7",
+        "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-29-v8",
         "owners": [
           {
-            "deliverable": "One localized transported state with reference-like exterior and a protecting invariant or controlled lifetime compatible with the actual observer clock.",
+            "deliverable": "A localized native excitation with reference-like exterior and the full-law protecting invariant or controlled lifetime, attached to the actual field excitation.",
             "evidence": [
+              "bound_pair",
               "moving_defect",
-              "record_derived_clock"
+              "particle_premise_contract"
             ],
             "gate": "CP-03",
             "issue": 1139,
-            "join_condition": "Any successor code or autonomous mechanism needs an independently declared state/reference, all-branch protection and the fixed-clock subspace map; active memory alone is not particle identity.",
-            "may_start_now": "Use the complete 60-core transition kernel, executed moving recoveries and exact stopping/resource equations as positive controls and failure witnesses.",
-            "title": "Advance from active moving memory to localized clock-compatible matter",
-            "why_now": "The code can now move, but its exact stopped process and exterior/clock mismatches identify the missing protection contract."
+            "join_condition": "Spectral isolation under the supplied Hamiltonian is not invariance under every native repair branch; active information transport and trivial band topology do not supply the required defect invariant.",
+            "may_start_now": "Use complete band wavepackets and all-outcome active memory/reset controls with their explicit law and reference differences.",
+            "title": "Complete localized native protection and its field-state attachment",
+            "why_now": "The same interacting pair moves in an isolated band, while native active memory and its pending reset extension have distinct protection laws."
           },
           {
-            "deliverable": "Execute a justified coherent action and construct its compatible reference/clock comparison, then extract independent rest, kinetic and conserved stress responses.",
+            "deliverable": "Source-derived maintenance energy and kinetic response with one justified physical normalization and the stress map consumed by gravity.",
             "evidence": [
-              "record_action",
-              "moving_defect",
-              "record_derived_clock"
+              "bound_pair",
+              "particle_clock",
+              "field_stress"
             ],
             "gate": "CP-04",
             "issue": 1140,
-            "join_condition": "An attempted-event relaxation spectrum is not a physical mass. Preserve the observed reference and all interventions, or declare and justify a new action/reference map.",
-            "may_start_now": "Reuse the 300 native hopping blocks, exact density-interaction residual, record confidence bound and complete modular-increment ledger.",
-            "title": "Join coherent kinetics to the recovered clock",
-            "why_now": "A positive local interacting parent is inferred from records, but its noncommuting reference prevents the proposed Gibbs/modular identification."
+            "join_condition": "Supplied U and c, coordinate masses and one corner clock do not select a physical full-field dictionary. Preserve the proved same-speed relativistic mismatch and regional modular countercontrol.",
+            "may_start_now": "Use the bound-pair energy/residue identity, exact curvature interval, complete clock records and interaction-dependent local energy conservation.",
+            "title": "Complete the common particle energy, propagation and stress dictionary",
+            "why_now": "One excitation now has exact energy splitting, independent curvature, a native M2 clock attachment and same-action finite energy currents."
           },
           {
-            "deliverable": "One same-source defect/current/matter attachment with charge conservation and the additional justified family structure required for full mixing.",
+            "deliverable": "A same-process chiral effective or continuum field description with all modes, currents, interactions, reference and complete intervention errors controlled.",
             "evidence": [
-              "particle_obstruction",
-              "moving_defect",
-              "record_action"
-            ],
-            "gate": "CP-05",
-            "issue": 1141,
-            "join_condition": "Do not promote a declared exterior lift, family assignment or exact symmetry from names or noisy estimates; keep every chirality and anomaly-cancellation premise.",
-            "may_start_now": "Reuse the exact signed-generation classification, derived source response axes and invariant-Yukawa obstruction with its explicit symmetry-breaking control.",
-            "title": "Attach the admitted currents and family dynamics to transported states",
-            "why_now": "Complete anomaly equations and actual residual symmetry now constrain which representation truncations and invariant family maps can work."
-          },
-          {
-            "deliverable": "An explicit native-source embedding of the interacting observation law and a justified chiral-regulator/refinement map preserving complete quantum records.",
-            "evidence": [
-              "interacting_field",
-              "record_action",
-              "particle_obstruction",
-              "record_derived_clock"
+              "bound_pair",
+              "field_regions",
+              "interacting_field"
             ],
             "gate": "CP-06",
             "issue": 1142,
-            "join_condition": "Supplied lattice/action/time remain inputs. The product-reference modular flow is quadratic under the occupation dictionary; matching it to the interaction needs a new proven map. No taste is removed without a derivation.",
-            "may_start_now": "Reuse the quartic source word, detector tomography, exact two-particle evolution, independent Hamiltonian oracle and volume-uniform estimates.",
-            "title": "Join interacting field records to the native source and address chirality",
-            "why_now": "A non-Gaussian source-compiled 3D CAR field now has complete feedback records and analytic fixed-lattice bounds, while its source/clock embedding and naive doublers remain visible."
+            "join_condition": "A finite band or infinite-volume fixed lattice is not a chiral continuum. No unwanted mode can be dropped without a derived complete-law decoupling map.",
+            "may_start_now": "Retain every Weyl taste and scattering output; test the contact interaction against the proposed momentum-sector removal and compose the existing regional history maps.",
+            "title": "Complete the interacting chiral field and observable-domain comparison",
+            "why_now": "Complete interacting histories, CAR regional maps and same-excitation spectral measures can now test actual mode removal rather than a pole list alone."
+          },
+          {
+            "deliverable": "A complete current ownership/relevance map, verified concrete attachments, corrected active theorem routes and a criterion-by-criterion acceptance audit.",
+            "evidence": [
+              "particle_premise_contract",
+              "particle_clock",
+              "field_regions",
+              "field_stress"
+            ],
+            "gate": "CP-13",
+            "issue": 1137,
+            "join_condition": "Map completion does not prove downstream physics. Closure also requires the declared accepted CP-00/CP-01 predecessor joins; no issue closes merely because a finite subtask passes.",
+            "may_start_now": "Inspect the exact theorem statements and the full premise inventory, preserving existing proof provenance and classifying every current obligation.",
+            "title": "Complete and audit the active finite theorem-to-model chain",
+            "why_now": "Actual CAR, clock and stress/entropy constructions identify finite premises that can be instantiated and expose incompatible substitutions."
           }
         ],
         "physical_comparison_count_added": 0,
-        "rationale": "Treat the record-derived continuing clock in PR1151 as an available component. Four parallel advances now provide active moving memory with exact stopping, a record-inferred kinetic parent, source-bound current/family obstructions and interacting 3D lattice CAR histories. Their clock, localization, matter and refinement joins remain explicit research tasks; these components are not pooled into one accepted physical realization.",
+        "rationale": "Concentrate four open issues on one actual interacting excitation and its finite theorem interfaces. A moving bound-pair band, common finite clock corner, CAR regional maps and energy/entropy identities now have explicit same-action attachments. Complete particle, chiral field and physical gravity joins remain required; complementary draft PRs remain separate until reviewed and merged.",
         "scope": "SOURCE_BOUND_COMPONENT_WORK_WITH_OPEN_ACCEPTANCE_JOINS",
         "shared_interface": {
           "baseline_campaign_id": "OPH-RECORD-DERIVED-CONTINUING-CLOCK-v1",
@@ -925,11 +1027,14 @@
             "The Ramsey service compiles the density representation with its proven intertwiner; the full binary arc unitary, physical time and storage hardware remain additional obligations.",
             "A sharp relational sector, active quantum memory, exchange-history parity and positive current form are separate observations. Identify one localized matter state, rest action, kinetic response, common clock and conserved stress before a particle or mass claim.",
             "Keep prior failures, empirical exposure, computational budgets and full-program acceptance gates unchanged until a versioned CP-00/CP-12 decision contract is accepted.",
-            "The working PR1151 input is head 67aa7b6f4a904a1a90ea6d77bf2f66c741f2ba0c; its development use does not merge it or accept its physical obligations.",
             "The active moving code has explicit opposite-core stops and modular leakage. Retain every stop and its resource cost; no reset or success conditioning may substitute for transport.",
             "The stochastic-matrix kinetic parent and recovered modular generator are different operators. A shared residual symmetry is not an action/clock identification.",
             "Exact fixed-source symmetry and finite-record inference have different quantifiers. The current/matter lift and source-triplet family attachment require their stated maps.",
-            "The interacting CAR field uses a supplied lattice/action and exact N=2 sector. Retain all naive Weyl nodes; fixed-spacing infinite volume is not the chiral spatial continuum."
+            "The interacting CAR field uses a supplied lattice/action and exact N=2 sector. Retain all naive Weyl nodes; fixed-spacing infinite volume is not the chiral spatial continuum.",
+            "PR1151 is merged. PR1152 remains a draft integration branch; pending PR1153 head504b48cb20e3e85c620638bc83b08def8a20830e and PR1128 head78c4eb137cf3bf20e7c1d907561f2f2abe22cbf4 retain their independent scoped interfaces.",
+            "The bound pair uses the supplied Weyl-contact action throughout transport, spectrum, charge and curvature. Its topology is trivial, its physical species is unassigned, and its coordinate kinetic/rest mass mismatch cannot be removed by one unit conversion.",
+            "The native clock attachment is faithful only on the supplied invariant M2 field corner. Full-field encoding, same-process Gibbs preparation and physical clock calibration remain separate obligations.",
+            "Finite CAR restrictions and energy/entropy identities must not be relabeled physical geometry, Lorentz stress, generalized-entropy stationarity or an interacting chiral continuum."
           ],
           "same_process_required": true,
           "unilateral_primitive_changes_allowed": false
@@ -1040,7 +1145,9 @@
             "model/clock_defect_energy/clock_count_inference_results.json",
             "model/screened_recovery/screened_recovery_results.json",
             "model/clock_defect_energy/shared_event_clock/results.json",
-            "model/local_repair_family/README.md"
+            "model/local_repair_family/README.md",
+            "model/particle_clock/results.json",
+            "model/biased_reset/results.json"
           ],
           "id": "CP-01",
           "issue": 1136,
@@ -1117,6 +1224,20 @@
               "path": "model/local_repair_family/record_clock_results.json",
               "scope": "Complete31,457,280-event continuing native acquisition identifies relative product-reference weights with held-out cycle checks. Exact record-box mixing and source-compiled phase bounds control complete future readouts and the actual prepared source-marginal clock. Source-weight selection, coherent hardware, physical calibration and refining matter/gravity joins are separate obligations.",
               "sha256": "2f0b5b895ce1ac7c6455cf4bff6faf1d37bb25ded0208d2df66212e8b0cdc1da"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/particle_clock/test_clock.py",
+              "path": "model/particle_clock/results.json",
+              "scope": "An explicit supplied isometry maps the same N=2 eta pair and dark reference to a native M2 corner. Complete compiled herald/continuation/record-clock/energy histories retain all stops and a finite unconditional error bound. Full spatial encoding and physical calibration remain open.",
+              "sha256": "114cf1b49b1b80b21edebabf9d2258b81432c4a35d1409ab613ac0e0402700bb"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/biased_reset/test_reset.py",
+              "path": "model/biased_reset/results.json",
+              "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the pending fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
+              "sha256": "db4964d122ffefbf04a7479112307d342a2cf60c3a36f441244e74668069e1ae"
             }
           ],
           "requires": [
@@ -1150,7 +1271,14 @@
             "model/screened_recovery/screened_recovery_results.json",
             "model/clock_defect_energy/shared_event_clock/results.json",
             "model/screened_transport/transport_results.json",
-            "model/conserved_sector_action/sector_action_results.json"
+            "model/conserved_sector_action/sector_action_results.json",
+            "model/bound_pair/results.json",
+            "model/particle_clock/results.json",
+            "model/field_regions/results.json",
+            "model/field_stress/results.json",
+            "model/completion/finite_attachment_map.json",
+            "model/field_tastes/results.json",
+            "model/biased_reset/results.json"
           ],
           "id": "CP-13",
           "issue": 1137,
@@ -1292,6 +1420,55 @@
               "path": "model/local_repair_family/record_clock_results.json",
               "scope": "Complete31,457,280-event continuing native acquisition identifies relative product-reference weights with held-out cycle checks. Exact record-box mixing and source-compiled phase bounds control complete future readouts and the actual prepared source-marginal clock. Source-weight selection, coherent hardware, physical calibration and refining matter/gravity joins are separate obligations.",
               "sha256": "2f0b5b895ce1ac7c6455cf4bff6faf1d37bb25ded0208d2df66212e8b0cdc1da"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/bound_pair/test_mass.py",
+              "path": "model/bound_pair/results.json",
+              "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
+              "sha256": "de0b4ed00bd0636749d385e4fdc861d290c2a90a065833bc41c9e35c57e071d2"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/particle_clock/test_clock.py",
+              "path": "model/particle_clock/results.json",
+              "scope": "An explicit supplied isometry maps the same N=2 eta pair and dark reference to a native M2 corner. Complete compiled herald/continuation/record-clock/energy histories retain all stops and a finite unconditional error bound. Full spatial encoding and physical calibration remain open.",
+              "sha256": "114cf1b49b1b80b21edebabf9d2258b81432c4a35d1409ab613ac0e0402700bb"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/field_regions/test_regions.py",
+              "path": "model/field_regions/results.json",
+              "scope": "Actual signed CAR restrictions retain local N=0,1,2, references and every history outcome; CP expectations and cube embeddings compose. Exact Hamiltonian compression does not intertwine dynamics. Fixed-spacing locality is not physical Lorentz geometry.",
+              "sha256": "02acf8262f11badcc19f68c5abe2c52feaa957b6ad2fc91dcf751d653c3d765b"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/field_stress/test_energy.py",
+              "path": "model/field_stress/results.json",
+              "scope": "Exact local energy continuity and interaction-dependent boundary flux on the full finite field; same-action quantum Gibbs/entropy identity and regional bare-energy countercontrol. Lorentz stress, null geometry, area variation and Einstein premises remain open.",
+              "sha256": "34e3d3184f727b7c881711defdd0d5d98c083e9de29263ad86872bd9c6db8fff"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/completion/test_finite_attachment_map.py",
+              "path": "model/completion/finite_attachment_map.json",
+              "scope": "Exhaustive ownership and relevance navigation for the existing 84-premise register, with source-bound finite model attachments and explicit unresolved construction/acceptance joins. It is not a new audit of every Lean module or discharge of global physical premises.",
+              "sha256": "eb148813ffef423f44b3694554ea6e05162b57f7e00206d41f337b3362db0e00"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/field_tastes/test_tastes.py",
+              "path": "model/field_tastes/results.json",
+              "scope": "Same-action contact coupling tests complete momentum pockets, retained mirror modes and interaction leakage; exclusions apply to the declared projection at fixed lattice coupling, not every chiral regulator or continuum limit.",
+              "sha256": "c9a3d1c62a46ede9f5730b6bad7e0020d0b07d9dd2869d2e5b00585d1e347e0d"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/biased_reset/test_reset.py",
+              "path": "model/biased_reset/results.json",
+              "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the pending fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
+              "sha256": "db4964d122ffefbf04a7479112307d342a2cf60c3a36f441244e74668069e1ae"
             }
           ],
           "requires": [
@@ -1322,7 +1499,8 @@
             "model/clock_defect_energy/RAMSEY_SERVICE.md",
             "model/clock_defect_energy/REFERENCE_BALANCE.md",
             "model/clock_defect_energy/clock_count_inference_results.json",
-            "model/clock_defect_energy/shared_event_clock/results.json"
+            "model/clock_defect_energy/shared_event_clock/results.json",
+            "model/particle_clock/results.json"
           ],
           "id": "CP-02",
           "issue": 1138,
@@ -1425,6 +1603,13 @@
               "path": "model/local_repair_family/record_clock_results.json",
               "scope": "Complete31,457,280-event continuing native acquisition identifies relative product-reference weights with held-out cycle checks. Exact record-box mixing and source-compiled phase bounds control complete future readouts and the actual prepared source-marginal clock. Source-weight selection, coherent hardware, physical calibration and refining matter/gravity joins are separate obligations.",
               "sha256": "2f0b5b895ce1ac7c6455cf4bff6faf1d37bb25ded0208d2df66212e8b0cdc1da"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/particle_clock/test_clock.py",
+              "path": "model/particle_clock/results.json",
+              "scope": "An explicit supplied isometry maps the same N=2 eta pair and dark reference to a native M2 corner. Complete compiled herald/continuation/record-clock/energy histories retain all stops and a finite unconditional error bound. Full spatial encoding and physical calibration remain open.",
+              "sha256": "114cf1b49b1b80b21edebabf9d2258b81432c4a35d1409ab613ac0e0402700bb"
             }
           ],
           "requires": [
@@ -1454,7 +1639,9 @@
             "model/screened_recovery/screened_recovery_results.json",
             "model/screened_transport/transport_results.json",
             "model/moving_defect/README.md",
-            "model/moving_defect/results.json"
+            "model/moving_defect/results.json",
+            "model/bound_pair/results.json",
+            "model/biased_reset/results.json"
           ],
           "id": "CP-03",
           "issue": 1139,
@@ -1530,6 +1717,20 @@
               "path": "model/moving_defect/results.json",
               "scope": "Active source-compiled recovery follows recorded cores without successful-step reset; all forbidden-core stops, exact lifetime/resource equations, exterior mismatch and fixed-clock leakage remain. No autonomous localized matter is claimed.",
               "sha256": "ff084b57b7ce238ab4d7df04154e76b402a0561824eb46852f6cb75df8a32a6a"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/bound_pair/test_mass.py",
+              "path": "model/bound_pair/results.json",
+              "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
+              "sha256": "de0b4ed00bd0636749d385e4fdc861d290c2a90a065833bc41c9e35c57e071d2"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/biased_reset/test_reset.py",
+              "path": "model/biased_reset/results.json",
+              "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the pending fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
+              "sha256": "db4964d122ffefbf04a7479112307d342a2cf60c3a36f441244e74668069e1ae"
             }
           ],
           "requires": [
@@ -1562,7 +1763,10 @@
             "model/screened_transport/transport_results.json",
             "model/conserved_sector_action/sector_action_results.json",
             "model/record_action/README.md",
-            "model/record_action/results.json"
+            "model/record_action/results.json",
+            "model/bound_pair/results.json",
+            "model/particle_clock/results.json",
+            "model/field_stress/results.json"
           ],
           "id": "CP-04",
           "issue": 1140,
@@ -1647,6 +1851,27 @@
               "path": "model/record_action/results.json",
               "scope": "A positive local stochastic-matrix kinetic parent has 300 hopping pairs and a nonzero hard-core density interaction; record-only inference bounds its operator error. Exact modular increments and a same-reference Gibbs/affine-clock obstruction do not supply physical energy or stress.",
               "sha256": "6c5bd736256603e090afb4c78a4b3f0e15b1aec32bb15dc42041cb9b76d23352"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/bound_pair/test_mass.py",
+              "path": "model/bound_pair/results.json",
+              "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
+              "sha256": "de0b4ed00bd0636749d385e4fdc861d290c2a90a065833bc41c9e35c57e071d2"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/particle_clock/test_clock.py",
+              "path": "model/particle_clock/results.json",
+              "scope": "An explicit supplied isometry maps the same N=2 eta pair and dark reference to a native M2 corner. Complete compiled herald/continuation/record-clock/energy histories retain all stops and a finite unconditional error bound. Full spatial encoding and physical calibration remain open.",
+              "sha256": "114cf1b49b1b80b21edebabf9d2258b81432c4a35d1409ab613ac0e0402700bb"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/field_stress/test_energy.py",
+              "path": "model/field_stress/results.json",
+              "scope": "Exact local energy continuity and interaction-dependent boundary flux on the full finite field; same-action quantum Gibbs/entropy identity and regional bare-energy countercontrol. Lorentz stress, null geometry, area variation and Einstein premises remain open.",
+              "sha256": "34e3d3184f727b7c881711defdd0d5d98c083e9de29263ad86872bd9c6db8fff"
             }
           ],
           "requires": [
@@ -1671,7 +1896,8 @@
             "model/common_source/native_matter_attachment.py",
             "model/observer_particles/DERIVATION.md",
             "model/particle_obstruction/README.md",
-            "model/particle_obstruction/results.json"
+            "model/particle_obstruction/results.json",
+            "model/bound_pair/results.json"
           ],
           "id": "CP-05",
           "issue": 1141,
@@ -1692,6 +1918,13 @@
               "path": "model/particle_obstruction/results.json",
               "scope": "All 376 source-current anomaly traces classify arbitrary integer signed copies of the declared five-block matter lift. The actual fixed clock source has C2 symmetry and three distinct positive response moments; conditional invariant Yukawas retain an isolated family and zero three-family CP mixing.",
               "sha256": "1c8195f5f57f5faacd8ac8bcf1de63caef6427941dd03b16c7f30d7a95db32ed"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/bound_pair/test_mass.py",
+              "path": "model/bound_pair/results.json",
+              "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
+              "sha256": "de0b4ed00bd0636749d385e4fdc861d290c2a90a065833bc41c9e35c57e071d2"
             }
           ],
           "requires": [
@@ -1715,7 +1948,9 @@
             "model/observer_particles/spectral_response.py",
             "model/CONSTRUCTION.md",
             "model/interacting_field/README.md",
-            "model/interacting_field/results.json"
+            "model/interacting_field/results.json",
+            "model/field_regions/results.json",
+            "model/field_tastes/results.json"
           ],
           "id": "CP-06",
           "issue": 1142,
@@ -1736,6 +1971,20 @@
               "path": "model/interacting_field/results.json",
               "scope": "Source-compiled quartic CAR interactions produce detector-reconstructed non-Gaussian four-point response and complete feedback histories through 343 sites. Analytic ideal bounds compare the exact two-particle sector to the same fixed-spacing infinite lattice. All 8 naive Weyl nodes, supplied action and unjoined native clock remain.",
               "sha256": "cd98d7640e1e893c5d183535f2ad57362473e3c7549b77e2843e37b1e2bc395c"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/field_regions/test_regions.py",
+              "path": "model/field_regions/results.json",
+              "scope": "Actual signed CAR restrictions retain local N=0,1,2, references and every history outcome; CP expectations and cube embeddings compose. Exact Hamiltonian compression does not intertwine dynamics. Fixed-spacing locality is not physical Lorentz geometry.",
+              "sha256": "02acf8262f11badcc19f68c5abe2c52feaa957b6ad2fc91dcf751d653c3d765b"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/field_tastes/test_tastes.py",
+              "path": "model/field_tastes/results.json",
+              "scope": "Same-action contact coupling tests complete momentum pockets, retained mirror modes and interaction leakage; exclusions apply to the declared projection at fixed lattice coupling, not every chiral regulator or continuum limit.",
+              "sha256": "c9a3d1c62a46ede9f5730b6bad7e0020d0b07d9dd2869d2e5b00585d1e347e0d"
             }
           ],
           "requires": [
@@ -1758,7 +2007,8 @@
           "evidence": [
             "docs/research/OPH_PARTICLE_MASS_RESPONSE.md",
             "code/particles/ledger.yaml",
-            "docs/POSTDICTION_LEDGER.md"
+            "docs/POSTDICTION_LEDGER.md",
+            "model/bound_pair/results.json"
           ],
           "id": "CP-07",
           "issue": 1143,
@@ -1771,10 +2021,19 @@
             "EMH-5"
           ],
           "obstruction": "A wrong unavoidable matched spectrum with an independently justified error budget rejects the fixed candidate, and the whole class only if all permitted nuisance/source choices are excluded. Known-data calibration alone is not independent validation.",
+          "progress_evidence": [
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/bound_pair/test_mass.py",
+              "path": "model/bound_pair/results.json",
+              "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
+              "sha256": "de0b4ed00bd0636749d385e4fdc861d290c2a90a065833bc41c9e35c57e071d2"
+            }
+          ],
           "requires": [
             "CP-06"
           ],
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "title": "Freeze the physical dictionary and derive the matched particle spectrum"
         },
         {
@@ -1789,7 +2048,8 @@
           "evidence": [
             "model/PHYSICAL_AUDIT.md",
             "model/physical_space_time/README.md",
-            "paper/tex_fragments/COMMON_MATTER_METRIC_AND_RESPONSE.tex"
+            "paper/tex_fragments/COMMON_MATTER_METRIC_AND_RESPONSE.tex",
+            "model/field_regions/results.json"
           ],
           "id": "CP-08",
           "issue": 1144,
@@ -1801,11 +2061,20 @@
             "EMH-4"
           ],
           "obstruction": "A mandatory incompatibility between source geometry, clocks and nonzero matter stress excludes the covered common realization. Failure of the static radial product is a scoped control, not a universal gravity no-go.",
+          "progress_evidence": [
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/field_regions/test_regions.py",
+              "path": "model/field_regions/results.json",
+              "scope": "Actual signed CAR restrictions retain local N=0,1,2, references and every history outcome; CP expectations and cube embeddings compose. Exact Hamiltonian compression does not intertwine dynamics. Fixed-spacing locality is not physical Lorentz geometry.",
+              "sha256": "02acf8262f11badcc19f68c5abe2c52feaa957b6ad2fc91dcf751d653c3d765b"
+            }
+          ],
           "requires": [
             "CP-02",
             "CP-04"
           ],
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "title": "Construct responsive geometry and causal clocks on the same source"
         },
         {
@@ -1820,7 +2089,8 @@
           "evidence": [
             "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
             "flagship/from_observer_consensus_to_standard_physics.tex",
-            "model/PHYSICAL_AUDIT.md"
+            "model/PHYSICAL_AUDIT.md",
+            "model/field_stress/results.json"
           ],
           "id": "CP-09",
           "issue": 1145,
@@ -1832,11 +2102,20 @@
             "EMH-4"
           ],
           "obstruction": "Prove that a necessary entropy sign, modular/stress normalization or stationarity variation is incompatible across all allowed same-process realizations before promoting a no-go. An unmet theorem premise is an open gate, not a theorem failure.",
+          "progress_evidence": [
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/field_stress/test_energy.py",
+              "path": "model/field_stress/results.json",
+              "scope": "Exact local energy continuity and interaction-dependent boundary flux on the full finite field; same-action quantum Gibbs/entropy identity and regional bare-energy countercontrol. Lorentz stress, null geometry, area variation and Einstein premises remain open.",
+              "sha256": "34e3d3184f727b7c881711defdd0d5d98c083e9de29263ad86872bd9c6db8fff"
+            }
+          ],
           "requires": [
             "CP-06",
             "CP-08"
           ],
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "title": "Realize the joint modular, stress and entropy premises G1--G6"
         },
         {
@@ -1913,7 +2192,11 @@
             "docs/OPH_EXECUTABLE_HYPOTHESIS.md",
             "model/common_source/native_defect_decision_results.json",
             "model/observer/adaptive_record_recovery.py",
-            "model/observer/RECORD_RECOVERY.md"
+            "model/observer/RECORD_RECOVERY.md",
+            "model/bound_pair/results.json",
+            "model/field_stress/results.json",
+            "model/field_tastes/results.json",
+            "model/biased_reset/results.json"
           ],
           "id": "CP-12",
           "issue": 1148,
@@ -1929,10 +2212,40 @@
             "EMH-5"
           ],
           "obstruction": "The current program has no universal falsification verdict. No-go coverage must quantify over the frozen class; a finite unsuccessful search, open map or exhausted budget supplies no impossibility proof.",
+          "progress_evidence": [
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/bound_pair/test_mass.py",
+              "path": "model/bound_pair/results.json",
+              "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
+              "sha256": "de0b4ed00bd0636749d385e4fdc861d290c2a90a065833bc41c9e35c57e071d2"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/field_stress/test_energy.py",
+              "path": "model/field_stress/results.json",
+              "scope": "Exact local energy continuity and interaction-dependent boundary flux on the full finite field; same-action quantum Gibbs/entropy identity and regional bare-energy countercontrol. Lorentz stress, null geometry, area variation and Einstein premises remain open.",
+              "sha256": "34e3d3184f727b7c881711defdd0d5d98c083e9de29263ad86872bd9c6db8fff"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/field_tastes/test_tastes.py",
+              "path": "model/field_tastes/results.json",
+              "scope": "Same-action contact coupling tests complete momentum pockets, retained mirror modes and interaction leakage; exclusions apply to the declared projection at fixed lattice coupling, not every chiral regulator or continuum limit.",
+              "sha256": "c9a3d1c62a46ede9f5730b6bad7e0020d0b07d9dd2869d2e5b00585d1e347e0d"
+            },
+            {
+              "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1",
+              "independent_check": "model/biased_reset/test_reset.py",
+              "path": "model/biased_reset/results.json",
+              "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the pending fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
+              "sha256": "db4964d122ffefbf04a7479112307d342a2cf60c3a36f441244e74668069e1ae"
+            }
+          ],
           "requires": [
             "CP-00"
           ],
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "title": "Audit obstructions and apply candidate, class and program stopping rules"
         }
       ],
@@ -2073,7 +2386,7 @@
         "source_sha256": {
           "Lean/Geometry/EinsteinTensorBridge.lean": "4127d2123853830f060e94b0afedcf3f9ed85fa40b734f2100ef3acc2bb6b57f",
           "model/common_source/null_tomography.py": "7120491eb4d9ca841a5b519a61aa97c747ae68c0151d4b365e3ca3221ad1e5d1",
-          "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex": "cdc8d042be6db7f28049eec872b11bd3f5c1bf4ced52180f17420c5fda880dab"
+          "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex": "4c0cdc53ac13fac72be0445054f9d6ab39232af363d5b49482cbf9a6a8b9d228"
         },
         "supports": [
           "CP-09",

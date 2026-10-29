@@ -951,6 +951,16 @@ Dictionary closure is a fail-closed validator check (issue #512): every assumpti
 
 ## Finite matter and field contracts
 
+The same-action Weyl/contact packet retains the following additional inputs;
+these are finite model conventions, not newly discharged physical premises.
+
+| Token | Declared input and boundary | Consumer |
+| --- | --- | --- |
+| `declared_Weyl_contact_CAR_action_and_fixed_spatial_lattice` | A cubic lattice with two CAR modes per site and local action `H=dGamma[-c sigma.sin(k)]+U sum_x n_x0 n_x1` is supplied, with `c=1/8`, `U=1` and spacing one. A fixed-spacing volume limit is not a spatial continuum. | `model/bound_pair/README.md` |
+| `declared_complete_two_fermion_sector_and_boundary_conditions` | The complete antisymmetric N=2 sector is retained. Open cubes and periodic momentum fibers have separately declared boundaries; equality of local couplings does not identify their finite observation laws. | `model/bound_pair/README.md` |
+| `supplied_same_number_field_to_native_corner_isometry` | The eta pair and an orthogonal zero-contact reference, both N=2 with total momentum `(pi,pi,pi)`, are mapped to a native two-level corner by a supplied isometry. Its source instrument is executed, but the complete spatial encoding is not. | `model/particle_clock/README.md` |
+| `declared_finite_Gibbs_reference` | The stated finite Hamiltonian and inverse model temperature define a faithful Gibbs density on the stated algebra or positive support. This supplies neither its native preparation nor geometric modular flow, a physical vacuum or laboratory calibration. | `model/field_stress/README.md`; `model/field_tastes/README.md` |
+
 | Assumption | Meaning | Primary owner |
 | --- | --- | --- |
 | `declared_source_matter_interaction_contract` | The source response, specified spin lift, nontrivial even exterior module, independent physical CAR factor, one Higgs doublet and family variables form the stated finite calculation domain. | Particle paper |

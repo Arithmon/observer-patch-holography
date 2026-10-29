@@ -1,7 +1,7 @@
 {
   "schema": "oph.active_surface_inventory.v1",
   "generator": "tools/check_axiom_consistency.py --inventory",
-  "surface_count": 709,
+  "surface_count": 724,
   "entry_surfaces": [
     "README.md",
     "README_FR.md",
@@ -192,6 +192,11 @@
     },
     {
       "path": "paper/tex_fragments/FINITE_EQUATION_OF_STATE.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/FINITE_FIELD_STRESS_ENTROPY.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },
@@ -541,6 +546,11 @@
       "allowlisted": false
     },
     {
+      "path": "paper/tex_fragments/SAME_ACTION_FINITE_INTERFACES.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
       "path": "paper/tex_fragments/SCREEN_SPECTRUM_THEOREMS.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
@@ -712,6 +722,11 @@
     },
     {
       "path": "paper/tex_fragments/UNIFIED_OBSERVER_PHYSICS_SPINE.tex",
+      "glob": "paper/tex_fragments/*.tex",
+      "allowlisted": false
+    },
+    {
+      "path": "paper/tex_fragments/WEYL_CONTACT_BOUND_PAIR.tex",
       "glob": "paper/tex_fragments/*.tex",
       "allowlisted": false
     },
@@ -1111,6 +1126,11 @@
       "allowlisted": false
     },
     {
+      "path": "docs/FINITE_PREMISE_PROGRESS_2026-10-29.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "docs/FROZEN_PREDICTION_LADDER.md",
       "glob": "docs/**/*.md",
       "allowlisted": true
@@ -1132,6 +1152,11 @@
     },
     {
       "path": "docs/PAPER_SET.md",
+      "glob": "docs/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "docs/PARTICLE_PREMISE_PUSH_2026-10-29.md",
       "glob": "docs/**/*.md",
       "allowlisted": false
     },
@@ -1352,6 +1377,31 @@
     },
     {
       "path": "model/anharmonic_transfer/data/SOURCE_README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/biased_reset/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/bound_pair/IDENTITY.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/bound_pair/PROTECTION.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/bound_pair/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/bound_pair/SPECTRUM.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
@@ -1661,6 +1711,11 @@
       "allowlisted": false
     },
     {
+      "path": "model/completion/PENDING_PR_COMPATIBILITY.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
       "path": "model/completion/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
@@ -1727,6 +1782,21 @@
     },
     {
       "path": "model/federated_quantum_sector/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/field_regions/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/field_stress/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/field_tastes/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },
@@ -2012,6 +2082,11 @@
     },
     {
       "path": "model/occupation_control/README.md",
+      "glob": "model/**/*.md",
+      "allowlisted": false
+    },
+    {
+      "path": "model/particle_clock/README.md",
       "glob": "model/**/*.md",
       "allowlisted": false
     },

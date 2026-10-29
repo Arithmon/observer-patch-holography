@@ -16164,6 +16164,71 @@
           "PR-54"
         ]
       }
+    },
+    {
+      "claim_id": "OPH-MODEL-WEYL-CONTACT-FINITE-PAIR",
+      "statement": "The supplied Weyl-contact CAR action H=dGamma[-c sigma.sin(k)]+U sum_x n_x0 n_x1, with c=1/8 and U=1, has one isolated two-fermion bound band with a uniform spectral gap, a moving full-sector wavepacket, charge-two even pair operators and complete contact/scattering records. Exact rational curvature bounds give a kinetic coordinate mass different from U/c^2; the band contracts to on-site pairs without closing its gap. A supplied isometry identifies its same-number eta pair and dark reference with a heralded native M2 corner whose record-derived modular clock is executed with complete outcomes and a finite unconditional error bound. On the open-box version of the same local action, signed CAR regional maps, exact interaction-dependent energy continuity and finite quantum Gibbs/entropy identities hold on their declared algebras. A nontrivial Weyl-pocket projection fails to commute with the contact action; complete evolution retains the omitted-pocket leakage. The finite thermal reflection-positive Gram and KMS identities retain the full declared physical fiber. These are finite or fixed-spacing model results, not a native topological particle, a chiral continuum, a physical mass calibration or an Einstein-premise realization.",
+      "owner_paper": "paper/deriving_the_particle_zoo_from_observer_consistency.tex",
+      "tier": "bounded_same_action_model_and_complete_observation_record",
+      "assumptions": [
+        "declared_Weyl_contact_CAR_action_and_fixed_spatial_lattice",
+        "declared_complete_two_fermion_sector_and_boundary_conditions",
+        "declared_coherent_proper_code_services_and_analogue_source_controls",
+        "supplied_same_number_field_to_native_corner_isometry",
+        "declared_finite_Gibbs_reference"
+      ],
+      "imported_results": [
+        "CAR_exterior_square_representation",
+        "repulsively_bound_lattice_pairs",
+        "finite_dimensional_min_max_and_rank_one_resolvent",
+        "Hellmann_Feynman_identity_and_spectral_perturbation",
+        "Kraus_complete_positivity_and_trace_distance_contraction",
+        "Gibbs_relative_entropy_identity_and_finite_KMS"
+      ],
+      "oph_specific_delta": "Attaches the same explicitly declared interacting excitation to independent position-space dynamics, complete spectral readouts, number and energy currents, rational curvature bounds, and one native record-clock corner. Builds concrete regional and entropy interfaces and retains the projection, modular and relativistic-mass countercontrols. General repulsive lattice binding, Gibbs identities and conditional expectation theorems are reused.",
+      "novelty_type": "same_action_finite_model_attachment_and_scoped_countercontrols",
+      "evidence": [
+        "model/bound_pair/README.md",
+        "model/bound_pair/fiber.py",
+        "model/bound_pair/mass.py",
+        "model/bound_pair/protection.py",
+        "model/bound_pair/identity.py",
+        "model/bound_pair/spectrum.py",
+        "model/bound_pair/results.json",
+        "model/bound_pair/test_mass.py",
+        "model/bound_pair/test_protection.py",
+        "model/bound_pair/test_identity.py",
+        "model/bound_pair/test_spectrum.py",
+        "model/particle_clock/README.md",
+        "model/particle_clock/clock.py",
+        "model/particle_clock/results.json",
+        "model/particle_clock/test_clock.py",
+        "model/field_regions/README.md",
+        "model/field_regions/regions.py",
+        "model/field_regions/results.json",
+        "model/field_regions/test_regions.py",
+        "model/field_stress/README.md",
+        "model/field_stress/energy.py",
+        "model/field_stress/entropy.py",
+        "model/field_stress/results.json",
+        "model/field_stress/test_energy.py",
+        "model/field_stress/test_entropy.py",
+        "model/field_tastes/README.md",
+        "model/field_tastes/results.json",
+        "model/field_tastes/test_tastes.py"
+      ],
+      "falsifier": "The independent full-sector Hamiltonian or exchange test fails; the rational gap or curvature enclosure fails; a scattering, herald, repair or abort outcome is discarded; the source clock does not implement the declared corner instrument within its bound; a CAR, energy-current, entropy or pocket-leakage identity fails on its stated domain; or retained replay differs from its bound sources.",
+      "scope_if_false": "The affected supplied-action construction, finite attachment or comparison certificate fails. This does not by itself refute other native encodings, chiral regulators, physical dictionaries or the whole OPH programme.",
+      "status": "retained_same_action_finite_evidence__native_field_selection_physical_matching_and_integrated_gates_open",
+      "claim_class": "emitted_artifact",
+      "gates": [],
+      "premise_dependencies": {
+        "classification": "explicit_non_consumer",
+        "consumed": [],
+        "open": [],
+        "boundary": [],
+        "rationale": "The packet supplies its lattice, CAR action, couplings, number sector, instruments, field/corner isometry, finite Gibbs reference and model-time convention. It binds finite mathematical and source-execution obligations but does not consume or discharge a canonical physical identification premise; the active premise map routes those unresolved joins to their owning construction gates."
+      }
     }
   ],
   "claim_context": {
@@ -28904,6 +28969,63 @@
         {
           "claim_id": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
           "role": "Reuses the existing native source, geometry and coherent-control interfaces. New feedback and interaction services remain explicitly declared; no earlier source compilation or continuum claim is inherited."
+        }
+      ]
+    },
+    "OPH-MODEL-WEYL-CONTACT-FINITE-PAIR": {
+      "prior_work": {
+        "summary": "Repulsively bound lattice pairs, CAR fields, spectral perturbation, finite quantum channels and Gibbs/KMS theory supply the methods.",
+        "overlap": "Repulsive binding, min-max and resolvent methods, entropy identities and conditional expectations are established results. The new evidence attaches them to this declared Weyl-contact action and complete native clock records; it does not claim a new elementary particle or chiral continuum.",
+        "imported_step": "CAR_exterior_square_representation; repulsively_bound_lattice_pairs; finite_dimensional_min_max_and_rank_one_resolvent; Hellmann_Feynman_identity_and_spectral_perturbation; Kraus_complete_positivity_and_trace_distance_contraction; Gibbs_relative_entropy_identity_and_finite_KMS",
+        "citations": [
+          {
+            "work": "CAR_exterior_square_representation",
+            "keys": [
+              "bratteli1997operator"
+            ]
+          },
+          {
+            "work": "repulsively_bound_lattice_pairs",
+            "keys": [
+              "winkler2006repulsively"
+            ]
+          },
+          {
+            "work": "finite_dimensional_min_max_and_rank_one_resolvent",
+            "keys": [
+              "bhatia1997matrix",
+              "kato1995perturbation"
+            ]
+          },
+          {
+            "work": "Hellmann_Feynman_identity_and_spectral_perturbation",
+            "keys": [
+              "kato1995perturbation"
+            ]
+          },
+          {
+            "work": "Kraus_complete_positivity_and_trace_distance_contraction",
+            "keys": [
+              "watrous2018theory"
+            ]
+          },
+          {
+            "work": "Gibbs_relative_entropy_identity_and_finite_KMS",
+            "keys": [
+              "bratteli1997operator"
+            ]
+          }
+        ]
+      },
+      "owner_section": "Particle paper, One interacting bound pair and its remaining physical joins",
+      "falsifiers": {
+        "physical_identification": "The supplied lattice, CAR action, field/corner isometry and reference do not establish native physical species, spacetime, full-field clock calibration or Einstein premises. Those identifications require their own same-process maps.",
+        "phenomenological": "No empirical comparison or measured particle identification is added by this packet; finite model agreement cannot establish observed physical masses."
+      },
+      "depends_on": [
+        {
+          "claim_id": "OPH-MODEL-COMMON-SOURCE-EXECUTION",
+          "role": "reuses source compiler and complete-instrument methods; does not import the earlier scalar action, reference or physical dictionary"
         }
       ]
     }

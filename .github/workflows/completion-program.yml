@@ -24,6 +24,12 @@ on:
       - 'model/record_action/**'
       - 'model/particle_obstruction/**'
       - 'model/interacting_field/**'
+      - 'model/bound_pair/**'
+      - 'model/particle_clock/**'
+      - 'model/field_regions/**'
+      - 'model/field_stress/**'
+      - 'model/field_tastes/**'
+      - 'model/biased_reset/**'
       - '.github/workflows/completion-program.yml'
   pull_request:
     paths:
@@ -47,6 +53,12 @@ on:
       - 'model/record_action/**'
       - 'model/particle_obstruction/**'
       - 'model/interacting_field/**'
+      - 'model/bound_pair/**'
+      - 'model/particle_clock/**'
+      - 'model/field_regions/**'
+      - 'model/field_stress/**'
+      - 'model/field_tastes/**'
+      - 'model/biased_reset/**'
       - '.github/workflows/completion-program.yml'
   workflow_dispatch:
 
@@ -73,3 +85,11 @@ jobs:
       - run: python -m model.record_action.action --check
       - run: python -m model.particle_obstruction.classification --check
       - run: python -m model.interacting_field --check model/interacting_field/results.json
+      - run: python -m pytest -q --durations=10 -W error model/bound_pair model/particle_clock model/field_regions model/field_stress model/field_tastes model/biased_reset
+      - run: python -m model.bound_pair --check model/bound_pair/results.json
+      - run: python -m model.particle_clock --check model/particle_clock/results.json
+      - run: python -m model.field_regions --check model/field_regions/results.json
+      - run: python -m model.field_stress --check model/field_stress/results.json
+      - run: python -m model.field_tastes --check model/field_tastes/results.json
+      - run: python -m model.biased_reset --check model/biased_reset/results.json
+      - run: python -m model.completion.finite_attachment_map --check

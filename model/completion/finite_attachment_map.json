@@ -1,0 +1,2047 @@
+{
+  "schema": "oph.finite_attachment_map.v1",
+  "as_of": "2026-10-29",
+  "gate": "CP-13",
+  "selected_issues": [
+    1139,
+    1140,
+    1142,
+    1137
+  ],
+  "canonical_registry": "tracking/premise_register.json",
+  "full_gate_accepted": false,
+  "physical_comparison_count_added": 0,
+  "canonical_premises_discharged": [],
+  "finite_obligations_realized": 8,
+  "scope": "Exhaustive ownership/relevance review of all 84 canonical premise rows for the declared same-action particle/field campaign, plus thirteen inspected theorem/model attachments. This is not a fresh proof audit of every imported theorem or tracked Lean module.",
+  "existing_navigation_coverage": {
+    "claim_count": 345,
+    "lean_module_count": 662,
+    "contract_coverage_sha256": "8f8c49138783d903525510770e6289ec8e433b36544c96b98d45172f1be93e68",
+    "note": "Existing typed coverage retained without changing scientific entailment or claim-consumer edges."
+  },
+  "canonical_ownership": [
+    {
+      "premise": "PR-01",
+      "name": "confluent terminating repair contract",
+      "contract_sha256": "915d79ffde6184376138d19b6b44bd06b8258cd8f29fba0203fdc356f52e39c6",
+      "preserved_discharge_status": "obstructed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-01",
+        "CP-13"
+      ],
+      "issues": [
+        1136,
+        1137
+      ],
+      "reason": "Terminating normal-form repair has a different domain. Continuing stochastic native C/E motion is not its weakly normalizing instance; retain the native counterexample and the valid conditional theorem."
+    },
+    {
+      "premise": "PR-02",
+      "name": "algebra-state representation of public records",
+      "contract_sha256": "0666be447c45421a7212b4c97e4cab4942732a04c37b51208865117d5ff4586c",
+      "preserved_discharge_status": "declared",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-01"
+      ],
+      "issues": [
+        1136
+      ],
+      "reason": "The new histories use a declared matrix-algebra instrument and classical orthogonal record projectors with trace readout. This realizes the representation contract, not a derivation of quantum representation from the load rule."
+    },
+    {
+      "premise": "PR-03",
+      "name": "operational effect additivity",
+      "contract_sha256": "264eab996bb1e05387ee67b7af0e536d4b2617598a87456a65d13b864e67d7fc",
+      "preserved_discharge_status": "declared",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-01",
+        "CP-13"
+      ],
+      "issues": [
+        1136,
+        1137
+      ],
+      "reason": "Trace-pairing readout is supplied in these instruments. It obeys additivity, but the broader source selection of every coexistent effect and valuation is not inferred from a finite detector table."
+    },
+    {
+      "premise": "PR-04",
+      "name": "declared phase-sensitive effect",
+      "contract_sha256": "7cf43fc7f26c0db4770791d97b032585597589f9c369850e8dbf9a9d0b42696e",
+      "preserved_discharge_status": "declared",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-01"
+      ],
+      "issues": [
+        1136
+      ],
+      "reason": "Existing compiled phase-sensitive probes and complete readouts realize the declared finite effect on the admitted coherent-control service. The effect alone does not establish preparation or source-selection provenance."
+    },
+    {
+      "premise": "PR-05",
+      "name": "counting path reference",
+      "contract_sha256": "b0c047f40fcb2dfa7026ee16e6e284bdd7ff35cc941151da5374c13fa38589f7",
+      "preserved_discharge_status": "declared",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-00",
+        "CP-01"
+      ],
+      "issues": [
+        1135,
+        1136
+      ],
+      "reason": "The counting-reference variational path grammar is not used to select the biased endpoint weights or the supplied CAR action. Keep its conditional characterization and reference nonuniqueness controls."
+    },
+    {
+      "premise": "PR-06",
+      "name": "real Legendre enrichment",
+      "contract_sha256": "8c1b88f7e7f9f2aacff3b9f331322464fef94009aaefcb535a9d9a64fc0a0c39",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-04"
+      ],
+      "issues": [
+        1140
+      ],
+      "reason": "This calculation defines one Hamiltonian directly; it does not select a real Legendre extension from discrete history values. The existing nonidentifiability theorem remains relevant if that route is adopted."
+    },
+    {
+      "premise": "PR-07",
+      "name": "declared repair law: common faithful reference and repaired-visible fibre",
+      "contract_sha256": "ec03e9b03cf09a7bc0ca73f7193217072a0cb1b67ca57724862578f8f4e0f7d5",
+      "preserved_discharge_status": "derived_from_native_records",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-02"
+      ],
+      "issues": [
+        1138
+      ],
+      "reason": "The endpoint-biased finite native source has an inferred faithful reference. Only its declared M2 corner is mapped to an interacting-field energy subspace; no common full-field faithful reference is derived."
+    },
+    {
+      "premise": "PR-08",
+      "name": "refinement-uniform low-temperature control",
+      "contract_sha256": "4f15a195dc935b5f10c949cb1f4d888fd756990d6f54aa3a709b186679d997a6",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-06"
+      ],
+      "issues": [
+        1142
+      ],
+      "reason": "No low-temperature limit is invoked by the finite N=2 Gibbs or bound-band calculation. Uniform spectral-tail and cofinality hypotheses remain required if the low-temperature continuum route is adopted."
+    },
+    {
+      "premise": "PR-09",
+      "name": "equal-face-weight and barycentric one-third port-dual rules",
+      "contract_sha256": "73bf00d40b25e87db6db38df235686a92f7dac2028435d3c0fcb653bc98ded81",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-08"
+      ],
+      "issues": [
+        1144
+      ],
+      "reason": "The field uses a supplied cubic spatial lattice, not the port-dual equal-face measure and nearest-family metric selector. Their source-selection obligations are preserved on that separate geometry branch."
+    },
+    {
+      "premise": "PR-10",
+      "name": "measure-to-metric and nearest-point repair rules",
+      "contract_sha256": "00438307fbdec1290bba8f5b2320e873d022dcca9a5c2067ce999c825fd796ab",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-08"
+      ],
+      "issues": [
+        1144
+      ],
+      "reason": "The field uses a supplied cubic spatial lattice, not the port-dual equal-face measure and nearest-family metric selector. Their source-selection obligations are preserved on that separate geometry branch."
+    },
+    {
+      "premise": "PR-11",
+      "name": "compact-Lie classification inputs",
+      "contract_sha256": "f4759b4819d529bda688ed1074f4475b11036baaaa5c99ae2fde33310bca5d2b",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-05"
+      ],
+      "issues": [
+        1141
+      ],
+      "reason": "The compact Lie classification is imported mathematics for the eventual gauge/matter target. CAR number charge two neither constructs its physical current algebra nor discharges the classical inputs."
+    },
+    {
+      "premise": "PR-12",
+      "name": "matter candidate grammar",
+      "contract_sha256": "87007ba89d49b1a46d6160b2e17dae5b362bba3b2dd92a5d39f3cf72eb759113",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-05"
+      ],
+      "issues": [
+        1141
+      ],
+      "reason": "The frozen neutral dimension-at-most-twelve matter grammar is distinct from both the charged rank-fifteen exterior grammar and the two-component CAR pair. No result identifies these carriers."
+    },
+    {
+      "premise": "PR-13",
+      "name": "Koide balance premise",
+      "contract_sha256": "98bcc2152eb6ca624f0d37cdc9079fbc5ac4284b3fdd6f44ddb6352c8a8dbf97",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-07"
+      ],
+      "issues": [
+        1143
+      ],
+      "reason": "The Koide balance relation is not used to choose c, U or a bound-pair mass. Preserve its declared empirical ancestry; the current pair is not a charged-lepton identification."
+    },
+    {
+      "premise": "PR-14",
+      "name": "hadronic transport packet",
+      "contract_sha256": "c7406b97ef8b7a1411136e6057e256fe17e694dc572815056913fc49d22b8f29",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "irrelevant_to_target",
+      "owners": [
+        "CP-07"
+      ],
+      "issues": [
+        1143
+      ],
+      "reason": "No hadronic polarization, proton or QCD comparison is performed in this finite pair packet. The empirical payload remains an import for its own later physical comparison."
+    },
+    {
+      "premise": "PR-15",
+      "name": "clock and energy calibration anchors",
+      "contract_sha256": "fbf11b13ab16fbcb7ce42568e8eb3ab7263adaba752ce87a6511ba3a751940ba",
+      "preserved_discharge_status": "declared",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-02",
+        "CP-04"
+      ],
+      "issues": [
+        1138,
+        1140
+      ],
+      "reason": "The same-corner map fixes t=-beta s in model coordinates. Laboratory clock and energy standards, and a common physical propagation dictionary, remain external or unconstructed."
+    },
+    {
+      "premise": "PR-16",
+      "name": "source-causal continuum and stable-causality certificate",
+      "contract_sha256": "1e1046f62b3cb1ef83bc5ed7538731c7b0641a485671601cfb7a5744148c9ff8",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-08"
+      ],
+      "issues": [
+        1144
+      ],
+      "reason": "Signed CAR regions and fixed-spacing box inclusions supply no order-cone-faithful physical continuum, event-volume calibration, stable topology or global causality."
+    },
+    {
+      "premise": "PR-17",
+      "name": "proposed fundamental numerical parameters P and N",
+      "contract_sha256": "715cd4d0ca9e4d35a82e88a424e84df1e39981fe99e7851c8baf5dd2c26ea1ff",
+      "preserved_discharge_status": "declared",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-00",
+        "CP-07"
+      ],
+      "issues": [
+        1135,
+        1143
+      ],
+      "reason": "The P/N numerical proposal is not used to select this supplied lattice action. Its incomplete capacity antecedent and separate empirical inputs retain their existing status."
+    },
+    {
+      "premise": "PR-18",
+      "name": "spherically symmetric radial readout",
+      "contract_sha256": "4fc538a307f9a229aeebdcf663549d2c50214e45f6daba9979cfcf41bff1fb33",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-08",
+        "CP-10"
+      ],
+      "issues": [
+        1144,
+        1146
+      ],
+      "reason": "The spherical radial-strength and shell-flux branch is not instantiated by Cartesian CAR energy currents. No inverse-square gravitational readout is invoked."
+    },
+    {
+      "premise": "PR-19",
+      "name": "shell-flux normalization",
+      "contract_sha256": "c422d8294176a25ff4ebd571624ab03aa056217420b29188b13a0afb81f76d10",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-08",
+        "CP-10"
+      ],
+      "issues": [
+        1144,
+        1146
+      ],
+      "reason": "The spherical radial-strength and shell-flux branch is not instantiated by Cartesian CAR energy currents. No inverse-square gravitational readout is invoked."
+    },
+    {
+      "premise": "PR-20",
+      "name": "equal source-counting measure on the sixty directed source seams",
+      "contract_sha256": "8791d122a56b527cd183f97c74b574781f3be4c978eec26042b4bb211250ecd0",
+      "preserved_discharge_status": "declared",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-00",
+        "CP-02"
+      ],
+      "issues": [
+        1135,
+        1138
+      ],
+      "reason": "Uniform seam scheduling is a declared source-independent selector in the native clock experiment. Executing it does not construct the A2/A3 projection that uniquely selects equal source weights."
+    },
+    {
+      "premise": "PR-21",
+      "name": "auxiliary oscillator lift of the seam-current generator",
+      "contract_sha256": "c71c16d6fea721ec7a4a35ca327999a369dfd9c9e4e6b6b0504c48e9e21d74e2",
+      "preserved_discharge_status": "constructed_on_declared_inputs",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-04",
+        "CP-06"
+      ],
+      "issues": [
+        1140,
+        1142
+      ],
+      "reason": "The Weyl-contact Hamiltonian is not the auxiliary oscillator lift of a finite seam-current symbol. Pair dispersion cannot be substituted for that branch-specific frequency/field identification."
+    },
+    {
+      "premise": "PR-22",
+      "name": "physical-frequency identification for the seam-current symbol",
+      "contract_sha256": "91d45c96219310870db244bdd3810c2d0fb5f09fbce29fbb31cc91191f208a56",
+      "preserved_discharge_status": "constructed_on_declared_inputs",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-04",
+        "CP-06"
+      ],
+      "issues": [
+        1140,
+        1142
+      ],
+      "reason": "The Weyl-contact Hamiltonian is not the auxiliary oscillator lift of a finite seam-current symbol. Pair dispersion cannot be substituted for that branch-specific frequency/field identification."
+    },
+    {
+      "premise": "PR-23",
+      "name": "typed modular flow supply",
+      "contract_sha256": "1584b2f2bc597ae4b12f0017f441f041342abda85df2dfa2d9ab75e80d0bf5f9",
+      "preserved_discharge_status": "constructed_on_declared_inputs",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-02",
+        "CP-09"
+      ],
+      "issues": [
+        1138,
+        1145
+      ],
+      "reason": "A faithful M2 clock/energy relation and a full-N2 quantum entropy derivative are constructed on declared domains. The geometric bulk/central/edge split and continuum diamond kernel are not supplied."
+    },
+    {
+      "premise": "PR-24",
+      "name": "half-sided inclusion and null translation supply",
+      "contract_sha256": "a9889a850bb82b02e05ff7466e42cf0811ed4ba9df8c41a93037b02a8c54a828",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-04",
+        "CP-09"
+      ],
+      "issues": [
+        1140,
+        1145
+      ],
+      "reason": "Exact local Hamiltonian energy continuity is constructed. Half-sided modular inclusion, null translations and a common symmetric Lorentz stress Ward limit still require an independent model map."
+    },
+    {
+      "premise": "PR-25",
+      "name": "null-stress tomography supply",
+      "contract_sha256": "b59d97f6009d4c3426a9f01f398007323118f5066ae25a7754b2c949fe30f855",
+      "preserved_discharge_status": "obstructed",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-09"
+      ],
+      "issues": [
+        1145
+      ],
+      "reason": "Neither a scalar energy density nor conserved CAR charge is null-stress tomography. Symmetric common geometry/stress tensors, their null matching and universal entropy source remain unconstructed."
+    },
+    {
+      "premise": "PR-26",
+      "name": "generalized-entropy stationarity supply",
+      "contract_sha256": "87fcf88d6b5de142d36fe9c35f5ef89fc50ccecceac728659cd479bccb2e169b",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-09"
+      ],
+      "issues": [
+        1145
+      ],
+      "reason": "The finite quantum entropy tangent is explicit. It does not give fixed-proper-volume area variation or generalized-entropy stationarity with geometric normalization."
+    },
+    {
+      "premise": "PR-27",
+      "name": "small-ball geometry supply",
+      "contract_sha256": "9ab024719a5bdc17d1cb2af20d18da8dc3385a2054fe65c4645b30f334673fd7",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-08",
+        "CP-09"
+      ],
+      "issues": [
+        1144,
+        1145
+      ],
+      "reason": "The boxes have supplied coordinates. No cofinal shrinking geodesic balls, o(ell^4) common remainder, Bianchi identity or positive physical Newton parameter is constructed."
+    },
+    {
+      "premise": "PR-28",
+      "name": "physical tower and calibration supply",
+      "contract_sha256": "108dae920a317543637fa86c8309042e9ffde36165b433521fb3feb9194127b3",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-09",
+        "CP-10"
+      ],
+      "issues": [
+        1145,
+        1146
+      ],
+      "reason": "Finite source histories and CAR inclusions are not an Einstein-admissible physical tower with a common vacuum residue and independently calibrated coupling."
+    },
+    {
+      "premise": "PR-29",
+      "name": "layered shell-cardinality law",
+      "contract_sha256": "78c3f6eb24e6694c9d73821fcd7ee659cce3142e71db65f2e6dfaa633ede809b",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-08",
+        "CP-10"
+      ],
+      "issues": [
+        1144,
+        1146
+      ],
+      "reason": "The layered Gauss branch has its own cardinality, equidistribution and steady-source hypotheses. Fixed-spacing cube growth is not its source-derived radial shell law."
+    },
+    {
+      "premise": "PR-30",
+      "name": "layered shell equidistribution",
+      "contract_sha256": "5515b4b6353cdb455b341f49fed3af3eced7e69520f3313e8b5c40b0dc886bb6",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-08",
+        "CP-10"
+      ],
+      "issues": [
+        1144,
+        1146
+      ],
+      "reason": "The layered Gauss branch has its own cardinality, equidistribution and steady-source hypotheses. Fixed-spacing cube growth is not its source-derived radial shell law."
+    },
+    {
+      "premise": "PR-31",
+      "name": "layered steady sourcing",
+      "contract_sha256": "1cde99cb042656bd8afe28e37c9a7ac68955d60f86df15b3a791da30711105f3",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-08",
+        "CP-10"
+      ],
+      "issues": [
+        1144,
+        1146
+      ],
+      "reason": "The layered Gauss branch has its own cardinality, equidistribution and steady-source hypotheses. Fixed-spacing cube growth is not its source-derived radial shell law."
+    },
+    {
+      "premise": "PR-32",
+      "name": "Cartesian joint carrier of an observer pair",
+      "contract_sha256": "3c7874cdfe465de7773cf1bbd27b45fccd44b79d572e8ea962d1dfda1c7d1e51",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-06",
+        "CP-08"
+      ],
+      "issues": [
+        1142,
+        1144
+      ],
+      "reason": "The older two-observer Cartesian slot and four-region diamond are not required to define the signed full-Fock split of a CAR mode subset. Their fixed-pair witnesses remain preserved; the new regional map declares its own domain."
+    },
+    {
+      "premise": "PR-33",
+      "name": "two-slot diamond region map",
+      "contract_sha256": "dcca600e39c7bd99cba76ddc757a7110306b345de7c9d167bc6eb8051fce903b",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-06",
+        "CP-08"
+      ],
+      "issues": [
+        1142,
+        1144
+      ],
+      "reason": "The older two-observer Cartesian slot and four-region diamond are not required to define the signed full-Fock split of a CAR mode subset. Their fixed-pair witnesses remain preserved; the new regional map declares its own domain."
+    },
+    {
+      "premise": "PR-34",
+      "name": "two-observer slot split",
+      "contract_sha256": "2790a09644d0e35058614e99b72c1f65612782647ed4820a80fa39d52eca83b7",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-06",
+        "CP-08"
+      ],
+      "issues": [
+        1142,
+        1144
+      ],
+      "reason": "The older two-observer Cartesian slot and four-region diamond are not required to define the signed full-Fock split of a CAR mode subset. Their fixed-pair witnesses remain preserved; the new regional map declares its own domain."
+    },
+    {
+      "premise": "PR-35",
+      "name": "same-source loop-to-kernel identity",
+      "contract_sha256": "aeea242a063bb673ad470c8d2023185c3e16ad436977fdc753509b85c0e1c73f",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-05"
+      ],
+      "issues": [
+        1141
+      ],
+      "reason": "The bound pair carries the supplied CAR-number U(1), not a selected physical quotient of the Standard Model group. Same-source loop, character, normalization and flux attachments remain needed for that identification."
+    },
+    {
+      "premise": "PR-36",
+      "name": "family band-selection rules: single complete faithful band and operational cost order",
+      "contract_sha256": "4641bba87efbde73ae70d5fb002eb780bfa77745257b8ba45c56af7f70f30f49",
+      "preserved_discharge_status": "constructed_on_declared_inputs",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-05"
+      ],
+      "issues": [
+        1141
+      ],
+      "reason": "A bound band with one state per total momentum is not the selected source family triplet. Single-band family selection, source symmetry and physical generation multiplicity remain separate inputs."
+    },
+    {
+      "premise": "PR-37",
+      "name": "fine-structure closure map selection",
+      "contract_sha256": "492f5a17bd2ac01e427b5d748b69ca1015b95eb0afa8e6837feea43c77044cb3",
+      "preserved_discharge_status": "declared",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-07"
+      ],
+      "issues": [
+        1143
+      ],
+      "reason": "The finite pair mass and spectrum use none of the fine-structure closure, Thomson transport, hadronic gap coherence or conditional electroweak mass selection maps. Their evidence and empirical exposure are preserved."
+    },
+    {
+      "premise": "PR-38",
+      "name": "same-quantity bridge for the P closure",
+      "contract_sha256": "5c40530d4982fe03a751be2e34f33e73569e9baa95e0ab80a5c6baa7558df438",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-07"
+      ],
+      "issues": [
+        1143
+      ],
+      "reason": "The finite pair mass and spectrum use none of the fine-structure closure, Thomson transport, hadronic gap coherence or conditional electroweak mass selection maps. Their evidence and empirical exposure are preserved."
+    },
+    {
+      "premise": "PR-39",
+      "name": "physical Thomson readback contract",
+      "contract_sha256": "14cf94252aa98253c2a4fba72331b3badda7ca394fd7484bab713bc0c8f52231",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-07"
+      ],
+      "issues": [
+        1143
+      ],
+      "reason": "The finite pair mass and spectrum use none of the fine-structure closure, Thomson transport, hadronic gap coherence or conditional electroweak mass selection maps. Their evidence and empirical exposure are preserved."
+    },
+    {
+      "premise": "PR-40",
+      "name": "payload-coherent anchor-gap premise",
+      "contract_sha256": "088572136c8d5256395d92342c48f0cfe796db5b7527d65b21cca388cbed4615",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-07"
+      ],
+      "issues": [
+        1143
+      ],
+      "reason": "The finite pair mass and spectrum use none of the fine-structure closure, Thomson transport, hadronic gap coherence or conditional electroweak mass selection maps. Their evidence and empirical exposure are preserved."
+    },
+    {
+      "premise": "PR-41",
+      "name": "electroweak sector selection premises",
+      "contract_sha256": "bc25891d25830d57d948d31ed60fd110b9665b7b4461a7da1aa824aee28c5135",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-07"
+      ],
+      "issues": [
+        1143
+      ],
+      "reason": "The finite pair mass and spectrum use none of the fine-structure closure, Thomson transport, hadronic gap coherence or conditional electroweak mass selection maps. Their evidence and empirical exposure are preserved."
+    },
+    {
+      "premise": "PR-42",
+      "name": "horizon record central-charge identification",
+      "contract_sha256": "eeee7a8f3d6d38db15f98c25d6e35764adb0e6ab753fd9f346c9df4d1145b57d",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-09"
+      ],
+      "issues": [
+        1145
+      ],
+      "reason": "No physical horizon or boost/edge central split is asserted by the global finite Gibbs reference. The horizon interpretation is a separate unfulfilled attachment."
+    },
+    {
+      "premise": "PR-43",
+      "name": "pointwise-continuous public star-automorphism flow",
+      "contract_sha256": "ed3b2b820d6cdbbf3c95d9d3f89c455fada2ad14099d02d64dc382047ea03782",
+      "preserved_discharge_status": "obstructed",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-02",
+        "CP-04"
+      ],
+      "issues": [
+        1138,
+        1140
+      ],
+      "reason": "The supplied closed Hamiltonian gives a continuous automorphism group, and its selected M2 restriction has an explicit modular map. This does not turn dissipative native repair into that group or source-select the full field action."
+    },
+    {
+      "premise": "PR-44",
+      "name": "finite subsystem split and normalized local-operation interface",
+      "contract_sha256": "f594a7c8c28c3b005534682035e8615066d6da0b22d178b1340a4ab14d43af7c",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-01",
+        "CP-06"
+      ],
+      "issues": [
+        1136,
+        1142
+      ],
+      "reason": "The CAR-signed full-Fock split, complete local instruments and CP state restrictions now realize finite subsystem/no-signalling hypotheses on the declared field and every untouched reference. The N=2 regional algebra is restricted to number-preserving observables."
+    },
+    {
+      "premise": "PR-45",
+      "name": "source-selected real variational dynamics and symmetry data",
+      "contract_sha256": "a7a37c49317ac1418a2e679afced52209085ed24ee391e963c9dc9112be8a0ef",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-04"
+      ],
+      "issues": [
+        1140
+      ],
+      "reason": "Exact currents here follow from commutators of a declared Hamiltonian. The real Lagrangian/Noether variational source-selection route is not used, and its derivative and symmetry data are not silently supplied."
+    },
+    {
+      "premise": "PR-46",
+      "name": "physical global-form selection attachments",
+      "contract_sha256": "87b3666e6422d45d73d20b8d0cd6aa63b0bc651a71d4f502efc1ff8bb9bb7e80",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-05"
+      ],
+      "issues": [
+        1141
+      ],
+      "reason": "The bound pair carries the supplied CAR-number U(1), not a selected physical quotient of the Standard Model group. Same-source loop, character, normalization and flux attachments remain needed for that identification."
+    },
+    {
+      "premise": "PR-47",
+      "name": "spacetime Spin and fermion-chirality attachment",
+      "contract_sha256": "ee78364a25e26dac06ef5675357ac9f088987814eecc2f803bcd040a63464d59",
+      "preserved_discharge_status": "declared",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-05",
+        "CP-06"
+      ],
+      "issues": [
+        1141,
+        1142
+      ],
+      "reason": "CAR parity and an internal eta singlet are established for the pair. A physical Lorentz Spin structure, chiral field content and species statistics are not identified with these internal matrices."
+    },
+    {
+      "premise": "PR-48",
+      "name": "one-Higgs scalar carrier and kinetic-action attachment",
+      "contract_sha256": "8b66819b8e5252d6cf2ec867efb449696d412dd6cbbc0c56fd64f6e1baa4ef76",
+      "preserved_discharge_status": "declared",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-05",
+        "CP-06",
+        "CP-07"
+      ],
+      "issues": [
+        1141,
+        1142,
+        1143
+      ],
+      "reason": "The repulsive contact action has no selected electroweak Higgs field, symmetry-breaking vacuum or source-derived Yukawa/family matrices. The finite pair cannot supply this required matter/action attachment by relabeling U."
+    },
+    {
+      "premise": "PR-49",
+      "name": "renormalizable Higgs potential and electroweak-breaking law",
+      "contract_sha256": "e06129dfabccb54a04a48787131ab1085e7fd35b383d55f677adb454f081db45",
+      "preserved_discharge_status": "declared",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-05",
+        "CP-06",
+        "CP-07"
+      ],
+      "issues": [
+        1141,
+        1142,
+        1143
+      ],
+      "reason": "The repulsive contact action has no selected electroweak Higgs field, symmetry-breaking vacuum or source-derived Yukawa/family matrices. The finite pair cannot supply this required matter/action attachment by relabeling U."
+    },
+    {
+      "premise": "PR-50",
+      "name": "Yukawa interaction-line and coupling-matrix attachment",
+      "contract_sha256": "7b6e8bd7271e518e6aa54b0c5b117a98abe859eec80b1c5b18a45943706f21a1",
+      "preserved_discharge_status": "declared",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-05",
+        "CP-06",
+        "CP-07"
+      ],
+      "issues": [
+        1141,
+        1142,
+        1143
+      ],
+      "reason": "The repulsive contact action has no selected electroweak Higgs field, symmetry-breaking vacuum or source-derived Yukawa/family matrices. The finite pair cannot supply this required matter/action attachment by relabeling U."
+    },
+    {
+      "premise": "PR-51",
+      "name": "common screen-electroweak load and capacity bridge",
+      "contract_sha256": "8ac6de24ff98e1a4f16b715a007c10ab7e81ab54035b2cd7dba6fe64cfcf5dac",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-07"
+      ],
+      "issues": [
+        1143
+      ],
+      "reason": "No common screen-electroweak-capacity load is used in the pair/clock packet. Its refinement-natural positive readout remains a separate conditional bridge."
+    },
+    {
+      "premise": "PR-52",
+      "name": "observer-to-physical-spacetime and causal attachment",
+      "contract_sha256": "3497ddd85fbc5f59a693ef29daff2545c1f401281c47e1bd8eb15ee3599cbf1f",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-08"
+      ],
+      "issues": [
+        1144
+      ],
+      "reason": "The complete field observation law and signed spatial maps are on supplied lattice regions. Physical spacetime, rods, clocks, faithful causal placement, manifoldlikeness and unique controlled limit remain unconstructed."
+    },
+    {
+      "premise": "PR-53",
+      "name": "physical finite-carrier propagation, frame, and comparison attachment",
+      "contract_sha256": "c8d9c6d73e6c69a4c701da9c49c1a4eb9a93e206a87551386cce7ad3f124e831",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-04",
+        "CP-06",
+        "CP-08"
+      ],
+      "issues": [
+        1140,
+        1142,
+        1144
+      ],
+      "reason": "A dispersive massive lattice composite is now explicit, but no physical photon/field sector, boost transport or common calibrated propagation law is identified."
+    },
+    {
+      "premise": "PR-54",
+      "name": "source gauge-field, current, and action attachment",
+      "contract_sha256": "6864d77331a9b8fa726532cd3f15f1c7dac00113e37b200f9f264c25eadbeb3b",
+      "preserved_discharge_status": "obstructed",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-05",
+        "CP-06"
+      ],
+      "issues": [
+        1141,
+        1142
+      ],
+      "reason": "Exact number continuity and external Peierls covariance are finite controls. The source-derived nonabelian gauge connection, field strength, current algebra and common physical action remain missing."
+    },
+    {
+      "premise": "PR-55",
+      "name": "declared baryon- and lepton-number labels",
+      "contract_sha256": "7f15e951d2b9420704d6edb8fb3b4129479c2aa5c19bcd7d2c11ba52fd5f8af4",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "irrelevant_to_target",
+      "owners": [
+        "CP-05",
+        "CP-07"
+      ],
+      "issues": [
+        1141,
+        1143
+      ],
+      "reason": "No baryon/lepton assignment, dimension-six baryon operator or physical proton decay is used by this charge-two CAR pair calculation. Preserve those separate grammar and QCD attachment obligations."
+    },
+    {
+      "premise": "PR-56",
+      "name": "dimension-six baryon-operator eligibility and contraction grammar",
+      "contract_sha256": "636a1c41afaeb8ea23d3a6ede94012f8746d61e38825d925993522e9497147e3",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "irrelevant_to_target",
+      "owners": [
+        "CP-05",
+        "CP-07"
+      ],
+      "issues": [
+        1141,
+        1143
+      ],
+      "reason": "No baryon/lepton assignment, dimension-six baryon operator or physical proton decay is used by this charge-two CAR pair calculation. Preserve those separate grammar and QCD attachment obligations."
+    },
+    {
+      "premise": "PR-57",
+      "name": "physical proton state and baryon-violating effective-action attachment",
+      "contract_sha256": "d9c54c70ca9073cf34079b0b71dfca2a6bcc32731976366b8e56b2c05ab21a85",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "irrelevant_to_target",
+      "owners": [
+        "CP-05",
+        "CP-07"
+      ],
+      "issues": [
+        1141,
+        1143
+      ],
+      "reason": "No baryon/lepton assignment, dimension-six baryon operator or physical proton decay is used by this charge-two CAR pair calculation. Preserve those separate grammar and QCD attachment obligations."
+    },
+    {
+      "premise": "PR-58",
+      "name": "time-indexed net evolution and time-slice generation interface",
+      "contract_sha256": "2f26e88fa274af458046e89cf4d2e6e13e004522c4725bd051c3fddfe56565a3",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-06",
+        "CP-08"
+      ],
+      "issues": [
+        1142,
+        1144
+      ],
+      "reason": "Number-preserving CAR regions now have compatible CP restrictions and full-history finite-volume bounds. Exact compression does not imply evolution intertwining; a native physical Cauchy/time-slice and shrinking-spacing map remain open."
+    },
+    {
+      "premise": "PR-59",
+      "name": "declared five-mode exterior component and mask-selection grammar",
+      "contract_sha256": "e77797f23faaf347adc2e4554d7aee39aaecb9315753e83e30bee5d43ae5a84b",
+      "preserved_discharge_status": "declared",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-05"
+      ],
+      "issues": [
+        1141
+      ],
+      "reason": "The rank-fifteen exterior-mask anomaly grammar is not the two-component CAR field. Its exact candidate classification remains a constraint on future matter identification, not an assignment to this pair."
+    },
+    {
+      "premise": "PR-60",
+      "name": "admissible scheduler class: mismatch non-increase clause",
+      "contract_sha256": "4b018eb8a5bcaefea915e163775fdecd550d57a1038963b60842ac2f65a4c624",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-00",
+        "CP-01"
+      ],
+      "issues": [
+        1135,
+        1136
+      ],
+      "reason": "The two-register defect-flag scheduler and its capacity split are not the native C/E plus supplied coherent-field service. Its original declaration and the exact clauses actually consumed by its obstructions remain unchanged."
+    },
+    {
+      "premise": "PR-61",
+      "name": "admissible scheduler class: single-register locality clause",
+      "contract_sha256": "a7a8d7ef3a997209046021dd519a48210290b2774f0926a0274c5dd2ab578fbc",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-00",
+        "CP-01"
+      ],
+      "issues": [
+        1135,
+        1136
+      ],
+      "reason": "The two-register defect-flag scheduler and its capacity split are not the native C/E plus supplied coherent-field service. Its original declaration and the exact clauses actually consumed by its obstructions remain unchanged."
+    },
+    {
+      "premise": "PR-62",
+      "name": "admissible scheduler class: unit expected capacity clause",
+      "contract_sha256": "0281aef1aeda0e12b3c574a8ea19d685b39a39a8e7c6644d2a6c8121b4b785f6",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-00",
+        "CP-01"
+      ],
+      "issues": [
+        1135,
+        1136
+      ],
+      "reason": "The two-register defect-flag scheduler and its capacity split are not the native C/E plus supplied coherent-field service. Its original declaration and the exact clauses actually consumed by its obstructions remain unchanged."
+    },
+    {
+      "premise": "PR-63",
+      "name": "two-register capacity-split reading",
+      "contract_sha256": "364947f2ca9b846bf9364508ef499f0a449eb5e5a378cce4d313fcc5c08bd9c2",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-00",
+        "CP-01"
+      ],
+      "issues": [
+        1135,
+        1136
+      ],
+      "reason": "The two-register defect-flag scheduler and its capacity split are not the native C/E plus supplied coherent-field service. Its original declaration and the exact clauses actually consumed by its obstructions remain unchanged."
+    },
+    {
+      "premise": "PR-64",
+      "name": "operational phase-instrument channel realization",
+      "contract_sha256": "9170935282c70da3eec7b663d47a05839d4efc2aa43db7e9956c087a37a73097",
+      "preserved_discharge_status": "constructed_on_declared_inputs",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-01",
+        "CP-02"
+      ],
+      "issues": [
+        1136,
+        1138
+      ],
+      "reason": "The complete source-executed corner herald, modular clock and energy interferometer retain all outcomes, aborts and references. They instantiate the finite CP-instrument contract on admitted supplied controls."
+    },
+    {
+      "premise": "PR-65",
+      "name": "source-produced phase preparation and readback provenance",
+      "contract_sha256": "868f134f0ae435636b73afc663c79981b5b3de45bcc458c1660e750c98c39864",
+      "preserved_discharge_status": "obstructed",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-01"
+      ],
+      "issues": [
+        1136
+      ],
+      "reason": "Literal coherent source words and full-output custody are checked, but diagonal bare C/E repair still cannot generate the needed coherent apparatus. Selection/initialization of those controls and the spatial field encoding remain explicit."
+    },
+    {
+      "premise": "PR-66",
+      "name": "declared discrete kinetic term of the temporal Maxwell action",
+      "contract_sha256": "72e7ad2630b0382576bd98fc68833cec2b224606b3aa2c58d7fdba3e5f1f4344",
+      "preserved_discharge_status": "declared",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-04",
+        "CP-06"
+      ],
+      "issues": [
+        1140,
+        1142
+      ],
+      "reason": "The declared temporal Maxwell kinetic term is a different action. It is not used to derive the Weyl-contact Hamiltonian or its energy current; no common electromagnetic field is inferred."
+    },
+    {
+      "premise": "PR-67",
+      "name": "declared finite one-doublet electroweak grammar",
+      "contract_sha256": "74280d415cafca203ecd1abb42856dce8e2dc90b81a4d18e9191c717794a8b3d",
+      "preserved_discharge_status": "declared",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-05",
+        "CP-06"
+      ],
+      "issues": [
+        1141,
+        1142
+      ],
+      "reason": "The one-doublet finite electroweak grammar, quartic breaking packet and Yukawa coefficient belong to a conditional comparison branch. None is realized by naming the CAR contact term a Higgs coupling."
+    },
+    {
+      "premise": "PR-68",
+      "name": "declared finite quartic breaking packet",
+      "contract_sha256": "e4df9f45bbdb338a6694b1e7a495044fdb105399e04b45c7be3b776d3ad4b1fa",
+      "preserved_discharge_status": "declared",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-05",
+        "CP-06"
+      ],
+      "issues": [
+        1141,
+        1142
+      ],
+      "reason": "The one-doublet finite electroweak grammar, quartic breaking packet and Yukawa coefficient belong to a conditional comparison branch. None is realized by naming the CAR contact term a Higgs coupling."
+    },
+    {
+      "premise": "PR-69",
+      "name": "declared finite Yukawa-line coefficient",
+      "contract_sha256": "213fc437f5f30b5affea5879dbaa2073a527ca118ac193852cbd0c794c8dec50",
+      "preserved_discharge_status": "declared",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-05",
+        "CP-06"
+      ],
+      "issues": [
+        1141,
+        1142
+      ],
+      "reason": "The one-doublet finite electroweak grammar, quartic breaking packet and Yukawa coefficient belong to a conditional comparison branch. None is realized by naming the CAR contact term a Higgs coupling."
+    },
+    {
+      "premise": "PR-70",
+      "name": "source homogeneous edge position action",
+      "contract_sha256": "dd7bc4cc7007b9c66602056292536630894f08cfdedaa2b4136aff152c7872a8",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-06",
+        "CP-08",
+        "CP-11"
+      ],
+      "issues": [
+        1142,
+        1144,
+        1147
+      ],
+      "reason": "The FZ-12 thirty-direction seam action and its same-operator cofinal physical comparison are distinct from the cubic Weyl-contact regulator. CAR box growth neither supplies nor consumes those branch-specific physical attachments."
+    },
+    {
+      "premise": "PR-71",
+      "name": "continuous field same-operator sector attachment",
+      "contract_sha256": "8ad65b428f72bc034d7cb0bee03259a082b432652b588e815c83dc7220b3ebfa",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-06",
+        "CP-08",
+        "CP-11"
+      ],
+      "issues": [
+        1142,
+        1144,
+        1147
+      ],
+      "reason": "The FZ-12 thirty-direction seam action and its same-operator cofinal physical comparison are distinct from the cubic Weyl-contact regulator. CAR box growth neither supplies nor consumes those branch-specific physical attachments."
+    },
+    {
+      "premise": "PR-72",
+      "name": "cofinal gluing into the compared regime",
+      "contract_sha256": "965f81f46055db331aef23c58ea0865667d0c96efe5563d3c1485dbf4f5a26f3",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-06",
+        "CP-08",
+        "CP-11"
+      ],
+      "issues": [
+        1142,
+        1144,
+        1147
+      ],
+      "reason": "The FZ-12 thirty-direction seam action and its same-operator cofinal physical comparison are distinct from the cubic Weyl-contact regulator. CAR box growth neither supplies nor consumes those branch-specific physical attachments."
+    },
+    {
+      "premise": "PR-73",
+      "name": "declared finite carrier scale",
+      "contract_sha256": "87dd15393e78592b6003fb67d2a24b5ac7d22d5524b1f1542802c951e15b6b87",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-04",
+        "CP-08"
+      ],
+      "issues": [
+        1140,
+        1144
+      ],
+      "reason": "A coordinate lattice scale and frame are supplied, not independently selected physical rods/boost transport. The pair curvature ratio survives common clock/length rescaling, so calibration cannot repair its same-c mass mismatch."
+    },
+    {
+      "premise": "PR-74",
+      "name": "coherent frame and boost transport",
+      "contract_sha256": "21975054541d909b1ab3f06632329a32a1774917b8f5c4b1c279f6cda936810b",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-04",
+        "CP-08"
+      ],
+      "issues": [
+        1140,
+        1144
+      ],
+      "reason": "A coordinate lattice scale and frame are supplied, not independently selected physical rods/boost transport. The pair curvature ratio survives common clock/length rescaling, so calibration cannot repair its same-c mass mismatch."
+    },
+    {
+      "premise": "PR-75",
+      "name": "frozen nuisance and coverage readout rules",
+      "contract_sha256": "c946b38ee510d802c7c91077c993b9ad8e0f30ff9c5c67faad6dbda958a08aca",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-00",
+        "CP-11"
+      ],
+      "issues": [
+        1135,
+        1147
+      ],
+      "reason": "No eligible physical comparison is added. Future observable comparisons must retain the frozen nuisance, uncertainty, exposure and coverage rules."
+    },
+    {
+      "premise": "PR-76",
+      "name": "source-derived positive exclusivity lower bound",
+      "contract_sha256": "5edc27591c6e03f9f1a2113cab43739adb925e5029b2a112d4cd32a28a61382e",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-11",
+        "CP-12"
+      ],
+      "issues": [
+        1147,
+        1148
+      ],
+      "reason": "The source exclusivity lower bound belongs to the frozen physical dispersion comparison. A finite bound-band gap in unrelated coordinate units does not provide that same-action physical scale bound."
+    },
+    {
+      "premise": "PR-77",
+      "name": "pathwise weak fairness for canonical adaptive repair",
+      "contract_sha256": "0aac28dd02274b024772997997c3d620a4a7237096f903f52f5da22abc218acd",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-00",
+        "CP-01"
+      ],
+      "issues": [
+        1135,
+        1136
+      ],
+      "reason": "Canonical adaptive/fixed-node termination and capacity hypotheses concern different repair grammars. They are not assumed by the continuing C/E process; finite training/service costs must instead use its own complete attempt and stop accounting."
+    },
+    {
+      "premise": "PR-78",
+      "name": "work-conserving canonical adaptive choice",
+      "contract_sha256": "0239463b74bf88bff154378a88490c06c3e05a20ce00e0a4630cb25345477132",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-00",
+        "CP-01"
+      ],
+      "issues": [
+        1135,
+        1136
+      ],
+      "reason": "Canonical adaptive/fixed-node termination and capacity hypotheses concern different repair grammars. They are not assumed by the continuing C/E process; finite training/service costs must instead use its own complete attempt and stop accounting."
+    },
+    {
+      "premise": "PR-79",
+      "name": "bounded waste between canonical adaptive changes",
+      "contract_sha256": "28ed1744138ea3665c1be4499f133662223f533f59a4a7a1beb4354e36c1f46e",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-00",
+        "CP-01"
+      ],
+      "issues": [
+        1135,
+        1136
+      ],
+      "reason": "Canonical adaptive/fixed-node termination and capacity hypotheses concern different repair grammars. They are not assumed by the continuing C/E process; finite training/service costs must instead use its own complete attempt and stop accounting."
+    },
+    {
+      "premise": "PR-80",
+      "name": "sufficient cumulative attempt budget",
+      "contract_sha256": "729029fe2b9f6b9e72dae2f9dd9bf13331c757b95ae30e0d167c25ae07d4f88b",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-00",
+        "CP-01"
+      ],
+      "issues": [
+        1135,
+        1136
+      ],
+      "reason": "Canonical adaptive/fixed-node termination and capacity hypotheses concern different repair grammars. They are not assumed by the continuing C/E process; finite training/service costs must instead use its own complete attempt and stop accounting."
+    },
+    {
+      "premise": "PR-81",
+      "name": "certified causal read support",
+      "contract_sha256": "77fdb8c0b1ca8b4645e60dee90ae08dccea8b4b88d0e98e2dfebd257d275af78",
+      "preserved_discharge_status": "derived_from_native_records",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-01",
+        "CP-08"
+      ],
+      "issues": [
+        1136,
+        1144
+      ],
+      "reason": "The existing executed-history provenance constructor supplies authenticated finite read support and a derived acyclicity witness on its declared semantic interface. Neither commit rank nor sourceHeight is identified with modular or physical time."
+    },
+    {
+      "premise": "PR-82",
+      "name": "abstract semantic ancestry acyclicity rank",
+      "contract_sha256": "f2833250959a0a706bff072cef4b7f79a9b02dd5104b0b776fd2c2290ceab81b",
+      "preserved_discharge_status": "derived_from_native_records",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-01",
+        "CP-08"
+      ],
+      "issues": [
+        1136,
+        1144
+      ],
+      "reason": "The existing executed-history provenance constructor supplies authenticated finite read support and a derived acyclicity witness on its declared semantic interface. Neither commit rank nor sourceHeight is identified with modular or physical time."
+    },
+    {
+      "premise": "PR-84",
+      "name": "pathwise weak fairness for fixed node attempts",
+      "contract_sha256": "1f75a04c6900ce615f345ab9751f17355fe3081abbb87d873becd579e16e6f76",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-00",
+        "CP-01"
+      ],
+      "issues": [
+        1135,
+        1136
+      ],
+      "reason": "Canonical adaptive/fixed-node termination and capacity hypotheses concern different repair grammars. They are not assumed by the continuing C/E process; finite training/service costs must instead use its own complete attempt and stop accounting."
+    },
+    {
+      "premise": "PR-85",
+      "name": "bounded waste between fixed node changes",
+      "contract_sha256": "4f20764b87b75b5f8511e35bfee792ec3d79ecfa42cf8e69b6f71999a871b9b8",
+      "preserved_discharge_status": "not_addressed",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-00",
+        "CP-01"
+      ],
+      "issues": [
+        1135,
+        1136
+      ],
+      "reason": "Canonical adaptive/fixed-node termination and capacity hypotheses concern different repair grammars. They are not assumed by the continuing C/E process; finite training/service costs must instead use its own complete attempt and stop accounting."
+    }
+  ],
+  "reviewed_sources": {
+    "cp_net": {
+      "path": "Lean/QFT/CPRestrictionNet.lean",
+      "anchors": [
+        "structure CPRegionalNet",
+        "theorem expect_idem",
+        "theorem restrictCP_comp",
+        "coverage : StarAlgebra.adjoin"
+      ],
+      "boundary": "The interface fields assert positivity and trace preservation, not amplified positivity. Complete positivity comes from the explicit witness Kraus representation. No spatial or physical interpretation follows."
+    },
+    "old_homomorphic_net": {
+      "path": "Lean/QFT/FiniteCausalObserverNet.lean",
+      "anchors": [
+        "structure FiniteCausalObserverNet",
+        "restrict :",
+        "restrict_inclusion :",
+        "repair_natural :"
+      ],
+      "boundary": "This alternative interface requires contravariant star homomorphisms and exact refinement intertwining; neither is inferred for the current full matrix CAR domains."
+    },
+    "scalar_restriction_obstruction": {
+      "path": "Lean/QFT/NoncommutativeWitness.lean",
+      "anchors": [
+        "theorem no_scalar_hom_of_matrix",
+        "theorem FiniteCausalObserverNet.no_matrix_factor_over_scalar_restriction"
+      ],
+      "boundary": "The obstruction concerns unital homomorphic restriction over a scalar region. It does not forbid CP conditional expectations or ordinary state restrictions."
+    },
+    "gibbs_energy": {
+      "path": "Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean",
+      "anchors": [
+        "theorem neg_log_gibbs",
+        "theorem modularEnergy_gibbs_normalized",
+        "theorem boundary_not_affine",
+        "theorem labInverseTemperature_not_forced"
+      ],
+      "boundary": "This Lean file uses finite scalar densities. Its spectral identity guides the M2 attachment; the noncommutative matrix first law is proved separately in the model documentation."
+    },
+    "classical_entropy": {
+      "path": "Lean/Thermodynamics/EinsteinPremiseLink.lean",
+      "anchors": [
+        "theorem thermoFirstLawData_passes",
+        "hsplit :",
+        "theorem shannon_diff_eq_pairing_sub_kl"
+      ],
+      "boundary": "The theorem acts on the simplex tangent space and assumes a bulk/central split. It is not a Lean proof of the new matrix-algebra attachment or a geometric horizon identity."
+    },
+    "einstein_register": {
+      "path": "Lean/ObserverPatchHolography/EinsteinBranch/RegisterSurface.lean",
+      "anchors": [
+        "structure EinsteinRegisterData",
+        "diamondKernelIdentification :",
+        "nullTranslationWard :",
+        "nullStressTomography :",
+        "generalizedEntropyStationarity :",
+        "fixedVolumeAreaExpansion :",
+        "commonScalingTail :",
+        "scaleIdentification :",
+        "theorem einstein_register_composition"
+      ],
+      "boundary": "The composition consumes common physical readouts, geometry, null matching and refinement/normalization receipts. No EinsteinRegisterData inhabitant is supplied by these finite packages."
+    },
+    "ward_limit": {
+      "path": "Lean/Dynamics/WardLimitManifest.lean",
+      "anchors": [
+        "structure WardLimitManifest",
+        "scaleTendsToZero :",
+        "stressComponentsRealized :",
+        "testFieldsSeparate :",
+        "residualConverges :",
+        "theorem WardLimitManifest.wardIdentity"
+      ],
+      "boundary": "Finite continuity is only one input. A physical shrinking-scale stress realization and convergence of a nontrivial separating residual remain required."
+    },
+    "finite_repair": {
+      "path": "Lean/Thermodynamics/FiniteConditionalRepair.lean",
+      "anchors": [
+        "mixture_stationary"
+      ],
+      "boundary": "State-independent mixtures preserve the same reference. Adaptive source/controller correlations require a joint law; the current field action is not identified with repair."
+    },
+    "regions": {
+      "path": "model/field_regions/regions.py",
+      "anchors": [
+        "def restrict_pure",
+        "def restrict_density",
+        "def conditional_expectation",
+        "def lift_number_observable",
+        "def two_particle_embedding"
+      ],
+      "boundary": "The state trace retains local N=0,1,2 sectors; the N=2 observable inclusion is limited to number-preserving operators."
+    },
+    "energy": {
+      "path": "model/field_stress/energy.py",
+      "anchors": [
+        "class GaussianInteger",
+        "def local_energies",
+        "def certify"
+      ],
+      "boundary": "Exact sparse integer identities concern the full finite N=2 Hamiltonian. They do not supply a Lorentz stress tensor."
+    },
+    "entropy": {
+      "path": "model/field_stress/entropy.py",
+      "anchors": [
+        "def regional_hamiltonian",
+        "def run"
+      ],
+      "boundary": "Full-sector Gibbs state is selected, not source-prepared; regional K is tested rather than identified with bare regional energy."
+    },
+    "particle_clock": {
+      "path": "model/particle_clock/clock.py",
+      "anchors": [
+        "def infer_clock",
+        "def execute",
+        "def exact_survival",
+        "def report"
+      ],
+      "boundary": "Faithful reference only on the invariant M2 corner; spatial isometry is supplied and the native continuation is lossy with all outputs retained."
+    },
+    "pair_fiber": {
+      "path": "model/bound_pair/fiber.py",
+      "anchors": [
+        "class PairFiber",
+        "def clock_subspace",
+        "def exchange_residual"
+      ],
+      "boundary": "Same supplied local action, with periodic rather than open finite boundary. Only reciprocal-grid K denotes the stated finite-torus fiber."
+    },
+    "pair_mass": {
+      "path": "model/bound_pair/mass.py",
+      "anchors": [
+        "def curvature_ratio_interval",
+        "def curvature_quadrature",
+        "def certificate"
+      ],
+      "boundary": "Rational fixed-spacing Brillouin integral bounds give coordinate curvature; no physical rest mass or continuum field follows."
+    },
+    "pair_identity": {
+      "path": "model/bound_pair/identity.py",
+      "anchors": [
+        "def car_pair_certificate",
+        "def number_currents",
+        "def spin_certificate"
+      ],
+      "boundary": "CAR charge and internal spin algebra are distinguished from electromagnetic charge, physical Lorentz spin and species identity."
+    },
+    "taste_projection": {
+      "path": "model/field_tastes/tastes.py",
+      "anchors": [
+        "def commutator_certificate",
+        "def leakage_bound",
+        "def evolution_report"
+      ],
+      "boundary": "The exact commutator excludes only proper momentum-pocket reductions with nonzero contact weight, not all chiral regulators or limiting decouplings."
+    },
+    "finite_thermal": {
+      "path": "model/field_tastes/thermal.py",
+      "anchors": [
+        "def reflection_gram",
+        "def kms_correlation",
+        "def report"
+      ],
+      "boundary": "A selected faithful Gibbs density on the full physical N=2,K=0 fiber; even observables only. No local continuum OS reconstruction or native thermal preparation."
+    }
+  },
+  "attachments": [
+    {
+      "id": "FA-01",
+      "title": "Signed regional state restriction with complete records",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-01",
+        "CP-06",
+        "CP-08"
+      ],
+      "reviewed_sources": [
+        "regions"
+      ],
+      "interface": {
+        "state": "Full N=2 states on each retained box, including entangled reference inputs; all local N=0,1,2 sectors retained.",
+        "algebra": "The declared matrix/CAR algebra; no physical spacetime identification.",
+        "operation": "CAR-signed full-Fock reordering followed by partial trace, branchwise on every complete detector outcome.",
+        "clock": "Hamiltonian model time or named native modular parameter, kept distinct.",
+        "refinement": "Nested spatial restrictions compose; no conditional renormalization."
+      },
+      "conclusion": "Explicit Kraus completeness, trace preservation, reference extension and nested restrictions are realized for this action and record protocol.",
+      "remaining": [
+        "Source selection of the spatial CAR carrier and a physical region interpretation."
+      ],
+      "witnesses": [
+        "model/field_regions/README.md",
+        "model/field_regions/results.json"
+      ],
+      "countercontrols": [
+        "model/field_regions/test_regions.py"
+      ],
+      "proof_kind": "Analytic signed-split/Kraus proof, independent full-Fock oracle and complete-history numerical checks.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-02",
+      "title": "CAR attachment to the conditional-expectation regional net",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-06",
+        "CP-08",
+        "CP-13"
+      ],
+      "reviewed_sources": [
+        "cp_net",
+        "regions"
+      ],
+      "interface": {
+        "state": "Complete finite two-fermion state, with arbitrary untouched references where an instrument is claimed.",
+        "algebra": "Region poset: all finite mode subsets ordered by inclusion, overlap by intersection; declared disjointness means disjoint nonempty subsets. Number-preserving local CAR images in M_N2; all two-mode regions are the generating family.",
+        "operation": "Trace-preserving conditional expectations onto local number-preserving images, with explicit block matrix-unit Kraus maps.",
+        "clock": "Hamiltonian model time or named native modular parameter, kept distinct.",
+        "refinement": "Finite-domain construction; fixed-spacing volume maps are distinct from spatial continuum."
+      },
+      "conclusion": "Isotony, locality, positive/unital/trace-preserving expectations, tower law and all-two-mode coverage have a concrete mathematical attachment.",
+      "remaining": [
+        "Formal Lean inhabitant is not compiled here; physical locality, a native regional selector and continuum net remain open."
+      ],
+      "witnesses": [
+        "model/field_regions/README.md",
+        "model/field_regions/results.json"
+      ],
+      "countercontrols": [
+        "model/field_regions/test_regions.py"
+      ],
+      "proof_kind": "Analytic CAR and matrix-unit Kraus argument plus exact and independent finite tests; existing Lean implications reused by their actual fields.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-03",
+      "title": "Finite box embedding and regional full-history comparison",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-01",
+        "CP-06",
+        "CP-08"
+      ],
+      "reviewed_sources": [
+        "regions"
+      ],
+      "interface": {
+        "state": "Complete finite two-fermion state, with arbitrary untouched references where an instrument is claimed.",
+        "algebra": "The declared matrix/CAR algebra; no physical spacetime identification.",
+        "operation": "Exterior-square coordinate/spin inclusion J, same source-compiled complete two-read instrument and CP regional trace.",
+        "clock": "Hamiltonian model time or named native modular parameter, kept distinct.",
+        "refinement": "J* H_large J=H_small exactly; full flow intertwining fails and is not assumed. Fixed-spacing Taylor and splitting error bounds transport under CP contraction."
+      },
+      "conclusion": "Same-observable regional histories have explicit finite-volume maps and controlled ideal-action errors.",
+      "remaining": [
+        "Shrinking lattice spacing, native geometry, chiral continuum and physical rods/clocks."
+      ],
+      "witnesses": [
+        "model/field_regions/README.md",
+        "model/field_regions/results.json",
+        "model/interacting_field/DERIVATION.md"
+      ],
+      "countercontrols": [
+        "model/field_regions/test_regions.py"
+      ],
+      "proof_kind": "Exact finite inclusion/compression, explicit nonzero intertwining countercontrol and analytic complete-output norm bound.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-04",
+      "title": "One interacting energy subspace attached to the native modular clock",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-01",
+        "CP-02",
+        "CP-04"
+      ],
+      "reviewed_sources": [
+        "gibbs_energy",
+        "particle_clock",
+        "pair_fiber"
+      ],
+      "interface": {
+        "state": "Eta pair d and dark reference r, both N=2 and K=(pi,pi,pi), on even periodic boxes L>=4.",
+        "algebra": "Exactly invariant S=span(r,d), B(S)=M2. The native heralded corner maps by a supplied isometry to S.",
+        "operation": "Complete inferred source-clock interferometer with both herald outcomes, all native C/E records, leakage and aborts.",
+        "clock": "rho_S=diag(25,8)/33=e^(-beta H_S)/Z, H_S=diag(0,U), beta U=log(25/8); Heisenberg model coordinate t=-beta s.",
+        "refinement": "The mathematical subspace exists for each declared even torus; no many-site native encoding or cross-volume physical clock identification."
+      },
+      "conclusion": "The same finite excitation subspace, energy difference and inferred native modular ratio now have an explicit operator/state map and full-output error bound.",
+      "remaining": [
+        "Full-field Gibbs preparation, source-selected spatial encoding, common propagation normalization and physical units."
+      ],
+      "witnesses": [
+        "model/particle_clock/README.md",
+        "model/particle_clock/results.json"
+      ],
+      "countercontrols": [
+        "model/particle_clock/test_clock.py",
+        "model/bound_pair/test_mass.py"
+      ],
+      "proof_kind": "Exact invariant-subspace/Gibbs proof; complete source-word and all-input pointer replay; statistical/preparation/compiler error accounting.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-05",
+      "title": "Local energy continuity for the interacting Hamiltonian",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-04",
+        "CP-09"
+      ],
+      "reviewed_sources": [
+        "energy",
+        "ward_limit"
+      ],
+      "interface": {
+        "state": "Complete finite two-fermion state, with arbitrary untouched references where an instrument is claimed.",
+        "algebra": "The declared matrix/CAR algebra; no physical spacetime identification.",
+        "operation": "h_x=U D_x plus half incident bonds; J_xy=i[h_x,h_y]; all range-two currents and complete boundary flux retained.",
+        "clock": "Heisenberg derivative with respect to the same Hamiltonian model time; ideal split evolution has its separate energy drift bound.",
+        "refinement": "Finite-domain construction; fixed-spacing volume maps are distinct from spatial continuum."
+      },
+      "conclusion": "sum_x h_x=H and i[H,h_x]+sum_y J_xy=0 are exact operator identities on the complete retained R=1 N=2 space.",
+      "remaining": [
+        "Symmetric Lorentz stress, physical chart components, shrinking-scale Ward limit and control/detector work accounting."
+      ],
+      "witnesses": [
+        "model/field_stress/README.md",
+        "model/field_stress/results.json"
+      ],
+      "countercontrols": [
+        "model/field_stress/test_energy.py"
+      ],
+      "proof_kind": "Exact Gaussian-integer sparse arithmetic with overflow bounds, independent action sum and interaction-deletion controls.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-06",
+      "title": "Quantum Gibbs entropy first law on the complete field sector",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-04",
+        "CP-09"
+      ],
+      "reviewed_sources": [
+        "classical_entropy",
+        "gibbs_energy",
+        "entropy"
+      ],
+      "interface": {
+        "state": "Faithful tau=e^(-beta H)/Z on the full 1431-dimensional open-box N=2 algebra; beta=log(25/8) is declared.",
+        "algebra": "The declared matrix/CAR algebra; no physical spacetime identification.",
+        "operation": "Noncommuting localized-pair trace-zero variation and exact relative-entropy remainder.",
+        "clock": "The same H as energy continuity; beta defines the chosen reference, not its native preparation.",
+        "refinement": "Finite-domain construction; fixed-spacing volume maps are distinct from spatial continuum."
+      },
+      "conclusion": "DS_tau(delta)=beta Tr(delta H) and Delta S=beta Delta E-D(rho||tau) hold on the actual noncommutative action/algebra.",
+      "remaining": [
+        "A geometric bulk/edge split, diamond kernel, fixed-volume area response and preparation of this full reference."
+      ],
+      "witnesses": [
+        "model/field_stress/README.md",
+        "model/field_stress/results.json"
+      ],
+      "countercontrols": [
+        "model/field_stress/test_entropy.py"
+      ],
+      "proof_kind": "Matrix spectral-calculus proof in the model README, noncommuting numerical replay and a stated non-outward-certified entropy remainder diagnostic; not a direct reuse of the scalar Lean theorem.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-07",
+      "title": "Same-action pair energy, kinetic curvature and number charge",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-03",
+        "CP-04",
+        "CP-05",
+        "CP-07"
+      ],
+      "reviewed_sources": [
+        "pair_fiber",
+        "pair_mass",
+        "pair_identity"
+      ],
+      "interface": {
+        "state": "The unique isolated contact-pair pole of each supplied periodic two-fermion fiber, with complete spin and relative momentum retained.",
+        "algebra": "The declared matrix/CAR algebra; no physical spacetime identification.",
+        "operation": "Independent dense-fiber checks, rational curvature enclosure, full-Fock CAR identities and exact number continuity.",
+        "clock": "Coordinate energy gap U and curvature kappa; dimensionless invariant U*kappa/c^2 differs from one.",
+        "refinement": "Finite-torus fibers and fixed-spacing Brillouin-zone integral distinguished; no spatial continuum or vacuum selection."
+      },
+      "conclusion": "One lattice excitation has a definite CAR charge two, even composite parity and independently derived energy/curvature; the same-c relativistic mass identification fails for the declared parameters.",
+      "remaining": [
+        "Native defect invariant, reference-like exterior, physical Lorentz spin, Standard Model currents/families and mass calibration."
+      ],
+      "witnesses": [
+        "model/bound_pair/README.md",
+        "model/bound_pair/IDENTITY.md"
+      ],
+      "countercontrols": [
+        "model/bound_pair/test_mass.py",
+        "model/bound_pair/test_identity.py"
+      ],
+      "proof_kind": "Analytic resolvent/curvature proof with exact rational enclosure and independent operator tests; finite CAR/current exact identities.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-08",
+      "title": "Homomorphic scalar-bottom restrictions leave this active CAR route",
+      "classification": "alternative_branch",
+      "owners": [
+        "CP-06",
+        "CP-08",
+        "CP-13"
+      ],
+      "reviewed_sources": [
+        "old_homomorphic_net",
+        "scalar_restriction_obstruction",
+        "cp_net"
+      ],
+      "interface": {
+        "state": "Complete finite two-fermion state, with arbitrary untouched references where an instrument is claimed.",
+        "algebra": "The declared matrix/CAR algebra; no physical spacetime identification.",
+        "operation": "Use CP expectations and state traces; do not instantiate the old star-homomorphic retraction on full matrix regions.",
+        "clock": "Hamiltonian model time or named native modular parameter, kept distinct.",
+        "refinement": "Finite-domain construction; fixed-spacing volume maps are distinct from spatial continuum."
+      },
+      "conclusion": "The existing no-scalar-character obstruction explains the interface choice; E(X^2) differs from E(X)^2 in the actual CAR control.",
+      "remaining": [
+        "Other historical net branches remain valid on their own declared domains; no global no-go or source deletion follows."
+      ],
+      "witnesses": [
+        "Lean/QFT/NoncommutativeWitness.lean",
+        "model/field_regions/README.md"
+      ],
+      "countercontrols": [
+        "model/field_regions/test_regions.py"
+      ],
+      "proof_kind": "Existing Lean obstruction reused; concrete CAR nonmultiplicativity witness retained.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-09",
+      "title": "Bare regional modular-energy identification needs correction",
+      "classification": "needs_correction",
+      "owners": [
+        "CP-02",
+        "CP-04",
+        "CP-09"
+      ],
+      "reviewed_sources": [
+        "entropy",
+        "regions"
+      ],
+      "interface": {
+        "state": "CAR trace of the same full-sector Gibbs reference to two adjacent sites, faithful on local N<=2 support only.",
+        "algebra": "Eleven-dimensional positive support, not faithful on all sixteen four-mode Fock states.",
+        "operation": "Compare actual K_A=-log(tau_A) with a I+b H_A+mu N_A+nu N_A^2; retain all regional sectors.",
+        "clock": "Hamiltonian model time or named native modular parameter, kept distinct.",
+        "refinement": "Finite-domain construction; fixed-spacing volume maps are distinct from spatial continuum."
+      },
+      "conclusion": "The tested bare-energy identification fails: a nonzero commutator and affine-fit residual survive even the number-squared correction. This refutes an attempted attachment, not a general theorem.",
+      "remaining": [
+        "Boundary/correlation corrections, another justified reference or generator, and controlled limiting regional maps."
+      ],
+      "witnesses": [
+        "model/field_stress/README.md",
+        "model/field_stress/results.json"
+      ],
+      "countercontrols": [
+        "model/field_stress/test_entropy.py"
+      ],
+      "proof_kind": "Numerical finite-model counterexample with scale-separated controls; no universal modular no-go.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-10",
+      "title": "From finite energy conservation to the Ward limit",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-04",
+        "CP-09"
+      ],
+      "reviewed_sources": [
+        "ward_limit",
+        "energy"
+      ],
+      "interface": {
+        "state": "Complete finite two-fermion state, with arbitrary untouched references where an instrument is claimed.",
+        "algebra": "The declared matrix/CAR algebra; no physical spacetime identification.",
+        "operation": "The actual supplied Weyl-contact action or named compiled native source service.",
+        "clock": "Hamiltonian model time or named native modular parameter, kept distinct.",
+        "refinement": "No regulator scale tending to zero, common physical Lorentz stress realization or separating residual convergence is supplied."
+      },
+      "conclusion": "The exact conservation input is available; the WardLimitManifest implication cannot yet be invoked on this model.",
+      "remaining": [
+        "Construct source/transport/chart/common tower semantics, a shrinking scale, all stress components and a nontrivial limiting divergence with separating test fields."
+      ],
+      "witnesses": [
+        "Lean/Dynamics/WardLimitManifest.lean",
+        "model/field_stress/README.md"
+      ],
+      "countercontrols": [
+        "model/field_stress/test_energy.py"
+      ],
+      "proof_kind": "Inspection of actual guarded Lean structure and exact finite countercontrols; no manufactured zero residual.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-11",
+      "title": "Common Einstein register premises G1--G6",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-08",
+        "CP-09",
+        "CP-10"
+      ],
+      "reviewed_sources": [
+        "einstein_register",
+        "classical_entropy"
+      ],
+      "interface": {
+        "state": "Complete finite two-fermion state, with arbitrary untouched references where an instrument is claimed.",
+        "algebra": "The declared matrix/CAR algebra; no physical spacetime identification.",
+        "operation": "The actual supplied Weyl-contact action or named compiled native source service.",
+        "clock": "Hamiltonian model time or named native modular parameter, kept distinct.",
+        "refinement": "Physical readout tower, shrinking-ball remainder family and calibrated common tensors are not constructed."
+      },
+      "conclusion": "Finite entropy and energy inputs have explicit domains; they do not inhabit EinsteinRegisterData.",
+      "remaining": [
+        "Geometric cap modular flow, central/edge split, null translations and tomography, generalized-entropy area balance, Bianchi geometry, common scaling tail, vacuum residue and independent Newton normalization."
+      ],
+      "witnesses": [
+        "Lean/ObserverPatchHolography/EinsteinBranch/RegisterSurface.lean",
+        "model/field_stress/README.md"
+      ],
+      "countercontrols": [
+        "model/field_stress/test_entropy.py",
+        "model/field_regions/test_regions.py"
+      ],
+      "proof_kind": "Actual statement/field review; no Einstein conclusion is claimed.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-12",
+      "title": "Interacting chiral physical field and source-selected continuum",
+      "classification": "required_but_conditional",
+      "owners": [
+        "CP-05",
+        "CP-06",
+        "CP-08"
+      ],
+      "reviewed_sources": [
+        "pair_fiber",
+        "regions",
+        "taste_projection"
+      ],
+      "interface": {
+        "state": "Supplied two-component CAR action with all eight naive Weyl nodes retained and exact N=2 evolution.",
+        "algebra": "The declared matrix/CAR algebra; no physical spacetime identification.",
+        "operation": "The actual supplied Weyl-contact action or named compiled native source service.",
+        "clock": "Hamiltonian model time or named native modular parameter, kept distinct.",
+        "refinement": "Fixed-spacing infinite-volume comparison only; no admissible chiral regulator or physical vacuum/continuum selected."
+      },
+      "conclusion": "The same-action finite observation law is interacting and non-Gaussian. For every proper exchange-symmetric momentum pocket with contact weight 0<w<1, ||[H,Q]||^2=U^2 w(1-w)>0 excludes exact pocket reduction; all eight outcome probabilities remain. The physical chiral continuum and other regulator classes remain open.",
+      "remaining": [
+        "Source-selected common action/reference and detector dictionary; chiral measure/current/Higgs map; complete tastes and a justified physical effective/continuum domain."
+      ],
+      "witnesses": [
+        "model/interacting_field/README.md",
+        "model/interacting_field/results.json",
+        "model/field_tastes/README.md",
+        "model/field_tastes/results.json"
+      ],
+      "countercontrols": [
+        "model/interacting_field/test_field.py",
+        "model/field_tastes/test_tastes.py"
+      ],
+      "proof_kind": "Existing compiled full-output controls and actual node census; no removal of unseen modes by naming a band.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-13",
+      "title": "Finite thermal reflection Gram positivity and KMS on the same fiber",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-02",
+        "CP-06"
+      ],
+      "reviewed_sources": [
+        "finite_thermal",
+        "pair_fiber"
+      ],
+      "interface": {
+        "state": "The faithful chosen Gibbs reference on the complete physical antisymmetric N=2,K=0 fiber, retaining all contact/scattering sectors and pockets.",
+        "algebra": "Even number-preserving observables on that fiber; no odd CAR field is compressed and relabeled.",
+        "operation": "Explicit spectral Gram factorization and KMS trace identity, tested with a non-Hermitian contact-times-pocket operator and an incorrect tracial-reference control.",
+        "clock": "Euclidean Hamiltonian model parameter t with selected beta=log(25/8), not physical time or native full-field thermalization.",
+        "refinement": "Finite periodic domain only; no spatial locality, vacuum continuum or complete OS reconstruction."
+      },
+      "conclusion": "Positive semidefinite finite reflection Gram matrix and KMS relation have an explicit same-action/reference witness.",
+      "remaining": [
+        "Local field reconstruction, physical vacuum, Lorentz covariance, native reference preparation and all continuum OS hypotheses."
+      ],
+      "witnesses": [
+        "model/field_tastes/README.md",
+        "model/field_tastes/results.json"
+      ],
+      "countercontrols": [
+        "model/field_tastes/test_tastes.py"
+      ],
+      "proof_kind": "Analytic finite spectral-sum/Gram proof and independent direct-trace numerical tests.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    }
+  ],
+  "cleanup": {
+    "active_choice": "The new CAR regional route uses CPRegionalNet with explicit Kraus witnesses. The older homomorphic-restriction packet remains an alternative with its obstruction retained; no caller/import is removed.",
+    "deleted_sources": [],
+    "frozen_receipts_rewritten": [],
+    "false_general_theorems_found": [],
+    "removed_inferences": [
+      "A scalar-bottom homomorphic retraction on a full matrix CAR region.",
+      "Exact dynamics intertwining inferred from finite Hamiltonian compression.",
+      "Bare regional Gibbs energy inferred from a full-field Gibbs state.",
+      "A physical Lorentz Ward identity inferred from finite energy conservation.",
+      "Einstein G1--G6 inferred from a quantum entropy derivative.",
+      "A physical relativistic particle mass inferred from one finite pole."
+    ]
+  },
+  "issue_closure_review": {
+    "1139": {
+      "close_issue": false,
+      "unaccepted_predecessors": [
+        "CP-01",
+        "CP-13"
+      ],
+      "unfulfilled_acceptance": [
+        "A reference-like exterior and a boundary charge invariant under the complete admitted native repair law.",
+        "The closed-H bound band and active native code are distinct realizations; no common native topological defect is established."
+      ]
+    },
+    "1140": {
+      "close_issue": false,
+      "unaccepted_predecessors": [
+        "CP-02",
+        "CP-03"
+      ],
+      "unfulfilled_acceptance": [
+        "Source-selected native defect maintenance/rest action with a common physical propagation clock.",
+        "One justified physical stress tensor and its Ward/refinement map; finite energy currents only are constructed."
+      ]
+    },
+    "1142": {
+      "close_issue": false,
+      "unaccepted_predecessors": [
+        "CP-02",
+        "CP-04",
+        "CP-05"
+      ],
+      "unfulfilled_acceptance": [
+        "A same-process interacting chiral physical effective/continuum law with all tastes controlled.",
+        "Common gauge/Higgs/current/IR and vacuum attachments; supplied CAR action and fixed-spacing volume control do not meet these conditions."
+      ]
+    },
+    "1137": {
+      "close_issue": false,
+      "unaccepted_predecessors": [
+        "CP-00",
+        "CP-01"
+      ],
+      "unfulfilled_acceptance": [
+        "The full executable program class is not frozen and its continuing-observer predecessor is not accepted.",
+        "The reviewed map is complete for the named finite campaign; active proof-chain cleanup and actual common-process attachments must be rechecked when those predecessor domains are fixed."
+      ],
+      "finite_map_review_complete": true
+    }
+  },
+  "source_bindings": {
+    "Lean/Dynamics/WardLimitManifest.lean": "6bae06ce219aa104014a3094298c3f376586cc54d03223b534b94a95565a6b0d",
+    "Lean/ObserverPatchHolography/EinsteinBranch/RegisterSurface.lean": "a724da9e9a5a9e90aa80adb2833353370d5991180b89f7a634cf27e43e10f631",
+    "Lean/QFT/CPRestrictionNet.lean": "b3ed269db07de2ca6e062cf54b86762ab8d35259268d0f987d49a3ed738af146",
+    "Lean/QFT/FiniteCausalObserverNet.lean": "d523da22cad68d20f67ab860d165dd7800e1b69892ab7053aaa7d761a617c626",
+    "Lean/QFT/NoncommutativeWitness.lean": "901bdeea971cd50a2067982458fd2d679d4235777525044b9105a8bde4a9de14",
+    "Lean/Thermodynamics/EinsteinPremiseLink.lean": "e016fb5f8d4f069c8e946152b5bbf8ae9db099505a6e7bfa9d26107efcf6b751",
+    "Lean/Thermodynamics/FiniteConditionalRepair.lean": "6d1c8c2db46bba7bcb685d9f11f682ad4f96d01eff528d6f942e0f6666d87ce2",
+    "Lean/Thermodynamics/GibbsReferenceEnergyIdentification.lean": "646f2b7865b6d14a21a05b08013c35848fd3380d89cfffa2fff6b390786c9a22",
+    "model/bound_pair/IDENTITY.md": "f7808797da9a34bb8e049e054a0afad1993492be7dbd4b5e08c64fc5e46db5b0",
+    "model/bound_pair/README.md": "96f0b84172026ef41cb7100f527d6bb8871ab8b98521599b22cc1177bcca712b",
+    "model/bound_pair/fiber.py": "a5a21df2e5e6a4c71c66feaff2436390e357da8ae019df794280577afa48a49e",
+    "model/bound_pair/identity.py": "16b73761ae95475d8d8292e372d7450b661a61eebba7cb977a18fb44d8252e44",
+    "model/bound_pair/mass.py": "45ab64c1b74d060e4ae380c9f5f5896ca7d1d7a84c18c022c9bd2e3d99735034",
+    "model/completion/finite_attachment_map.py": "d0bd04fb34d3b71979086713a8f42d6e6919d7b2a0ffe60f7b37506d851892b3",
+    "model/completion/test_finite_attachment_map.py": "bc00a16b24156cfc4ff5eac0913b330e075dec5e08662d0525a3cbd30134997b",
+    "model/field_regions/README.md": "5073a68fc7c604335ad9aeac76ea0fd509857a73fb088148e66e0764cd6005ae",
+    "model/field_regions/regions.py": "82620a99ed565ab0371295700f828151133d863d92e7fb12330d57a3a7603dc9",
+    "model/field_stress/README.md": "8e5b2d4bf9f49d782512c17c6ccda0b2e54d69255a5d169154ba53c6c5c6c213",
+    "model/field_stress/energy.py": "f44f67d25d9738230966dc4c9e64eecc2792f0bf07d33b4ca4ac5cb9db90cf72",
+    "model/field_stress/entropy.py": "37af6330d7a2d5971c26c866cf706417b6244d5d8c06fbb15d53e63bc8b4f918",
+    "model/field_tastes/README.md": "ccd93ff6ebbefb35c84e46e3df8e804dbeff6fb44001ae39f8caf38f57415d22",
+    "model/field_tastes/tastes.py": "fc77d396d5fb5abd7e0a321a23dc43df79b9c8b5aa85fde483f7dbe4a1d0706e",
+    "model/field_tastes/thermal.py": "2bac9c523952296832e6943bafa4749cada43e2f8d72fa1084aa20451fa53a13",
+    "model/interacting_field/lattice.py": "b6233c890898ecebd84fa19ee95a95f28bdce11d7dfcd0c72be2aaedfaad692e",
+    "model/particle_clock/README.md": "d77051b64b97e0e5ff66f9ddd2729fb2297adf2d540f1bc809a8c582a57455e6",
+    "model/particle_clock/clock.py": "0e7ade1e52928aa0657720af4854cc67d1766eafff6d8cf4718628e71f338816"
+  }
+}
