@@ -84,10 +84,17 @@ def test_every_new_research_receipt_has_a_canonical_replay():
         ('model.conserved_sector_action.sector_action', None, 'model/conserved_sector_action/sector_action_results.json'),
         ('model.clock_defect_energy.shared_event_clock.run', None, 'model/clock_defect_energy/shared_event_clock/results.json'),
         ('model.screened_transport.transport', None, 'model/screened_transport/transport_results.json'),
+        ('model.exchange_sector.statistics_packet', None, 'model/exchange_sector/statistics_results.json'),
     }.issubset(verify.REPLAYS)
 
 
 def test_completion_candidate_receipts_have_replay_custody_and_workflow_coverage():
+    statistics_receipt = 'model/exchange_sector/statistics_results.json'
+    assert ('model.exchange_sector.statistics_packet', None, statistics_receipt) in verify.REPLAYS
+    statistics_sources = json.loads((verify.ROOT/statistics_receipt).read_text())['source_sha256']
+    for name in ('statistics.py', 'statistics_service.py', 'statistics_topology.py',
+                 'statistics_packet.py', 'statistics_contract.json'):
+        assert 'model/exchange_sector/'+name in statistics_sources
     packets = {
         'particle_screening': ('screening', 'screening_results.json', 'campaign.json'),
         'active_code_energy': ('energy_bridge', 'energy_bridge_results.json', 'campaign.json'),

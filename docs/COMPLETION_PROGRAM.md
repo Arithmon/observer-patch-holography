@@ -41,6 +41,7 @@ These source-bound component campaigns record actual progress without accepting 
 - [conserved-sector-action-20261028-v1](../model/conserved_sector_action/campaign.json): A Lean theorem proves stationary reweighting, conditional cancellation and zero sector-potential gradient for every positive conserved-sector factor. Exact checks bind its premises to all 4356 native source/core states; the full native kernel is checked in Python rather than encoded as a Lean value. Owning gates: CP-04, CP-13.
 - [OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1](../model/local_repair_family/observer_campaign.json): Versioned finite continuation and coherent-service composition on the bounded endpoint-biased family. Owning gates: CP-00, CP-01, CP-02, CP-13.
 - [OPH-RECORD-DERIVED-CONTINUING-CLOCK-v1](../model/local_repair_family/record_clock_campaign.json): Fixed finite native-record acquisition, record-only preparation admission and inferred common modular-clock protocol. No integrated gate or physical comparison is accepted. Owning gates: CP-01, CP-02, CP-13.
+- [native-exchange-statistics-20261029-v1](../model/exchange_sector/statistics_contract.json): The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified. Owning gates: CP-01, CP-03, CP-05, CP-13.
 
 ## Next three parallel workstreams
 
@@ -57,7 +58,7 @@ The screened recovery service, four shared-event readouts, same-code transport c
 Parallel starting work and the required joins:
 
 - **CP-02 / [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138):** Reuse record-only odds, held-out cycles, exact mixing admissions and complete inferred clock histories. Preserve the finite-prepared source-marginal and full preparation-archive distinction. Conditional ensemble expectations and model-conditioned count inversion are distinct from a monotone individual readout or a calibrated physical duration. Distinct repair laws and references cannot be combined without a new compatibility proof; both branches require independently justified physical calibration and source selection. Starting evidence: [shared event clock](../model/clock_defect_energy/shared_event_clock/results.json), [clock count inference](../model/clock_defect_energy/clock_count_inference_results.json), [reference balance](../model/clock_defect_energy/reference_balance_results.json), [local continuing clock](../model/local_repair_family/observer_results.json), [record derived clock](../model/local_repair_family/record_clock_results.json).
-- **CP-03 / [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139):** Reuse the compiled canonical encoder and recovery menu as controls. Specify the protecting state and boundary before selecting its dynamics. Preserving the logical qubit at a reset core is a memory result; a moving physical excitation requires a different tested transport map. Starting evidence: [screened recovery](../model/screened_recovery/screened_recovery_results.json), [screened transport](../model/screened_transport/transport_results.json), [particle screening](../model/particle_screening/screening_results.json), [defect history](../model/clock_defect_energy/defect_history_results.json).
+- **CP-03 / [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139):** Reuse the compiled canonical encoder and recovery menu as controls. Specify the protecting state and boundary before selecting its dynamics. Preserving the logical qubit at a reset core is a memory result; a moving physical excitation requires a different tested transport map. Starting evidence: [screened recovery](../model/screened_recovery/screened_recovery_results.json), [screened transport](../model/screened_transport/transport_results.json), [particle screening](../model/particle_screening/screening_results.json), [defect history](../model/clock_defect_energy/defect_history_results.json), [exchange statistics](../model/exchange_sector/statistics_results.json).
 - **CP-04 / [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140):** Reuse the same-code current covariance, corrected-cycle countercontrol and quantified conserved-sector action theorem. Compiler work, transient current covariance and a flat logical channel do not determine rest energy. The SI utility attaches units only to a separately supplied clock and coherent frequency. Starting evidence: [screened transport](../model/screened_transport/transport_results.json), [conserved sector action](../model/conserved_sector_action/sector_action_results.json), [screened recovery](../model/screened_recovery/screened_recovery_results.json), [shared event clock](../model/clock_defect_energy/shared_event_clock/results.json), [mode energy](../model/clock_defect_energy/mode_energy_results.json).
 
 Shared source interface:
@@ -147,7 +148,7 @@ flowchart TD
 | CP-02 | Construct the continuing regime, faithful reference and local modular clocks | In progress; acceptance awaiting CP-01, CP-13 | [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) |
 | CP-03 | Exhibit a localized native defect and its protecting invariant | In progress; acceptance awaiting CP-01, CP-13 | [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) |
 | CP-04 | Derive common defect maintenance energy, kinetics and conserved stress | In progress; acceptance awaiting CP-02, CP-03 | [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) |
-| CP-05 | Transport the same defects and derive particle identity and currents | Awaiting CP-03, CP-04 | [#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141) |
+| CP-05 | Transport the same defects and derive particle identity and currents | In progress; acceptance awaiting CP-03, CP-04 | [#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141) |
 | CP-06 | Obtain one interacting chiral 3+1 field description from native records | Awaiting CP-02, CP-04, CP-05 | [#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142) |
 | CP-07 | Freeze the physical dictionary and derive the matched particle spectrum | Awaiting CP-06 | [#1143](https://github.com/FloatingPragma/observer-patch-holography/issues/1143) |
 | CP-08 | Construct responsive geometry and causal clocks on the same source | Awaiting CP-02, CP-04 | [#1144](https://github.com/FloatingPragma/observer-patch-holography/issues/1144) |
@@ -236,6 +237,8 @@ Retained starting evidence:
 - [screened_recovery_results.json](../model/screened_recovery/screened_recovery_results.json)
 - [results.json](../model/clock_defect_energy/shared_event_clock/results.json)
 - [README.md](../model/local_repair_family/README.md)
+- [STATISTICS.md](../model/exchange_sector/STATISTICS.md)
+- [statistics_results.json](../model/exchange_sector/statistics_results.json)
 
 Current component progress (not gate acceptance):
 
@@ -248,6 +251,7 @@ Current component progress (not gate acceptance):
 - [results.json](../model/clock_defect_energy/shared_event_clock/results.json): Four source-executed shared checkpoints give strictly ordered conditional ensemble clock and field readouts through three FIFO exports. A raw two-anchor affine fit fails the reserved fourth event with a positive source-error margin; physical time calibration is not supplied.
 - [observer_results.json](../model/local_repair_family/observer_results.json): Unique quantum product reference with exact finite preparation, stationary source/FIFO access, same-law source modular clock and positive complete-scheduler response. The actual prepared source flow has a finite logarithm bound; supplied coherent services, port weights and physical calibration remain explicit. No integrated gate or physical comparison is accepted.
 - [record_clock_results.json](../model/local_repair_family/record_clock_results.json): Complete31,457,280-event continuing native acquisition identifies relative product-reference weights with held-out cycle checks. Exact record-box mixing and source-compiled phase bounds control complete future readouts and the actual prepared source-marginal clock. Source-weight selection, coherent hardware, physical calibration and refining matter/gravity joins are separate obligations.
+- [statistics_results.json](../model/exchange_sector/statistics_results.json): The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.
 
 Earlier related work: [#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077), [#1076](https://github.com/FloatingPragma/observer-patch-holography/issues/1076), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026).
 
@@ -284,6 +288,8 @@ Retained starting evidence:
 - [results.json](../model/clock_defect_energy/shared_event_clock/results.json)
 - [transport_results.json](../model/screened_transport/transport_results.json)
 - [sector_action_results.json](../model/conserved_sector_action/sector_action_results.json)
+- [STATISTICS.md](../model/exchange_sector/STATISTICS.md)
+- [statistics_results.json](../model/exchange_sector/statistics_results.json)
 
 Current component progress (not gate acceptance):
 
@@ -305,6 +311,7 @@ Current component progress (not gate acceptance):
 - [sector_action_results.json](../model/conserved_sector_action/sector_action_results.json): A Lean theorem proves stationary reweighting, conditional cancellation and zero sector-potential gradient for every positive conserved-sector factor. Exact checks bind its premises to all 4356 native source/core states; the full native kernel is checked in Python rather than encoded as a Lean value.
 - [observer_results.json](../model/local_repair_family/observer_results.json): Unique quantum product reference with exact finite preparation, stationary source/FIFO access, same-law source modular clock and positive complete-scheduler response. The actual prepared source flow has a finite logarithm bound; supplied coherent services, port weights and physical calibration remain explicit. No integrated gate or physical comparison is accepted.
 - [record_clock_results.json](../model/local_repair_family/record_clock_results.json): Complete31,457,280-event continuing native acquisition identifies relative product-reference weights with held-out cycle checks. Exact record-box mixing and source-compiled phase bounds control complete future readouts and the actual prepared source-marginal clock. Source-weight selection, coherent hardware, physical calibration and refining matter/gravity joins are separate obligations.
+- [statistics_results.json](../model/exchange_sector/statistics_results.json): The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.
 
 Earlier related work: [#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 
@@ -382,6 +389,8 @@ Retained starting evidence:
 - [screening_results.json](../model/particle_screening/screening_results.json)
 - [screened_recovery_results.json](../model/screened_recovery/screened_recovery_results.json)
 - [transport_results.json](../model/screened_transport/transport_results.json)
+- [STATISTICS.md](../model/exchange_sector/STATISTICS.md)
+- [statistics_results.json](../model/exchange_sector/statistics_results.json)
 
 Current component progress (not gate acceptance):
 
@@ -393,6 +402,7 @@ Current component progress (not gate acceptance):
 - [screening_results.json](../model/particle_screening/screening_results.json): Exact sharp-sector cap minimax, optimal one-port screening for an all-seam corrected q=1 qubit, and finite native-edge first exits. Source pulse recovery for the new code and physical particle identity remain open.
 - [screened_recovery_results.json](../model/screened_recovery/screened_recovery_results.json): The canonical screened q=1 encoder and all 208 positive C/E recoveries are source-executed. Exact corrected composition preserves arbitrary logical/reference states with explicit core reset; pulse and archive costs are retained. Autonomous localized matter remains open.
 - [transport_results.json](../model/screened_transport/transport_results.json): The same screened code has a positive rank-eleven native current covariance, but complete corrected logical transfer is identity and the core resets each attempt. Logical-state-dependent current/variance ratios prevent transfer of the earlier uniform-source wave rate. No rest gap or particle mass is identified.
+- [statistics_results.json](../model/exchange_sector/statistics_results.json): The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.
 
 Earlier related work: [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 
@@ -442,7 +452,7 @@ Earlier related work: [#1026](https://github.com/FloatingPragma/observer-patch-h
 
 ### CP-05: Transport the same defects and derive particle identity and currents
 
-Owner: [#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141). Status: `OPEN`. Requires: CP-03, CP-04. Hypothesis obligations: EMH-3, EMH-2.
+Owner: [#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141). Status: `IN_PROGRESS`. Requires: CP-03, CP-04. Hypothesis obligations: EMH-3, EMH-2.
 
 The same native excitations carry charges, spin/statistics, family structure, gauge-current couplings and allowed creation, fusion, annihilation and decay.
 
@@ -461,6 +471,12 @@ Retained starting evidence:
 - [native_sm_current.py](../model/common_source/native_sm_current.py)
 - [native_matter_attachment.py](../model/common_source/native_matter_attachment.py)
 - [DERIVATION.md](../model/observer_particles/DERIVATION.md)
+- [STATISTICS.md](../model/exchange_sector/STATISTICS.md)
+- [statistics_results.json](../model/exchange_sector/statistics_results.json)
+
+Current component progress (not gate acceptance):
+
+- [statistics_results.json](../model/exchange_sector/statistics_results.json): The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.
 
 Earlier related work: [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 

@@ -46,7 +46,7 @@
     },
     "parents": {
       "claims/claim_registry.yaml": "efc1a41bc38e90d8079cd214918d571f74aa9395c7e53537b17281eb9f727906",
-      "claims/completion_program.json": "60367e74a9ee29089eaad8290e5e703978f600bda6b3332083c166f62f92b057",
+      "claims/completion_program.json": "eba5a672cf88e24fa10168aee47a67355e987a41a447f7986ae0111b4d3aaf60",
       "claims/executable_model_hypothesis.json": "1855a611870a64b3d97fbaa8759385761dda9130a1517233193af2c7f170cd2b",
       "docs/OPH_EXECUTABLE_HYPOTHESIS.md": "c503247a2b333c2e27b3eba865d47f2d15c966a5052eceb4aadb14fc9002f35a"
     },
@@ -301,6 +301,24 @@
             "CP-13"
           ],
           "whole_program_frozen": false
+        },
+        {
+          "contract": {
+            "campaign_id": "native-exchange-statistics-20261029-v1",
+            "independent_check": "model/exchange_sector/test_statistics_packet.py",
+            "path": "model/exchange_sector/statistics_contract.json",
+            "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
+            "sha256": "1a63f55c547d59600eb26e62d039462f444736694f3e2dcada633b6fdf26baeb"
+          },
+          "id": "native-exchange-statistics-20261029-v1",
+          "scope": "FINITE_COMPONENT_FAMILY",
+          "supports": [
+            "CP-01",
+            "CP-03",
+            "CP-05",
+            "CP-13"
+          ],
+          "whole_program_frozen": false
         }
       ],
       "continuing_issues": {
@@ -431,7 +449,8 @@
               "clock_services",
               "continuation",
               "observer",
-              "record_derived_clock"
+              "record_derived_clock",
+              "exchange_statistics"
             ],
             "gate": "CP-01",
             "issue": 1136,
@@ -444,7 +463,8 @@
               "shared_event_clock",
               "screened_transport",
               "theorem_map",
-              "record_derived_clock"
+              "record_derived_clock",
+              "exchange_statistics"
             ],
             "gate": "CP-13",
             "issue": 1137,
@@ -783,6 +803,22 @@
             "path": "model/local_repair_family/record_clock_results.json",
             "scope": "Complete31,457,280-event continuing native acquisition identifies relative product-reference weights with held-out cycle checks. Exact record-box mixing and source-compiled phase bounds control complete future readouts and the actual prepared source-marginal clock. Source-weight selection, coherent hardware, physical calibration and refining matter/gravity joins are separate obligations.",
             "sha256": "2f0b5b895ce1ac7c6455cf4bff6faf1d37bb25ded0208d2df66212e8b0cdc1da"
+          },
+          {
+            "campaign_id": "native-exchange-statistics-20261029-v1",
+            "id": "exchange_statistics",
+            "independent_check": "model/exchange_sector/test_statistics_packet.py",
+            "path": "model/exchange_sector/statistics_results.json",
+            "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
+            "sha256": "d0089601643239d14577f6dad8464cc1211cd5eb0d00c13f1768dc7018a910bf"
+          },
+          {
+            "campaign_id": "native-exchange-statistics-20261029-v1",
+            "id": "exchange_statistics_contract",
+            "independent_check": "model/exchange_sector/test_statistics_packet.py",
+            "path": "model/exchange_sector/statistics_contract.json",
+            "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
+            "sha256": "1a63f55c547d59600eb26e62d039462f444736694f3e2dcada633b6fdf26baeb"
           }
         ],
         "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-28-v7",
@@ -809,7 +845,8 @@
               "screened_recovery",
               "screened_transport",
               "particle_screening",
-              "defect_history"
+              "defect_history",
+              "exchange_statistics"
             ],
             "gate": "CP-03",
             "issue": 1139,
@@ -958,7 +995,9 @@
             "model/clock_defect_energy/clock_count_inference_results.json",
             "model/screened_recovery/screened_recovery_results.json",
             "model/clock_defect_energy/shared_event_clock/results.json",
-            "model/local_repair_family/README.md"
+            "model/local_repair_family/README.md",
+            "model/exchange_sector/STATISTICS.md",
+            "model/exchange_sector/statistics_results.json"
           ],
           "id": "CP-01",
           "issue": 1136,
@@ -1035,6 +1074,13 @@
               "path": "model/local_repair_family/record_clock_results.json",
               "scope": "Complete31,457,280-event continuing native acquisition identifies relative product-reference weights with held-out cycle checks. Exact record-box mixing and source-compiled phase bounds control complete future readouts and the actual prepared source-marginal clock. Source-weight selection, coherent hardware, physical calibration and refining matter/gravity joins are separate obligations.",
               "sha256": "2f0b5b895ce1ac7c6455cf4bff6faf1d37bb25ded0208d2df66212e8b0cdc1da"
+            },
+            {
+              "campaign_id": "native-exchange-statistics-20261029-v1",
+              "independent_check": "model/exchange_sector/test_statistics_packet.py",
+              "path": "model/exchange_sector/statistics_results.json",
+              "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
+              "sha256": "d0089601643239d14577f6dad8464cc1211cd5eb0d00c13f1768dc7018a910bf"
             }
           ],
           "requires": [
@@ -1068,7 +1114,9 @@
             "model/screened_recovery/screened_recovery_results.json",
             "model/clock_defect_energy/shared_event_clock/results.json",
             "model/screened_transport/transport_results.json",
-            "model/conserved_sector_action/sector_action_results.json"
+            "model/conserved_sector_action/sector_action_results.json",
+            "model/exchange_sector/STATISTICS.md",
+            "model/exchange_sector/statistics_results.json"
           ],
           "id": "CP-13",
           "issue": 1137,
@@ -1210,6 +1258,13 @@
               "path": "model/local_repair_family/record_clock_results.json",
               "scope": "Complete31,457,280-event continuing native acquisition identifies relative product-reference weights with held-out cycle checks. Exact record-box mixing and source-compiled phase bounds control complete future readouts and the actual prepared source-marginal clock. Source-weight selection, coherent hardware, physical calibration and refining matter/gravity joins are separate obligations.",
               "sha256": "2f0b5b895ce1ac7c6455cf4bff6faf1d37bb25ded0208d2df66212e8b0cdc1da"
+            },
+            {
+              "campaign_id": "native-exchange-statistics-20261029-v1",
+              "independent_check": "model/exchange_sector/test_statistics_packet.py",
+              "path": "model/exchange_sector/statistics_results.json",
+              "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
+              "sha256": "d0089601643239d14577f6dad8464cc1211cd5eb0d00c13f1768dc7018a910bf"
             }
           ],
           "requires": [
@@ -1370,7 +1425,9 @@
             "model/exchange_sector/README.md",
             "model/particle_screening/screening_results.json",
             "model/screened_recovery/screened_recovery_results.json",
-            "model/screened_transport/transport_results.json"
+            "model/screened_transport/transport_results.json",
+            "model/exchange_sector/STATISTICS.md",
+            "model/exchange_sector/statistics_results.json"
           ],
           "id": "CP-03",
           "issue": 1139,
@@ -1438,6 +1495,13 @@
               "path": "model/screened_transport/transport_results.json",
               "scope": "The same screened code has a positive rank-eleven native current covariance, but complete corrected logical transfer is identity and the core resets each attempt. Logical-state-dependent current/variance ratios prevent transfer of the earlier uniform-source wave rate. No rest gap or particle mass is identified.",
               "sha256": "1850ab0e15a5980a12d1638ac20b2b8d92ae4b6cc96691dab8dd3acd604633b0"
+            },
+            {
+              "campaign_id": "native-exchange-statistics-20261029-v1",
+              "independent_check": "model/exchange_sector/test_statistics_packet.py",
+              "path": "model/exchange_sector/statistics_results.json",
+              "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
+              "sha256": "d0089601643239d14577f6dad8464cc1211cd5eb0d00c13f1768dc7018a910bf"
             }
           ],
           "requires": [
@@ -1567,7 +1631,9 @@
             "model/common_source/native_gauge_object.py",
             "model/common_source/native_sm_current.py",
             "model/common_source/native_matter_attachment.py",
-            "model/observer_particles/DERIVATION.md"
+            "model/observer_particles/DERIVATION.md",
+            "model/exchange_sector/STATISTICS.md",
+            "model/exchange_sector/statistics_results.json"
           ],
           "id": "CP-05",
           "issue": 1141,
@@ -1580,11 +1646,20 @@
             "EMH-2"
           ],
           "obstruction": "Incompatible required charge/spin/statistics/current/transport structures exclude the covered defect realization. A 17-versus-12 response mismatch excludes its grammar, not every admissible current law.",
+          "progress_evidence": [
+            {
+              "campaign_id": "native-exchange-statistics-20261029-v1",
+              "independent_check": "model/exchange_sector/test_statistics_packet.py",
+              "path": "model/exchange_sector/statistics_results.json",
+              "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
+              "sha256": "d0089601643239d14577f6dad8464cc1211cd5eb0d00c13f1768dc7018a910bf"
+            }
+          ],
           "requires": [
             "CP-03",
             "CP-04"
           ],
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "title": "Transport the same defects and derive particle identity and currents"
         },
         {

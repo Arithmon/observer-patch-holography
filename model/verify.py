@@ -302,6 +302,8 @@ REPLAYS = (
      "model/clock_defect_energy/shared_event_clock/results.json"),
     ("model.screened_transport.transport", None,
      "model/screened_transport/transport_results.json"),
+    ("model.exchange_sector.statistics_packet", None,
+     "model/exchange_sector/statistics_results.json"),
 )
 
 
