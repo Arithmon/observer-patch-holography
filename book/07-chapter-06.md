@@ -150,7 +150,7 @@ It is a property of the way the whole thing is wired. It is as real as anything 
 
 A conserved quantity, indivisible, located, indifferent to how you approach it, that no amount of local work will destroy.
 
-The word for that costs twenty more chapters to earn, so it stays unsaid.
+The word for that costs twenty-two more chapters to earn, so it stays unsaid.
 
 ## The order of the meetings
 

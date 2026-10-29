@@ -38,6 +38,8 @@ So there are two ways for a reading to be invariant, two different physical situ
 
 The outlay has to continue while the surrounding conditions keep changing. Neighbors update shared boundaries, and a maintained pattern has to answer every update, at a rate set by its own clock. Chapters eighteen and twenty-one priced that kind of work: a standing cost is a rate, and a rate is energy. Bernard's rabbits paid it in liver, and a calorimeter around the cage reads it as heat.
 
+Chapter thirty-six put the two kinds in order. The free invariances are the first round of selection, what one static rule cannot erase: the conserved totals, the three directions, the knots whose upkeep the repair pays at every tick without anybody asking it to. The paid invariances belong to the second round. A rabbit is a pattern that stays selected by spending, out of a capacity of its own, what nothing in the first round ever had to spend.
+
 ## What a living thing is
 
 Chapter eleven divided a network's state into what any neighbor can check and what only one observer holds. What an observer publishes is the entries on its seams. The fiber of a reading is the set of consistent worlds that produce exactly those entries. A reading whose fiber is empty describes nothing that could have happened.

@@ -140,7 +140,7 @@ This cuts both ways and the second way is the uncomfortable one. If adding a req
 
 ## Three requirements
 
-Everything here comes out of three requirements, taken up in the chapters that follow. In the theorem library they are the premises the theorems carry; the loop that holds the whole account together comes in chapter thirty-seven.
+Everything here comes out of three requirements, taken up in the chapters that follow, and the loop that holds the whole account together comes in chapter thirty-seven.
 
 The first says that whatever the world is made of, each piece of it sees only a part and keeps a record of what it saw. The second says that where two pieces overlap, their records have to agree, and that any relabeling of a piece has to be a move the system can carry out on itself, with no hand reaching in. The third says that beyond what those two force, nothing is assumed: whatever is not pinned down stays as unconstrained as it is possible to be.
 

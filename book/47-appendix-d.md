@@ -2,7 +2,7 @@
 
 The prologue complained that the universe ships with no source code and no documentation. The construction this book describes ships with both. The observers, their seams and their repair law, the instruments they ask questions with, the records they keep, their clocks, the fields their clocks read and the waves those fields carry are all a program, written down in full, with every result it reports stored next to the code that produced it and a fingerprint of each result kept so that a replay can be compared against it.
 
-The numbers in chapters nine, fifteen, twenty, twenty-one and twenty-two come out of that program: the coherence a repair leaves behind, the table of angles an observer reads off its own counts, the 245 Delft rounds, the logarithm of five fourths, the variance of sixteen between two event clocks, and the interference odds of 21/22, 91/110 and 1297/1320 for a wave driven by an incident clock. None of them needs to be taken on trust. A laptop checks them.
+The numbers in chapters nine, fifteen, nineteen, twenty, twenty-one and twenty-two come out of that program: the coherence a repair leaves behind, the table of angles an observer reads off its own counts, the 264 histories of the observer on a laptop and the 35/264 its feedback leaves at port zero, the 245 Delft rounds, the logarithm of five fourths, the variance of sixteen between two event clocks, and the interference odds of 21/22, 91/110 and 1297/1320 for a wave driven by an incident clock. None of them needs to be taken on trust. A laptop checks them.
 
 Get the code:
 
@@ -40,11 +40,11 @@ Each construction has its own folder and its own README explaining what it compu
 
 ## The continuing C/E campaign
 
-The [C/E campaign](https://github.com/FloatingPragma/observer-patch-holography/tree/main/model/completion) has its own focused replay. It checks the finite-memory observer with counted record exports, the exact joint stationary reference, and the native charge and modular-access certificates:
+The [C/E campaign](https://github.com/FloatingPragma/observer-patch-holography/tree/main/model/completion) runs chapter nineteen's continuing observer under its memory law and has its own focused replay. It checks the buffer and its filed records, the one stationary state the world and the observer's memory settle into together, and the charge and clock certificates on that state:
 
 ```sh
 python3 -m pytest -q -W error model/completion
 python3 tools/build_completion_program.py --check
 ```
 
-The [completion plan](https://github.com/FloatingPragma/observer-patch-holography/blob/main/docs/COMPLETION_PROGRAM.md) keeps the current work in one place: the extension contract (#1135), observer services (#1136), clock operations (#1138) and the localized defect investigation (#1139). The campaign's README gives each replay and its construction contract.
+The [completion plan](https://github.com/FloatingPragma/observer-patch-holography/blob/main/docs/COMPLETION_PROGRAM.md) gathers the computations that are work in progress, the localized knots of chapter twenty-eight and the clock operations of chapter twenty-two among them, and the campaign's README gives each replay.

@@ -60,9 +60,9 @@ One force, worked to the last digit, out of a wiring diagram with thirty entries
 
 ## Following the response into matter
 
-The response matrices can be followed beyond their commutators. A specified spin lift converts their weak rotation block into a doublet, and a specified redistribution of the central trace fixes relative integer charges. Applying the exterior construction then yields the internal matter list in the next chapter. Charge and Casimir measurements recover the list even after the basis has been mixed, so the names of the fields are not an input to that decoder.
+The response matrices do more than commute or fail to. Matter sits on them. The weak block of three turns the port readings the way a rigid body turns, and a defect core that carries weak charge feels that block through its double cover: carry the core once around a full turn and it comes back with its sign reversed. That is the doublet, two weak slots where the ports themselves show three directions. The central dial, shared out evenly over the slots a core occupies, hands out relative charges in whole steps. The exterior construction of the next chapter turns those slots into the list of matter. A decoder that measures only charges and Casimirs recovers the whole list from a scrambled basis without being told the name of any field, so the response supplies the names.
 
-The lift is a physical choice requiring its own identification. A full turn acts trivially on the native vector and as minus the identity on the doublet. These are distinct representations, despite sharing an infinitesimal rotation algebra. Establishing one does not silently identify it with the other.
+The native vector and the doublet share one infinitesimal rotation algebra and differ on the full turn. The first comes back unchanged. The second comes back as minus itself. Matter lives on the second, and chapter twenty-eight meets the same sign again under the name spin.
 
 ## Dials
 
@@ -152,7 +152,7 @@ A simple Lie algebra has no continuous central dial, so it cannot be the complet
 
 The allocation is fixed too, and not by size alone. The uniform reading, the one thing all sixty rotations leave alone, is the central dial. One of the two odd blocks of three carries the three-dial piece. The remaining block of three and the block of five carry the eight-dial piece between them, and they carry it because the eight dials of the three-slot group turn among themselves the same way those eight readings do under the rotations, which is a stronger match than eight equals three plus five.
 
-These three pieces are hypercharge, the weak interaction and the strong interaction of the Standard Model: the same three algebras, in the same sizes. Hypercharge combines with a weak generator after symmetry breaking to give electromagnetism.
+These three pieces are hypercharge, the weak interaction and the strong interaction of the Standard Model: the same three algebras, in the same sizes. Hypercharge and one weak direction combine into electromagnetism once the settled reference points in the weak slots, which chapter twenty-eight takes up.
 
 The argument uses twelve ports and thirty seams, the sixty rotations, the splitting of the carrier into blocks of one, three, three and five, and a complete reversible response tied faithfully to those twelve readings, with the rotations acting inside it. The classification of compact simple Lie algebras supplies the allowed sizes.
 

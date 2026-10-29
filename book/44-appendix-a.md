@@ -4,7 +4,7 @@ Between 1982 and 1985 Eugene Miya, of the Computer Systems Division at NASA Ames
 
 A question arrives a thousand times because a thousand people share one assumption, and an answer that leaves the assumption standing produces the same question the following month, from the same people, worded differently.
 
-Eighteen come back about the account in this book. The answers retain the earlier chapters' finite domains and physical premises. A conditional effective description is not yet a source-selected model of every observed particle.
+Eighteen come back about the account in this book.
 
 ## What about the Big Bang?
 
@@ -32,7 +32,7 @@ Anybody who has taken a physics course met the one line in the first week and sp
 
 The assumption is that the most compressed statement of a subject is its foundation, so whatever fits on a coffee mug must be where the world starts.
 
-A Lagrangian is a compression. A compression summarizes something that was there first. Written on line one, the line carries three families because three families were counted, a group because detectors reported one, and a page of numbers because laboratories measured them. Written last, it records the finite response algebra and the conditional matter lift, while naming the three-family attachment, mass-generating coefficients and scale as remaining inputs. A three-corner face is a candidate family attachment, not a proof of the physical family count.
+A Lagrangian is a compression. A compression summarizes something that was there first. Written on line one, the line carries three families because three families were counted, a group because detectors reported one, and a page of numbers because laboratories measured them. Written last, every symbol on it has an account behind it: the record geometry, the one plus three plus eight, the fifteen twists of matter three times over, the channels through which they trade against the settled reference, and the reference itself.
 
 The compression is also lossy, by an amount somebody can write down. Add a term built to vanish at every configuration the world realizes, and every realized history keeps its score, every stationary history stays stationary, and the same run comes out most probable. The momentum changes, since momentum is read off how the line responds to a rate of change. The added term tilts where nothing is ever realized. Two lines, the same histories, different energies, and nothing in the world's own histories picks one of them over the other. The one on the mug is the best summary anybody has written.
 
@@ -68,6 +68,8 @@ An observer here is anything bounded that keeps records. Sunlight leaving the mo
 
 Definiteness is a count of copies. Sixteen copies of a sixteen-bit fact drive the odds on a forgery below one part in ten to the seventy-seventh without adding a single bit of content, and an object that size is copied into its surroundings far more often than sixteen times. The answerable question is how many records carry the moon's position. It is written into every square meter of sunlight it turns back, which is why its place is as definite as anything in the sky. Ask about a single atom nothing has interacted with and the odds stop being one and zero, which is the same arithmetic read at the other end.
 
+The order matters. The records come first: photons on a retina, a tide gauge, a laser ranging station timing a pulse off a reflector left there in 1969. Observers compare them and repair what disagrees. The moon as an object at a position, with a mass and an orbit, is the description that predicts every one of those records once they agree. It is as solid as anything gets, because it is the description that survives every comparison anybody can make, and it was recovered from the records after the agreement.
+
 ## If there is no now, why does time feel like it passes?
 
 No finite exchange of messages between observers recovers a shared present. Then there is the clock on the wall, the coffee going cold, and the distinct impression of moving forward through the afternoon.
@@ -84,19 +86,21 @@ A pattern of bands appears on a plate when nothing records which way each partic
 
 Asking for the moment assumes a mechanism with a rate and a threshold, sitting in the apparatus, waiting to be caught in the act.
 
-A record gets written. Between commits, every question about the spreading pattern lives in the part of the algebra where questions refuse to be answered together, and the phase and the frequency are the content. At a commit an entry lands in the center, where everything commutes, and what the plate holds afterward is one more count at one place. Wave and particle differ by how much of the thing has been written down. The plate writes down only the arrival.
+A record gets written. Between commits, every question about the spreading pattern lives in the part of the algebra where questions refuse to be answered together, and the phase and the frequency are the content. At a commit an entry lands in the center, where everything commutes, and what the plate holds afterward is one more count at one place. Wave and particle differ by how much of the thing has been written down. The plate writes down only the arrival. Whatever crosses, an electron's knot in the transport or a photon's ripple of it, carries its charge and its energy the whole way. What is open until the commit is where the record of it lands.
 
 So there is no rate to measure and no threshold to find. What gets fixed instead is the odds. Any assignment of numbers to outcomes that lands in the unit interval, gives the certain event one and adds up on every legal sum of questions, blunt ones included, is the trace against a single density matrix, in every finite dimension. Alongside it sits a fake, built to reproduce every count a machine actually produced and belonging to no state at all: it scores one pair of questions 35/64 where adding up demands 143/256.
 
 ## Where does the explaining stop?
 
-Conditional charge representations, candidate family bands and electromagnetic trial maps can all be constructed on the same carrier, and anybody handed one number after another is entitled to ask where the supply ends.
+Charges, families, couplings and mixing angles all come out of the same carrier, and anybody handed one number after another is entitled to ask where the supply ends.
 
 The question expects an evasion, on the assumption that a structure either explains everything or is hiding something.
 
-The stopping point is printed to the same precision as the results. The declared lift fixes the internal charges, and the stated band-selection rule offers a rank-three family candidate. Neither selects the physical family matrices or mass scale. Every angle between two symmetry axes of the twelve-port solid was enumerated, four hundred and sixty-five of them, and the smallest nonzero one is 20.9052 degrees, while the Cabibbo angle measured in the laboratory is 13.0029. No angle on that list lands within seven degrees of the measurement.
+The stopping point is printed to the same precision as the results. The charges, the forces, the three families and the balance on the lepton face come out of the carrier. The Cabibbo angle does not come out of its geometry. Every angle between two symmetry axes of the twelve-port solid was enumerated, four hundred and sixty-five of them, and the smallest nonzero one is 20.9052 degrees, while the angle measured in the laboratory is 13.0029. Quark mixing is the tilt between how the up-type and the down-type quark cores sit against the settled reference, and computing that tilt is work in progress.
 
-The declared electromagnetic trial map certifies 137.035660 where the quoted measurement reads 137.035999, and the interval enclosure rules out numerical error in that map as the source of the difference. The physical low-energy transport is incomplete. No calculation here proves that the omitted quark contribution removes exactly that mismatch. Wissner-Gross's separate entangled-pair expression has inverse 137.035999189566; identifying it with the physical electromagnetic coupling and the same-cell equation retains the independent premises stated in chapter twenty-nine.
+The fine-structure loop certifies 137.035660 where the quoted measurement reads 137.035999, and the interval enclosure rules out numerical error as the source of the difference. The last two and a half parts per million sit in the quark cloud between the screen cell and the laboratory's low-energy reading. Wissner-Gross's entangled-pair expression has inverse 137.035999189566 and returns the same grain to seven decimal places.
+
+Underneath all of it sits one static rule: split the difference, let a fair coin place the odd unit, write down what the repair did, and keep the records that later repairs read. The rule explains nothing further. It is the fixed point chapter thirty-seven's loop closes on, and everything else in the book is a reading of what it does.
 
 ## You knew the answers before you started
 
@@ -104,9 +108,9 @@ Every one of these numbers was measured decades before the arithmetic that lands
 
 The complaint assumes flexibility, and flexibility is countable.
 
-A fixed declared map can be tested without adjusting its output, and the certified maps here have that scope. Choosing which map is physical is a different freedom. The grain equation, the face attachment, the balance condition and the physical field readout each need their own justification. Measured mass inputs and unselected coefficient matrices remain inputs even when an accompanying finite formula is exact.
+Every map here is fixed before its output is read. The grain equation has one solution and no dial. The face balance has no free parameter: the scale and the twist cancel, and the one ratio left is fixed by two fair coins. A scheme that matches a table by adjusting itself leaves fingerprints, a parameter whose value tracks the target, and there is none here to find.
 
-Under the fixed-horizon-capacity hypothesis, dark energy's pressure-to-density ratio is exactly minus one at every epoch, $w=-1$, with no field rolling anywhere to absorb a change. The test is live: five thousand and twenty robotic fibers on the four-meter Mayall telescope at Kitt Peak collect the spectra that decide it. Their second data release leans against a constant ratio, by 2.6 to 3.9 standard units across its combinations, and the third release is the test fixed in advance. A measured evolution of $w$ breaks the account.
+Because the horizon's capacity is fixed, dark energy's pressure-to-density ratio is exactly minus one at every epoch, $w=-1$, with no field rolling anywhere to absorb a change. The test is live: five thousand and twenty robotic fibers on the four-meter Mayall telescope at Kitt Peak collect the spectra that decide it. Their second data release leans against a constant ratio, by 2.6 to 3.9 standard units across its combinations, and the third release is the test fixed in advance. A measured evolution of $w$ breaks the account.
 
 ## Isn't this what Leibniz said?
 
@@ -127,6 +131,8 @@ The word carries an original. A flight simulator earns the name because there ar
 Put the question to the inventory and look for the second end. Name the entry that substitutes for something, or the warehouse where the original repair rate is kept, or the object a loop residue resembles. The two-rule rewriter produced strings that described nothing filed anywhere else. Run the rules and the strings you get are the strings there are.
 
 The word computed arrives with fake attached to it. Watch one repair: a disagreement that was there is gone, the total sits where it started, and which of seven arrangements the seam held is gone from the readings. That is a change in the world, carried out by arithmetic. Coffee tastes the way it does by the same route, and so does a magnetic field. And nothing is stepping any of it: eighty-one thousand nine hundred and twenty patches reached agreement on every seam between them without a tick from anywhere. The cycles in that run's trace belong to the computer that kept it.
+
+Appendix D runs the rule at the bottom of all this, one twelve-port observer with its repair and its memory, on a laptop. The laptop is inside the world that rule describes. Running the program makes a model of the rule, the way a weather program makes a model of rain, and nothing outside the world is running the world.
 
 ## Does an observer have to be conscious?
 

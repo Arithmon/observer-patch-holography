@@ -30,6 +30,8 @@ Last, a **record**. A patch that completes a move writes the outcome into the pa
 
 Six words, and every one of them names something you could point at on a board: the machine, the interface, the reading at the interface, the join between two interfaces, the set of all the readings, and the part of the state that stays put.
 
+The last of the six carries the most. Everything an observer will ever call a fact is a record that survived every comparison anybody could make of it, and the world observers share is assembled out of those records afterwards, as chapter eleven showed. The record comes before the world it describes.
+
 ## Six moves and no others
 
 A patch does one thing, over and over.
@@ -103,6 +105,8 @@ Which turns the amount that can be known about a region into a count of arrangem
 Assemble many patches into one observer and the same argument applies to the assembly. Adding a patch deep inside adds state and adds nothing to what an outsider can read, because every port it has is routed to another patch inside the assembly. The count moves only when a patch puts a port on the outside. Two assemblies with the same outward-facing ports and very different interiors are one object to everything beyond them, with the same list of possible readings.
 
 The interior does not appear in that product anywhere. However much a patch holds inside, and however finely it holds it, what an outsider can distinguish is bounded by the readings on its boundary. That is half of the area law: the information associated with a region of space goes as the area of the surface around it rather than as the volume inside, and black holes are where that was first noticed. The other half is a number, how much information one unit of boundary area holds, and fixing that number takes a horizon and a thermodynamic argument. Getting this far took a machine with a bounded interior and finitely many ports, and nothing about gravity at all.
+
+So what can an outsider hold about the interior? Odds spread over the interiors its boundary readings allow, and nothing besides, because anything more would be a claim no port reports. The spread that adds nothing to the readings is the even one. That is chapter two's third requirement applied to a single patch, and it is the state an unread region settles into. Its entropy is the logarithm of the number of interiors an outsider can tell apart, and the boundary count caps that number. The entropy a region can carry is a fact about its edge.
 
 Six, multiplied by itself once per port. The six is an accident of one arrangement's three labels. The exponent is a count of holes in a connector. The six moves do not fix it.
 

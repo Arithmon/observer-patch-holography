@@ -88,7 +88,7 @@ An observer here is any bounded system that keeps records. A thermostat is one. 
 
 There is a second misreading, subtler than the first and more persistent, and the one that makes people suspicious of observer-centered physics for good reasons.
 
-Putting observers at the bottom sounds like putting *us* at the bottom. That sounds like a demotion of the universe in favour of the people looking at it. It sounds like the world is shaped by our attention. An anthropic selection argument conditions on observers existing; it does not require their preferences to arrange the universe. The observer architecture here likewise concerns what systems can record and compare.
+Putting observers at the bottom sounds like putting *us* at the bottom. That sounds like a demotion of the universe in favour of the people looking at it. It sounds like the world is shaped by our attention.
 
 That is the opposite of what is being said. An observer in this book does not get what it wants. It gets what it can consistently record. The second is far more restrictive than the first. The thermostat cannot decide the room is warm. It can hold a number, and the number can be wrong, and being wrong has consequences it does not choose. Everything in the next thirty chapters comes from what a bounded record-keeper is *forbidden* to do: it cannot see everything, it cannot write without limit, it cannot compare what it has no access to, and it cannot disagree with its neighbors indefinitely without something giving way.
 
@@ -98,19 +98,19 @@ Observer-first is constraint-first. Nothing anywhere in this book turns on anybo
 
 ## What the starting point explains
 
-A theory that starts with a spacetime can explain how its geometry changes and what matter does within it. Why that starting structure is there at all is a question it cannot reach from inside. Chapter one's examples show several ways to move the boundary between what is assumed and what is derived.
+A theory that starts with a spacetime can explain how its geometry changes and what matter does within it. Why that starting structure is there at all is a question it cannot reach from inside, because the structure is where its explanations begin. Every revolution in chapter one's log moved the line between what is assumed and what is derived, and every one moved it the same way, by deleting something from the assumed side.
 
-OPH begins on the observer side of that boundary. Consider the sentence: *these two records agree*. It specifies a relation between bounded record-keepers without assigning them coordinates or a distance. The patch architecture makes such comparisons precise through its states, ports and repair laws.
+OPH moves the line all the way over. Consider the sentence: *these two records agree*. It relates two bounded record-keepers without giving either of them a coordinate or a distance, and sentences of that kind are the only ones the theory starts with. The patch architecture makes such comparisons precise through its states, ports and repair laws.
 
-That gives a vocabulary for reconstruction. Agreement is the common constraint, and the chapters that follow build distance, duration and curvature out of records, their relations and their dynamics, one bridge at a time.
+Everything else is built out of that sentence. A distance turns out to be how long a disturbance takes to be answered, a duration is a count of the repairs that touch a region, and curvature is what the geometry has to do so that every small region stays settled. The chapters that follow build each of them out of records, their relations and their dynamics.
 
 ## The bill
 
 One thing has been quietly assumed for six pages and it comes due later.
 
-A physical record uses memory and must be carried by a physical process. Its energy cost depends on that process. Copying a readable value into a prepared register can retain the input; erasing an unknown value removes information from the memory being reset. Under the thermal conditions developed later, that reset has a mean heat bound.
+A record uses memory, and memory is physical. Writing a value into a blank register loses nothing, so in principle it costs nothing. Clearing a register that holds a value nobody else has a copy of throws that value away, and throwing information away costs heat. Chapter twenty-three puts the price, at room temperature, on a single yes-or-no question.
 
-Finite memory and thermodynamic reset connect the observer description to physical resources. Counting records and counting erased bits are different operations.
+So an observer pays for forgetting rather than for remembering, and the bill is counted in erased bits, which is a different count from the count of records kept.
 
 That is the whole starting position: bounded record-keepers, comparing what they hold against what they see, at a cost.
 

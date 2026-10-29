@@ -18,17 +18,19 @@ In the spring of 1992 a group running the Beijing Spectrometer, a detector on Ch
 
 Koide's 1776.97 had not moved. The world average had walked 7.2 million electron-volts and arrived on it.
 
-A triangle supplies a conditional description of that near equality. The balance condition and the identification of its response eigenvalues with mass amplitudes still need a physical derivation.
+A triangle explains that agreement, and the explanation starts with what a mass is.
 
-## What a mass calculation must fix
+## What a mass is
 
-An internal charge list is a list of possible transformation laws. It becomes a mass calculation only after the same observer history supplies a kinetic term, a state, the mass-generating interactions and a clock that reads energy. The finite source admits the three charged-fermion interaction channels with one Higgs doublet. It does not select their coefficient matrices or the Higgs vacuum.
+Chapter twenty-eight builds a particle as a knot that local repair cannot untie: a small core whose surrounding records have settled, with a twist in the loop around it. The repair keeps working on the core. Every tick it meets a mismatch it cannot remove, and the work it spends holding the knot inside settled surroundings, over and above what the same region costs with no knot in it, is the particle's rest energy. Read that excess on the region's own clock and it is a mass. The charges say which twist a core carries. The mass says what the twist costs to keep.
 
-The neutrino sector admits an optional effective interaction with two Higgs factors, but its coefficient and scale are additional inputs. None of the observed nonzero masses is derived by those algebraic possibilities alone. The relation below has a different scope: under its balance and mass-ordering assumptions, measured electron and muon masses constrain the tau. That conditional relation is not an absolute prediction of all three masses.
+Chapter twenty-seven found three channels for charged matter, each tying a left-handed weak pair to a right-handed single through the Higgs field. Each channel is a way for a core to trade its handedness against the settled reference, and how often the trade has to be made sets the cost. A neutrino has no right-handed single to trade with. It reaches the reference only through two insertions of the Higgs field at once, a double insertion costs a second small factor, and that is why the neutrinos weigh less than a millionth of the electron.
+
+The three charged leptons are one channel run three times, once per family direction. Their masses are therefore one response read on three corners, and a response on three corners has a shape.
 
 ## Three corners, two numbers
 
-Chapter twenty-seven described a candidate rank-three family band. The comparison here attaches the electron, the muon and the tau to the three corners of an oriented face of the icosahedron. That attachment is a premise, not a consequence of counting corners.
+Chapter twenty-seven gave the families a band of rank three carrying a threefold turn, and the threefold turns of the icosahedron live on its faces. The electron, the muon and the tau sit on the three corners of one oriented face, one family to a corner.
 
 An oriented face has one rotation left in it. Rotate the corners round the face: one goes to two, two goes to three, three goes to one. Do that three times and everything is back where it started. Of the sixty rotations of the icosahedron, that turn, its repeat and leaving the solid where it stands are the only three that keep both the face and its sense of circulation.
 
@@ -60,7 +62,7 @@ Add the three eigenvalues. The three copies of a give three a. The cosine terms 
 
 Add their squares. Each square is a squared, plus twice a times twice b times a cosine, plus four b squared times the square of a cosine. The middle terms cancel by the first line. The last terms come to four b squared times three halves, which is six b squared. Total three a squared plus six b squared.
 
-What a corner carries is an amplitude, and chapter nineteen's rule for turning an amplitude into a measurable quantity is to square it. In the declared mass reading, each eigenvalue is the square root of its corner's mass, up to one overall scale that fixes the units and cancels out of any ratio. The square root of a mass is a positive number, so the only responses describing anything that exists are the ones whose three scale factors all come out positive.
+What a corner carries is an amplitude, and chapter nineteen's rule for turning an amplitude into a measurable quantity is to square it. Each eigenvalue is therefore the square root of its corner's mass, up to one overall scale that fixes the units and cancels out of any ratio. The square root of a mass is a positive number, so the only responses describing anything that exists are the ones whose three scale factors all come out positive.
 
 Koide's ratio, written Q, is the sum of the eigenvalues' squares divided by the square of their sum. The two lines above have evaluated both of those.
 
@@ -73,6 +75,8 @@ Q equals two thirds exactly when b over a is one over the square root of two.
 The left side of that equation is trapped, for any three positive masses. Set all three equal and it gives one third, which the right side agrees with by sending b to zero. Let one mass run away from the other two and it climbs toward one, without arriving. So every possible triple of masses lands somewhere in the range from one third to one. Two thirds is the exact midpoint of that range. The three charged leptons, whose masses cover a factor of three and a half thousand, sit on the midpoint.
 
 Two pieces make up the response. There is the direction in which all three corners move together, which carries weight three a squared, and there is the two-dimensional plane in which they move against one another, which carries weight six b squared. Setting b over a to one over the square root of two sets those two weights equal. One condition on the response of a single face, and Koide's two thirds is that condition written out in masses.
+
+Why should the two weigh the same? Read the response as an amplitude for what happens to one corner in one event. The corner either stays where it is or steps round the face, and if it steps, it steps one way or the other. Let one fair coin decide between staying and stepping, and a second fair coin decide which way round, the way chapter nine's coin places the odd unit. Staying then has probability one half and each step one quarter, so the amplitudes are one over the square root of two for staying and one half for each step. Their ratio is one over the square root of two. Two fair coins on one face are the balance.
 
 The twist gets a small allowance rather than a value. At balance, the three eigenvalues stay positive as long as the twist is within fifteen degrees of one of the three spokes, and anywhere inside that band the ratio sits at two thirds without moving.
 
@@ -110,6 +114,8 @@ The list has an end, which is what makes an empty search a result: four hundred 
 
 Koide's own model reached past the leptons to the quarks. The quark side did not hold. Two structures built out of entirely different material, a set of subparticles and a twenty-sided solid, keep the charged leptons and stop at the quarks.
 
-The declared spin lift and charge normalization give the familiar internal charges and three color slots. A minimum-cost response rule offers a rank-three family band, whose physical identification remains open. On an attached oriented face, equal weight for the two response sectors gives Koide's two thirds; deriving that equal weight and its mass readout from repair remains work in progress. Handed the electron and the muon and that balance, it pins the tau inside 72 electron-volts and prints the value at which the balance dies. It does not hand over the angle by which the weak interaction turns a down quark into a strange quark: 20.9052 against 13.0029 proves that the angle is no axis angle of this solid. Had 13.0029 turned up anywhere on that list, the charges and the family count would have been worth less, because a solid that yields whatever angle is asked of it has yielded nothing.
+So the solid gives the leptons their balance and refuses the quarks their angle, and the refusal says where quark mixing comes from. A quark core twists through color slots as well as weak ones, and the reference meets it differently from the way it meets a lepton's. The up-type and down-type quarks trade handedness through different channels of chapter twenty-seven, so the family directions in which their cores settle are tilted against each other by how the reference meets each kind. The Cabibbo angle is that tilt. It belongs to the overlap of quark cores with the reference, and the axis list of the solid, which holds no such angle, is the wrong place to look for it. Computing the tilt from that overlap is work in progress.
 
-The settled entries and the untouched ones end up on the same line. Working physicists carry it in four terms, holding every charge, every family count, every coupling and every mass on the roster, the forced ones and the typed-in ones side by side, with nothing marking which is which. Nobody has ever derived that line.
+The face balance sets two weights of one response equal. Handed the electron and the muon, it pins the tau inside 72 electron-volts and prints the value at which the balance dies. Had 13.0029 turned up on the list of axis angles, the charges and the family count would have been worth less, because a solid that yields whatever angle is asked of it has yielded nothing.
+
+Every charge, every family count, every coupling and every mass on the roster ends up on the single line working physicists carry, in four terms, with nothing on it marking which entries were forced and which were typed in. The next chapter writes the line down and traces every symbol in it to its source.

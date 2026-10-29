@@ -130,9 +130,9 @@ The settling is also too fast to see. By the time the frame is steady in your ha
 
 ## The interaction coefficients
 
-One common local metric can carry the scalar, spinor and gauge terms. Exact invariant tensors connect the conditional matter list to one Higgs doublet and its conjugate, giving the up, down and charged-lepton interactions. Gauge and Lorentz invariance constrain their form. For three declared families, they permit three complex coefficient matrices before changes of flavor basis.
+One common local metric carries the scalar, spinor and gauge terms. Exact invariant tensors connect the fifteen-state matter list to one Higgs doublet and its conjugate, giving the up, down and charged-lepton interactions of chapter twenty-seven. Gauge and Lorentz invariance fix their form. With three families, each interaction is a three-by-three table of complex numbers, one entry for every pair of family directions, and each entry says how strongly a left-handed core trades its handedness against the reference with a right-handed one.
 
-The line below is a conditional effective action with those coefficients and its vacuum specified. Deriving the coefficients, the chiral field interpretation and the geometric response from repair is distinct from verifying that the line is consistent. The fixed product background illustrates the difference: it can describe waves, while a gravitating excitation requires a geometry that responds to their stress.
+The tables are where chapter thirty's masses live. Their sizes are the persistence costs of the cores, which is why they span orders of magnitude, and the tilts between the up table and the down table are the mixing angles. The geometry the line is written on answers to the stress of what moves on it, which is chapter twenty-five's balance entered into the same accounting.
 
 ## The line
 
@@ -142,25 +142,25 @@ The line has four terms in it, written schematically, each standing for a block 
 
 $$\mathcal{L} \;=\; \mathcal{L}_{\text{carry}} \;+\; \mathcal{L}_{\text{matter}} \;+\; \mathcal{L}_{\text{couple}} \;+\; \mathcal{L}_{\text{select}}$$
 
-Four things added together. The chapters behind this one give finite constructions and explicit premises for interpreting the symbols.
+Four things added together, and each has its account in the chapters behind this one.
 
 The script L on the left is a Lagrangian in the sense taught above, with one change of scale. Where the thrown ball had a position and a speed, this one takes a field's value at a place and how fast that value is changing, and its running total runs over all of space and all of time rather than along a single arc.
 
 The first term is the carriers. Chapter twenty-six split the twelve dials of the wiring into a central one, a block of three and a block of eight, with nothing else arithmetically available. This term holds the energy stored in what those dials do around a loop. Chapter twelve's loop readings are the field strength, and squaring them and adding over the arrangement is the term.
 
-The second term is matter, carrying chapter twenty-seven's conditional fifteen-state representation, repeated over three declared families. Inside it sits a comparison between a reading here and a reading next door, taken after the reading next door has been run through the dictionary sitting on the seam between them, which is chapter twelve's connection written with derivatives instead of exchange rates. That comparison is the entire content of the phrase "the force acts on matter". Relabel the readings differently from one place to the next and the whole expression keeps its value, because the derivatives of the relabeling cancel.
+The second term is matter, carrying chapter twenty-seven's fifteen states, repeated over three families. Inside it sits a comparison between a reading here and a reading next door, taken after the reading next door has been run through the dictionary sitting on the seam between them, which is chapter twelve's connection written with derivatives instead of exchange rates. That comparison is the entire content of the phrase "the force acts on matter". Relabel the readings differently from one place to the next and the whole expression keeps its value, because the derivatives of the relabeling cancel.
 
-The third term holds the couplings: the invariant channels through which the scalar doublet touches matter. Their coefficient matrices remain inputs. Chapter thirty's separate balanced-face comparison constrains the tau using measured electron and muon masses; it does not source-select those matrices.
+The third term holds the couplings: the invariant channels through which the scalar doublet touches matter. Their coefficient tables hold the masses and the mixings, with sizes set by how long each core persists between repairs and tilts set by how the reference meets each kind of core. On the charged leptons the table sits on one face with chapter thirty's balance, which pins the tau.
 
-The fourth term belongs to the scalar field itself. Its Lorentz spin is zero, while its weak-doublet components retain their internal indices. A vacuum magnitude of 246.22 billion electron-volts is a laboratory calibration in this effective action, not a repair-selected output.
+The fourth term belongs to the scalar field itself, which is the settled reference read as a field. Its spin is zero and it points in the two weak slots. Its magnitude is the stiffness of the reference, 246.22 billion electron-volts in laboratory units, and the shape of the term is what it costs to push the reference away from where it settled. A ripple in that magnitude is the Higgs boson.
 
 One charged scalar component of the line reduces consistently to a classical system, with both diagonal gauge fields aligned by their kinetic weights. A local execution on 64 spatial sites records a phase disturbance, the current it drives and the electric feedback on it. A gauge transformation of the same starting state leaves every invariant reading unchanged. Bounds on the exact continuous evolution also resolve the current and a response at a neighboring detector, and at the final observation times the error on the intensity is smaller than the response itself.
 
-Alongside the four sits a conditional gravitational term. Chapter twenty-five relates its coupling to a screen area under the entropy and continuum hypotheses; the laboratory value of Newton's constant calibrates that area in square meters. The generalized entropy stationarity and geometry response needed for a physical coupled model remain to be established. Null contractions leave a metric-proportional constant undetermined.
+Alongside the four sits the gravitational term. Chapter twenty-five reads its coupling as a screen area, the area that carries one unit of boundary entropy, and the laboratory value of Newton's constant expresses that area in square meters. Its field equation says that the generalized entropy of every small region has settled. The light-ray balance leaves one constant times the metric undetermined, and chapter twenty-nine reads that constant off the horizon's capacity.
 
-The prologue promised that the symbols would have an account. Some accounts are finite constructions, some are conditional theorem interfaces, and some still require measured inputs. The record geometry, internal response algebra and invariant interactions have explicit witnesses. Passing from them to physical chiral fields, a global gauge lift and a responsive geometry retains the named premises. The Higgs vacuum, family matrices and observed masses are not selected by writing their terms on this line.
+The prologue promised that every symbol would have an account, and these are the accounts. The spacetime is the record geometry of chapters fifteen, seventeen and twenty-two: three directions and one minus sign. The group is chapter twenty-six's one plus three plus eight. The matter fields are chapter twenty-seven's fifteen twists, three times over, on the double cover that makes them fermions. The couplings are the channels through which those twists trade against the reference, and their sizes are persistence costs. The scalar is the reference itself. The strength of the electromagnetic part is chapter twenty-nine's grain. Nothing on the line was typed in because a detector reported it. Reading every digit of the coupling tables off the persistence of the cores is work in progress.
 
-The candidate family band has three directions under the stated minimum-cost rule. An oriented face offers a three-slot attachment. Neither fact alone establishes three physical families or their distinct masses. The line makes those remaining choices visible.
+The family band has three directions because repair settles into the cheapest band that can carry a threefold turn, and that is why every matter term on the line comes three times over.
 
 ## What a compression costs
 

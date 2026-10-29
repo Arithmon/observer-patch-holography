@@ -66,6 +66,8 @@ For the ambiguous case, take away a patch's ability to talk. Its five seams go u
 
 Repair cannot fix that. Repair works by reducing disagreement. There is no disagreement anywhere: every record is satisfied. A rule that picked one of the two would be picking on grounds no record contains, which makes it a choice rather than a repair.
 
+Until something does settle it, what the world holds about the silent coin is chapter two's third requirement at work: whatever the record does not pin down stays as unconstrained as it is possible to be. The description that carries every entry and adds nothing to them gives the two members of the fiber equal odds. Among all the ways of holding odds that agree with the record, it is the one that knows least. The same is true wherever a record leaves room. Chapter nine's repair, left to run with nobody reading anything, settles into a state that gives every arrangement with the same total the same odds, which is the least informative state compatible with the one quantity every repair preserves. A state that knows as little as its records allow has no direction left in which its entropy can climb at first order, and chapter twenty-five builds gravity on that.
+
 ## Four demands
 
 Run the machine on the flipped-edge record anyway. Chapter six did, from all two thousand and forty-eight distinguishable starting states and under all sixteen schedules. It converged every time onto one terminal arrangement with a leftover of exactly one. The machine halts. It halts in the same place from everywhere. And the state it halts in violates a record, which is to say that halting and being consistent are two separate properties. The second one has to be checked by somebody.
@@ -97,6 +99,8 @@ Changes nothing could see form a group, in chapter five's sense: doing two of th
 That fixes what physics is allowed to talk about. Only quantities that survive a change of description may be called physical. Chapter five arrived at that sentence by watching what two accounts of one table had in common, and the settled answer enforces it: relabel every patch's internal state however you like, run the repair, and the result is the relabeled version of the result you would have got. The answer is a statement about whole families of descriptions rather than about any one of them, which is called **presentation invariance**. It means no internal labeling choice anybody makes can reach the physics.
 
 So the word objective has an exact referent here. It is a state. Objective reality is the observable normal form of the network: the consistent state that the shared record picks out, up to changes nothing can see. There is no further fact about the world hiding behind it, because a further fact would be a difference no record distinguishes. Those are exactly what the group deletes.
+
+The order of construction runs one way. Readings are compared and repaired until they agree, the readings that hold still become records, as chapter ten watched them do, and the world is whatever the records jointly name. A record that survives every comparison anybody is entitled to make is a fact, and a fact is the smallest piece of objective reality there is. Fields, positions and particles, when they arrive later in the book, are descriptions of the same kind: compressed accounts fitted to records the observers agree on, and good exactly as far as they predict the next record.
 
 ## Paths and fibers
 
