@@ -118,6 +118,12 @@ def test_completion_candidate_receipts_have_replay_custody_and_workflow_coverage
         assert prefix + module + '.py' in sources
         assert prefix + 'campaign.json' in sources
     clock_prefix = 'model/clock_defect_energy/shared_event_clock/'
+    record_receipt = 'model/local_repair_family/record_clock_results.json'
+    assert ('model.local_repair_family.record_clock', None, record_receipt) in verify.REPLAYS
+    record_sources = json.loads((verify.ROOT/record_receipt).read_text())['source_sha256']
+    for name in ('record_clock.py', 'record_clock_campaign.json', 'inference.py',
+                 'acquisition.py', 'learned_flow.py'):
+        assert 'model/local_repair_family/'+name in record_sources
     clock_receipt = clock_prefix + 'results.json'
     assert ('model.clock_defect_energy.shared_event_clock.run', None, clock_receipt) in verify.REPLAYS
     clock_sources = json.loads((verify.ROOT/clock_receipt).read_text())['source_sha256']

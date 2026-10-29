@@ -214,6 +214,15 @@ not a domain argument.
   results and acceptance bounds stay unchanged. Frozen dataclasses can expose
   writable instance dictionaries; `deepcopy(Fraction)` aliases the
   original rational. Detach nested values as well as their containers.
+  Include shared numerical-provider caches in this test. A compiler and its
+  verifier can agree on the same poisoned logarithm or square-root endpoint.
+  Copying a corrupted value does not restore proof authority. Recompute from
+  original integer inputs or check the defining endpoint inequalities before
+  using an enclosure; cached proof payloads must contain immutable scalars.
+  Apply the same independence check to state order, code addresses and probe
+  geometry. A shared mutated chart can make a wrong unitary pass both source
+  and target checks. Derive the target map from the committed primitive
+  encoding, and reject changed charts before both cold and warm cache access.
   A receipt checker must own its source replay or verify a complete independent
   certificate. Matching supplied receipts or matching hashes do not prove
   execution. Retain wrong terminal populations with correct record marginals

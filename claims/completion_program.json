@@ -167,7 +167,7 @@
         },
         {
           "path": "model/local_repair_family/results.json",
-          "sha256": "c8d1e983efcc761578b127838de512803b0535481be8ce396932dbaae8905e23",
+          "sha256": "8d8c79b5569f5f2dca857e21aad2fa79ae9d18c7c14041220af38ad6e08365de",
           "independent_check": "model/local_repair_family/test_local_bias.py",
           "scope": "Exact complete biased C/E instruments preserve a nonuniform faithful product reference and modular covariance; endpoint-only reversibility excludes the old fixed three-charge target, while bare-source branch algebra is unchanged.",
           "campaign_id": "OPH-LOCAL-PLACEMENT-FAMILY-2026-10-28-v1"
@@ -273,10 +273,17 @@
         },
         {
           "path": "model/local_repair_family/observer_results.json",
-          "sha256": "2f321d29d8b592306219917d503db0b3fffb972aaf27d970bddcd9a7cc92ce78",
+          "sha256": "6862ee53fc942d509e5c46f0c4ee7617b8687348d3ab9d72448e46cf07e2101f",
           "independent_check": "model/local_repair_family/test_observer.py",
           "scope": "Unique quantum product reference with exact finite preparation, stationary source/FIFO access, same-law source modular clock and positive complete-scheduler response. The actual prepared source flow has a finite logarithm bound; supplied coherent services, port weights and physical calibration remain explicit. No integrated gate or physical comparison is accepted.",
           "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1"
+        },
+        {
+          "path": "model/local_repair_family/record_clock_results.json",
+          "sha256": "2f0b5b895ce1ac7c6455cf4bff6faf1d37bb25ded0208d2df66212e8b0cdc1da",
+          "independent_check": "model/local_repair_family/test_record_clock.py",
+          "scope": "Complete31,457,280-event continuing native acquisition identifies relative product-reference weights with held-out cycle checks. Exact record-box mixing and source-compiled phase bounds control complete future readouts and the actual prepared source-marginal clock. Source-weight selection, coherent hardware, physical calibration and refining matter/gravity joins are separate obligations.",
+          "campaign_id": "OPH-RECORD-DERIVED-CONTINUING-CLOCK-v1"
         },
         {
           "path": "model/particle_screening/mobile_results.json",
@@ -372,7 +379,7 @@
         },
         {
           "path": "model/local_repair_family/results.json",
-          "sha256": "c8d1e983efcc761578b127838de512803b0535481be8ce396932dbaae8905e23",
+          "sha256": "8d8c79b5569f5f2dca857e21aad2fa79ae9d18c7c14041220af38ad6e08365de",
           "independent_check": "model/local_repair_family/test_local_bias.py",
           "scope": "Exact complete biased C/E instruments preserve a nonuniform faithful product reference and modular covariance; endpoint-only reversibility excludes the old fixed three-charge target, while bare-source branch algebra is unchanged.",
           "campaign_id": "OPH-LOCAL-PLACEMENT-FAMILY-2026-10-28-v1"
@@ -449,10 +456,17 @@
         },
         {
           "path": "model/local_repair_family/observer_results.json",
-          "sha256": "2f321d29d8b592306219917d503db0b3fffb972aaf27d970bddcd9a7cc92ce78",
+          "sha256": "6862ee53fc942d509e5c46f0c4ee7617b8687348d3ab9d72448e46cf07e2101f",
           "independent_check": "model/local_repair_family/test_observer.py",
           "scope": "Unique quantum product reference with exact finite preparation, stationary source/FIFO access, same-law source modular clock and positive complete-scheduler response. The actual prepared source flow has a finite logarithm bound; supplied coherent services, port weights and physical calibration remain explicit. No integrated gate or physical comparison is accepted.",
           "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1"
+        },
+        {
+          "path": "model/local_repair_family/record_clock_results.json",
+          "sha256": "2f0b5b895ce1ac7c6455cf4bff6faf1d37bb25ded0208d2df66212e8b0cdc1da",
+          "independent_check": "model/local_repair_family/test_record_clock.py",
+          "scope": "Complete31,457,280-event continuing native acquisition identifies relative product-reference weights with held-out cycle checks. Exact record-box mixing and source-compiled phase bounds control complete future readouts and the actual prepared source-marginal clock. Source-weight selection, coherent hardware, physical calibration and refining matter/gravity joins are separate obligations.",
+          "campaign_id": "OPH-RECORD-DERIVED-CONTINUING-CLOCK-v1"
         },
         {
           "path": "model/particle_screening/mobile_results.json",
@@ -547,7 +561,7 @@
         },
         {
           "path": "model/local_repair_family/results.json",
-          "sha256": "c8d1e983efcc761578b127838de512803b0535481be8ce396932dbaae8905e23",
+          "sha256": "8d8c79b5569f5f2dca857e21aad2fa79ae9d18c7c14041220af38ad6e08365de",
           "independent_check": "model/local_repair_family/test_local_bias.py",
           "scope": "Exact complete biased C/E instruments preserve a nonuniform faithful product reference and modular covariance; endpoint-only reversibility excludes the old fixed three-charge target, while bare-source branch algebra is unchanged.",
           "campaign_id": "OPH-LOCAL-PLACEMENT-FAMILY-2026-10-28-v1"
@@ -582,10 +596,17 @@
         },
         {
           "path": "model/local_repair_family/observer_results.json",
-          "sha256": "2f321d29d8b592306219917d503db0b3fffb972aaf27d970bddcd9a7cc92ce78",
+          "sha256": "6862ee53fc942d509e5c46f0c4ee7617b8687348d3ab9d72448e46cf07e2101f",
           "independent_check": "model/local_repair_family/test_observer.py",
           "scope": "Unique quantum product reference with exact finite preparation, stationary source/FIFO access, same-law source modular clock and positive complete-scheduler response. The actual prepared source flow has a finite logarithm bound; supplied coherent services, port weights and physical calibration remain explicit. No integrated gate or physical comparison is accepted.",
           "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1"
+        },
+        {
+          "path": "model/local_repair_family/record_clock_results.json",
+          "sha256": "2f0b5b895ce1ac7c6455cf4bff6faf1d37bb25ded0208d2df66212e8b0cdc1da",
+          "independent_check": "model/local_repair_family/test_record_clock.py",
+          "scope": "Complete31,457,280-event continuing native acquisition identifies relative product-reference weights with held-out cycle checks. Exact record-box mixing and source-compiled phase bounds control complete future readouts and the actual prepared source-marginal clock. Source-weight selection, coherent hardware, physical calibration and refining matter/gravity joins are separate obligations.",
+          "campaign_id": "OPH-RECORD-DERIVED-CONTINUING-CLOCK-v1"
         }
       ]
     },
@@ -1319,6 +1340,23 @@
       }
     },
     {
+      "id": "OPH-RECORD-DERIVED-CONTINUING-CLOCK-v1",
+      "scope": "FINITE_COMPONENT_FAMILY",
+      "whole_program_frozen": false,
+      "supports": [
+        "CP-01",
+        "CP-02",
+        "CP-13"
+      ],
+      "contract": {
+        "path": "model/local_repair_family/record_clock_campaign.json",
+        "sha256": "b67b82ebfc34282a9281147ec45717de410e02a75610d32062153c2ff6be0fa3",
+        "independent_check": "model/local_repair_family/test_record_clock.py",
+        "scope": "Fixed finite native-record acquisition, record-only preparation admission and inferred common modular-clock protocol. No integrated gate or physical comparison is accepted.",
+        "campaign_id": "OPH-RECORD-DERIVED-CONTINUING-CLOCK-v1"
+      }
+    },
+    {
       "id": "mobile-screened-memory-20261029-v1",
       "scope": "FINITE_COMPONENT_FAMILY",
       "whole_program_frozen": false,
@@ -1338,7 +1376,7 @@
     }
   ],
   "next_wave": {
-    "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-28-v6",
+    "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-28-v7",
     "status": "PLANNED_PROVISIONAL_PARALLEL_WORK",
     "scope": "SOURCE_BOUND_COMPONENT_WORK_WITH_OPEN_ACCEPTANCE_JOINS",
     "changes_frozen_campaign": false,
@@ -1364,15 +1402,16 @@
         "gate": "CP-02",
         "issue": 1138,
         "title": "Calibrate accessible continuing clock readouts",
-        "why_now": "Four shared source checkpoints have ordered ensemble means; their raw probability readouts fail an affine comparison, while model inversion recovers their shared count. The separate endpoint-biased family prepares a unique quantum reference and implements its compatible full-scheduler modular readout.",
+        "why_now": "The endpoint-biased family infers its reference potential from complete continuing coin records and certifies preparation without the private source weights. Source-executed clocks have a uniform statistical, preparation and compiler budget; shared-event ensemble controls remain a separate contract.",
         "deliverable": "A continuing clock protocol with finite-sample inference, operational shared events, compatible regional reference and a justified time/action calibration.",
-        "may_start_now": "Reuse the compiled parameter-one words, complete stopping instruments and shared-event cross-product test. The biased-law branch supplies exact preparation, stationary FIFO and modular-service composition under its own fixed contract.",
+        "may_start_now": "Reuse record-only odds, held-out cycles, exact mixing admissions and complete inferred clock histories. Preserve the finite-prepared source-marginal and full preparation-archive distinction.",
         "join_condition": "Conditional ensemble expectations and model-conditioned count inversion are distinct from a monotone individual readout or a calibrated physical duration. Distinct repair laws and references cannot be combined without a new compatibility proof; both branches require independently justified physical calibration and source selection.",
         "evidence": [
           "shared_event_clock",
           "clock_count_inference",
           "reference_balance",
-          "local_continuing_clock"
+          "local_continuing_clock",
+          "record_derived_clock"
         ]
       },
       {
@@ -1427,7 +1466,8 @@
           "ramsey_service",
           "clock_services",
           "continuation",
-          "observer"
+          "observer",
+          "record_derived_clock"
         ]
       },
       {
@@ -1439,7 +1479,8 @@
           "screened_recovery",
           "shared_event_clock",
           "screened_transport",
-          "theorem_map"
+          "theorem_map",
+          "record_derived_clock"
         ]
       },
       {
@@ -1605,7 +1646,7 @@
       },
       {
         "path": "model/local_repair_family/results.json",
-        "sha256": "c8d1e983efcc761578b127838de512803b0535481be8ce396932dbaae8905e23",
+        "sha256": "8d8c79b5569f5f2dca857e21aad2fa79ae9d18c7c14041220af38ad6e08365de",
         "independent_check": "model/local_repair_family/test_local_bias.py",
         "scope": "Exact complete biased C/E instruments preserve a nonuniform faithful product reference and modular covariance; endpoint-only reversibility excludes the old fixed three-charge target, while bare-source branch algebra is unchanged.",
         "campaign_id": "OPH-LOCAL-PLACEMENT-FAMILY-2026-10-28-v1",
@@ -1774,10 +1815,18 @@
       {
         "id": "local_continuing_clock",
         "path": "model/local_repair_family/observer_results.json",
-        "sha256": "2f321d29d8b592306219917d503db0b3fffb972aaf27d970bddcd9a7cc92ce78",
+        "sha256": "6862ee53fc942d509e5c46f0c4ee7617b8687348d3ab9d72448e46cf07e2101f",
         "independent_check": "model/local_repair_family/test_observer.py",
         "scope": "Unique quantum product reference with exact finite preparation, stationary source/FIFO access, same-law source modular clock and positive complete-scheduler response. The actual prepared source flow has a finite logarithm bound; supplied coherent services, port weights and physical calibration remain explicit. No integrated gate or physical comparison is accepted.",
         "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1"
+      },
+      {
+        "id": "record_derived_clock",
+        "path": "model/local_repair_family/record_clock_results.json",
+        "sha256": "2f0b5b895ce1ac7c6455cf4bff6faf1d37bb25ded0208d2df66212e8b0cdc1da",
+        "independent_check": "model/local_repair_family/test_record_clock.py",
+        "scope": "Complete31,457,280-event continuing native acquisition identifies relative product-reference weights with held-out cycle checks. Exact record-box mixing and source-compiled phase bounds control complete future readouts and the actual prepared source-marginal clock. Source-weight selection, coherent hardware, physical calibration and refining matter/gravity joins are separate obligations.",
+        "campaign_id": "OPH-RECORD-DERIVED-CONTINUING-CLOCK-v1"
       },
       {
         "path": "model/particle_screening/mobile_results.json",
