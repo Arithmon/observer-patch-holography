@@ -218,8 +218,13 @@ Searches covered fetched OPH refs and paths, GitHub code/issues/commits in
 FloatingPragma/observer-patch-holography and muellerberndt/oph-physics-sim
 using Kostant, Galois, equivariant, degree and degree-seven. No original
 §III or four-script commit was identified. Indexed simulator results pointed
-to `90095f32e7b88dd120158130802cf9caccf7f3d5`; that is search provenance,
-not a claim that it contains or excludes unpublished scripts.
+to `90095f32e7b88dd120158130802cf9caccf7f3d5`. The complete recursive
+simulator tree at that commit was then inspected (2,474 entries, not
+truncated). Its `port_gram_equivariant_action.py` and independent verifier
+concern finite twelve-port recharting of a conditional metric completion;
+they are not the announced continuous-degree packet. No branch named for
+degree was returned by branch search. This bounds the search and does not
+exclude unpublished scripts or scripts with unrelated names.
 
 Even if the continuous theorem is accepted, applying it to the A1 support
 requires a source-selected relative map, the same oriented realized target

@@ -257,9 +257,9 @@ not a relative-attachment selection theorem.
 | Existing live Galois and marked-triplet independent verifiers | Passed. |
 | Five premise/theorem/observation/selection/claim-view builders | All `--check` commands passed. |
 | Reader style and `git diff --check` | Passed. |
-| Source-current inventory | Final documentation snapshot parity to be checked before handoff. |
+| Source-current inventory | Canonical snapshot regenerated and both replays checked before the integration commit; only the snapshot and its digest change. |
 | Mandatory zero-based shard 8/10 | Passed. Cache-write warnings under the read-only sandbox were nonfatal. |
-| Mandatory zero-based shard 9/10 | Running; initial read-only error in the legacy A5 JSON regeneration was rerun with authorized worktree writes. |
+| Mandatory zero-based shard 9/10 | Launched; the full legacy-ledger fixture is still running at this integration commit. Initial read-only error in the legacy A5 JSON regeneration was rerun with authorized worktree writes. Final outcome belongs in the delivery record. |
 | Remote CI | Must be checked on the delivered commit; no all-green claim from local checks. |
 
 The builder commands were `python3 -B tools/build_premise_register.py --check`,

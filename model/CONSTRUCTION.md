@@ -1782,6 +1782,16 @@ transports a different frozen order-five element and has slow trace
 `(1+sqrt(5))/2` and lower trace `(1−sqrt(5))/2`. Both exclude the same-action
 identification; character signs must be compared at the same marking.
 
+The [live port/support audit](../code/a5_closure/port_support_source_audit.md)
+separately retains the sixty oriented seed identifications and the fixed
+support C5 stabilizer. The declared endpoint coarsening fails to commute
+with 59 of the sixty proper seed actions, although subdivision itself is
+equivariant. This is a presentation-dependent coarsening control, not an
+obstruction to every refinement construction. The source-selected relative
+map and common oriented realized sphere remain open. The accompanying
+continuous-degree proof candidate awaits independent mathematical review;
+its exact algebraic controls do not select a physical representation.
+
 The [independent joint reconstruction](../code/programme_obstruction_audit/joint_independent.py)
 checks the marked path and occupation identities; the
 [independent channel reconstruction](../code/programme_obstruction_audit/channel_independent.py)
