@@ -272,6 +272,7 @@ def source_bindings():
         'model/common_source/chiral_candidate/gaussian_source.py',
         'model/common_source/chiral_candidate/kinetic.py',
         'model/observer/source_scalar/compiler.py',
+        'model/observer/scalar_response/experiment.py',
         'model/local_repair_family/local_bias.py',
         'model/local_repair_family/record_clock_campaign.json',
         'model/local_repair_family/record_clock_results.json'])

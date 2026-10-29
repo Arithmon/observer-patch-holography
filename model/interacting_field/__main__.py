@@ -3,8 +3,9 @@ import argparse
 import json
 from pathlib import Path
 from tools import strict_json
-from ..observer.scalar_response.experiment import canonical, compare_receipt
+from ..observer.scalar_response.experiment import canonical
 from .experiment import run
+from .replay import compare_field_receipt
 
 
 def main():
@@ -21,7 +22,7 @@ def main():
     if args.check:
         # Reject duplicate keys/nonfinite constants before numeric comparison.
         expected=strict_json.loads(args.check.read_text(encoding='utf-8'))
-        compare_receipt(expected,result)
+        compare_field_receipt(expected,result)
     print(json.dumps({'all_pass':result['all_pass'],
         'levels':[{k:r[k] for k in ('sites','CAR_modes','two_particle_dimension',
             'interaction_deletion_history_TV','source_reference_history_TV',

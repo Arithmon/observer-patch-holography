@@ -140,7 +140,9 @@ def test_completion_candidate_receipts_have_replay_custody_and_workflow_coverage
         assert 'model/clock_defect_energy/**' in paths
         assert 'model/local_repair_family/**' in paths
     commands = [step['run'] for step in workflow['jobs']['program']['steps'] if 'run' in step]
-    pytest_command, = (command for command in commands if 'python -m pytest' in command)
+    pytest_commands = [command for command in commands if 'python -m pytest' in command]
+    assert pytest_commands
+    pytest_command = '\n'.join(pytest_commands)
     assert 'model/particle_screening' in pytest_command
     assert 'model/active_code_energy' in pytest_command
     assert 'model/screened_recovery' in pytest_command
@@ -148,6 +150,15 @@ def test_completion_candidate_receipts_have_replay_custody_and_workflow_coverage
     assert 'model/screened_transport' in pytest_command
     assert 'model/clock_defect_energy' in pytest_command
     assert 'model/local_repair_family' in pytest_command
+    for packet in ('moving_defect', 'record_action', 'particle_obstruction', 'interacting_field'):
+        assert f'model/{packet}' in pytest_command
+        for event in ('push', 'pull_request'):
+            assert f'model/{packet}/**' in events[event]['paths']
+    for command in ('python -m model.moving_defect.experiment --check',
+                    'python -m model.record_action.action --check',
+                    'python -m model.particle_obstruction.classification --check',
+                    'python -m model.interacting_field --check model/interacting_field/results.json'):
+        assert command in commands
 
 
 @pytest.mark.parametrize('index', range(6))

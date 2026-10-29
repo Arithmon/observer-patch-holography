@@ -901,7 +901,7 @@
         {
           "id": "interacting_field",
           "path": "model/interacting_field/results.json",
-          "sha256": "77d5ab0cbb72815347b3862a2eee560f1bda37aa689e8b6bbe71ab414842da22",
+          "sha256": "cd98d7640e1e893c5d183535f2ad57362473e3c7549b77e2843e37b1e2bc395c",
           "independent_check": "model/interacting_field/test_field.py",
           "scope": "Source-compiled quartic CAR interactions produce detector-reconstructed non-Gaussian four-point response and complete feedback histories through 343 sites. Analytic ideal bounds compare the exact two-particle sector to the same fixed-spacing infinite lattice. All 8 naive Weyl nodes, supplied action and unjoined native clock remain.",
           "campaign_id": "OPH-DEFECT-ACTION-PARTICLE-FIELD-2026-10-29-v1"
@@ -1900,7 +1900,7 @@
       {
         "id": "interacting_field",
         "path": "model/interacting_field/results.json",
-        "sha256": "77d5ab0cbb72815347b3862a2eee560f1bda37aa689e8b6bbe71ab414842da22",
+        "sha256": "cd98d7640e1e893c5d183535f2ad57362473e3c7549b77e2843e37b1e2bc395c",
         "independent_check": "model/interacting_field/test_field.py",
         "scope": "Source-compiled quartic CAR interactions produce detector-reconstructed non-Gaussian four-point response and complete feedback histories through 343 sites. Analytic ideal bounds compare the exact two-particle sector to the same fixed-spacing infinite lattice. All 8 naive Weyl nodes, supplied action and unjoined native clock remain.",
         "campaign_id": "OPH-DEFECT-ACTION-PARTICLE-FIELD-2026-10-29-v1"

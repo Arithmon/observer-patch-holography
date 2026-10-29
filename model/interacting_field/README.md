@@ -44,16 +44,23 @@ full local residuals are reported. Exact invariance refers to the ideal
 completed words. The full quantum vectors are regenerated during replay;
 the JSON retains probabilities and their complete-output comparisons.
 
-| Sites | Interaction-deletion history TV | Source/sparse-reference history TV | Ideal full-output bound to infinite lattice |
-| ---: | ---: | ---: | ---: |
-| 27 | 0.0326546 | about 2e-9 | 0.437504 |
-| 125 | 0.0326541 | about 2e-9 | 0.0478550 |
-| 343 | 0.0326541 | about 2e-9 | 0.00349258 |
+For 27, 125 and 343 sites, respectively, the interaction-deletion history
+TV distances are 0.0326546, 0.0326541 and 0.0326541. Source/sparse-reference
+history TV distances are about 2e-9 at each size. The ideal full-output
+bounds to the infinite lattice are 0.437504, 0.0478550 and 0.00349258.
 
 The exact rational bounds concern ideal completed compilation. Floating
 local/source residuals, their repeated-call estimates and physical hardware
 errors are separate. Numerical comparisons do not become rigorous physical
 error bars. The [receipt](results.json) retains both kinds of evidence.
+Replay compares exact counts, bounds and source hashes exactly and floating
+observables within 2e-10. The accumulated evolution residuals sum local
+4-by-4 floating matrix errors over millions of calls; backend roundoff can
+therefore exceed that absolute tolerance. For those two diagnostics alone,
+replay checks a cap of 128 binary64 eps per counted hopping, contact or
+routing call and the defining `expm1` telescoping identity. This numerical
+replay cap is not an outward certificate, and changes no observable or
+ideal-model acceptance bound.
 
 Two positive interaction results strengthen the observation contract:
 

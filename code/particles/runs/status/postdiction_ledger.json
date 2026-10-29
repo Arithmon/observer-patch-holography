@@ -46,7 +46,7 @@
     },
     "parents": {
       "claims/claim_registry.yaml": "efc1a41bc38e90d8079cd214918d571f74aa9395c7e53537b17281eb9f727906",
-      "claims/completion_program.json": "4df004e37d4c2c3676863b1a12af8f053980f662d9aa78071c140524d308f199",
+      "claims/completion_program.json": "4c58c529081e8a60e8e7df8deb1323a9962fe488f1fec80425d0ec38a4e29354",
       "claims/executable_model_hypothesis.json": "1855a611870a64b3d97fbaa8759385761dda9130a1517233193af2c7f170cd2b",
       "docs/OPH_EXECUTABLE_HYPOTHESIS.md": "c503247a2b333c2e27b3eba865d47f2d15c966a5052eceb4aadb14fc9002f35a"
     },
@@ -850,7 +850,7 @@
             "independent_check": "model/interacting_field/test_field.py",
             "path": "model/interacting_field/results.json",
             "scope": "Source-compiled quartic CAR interactions produce detector-reconstructed non-Gaussian four-point response and complete feedback histories through 343 sites. Analytic ideal bounds compare the exact two-particle sector to the same fixed-spacing infinite lattice. All 8 naive Weyl nodes, supplied action and unjoined native clock remain.",
-            "sha256": "77d5ab0cbb72815347b3862a2eee560f1bda37aa689e8b6bbe71ab414842da22"
+            "sha256": "cd98d7640e1e893c5d183535f2ad57362473e3c7549b77e2843e37b1e2bc395c"
           }
         ],
         "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-29-v7",
@@ -1735,7 +1735,7 @@
               "independent_check": "model/interacting_field/test_field.py",
               "path": "model/interacting_field/results.json",
               "scope": "Source-compiled quartic CAR interactions produce detector-reconstructed non-Gaussian four-point response and complete feedback histories through 343 sites. Analytic ideal bounds compare the exact two-particle sector to the same fixed-spacing infinite lattice. All 8 naive Weyl nodes, supplied action and unjoined native clock remain.",
-              "sha256": "77d5ab0cbb72815347b3862a2eee560f1bda37aa689e8b6bbe71ab414842da22"
+              "sha256": "cd98d7640e1e893c5d183535f2ad57362473e3c7549b77e2843e37b1e2bc395c"
             }
           ],
           "requires": [
