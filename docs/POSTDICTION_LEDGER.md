@@ -28,8 +28,8 @@ The existing modular-clock candidate, rank-three response geometry and condition
 | CP-02 | Construct the continuing regime, faithful reference and local modular clocks | IN_PROGRESS | [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) |
 | CP-03 | Exhibit a localized native defect and its protecting invariant | IN_PROGRESS | [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) |
 | CP-04 | Derive common defect maintenance energy, kinetics and conserved stress | IN_PROGRESS | [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) |
-| CP-05 | Transport the same defects and derive particle identity and currents | OPEN | [#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141) |
-| CP-06 | Obtain one interacting chiral 3+1 field description from native records | OPEN | [#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142) |
+| CP-05 | Transport the same defects and derive particle identity and currents | IN_PROGRESS | [#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141) |
+| CP-06 | Obtain one interacting chiral 3+1 field description from native records | IN_PROGRESS | [#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142) |
 | CP-07 | Freeze the physical dictionary and derive the matched particle spectrum | OPEN | [#1143](https://github.com/FloatingPragma/observer-patch-holography/issues/1143) |
 | CP-08 | Construct responsive geometry and causal clocks on the same source | OPEN | [#1144](https://github.com/FloatingPragma/observer-patch-holography/issues/1144) |
 | CP-09 | Realize the joint modular, stress and entropy premises G1--G6 | OPEN | [#1145](https://github.com/FloatingPragma/observer-patch-holography/issues/1145) |

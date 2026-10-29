@@ -46,7 +46,7 @@
     },
     "parents": {
       "claims/claim_registry.yaml": "efc1a41bc38e90d8079cd214918d571f74aa9395c7e53537b17281eb9f727906",
-      "claims/completion_program.json": "60367e74a9ee29089eaad8290e5e703978f600bda6b3332083c166f62f92b057",
+      "claims/completion_program.json": "4df004e37d4c2c3676863b1a12af8f053980f662d9aa78071c140524d308f199",
       "claims/executable_model_hypothesis.json": "1855a611870a64b3d97fbaa8759385761dda9130a1517233193af2c7f170cd2b",
       "docs/OPH_EXECUTABLE_HYPOTHESIS.md": "c503247a2b333c2e27b3eba865d47f2d15c966a5052eceb4aadb14fc9002f35a"
     },
@@ -301,6 +301,25 @@
             "CP-13"
           ],
           "whole_program_frozen": false
+        },
+        {
+          "contract": {
+            "independent_check": "model/completion/test_four_lane_joins.py",
+            "path": "model/completion/four_lane_campaign.json",
+            "scope": "Four bounded component advances on the pending record-clock baseline: active moving memory, record-inferred interacting kinetic parent, exact particle/family obstructions and a supplied interacting 3D lattice CAR field. Actual joins and scoped failures remain explicit; no integrated gate or physical comparison is accepted.",
+            "sha256": "85e024abc78371dd60b57caaaf5269ad0709a6e2607cb7dde9f49cda75c0d93e"
+          },
+          "id": "OPH-DEFECT-ACTION-PARTICLE-FIELD-2026-10-29-v1",
+          "scope": "FINITE_COMPONENT_DIAGNOSTICS",
+          "supports": [
+            "CP-03",
+            "CP-04",
+            "CP-05",
+            "CP-06",
+            "CP-13",
+            "CP-12"
+          ],
+          "whole_program_frozen": false
         }
       ],
       "continuing_issues": {
@@ -402,18 +421,16 @@
       "hypothesis": "claims/executable_model_hypothesis.json",
       "legacy_issue_policy": "Issues #1025, #1026, #1076 and #1077 are superseded by the new completion owners and closed as not planned, not as scientifically completed. Their evidence and unfinished contracts remain linked. The ongoing audit #1033 and broad obstruction search #1078 stay open.",
       "next_wave": {
-        "acceptance_policy": "These are three parallel component assignments under CP-02, CP-03 and CP-04. CP-00, CP-01, CP-13 and CP-12 review their shared contract and interfaces. Every integrated gate retains its acceptance dependencies and remains open; the finite packets add no physical comparison or whole-program verdict.",
+        "acceptance_policy": "These are four provisional component assignments under CP-03 through CP-06. CP-00, CP-01, CP-02, CP-13 and CP-12 review their shared inputs and missing joins. All integrated gates retain their original dependencies and remain open; no physical comparison or whole-program verdict is added.",
         "changes_frozen_campaign": false,
         "deferred_gates": [
-          "CP-05",
-          "CP-06",
           "CP-07",
           "CP-08",
           "CP-09",
           "CP-10",
           "CP-11"
         ],
-        "deferred_reason": "Particle species, chiral interacting fields and Einstein realization require a localized excitation with one action, clock, current and stress dictionary. Existing conditional field and gravity results retain their own premises.",
+        "deferred_reason": "A matched particle spectrum and realized gravity require the common localized state, action, clock, matter, field and stress dictionary. Existing positive conditional field and Einstein results retain their own domains.",
         "embedded_reviews": [
           {
             "evidence": [
@@ -444,11 +461,15 @@
               "shared_event_clock",
               "screened_transport",
               "theorem_map",
-              "record_derived_clock"
+              "record_derived_clock",
+              "moving_defect",
+              "record_action",
+              "particle_obstruction",
+              "interacting_field"
             ],
             "gate": "CP-13",
             "issue": 1137,
-            "role": "Maintain the explicit model-premise bindings for corrected code composition, ensemble shared-event clocks, current continuity and arbitrary conserved-sector reweighting. Distinguish Python model enumeration from Lean implication proofs."
+            "role": "Maintain exact theorem/source/reference bindings for all four component advances and the explicit missing joins. Separate exact Python/symbolic identities, analytic arguments, compiled numerical diagnostics and existing Lean implications."
           },
           {
             "evidence": [
@@ -456,11 +477,26 @@
               "exchange_sector",
               "localized",
               "energy",
-              "modular_access"
+              "modular_access",
+              "moving_defect",
+              "record_action",
+              "particle_obstruction",
+              "interacting_field"
             ],
             "gate": "CP-12",
             "issue": 1148,
-            "role": "Audit candidate versus class exclusions, retained empirical exposure and stopping coverage; no finite packet falsifies or completes the unfrozen whole program."
+            "role": "Audit each stopped-code, kinetic/reference, anomaly/family and regulator exclusion within its stated class; retain the surviving alternatives and all earlier empirical exposure."
+          },
+          {
+            "evidence": [
+              "record_derived_clock",
+              "moving_defect",
+              "record_action",
+              "interacting_field"
+            ],
+            "gate": "CP-02",
+            "issue": 1138,
+            "role": "Preserve the record-derived continuing clock and review its actual compatibility with moving codes and proposed kinetic/field actions; common physical calibration remains open."
           }
         ],
         "evidence": [
@@ -783,71 +819,117 @@
             "path": "model/local_repair_family/record_clock_results.json",
             "scope": "Complete31,457,280-event continuing native acquisition identifies relative product-reference weights with held-out cycle checks. Exact record-box mixing and source-compiled phase bounds control complete future readouts and the actual prepared source-marginal clock. Source-weight selection, coherent hardware, physical calibration and refining matter/gravity joins are separate obligations.",
             "sha256": "2f0b5b895ce1ac7c6455cf4bff6faf1d37bb25ded0208d2df66212e8b0cdc1da"
-          }
-        ],
-        "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-28-v7",
-        "owners": [
-          {
-            "deliverable": "A continuing clock protocol with finite-sample inference, operational shared events, compatible regional reference and a justified time/action calibration.",
-            "evidence": [
-              "shared_event_clock",
-              "clock_count_inference",
-              "reference_balance",
-              "local_continuing_clock",
-              "record_derived_clock"
-            ],
-            "gate": "CP-02",
-            "issue": 1138,
-            "join_condition": "Conditional ensemble expectations and model-conditioned count inversion are distinct from a monotone individual readout or a calibrated physical duration. Distinct repair laws and references cannot be combined without a new compatibility proof; both branches require independently justified physical calibration and source selection.",
-            "may_start_now": "Reuse record-only odds, held-out cycles, exact mixing admissions and complete inferred clock histories. Preserve the finite-prepared source-marginal and full preparation-archive distinction.",
-            "title": "Calibrate accessible continuing clock readouts",
-            "why_now": "The endpoint-biased family infers its reference potential from complete continuing coin records and certifies preparation without the private source weights. Source-executed clocks have a uniform statistical, preparation and compiler budget; shared-event ensemble controls remain a separate contract."
           },
           {
-            "deliverable": "A declared moving-code or refined native candidate with reference-like exterior, protected transport and complete recovery/resource accounting.",
+            "campaign_id": "OPH-DEFECT-ACTION-PARTICLE-FIELD-2026-10-29-v1",
+            "id": "moving_defect",
+            "independent_check": "model/moving_defect/test_transport.py",
+            "path": "model/moving_defect/results.json",
+            "scope": "Active source-compiled recovery follows recorded cores without successful-step reset; all forbidden-core stops, exact lifetime/resource equations, exterior mismatch and fixed-clock leakage remain. No autonomous localized matter is claimed.",
+            "sha256": "ff084b57b7ce238ab4d7df04154e76b402a0561824eb46852f6cb75df8a32a6a"
+          },
+          {
+            "campaign_id": "OPH-DEFECT-ACTION-PARTICLE-FIELD-2026-10-29-v1",
+            "id": "record_action",
+            "independent_check": "model/record_action/test_action.py",
+            "path": "model/record_action/results.json",
+            "scope": "A positive local stochastic-matrix kinetic parent has 300 hopping pairs and a nonzero hard-core density interaction; record-only inference bounds its operator error. Exact modular increments and a same-reference Gibbs/affine-clock obstruction do not supply physical energy or stress.",
+            "sha256": "6c5bd736256603e090afb4c78a4b3f0e15b1aec32bb15dc42041cb9b76d23352"
+          },
+          {
+            "campaign_id": "OPH-DEFECT-ACTION-PARTICLE-FIELD-2026-10-29-v1",
+            "id": "particle_obstruction",
+            "independent_check": "model/particle_obstruction/test_classification.py",
+            "path": "model/particle_obstruction/results.json",
+            "scope": "All 376 source-current anomaly traces classify arbitrary integer signed copies of the declared five-block matter lift. The actual fixed clock source has C2 symmetry and three distinct positive response moments; conditional invariant Yukawas retain an isolated family and zero three-family CP mixing.",
+            "sha256": "1c8195f5f57f5faacd8ac8bcf1de63caef6427941dd03b16c7f30d7a95db32ed"
+          },
+          {
+            "campaign_id": "OPH-DEFECT-ACTION-PARTICLE-FIELD-2026-10-29-v1",
+            "id": "interacting_field",
+            "independent_check": "model/interacting_field/test_field.py",
+            "path": "model/interacting_field/results.json",
+            "scope": "Source-compiled quartic CAR interactions produce detector-reconstructed non-Gaussian four-point response and complete feedback histories through 343 sites. Analytic ideal bounds compare the exact two-particle sector to the same fixed-spacing infinite lattice. All 8 naive Weyl nodes, supplied action and unjoined native clock remain.",
+            "sha256": "77d5ab0cbb72815347b3862a2eee560f1bda37aa689e8b6bbe71ab414842da22"
+          }
+        ],
+        "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-29-v7",
+        "owners": [
+          {
+            "deliverable": "One localized transported state with reference-like exterior and a protecting invariant or controlled lifetime compatible with the actual observer clock.",
             "evidence": [
-              "screened_recovery",
-              "screened_transport",
-              "particle_screening",
-              "defect_history"
+              "moving_defect",
+              "record_derived_clock"
             ],
             "gate": "CP-03",
             "issue": 1139,
-            "join_condition": "Preserving the logical qubit at a reset core is a memory result; a moving physical excitation requires a different tested transport map.",
-            "may_start_now": "Reuse the compiled canonical encoder and recovery menu as controls. Specify the protecting state and boundary before selecting its dynamics.",
-            "title": "Construct transport for a localized candidate beyond fixed-code reset",
-            "why_now": "The screened code has an executed all-seam recovery service, but its exterior deficit and explicit core reset prevent interpreting the current cycle as a moving particle."
+            "join_condition": "Any successor code or autonomous mechanism needs an independently declared state/reference, all-branch protection and the fixed-clock subspace map; active memory alone is not particle identity.",
+            "may_start_now": "Use the complete 60-core transition kernel, executed moving recoveries and exact stopping/resource equations as positive controls and failure witnesses.",
+            "title": "Advance from active moving memory to localized clock-compatible matter",
+            "why_now": "The code can now move, but its exact stopped process and exterior/clock mismatches identify the missing protection contract."
           },
           {
-            "deliverable": "One physical candidate with a selected action, coherent rest gap, independent dispersion and conserved stress in a common calibrated observer clock.",
+            "deliverable": "Execute a justified coherent action and construct its compatible reference/clock comparison, then extract independent rest, kinetic and conserved stress responses.",
             "evidence": [
-              "screened_transport",
-              "conserved_sector_action",
-              "screened_recovery",
-              "shared_event_clock",
-              "mode_energy"
+              "record_action",
+              "moving_defect",
+              "record_derived_clock"
             ],
             "gate": "CP-04",
             "issue": 1140,
-            "join_condition": "Compiler work, transient current covariance and a flat logical channel do not determine rest energy. The SI utility attaches units only to a separately supplied clock and coherent frequency.",
-            "may_start_now": "Reuse the same-code current covariance, corrected-cycle countercontrol and quantified conserved-sector action theorem.",
-            "title": "Derive a same-candidate rest gap and independent kinetic response",
-            "why_now": "The exact screened-code current covariance is nonzero, but the corrected logical generator is zero and native stationarity leaves two independent sector weights."
+            "join_condition": "An attempted-event relaxation spectrum is not a physical mass. Preserve the observed reference and all interventions, or declare and justify a new action/reference map.",
+            "may_start_now": "Reuse the 300 native hopping blocks, exact density-interaction residual, record confidence bound and complete modular-increment ledger.",
+            "title": "Join coherent kinetics to the recovered clock",
+            "why_now": "A positive local interacting parent is inferred from records, but its noncommuting reference prevents the proposed Gibbs/modular identification."
+          },
+          {
+            "deliverable": "One same-source defect/current/matter attachment with charge conservation and the additional justified family structure required for full mixing.",
+            "evidence": [
+              "particle_obstruction",
+              "moving_defect",
+              "record_action"
+            ],
+            "gate": "CP-05",
+            "issue": 1141,
+            "join_condition": "Do not promote a declared exterior lift, family assignment or exact symmetry from names or noisy estimates; keep every chirality and anomaly-cancellation premise.",
+            "may_start_now": "Reuse the exact signed-generation classification, derived source response axes and invariant-Yukawa obstruction with its explicit symmetry-breaking control.",
+            "title": "Attach the admitted currents and family dynamics to transported states",
+            "why_now": "Complete anomaly equations and actual residual symmetry now constrain which representation truncations and invariant family maps can work."
+          },
+          {
+            "deliverable": "An explicit native-source embedding of the interacting observation law and a justified chiral-regulator/refinement map preserving complete quantum records.",
+            "evidence": [
+              "interacting_field",
+              "record_action",
+              "particle_obstruction",
+              "record_derived_clock"
+            ],
+            "gate": "CP-06",
+            "issue": 1142,
+            "join_condition": "Supplied lattice/action/time remain inputs. The product-reference modular flow is quadratic under the occupation dictionary; matching it to the interaction needs a new proven map. No taste is removed without a derivation.",
+            "may_start_now": "Reuse the quartic source word, detector tomography, exact two-particle evolution, independent Hamiltonian oracle and volume-uniform estimates.",
+            "title": "Join interacting field records to the native source and address chirality",
+            "why_now": "A non-Gaussian source-compiled 3D CAR field now has complete feedback records and analytic fixed-lattice bounds, while its source/clock embedding and naive doublers remain visible."
           }
         ],
         "physical_comparison_count_added": 0,
-        "rationale": "The screened recovery service, four shared-event readouts, same-code transport calculation and quantified sector-action theorem complete four finite component advances. The fixed-code corrected cycle preserves memory but has no continuing coherent dispersion. Further physical progress requires a moving localized candidate, compatible observer clocks and an independently selected common action.",
+        "rationale": "Treat the record-derived continuing clock in PR1151 as an available component. Four parallel advances now provide active moving memory with exact stopping, a record-inferred kinetic parent, source-bound current/family obstructions and interacting 3D lattice CAR histories. Their clock, localization, matter and refinement joins remain explicit research tasks; these components are not pooled into one accepted physical realization.",
         "scope": "SOURCE_BOUND_COMPONENT_WORK_WITH_OPEN_ACCEPTANCE_JOINS",
         "shared_interface": {
-          "baseline_campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1",
-          "baseline_contract": "model/clock_defect_energy/joins_campaign.json",
+          "baseline_campaign_id": "OPH-RECORD-DERIVED-CONTINUING-CLOCK-v1",
+          "baseline_contract": "model/local_repair_family/record_clock_campaign.json",
           "requirements": [
             "Keep the unchanged C/E campaigns and the separately bounded endpoint-biased law family distinct; no result may swap their reference, scheduler, carrier or service premises without a new contract.",
             "Retain the full C/E record and abort outputs, untouched references, core/FIFO metadata, source code, coherent controls and all preparation/export costs. A reduced stationary source/core marginal is not stationarity of adaptive full history.",
             "Use source-bound finite theorem applications only after checking the exact state, algebra, branch, clock and domain hypotheses. The local repair family inherits the full branch algebra, and the odd closed-history limit assumes uninterrupted native records.",
             "The Ramsey service compiles the density representation with its proven intertwiner; the full binary arc unitary, physical time and storage hardware remain additional obligations.",
             "A sharp relational sector, active quantum memory, exchange-history parity and positive current form are separate observations. Identify one localized matter state, rest action, kinetic response, common clock and conserved stress before a particle or mass claim.",
-            "Keep prior failures, empirical exposure, computational budgets and full-program acceptance gates unchanged until a versioned CP-00/CP-12 decision contract is accepted."
+            "Keep prior failures, empirical exposure, computational budgets and full-program acceptance gates unchanged until a versioned CP-00/CP-12 decision contract is accepted.",
+            "The working PR1151 input is head 67aa7b6f4a904a1a90ea6d77bf2f66c741f2ba0c; its development use does not merge it or accept its physical obligations.",
+            "The active moving code has explicit opposite-core stops and modular leakage. Retain every stop and its resource cost; no reset or success conditioning may substitute for transport.",
+            "The stochastic-matrix kinetic parent and recovered modular generator are different operators. A shared residual symmetry is not an action/clock identification.",
+            "Exact fixed-source symmetry and finite-record inference have different quantifiers. The current/matter lift and source-triplet family attachment require their stated maps.",
+            "The interacting CAR field uses a supplied lattice/action and exact N=2 sector. Retain all naive Weyl nodes; fixed-spacing infinite volume is not the chiral spatial continuum."
           ],
           "same_process_required": true,
           "unilateral_primitive_changes_allowed": false
@@ -1370,7 +1452,9 @@
             "model/exchange_sector/README.md",
             "model/particle_screening/screening_results.json",
             "model/screened_recovery/screened_recovery_results.json",
-            "model/screened_transport/transport_results.json"
+            "model/screened_transport/transport_results.json",
+            "model/moving_defect/README.md",
+            "model/moving_defect/results.json"
           ],
           "id": "CP-03",
           "issue": 1139,
@@ -1438,6 +1522,14 @@
               "path": "model/screened_transport/transport_results.json",
               "scope": "The same screened code has a positive rank-eleven native current covariance, but complete corrected logical transfer is identity and the core resets each attempt. Logical-state-dependent current/variance ratios prevent transfer of the earlier uniform-source wave rate. No rest gap or particle mass is identified.",
               "sha256": "1850ab0e15a5980a12d1638ac20b2b8d92ae4b6cc96691dab8dd3acd604633b0"
+            },
+            {
+              "campaign_id": "OPH-DEFECT-ACTION-PARTICLE-FIELD-2026-10-29-v1",
+              "id": "moving_defect",
+              "independent_check": "model/moving_defect/test_transport.py",
+              "path": "model/moving_defect/results.json",
+              "scope": "Active source-compiled recovery follows recorded cores without successful-step reset; all forbidden-core stops, exact lifetime/resource equations, exterior mismatch and fixed-clock leakage remain. No autonomous localized matter is claimed.",
+              "sha256": "ff084b57b7ce238ab4d7df04154e76b402a0561824eb46852f6cb75df8a32a6a"
             }
           ],
           "requires": [
@@ -1468,7 +1560,9 @@
             "model/active_code_energy/energy_bridge_results.json",
             "model/screened_recovery/screened_recovery_results.json",
             "model/screened_transport/transport_results.json",
-            "model/conserved_sector_action/sector_action_results.json"
+            "model/conserved_sector_action/sector_action_results.json",
+            "model/record_action/README.md",
+            "model/record_action/results.json"
           ],
           "id": "CP-04",
           "issue": 1140,
@@ -1545,6 +1639,14 @@
               "path": "model/conserved_sector_action/sector_action_results.json",
               "scope": "A Lean theorem proves stationary reweighting, conditional cancellation and zero sector-potential gradient for every positive conserved-sector factor. Exact checks bind its premises to all 4356 native source/core states; the full native kernel is checked in Python rather than encoded as a Lean value.",
               "sha256": "b4f43448724801b37edc498bfc10faf095e758f285147ffb1650212c7a162c1a"
+            },
+            {
+              "campaign_id": "OPH-DEFECT-ACTION-PARTICLE-FIELD-2026-10-29-v1",
+              "id": "record_action",
+              "independent_check": "model/record_action/test_action.py",
+              "path": "model/record_action/results.json",
+              "scope": "A positive local stochastic-matrix kinetic parent has 300 hopping pairs and a nonzero hard-core density interaction; record-only inference bounds its operator error. Exact modular increments and a same-reference Gibbs/affine-clock obstruction do not supply physical energy or stress.",
+              "sha256": "6c5bd736256603e090afb4c78a4b3f0e15b1aec32bb15dc42041cb9b76d23352"
             }
           ],
           "requires": [
@@ -1567,7 +1669,9 @@
             "model/common_source/native_gauge_object.py",
             "model/common_source/native_sm_current.py",
             "model/common_source/native_matter_attachment.py",
-            "model/observer_particles/DERIVATION.md"
+            "model/observer_particles/DERIVATION.md",
+            "model/particle_obstruction/README.md",
+            "model/particle_obstruction/results.json"
           ],
           "id": "CP-05",
           "issue": 1141,
@@ -1580,11 +1684,21 @@
             "EMH-2"
           ],
           "obstruction": "Incompatible required charge/spin/statistics/current/transport structures exclude the covered defect realization. A 17-versus-12 response mismatch excludes its grammar, not every admissible current law.",
+          "progress_evidence": [
+            {
+              "campaign_id": "OPH-DEFECT-ACTION-PARTICLE-FIELD-2026-10-29-v1",
+              "id": "particle_obstruction",
+              "independent_check": "model/particle_obstruction/test_classification.py",
+              "path": "model/particle_obstruction/results.json",
+              "scope": "All 376 source-current anomaly traces classify arbitrary integer signed copies of the declared five-block matter lift. The actual fixed clock source has C2 symmetry and three distinct positive response moments; conditional invariant Yukawas retain an isolated family and zero three-family CP mixing.",
+              "sha256": "1c8195f5f57f5faacd8ac8bcf1de63caef6427941dd03b16c7f30d7a95db32ed"
+            }
+          ],
           "requires": [
             "CP-03",
             "CP-04"
           ],
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "title": "Transport the same defects and derive particle identity and currents"
         },
         {
@@ -1599,7 +1713,9 @@
           "evidence": [
             "model/common_source/chiral_candidate/record_two_point.py",
             "model/observer_particles/spectral_response.py",
-            "model/CONSTRUCTION.md"
+            "model/CONSTRUCTION.md",
+            "model/interacting_field/README.md",
+            "model/interacting_field/results.json"
           ],
           "id": "CP-06",
           "issue": 1142,
@@ -1612,12 +1728,22 @@
             "EMH-3"
           ],
           "obstruction": "A covered chirality, locality, positivity, continuum or interaction no-go stops the frozen realization class. A supplied scalar product, finite free symbol or pole list alone does not pass this gate.",
+          "progress_evidence": [
+            {
+              "campaign_id": "OPH-DEFECT-ACTION-PARTICLE-FIELD-2026-10-29-v1",
+              "id": "interacting_field",
+              "independent_check": "model/interacting_field/test_field.py",
+              "path": "model/interacting_field/results.json",
+              "scope": "Source-compiled quartic CAR interactions produce detector-reconstructed non-Gaussian four-point response and complete feedback histories through 343 sites. Analytic ideal bounds compare the exact two-particle sector to the same fixed-spacing infinite lattice. All 8 naive Weyl nodes, supplied action and unjoined native clock remain.",
+              "sha256": "77d5ab0cbb72815347b3862a2eee560f1bda37aa689e8b6bbe71ab414842da22"
+            }
+          ],
           "requires": [
             "CP-02",
             "CP-04",
             "CP-05"
           ],
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "title": "Obtain one interacting chiral 3+1 field description from native records"
         },
         {
