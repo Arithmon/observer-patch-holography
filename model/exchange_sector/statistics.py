@@ -324,6 +324,8 @@ def covariance_certificate():
             if flipped:
                 raw = 4*(raw//4)+{0: 0, 1: 2, 2: 1, 3: 3}[raw % 4]
             target = lookup[row.law, tuple(sorted(endpoints)), 1-row.coin if flipped else row.coin, raw]
+            if target.abort != row.abort:
+                raise ArithmeticError("proper rotation changed native abort classification")
             translated = {i: (j, s) for i, j, s in zip(target.inputs, target.outputs, target.signs, strict=True)}
             if len(translated) != len(row.inputs):
                 raise ArithmeticError("proper rotation changed a complete branch domain")

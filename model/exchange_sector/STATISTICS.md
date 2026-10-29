@@ -2,9 +2,9 @@
 
 ## Complete topology of the declared path domain
 
-The existing collision-free native configuration complex has fundamental
-group **Z/2**, strengthening its previously established first homology
-`H_1(Z)=Z/2`. Therefore its finite-dimensional flat unitary exchange
+The collision-free native configuration complex has fundamental
+group **Z/2** and first homology `H_1(Z)=Z/2`.
+Therefore its finite-dimensional flat unitary exchange
 transports, up to changes of local frame, are exactly direct sums of the
 trivial and sign characters. This classifies the possibilities under the
 declared local deformations. It does not choose a character for the native
@@ -28,7 +28,7 @@ spectator triangle has exponent one. This is flat on the domain with only
 squares for arbitrary theta, and violates the original triangle relation
 unless theta is a multiple of `2*pi`. The exhaustive two-character result
 therefore uses the declared face fillings essentially. This negative
-control leaves the predecessor's deformation contract unchanged.
+control uses a different deformation domain from the declared contract.
 
 ### Exact finite identification
 
@@ -65,7 +65,7 @@ Every ordered count is twice the corresponding unordered count. The
 certificate checks integral `d^2=0` in both complexes, and that the quotient
 projection is an integral chain map. Its first three layers match every
 existing native vertex, movement edge and oriented local polygon, up to
-the harmless choice of each polygon's orientation. Thus the old native
+the harmless choice of each polygon's orientation. Thus the native
 complex X is exactly the two-skeleton of `D(K)/swap`.
 
 The cells of dimension three and four are an auxiliary mathematical
@@ -117,7 +117,7 @@ The same groups hold for their two-skeleta.
 
 This does **not** identify X itself with `RP^2` up to homotopy. X has Euler
 characteristic `66-300+495=261`; the full unordered deleted product has
-Euler characteristic one. The theorem upgrades the path classification,
+Euler characteristic one. The theorem determines the path classification,
 without discarding the higher topology of the existing two-complex.
 
 The connected ordered cover is the actual ordered-particle lift. The
@@ -162,3 +162,154 @@ exact rational deformation identities, and malformed-domain controls.
 ```
 python -m pytest -q model/exchange_sector/test_statistics_topology.py
 ```
+
+## Complete quantum instruments and the fermionic lift
+
+For a native raw flag h, write its unweighted partial injection as
+`M_h = sum_(x in D_h) |f_h(x)><x|`. A character `chi` multiplies each
+movement column by the character of its ordered-pair chart change; holds
+have sign +1. The fair-coin Kraus map is `K_h^chi=M_h^chi/sqrt(2)`.
+Injectivity gives `(K_h^chi)*K_h^chi=P_Dh/2`, independently of the character.
+The check retains all 240 C and 480 E raw slots, including zero and abort
+slots, and verifies their supports against the original native operations.
+
+Every finite history remains a signed partial injection
+
+```
+K_h^chi = sqrt(w_h) sum_(x in D_h) chi_h(x) |f_h(x)><x|.
+```
+
+Its effect is `w_h P_Dh`. Hence native record histories and terminal source
+populations agree for both characters, including the untouched-reference
+state retained with each record. This identity allows record-driven
+classical scheduling and stopping. Intervening coherent source controls
+are outside it. The full quantum source outputs need not agree.
+
+For the negative character, a move from port a to port b has sign
+`(-1)^(number of occupied ports strictly between a and b)`. This is exactly
+the restriction of `c_b^dagger c_a` to `Lambda^2(C^12)`. All 144
+number-conserving bilinears satisfy
+
+```
+[E_ab,E_cd] = delta_bc E_ad - delta_ad E_cb,
+delta n_i = current * (delta_ib - delta_ia).
+```
+
+The implementation checks every commutator on every source column and
+compares movement columns with independently constructed Fock bit-string
+operators. The positive lift is bare C/E. The negative lift is an actual
+different quantum operation, implemented by a record-selected diagonal
+source word after C/E. Both use the same complete native record alphabet.
+Individual creation and annihilation leave the fixed total-two carrier;
+this is not an odd CAR algebra acting within H66.
+
+The distinction cannot be removed by an occupation-preserving basis change,
+even if every committed raw Kraus block may also acquire an arbitrary
+scalar phase. On a native face `(a,b,c)`, compare
+
+```
+spectator: {a,d} -> {b,d} -> {c,d} -> {a,d},   d outside the face;
+exchange:  {a,b} -> {a,c} -> {b,c} -> {a,b}.
+```
+
+Both use the same multiset of directed native movement flags, but their
+negative-lift products are +1 and -1. Endpoint gauge factors cancel on
+each loop, and raw-flag scalar phases have the same product. They cannot
+eliminate the difference. This is stronger than assigning a scalar minus
+sign to one already committed history, which leaves that history's output
+density operator unchanged.
+
+Proper native rotations act by the ordinary exterior-square representation
+on the negative lift. The group multiplication law is checked on all 60
+rotations and all source columns. This representation is not a physical
+spin-half representation; the exchange sign supplies no spin-statistics
+theorem or Standard Model particle label.
+
+## A complete one-attempt measurement
+
+The source prepares the equal coherent superposition of `{0,1}` and
+`{0,6}`, performs one complete native attempt on seam `(0,5)`, applies the
+chosen character's record-selected phase, reverses the recorded movement
+for readout, and measures in the two-address X basis. All 512 computational
+outcomes and every native record remain present.
+
+| Character | Final positive read | Final negative read |
+| --- | ---: | ---: |
+| +1 | 1 | 0 |
+| -1 | 1/2 | 1/2 |
+
+The retained moving flag, with probability 1/2, separates the characters
+perfectly; the holding flag is identical. The complete observation has
+total variation 1/2, giving equal-prior one-attempt discrimination success
+3/4 without postselection. Dephasing the initial superposition makes both
+read signs equiprobable for either character.
+
+This attains a sharp channel bound, rather than only distinguishing one
+selected input. Summing all moving effects gives
+`P_(n_a+n_b=1)/2`. The holding blocks are identical. For any joint
+source/reference input, the half trace distance of the complete outputs
+is at most the total moving probability, hence at most 1/2. Opposite-sign
+spectator columns attain this value. If every moving block has a scalar
+sign, the distance is zero. In the fixed sorted-pair amplitude chart, 21
+seams have distance 1/2 and nine have distance zero.
+
+That 21/9 split uses the specified common amplitude identification. It is
+not a geometric seam invariant under one shared rotation action: the
+positive and negative lifts have their own natural rotation representations.
+Changing a chart also changes the corresponding preparation and readout.
+The closed-loop distinction and the complete co-transformed observations
+are gauge invariant.
+
+## A coherent exchange experiment
+
+The same source controls implement the collision-free seam hopping operator
+`H_ab^chi`, whose ten disjoint blocks connect `{a,s}` to `{b,s}` with the
+derived character sign. It is zero on blocked pairs and the padding
+complement. A hop is `exp(-i*pi*H_ab^chi/2)`. This is a supplied coherent
+operation with explicit source words, not an unrecorded phase in C/E.
+The hopping propagator includes its dynamical factors `-i`; the full
+propagator is not itself the flat connection on every triangular cell.
+The experiment compares the two characters within otherwise identical
+hopping actions and retains their common dynamical phase.
+
+Prepare `{0,11}` and one blank path qubit, then coherently control the three
+hops `(0,5)`, `(0,11)`, `(5,11)` on path arm 1. The pair returns to its
+starting configuration. The three hopping factors contribute common phase
+`(-i)^3=i`; the exchange contributes `chi`. The joint state is therefore
+
+```
+|{0,11}> tensor (|0> + i*chi*|1>)/sqrt(2).
+```
+
+A source Z rotation followed by a source Y rotation reads the two signs
+with ideal probabilities one and zero. A complete bare C/E attempt before
+that read acts identically on both path arms and preserves the distinction;
+every coin, raw record, abort complement and source address is retained.
+The control that measures the path bit after the first hop retains both
+measurement records and yields probabilities 1/2, 1/2 for either character.
+
+The compiler uses full-register Gray permutations, source Y rotations and
+integer-Walsh diagonal words, including their scalar terms. Independent
+emitted-word checks reconstruct all 512 or 1024 phases and the identity
+extension. Fresh primitive and macro executions are compared with the
+algebraic targets; full complex output vectors, not only probabilities,
+enter the replay. The one-attempt Kraus-column bound covers arbitrary
+untouched references. Numerical product and execution checks use fixed
+admission gates; they are not outward interval or hardware certificates.
+
+The [receipt](statistics_results.json) records branch-specific pulse and
+proper-code service counts, blank source/path bits, native coin and record
+preparations, and all terminal outcomes. No clock, energy or mass is
+assigned to these resource counts. Reproduction runs the operations again:
+
+```
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m model.exchange_sector.statistics_packet --check
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m pytest -q -W error model/exchange_sector
+```
+
+The completed result is an operational exchange-statistics interface on one
+fixed native carrier, with an exhaustive flat path classification. A
+reference-compatible localized excitation, autonomous protection, physical
+spin, calibrated rest and kinetic response, and species identification
+remain separate same-process obligations. The sign choice and coherent
+apparatus have not been derived from the classical repair law.
