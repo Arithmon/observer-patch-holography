@@ -165,7 +165,7 @@ are not additional prerequisites for the supplied finite scalar theorem.
 | [RE-14: Gauge algebra to physical gauge fields](#re-14) | M05, M10 | downstream | conditional | PR-11, PR-35, PR-46, PR-54 |
 | [RE-15: Physical edge factors and collar recovery](#re-15) | M02, M07, M08 | downstream | conditional | None |
 | [RE-16: Modular flow, null translations and stress](#re-16) | M04, M05, M07, M08 | downstream | conditional | PR-23, PR-24, PR-25 |
-| [RE-17: Joint stateâ€“geometry entropy stationarity](#re-17) | M07, M08 | downstream | open | PR-26 |
+| [RE-17: Joint state–geometry entropy stationarity](#re-17) | M07, M08 | downstream | open | PR-26 |
 | [RE-18: One gravitational branch and its normalization](#re-18) | M05, M08, M09 | downstream | open | PR-27, PR-28 |
 | [RE-19: Matter, statistics and interactions](#re-19) | M05, M06, M10 | downstream | open | PR-12, PR-36, PR-41, PR-47, PR-48, PR-49, PR-50, PR-59, PR-67, PR-68, PR-69 |
 | [RE-20: Parameter selection and P](#re-20) | M09, M10, M12 | downstream | open | PR-13, PR-17, PR-37, PR-38, PR-39, PR-40, PR-51 |
@@ -552,7 +552,7 @@ Existing claim-row navigation (no new edges): ` OPH-SCALAR-SEQUENTIAL-INSTRUMENT
 
 Sources:
 
-- [One composed preparationâ€“history error and resource budget](../model/CONSTRUCTION.md).
+- [One composed preparation–history error and resource budget](../model/CONSTRUCTION.md).
 - [Exact finite pulse](../paper/tex_fragments/SOURCE_SCALAR_FINITE_INSTRUMENT.tex); exact source anchor: ` prop:source-scalar-finite-pulse `.
 - [Sequential composition](../paper/tex_fragments/SOURCE_SCALAR_SEQUENTIAL_INSTRUMENT.tex); exact source anchor: ` thm:source-scalar-sequential-instrument `.
 - [Fixed-action local splitting](../paper/tex_fragments/SOURCE_SCALAR_TIME_REFINEMENT.tex); exact source anchor: ` prop:source-scalar-time-refinement `.
@@ -926,7 +926,7 @@ Existing claim-row navigation (no new edges): ` OPH-GR-D4D-ENTROPY-BRIDGE `, ` O
 
 Sources:
 
-- [Gravity rungs3â€“5](../docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs).
+- [Gravity rungs3–5](../docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs).
 - [EC alignment, mixing and edge normalization](../claims/assumption_dictionary.md).
 - [Conditional edge heat-kernel and worldsheet guide](../paper/tex_fragments/DERIVATION_TECHNICAL_SUPPLEMENT_PORT.tex); exact source anchor: ` \subsection{Controlled Worldsheet Effective Description} `.
 - [Exact native density representation of the finite edge generator](../model/observer/COHERENT_CONTINUATION.md); exact source anchor: ` ## A finite edge-generator representation from native repair `.
@@ -953,7 +953,7 @@ Existing claim-row navigation (no new edges): ` OPH-MODEL-COMMON-SOURCE-EXECUTIO
 
 Sources:
 
-- [Gravity rungs7â€“8](../docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs).
+- [Gravity rungs7–8](../docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs).
 - [Modular and stress construction](../paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex).
 - [Finite modular readout on the actual interacting observation state](../model/common_source/operational.py).
 - [Finite thermal modular identity with BW and stress obligations retained](../model/common_source/THERMAL_CLOCK.md).
@@ -988,7 +988,7 @@ Sources:
 
 <a id="re-17"></a>
 
-### RE-17: Joint stateâ€“geometry entropy stationarity
+### RE-17: Joint state–geometry entropy stationarity
 
 **Constructed:** Native finite-sector counting, constrained MaxEnt and cost-corrected coherent-record entropy envelopes have exact stationarity and Hessian identities on their declared state/cap domains. Complete adaptive C/E tapes retain coin costs, timeouts, disturbances and arbitrary references; the reference-Petz algebra distinguishes recoverable from output-flat coherences. The growing-screen schedule controls an o(ell^4) preparation contribution after discarded warm-up, without identifying ell with a physical radius. These are fixed-carrier or stated capacity variations, not unrestricted physical metric variations.
 
@@ -1073,7 +1073,7 @@ Existing claim-row navigation (no new edges): ` OPH-GR-E2E-BRANCH-ENTRY `.
 
 Sources:
 
-- [Gravity rungs8â€“11](../docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs).
+- [Gravity rungs8–11](../docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs).
 - [Flagship gravitational interface](../flagship/from_observer_consensus_to_standard_physics.tex).
 - [Common tower and universal coupling](../claims/assumption_dictionary.md).
 - [Native twelve-port tensor completeness and compatibility](../model/common_source/null_tomography.py); exact source anchor: ` def null_tomography_certificate(): `.

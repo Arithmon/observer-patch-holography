@@ -3054,7 +3054,7 @@
         "model/compiled_native_interface/README.md": "statement",
         "model/compiled_clock_history/README.md": "statement"
       },
-      "notes": "Lean/EventAlgebra/LuedersPhaseInstrument.lean constructs a declared LÃ¼ders instrument on the committed eight-context effect table and proves the channel clauses as exact finite matrix algebra: each outcome map X â†¦ E X E is completely positive through a singleton Kraus family and trace-nonincreasing on positive-semidefinite inputs, the summed channel of each context is trace preserving on every matrix and hence CPTP, and the induced effects equal the committed table with the declared Pauli-Y projector in the phase slot. The normalized post-measurement state is certain of its effect, a state-update proxy for readback. SourcePhaseInstrumentOutcomeBridge proves that all 48 enabled entries of the generated source phase relation agree with the corresponding normalized outcome of this declared instrument. SourcePhaseCommonPreparationHull evaluates those declared outcome maps on every common-support source state and proves an exact convex-hull compatibility with the declared run state. The run state is outside the generated state domain, no generated source step starts there, and a generated result loses all-event support; the hull therefore supplies neither a source implementation nor a sequential instrument protocol. Its generated outcome index is semantic, not a recorded public outcome. The clause that outcome readback agrees with a recorded public outcome is open: no public outcome is typed. The effect table alone does not determine the instrument, and the committed repeatability clause is strictly weaker than selection. InstrumentSelectionByCertainStates proves a sharper conditional result: among finite Kraus-form maps with the committed projective effects, declared certain-state invariance is equivalent to the LÃ¼ders maps. That operational invariance remains a declared hypothesis and is not source-implemented; no recorded public outcome is bound. Removal therefore needs a source-facing instrument whose readback is bound to public outcomes under PR-65. SourceBoundInstrumentInterface identifies induced effects with the static outcome-map trace/expected-frequency surface and proves the determined interface does not pin the instrument; a recorded public outcome is not typed in the corpus, so the readback clause of this row stays open. The INS-03 v2 replay gate adds executable transcript verification against a proposed generation semantics; every verdict is explicitly unauthenticated and no instrument realization follows, so this premise stays open. Model navigation, citation only: the source-discrimination construction emits proper-code words for the C/E local dilations, fixed phase preparations and complete binary source-projector readout; the compiled native interface emits the balanced phase mixer and its imaginary quadrature; and the compiled clock history retains both terminal pointer outcomes with every complement abort. These supply finite instances of complete phase-sensitive instruments with all outcome branches retained, compared with ideal targets on source arrays. No recorded public outcome is bound to them, physical gate fidelity is not certified, and the citation discharges nothing; PR-64 stays open.",
+      "notes": "Lean/EventAlgebra/LuedersPhaseInstrument.lean constructs a declared Lüders instrument on the committed eight-context effect table and proves the channel clauses as exact finite matrix algebra: each outcome map X ↦ E X E is completely positive through a singleton Kraus family and trace-nonincreasing on positive-semidefinite inputs, the summed channel of each context is trace preserving on every matrix and hence CPTP, and the induced effects equal the committed table with the declared Pauli-Y projector in the phase slot. The normalized post-measurement state is certain of its effect, a state-update proxy for readback. SourcePhaseInstrumentOutcomeBridge proves that all 48 enabled entries of the generated source phase relation agree with the corresponding normalized outcome of this declared instrument. SourcePhaseCommonPreparationHull evaluates those declared outcome maps on every common-support source state and proves an exact convex-hull compatibility with the declared run state. The run state is outside the generated state domain, no generated source step starts there, and a generated result loses all-event support; the hull therefore supplies neither a source implementation nor a sequential instrument protocol. Its generated outcome index is semantic, not a recorded public outcome. The clause that outcome readback agrees with a recorded public outcome is open: no public outcome is typed. The effect table alone does not determine the instrument, and the committed repeatability clause is strictly weaker than selection. InstrumentSelectionByCertainStates proves a sharper conditional result: among finite Kraus-form maps with the committed projective effects, declared certain-state invariance is equivalent to the Lüders maps. That operational invariance remains a declared hypothesis and is not source-implemented; no recorded public outcome is bound. Removal therefore needs a source-facing instrument whose readback is bound to public outcomes under PR-65. SourceBoundInstrumentInterface identifies induced effects with the static outcome-map trace/expected-frequency surface and proves the determined interface does not pin the instrument; a recorded public outcome is not typed in the corpus, so the readback clause of this row stays open. The INS-03 v2 replay gate adds executable transcript verification against a proposed generation semantics; every verdict is explicitly unauthenticated and no instrument realization follows, so this premise stays open. Model navigation, citation only: the source-discrimination construction emits proper-code words for the C/E local dilations, fixed phase preparations and complete binary source-projector readout; the compiled native interface emits the balanced phase mixer and its imaginary quadrature; and the compiled clock history retains both terminal pointer outcomes with every complement abort. These supply finite instances of complete phase-sensitive instruments with all outcome branches retained, compared with ideal targets on source arrays. No recorded public outcome is bound to them, physical gate fidelity is not certified, and the citation discharges nothing; PR-64 stays open.",
       "discharge": {
         "status": "constructed_on_declared_inputs",
         "evidence": [
@@ -4863,7 +4863,7 @@
         "sources": [
           {
             "path": "model/CONSTRUCTION.md",
-            "label": "One composed preparationâ€“history error and resource budget"
+            "label": "One composed preparation–history error and resource budget"
           },
           {
             "path": "paper/tex_fragments/SOURCE_SCALAR_FINITE_INSTRUMENT.tex",
@@ -6100,7 +6100,7 @@
         "sources": [
           {
             "path": "docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs",
-            "label": "Gravity rungs3â€“5"
+            "label": "Gravity rungs3–5"
           },
           {
             "path": "claims/assumption_dictionary.md",
@@ -6162,7 +6162,7 @@
         "sources": [
           {
             "path": "docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs",
-            "label": "Gravity rungs7â€“8"
+            "label": "Gravity rungs7–8"
           },
           {
             "path": "paper/recovering_observer_spacetime_and_einstein_dynamics_from_overlap_consistency.tex",
@@ -6320,7 +6320,7 @@
       },
       {
         "id": "RE-17",
-        "title": "Joint stateâ€“geometry entropy stationarity",
+        "title": "Joint state–geometry entropy stationarity",
         "links": [
           "M07",
           "M08"
@@ -6588,7 +6588,7 @@
         "sources": [
           {
             "path": "docs/registers/PREMISE_REGISTER_V3.md#gravity-rungs",
-            "label": "Gravity rungs8â€“11"
+            "label": "Gravity rungs8–11"
           },
           {
             "path": "flagship/from_observer_consensus_to_standard_physics.tex",
