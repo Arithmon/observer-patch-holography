@@ -282,6 +282,116 @@ four-support code with weights `(2,1,2,1,...,1)` executes logical Z at
 `s=pi/log(2)` while leaving the code at intermediate parameters. This control
 prevents a local tangent obstruction from becoming an invalid clock no-go.
 
+## Recovering and enacting the reference from its records
+
+The [record-clock protocol](record_clock_campaign.json) connects the same
+endpoint law to observer inference, continued preparation and a source-executed
+modular readout. The [replay](record_clock.py) supplies the simulator's weights
+only to its private source. The observer receives thirty pairs of trial and
+coin counts. It obtains neither hidden occupations nor the reference density.
+
+For a fixed seam and coin, the native raw maps are partial injections whose
+input domains partition H66. Consequently
+`sum_raw K* K = p_coin I66`. Conditional on the complete earlier history,
+the next coin therefore has probability `theta_a/(theta_a+theta_b)` for every
+source state and untouched quantum reference. Fixed-budget inference needs
+no resets, independent source copies or equilibrium assumption. Exact odds
+on a connected graph determine the twelve weights up to a common factor;
+that factor cancels from the state and modular action. Primitive integer
+normalization gives unique weights when the exact edge probabilities are
+known. Finite empirical counts do not supply those exact probabilities.
+
+The [acquisition](acquisition.py) executes2^20 events on each of the30 seams,
+alternating the complete C/E instruments. The31,457,280-event trajectory
+continues the same carrier through every seam block. Every raw record is
+generated from validated native transition tables; its chronological stream
+is reproducible from the committed seed. A two-state endpoint orbit permits
+vectorized execution without omitting events. This is a basis-trajectory
+replay. The complete effect identity establishes the quantum-input domain.
+The seeded pseudorandom stream does not authenticate physical randomness.
+
+The [decoder](inference.py) fits only the established eleven-edge tree.
+Its19 other edges test cycle compatibility without adjusting the fit.
+An exact multiplicative feasibility calculation checks that all intervals
+admit one shared positive set of weights. With probability radius3/1000,
+the simultaneous Hoeffding failure bound is381169/10^12, below4×10^-7.
+The tree has diameter5 and `|d logit(p)/dp| <=25/4` on `[1/5,4/5]`.
+Thus the oscillation of the port-potential errors is at most3/32. On the
+two-load shell, subtracting a common generator scalar bounds its operator
+error by3/32. Duhamel's bound gives half-diamond error at most3/32 for a
+total modular parameter of magnitude at most one, including arbitrary
+reference systems. These are fixed-design guarantees, not guarantees
+conditioned on a successful inference result.
+
+Preparation admission also uses only records. Lower coin endpoints give a
+substochastic population kernel L with `L <= P_true`; hence
+`L^20 <= P_true^20`. The column minima give a minorization coefficient beta.
+Upper coin endpoints bound the complete-record survival probability r of
+any two distinct native inputs. The existing mixing proof then gives
+`delta <=65 r^1600/2+(1-beta)^80`. For the retained tape the certified
+half-trace error is408397/125000000000, below3.27×10^-6. The subsequent
+1600 repairs run on the actual terminal training carrier. The training
+tape and preexisting reference belong to the untouched reference in this
+theorem. All subsequent preparation records, including the final FIFO slot,
+are traced in the product comparison. Their physical storage and export
+are counted; no independent full preparation archive is asserted.
+
+The [learned source words](learned_flow.py) use only inferred relative
+weights. They implement one common potential
+`-sum_i log(theta_hat_i)n_i`, and hence compatible modular actions on all
+66 bare two-port algebras. Full512-column checks include the padding
+extension. Every native raw branch intertwines this flow for any positive
+inferred vector, irrespective of the physical coin probabilities.
+Accordingly, moving the two half-clocks through the complete native history
+does not duplicate the3/32 inference allowance. This covariance does not
+assert that an inaccurate inferred reference is stationary. The implemented
+actuator is global; it does not implement each region-local actuator.
+
+The complete protocol retains incompatible-training and compiler stops.
+Admission uses fixed preparation, compiler and norm-gain caps across every
+possible accepted transcript. The resulting average half-trace bound is
+below0.093762 for the true stationary-reference clock, with the same training
+tape, untouched reference and complete future records on both sides. The
+actual finite-prepared source marginal also has a controlled clock:
+`pi_min >=1/1056`, so the admitted preparation error gives a relative
+operator sandwich radius at most33/3125 and a modular-unitary error at most
+33/3092 per unit parameter. Comparing the learned clock with this fixed
+prepared marginal's clock on the same prepared joint state gives complete
+error below0.104425. This is a uniform statewise comparison; taking a state's
+own modular flow is not asserted to define a linear quantum channel. The
+reference is fixed before the probe; a disturbed posterior is not silently
+substituted. Eleven fixed E/tree records separate all66 inputs, after which
+at most four native moves reach any target and empty seams supply positive
+padding. This gives a strictly positive prepared-marginal lower bound
+`I/(66*300^1600)` even on bad-confidence histories, so their comparator is
+defined. That tiny exact bound is not a floating precision claim.
+Exact regional invariance belongs to the product references; the finite
+prepared marginal's bound concerns its full-source modular group.
+Neither comparison assigns physical
+seconds or temperature to the modular parameter.
+
+The full history uses31,458,883 native attempts and at most314,588,830
+native record bits. Clock status, failure ordinals and abort metadata are
+additional and separately counted in the compiled-clock budget. Its coherent
+clock words contain24,876 pulses. A literal
+supplied implementation of all native routes, including worst-case
+preparation and the future detector, costs at most15,938,607,203,238 pulses
+and twice as many load/export calls. Those native-word lengths are resource
+counts, not a numerical replay of trillions of pulses or a physical accuracy
+certificate. The compact [receipt](record_clock_results.json) retains
+counts, stream custody, error admissions and source bindings; its verifier
+owns fresh acquisition and execution. Unknown-weight recovery removes the
+observer's supplied weight table. The source weights, coherent services,
+hardware precision and physical normalization retain their construction
+obligations.
+
+This clock interface requires no injective or degree-one identification of
+spatial and internal representation spheres. The weighted source is not
+invariant under the full fixed transitive A5 action. Marked-action attachment
+constraints are conditional constraints of particle/support consumers; carrier
+symmetry alone does not instantiate them here. No universal continuous-degree
+claim or exclusion of an independent spatial/internal construction is made.
+
 These results complete finite preparation, continued access and clock
 compatibility within the declared alternative class. The port weights,
 coherent service choice, physical time/energy normalization and refining
@@ -293,5 +403,6 @@ accepted by this component result.
 ```sh
 python -m model.local_repair_family.local_bias --check
 python -m model.local_repair_family.observer --check
+python -m model.local_repair_family.record_clock --check
 python -m pytest -q -W error model/local_repair_family
 ```
