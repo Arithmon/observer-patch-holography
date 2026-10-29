@@ -3,6 +3,7 @@ from collections import Counter
 import gzip
 import hashlib
 import json
+import subprocess
 import sys
 
 import pytest
@@ -415,3 +416,31 @@ def test_ci_covers_all_six_shards_both_platforms_and_complete_regression():
              or 'native_staggered_field' in step['run'] or 'observer_particles/run.py' in step['run']]
     assert len(extra) == 4
     assert all(step.get('if') == 'matrix.shard == 0' for step in extra)
+
+
+@pytest.mark.parametrize("matches", [True, False])
+def test_ci_fetches_canonical_release_and_checks_the_recorded_commit(monkeypatch, tmp_path, matches):
+    workflow = yaml.safe_load((verify.ROOT/'.github/workflows/observer-model.yml').read_text())
+    steps = workflow['jobs']['observer']['steps']
+    fetch = next(s for s in steps if s.get('name') == "Fetch the model's recorded base release")
+    assert fetch['run'] == ('git fetch --no-tags --depth=1 '
+        'https://github.com/FloatingPragma/observer-patch-holography.git '
+        'refs/tags/r2053:refs/tags/r2053')
+    check = next(s for s in steps if s.get('name') == 'Verify the recorded base release commit')
+    assert check['shell'] == 'python'
+    receipt = tmp_path/'model/common_source/mass_response/results.json'
+    receipt.parent.mkdir(parents=True)
+    expected = 'a'*40
+    receipt.write_text(json.dumps({'base_release_commit': expected}), encoding='utf-8')
+    monkeypatch.chdir(tmp_path)
+
+    def rev_parse(command, *, text):
+        assert command == ['git', 'rev-parse', 'r2053^{commit}'] and text is True
+        return (expected if matches else 'b'*40) + '\n'
+
+    monkeypatch.setattr(subprocess, 'check_output', rev_parse)
+    if matches:
+        exec(compile(check['run'], '<ci-base-release-check>', 'exec'), {})
+    else:
+        with pytest.raises(SystemExit, match='Recorded base release mismatch'):
+            exec(compile(check['run'], '<ci-base-release-check>', 'exec'), {})
