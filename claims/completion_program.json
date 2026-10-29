@@ -277,6 +277,13 @@
           "independent_check": "model/local_repair_family/test_observer.py",
           "scope": "Unique quantum product reference with exact finite preparation, stationary source/FIFO access, same-law source modular clock and positive complete-scheduler response. The actual prepared source flow has a finite logarithm bound; supplied coherent services, port weights and physical calibration remain explicit. No integrated gate or physical comparison is accepted.",
           "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1"
+        },
+        {
+          "path": "model/particle_screening/mobile_results.json",
+          "sha256": "0a27e47a1d9ab8062443c3abc2e9c4a1154c58a73c67a1c57942f75556ba4f76",
+          "independent_check": "model/particle_screening/test_mobile_packet.py",
+          "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
+          "campaign_id": "mobile-screened-memory-20261029-v1"
         }
       ]
     },
@@ -446,6 +453,13 @@
           "independent_check": "model/local_repair_family/test_observer.py",
           "scope": "Unique quantum product reference with exact finite preparation, stationary source/FIFO access, same-law source modular clock and positive complete-scheduler response. The actual prepared source flow has a finite logarithm bound; supplied coherent services, port weights and physical calibration remain explicit. No integrated gate or physical comparison is accepted.",
           "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1"
+        },
+        {
+          "path": "model/particle_screening/mobile_results.json",
+          "sha256": "0a27e47a1d9ab8062443c3abc2e9c4a1154c58a73c67a1c57942f75556ba4f76",
+          "independent_check": "model/particle_screening/test_mobile_packet.py",
+          "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
+          "campaign_id": "mobile-screened-memory-20261029-v1"
         }
       ]
     },
@@ -667,6 +681,13 @@
           "independent_check": "model/screened_transport/test_transport.py",
           "scope": "The same screened code has a positive rank-eleven native current covariance, but complete corrected logical transfer is identity and the core resets each attempt. Logical-state-dependent current/variance ratios prevent transfer of the earlier uniform-source wave rate. No rest gap or particle mass is identified.",
           "campaign_id": "screened-transport-20261028-v1"
+        },
+        {
+          "path": "model/particle_screening/mobile_results.json",
+          "sha256": "0a27e47a1d9ab8062443c3abc2e9c4a1154c58a73c67a1c57942f75556ba4f76",
+          "independent_check": "model/particle_screening/test_mobile_packet.py",
+          "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
+          "campaign_id": "mobile-screened-memory-20261029-v1"
         }
       ]
     },
@@ -808,7 +829,16 @@
         1026,
         1078
       ],
-      "accepted_evidence": []
+      "accepted_evidence": [],
+      "progress_evidence": [
+        {
+          "path": "model/particle_screening/mobile_results.json",
+          "sha256": "0a27e47a1d9ab8062443c3abc2e9c4a1154c58a73c67a1c57942f75556ba4f76",
+          "independent_check": "model/particle_screening/test_mobile_packet.py",
+          "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
+          "campaign_id": "mobile-screened-memory-20261029-v1"
+        }
+      ]
     },
     {
       "id": "CP-06",
@@ -1287,6 +1317,24 @@
         "scope": "Versioned finite continuation and coherent-service composition on the bounded endpoint-biased family.",
         "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1"
       }
+    },
+    {
+      "id": "mobile-screened-memory-20261029-v1",
+      "scope": "FINITE_COMPONENT_FAMILY",
+      "whole_program_frozen": false,
+      "supports": [
+        "CP-01",
+        "CP-03",
+        "CP-05",
+        "CP-13"
+      ],
+      "contract": {
+        "path": "model/particle_screening/mobile_contract.json",
+        "sha256": "a1f15e50b8af96928d327ae16e0159d2242b9052fc62b185035205f77378052e",
+        "independent_check": "model/particle_screening/test_mobile_packet.py",
+        "scope": "Complete uniform-seam C/E moving-memory operation and optimal core-reset objective, with exact-code domain and coherent services explicit.",
+        "campaign_id": "mobile-screened-memory-20261029-v1"
+      }
     }
   ],
   "next_wave": {
@@ -1331,15 +1379,16 @@
         "gate": "CP-03",
         "issue": 1139,
         "title": "Construct transport for a localized candidate beyond fixed-code reset",
-        "why_now": "The screened code has an executed all-seam recovery service, but its exterior deficit and explicit core reset prevent interpreting the current cycle as a moving particle.",
+        "why_now": "An equivariant 60-core family carries the qubit with compiled recovery after each attempt and provably optimal boundary resets. The exterior deficit, trivial logical rotation/loop action and active service requirement prevent particle identification.",
         "deliverable": "A declared moving-code or refined native candidate with reference-like exterior, protected transport and complete recovery/resource accounting.",
         "may_start_now": "Reuse the compiled canonical encoder and recovery menu as controls. Specify the protecting state and boundary before selecting its dynamics.",
-        "join_condition": "Preserving the logical qubit at a reset core is a memory result; a moving physical excitation requires a different tested transport map.",
+        "join_condition": "The moving memory supplies controlled transport, with an unavoidable optimal 1/150 core-reset rate in its stated exact-code class. A localized physical excitation must additionally supply reference-compatible exterior, physical statistics and a common action/clock interpretation on that same process.",
         "evidence": [
           "screened_recovery",
           "screened_transport",
           "particle_screening",
-          "defect_history"
+          "defect_history",
+          "mobile_screened_memory"
         ]
       },
       {
@@ -1729,6 +1778,14 @@
         "independent_check": "model/local_repair_family/test_observer.py",
         "scope": "Unique quantum product reference with exact finite preparation, stationary source/FIFO access, same-law source modular clock and positive complete-scheduler response. The actual prepared source flow has a finite logarithm bound; supplied coherent services, port weights and physical calibration remain explicit. No integrated gate or physical comparison is accepted.",
         "campaign_id": "OPH-LOCAL-REPAIR-CONTINUING-CLOCK-2026-10-28-v1"
+      },
+      {
+        "path": "model/particle_screening/mobile_results.json",
+        "sha256": "0a27e47a1d9ab8062443c3abc2e9c4a1154c58a73c67a1c57942f75556ba4f76",
+        "independent_check": "model/particle_screening/test_mobile_packet.py",
+        "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
+        "campaign_id": "mobile-screened-memory-20261029-v1",
+        "id": "mobile_screened_memory"
       }
     ]
   }
