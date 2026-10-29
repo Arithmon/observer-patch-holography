@@ -95,6 +95,41 @@ def test_returned_ratios_and_programs_do_not_own_input_or_cache_objects():
     assert m.ratios(weights) != before
 
 
+def test_mutated_public_geometry_is_rejected_before_warm_program_or_ideal_caches():
+    weights = _weights(); original_word = m.source_program(weights)
+    ideal = m._ideal_arrays(weights)
+    kernel = m.common.regional.source()[0]; original = kernel.states
+    permutation = list(range(12)); permutation[1], permutation[2] = permutation[2], permutation[1]
+    changed = tuple(tuple(x[permutation[i]] for i in range(12)) for x in original)
+    try:
+        object.__setattr__(kernel, 'states', changed)
+        assert np.linalg.norm(m.cap.ideal_rotation(0, 1)-ideal['probe'], 2) > 1
+        for consumer in (m.source_program, m.source_arrays, m.source_budget, m._ideal_arrays):
+            with pytest.raises(ArithmeticError, match='committed native state order'):
+                consumer(weights)
+    finally:
+        object.__setattr__(kernel, 'states', original)
+    assert m.source_program(weights) == original_word
+    assert np.array_equal(m._ideal_arrays(weights)['probe'], ideal['probe'])
+
+
+def test_probe_pair_and_encoding_controls_have_independent_authority(monkeypatch):
+    weights = _weights(); m.source_program(weights)
+    original = m.cap.pairs(0)
+    # Valid addresses and cardinalities cannot authorize a different probe.
+    changed = tuple((j, i, b, a) for i, j, a, b in original)
+    with monkeypatch.context() as patch:
+        patch.setattr(m.cap, 'pairs', lambda index: changed)
+        with pytest.raises(ArithmeticError, match='committed native probe'):
+            m.source_program(weights)
+    codes, mask = m.common.full.support()
+    changed_codes = (codes[1], codes[0], *codes[2:])
+    with monkeypatch.context() as patch:
+        patch.setattr(m.common.full, 'support', lambda: (changed_codes, mask))
+        with pytest.raises(ArithmeticError, match='committed native state order or encoding'):
+            m.ratios(weights)
+
+
 def test_dyadic_phase_enclosure_against_independent_high_precision():
     import mpmath as mp
     ratios = (F(1), F(25, 8), F(8, 25),

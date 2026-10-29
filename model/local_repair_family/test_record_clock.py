@@ -165,7 +165,9 @@ def test_actual_complete_tape_continues_to_a_source_executed_clock(executed):
     assert len(executed['admission']['inference']['held_out_checks']) == 19
     assert all(x['complete_quantum_outputs_checked'] for x in executed['continued_complete_readouts'].values())
     assert executed['resources']['total_native_attempts'] == 31457280+1603
-    assert executed['resources']['all_committed_record_bits_upper'] == 10*(31457280+1603)
+    assert executed['resources']['all_committed_native_record_bits_upper'] == 10*(31457280+1603)
+    assert executed['resources']['additional_clock_status_and_failure_metadata']
+    assert executed['compiled_clock']['source_budget']['first_failed_load_or_export_ordinal_bits'] > 0
     assert not executed['scope']['observer_supplied_port_weight_table']
     assert not executed['scope']['source_port_weights_selected_or_unique']
     assert not executed['scope']['integrated_gate_accepted']

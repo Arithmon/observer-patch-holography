@@ -51,6 +51,36 @@ def _key(weights):
     return tuple((x.numerator, x.denominator) for x in _weights(weights))
 
 
+def _source_chart():
+    """Bind cached charts to the original native state order and encoding.
+
+    The inherited regional API exposes a cached dataclass. Its state tuple
+    is therefore checked afresh, before any program or ideal-array cache is
+    trusted. The fixed probe's targets are reconstructed independently.
+    """
+    states = law.native.states(binary=True)
+    codes = tuple(clock.circuit.encode(state) for state in states)
+    cached_codes = common.full.support()[0]
+    cached_states = common.regional.source()[0].states
+    if (law.basis() != states or type(cached_codes) is not tuple
+            or any(type(x) is not int for x in cached_codes) or cached_codes != codes
+            or type(cached_states) is not tuple
+            or any(type(x) is not tuple or any(type(n) is not int for n in x) for x in cached_states)
+            or cached_states != states):
+        raise ArithmeticError('cached source chart differs from the committed native state order or encoding')
+    index = {state: i for i, state in enumerate(states)}
+    a, b = PROBE; pairs = []
+    for i, state in enumerate(states):
+        if state[a] == 1 and state[b] == 0:
+            moved = list(state); moved[a], moved[b] = 0, 1
+            j = index[tuple(moved)]
+            pairs.append((i, j, codes[i], codes[j]))
+    pairs = tuple(pairs)
+    if cap.pairs(0) != pairs:
+        raise ArithmeticError('inherited probe pairs differ from the committed native probe')
+    return states, codes, pairs
+
+
 def ratios(relative_weights):
     """Fresh full-address diagonal, identity on the 446 padding addresses.
 
@@ -58,8 +88,9 @@ def ratios(relative_weights):
     source sector. Padding remains an explicitly specified identity extension.
     """
     weights = _weights(relative_weights)
+    states, codes, _ = _source_chart()
     result = [F(1) for _ in range(512)]
-    for address, state in zip(common.full.support()[0], law.basis(), strict=True):
+    for address, state in zip(codes, states, strict=True):
         result[address] = math.prod(w**n for w, n in zip(weights, state, strict=True))
     return tuple(result)
 
@@ -108,6 +139,7 @@ def _program_data(weight_key):
 
 
 def source_program(relative_weights):
+    _source_chart()
     return clock._program(_program_data(_key(relative_weights)))
 
 
@@ -137,6 +169,7 @@ def _validate_program(program):
 
 def _snapshot(relative_weights):
     # The public literal program is still reread before every cache lookup.
+    _source_chart()
     return _validate_program(source_program(relative_weights))
 
 
@@ -237,13 +270,14 @@ def certify_phase(parameter, relative_weights, array):
 
 @lru_cache(maxsize=4)
 def _checked_rotation(name, word):
+    _, _, pairs = _source_chart()
     payload = clock._executed_word(name, word)
     _, dtype, data = payload
     array = np.frombuffer(data, dtype=np.dtype(dtype)).reshape(512, 512)
     sign = 1 if name == 'probe' else -1
     lo, hi = _sqrt_interval(F(1, 2)); center, radius = (lo+hi)/2, (hi-lo)/2
     special = {}
-    for _, _, a, b in cap.pairs(0):
+    for _, _, a, b in pairs:
         special.update({(a, a): center, (b, b): center,
                         (a, b): sign*center, (b, a): -sign*center})
     squared = F()
@@ -309,6 +343,7 @@ def _ideal_data(weight_key):
 
 
 def _ideal_arrays(relative_weights):
+    _source_chart()
     return {name: np.frombuffer(data, dtype=np.dtype(dtype)).reshape(512, 512).copy()
             for name, dtype, data in _ideal_data(_key(relative_weights))}
 

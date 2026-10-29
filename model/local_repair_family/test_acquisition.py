@@ -73,22 +73,66 @@ def test_every_native_table_column_matches_independent_endpoint_and_full_raw_men
 
 
 def test_coin_effect_on_complex_entangled_input_is_input_independent(tables):
-    rng = np.random.Generator(np.random.PCG64(7741))
-    state = rng.normal(size=(78, 3))+1j*rng.normal(size=(78, 3))
-    state /= np.linalg.norm(state)
-    marginal = state.conj().T@state
+    # Gaussian-integer amplitudes specify |psi> = sum_ir A[i,r]|i>|r>.
+    # Normalize its density by the exact integer squared norm; no floating
+    # square root, BLAS reduction or tolerance determines this identity.
+    state = tuple(tuple(((i+2)*(r+3) % 11-5,
+                         (i*i+3*i+r*r+2*r) % 13-6)
+                        for r in range(3)) for i in range(78))
+    norm = sum(re*re+im*im for row in state for re, im in row)
+
+    def reference_numerator(amplitudes):
+        # Physical ordering is rho_R[r,s] = sum_i A[i,r] conj(A[i,s]),
+        # equivalently A.T @ A.conj(), not its complex transpose.
+        return tuple((sum(row[r][0]*row[s][0]+row[r][1]*row[s][1]
+                          for row in amplitudes),
+                      sum(row[r][1]*row[s][0]-row[r][0]*row[s][1]
+                          for row in amplitudes))
+                     for r in range(3) for s in range(3))
+
+    def complete_effect(targets, raw_labels, width, probability):
+        accumulated = [[0, 0] for _ in range(9)]
+        for raw in range(width):
+            output = [[[0, 0] for _ in range(3)] for _ in range(78)]
+            for i, target in enumerate(targets):
+                if int(raw_labels[i]) == raw:
+                    for r, (re, im) in enumerate(state[i]):
+                        # Addition implements the linear Kraus action even
+                        # for the deliberately noninjective negative control.
+                        output[int(target)][r][0] += re
+                        output[int(target)][r][1] += im
+            for result, (re, im) in zip(accumulated, reference_numerator(output), strict=True):
+                result[0] += re; result[1] += im
+        return tuple((probability*F(re, norm), probability*F(im, norm))
+                     for re, im in accumulated)
+
+    marginal = reference_numerator(state)
+    # A nonzero imaginary coherence checks the conjugation convention, and
+    # this positive two-column Gram minor certifies a nonproduct pure input.
+    assert marginal[1][1] != 0
+    assert marginal[0][0]*marginal[4][0] > sum(x*x for x in marginal[1])
     p = parameters()
     for li, law in enumerate(('C', 'E')):
         for ei, seam in enumerate(tables['seams']):
             for coin in (0, 1):
-                probability = float(a.local.coin_probability(p, seam, coin))
-                reference = np.zeros((3, 3), complex)
-                for raw in range(4 if law == 'C' else 8):
-                    chosen = np.flatnonzero(tables['raw'][li, ei, coin] == raw)
-                    output = np.zeros_like(state)
-                    output[tables['next'][li, ei, coin, chosen]] = np.sqrt(probability)*state[chosen]
-                    reference += output.conj().T@output
-                assert np.allclose(reference, probability*marginal, atol=2e-16, rtol=0)
+                expected_probability = F(p.port_weights[seam[0 if coin else 1]],
+                                         sum(p.port_weights[x] for x in seam))
+                expected = tuple((expected_probability*F(re, norm),
+                                  expected_probability*F(im, norm)) for re, im in marginal)
+                actual = complete_effect(tables['next'][li, ei, coin],
+                                         tables['raw'][li, ei, coin],
+                                         4 if law == 'C' else 8,
+                                         a.local.coin_probability(p, seam, coin))
+                assert actual == expected
+
+    # Wrong coin orientation still defines a complete CPTP instrument after
+    # summing coins, but fails the declared biased effect on this same input.
+    ei = tables['seams'].index((0, 5)); coin = 1
+    targets, labels = tables['next'][0, ei, coin], tables['raw'][0, ei, coin]
+    expected = tuple((F(25, 33)*F(re, norm), F(25, 33)*F(im, norm))
+                     for re, im in marginal)
+    assert complete_effect(targets, labels, 4, F(8, 33)) != expected
+    assert complete_effect(np.zeros(78, dtype=np.uint8), labels, 4, F(25, 33)) != expected
 
 
 def test_tables_and_certificate_have_no_public_cache_alias(tables):

@@ -371,7 +371,9 @@ Neither comparison assigns physical
 seconds or temperature to the modular parameter.
 
 The full history uses31,458,883 native attempts and at most314,588,830
-record bits. Its coherent clock words contain24,876 pulses. A literal
+native record bits. Clock status, failure ordinals and abort metadata are
+additional and separately counted in the compiled-clock budget. Its coherent
+clock words contain24,876 pulses. A literal
 supplied implementation of all native routes, including worst-case
 preparation and the future detector, costs at most15,938,607,203,238 pulses
 and twice as many load/export calls. Those native-word lengths are resource
