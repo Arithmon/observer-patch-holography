@@ -16,8 +16,9 @@ Parseval-frame Kraus family for partition averaging. The family satisfies
 \]
 
 Together with the existing trace theorem, this is a normalized Kraus and
-trace-preservation certificate. The module does not define a
-complete-positivity predicate or a bundled CP/CPTP channel.
+trace-preservation certificate. `Dynamics/ChoiCPTP.lean` supplies the separate
+formal complete-positivity predicate and proves this map CPTP from those
+Kraus and trace identities.
 
 `EventAlgebra/TwoScalePublicRepair.lean` proves the exact linear relaxation
 
@@ -50,9 +51,30 @@ bridges back to the existing algebraic generator and repair map.
 
 `Dynamics/ConditionalExpectationGenerator.lean` specializes `E` to partition
 pinching. It proves the displayed projector-rate dissipator identity, that a
-nonzero-rate single-collar kernel is exactly the partition commutant, and that
-a multi-collar kernel is the intersection of commutants under an explicit
-no-cancellation premise.
+nonzero-rate single-collar kernel is exactly the partition commutant, and the
+trace residual identity
+
+\[
+  \operatorname{Tr}\bigl(X^\dagger L_c(X)\bigr)
+  =-\gamma_c\,\lVert X-E_c(X)\rVert_{\mathrm{HS}}^2.
+\]
+
+`multiCollarNoCancellation_of_nonneg` uses this identity to prove that a
+finite sum of these generators cannot cancel when every rate is nonnegative.
+Zero-rate terms are included. With strictly positive rates,
+`multiCollarGenerator_eq_zero_iff_stableIntersection_of_pos` identifies the
+kernel of the sum with the intersection of the partition commutants. The
+pinchings need not commute. The original signed-rate theorem retains its
+explicit no-cancellation premise: two identical nontrivial pinchings with
+rates `+1` and `-1` cancel even when each has a nonzero residual.
+
+`Dynamics/ChoiCPTP.lean` defines complete positivity through positivity at
+every finite matrix amplification and proves the Kraus criterion. It proves
+partition averaging, partition pinching, and each relaxation channel with
+`gamma >= 0` and `t >= 0` CPTP. The relaxation map is identified with the
+existing `publicRelaxTime`. An exact transpose-map Choi counterexample
+distinguishes ordinary positivity and trace preservation from complete
+positivity.
 
 The exact-rational companion certificate in
 `code/publicization/b2_exact_rational_certificate.py` checks the finite
@@ -60,9 +82,10 @@ three-dimensional matrix-unit instance and its negative controls.
 
 ## Boundary
 
-The package does not define a CP/CPTP predicate, derive multi-collar
-no-cancellation from positivity, select a source generator, calibrate a rate
-or clock, or attach a physical readout. Those are nonclaims; the CP/CPTP
-interface becomes mandatory only if either label is asserted. The literal
-operator-exponential theorem assumes a bounded endomorphism of a complete real
-normed space. The package emits no prediction.
+The no-cancellation proof concerns the stated trace-orthogonal pinching
+generators with nonnegative declared rates; it does not extend to arbitrary
+positive maps or signed rates. The package supplies no source-selected
+generator, physical rate or clock calibration, or physical readout. The
+literal operator-exponential theorem assumes a bounded endomorphism of a
+complete real normed space. The finite CPTP theorems supply no physical
+prediction by themselves.

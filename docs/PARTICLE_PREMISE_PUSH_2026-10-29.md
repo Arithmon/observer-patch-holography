@@ -78,7 +78,7 @@ family. A complete compiled motion--reset--motion path retains the logical
 state and its reference. The stationary core distribution has about
 61.76 percent of its mass on clock-incompatible codes. Thus continuation
 does not establish the missing fixed-clock particle identification. The
-[pending-PR compatibility review](../model/completion/PENDING_PR_COMPATIBILITY.md)
+[pending-PR compatibility review](../model/completion/SAME_PROCESS_INTERFACES.md)
 keeps Mario's fair-coin, all-horizon theorem and this biased-family result
 distinct, with explicit requirements for their later integration.
 

@@ -144,10 +144,10 @@ def validate_next_wave(root: Path, wave: dict, by_id: dict, campaigns: list) -> 
     require(all(row.get("campaign_id") in campaign_by_id for row in evidence),
             "next-wave evidence lacks a registered campaign")
     owners = wave.get("owners", [])
-    require(isinstance(owners, list) and 3 <= len(owners) <= 4
+    require(isinstance(owners, list) and 3 <= len(owners) <= 5
             and all(isinstance(row, dict) for row in owners)
             and len({row.get("gate") for row in owners}) == len(owners),
-            "next wave requires three or four distinct issue owners")
+            "next wave requires three to five distinct issue owners")
     reviews = wave.get("embedded_reviews", [])
     require(isinstance(reviews, list) and bool(reviews)
             and all(isinstance(row, dict) for row in reviews)
@@ -338,7 +338,7 @@ def render_next_wave(program: dict) -> list[str]:
     if not wave:
         return []
     evidence = {row["id"]: row for row in wave["evidence"]}
-    owner_count = {3: "three", 4: "four"}[len(wave["owners"])]
+    owner_count = {3: "three", 4: "four", 5: "five"}[len(wave["owners"])]
     lines = [f"## Next {owner_count} parallel workstreams", "",
              f"Assignment: `{wave['id']}`. This plans provisional work; it does not "
              "select or freeze a successor law, change the retained campaign or accept a gate.", "",

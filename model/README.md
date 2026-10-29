@@ -34,7 +34,11 @@ Two exact obstructions constrain the next construction. The
 nontrivial Hermitian source charge commuting with every active native branch
 on H78 or H66, including all positive C/E mixtures and declared classical
 feedback. This concerns reducing sectors, not every forward-invariant
-subspace, expectation-fixed observable or history-dependent charge. The
+subspace, expectation-fixed observable or history-dependent charge. On faithful
+H66, the [weighted conservation result](native_fixed_algebra/README.md)
+also excludes every nonconstant universally conserved source observable
+under positive exploration and conditional classical record feedback.
+Joint history charges and active recovery retain different domains. The
 [modular-access test](completion/MODULAR_ACCESS.md) uses unequal weights in
 the actual stationary record blocks: at a specified dimensionless modular
 parameter, every admitted real operation has normalized trace-distance error
@@ -42,15 +46,16 @@ at least `1/2` from the selected modular action on the fixed full support
 algebra. Real joint ancillary inputs and the fixed encoding are premises;
 the separating observable is a mathematical witness, not a native detector.
 
-The [clock, defect and energy diagnostics](clock_defect_energy/README.md)
-advance three [parallel owners](../docs/COMPLETION_PROGRAM.md), using the
-recorded-history transport and finite theorem maps as pinned dependencies:
+The five [construction owners](../docs/COMPLETION_PROGRAM.md) share the
+[current interface conditions](completion/SAME_PROCESS_INTERFACES.md):
 
-| Owner | Retained result and next requirement |
+| Owner | Current construction and remaining join |
 | --- | --- |
-| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) | The [source-pulse Ramsey service](clock_defect_energy/RAMSEY_SERVICE.md) executes complete C/E clock/field records. A [joint readout inference](clock_defect_energy/CLOCK_COUNT_INFERENCE.md) reduces uncertainty about the shared native incident count, with preparation and abort errors retained. The [four-event comparison](clock_defect_energy/shared_event_clock/README.md) has ordered ensemble means and rejects a raw affine readout relation. A calibrated physical clock remains open. |
-| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) | The [screening packet](particle_screening/README.md) gives exact exterior-cap limits and an improved all-seam correctable q=1 qubit. Its worst one-port distance is the optimal `61/450` for an edge core, while its full exterior remains at least `4/9` away. Its [compiled recovery](screened_recovery/README.md) executes all 208 positive branches with explicit core reset; a localized particle remains open. |
-| [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) | The [same-code calculation](active_code_energy/README.md) gives current rate `1/6` per uniform-seam attempt. Positive sector reweightings preserve native stationary dynamics and leave the rest-gap assignment free. The [same-code transport](screened_transport/README.md) has positive transient current covariance but identity corrected logical transfer. [Conserved-sector theorems](conserved_sector_action/README.md) quantify the remaining reference freedom. A rest gap, kinetics and stress remain open. |
+| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) | [Common-reference observations](reference_observation/README.md) form an exact UCP tower without product-state assumptions. Their native implementation, local modular-clock covariance and physical calibration remain open. |
+| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) | [Faithful native conservation bounds](native_fixed_algebra/README.md) sharpen the source-only obstruction and control near conservation. Active memories and relational charges survive outside that class; a protected localized native particle remains open. |
+| [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) | The [pair-current map](gauged_field/README.md) joins energy derivative, full current and contact residue through one Feshbach metric. [Energy-identification conditions](energy_identifiability/README.md) retain the missing physical vacuum, clock and rest/kinetic/stress normalization. |
+| [#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141) | [CAR link covariance and Ward identities](gauged_field/README.md) derive charge-two pair hopping with a scattering remainder. Physical gauge normalization, spin/statistics selection and native particle identity remain unassigned. |
+| [#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142) | The [full-Fock field](full_fock_field/README.md) has all number sectors and controlled interacting thermodynamic local dynamics at fixed spacing. The chiral spatial continuum, physical state and source selection of the action remain open. |
 
 The [accepted executable class and observer](../docs/COMPLETION_ADOPTION_2026-10-29.md)
 resolve the finite contracts of #1135 and #1136, including declared services,
@@ -59,6 +64,11 @@ The [theorem map](completion/THEOREM_MAP.md),
 [finite theorem applications](clock_defect_energy/THEOREM_JOINS.md) and scoped obstruction
 review accompany all three lanes. The reviewed finite map resolves #1137;
 physical clock, mass spectrum and gravitational realization remain open.
+The [exact native-history evaluator](compiled_native_history/README.md),
+[reduced full-field schedule](band_clock_budget/README.md),
+[energy identifiability](energy_identifiability/README.md) and
+[regional reference criteria](regional_modular/README.md) state the current
+finite construction and its remaining mass-attachment conditions.
 The [integration audit](../docs/MODEL_INTEGRATION_AUDIT_2026-10-29.md) records
 the exact contact reduction, recovery elision, all-code biased reset result
 and the limitations of composing a memory with a separate clock.
@@ -72,6 +82,17 @@ constructions against shared spatial and metric contracts. Its
 [finite premise witnesses](observer_particles/results/premise_witnesses.json)
 state which theorem inputs are constructed and which physical identifications
 remain separate.
+
+The [operational triplet-attachment audit](../docs/research/MARKED_TRIPLET_OPERATIONAL_ATTACHMENT_AUDIT.md)
+checks native preparation, continuing instruments, bare-cap clocks and full
+state tomography. The six-level source compiler and its proper-code services
+implement native controls, and current readout attaches the native load
+history to the spatial slow quotient. These capabilities do not supply a
+common state/observable interface and covariant transport of complete
+instruments between the spatial and internal triplets. A source-derived
+interface preserving the marking, preparations, records, failures and
+untouched references is required before an operational triplet comparison
+or physical embedding selection follows.
 
 The source-pinned [particle mass-response audit](../docs/research/OPH_PARTICLE_MASS_RESPONSE.md)
 tests a declared Weyl–Higgs action through its charged field and observer

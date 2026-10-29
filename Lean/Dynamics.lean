@@ -19,9 +19,12 @@ when needed.
 
 `ConditionalExpectationGenerator.lean` contains the finite matrix identity
 for the generator of partition pinching, its projector-rate GKSL expression,
-the single-collar fixed algebra, and the multi-collar intersection under an
-explicit no-cancellation premise. It supplies no formal channel object or
-physical rate attachment.
+and the single-collar fixed algebra. The trace residual identity proves
+no-cancellation for nonnegative rates; strictly positive rates identify the
+multi-collar stable algebra with the commutant intersection, without requiring
+the pinchings to commute. The signed-rate theorem retains an explicit
+no-cancellation premise. Physical source selection and rate calibration
+remain separate from these finite generator identities.
 
 `PublicMarkov.lean`, `PublicAutomorphism.lean`, and `PrivateInner.lean` carry
 the bounded B3 dichotomy:
@@ -54,7 +57,8 @@ with one time-independent self-adjoint Hamiltonian per block, with block
 fixing derived from continuity.
 `Dynamics.ChoiCPTP` defines finite complete positivity through
 amplified positivity with the Kraus criterion, proves the partition
-average, partition pinching, and every nonnegative-time relaxation
-channel CPTP, and refutes the transpose map through an exact Choi
-computation.
+average, partition pinching, and relaxation channels with nonnegative rate
+and time CPTP, and refutes the transpose map through an exact Choi
+computation. These formal channel properties do not select a physical source
+channel or calibrate its clock.
 -/

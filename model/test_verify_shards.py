@@ -57,6 +57,7 @@ def test_shards_keep_both_expensive_workers_isolated_and_order_remaining_work(co
 
 def test_every_new_research_receipt_has_a_canonical_replay():
     assert {
+        ('model.band_clock_budget', None, 'model/band_clock_budget/results.json'),
         ('model.common_source.native_repair_mass', None, 'model/common_source/native_repair_mass_results.json'),
         ('model.common_source.native_gauge_matter_transport', None, 'model/common_source/native_gauge_matter_transport_results.json'),
         ('model.common_source.native_sm_current', None, 'model/common_source/native_sm_current_results.json'),

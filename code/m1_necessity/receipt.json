@@ -1756,7 +1756,7 @@
           "declared_exact_all_seam_flagged_code_domain"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "7cc234acf58db42c304351c4c225e120810a7a5d70bbad5c164d9cd822781b5a"
+        "original_claim_sha256": "a338515a9d58591cc9434ce1727d9e5aa2c5235b20bafc7dd6b87102e0d7e2c5"
       },
       "OPH-MODEL-PUBLISHED-OSCILLATOR-READOUT": {
         "assumptions": [
@@ -1807,7 +1807,7 @@
           "declared_finite_Gibbs_reference"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "b06d67c5cefc5c8c036e3cb19c2f1781f3230b8d09f4826bfcede336b16a498c"
+        "original_claim_sha256": "59a8b079611b111683a99f8b106bd1deed7ccd95ff34b3e07b75d8364f6133c5"
       },
       "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM": {
         "assumptions": [

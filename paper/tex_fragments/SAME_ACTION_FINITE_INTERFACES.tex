@@ -99,6 +99,39 @@ and intertwines complete contact/complement histories with arbitrary
 references. Other spatial observations require the full field sector.
 This control is implemented in \texttt{model/pair\_cyclic\_control}.
 
+\paragraph{Complete Fock dynamics and the thermodynamic limit.}
+The same local action acts on all $2^{2V}$ occupations of a box with $V$
+sites. For $E$ spatial bonds, each of norm at most $c$, its full-Fock
+stability bound is $-cE I\le H\le(cE+UV)I$, with $E\le3V$.
+The completed two-mode hopping, contact and fermionic-route words apply to
+all number sectors and arbitrary references. With $B=cE+UV$, a symmetric
+$n$-step split has ideal operator error at most $B^3|t|^3/(3n^2)$.
+The corresponding complete-history error is summed over segments without
+conditioning on outcomes. This bound depends on volume; a bound restricted
+to two particles is not substituted for it.
+
+Removing the onsite contact terms by a local interaction picture leaves
+even, time-dependent two-site bonds of norm at most $c$. The commutator-chain
+estimate for disjoint, initially commuting observables is
+\[
+ \|[\tau_t(A_X),B_Y]\|
+ \le \|A_X\|\|B_Y\|\,|X|\,2^{-d(X,Y)}(e^{48c|t|}-1).
+\]
+At least one of the observables is even; odd--odd locality uses the graded
+CAR relation. For a normalized observable in a radius-$r$ cube and strictly
+padded radius $R>r$, the comparison to any larger box is bounded by
+\[
+ \min\{2,\,6c|X|(2R+1)^2|t|\,2^{-(R-r)}(e^{48c|t|}-1)\}.
+\]
+The limit gives a strongly continuous automorphism group on the quasi-local
+CAR algebra at fixed spacing. The contact contribution
+$[H_U-H_0,a_0^*a_2]=U a_0^*a_2(n_1-n_3)$ remains nonzero in that limit.
+Thus the construction is an interacting lattice field with three spatial
+coordinates and continuous Hamiltonian model time. Neither an infinite-volume
+physical state nor a Lorentzian chiral continuum is selected. The executable
+full-Fock control and rational locality bounds are in
+\texttt{model/full\_fock\_field}.
+
 A corrected memory branch and a clock instrument on a separate factor
 compose exactly, including correlated logical/clock/reference inputs.
 The clock requires its preparation, control, readout and event association;
@@ -109,7 +142,7 @@ physical duration, dispersion relation or memory mass.
 The same native record-rate estimator drives counted local source words on
 the full 8,128-state field sector, with all 64 pair momenta and all four
 terminal occupation-pointer outputs. Its uniform complete average
-half-diamond bound is below $0.038565$ for $|s|\le1$. This requires a supplied
+half-diamond bound is below $0.037991$ for $|s|\le1$. This requires a supplied
 globally normalized field Gibbs reference and a rate-transfer actuator;
 it is not an inherited native encoding. Every finite independent product
 of the canonical native reference has integer modular gaps in units

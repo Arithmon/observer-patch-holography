@@ -194,6 +194,33 @@ def test_quantum_restriction_is_partial_trace_not_coordinate_mean():
     assert refinement.static_certificate(0, 1)['restriction_times_lift_identity']
 
 
+@pytest.mark.parametrize('density', [
+    {(-1, 0, -1, 0): F(1)}, {(8, 0, 8, 0): F(0)},
+    {(0, -1, 0, -1): F(1)}, {(True, 0, True, 0): F(1)},
+    {(0, 0.5, 0, 0): F(1)}, {(0, 0, 0): F(1)},
+    {(0, 0, 0, 0): float('nan')}, {(0, 0, 0, 0): float('inf')},
+    {(0, 0, 0, 0): True},
+])
+def test_occupation_restriction_rejects_malformed_operators(density):
+    with pytest.raises(ValueError):
+        p.occupation_partial_trace(density, 3, (0, 2))
+
+
+def test_occupation_restriction_on_every_matrix_unit_with_reference():
+    # Trace the middle occupation bit. The non-Hermitian, unnormalized
+    # matrix units are legitimate inputs to the linear operator extension.
+    for i in range(8):
+        for j in range(8):
+            density = {(i, 4, j, 7): F(-2, 3)}
+            expected = {} if (i >> 1) % 2 != (j >> 1) % 2 else {
+                ((i & 1)+2*(i >> 2), 4, (j & 1)+2*(j >> 2), 7): F(-2, 3)}
+            assert p.occupation_partial_trace(density, 3, (0, 2)) == expected
+            assert p.reference_marginal([expected]) == p.reference_marginal([density])
+            assert p.occupation_partial_trace(density, 3, (0, 1, 2)) == density
+            assert p.occupation_partial_trace(density, 3, ()) == (
+                {(0, 4, 0, 7): F(-2, 3)} if i == j else {})
+
+
 def test_source_word_all_complement_aborts_and_reference_blocks():
     tape = [p.compiler.pulse('X', .125, [0]), p.compiler.pulse('J', .25, [0, 1]),
             p.compiler.pulse('Z', 0., [1])]

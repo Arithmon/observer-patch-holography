@@ -1,7 +1,7 @@
 {
   "campaign": {
     "campaign_id": "OPH-FINITE-THEOREM-JOINS-2026-10-28-v1",
-    "contract_sha256": "dfef0d2cd320c26ff2ef50869d9726cae444749b0eca8cea98ca29a7cbe6949f",
+    "contract_sha256": "74f90725265ede3c439ac43ea2bed9987ef97824da242ceb90fce1a3ac5b8113",
     "pending_pr_head": "3d282b3d59763fa1a5171ad9a4fbc09fc0abf35a",
     "predecessor_campaign": "OPH-CLOCK-DEFECT-ENERGY-2026-10-28-v1"
   },

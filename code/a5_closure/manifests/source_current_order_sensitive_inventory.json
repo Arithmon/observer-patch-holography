@@ -213,9 +213,9 @@
         "sha256": "sha256:fb2133fbd3c991b2801be8c90acb82e2aab39af39834eea7b6657c78354c614a"
       },
       {
-        "byte_count": 6773,
+        "byte_count": 10681,
         "path": "Lean/Dynamics/ConditionalExpectationGenerator.lean",
-        "sha256": "sha256:2e6e7c5877cc6faedbc4f16fc81c4b8dca649273e6b511c7c08ca59dcf5de477"
+        "sha256": "sha256:1a3d239b2ad46d33dfe749b2642ef916dfa0b655705bb5cd9217fe58d99886d2"
       },
       {
         "byte_count": 5463,
@@ -4868,7 +4868,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:60878aa3fbe2561f877e2c8c8a0f56e68fa60252c599e11ae02756fc51ff9c1e",
+    "files_sha256": "sha256:61b913660eecc9cdcaa179ae590a0125de250653f5c27527388b03430e76dede",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7777,7 +7777,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:f4df3838c3ae4a156c10325970fa9356a3aab6cc25cde9367772b5a1be3d1029",
+  "inventory_sha256": "sha256:7cf46c40d6228c51cefdf8d2436bfdd43cc938210ebf8f7882643ebfca3e019d",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",

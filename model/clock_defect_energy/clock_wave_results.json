@@ -37,7 +37,7 @@
   },
   "contract": {
     "campaign_id": "OPH-CLOCK-DEFECT-ENERGY-2026-10-28-v1",
-    "contract_sha256": "ab611c7492486b61e7b3c06b6a4b94b9effe1268c688ad83bd396246ce45b78e",
+    "contract_sha256": "4bd2fe9e3905f66170587af34bffbd5328f98d6cd7f26392eb541aaeb9ed9910",
     "predecessor_git_commit": "3d282b3d59763fa1a5171ad9a4fbc09fc0abf35a"
   },
   "existing_positive_native_return_bridge": {
