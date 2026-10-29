@@ -2148,13 +2148,14 @@
   "issue_closure_review": {
     "1139": {
       "close_issue": false,
-      "unaccepted_predecessors": [
-        "CP-01",
-        "CP-13"
-      ],
+      "unaccepted_predecessors": [],
       "unfulfilled_acceptance": [
         "A boundary charge invariant under the complete admitted native repair law and a controlled defect sector. The exterior-matched faithful coherence has an immobile core and zero modular-energy excess.",
         "The closed-H bound band and active native code are distinct realizations; no common native topological defect is established."
+      ],
+      "required_predecessors": [
+        "CP-01",
+        "CP-13"
       ]
     },
     "1140": {
@@ -2166,6 +2167,10 @@
       "unfulfilled_acceptance": [
         "Source-selected native defect maintenance/rest action with a common physical propagation clock.",
         "One justified physical stress tensor and its Ward/refinement map; finite energy currents only are constructed."
+      ],
+      "required_predecessors": [
+        "CP-02",
+        "CP-03"
       ]
     },
     "1142": {
@@ -2178,6 +2183,11 @@
       "unfulfilled_acceptance": [
         "A same-process interacting chiral physical effective/continuum law with all tastes controlled.",
         "Common gauge/Higgs/current/IR and vacuum attachments; supplied CAR action and fixed-spacing volume control do not meet these conditions."
+      ],
+      "required_predecessors": [
+        "CP-02",
+        "CP-04",
+        "CP-05"
       ]
     },
     "1137": {
@@ -2188,7 +2198,8 @@
         "CP-01"
       ],
       "finite_map_review_complete": true,
-      "acceptance_scope": "Ownership, exact finite interfaces, relevance and active-route cleanup; downstream physical premises remain conditional."
+      "acceptance_scope": "Ownership, exact finite interfaces, relevance and active-route cleanup; downstream physical premises remain conditional.",
+      "unaccepted_predecessors": []
     }
   },
   "source_bindings": {
@@ -2203,17 +2214,17 @@
     "model/bound_pair/IDENTITY.md": "f7808797da9a34bb8e049e054a0afad1993492be7dbd4b5e08c64fc5e46db5b0",
     "model/bound_pair/README.md": "96f0b84172026ef41cb7100f527d6bb8871ab8b98521599b22cc1177bcca712b",
     "model/bound_pair/fiber.py": "a5a21df2e5e6a4c71c66feaff2436390e357da8ae019df794280577afa48a49e",
-    "model/bound_pair/identity.py": "16b73761ae95475d8d8292e372d7450b661a61eebba7cb977a18fb44d8252e44",
+    "model/bound_pair/identity.py": "749a1ce10431e8a72b76b96c9568d7cbd0960a9f41e32c92498ba352d753a333",
     "model/bound_pair/mass.py": "45ab64c1b74d060e4ae380c9f5f5896ca7d1d7a84c18c022c9bd2e3d99735034",
-    "model/completion/finite_attachment_map.py": "8414ba1a8e727883e1d1a577e14c3a55df6d7239836f800bea0d85382942475c",
-    "model/completion/test_finite_attachment_map.py": "aa5d4f505b55acb786e5be2d442474ac29fbb741e194950e7b95789a256d20c3",
+    "model/completion/finite_attachment_map.py": "471e5de0ed6d448fe73b1585f9ca87eb8dcc94020f4ed759bae514d6cb99761b",
+    "model/completion/test_finite_attachment_map.py": "b71bf57b0f26e7cd70941f9da42c70dcb5e7d8584033ad3dcd1f3c89791dccd9",
     "model/field_regions/README.md": "5073a68fc7c604335ad9aeac76ea0fd509857a73fb088148e66e0764cd6005ae",
     "model/field_regions/regions.py": "82620a99ed565ab0371295700f828151133d863d92e7fb12330d57a3a7603dc9",
     "model/field_stress/README.md": "8e5b2d4bf9f49d782512c17c6ccda0b2e54d69255a5d169154ba53c6c5c6c213",
     "model/field_stress/energy.py": "f44f67d25d9738230966dc4c9e64eecc2792f0bf07d33b4ca4ac5cb9db90cf72",
     "model/field_stress/entropy.py": "37af6330d7a2d5971c26c866cf706417b6244d5d8c06fbb15d53e63bc8b4f918",
     "model/field_tastes/README.md": "ccd93ff6ebbefb35c84e46e3df8e804dbeff6fb44001ae39f8caf38f57415d22",
-    "model/field_tastes/tastes.py": "fc77d396d5fb5abd7e0a321a23dc43df79b9c8b5aa85fde483f7dbe4a1d0706e",
+    "model/field_tastes/tastes.py": "7063758addb44cd0979e599b814e22661818bd7d209b2f056de18fa916d21fe5",
     "model/field_tastes/thermal.py": "2bac9c523952296832e6943bafa4749cada43e2f8d72fa1084aa20451fa53a13",
     "model/interacting_field/lattice.py": "b6233c890898ecebd84fa19ee95a95f28bdce11d7dfcd0c72be2aaedfaad692e",
     "model/particle_clock/README.md": "d77051b64b97e0e5ff66f9ddd2729fb2297adf2d540f1bc809a8c582a57455e6",
@@ -2224,7 +2235,7 @@
     "model/native_localization/results.json": "eba1771dce527ac4d5aa3bb1cc0a3c6cf5ab89ea2946ae62d43e5463bed8732f",
     "model/band_clock/results.json": "c9954b4563a1d1a1ee24aafcd6bf43ae57c77eadd6cbadc3e02dbdff193ba639",
     "model/native_program/receipt.py": "9f507a9f2e14ee628fa3fa420e5b3ba393ccd8d9b5ca475314da0d12e3bc3cfd",
-    "model/native_program/results.json": "41b1538d8be726412cbe437b4124a408769119aabde7f0fa2fb2e7eccdaaa2c0"
+    "model/native_program/results.json": "8977247b2eef523118a961f023c596d1302073c1f6a9f0e3edb0ac767988edb1"
   },
   "gate_acceptance_owner": "claims/completion_program.json",
   "predecessor_review": {

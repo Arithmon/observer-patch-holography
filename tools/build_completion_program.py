@@ -313,7 +313,7 @@ def render(program: dict, hypothesis: dict) -> str:
              f"Program: `{program['program_id']}`. Boundary: `{program['boundary_status']}`. "
              f"Decision: `{program['decision']}`. No integrated gate is accepted by opening an issue.", "",
              "## Existing foundations to extend", "",
-             "The integrated gates remain open, but the program starts from retained "
+             "Physical construction gates remain open, but the program starts from retained "
              "positive constructions. The rows below link to existing canonical claims; "
              "they are reuse/navigation bindings, not new proof-discharge assertions. "
              "Preserve these capabilities while constructing the missing joins.", "",
@@ -337,13 +337,23 @@ def render(program: dict, hypothesis: dict) -> str:
                       f"Owning gates: {', '.join(campaign['supports'])}."]
         lines += [""]
     lines += render_next_wave(program)
+    class_accepted = next(stage for stage in program['stages']
+                          if stage['id'] == 'CP-00')['status'] == 'ACCEPTED'
+    boundary_summary = (
+        "CP-00 has accepted the reviewed executable law/resource/interpretation class. "
+        "The CP-01 observer and CP-13 theorem map retain their declared finite "
+        "scope and separate acceptance criteria. Dependent physical gates require their own constructions and predecessor "
+        "mappings. CP-12 audits every stage within that class; a whole-program exclusion "
+        "must cover every admitted realization of its mandatory target conjunction."
+        if class_accepted else
+        "CP-00 must identify the complete law/resource/interpretation class "
+        "whose exclusion would stop this program. The frozen finite campaign "
+        "does not supply that larger boundary. Component investigations "
+        "can continue provisionally; their results cannot discharge a dependent gate "
+        "without the predecessor mappings. CP-12 audits every stage in parallel "
+        "within each declared scope; a whole-program decision requires its frozen class.")
     lines += ["## Next work and dependencies", "",
-             "CP-00 must identify the complete law/resource/interpretation class "
-             "whose exclusion would stop this program. The frozen finite campaign "
-             "does not supply that larger boundary. Component investigations "
-             "can continue provisionally; their results cannot discharge a dependent gate "
-             "without the predecessor mappings. CP-12 audits every stage in parallel "
-             "within each declared scope; a whole-program decision requires its frozen class.", "",
+             boundary_summary, "",
              mermaid(program), "",
              "| Gate | Research task | Work status / acceptance prerequisites | Issue |", "| --- | --- | --- | --- |"]
     for stage in program["stages"]:

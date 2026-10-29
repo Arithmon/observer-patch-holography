@@ -32,6 +32,16 @@ def require(condition, message):
         raise ValueError(message)
 
 
+def predecessor_review(program, issue):
+    """Derive dependency status from the owning completion registry."""
+    stages = {stage['id']: stage for stage in program['stages']}
+    stage = next(stage for stage in stages.values() if stage['issue'] == int(issue))
+    required = list(stage['requires'])
+    return {'required_predecessors': required,
+            'unaccepted_predecessors': [gate for gate in required
+                                       if stages[gate]['status'] != 'ACCEPTED']}
+
+
 def validate(packet, root=ROOT):
     root=Path(root).resolve()
     register=strict_json.load(root/'tracking/premise_register.json')
@@ -95,12 +105,15 @@ def validate(packet, root=ROOT):
     require(set(review)=={'1139','1140','1142','1137'},'missing issue closure review')
     for n,row in review.items():
         require(row.get('close_issue') is False, f'map cannot close its own issue: {n}')
+        expected = predecessor_review(program, n)
+        require(all(row.get(key) == value for key, value in expected.items()),
+                f'stale prerequisite status or ownership: {n}')
         if n == '1137':
             require(row.get('required_predecessors') == ['CP-00','CP-01'] and
                     row.get('finite_map_review_complete') is True and row.get('closure_policy'),
                     'CP13 closure requires independently accepted predecessors and review')
         else:
-            require(row.get('unfulfilled_acceptance') and row.get('unaccepted_predecessors'),
+            require(row.get('unfulfilled_acceptance'),
                     f'unsupported construction closure: {n}')
     accepted = next(s for s in program['stages'] if s['id']=='CP-13')['status']=='ACCEPTED'
     return {'canonical_premises':len(rows),'finite_obligations_realized':len(REALIZED),

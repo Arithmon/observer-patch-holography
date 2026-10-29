@@ -131,6 +131,16 @@ def test_committed_issue_and_dag_view_is_current():
     assert all(row["issue"] for row in data["stages"])
 
 
+@pytest.mark.parametrize('status', ['ACCEPTED', 'IN_PROGRESS'])
+def test_dependency_narrative_uses_actual_class_acceptance(status):
+    data = json.loads((program.ROOT/program.PROGRAM).read_text())
+    hypothesis = json.loads((program.ROOT/program.HYPOTHESIS).read_text())
+    next(stage for stage in data['stages'] if stage['id'] == 'CP-00')['status'] = status
+    rendered = program.render(data, hypothesis)
+    assert ('CP-00 has accepted the reviewed executable' in rendered) == (status == 'ACCEPTED')
+    assert ('CP-00 must identify the complete law/resource/interpretation class' in rendered) == (status != 'ACCEPTED')
+
+
 @pytest.mark.parametrize("damage", ["custody", "unmapped", "promotion"])
 def test_component_progress_cannot_change_scope_or_lose_custody(fixture_root, damage):
     def mutate(data):

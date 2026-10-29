@@ -151,6 +151,26 @@ receipt tests cover those boundaries. Class adoption also binds the exact
 reviewed contract and every review source, including the theorem map, so a
 changed target, calibration, law or map cannot reuse an earlier pass.
 
+The subsequent adversarial audit found two bookkeeping defects and repeated
+the affected review. An intrinsic FIFO timeout could continue consuming the
+remaining literal schedule and eventually be reported as a host resource
+stop. Execution ends as soon as all branches are terminal, preserving
+their timeout records and actual attempt count. Regression cases cover later
+commands and host ceilings. The attachment map also incorrectly listed
+CP-01 and CP-13 as unaccepted predecessors of the open particle gate.
+Required predecessors and their acceptance status are derived from the
+owning completion registry and independently validated. The particle gate
+stays open because its own construction criteria remain unfulfilled.
+
+The same audit checked sparse-operator portability fixes in the supplied
+bound-pair and field-taste controls: explicit integer diagonal dtypes and
+complex CSR matrices preserve their existing operator semantics under newer
+SciPy versions. Their current receipts were replayed and source bindings
+refreshed. No canonical premise, physical gate, target, resource ceiling,
+source family, or calibration rule was changed. The runtime and map fixes
+are bound by the refreshed contract digest and this renewed review receipt;
+the earlier source-bound review remains in repository history.
+
 No scientific blocker was found for acceptance of the class, counted finite
 observer and integration map on this stated scope. Broader physical claims
 require their unfulfilled canonical premises and construction gates.

@@ -3,7 +3,7 @@ from copy import deepcopy
 from pathlib import Path
 import pytest
 from tools import strict_json
-from .finite_attachment_map import PATH,ROOT,validate
+from .finite_attachment_map import PATH,ROOT,validate,predecessor_review
 
 
 def packet():
@@ -59,3 +59,27 @@ def test_no_implicit_deletion_or_theorem_error_from_failed_transfers():
     assert corrected['classification']=='needs_correction'
     assert 'identification' in corrected['title']
     assert p['issue_closure_review']['1137']['required_predecessors']==['CP-00','CP-01']
+
+
+def test_open_particle_gate_can_have_all_predecessors_accepted():
+    p = packet()
+    program = strict_json.load(ROOT/'claims/completion_program.json')
+    for issue, row in p['issue_closure_review'].items():
+        expected = predecessor_review(program, issue)
+        assert all(row[key] == value for key, value in expected.items())
+    row = p['issue_closure_review']['1139']
+    assert row['required_predecessors'] == ['CP-01', 'CP-13']
+    assert row['unaccepted_predecessors'] == []
+    assert row['unfulfilled_acceptance'] and row['close_issue'] is False
+    validate(p)
+
+
+@pytest.mark.parametrize('field,value', [
+    ('unaccepted_predecessors', ['CP-01', 'CP-13']),
+    ('required_predecessors', []),
+])
+def test_stale_predecessor_status_and_removed_dependencies_are_rejected(field,value):
+    p = deepcopy(packet())
+    p['issue_closure_review']['1139'][field] = value
+    with pytest.raises(ValueError, match='prerequisite status or ownership'):
+        validate(p)
