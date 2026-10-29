@@ -3800,7 +3800,7 @@
       {
         "byte_count": 21547,
         "path": "code/source_operation_reads/receipt.json",
-        "sha256": "sha256:16ea687e7706ee7528c0c176fcb6830f4f1563b04b4e35c3bb26ede641893265"
+        "sha256": "sha256:5e366604e2dfb28a82a87b61cc673eec3ce38d7d563774a592631c556528ce66"
       },
       {
         "byte_count": 35910,
@@ -4868,7 +4868,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:61b913660eecc9cdcaa179ae590a0125de250653f5c27527388b03430e76dede",
+    "files_sha256": "sha256:2cc5edc23a554104a1475eef9e916ebeb9372cbb7e6587da9450532c06a3c13a",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7777,7 +7777,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:7cf46c40d6228c51cefdf8d2436bfdd43cc938210ebf8f7882643ebfca3e019d",
+  "inventory_sha256": "sha256:7a2d2a82b26da3336e239ad118e8c85e4ea2e0837f11d69fd87f27889d8bd275",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",
@@ -8779,7 +8779,7 @@
     {
       "bytes": 21547,
       "path": "code/source_operation_reads/receipt.json",
-      "sha256": "sha256:16ea687e7706ee7528c0c176fcb6830f4f1563b04b4e35c3bb26ede641893265"
+      "sha256": "sha256:5e366604e2dfb28a82a87b61cc673eec3ce38d7d563774a592631c556528ce66"
     },
     {
       "bytes": 35910,
