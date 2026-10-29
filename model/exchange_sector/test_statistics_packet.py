@@ -135,6 +135,33 @@ def test_source_changes_during_execution_are_rejected(replay, monkeypatch):
         packet.report()
 
 
+def test_warm_geometry_cache_cannot_accept_an_invalid_source_manifest(monkeypatch):
+    geometry = packet.slow_geometry
+    geometry.source()
+    assert geometry.source.cache_info().currsize == 1
+    spec = geometry.SPEC
+    altered = strict_json.load(spec)
+    altered['source_sha256']['oph_exact/carrier.py'] = '0'*64
+    altered_bytes = json.dumps(altered).encode('utf-8')
+    original_bytes, original_text = Path.read_bytes, Path.read_text
+
+    def changed_bytes(path):
+        return altered_bytes if path == spec else original_bytes(path)
+
+    def changed_text(path, *args, **kwargs):
+        return altered_bytes.decode('utf-8') if path == spec else original_text(path, *args, **kwargs)
+
+    def premature_calculation():
+        raise AssertionError('geometry must be validated before scientific calculation')
+
+    monkeypatch.setattr(Path, 'read_bytes', changed_bytes)
+    monkeypatch.setattr(Path, 'read_text', changed_text)
+    for owner in (packet.statistics_topology, packet.statistics, packet.statistics_service):
+        monkeypatch.setattr(owner, 'certificate', premature_calculation)
+    with pytest.raises(ValueError, match='pinned native geometry source has changed'):
+        packet.report()
+
+
 @pytest.mark.parametrize("name", (
     "evidence/native_geometric_source_20260925/spec.json",
     "evidence/observer_dynamics_20260925/oph-physics-sim/oph_exact/carrier.py",

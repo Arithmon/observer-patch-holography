@@ -558,15 +558,34 @@ def _proper_code_certificate():
     rows = {}
     for dimension in (2, 4):
         kraus = compiler.transfer_kraus(dimension)
+        expected = np.zeros((7-dimension, dimension+1, 6), complex)
+        expected[0, :dimension, :dimension] = np.eye(dimension)
+        for level in range(dimension, 6):
+            expected[1+level-dimension, dimension, level] = 1
         if (len(kraus) != 7-dimension
                 or any(k.shape != (dimension+1, 6) or not np.isfinite(k).all() for k in kraus)
+                or any(not np.array_equal(k, target) for k, target in zip(kraus, expected, strict=True))
                 or not np.array_equal(sum((k.conj().T@k for k in kraus), np.zeros((6, 6))), np.eye(6))
                 or any(np.any(k[:, :dimension]) for k in kraus[1:])):
             raise ArithmeticError('complete proper-code export/failure instrument changed')
         rows[str(dimension)] = {'success_outcomes': 1, 'retained_complement_outcomes': 6-dimension,
+                                'literal_success_and_complement_columns_checked': True,
                                 'admitted_input_complement_probability_exact': '0',
                                 'complement_disposition': 'retained terminal halt'}
     return rows
+
+
+def _audit_record_phase(seam, current, character, quarters):
+    # Independent endpoint oracle, including all collision and padding rows.
+    # Walsh inversion alone only certifies the supplied phases, even if wrong.
+    expected = [0]*SIZE
+    a, b = seam
+    if character == -1 and current:
+        destination = b if current == 1 else a
+        for spectator in range(a+1, b):
+            expected[_address(tuple(sorted((destination, spectator))))] = 2
+    if quarters != tuple(expected):
+        raise ArithmeticError('record phase disagrees with native endpoint action')
 
 
 def _layout_certificate():
@@ -576,6 +595,7 @@ def _layout_certificate():
         for current in (-1, 0, 1):
             for character in (-1, 1):
                 quarters = phase_quarters(seam, current, character)
+                _audit_record_phase(seam, current, character, quarters)
                 recovered = walsh_coefficients(walsh_coefficients(quarters))
                 if recovered != tuple(SIZE*x for x in quarters):
                     raise ArithmeticError('full512 integer Walsh inversion failed')
@@ -612,6 +632,7 @@ def _layout_certificate():
                 hops += 1
     return {'literal_native_source_addresses_checked': addresses,
             'record_selected_diagonals_checked': phases,
+            'record_phase_full_register_endpoint_oracle': True,
             'full_register_hopping_layouts_checked': hops,
             'largest_record_selected_diagonal_pulse_count': largest_word,
             'complete_hop_arbitrary_input_product_error_upper': '2e-7',

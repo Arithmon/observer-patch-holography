@@ -37,6 +37,7 @@ def certificate():
 
 def test_fresh_certificate_complete_source_scope(certificate):
     assert certificate['layout']['record_selected_diagonals_checked'] == 180
+    assert certificate['layout']['record_phase_full_register_endpoint_oracle']
     assert certificate['layout']['full_register_hopping_layouts_checked'] == 120
     assert certificate['layout']['full_address_integer_Walsh_inversion']
     for law in ('C', 'E'):
@@ -287,8 +288,61 @@ def test_literal_carrier_address_binding_rejects_shared_chart_permutation(monkey
         service._source_address_certificate()
 
 
-def test_complete_export_admission_rejects_missing_zero_complement(monkeypatch):
+@pytest.mark.parametrize('current,character,index', [
+    (1, -1, address((1, 11))), (-1, -1, address((0, 1))),
+    (0, -1, address((0, 1))), (1, 1, address((1, 11))),
+    (1, -1, 0), (1, -1, address((0, 11))),
+])
+def test_record_phase_endpoint_audit_rejects_wrong_active_hold_and_padding(current, character, index):
+    quarters = list(service.phase_quarters((0, 11), current, character))
+    quarters[index] = 2-quarters[index]
+    quarters = tuple(quarters)
+    # A wrong diagonal still has perfect integer Walsh inversion.
+    assert service.walsh_coefficients(service.walsh_coefficients(quarters)) == tuple(
+        512*x for x in quarters)
+    with pytest.raises(ArithmeticError, match='native endpoint action'):
+        service._audit_record_phase((0, 11), current, character, tuple(quarters))
+
+
+def test_layout_admission_rejects_changed_phase_outside_demonstration_seam(monkeypatch):
+    phase = service.phase_quarters
+
+    def corrupted(seam, current=1, character=-1):
+        if seam == (0, 11) and current == 0 and character == 1:
+            return (2,)+(0,)*511
+        return phase(seam, current, character)
+
+    monkeypatch.setattr(service, 'phase_quarters', corrupted)
+    with pytest.raises(ArithmeticError, match='native endpoint action'):
+        service._layout_certificate()
+
+
+@pytest.mark.parametrize('fault', ['missing', 'success_swap', 'success_phase',
+                                 'complement_swap', 'complement_phase', 'nan'])
+def test_complete_export_admission_binds_each_logical_and_failure_column(monkeypatch, fault):
     transfer = compiler.transfer_kraus
-    monkeypatch.setattr(compiler, 'transfer_kraus', lambda dimension: transfer(dimension)[:-1])
+
+    def corrupted(dimension):
+        rows = transfer(dimension)
+        if fault == 'missing':
+            return rows[:-1]
+        if fault == 'success_swap':
+            rows[0][[0, 1]] = rows[0][[1, 0]]
+        elif fault == 'success_phase':
+            rows[0] *= 1j
+        elif fault == 'complement_swap':
+            rows[1], rows[2] = rows[2], rows[1]
+        elif fault == 'complement_phase':
+            rows[1] *= 1j
+        else:
+            rows[0][0, 0] = np.nan
+        if fault not in ('missing', 'nan'):
+            # Completeness and zero admitted failure probability alone allow
+            # these wrong maps. The actual labeled column contract must fail.
+            assert np.array_equal(sum(k.conj().T@k for k in rows), np.eye(6))
+            assert all(not np.any(k[:, :dimension]) for k in rows[1:])
+        return rows
+
+    monkeypatch.setattr(compiler, 'transfer_kraus', corrupted)
     with pytest.raises(ArithmeticError, match='complete proper-code export'):
         service._proper_code_certificate()

@@ -236,7 +236,12 @@ def car_certificate():
 
 
 def complete_certificate():
-    """Bind all maps to the existing native source and check exact effects."""
+    """Bind both character families to the native maps and check exact effects.
+
+    Counts below describe one complete raw grid.  Mixed-sign counts refer
+    to the negative character; the positive family is separately enumerated
+    and must have exactly +1 in every supported column.
+    """
     originals = {(adaptive.actions()[r.action][0], adaptive.actions()[r.action][1], r.coin, r.raw): r
                  for r in adaptive.branch_maps(binary=True)}
     result = {}
@@ -288,8 +293,28 @@ def complete_certificate():
             columns += len(row.inputs)
         if any(value != 2 for values in counts.values() for value in values):
             raise ArithmeticError("complete fair-coin instrument is not trace preserving")
+        positive = branches(law, 1)
+        positive_labels = [(row.law, row.seam, row.coin, row.raw) for row in positive]
+        if len(positive_labels) != len(expected_labels) or set(positive_labels) != expected_labels:
+            raise ArithmeticError("positive lift requires the complete unique native raw branch grid")
+        for row in positive:
+            _label(row.law, row.seam, row.coin, row.raw)
+            admitted = ({0, 1, 2} if law == "C" else
+                        {0, 1, 2, 4, 5} if row.coin == 0 else {0, 1, 2, 4, 6})
+            original = originals[law, row.seam, row.coin, row.raw]
+            if (type(row.abort) is not bool or row.abort != (row.raw not in admitted)
+                    or (row.inputs, row.outputs) != (original.inputs, original.outputs)
+                    or tuple(zip(row.inputs, row.outputs)) != tuple(endpoint[law, row.seam, row.coin, row.raw])
+                    or len(row.signs) != len(row.inputs)
+                    or any(type(i) is not int or not 0 <= i < 66 for i in (*row.inputs, *row.outputs))
+                    or any(type(phase) is not int or phase != 1 for phase in row.signs)):
+                raise ArithmeticError("positive lift differs from the complete native instrument")
         result[law] = {"raw_slots": len(rows), "zero_slots": zeros, "abort_slots": aborts,
                        "input_columns": columns, "mixed_sign_slots": mixed,
+                       "counts_are_per_character": True,
+                       "mixed_sign_count_character": -1,
+                       "characters_checked": (1, -1),
+                       "positive_lift_matches_complete_native_instrument": True,
                        "every_KstarK_unchanged": True, "complete_trace_preservation": True}
     return result
 

@@ -97,6 +97,11 @@ def contract():
 def report():
     frozen = contract()
     pins = source_bindings()
+    # Importing the instrument already warms this geometry cache.  Recheck
+    # the retained source/spec binding even when report() is called again
+    # in that interpreter; hashing changed bytes is not their validation.
+    slow_geometry.source.cache_clear()
+    slow_geometry.source()
     topology = statistics_topology.certificate()
     instruments = statistics.certificate()
     execution = statistics_service.certificate()

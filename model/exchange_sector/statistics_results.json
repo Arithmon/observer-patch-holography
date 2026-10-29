@@ -13,6 +13,7 @@
       "identity_collision_and_padding_extension": true,
       "largest_record_selected_diagonal_pulse_count": 2042,
       "literal_native_source_addresses_checked": 78,
+      "record_phase_full_register_endpoint_oracle": true,
       "record_selected_diagonals_checked": 180
     },
     "one_attempt_witnesses": {
@@ -753,12 +754,14 @@
       "2": {
         "admitted_input_complement_probability_exact": "0",
         "complement_disposition": "retained terminal halt",
+        "literal_success_and_complement_columns_checked": true,
         "retained_complement_outcomes": 4,
         "success_outcomes": 1
       },
       "4": {
         "admitted_input_complement_probability_exact": "0",
         "complement_disposition": "retained terminal halt",
+        "literal_success_and_complement_columns_checked": true,
         "retained_complement_outcomes": 2,
         "success_outcomes": 1
       }
@@ -1855,19 +1858,33 @@
     "complete_native_maps": {
       "C": {
         "abort_slots": 60,
+        "characters_checked": [
+          1,
+          -1
+        ],
         "complete_trace_preservation": true,
+        "counts_are_per_character": true,
         "every_KstarK_unchanged": true,
         "input_columns": 3960,
+        "mixed_sign_count_character": -1,
         "mixed_sign_slots": 42,
+        "positive_lift_matches_complete_native_instrument": true,
         "raw_slots": 240,
         "zero_slots": 120
       },
       "E": {
         "abort_slots": 180,
+        "characters_checked": [
+          1,
+          -1
+        ],
         "complete_trace_preservation": true,
+        "counts_are_per_character": true,
         "every_KstarK_unchanged": true,
         "input_columns": 3960,
+        "mixed_sign_count_character": -1,
         "mixed_sign_slots": 42,
+        "positive_lift_matches_complete_native_instrument": true,
         "raw_slots": 480,
         "zero_slots": 300
       }
@@ -2570,14 +2587,14 @@
     "model/event_circulation/construction.py": "b3a53c02034fab7a24e77a35313257bc321dda1c4a52ef2a25f9b70616edf2ba",
     "model/exchange_sector/STATISTICS.md": "a4ab7dd6ce416e4ae0ea7046b91e521f9b816d87361afe0e36c29308e1967121",
     "model/exchange_sector/__init__.py": "2d1f6b450fdd85b1428978ae345da7220ee09c2901fa2a8abb23940ae5108114",
-    "model/exchange_sector/statistics.py": "f3cb37f14b7334c6c0a4afa48907cb8520791fe0d85de91f7edf904d4fd4121b",
+    "model/exchange_sector/statistics.py": "9bbfd1384e7e9800e010b5123591da85c23d6b114d8093f28606deb32e3214e5",
     "model/exchange_sector/statistics_contract.json": "fe979eb6e059f059d3196b785bdf578e71371bcc60fc6e3af68e6862aea1349b",
-    "model/exchange_sector/statistics_packet.py": "da2e7e1aaea162bb60a343a9deb41b18f5e1038d3eabac40c7874c360b68a5e2",
-    "model/exchange_sector/statistics_service.py": "afa2330ccc96edc6cf8bc5c6761877a98dbd62dcf4907e7f867af1a9bf3a82fe",
-    "model/exchange_sector/statistics_topology.py": "230782802115520057c16da18c08ceb9492e5b9d556375a7cf4f0984addf9754",
-    "model/exchange_sector/test_statistics.py": "56e4775a8a858b8eadca2b92c856fa1cccec68c9cfffac4e83b34346800a3bd4",
-    "model/exchange_sector/test_statistics_packet.py": "1de5f7cc01559869b3ea6dba8cbf1600f073cac94169794a2914a883462710e2",
-    "model/exchange_sector/test_statistics_service.py": "369ce560ac7fc0fe673a707902ea6ef85e5233de24bdada95ccf34931c03c50c",
+    "model/exchange_sector/statistics_packet.py": "6e88682c636e7b7f96962ab7684c727fd04729d23e9fb1b18b10ad4d9dd8f116",
+    "model/exchange_sector/statistics_service.py": "a0da5143bdb169b3531091ef16c347bbbe3327239a287170273468ab83a9a3af",
+    "model/exchange_sector/statistics_topology.py": "947389c13ffee8b933436d7263cbf2ed2d154dd4ec4cfbe41f5a61a5499f854d",
+    "model/exchange_sector/test_statistics.py": "5ef0107467370ecf256714f99b8c4247c2715fb82d72233334933a30c79a9bb1",
+    "model/exchange_sector/test_statistics_packet.py": "8f7b1bd7f4c61468140593bd9f28b4c2f50de3fd23b669ff6f1d9b1e4e764a07",
+    "model/exchange_sector/test_statistics_service.py": "834783d40d98441f49f9e0e6dc83bf19190a749024f3a060807e0aeb13703afc",
     "model/exchange_sector/test_statistics_topology.py": "694cd3da113c72006835b5e6844ba758b7da3265b5a640d99371bde957fece4d",
     "model/federated_observer/__init__.py": "f2352d90abb18dc526972cc1b849a049fdbe2993d379e711ed03c991130a077e",
     "model/federated_observer/source.py": "4a91b7f254fcee89c93b1ce3e9972ec0c809290ec987dbc87fcb0392319e549d",

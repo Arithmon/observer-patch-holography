@@ -1,5 +1,6 @@
 """Independent Fock, full-record, arbitrary-reference and readout controls."""
 from collections import Counter
+from dataclasses import replace
 from fractions import Fraction as F
 from itertools import product
 
@@ -85,6 +86,10 @@ def test_complete_slots_endpoint_oracle_signs_and_effects(law):
     result = s.complete_certificate()[law]
     assert result["input_columns"] == 3960
     assert result["mixed_sign_slots"] == 42
+    assert result["characters_checked"] == (1, -1)
+    assert result["counts_are_per_character"] is True
+    assert result["mixed_sign_count_character"] == -1
+    assert result["positive_lift_matches_complete_native_instrument"] is True
 
 
 def test_all_two_attempt_classical_feedback_histories_with_entangled_reference():
@@ -248,3 +253,34 @@ def test_zero_and_abort_slots_cannot_be_dropped_or_duplicated(monkeypatch, damag
     monkeypatch.setattr(s, "branches", changed)
     with pytest.raises(ArithmeticError, match="complete unique raw branch grid"):
         s.complete_certificate()
+
+
+def test_full_certificate_rejects_positive_character_silently_using_negative_lift(monkeypatch):
+    original = s.sign
+    monkeypatch.setattr(s, "sign", lambda a, b, character=-1: original(a, b, -1))
+    # All default negative-character checks still pass this mutation.  The
+    # executable receipt must separately bind the claimed native + family.
+    assert set(s.branch("C", (0, 5), 0, 1, 1).signs) == {-1, 1}
+    with pytest.raises(ArithmeticError, match="positive lift differs"):
+        s.certificate()
+
+
+@pytest.mark.parametrize("damage", ("drop_zero", "wrong_support", "wrong_abort"))
+def test_positive_lift_has_independent_complete_grid_support_and_metadata_checks(monkeypatch, damage):
+    original = s.branches
+    def changed(law, character=-1):
+        rows = list(original(law, character))
+        if character == 1:
+            if damage == "drop_zero":
+                rows.pop(next(i for i, row in enumerate(rows) if row.abort))
+            elif damage == "wrong_support":
+                index = next(i for i, row in enumerate(rows) if row.inputs)
+                row = rows[index]
+                rows[index] = replace(row, inputs=row.inputs[1:], outputs=row.outputs[1:], signs=row.signs[1:])
+            else:
+                index = next(i for i, row in enumerate(rows) if row.abort)
+                rows[index] = replace(rows[index], abort=False)
+        return tuple(rows)
+    monkeypatch.setattr(s, "branches", changed)
+    with pytest.raises(ArithmeticError, match="positive lift"):
+        s.certificate()

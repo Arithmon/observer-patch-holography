@@ -403,7 +403,7 @@ def _barycentric(point):
 
 
 def deleted_product_deformation(left, right, time):
-    """Evaluate the exact rational restriction of the continuous PL retraction."""
+    """Evaluate the exact rational restriction of the continuous retraction."""
     left, right, time = _barycentric(left), _barycentric(right), _time(time)
     if left == right:
         raise ValueError("configuration points must be distinct")
