@@ -46,7 +46,7 @@
     },
     "parents": {
       "claims/claim_registry.yaml": "5f9120c30e30cbf0b08bcb88f4a5a1828f4eaf9ec83940ffe7936fe200a005ed",
-      "claims/completion_program.json": "6b07c95f62a99183b77ca0cf19d23dd1980bfedc86a9a60db1902a0ba1e22235",
+      "claims/completion_program.json": "4e172e08af3f147fa57a4b625c85e665a0a130a831f5cbe64da4bd4a556d7502",
       "claims/executable_model_hypothesis.json": "1855a611870a64b3d97fbaa8759385761dda9130a1517233193af2c7f170cd2b",
       "docs/OPH_EXECUTABLE_HYPOTHESIS.md": "c503247a2b333c2e27b3eba865d47f2d15c966a5052eceb4aadb14fc9002f35a"
     },
@@ -353,6 +353,24 @@
             "CP-08",
             "CP-09",
             "CP-12",
+            "CP-13"
+          ],
+          "whole_program_frozen": false
+        },
+        {
+          "contract": {
+            "campaign_id": "mobile-screened-memory-20261029-v1",
+            "independent_check": "model/particle_screening/test_mobile_packet.py",
+            "path": "model/particle_screening/mobile_contract.json",
+            "scope": "Complete uniform-seam C/E moving-memory operation and optimal core-reset objective, with exact-code domain and coherent services explicit.",
+            "sha256": "a1f15e50b8af96928d327ae16e0159d2242b9052fc62b185035205f77378052e"
+          },
+          "id": "mobile-screened-memory-20261029-v1",
+          "scope": "FINITE_COMPONENT_FAMILY",
+          "supports": [
+            "CP-01",
+            "CP-03",
+            "CP-05",
             "CP-13"
           ],
           "whole_program_frozen": false
@@ -988,6 +1006,14 @@
             "path": "model/completion/acceptance_audit.py",
             "scope": "Exact noninteger pair-gap witness excludes an eta-calibrated invariant modular intertwiner from every finite independent native reference product. Approximate generator error exceeds1/24. Correlated references and counted alternative services are outside this exclusion.",
             "sha256": "dd7cdd1ae6f1b915afc6e30b573a47c7027cbf8bd9500d8c07e2076ada42d1ec"
+          },
+          {
+            "campaign_id": "mobile-screened-memory-20261029-v1",
+            "id": "mobile_screened_memory",
+            "independent_check": "model/particle_screening/test_mobile_packet.py",
+            "path": "model/particle_screening/mobile_results.json",
+            "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
+            "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08"
           }
         ],
         "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-29-v9",
@@ -998,7 +1024,8 @@
               "bound_pair",
               "moving_defect",
               "particle_premise_contract",
-              "native_localization"
+              "native_localization",
+              "mobile_screened_memory"
             ],
             "gate": "CP-03",
             "issue": 1139,
@@ -1318,6 +1345,13 @@
               "path": "model/biased_reset/results.json",
               "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the pending fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
               "sha256": "db4964d122ffefbf04a7479112307d342a2cf60c3a36f441244e74668069e1ae"
+            },
+            {
+              "campaign_id": "mobile-screened-memory-20261029-v1",
+              "independent_check": "model/particle_screening/test_mobile_packet.py",
+              "path": "model/particle_screening/mobile_results.json",
+              "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
+              "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08"
             }
           ],
           "requires": [
@@ -1587,6 +1621,13 @@
               "path": "model/completion/acceptance_audit.py",
               "scope": "Exact noninteger pair-gap witness excludes an eta-calibrated invariant modular intertwiner from every finite independent native reference product. Approximate generator error exceeds1/24. Correlated references and counted alternative services are outside this exclusion.",
               "sha256": "dd7cdd1ae6f1b915afc6e30b573a47c7027cbf8bd9500d8c07e2076ada42d1ec"
+            },
+            {
+              "campaign_id": "mobile-screened-memory-20261029-v1",
+              "independent_check": "model/particle_screening/test_mobile_packet.py",
+              "path": "model/particle_screening/mobile_results.json",
+              "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
+              "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08"
             }
           ],
           "requires": [
@@ -1857,6 +1898,13 @@
               "path": "model/native_localization/results.json",
               "scope": "Faithful native coherence with reference-identical complete tape/exterior, exact contrast lifetime, zero modular-energy excess and arbitrary-code exterior/clock exclusions. Its core is immobile; no topological particle or mass is assigned.",
               "sha256": "eba1771dce527ac4d5aa3bb1cc0a3c6cf5ab89ea2946ae62d43e5463bed8732f"
+            },
+            {
+              "campaign_id": "mobile-screened-memory-20261029-v1",
+              "independent_check": "model/particle_screening/test_mobile_packet.py",
+              "path": "model/particle_screening/mobile_results.json",
+              "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
+              "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08"
             }
           ],
           "requires": [
@@ -2075,6 +2123,13 @@
               "path": "model/bound_pair/results.json",
               "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
               "sha256": "de0b4ed00bd0636749d385e4fdc861d290c2a90a065833bc41c9e35c57e071d2"
+            },
+            {
+              "campaign_id": "mobile-screened-memory-20261029-v1",
+              "independent_check": "model/particle_screening/test_mobile_packet.py",
+              "path": "model/particle_screening/mobile_results.json",
+              "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
+              "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08"
             }
           ],
           "requires": [
@@ -2299,6 +2354,7 @@
             "EMH-4"
           ],
           "obstruction": "A genuine counterexample satisfying every theorem premise refutes the affected implication. A necessary failure of joint gravitational response can exclude the frozen program only with CP-12 coverage of the admissible class.",
+          "progress_evidence": [],
           "requires": [
             "CP-09"
           ],
@@ -2329,6 +2385,7 @@
             "EMH-5"
           ],
           "obstruction": "Reject the fixed formulation when its unavoidable prediction fails a valid frozen comparison. A whole-class empirical exclusion requires every admitted realization/nuisance choice to fail; a resource stop is a separate research decision.",
+          "progress_evidence": [],
           "requires": [
             "CP-07",
             "CP-10"

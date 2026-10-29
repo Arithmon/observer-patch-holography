@@ -330,6 +330,13 @@
           "independent_check": "model/biased_reset/test_reset.py",
           "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the pending fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
+        },
+        {
+          "path": "model/particle_screening/mobile_results.json",
+          "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08",
+          "independent_check": "model/particle_screening/test_mobile_packet.py",
+          "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
+          "campaign_id": "mobile-screened-memory-20261029-v1"
         }
       ]
     },
@@ -600,6 +607,13 @@
           "independent_check": "model/completion/test_acceptance_audit.py",
           "scope": "Exact noninteger pair-gap witness excludes an eta-calibrated invariant modular intertwiner from every finite independent native reference product. Approximate generator error exceeds1/24. Correlated references and counted alternative services are outside this exclusion.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
+        },
+        {
+          "path": "model/particle_screening/mobile_results.json",
+          "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08",
+          "independent_check": "model/particle_screening/test_mobile_packet.py",
+          "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
+          "campaign_id": "mobile-screened-memory-20261029-v1"
         }
       ]
     },
@@ -870,6 +884,13 @@
           "independent_check": "model/native_localization/test_localization.py",
           "scope": "Faithful native coherence with reference-identical complete tape/exterior, exact contrast lifetime, zero modular-energy excess and arbitrary-code exterior/clock exclusions. Its core is immobile; no topological particle or mass is assigned.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
+        },
+        {
+          "path": "model/particle_screening/mobile_results.json",
+          "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08",
+          "independent_check": "model/particle_screening/test_mobile_packet.py",
+          "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
+          "campaign_id": "mobile-screened-memory-20261029-v1"
         }
       ]
     },
@@ -1088,6 +1109,13 @@
           "independent_check": "model/bound_pair/test_mass.py",
           "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
+        },
+        {
+          "path": "model/particle_screening/mobile_results.json",
+          "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08",
+          "independent_check": "model/particle_screening/test_mobile_packet.py",
+          "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
+          "campaign_id": "mobile-screened-memory-20261029-v1"
         }
       ]
     },
@@ -1310,7 +1338,8 @@
         1026,
         1078
       ],
-      "accepted_evidence": []
+      "accepted_evidence": [],
+      "progress_evidence": []
     },
     {
       "id": "CP-11",
@@ -1341,7 +1370,8 @@
         1025,
         1078
       ],
-      "accepted_evidence": []
+      "accepted_evidence": [],
+      "progress_evidence": []
     },
     {
       "id": "CP-12",
@@ -1728,6 +1758,24 @@
         "independent_check": "model/completion/test_particle_premise_joins.py",
         "scope": "Four selected issues and the common local action, finite interfaces, pending-draft boundaries and complete-criteria closure policy. No integrated gate or physical comparison is accepted."
       }
+    },
+    {
+      "id": "mobile-screened-memory-20261029-v1",
+      "scope": "FINITE_COMPONENT_FAMILY",
+      "whole_program_frozen": false,
+      "supports": [
+        "CP-01",
+        "CP-03",
+        "CP-05",
+        "CP-13"
+      ],
+      "contract": {
+        "path": "model/particle_screening/mobile_contract.json",
+        "sha256": "a1f15e50b8af96928d327ae16e0159d2242b9052fc62b185035205f77378052e",
+        "independent_check": "model/particle_screening/test_mobile_packet.py",
+        "scope": "Complete uniform-seam C/E moving-memory operation and optimal core-reset objective, with exact-code domain and coherent services explicit.",
+        "campaign_id": "mobile-screened-memory-20261029-v1"
+      }
     }
   ],
   "next_wave": {
@@ -1773,7 +1821,8 @@
           "bound_pair",
           "moving_defect",
           "particle_premise_contract",
-          "native_localization"
+          "native_localization",
+          "mobile_screened_memory"
         ]
       },
       {
@@ -2357,6 +2406,14 @@
         "independent_check": "model/completion/test_acceptance_audit.py",
         "scope": "Exact noninteger pair-gap witness excludes an eta-calibrated invariant modular intertwiner from every finite independent native reference product. Approximate generator error exceeds1/24. Correlated references and counted alternative services are outside this exclusion.",
         "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
+      },
+      {
+        "path": "model/particle_screening/mobile_results.json",
+        "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08",
+        "independent_check": "model/particle_screening/test_mobile_packet.py",
+        "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
+        "campaign_id": "mobile-screened-memory-20261029-v1",
+        "id": "mobile_screened_memory"
       }
     ]
   },
