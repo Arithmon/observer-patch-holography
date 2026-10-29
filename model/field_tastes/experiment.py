@@ -12,7 +12,7 @@ def source_bindings():
     paths=list(HERE.glob('*.py'))+[HERE/'README.md']
     paths.extend(ROOT/p for p in ('model/bound_pair/fiber.py','model/bound_pair/spectrum.py',
         'model/interacting_field/lattice.py','model/observer/scalar_response/experiment.py'))
-    return {str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(paths)}
+    return {p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(paths)}
 
 
 def run():

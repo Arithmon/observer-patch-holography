@@ -14,7 +14,7 @@ def source_bindings():
     paths.extend(ROOT/name for name in (
         'model/interacting_field/lattice.py','model/field_stress/energy.py',
         'model/particle_clock/clock.py','model/completion/particle_premise_campaign.json'))
-    return {str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest()
+    return {p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest()
             for p in sorted(paths)}
 
 
