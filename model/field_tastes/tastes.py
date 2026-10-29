@@ -32,7 +32,10 @@ def momentum_operator(fiber,interaction=1.):
     """Complete four-spin fiber; U=0 is an explicit action-deletion control."""
     if interaction not in (0.,1.):
         raise ValueError('retained interaction is zero or one')
-    return sparse.block_diag(fiber.blocks,format='csr')+interaction*sparse.csr_matrix(
+    # Explicit sparse-matrix inputs preserve matrix semantics across SciPy's
+    # transition of dense-only block_diag inputs to the sparse-array interface.
+    blocks = [sparse.csr_matrix(block, dtype=np.complex128) for block in fiber.blocks]
+    return sparse.block_diag(blocks,format='csr',dtype=np.complex128)+interaction*sparse.csr_matrix(
         np.outer(fiber.d,fiber.d.conj()))
 
 

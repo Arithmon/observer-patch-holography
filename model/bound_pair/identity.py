@@ -74,7 +74,8 @@ def car_pair_certificate():
 def local_numbers(lattice):
     """Integer N_x on the full retained two-fermion sector."""
     return [GaussianInteger.from_exact(sparse.diags(
-        (lattice.first//2==site).astype(int)+(lattice.second//2==site).astype(int)))
+        (lattice.first//2==site).astype(np.int64)+(lattice.second//2==site).astype(np.int64),
+        dtype=np.int64))
         for site in range(lattice.volume)]
 
 
