@@ -1,18 +1,10 @@
 # Continuous equivariant degree: independent proof candidate
 
-Date: 2026-10-29. Source base: `f94cde24b8b3486ad6e1e823498bb29587f026bb`.
-
-Acceptance status: **FROZEN_PAIR_AND_ALGEBRAIC_CROSSCHECK_ONLY**. The original
-Bernhard Mueller message, its §III, and the four scripts at their advertised
-commit were not located. No execution or independent review of those scripts
-is claimed. The argument below is an independently written proof candidate.
-The separate numerical/finite verifier checks arithmetic and representation
-typing; it does **not** independently audit the continuous regularization
-argument. In particular, this branch does not emit
-`CONTINUOUS_TWIN_DEGREE_FLOOR_PROVED`. The remaining acceptance obligation is
-hostile mathematical review of Lemma 1, especially its relative approximation
-and free-part transversality step, and the normalizer comparison in Lemma 2.
-No failing arithmetic or counterexample to the proposed theorem was found.
+Acceptance status: **FROZEN_PAIR_AND_ALGEBRAIC_CROSSCHECK_ONLY**. The
+continuous argument is a proof candidate. The executable verifiers check
+finite arithmetic and representation typing; they do not certify relative
+approximation, free-part transversality or the normalizer comparison below.
+No `CONTINUOUS_TWIN_DEGREE_FLOOR_PROVED` gate is emitted.
 
 ## Objects and statement to review
 
@@ -92,7 +84,8 @@ Here is a relative regularization argument, including the critical-pole case.
    The evaluation family is therefore transverse to y+. Parametric
    transversality (equivalently Sard applied to this finite parameter family)
    gives a small parameter choice making y+ regular on the complement.
-   Perturbations are small enough that no other points enter the fibre.
+   Perturbations are small enough that points outside the covered neighborhoods
+   cannot enter the fibre.
 
 5. The new fibre consists of x+, of local index k, and finitely many free
    orbits of size p. Proper rotations on source and target give equal
@@ -198,7 +191,7 @@ uses coprimality modulo 101 with nonvanishing leading coefficients. This
 checks base-point freeness of that explicit formula. Source-typed full
 equivariance of that coordinate formula is not asserted by the gcd test.
 
-## Checked literature and remaining custody
+## Literature and application boundary
 
 [Houghton–Manton–Sutcliffe, hep-th/9705151v2](https://arxiv.org/html/hep-th/9705151)
 gives degree-seven formulas in (3.18), the family in (3.19), and the
@@ -214,20 +207,8 @@ classifies the four commuting rational maps of degree below 31, with degrees
 1,11,19,29. It does not classify twin-equivariant continuous maps. The
 category difference prevents importing it as the universal degree theorem.
 
-Searches covered fetched OPH refs and paths, GitHub code/issues/commits in
-FloatingPragma/observer-patch-holography and muellerberndt/oph-physics-sim
-using Kostant, Galois, equivariant, degree and degree-seven. No original
-§III or four-script commit was identified. Indexed simulator results pointed
-to `90095f32e7b88dd120158130802cf9caccf7f3d5`. The complete recursive
-simulator tree at that commit was then inspected (2,474 entries, not
-truncated). Its `port_gram_equivariant_action.py` and independent verifier
-concern finite twelve-port recharting of a conditional metric completion;
-they are not the announced continuous-degree packet. No branch named for
-degree was returned by branch search. This bounds the search and does not
-exclude unpublished scripts or scripts with unrelated names.
-
 Even if the continuous theorem is accepted, applying it to the A1 support
 requires a source-selected relative map, the same oriented realized target
 sphere, compatible refinement maps, and a proved equivariance equation.
 The seed/degree receipts do not supply these premises. Any degree-one twin
-exclusion is conditional on them; physical identification remains open.
+exclusion is conditional on them; physical identification is unfulfilled.

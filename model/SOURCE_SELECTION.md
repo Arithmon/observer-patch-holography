@@ -23,15 +23,6 @@ instance. It adds no core axiom or scientific ledger. The claim registry and
 the generated
 [premise map](PREMISES.md) retain their existing ownership and statuses.
 
-The [relative port/support audit](../code/a5_closure/port_support_source_audit.md)
-retains all sixty oriented seed maps. The fixed support mark has a C5
-stabilizer, but no relative port map is selected in that audited source
-corpus. All sixty actions preserve midpoint subdivision; only the identity
-commutes with the implemented `max(edge)` coarsening at the three tested
-transitions. That endpoint rule is a transported presentation convention.
-It supplies no physical direction or preferred golden embedding. A common
-local refinement tower and oriented realized-sphere comparison remain owed.
-
 <a id="current-bridge-to-physical-observations"></a>
 
 ## Current bridge to physical observations
