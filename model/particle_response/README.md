@@ -163,3 +163,45 @@ numerically against complete output vectors; the numerical tolerance is not a
 new exact compilation theorem, laboratory error bar or physical clock
 calibration. Tests inject genuine export leakage and reject it, along with
 external preparation substitution and malformed inputs.
+
+## Periodic momentum diagnostic
+
+`python -m model.particle_response.dispersion` explicitly extends the same
+z-axis Weyl/contact action to a periodic **four-site** ring. All 256 Fock states
+remain. A signed fermionic translation matrix supplies momentum, and the
+eigensystem resolves every number, component and translation sector. The
+Fourier convention `c†_k=sum_x exp(-ikx)c†_x/2` gives translation eigenphase
+`exp(+ik)` and free symbol `+c*sigma_z*sin(k)`; the opposite Fourier convention
+changes this sign without changing the action. No momentum is assigned to an
+open-dimer eigenvalue.
+
+The ring's half-filled ground is unique at `U=1`. Charge-one probes give a
+lowest doublet-sector gap **0.4175457854** at `k=0,pi`. At `k=pi/2`, the two
+components give **0.4723570583** and **0.5944851107**, interchanged at `3pi/2`.
+Leading residues are approximately `0.334530`, `0.674414` and `0.325544`.
+Addition at `k` and removal at `-k` have equal complete pole residues and gaps;
+each mode satisfies the full addition/removal CAR sum rule. Lower dark
+spin-3/2 levels remain in the catalogue. The exact odd-number projector
+`(15/4-S²)/3` and the singlet-ground probe map select spin 1/2 without deleting
+those levels or numerical amplitudes.
+
+The declared lattice benchmark `E(k)²=m²+c²*sin(k)²` fails both with the fixed
+dimer mass anchor and with the ring's own zero-momentum gap while holding the
+supplied speed `c=1/8`. These are separate comparisons: the ring/dimer rest-gap
+ratio is **0.9219621585**, a volume/reference change, whereas the lowest
+envelope's same-volume squared-frequency residual exceeds **0.03315**.
+A fitted envelope speed is **0.2208544942**, with fitted slope **3.1217092863**
+times `c²`. There are only two distinct `sin²(k)` values, so fitting mass and
+speed succeeds by construction and supplies no dispersion evidence. It does
+not independently recover an effective velocity, a photon or a physical clock.
+
+The component-resolved poles do not share one fitted shell. However, the
+untwisted internal transverse spin generators shift crystal momentum by `pi`;
+they are not a Lorentz-spin dictionary commuting with translations. The result
+rejects this **fixed finite benchmark**. It does not exclude an emergent
+Lorentz regime with renormalized velocity, a different finite-volume limit,
+the continuum theory or OPH. No source preparation/probe run is claimed for
+this larger ring. Independent full Jordan–Wigner matrices, Gibbs references
+on all sectors, time-domain response and the free Bloch symbol check the
+calculation. The free control retains both zero-energy nodes and explicitly
+reports its 16-fold grand-canonical (six-fold half-filled) ground degeneracy.

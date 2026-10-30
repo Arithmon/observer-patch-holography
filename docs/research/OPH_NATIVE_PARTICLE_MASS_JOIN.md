@@ -5,6 +5,47 @@ source-bound evidence and its tested mass prescriptions. This page
 tracks native candidates in the [completion program](../COMPLETION_PROGRAM.md).
 Neither component has yet identified a physical particle or its rest mass.
 
+
+## Declared field candidates and measured-mass comparison
+
+The [particle-response construction](../../model/particle_response/README.md)
+resolves two charge-one excitations of the same interacting dimer about its
+supplied half-filled ground of `K=H−N/2`. The lower `N=1` hole and `N=3`
+particle are odd-parity internal SU(2) doublets, related by an explicit
+particle–hole symmetry. Both have model gap
+`Delta=sqrt(17)/8−1/16 ≈ 0.4528882032` and local single-mode residue
+`0.3106339063`. Complete source Ramsey records reproduce their addition and
+removal correlations; all preparations, pointer outcomes and failures count.
+
+The [comparison packet](../../model/particle_comparison/README.md) declares
+conditional electron-like and positron-like assignments. One CODATA electron
+mass calibration sets `kappa=(m_e c²)/Delta`. Both mass energies are then
+`0.51099895069 MeV`, with fully correlated calibration uncertainty. Their
+predicted normalized difference is zero and satisfies the explicitly
+conditional PDG positronium bound. **No absolute particle mass is independently
+predicted.** CAR number charge and an internal doublet have not been identified
+with electromagnetic charge and Lorentz spin. A physical vacuum, continuum
+dispersion, protected transport and a same-excitation topological-defect map
+are still missing. The two-site frequencies alone cannot supply those maps.
+The [executable dictionary](../../model/particle_comparison/dictionary.py)
+supplies their conditional SI operators and a common time/length conversion.
+Its complete current/dipole response passes the finite external-electric-field
+checks. The magnetic moment and QED photon interaction are undetermined.
+A separate periodic four-site check fails the fixed-mass/bare-speed lattice
+Dirac benchmark, including a diagnostic using its own rest gap. Hopping,
+fermion wrapping signs and momenta agree with independent reconstruction.
+The boundary/volume change and possible velocity renormalization prevent a
+continuum no-go; two momentum-squared values cannot validate a fitted law.
+
+An exact audit of all signed charge-one transition frequencies excludes every
+assignment to the electron, muon and tau mass-ratio windows, even after an
+arbitrary common chemical-potential shift and positive energy scale. This
+rejects that finite mass attachment, not the full OPH proposal. The fixed
+alpha/ACT data replay is also retrospective and supplies no universe-membership
+test. The complete physical comparison gate remains open.
+
+## Native memory and energy conditions
+
 The [mobile-memory construction](../../model/particle_screening/mobile.py)
 now carries the same unknown qubit between all 60 admissible core locations.
 It keeps naturally moved cores and intervenes only at the six impossible

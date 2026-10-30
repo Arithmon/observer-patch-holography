@@ -60,12 +60,87 @@ of `8×10⁻⁹` at 90% confidence, obtained from
 assuming the positronium Rydberg constant is exactly half the hydrogen one.
 This is a conditional equality comparison, not a g-factor comparison,
 independent positron absolute-mass measurement, or unique OPH signature.
+Admission checks enforce the mass observable, MeV calibration units,
+dimensionless difference, confidence level, source citations, Rydberg
+assumption and calibration/comparison roles. Duplicate JSON keys,
+nonfinite values and undeclared conversions reject before comparison.
 
 The physical vacuum, electric-charge dictionary, Lorentz spin, continuum
 dispersion, stable physical pole and same-excitation defect/transport/clock
 map remain unestablished. Doublet multiplicity alone does not give physical
 spin. The internal particle–hole symmetry supplies a useful candidate relation;
 it does not identify the excitations with observed electrons and positrons.
+
+
+## Executable unit and operator dictionary
+
+[`dictionary.py`](dictionary.py) supplies the complete sixteen-state benchmark
+map, retaining the same reference and candidate projectors:
+
+| Model quantity | Assigned physical quantity |
+| --- | --- |
+| Excess number | `Q=e(N−2I)` |
+| Internal spin | `S_phys=hbar*S_internal` |
+| Ground-relative generator | `H_phys=kappa*(K−E0 I)` |
+| Hamiltonian model coordinate `s` | `t_phys=(hbar/kappa)*s` |
+| Model lattice coordinate `x` | `x_phys=(c_phys/c_model)*(hbar/kappa)*x` |
+| Oriented number current `J` | `I_phys=(e/Tunit)*J` |
+
+The exact SI definitions of `h`, `e` and `c` come from
+[BIPM](https://www.bipm.org/en/measurement-units/si-defining-constants).
+With the single electron-energy calibration, one model time unit is
+`5.83360161713e−22 s` and one lattice unit is `1.39909581423e−12 m`.
+The assigned lattice spacing is `3.6231056256` reduced Compton lengths.
+This finite benchmark therefore does not resolve that length scale.
+The code checks the complete charge/spin/symmetry maps, Heisenberg evolution,
+local continuity and Peierls current units. Exact arithmetic enclosures and
+fully correlated calibration uncertainty are retained separately from
+unquantified physical-dictionary error. The assigned Hamiltonian clock has
+no derived intertwiner with native incident or modular time.
+
+## Electromagnetic applicability checks
+
+[`electromagnetism.py`](electromagnetism.py) lifts the existing Peierls law
+to all sixteen Fock states and tests the two actual charged projectors.
+Both have nonzero electric dipole and current response, with complete
+transition weights `1/4` and `1/256`, and first dipole moment `1/32` in model
+units. The full operator continuity identity, charge-conjugation signs and
+spectral double-commutator sum rule hold. These are meaningful external-field
+charge responses.
+
+The open bond has no loop flux. Its phase is removable by a gauge
+transformation, so its spectrum cannot measure a magnetic moment or `g`.
+The actual bare onsite interaction has constant Fourier kernel; it does not
+have the momentum dependence of static Coulomb exchange. This distinguishes
+the supplied contact action from a directly identified Maxwell interaction;
+it does not exclude an emergent photon in another limit. A dynamical photon,
+annihilation photons and physical QED identification are unestablished.
+
+
+## Dispersion and finite-volume controls
+
+The open dimer has no translation momentum. The diagnostic therefore declares
+a separate periodic four-site ring with the same local Weyl/contact action,
+retaining all 256 Fock states. It checks the signed fermionic translation,
+number blocks, unique half-filled ground, complete Fourier-probe residues,
+particle–hole relation and the free symbol with both massless nodes.
+
+The lowest charged gap at `k=0,pi` is `0.4175457854`; at `k=±pi/2` the two
+spin-resolved probes have lowest visible gaps `0.4723570583` and
+`0.5944851107`, with substantial residues. These disagree with
+`E(k)^2=m^2+c_model^2*sin(k)^2` under the declared dimer mass calibration.
+The ring/dimer rest-gap ratio `0.9219621585` is a finite-volume/reference
+change; even using the ring's own rest gap does not repair the bare-speed
+benchmark. Independent entrywise Jordan–Wigner reconstruction reproduces the
+numbers, periodic signs and hopping normalization.
+
+Fitting only the lowest envelope gives `c_eff=0.2208544942`, versus supplied
+`c_model=0.125`. There are only two distinct `sin(k)^2` values, so fitting an
+intercept and slope cannot test the functional form or recover a physical
+velocity. Renormalized Lorentz behavior in another limit is not excluded.
+The result rejects the stated finite dictionary benchmark; it establishes
+neither electrons/positrons nor a universal OPH no-go. These diagnostics do
+not add source execution on the ring or a physical photon clock.
 
 ## Exhaustive three-lepton exclusion, including energy-origin freedom
 

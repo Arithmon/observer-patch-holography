@@ -3,18 +3,18 @@
   "as_of": "2026-10-30",
   "gate": "CP-13",
   "selected_issues": [
-    1139,
+    1138,
     1141,
     1142,
-    1144,
-    1145,
+    1143,
+    1147,
     1137
   ],
   "canonical_registry": "tracking/premise_register.json",
   "physical_comparison_count_added": 0,
   "canonical_premises_discharged": [],
-  "finite_obligations_realized": 15,
-  "scope": "Exhaustive ownership/relevance navigation for all84canonical premise rows, with20explicit finite theorem/model attachments,15realized on their stated domains. This is not a fresh proof audit of every imported theorem or tracked Lean module; no canonical physical premise is discharged.",
+  "finite_obligations_realized": 17,
+  "scope": "Exhaustive ownership/relevance navigation for all 84 canonical premise rows, with 22 explicit finite theorem/model attachments, 17 realized on their stated domains. The empirical comparison remains retrospective and ineligible for CP11 physical acceptance. This is not a fresh proof audit of every imported theorem or tracked Lean module; no canonical physical premise is discharged.",
   "existing_navigation_coverage": {
     "claim_count": 346,
     "lean_module_count": 662,
@@ -1570,6 +1570,48 @@
         "def car_restriction"
       ],
       "boundary": "Complete source words prepare a faithful interacting Gibbs marginal on one/two sites with retained purification, all exports and a subsequent field/pointer history. All-number CAR restrictions compose and the matrix first law holds; initialization, beta/action, larger-reference preparation and geometric premises remain supplied."
+    },
+    "reference_recovery": {
+      "path": "model/reference_recovery/recovery.py",
+      "anchors": [
+        "def compile_isometry",
+        "class RecoveryService",
+        "def reference_preparation"
+      ],
+      "boundary": "Bounded source words implement the faithful-reference Petz channel and its adjoint observation effects, retaining environments, arbitrary input/reference columns, both pointer outcomes and every export branch. The two-site interacting Gibbs instance uses supplied blanks, reference and design parameters; recovery is neither a retraction nor physical clock selection."
+    },
+    "particle_response": {
+      "path": "model/particle_response/spectrum.py",
+      "anchors": [
+        "class Measure",
+        "class FieldSpectrum"
+      ],
+      "boundary": "Complete all-number Lehmann measures and source Ramsey readout distinguish a faithful thermal reference from a supplied pure half-filled ground. Exact dimer maps identify charge-one particle/hole doublets and charge-two singlets with nonzero residues, parity and internal spin; physical species, Lorentz spin, topological defects and absolute masses are not derived."
+    },
+    "contact_scattering": {
+      "path": "model/contact_scattering/scattering.py",
+      "anchors": [
+        "def volume_enclosure",
+        "class ContactFiber"
+      ],
+      "boundary": "The same Weyl/contact pair pole occurs in the exact complete two-fermion T matrix, with an optical identity and uniform fixed-broadening thermodynamic bounds. A separate complete source interaction echo has a rational positive signal bound. Fixed lattice spacing, model time and supplied preparations are explicit; no on-shell physical S matrix or chiral continuum is obtained."
+    },
+    "particle_comparison": {
+      "path": "model/particle_comparison/compare.py",
+      "anchors": [
+        "def certify_source",
+        "def affine_cases",
+        "def build"
+      ],
+      "boundary": "Exact current-source dimer spectroscopy excludes all 672 common-scale/common-chemical-potential three-lepton assignments to the declared broad ratio windows. A conditional electron-like/positron-like pair has equal gaps after one supplied electron calibration, with zero independently predicted absolute masses. The actual CODATA/ACT replay is retrospective and adds zero eligible CP11 comparisons."
+    },
+    "particle_applicability": {
+      "path": "model/particle_comparison/dictionary.py",
+      "anchors": [
+        "class BenchmarkDictionary",
+        "def report"
+      ],
+      "boundary": "An executable sixteen-state benchmark supplies Q=e(N-2), S=hbar*S_internal and one measured electron energy scale, giving assigned Hamiltonian-time and lattice-length units. Complete candidate electric-current/dipole response obeys continuity and charge conjugation, but the pure-gauge open bond measures no magnetic moment and its bare contact kernel is not Coulomb exchange. A separately declared four-site periodic extension checks momentum, all number sectors, particle-hole residues and free doublers. Its charged poles fail the fixed dimer-mass/bare-speed lattice-Dirac benchmark and a same-volume rest-gap variant. Finite-volume shifts and a possible renormalized velocity remain distinct: two momentum-squared values cannot validate a fitted dispersion. This rejects only that supplied finite dictionary benchmark, not an OPH continuum; physical electron/positron identity and QED remain unestablished."
     }
   },
   "attachments": [
@@ -2208,7 +2250,7 @@
     },
     {
       "id": "FA-18",
-      "title": "Source-prepared bounded interacting Gibbs marginal and complete continuation",
+      "title": "Source-prepared bounded Gibbs reference, compiled recovery and complete observation",
       "classification": "realized_on_claimed_domain",
       "owners": [
         "CP-02",
@@ -2216,26 +2258,30 @@
         "CP-09"
       ],
       "reviewed_sources": [
-        "field_thermal"
+        "field_thermal",
+        "reference_recovery"
       ],
       "interface": {
         "state": "Full Fock density on one/two sites; supplied zero work bits and an equally large retained purifier. Field marginal faithful; joint state pure.",
         "algebra": "Full all-number field matrix algebra and signed CAR regional CPTP restrictions, with arbitrary external references.",
-        "operation": "Compiled amplitudes/phases, all reset-export Kraus branches, Weyl/contact continuation and complete occupation pointer. Reference observation effects remain mathematical maps.",
+        "operation": "Compiled Gibbs purification, faithful-reference Petz isometry and global occupation pointer, with every reset-export Kraus branch, purifier and recovery environment retained. The adjoint implements the reference observation effects on all admitted input/reference columns; nested recovery requires the same intermediate reference.",
         "clock": "Declared inverse temperature beta and Hamiltonian model duration; no physical seconds or temperature identification.",
         "refinement": "Finite bounded source execution and exact algebraic nested restrictions, not scalable global Gibbs preparation or a spatial continuum."
       },
-      "conclusion": "Complete source words prepare a faithful interacting Gibbs marginal on one/two sites with retained purification, all exports and a subsequent field/pointer history. All-number CAR restrictions compose and the matrix first law holds; initialization, beta/action, larger-reference preparation and geometric premises remain supplied.",
+      "conclusion": "Complete source words prepare a faithful interacting Gibbs marginal on one/two sites with retained purification, all exports and a subsequent field/pointer history. All-number CAR restrictions compose and the matrix first law holds; initialization, beta/action, larger-reference preparation and geometric premises remain supplied. Bounded Gray-row QR source synthesis implements the Petz recovery and its reference observation adjoint, including regional reference preparation and a global pointer. The recovery preserves the selected reference but is neither a regional retraction nor a modular-covariance theorem.",
       "remaining": [
         "Full band-reference preparation, source-selected beta/action and physical clock/vacuum.",
-        "Compiled common-reference observations and all geometric/null/area/refinement premises."
+        "Scalable compatible reference-map compilation and all geometric/null/area/refinement premises."
       ],
       "witnesses": [
         "model/field_thermal/thermal.py",
-        "model/field_thermal/README.md"
+        "model/field_thermal/README.md",
+        "model/reference_recovery/recovery.py",
+        "model/reference_recovery/README.md"
       ],
       "countercontrols": [
-        "model/field_thermal/test_thermal.py"
+        "model/field_thermal/test_thermal.py",
+        "model/reference_recovery/test_recovery.py"
       ],
       "proof_kind": "Finite spectral/purification proof, source word execution and independent full-export/reference/entropy countercontrols.",
       "new_lean_inhabitant": false,
@@ -2307,6 +2353,85 @@
       "proof_kind": "Explicit noncommutative finite presentation certificate and independent relator/parity replay.",
       "new_lean_inhabitant": false,
       "physical_identification": false
+    },
+    {
+      "id": "FA-21",
+      "title": "Complete-field particle response and same-ground charged candidates",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-05",
+        "CP-07"
+      ],
+      "reviewed_sources": [
+        "particle_response",
+        "particle_applicability"
+      ],
+      "interface": {
+        "state": "Complete Fock states through eight field modes. The supplied faithful Gibbs state and separately supplied pure half-filled ground have distinct declared reference contracts.",
+        "algebra": "Every CAR number sector and transition, including zero/dark weights; exact dimer charged projectors, particle-hole unitary and internal SU(2) maps.",
+        "operation": "Lehmann moments, KMS/CAR checks and counted source Ramsey readouts retain purification, both pointer outcomes and all export failures. Odd single-field controlled probes require supplied logical access.",
+        "clock": "Hamiltonian model coordinate conjugate to K=H-mu*N. Equal model gaps and one conditional measured calibration do not give independently predicted physical masses.",
+        "refinement": "Exact finite-dimer identities and bounded source readout; no continuum rest dispersion, physical spin or defect identification. The separate four-site periodic ring is a finite boundary/volume extension, not refinement convergence."
+      },
+      "conclusion": "Complete all-number Lehmann measures and source Ramsey readout distinguish a faithful thermal reference from a supplied pure half-filled ground. Exact dimer maps identify charge-one particle/hole doublets and charge-two singlets with nonzero residues, parity and internal spin; physical species, Lorentz spin, topological defects and absolute masses are not derived. An executable sixteen-state benchmark supplies Q=e(N-2), S=hbar*S_internal and one measured electron energy scale, giving assigned Hamiltonian-time and lattice-length units. Complete candidate electric-current/dipole response obeys continuity and charge conjugation, but the pure-gauge open bond measures no magnetic moment and its bare contact kernel is not Coulomb exchange. A separately declared four-site periodic extension checks momentum, all number sectors, particle-hole residues and free doublers. Its charged poles fail the fixed dimer-mass/bare-speed lattice-Dirac benchmark and a same-volume rest-gap variant. Finite-volume shifts and a possible renormalized velocity remain distinct: two momentum-squared values cannot validate a fitted dispersion. This rejects only that supplied finite dictionary benchmark, not an OPH continuum; physical electron/positron identity and QED remain unestablished.",
+      "remaining": [
+        "Common native protected defect, physical current and Lorentz-spin mapping, calibrated observer clock and independently derived masses.",
+        "Controlled chiral continuum with all tastes and a source-selected vacuum/reference."
+      ],
+      "witnesses": [
+        "model/particle_response/spectrum.py",
+        "model/particle_response/README.md",
+        "model/particle_response/dimer.py",
+        "model/particle_response/source.py",
+        "model/particle_comparison/dictionary.py",
+        "model/particle_comparison/electromagnetism.py",
+        "model/particle_response/dispersion.py"
+      ],
+      "countercontrols": [
+        "model/particle_response/test_response.py",
+        "model/particle_comparison/test_dictionary.py",
+        "model/particle_comparison/test_electromagnetism.py",
+        "model/particle_response/test_dispersion.py"
+      ],
+      "proof_kind": "Exact dimer operator and residue identities, complete spectral measure, independent Jordan-Wigner controls and numerical complete-output source execution.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-22",
+      "title": "Same-pole contact response, fixed-broadening volume limit and source echo",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-06",
+        "CP-07"
+      ],
+      "reviewed_sources": [
+        "contact_scattering"
+      ],
+      "interface": {
+        "state": "Complete two-fermion fixed-total-momentum fibers, all four spin entries and relative momenta, with the exact physical exchange projector; local echo retains the complete four-mode Fock space and reference.",
+        "algebra": "Rank-one contact resolvent and T matrix on the full physical fiber; response operators are not quantum channels.",
+        "operation": "Exact optical identity and bound-pair residue map, rational Fourier-alias enclosure, and a separate complete source interaction echo with both pointer outcomes and all export failures.",
+        "clock": "z=E+i*eta with eta>0 and Hamiltonian model duration t. Broadening and the reverse-free echo control are supplied; physical scattering time is not identified.",
+        "refinement": "Uniform fixed-eta thermodynamic limit at fixed lattice spacing. Neither eta-to-zero interchange nor an asymptotic on-shell S matrix or chiral spatial continuum is inferred."
+      },
+      "conclusion": "The same Weyl/contact pair pole occurs in the exact complete two-fermion T matrix, with an optical identity and uniform fixed-broadening thermodynamic bounds. A separate complete source interaction echo has a rational positive signal bound. Fixed lattice spacing, model time and supplied preparations are explicit; no on-shell physical S matrix or chiral continuum is obtained.",
+      "remaining": [
+        "Asymptotic scattering-state preparation/readout, an on-shell limit, and a common physical field/particle dictionary.",
+        "Source-selected native action, physical clock, chiral continuum and complete same-excitation protection/defect attachment."
+      ],
+      "witnesses": [
+        "model/contact_scattering/scattering.py",
+        "model/contact_scattering/README.md",
+        "model/contact_scattering/collision.py"
+      ],
+      "countercontrols": [
+        "model/contact_scattering/test_scattering.py",
+        "model/contact_scattering/test_collision.py"
+      ],
+      "proof_kind": "Exact rank-one/optical identities and analytic complex-strip Fourier bound; rational local-signal enclosure and independent complete-matrix/source-export controls.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
     }
   ],
   "cleanup": {
@@ -2324,45 +2449,16 @@
     ]
   },
   "issue_closure_review": {
-    "1139": {
+    "1138": {
       "close_issue": false,
-      "unaccepted_predecessors": [],
-      "unfulfilled_acceptance": [
-        "A boundary charge invariant under the complete admitted native repair law and a controlled defect sector. The exterior-matched faithful coherence has an immobile core and zero modular-energy excess.",
-        "The closed-H bound band and active native code are distinct realizations; no common native topological defect is established."
-      ],
       "required_predecessors": [
         "CP-01",
         "CP-13"
-      ]
-    },
-    "1142": {
-      "close_issue": false,
-      "unaccepted_predecessors": [
-        "CP-02",
-        "CP-04",
-        "CP-05"
       ],
+      "unaccepted_predecessors": [],
       "unfulfilled_acceptance": [
-        "A same-process interacting chiral physical effective/continuum law with all tastes controlled.",
-        "Common gauge/Higgs/current/IR and vacuum attachments; supplied CAR action and fixed-spacing volume control do not meet these conditions."
-      ],
-      "required_predecessors": [
-        "CP-02",
-        "CP-04",
-        "CP-05"
+        "Common source-selected native/full-field reference and scalable compatible modular/clock normalization maps; bounded supplied-reference recovery alone is insufficient."
       ]
-    },
-    "1137": {
-      "close_issue": false,
-      "closure_policy": "Close on merge only after source-bound independent review and accepted CP00/CP01 joins are recorded by the completion registry. This map cannot accept its own gate.",
-      "required_predecessors": [
-        "CP-00",
-        "CP-01"
-      ],
-      "finite_map_review_complete": true,
-      "acceptance_scope": "Ownership, exact finite interfaces, relevance and active-route cleanup; downstream physical premises remain conditional.",
-      "unaccepted_predecessors": []
     },
     "1141": {
       "close_issue": false,
@@ -2375,36 +2471,65 @@
         "CP-04"
       ],
       "unfulfilled_acceptance": [
-        "Native identification of exchange character, spin, protected moving species and mass with a common reference/action/clock."
+        "Native topological protection, physical charge and Lorentz spin/statistics of the same excitation, with common transport, energy and observer clock.",
+        "Supplied electron/positron dictionary fails the declared finite dispersion benchmark; physical QED, Lorentz spin and native defect maps are not established."
       ]
     },
-    "1144": {
+    "1142": {
       "close_issue": false,
       "required_predecessors": [
         "CP-02",
-        "CP-04"
+        "CP-04",
+        "CP-05"
       ],
       "unaccepted_predecessors": [
         "CP-02",
-        "CP-04"
+        "CP-04",
+        "CP-05"
       ],
       "unfulfilled_acceptance": [
-        "Physical geometry and compatible state, algebra, operation and dynamical refinement maps; rational chain homotopy supplies only the support chain interface."
+        "A same-process interacting chiral physical field law with all tastes controlled and a complete detector/continuum error contract.",
+        "Fixed-broadening lattice response and local source echo do not establish physical on-shell scattering or select the physical action/vacuum."
       ]
     },
-    "1145": {
+    "1143": {
       "close_issue": false,
       "required_predecessors": [
-        "CP-06",
-        "CP-08"
+        "CP-06"
       ],
       "unaccepted_predecessors": [
-        "CP-06",
-        "CP-08"
+        "CP-06"
       ],
       "unfulfilled_acceptance": [
-        "Shared geometric entropy stationarity, null/stress/area and common scaling premises G1--G6; finite Gibbs preparation does not discharge them."
+        "Source-selected masses, mixing and interactions in compatible physical units on the same native defect and clock; calibrated dimer gaps are not absolute mass predictions.",
+        "The operator/unit dictionary is supplied, with one fitted scale and failed finite bare-speed dispersion; it supplies no independent physical mass prediction."
       ]
+    },
+    "1147": {
+      "close_issue": false,
+      "required_predecessors": [
+        "CP-07",
+        "CP-10"
+      ],
+      "unaccepted_predecessors": [
+        "CP-07",
+        "CP-10"
+      ],
+      "unfulfilled_acceptance": [
+        "An eligible common CP07/CP10 physical dictionary and complete independent empirical error contract.",
+        "The exact bounded mass-assignment exclusion and actual-data replay are retrospective and add zero eligible physical comparisons."
+      ]
+    },
+    "1137": {
+      "close_issue": false,
+      "closure_policy": "Close on merge only after source-bound independent review and accepted CP00/CP01 joins are recorded by the completion registry. This map cannot accept its own gate.",
+      "required_predecessors": [
+        "CP-00",
+        "CP-01"
+      ],
+      "finite_map_review_complete": true,
+      "acceptance_scope": "Ownership, exact finite interfaces, relevance and active-route cleanup; downstream physical premises remain conditional.",
+      "unaccepted_predecessors": []
     }
   },
   "source_bindings": {
@@ -2421,8 +2546,8 @@
     "model/bound_pair/fiber.py": "a5a21df2e5e6a4c71c66feaff2436390e357da8ae019df794280577afa48a49e",
     "model/bound_pair/identity.py": "749a1ce10431e8a72b76b96c9568d7cbd0960a9f41e32c92498ba352d753a333",
     "model/bound_pair/mass.py": "45ab64c1b74d060e4ae380c9f5f5896ca7d1d7a84c18c022c9bd2e3d99735034",
-    "model/completion/finite_attachment_map.py": "d76a3fe3c44f69cb028f935242d937b2c709a00c52b7a35b62fc4955e06684ae",
-    "model/completion/test_finite_attachment_map.py": "c7835794925e221a29ee4b2077fb60b0ee47ec1869db57fd880fdd4a78733925",
+    "model/completion/finite_attachment_map.py": "5caeef531e62175aa5d727fd90f18655cb5ab5a1a82ff2463fc8172d6f96925e",
+    "model/completion/test_finite_attachment_map.py": "fe1a6b1c6790535dd850bf9d2d11530b743281cda0bacf17cde9c79f4ebedb10",
     "model/field_regions/README.md": "5073a68fc7c604335ad9aeac76ea0fd509857a73fb088148e66e0764cd6005ae",
     "model/field_regions/regions.py": "82620a99ed565ab0371295700f828151133d863d92e7fb12330d57a3a7603dc9",
     "model/field_stress/README.md": "8e5b2d4bf9f49d782512c17c6ccda0b2e54d69255a5d169154ba53c6c5c6c213",
@@ -2476,7 +2601,31 @@
     "model/support_refinement/README.md": "b1c4af706144fae38451a198f0cafb846eada2935bc3324b0de3631084ae3fd5",
     "model/field_thermal/thermal.py": "79279646ac75e1ed7254003435c650f37ab259f8ca5133fe683a2f8b8a9ffcd9",
     "model/field_thermal/test_thermal.py": "b139fb60b4e1de46a10970dc450b0459070bb2f379f3e8a00673902141436c1b",
-    "model/field_thermal/README.md": "9397d7361245c10f94f9b6c4d0a2a8276f78a60b406c6aa2ff32340ac7e5dc39"
+    "model/field_thermal/README.md": "9397d7361245c10f94f9b6c4d0a2a8276f78a60b406c6aa2ff32340ac7e5dc39",
+    "model/reference_recovery/recovery.py": "dbb1cb54026558a16dea67ed8e2ceb9b5000033a92e65074327666c4e3d6d15b",
+    "model/reference_recovery/test_recovery.py": "c64db084c235fc0859038f76a66d415f1b993a92a8b71946f1338107ab4069ac",
+    "model/reference_recovery/README.md": "37e00aed05e89f5dbd56e1c29cbda5c6efe7a7e512f63e970c572d888b05248d",
+    "model/particle_response/spectrum.py": "1e8932166a0038d5343835cedb3a4fed1a348ced8f263c23545c3433f6b344d8",
+    "model/particle_response/test_response.py": "8734aef802d65db32e000b189ac7a59217928a92c20554f80668d3e8e77ea092",
+    "model/particle_response/README.md": "1427814a5e788d4eefd6f162b1b24e8f4002c83f9c2005188a42ef34953388d5",
+    "model/particle_response/dimer.py": "34fb85d008472cf338cd8e8222f2da2f85f9dac6901f95b65efd7322b73f7249",
+    "model/particle_response/source.py": "b6c4a6a4ff105ed345c55ddc789241fbb456619e970fd03151cd643f8b232bb9",
+    "model/contact_scattering/scattering.py": "e84fac5c941a04fbdab7fa0fd02db53b5628254c37e682d11e1e883621d0c143",
+    "model/contact_scattering/test_scattering.py": "16c24528731fba98c1a413a8a52f52bd4b88166fd87068cd32964ec438c49c3f",
+    "model/contact_scattering/README.md": "a67b4bb33a703aff8eaaf1a1efcbc512b4a905c2fc0936095d091019b5caec1a",
+    "model/contact_scattering/collision.py": "02b1aa1e477c154da9c7aabd4895f2b7d97f89a96ca96807faf560da5b729dd3",
+    "model/contact_scattering/test_collision.py": "06972a9d34ab2efffe059e1f2b00f3387f7c458ce605d91fea5bc75de8a8f4b2",
+    "model/particle_comparison/compare.py": "a3428c6f85f670eb79f95561c6acefe96e6795706a89561cd8cd65b33f60e57d",
+    "model/particle_comparison/test_compare.py": "4adc39061b2b0a33e042c6ca6d33eb82697ef93e2dd04b82a26b136949806371",
+    "model/particle_comparison/README.md": "61831661e87194519b4b4020e162119e539688f20d07d306964f088394c027a1",
+    "model/particle_comparison/observations.json": "44a8e4615c3497542c114d600ddde99973a9eb9400c379c6117c010204dabf1c",
+    "model/particle_comparison/results.json": "ad0d2172b8838e2806fab20bba61c3aea406c0992a2b3566447bd569895aea32",
+    "model/particle_comparison/dictionary.py": "a1f72f68d8379cb2c55bdab706dace43903aff2eccb6ec838402e492c99bc327",
+    "model/particle_comparison/test_dictionary.py": "12564e83f96e6a81d675b87c30a07dead9883f35c88dc9bf867da730596cd5a6",
+    "model/particle_comparison/electromagnetism.py": "411aaed0c05a2cb64dcee3ad2d9b5e3b0faea0455e370b61f9c590949e8ee02b",
+    "model/particle_comparison/test_electromagnetism.py": "246a9338a4a2c1c66ef84ece8d1148122e1a8881e2ff6304d94fbd9876b58927",
+    "model/particle_response/dispersion.py": "519b95af7691e9a3990d4e4f555dfbe63856fd8959444858e1c8fdcbd376c628",
+    "model/particle_response/test_dispersion.py": "b44480fccbce6b4eed74360a818bb5a52258057c7d3da91e9df5d63a3658186d"
   },
   "gate_acceptance_owner": "claims/completion_program.json",
   "predecessor_review": {

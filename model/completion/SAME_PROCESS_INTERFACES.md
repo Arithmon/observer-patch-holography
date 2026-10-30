@@ -53,16 +53,21 @@ One faithful reference and composable state restrictions give a
 [reference-preserving UCP observation tower](../reference_observation/README.md)
 through the finite Petz transpose. It does not require product regional
 states. These maps need not fix embedded local observables or intertwine
-modular clocks; implementing their reference-dependent effects is a
-separate source-access obligation. The
+modular clocks. Their [bounded source implementation](../reference_recovery/README.md)
+compiles the recovery adjoint and a subsequent global occupation pointer. The
 [exact regional retraction criterion](../regional_modular/README.md)
 applies to the stronger conditional-expectation contract.
 
 Signed full-Fock restrictions of the prepared bounded Gibbs state preserve
 the CAR embedding and compose through nested mode subsets. Every local
 factor reference is faithful, so the same observation tower applies without
-a number-sector cutoff. Its Petz maps remain mathematical maps rather than
-compiled source services. The noncommuting entropy identity uses this same
+a number-sector cutoff. The compiled adjoint retains its Stinespring environment
+and every first-failure export branch. The default two-site recovery uses
+348,697 pulses; regional-reference preparation, recovery and a complete
+pointer use 350,258 pulses on nine initialized bits. Composed recoveries
+require the identical intermediate reference and retain both environments.
+These are bounded, supplied-reference services, not arbitrary lost-state
+recovery or reference selection. The noncommuting entropy identity uses this same
 Hamiltonian and reference; it establishes neither geometric entropy
 stationarity nor G1--G6.
 
@@ -106,6 +111,52 @@ verified Tietze eliminations. Odd ordered-cover parity identifies the
 nontrivial exchange class. This fixes the finite character catalogue without
 requiring a continuous surface classification; sign choice, physical spin
 and a protected particle remain separate attachments.
+
+## Particle, reference and measurement joins
+
+The [resolved particle response](../particle_response/README.md) uses the
+same supplied contact action but a distinct reference: the unique half-filled
+pure ground of `K=H−(U/2)N`. At `c=1/8, U=1`, its charge −1 and +1 doublets
+have gap `sqrt(17)/8−1/16 = 0.4528882032` and equal local probe residue
+`0.3106339063`. An explicit particle–hole symmetry relates their projectors.
+Their internal SU(2) Casimir is `3/4`, and both have odd CAR parity. A lower
+neutral triplet gap prevents calling this the global gap. Neither a Lorentz
+spin representation, a topological defect nor a spatial dispersion law follows
+from the dimer calculation.
+
+Four complete source Ramsey settings reconstruct the addition/removal
+correlations about this ground, counting all four preparations, both pointer
+outcomes and every failure. The total is 52,484 pulses at Hamiltonian model
+duration `1/4`. The pure ground is not a faithful full-algebra modular
+reference and cannot replace the `beta=1, mu=0` Gibbs state in the reference
+recovery construction.
+
+The [conditional physical dictionary](../particle_comparison/README.md)
+labels the two excitations electron-like and positron-like, then uses one
+measured electron mass to set their common energy scale. Both calibrated
+mass energies are `0.51099895069 MeV`; this is zero independent absolute-mass
+predictions. Their dimensionless equal-mass relation satisfies the stated
+conditional positronium bound. The exact same finite frequency catalogue
+cannot fit electron, muon and tau ratios with any common chemical potential
+and positive scale. All comparisons use already known data. The executable SI dictionary maps
+all sixteen states, current, spin and Hamiltonian evolution using that one
+scale. Its time unit is `5.83360161713e−22 s` and lattice unit
+`1.39909581423e−12 m`; neither is independently recovered from native events.
+Complete candidate electric response obeys continuity, but supplies no magnetic
+g-factor or dynamical photon. A distinct four-site periodic ring fails the
+fixed-mass/bare-speed Dirac benchmark even after a same-volume rest anchor;
+its two available momentum-squared values cannot validate a fitted velocity.
+Finite-volume and possible renormalized-velocity effects remain separate.
+These checks do not establish physical particle identity or an OPH universe.
+
+The [contact scattering calculation](../contact_scattering/README.md) instead
+uses the complete two-fermion vacuum sector. Its exact T operator, optical
+identity and pole residue share one supplied action; uniform volume bounds
+hold at fixed positive broadening and fixed lattice spacing. The separate
+complete-source local echo has a positive interaction signal after its
+analytic error bound. Neither calculation transfers its reference or detector
+interpretation to the half-filled particle candidates, or supplies an
+asymptotic physical cross section.
 
 ## Support refinement
 

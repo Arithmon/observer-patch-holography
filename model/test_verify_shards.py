@@ -451,3 +451,20 @@ def test_ci_fetches_canonical_release_and_checks_the_recorded_commit(monkeypatch
     else:
         with pytest.raises(SystemExit, match='Recorded base release mismatch'):
             exec(compile(check['run'], '<ci-base-release-check>', 'exec'), {})
+
+
+def test_particle_services_and_actual_data_replay_remain_mandatory():
+    workflow = yaml.safe_load((verify.ROOT/'.github/workflows/completion-program.yml').read_text())
+    events = workflow.get('on', workflow.get(True))
+    commands = [step['run'] for step in workflow['jobs']['particle-services']['steps'] if 'run' in step]
+    for package in ('reference_recovery', 'particle_response', 'contact_scattering', 'particle_comparison'):
+        for event in ('push', 'pull_request'):
+            assert f'model/{package}/**' in events[event]['paths']
+        assert any('python -m pytest' in c and f'model/{package}' in c for c in commands)
+    module, receipt = 'model.particle_comparison.compare', 'model/particle_comparison/results.json'
+    assert (module, None, receipt) in verify.REPLAYS
+    assert f'python -m {module} --check {receipt}' in commands
+    data = json.loads((verify.ROOT/receipt).read_text())
+    assert data['CP11']['eligible_physical_comparisons_added'] == 0
+    assert not data['CP11']['OPH_universe_membership_confirmed']
+    assert data['custody']['input_sha256']

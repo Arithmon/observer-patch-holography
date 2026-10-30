@@ -140,13 +140,13 @@
       "accepted_evidence": [
         {
           "path": "model/completion/program_class_v2.json",
-          "sha256": "3caf0503745d317faeb36e29a6cdf87fdf7ffea14b5c23e905c6859cf625edb2",
+          "sha256": "b0a9e78500a272c7f98c03152e64de67fc5dc19366c80536ed938e49aca91796",
           "independent_check": "model/completion/test_program_class_v2.py",
           "scope": "Reviewed successor executable class with actual native/program interfaces, resource ceilings, all71retrospective observations, physical targets, calibration/error/exposure and stop/version rules. No physical prediction or class exclusion is claimed."
         },
         {
           "path": "model/completion/program_class_v2_review.json",
-          "sha256": "7bf0c78af38a3cea64ae1dfe2974874c247138b85c053c688dfce65606c5c2a9",
+          "sha256": "81cd48b18363be051f3295de1b782ee58d60006158f9f16a2241bcf7999d4133",
           "independent_check": "model/completion/independent_program_review.py",
           "scope": "Independent exact class, actual declared-service observer and17attachment theorem-map review. Closes no canonical physical premise or downstream particle/field/gravity gate."
         }
@@ -254,7 +254,7 @@
         },
         {
           "path": "model/completion/program_class_v2_review.json",
-          "sha256": "7bf0c78af38a3cea64ae1dfe2974874c247138b85c053c688dfce65606c5c2a9",
+          "sha256": "81cd48b18363be051f3295de1b782ee58d60006158f9f16a2241bcf7999d4133",
           "independent_check": "model/completion/independent_program_review.py",
           "scope": "Independent exact class, actual declared-service observer and17attachment theorem-map review. Closes no canonical physical premise or downstream particle/field/gravity gate."
         }
@@ -332,14 +332,14 @@
         },
         {
           "path": "model/biased_reset/results.json",
-          "sha256": "85ec874fd62d501c58dcbe1497843ee927c7ddb98ff6a9b8f4440238e2c22501",
+          "sha256": "0a5430e040152c78521a5a6582e6367e7fd511b504a247f7aeb3f2c042d034f4",
           "independent_check": "model/biased_reset/test_reset.py",
           "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the reviewed fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
         },
         {
           "path": "model/particle_screening/mobile_results.json",
-          "sha256": "ca9789f4a9e51e2f0f78268dddfd6fbdbf7e3e452d1c577be221185a071908c9",
+          "sha256": "55306d00b699af399f5081507f83704e555228ec741d720b59d6bb4d3a90d879",
           "independent_check": "model/particle_screening/test_mobile_packet.py",
           "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
           "campaign_id": "mobile-screened-memory-20261029-v1"
@@ -449,7 +449,15 @@
         "model/support_refinement/construction.py",
         "model/support_refinement/README.md",
         "model/field_thermal/thermal.py",
-        "model/field_thermal/README.md"
+        "model/field_thermal/README.md",
+        "model/reference_recovery/recovery.py",
+        "model/reference_recovery/README.md",
+        "model/particle_response/spectrum.py",
+        "model/particle_response/README.md",
+        "model/contact_scattering/scattering.py",
+        "model/contact_scattering/README.md",
+        "model/particle_comparison/compare.py",
+        "model/particle_comparison/README.md"
       ],
       "legacy_issues": [
         1033,
@@ -459,13 +467,13 @@
       "accepted_evidence": [
         {
           "path": "model/completion/finite_attachment_map.json",
-          "sha256": "87f7b5f08a1a8935aa3bb6b6f7acffd9ef67c7f54df4a774124ec6dacacd7d97",
+          "sha256": "bd43ab88ff733b6de3e2f448a851cea7572867a7017cb722c046249ee088ad34",
           "independent_check": "model/completion/test_finite_attachment_map.py",
           "scope": "Complete84premise ownership/relevance review,20inspected finite attachments with15realized instances, corrected active routes and explicit finite CP01 joins. Allcanonicalphysicaldischarge statuses preserved."
         },
         {
           "path": "model/completion/program_class_v2_review.json",
-          "sha256": "7bf0c78af38a3cea64ae1dfe2974874c247138b85c053c688dfce65606c5c2a9",
+          "sha256": "81cd48b18363be051f3295de1b782ee58d60006158f9f16a2241bcf7999d4133",
           "independent_check": "model/completion/independent_program_review.py",
           "scope": "Independent exact class, actual declared-service observer and17attachment theorem-map review. Closes no canonical physical premise or downstream particle/field/gravity gate."
         }
@@ -627,7 +635,7 @@
         },
         {
           "path": "model/completion/finite_attachment_map.json",
-          "sha256": "87f7b5f08a1a8935aa3bb6b6f7acffd9ef67c7f54df4a774124ec6dacacd7d97",
+          "sha256": "bd43ab88ff733b6de3e2f448a851cea7572867a7017cb722c046249ee088ad34",
           "independent_check": "model/completion/test_finite_attachment_map.py",
           "scope": "Exhaustive ownership and relevance navigation for the existing 84-premise register, with source-bound finite model attachments and explicit unresolved construction/acceptance joins. It is not a new audit of every Lean module or discharge of global physical premises.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
@@ -641,7 +649,7 @@
         },
         {
           "path": "model/biased_reset/results.json",
-          "sha256": "85ec874fd62d501c58dcbe1497843ee927c7ddb98ff6a9b8f4440238e2c22501",
+          "sha256": "0a5430e040152c78521a5a6582e6367e7fd511b504a247f7aeb3f2c042d034f4",
           "independent_check": "model/biased_reset/test_reset.py",
           "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the reviewed fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
@@ -669,7 +677,7 @@
         },
         {
           "path": "model/particle_screening/mobile_results.json",
-          "sha256": "ca9789f4a9e51e2f0f78268dddfd6fbdbf7e3e452d1c577be221185a071908c9",
+          "sha256": "55306d00b699af399f5081507f83704e555228ec741d720b59d6bb4d3a90d879",
           "independent_check": "model/particle_screening/test_mobile_packet.py",
           "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
           "campaign_id": "mobile-screened-memory-20261029-v1"
@@ -771,6 +779,34 @@
           "independent_check": "model/field_thermal/test_thermal.py",
           "scope": "Complete source words prepare a faithful interacting Gibbs marginal on one/two sites with retained purification, all exports and a subsequent field/pointer history. All-number CAR restrictions compose and the matrix first law holds; initialization, beta/action, larger-reference preparation and geometric premises remain supplied.",
           "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/reference_recovery/recovery.py",
+          "sha256": "dbb1cb54026558a16dea67ed8e2ceb9b5000033a92e65074327666c4e3d6d15b",
+          "independent_check": "model/reference_recovery/test_recovery.py",
+          "scope": "Bounded source words implement the faithful-reference Petz channel and its adjoint observation effects, retaining environments, arbitrary input/reference columns, both pointer outcomes and every export branch. The two-site interacting Gibbs instance uses supplied blanks, reference and design parameters; recovery is neither a retraction nor physical clock selection.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/particle_response/spectrum.py",
+          "sha256": "1e8932166a0038d5343835cedb3a4fed1a348ced8f263c23545c3433f6b344d8",
+          "independent_check": "model/particle_response/test_response.py",
+          "scope": "Complete all-number Lehmann measures and source Ramsey readout distinguish a faithful thermal reference from a supplied pure half-filled ground. Exact dimer maps identify charge-one particle/hole doublets and charge-two singlets with nonzero residues, parity and internal spin; physical species, Lorentz spin, topological defects and absolute masses are not derived.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/contact_scattering/scattering.py",
+          "sha256": "e84fac5c941a04fbdab7fa0fd02db53b5628254c37e682d11e1e883621d0c143",
+          "independent_check": "model/contact_scattering/test_scattering.py",
+          "scope": "The same Weyl/contact pair pole occurs in the exact complete two-fermion T matrix, with an optical identity and uniform fixed-broadening thermodynamic bounds. A separate complete source interaction echo has a rational positive signal bound. Fixed lattice spacing, model time and supplied preparations are explicit; no on-shell physical S matrix or chiral continuum is obtained.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/particle_comparison/compare.py",
+          "sha256": "a3428c6f85f670eb79f95561c6acefe96e6795706a89561cd8cd65b33f60e57d",
+          "independent_check": "model/particle_comparison/test_compare.py",
+          "scope": "Exact current-source dimer spectroscopy excludes all 672 common-scale/common-chemical-potential three-lepton assignments to the declared broad ratio windows. A conditional electron-like/positron-like pair has equal gaps after one supplied electron calibration, with zero independently predicted absolute masses. The actual CODATA/ACT replay is retrospective and adds zero eligible CP11 comparisons.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
         }
       ]
     },
@@ -817,7 +853,15 @@
         "model/band_clock_budget/budget.py",
         "model/band_clock_budget/README.md",
         "model/field_thermal/thermal.py",
-        "model/field_thermal/README.md"
+        "model/field_thermal/README.md",
+        "model/reference_recovery/recovery.py",
+        "model/reference_recovery/README.md",
+        "model/particle_comparison/dictionary.py",
+        "model/particle_comparison/test_dictionary.py",
+        "model/particle_comparison/electromagnetism.py",
+        "model/particle_comparison/test_electromagnetism.py",
+        "model/particle_response/dispersion.py",
+        "model/particle_response/test_dispersion.py"
       ],
       "legacy_issues": [
         1077,
@@ -957,6 +1001,20 @@
           "independent_check": "model/field_thermal/test_thermal.py",
           "scope": "Complete source words prepare a faithful interacting Gibbs marginal on one/two sites with retained purification, all exports and a subsequent field/pointer history. All-number CAR restrictions compose and the matrix first law holds; initialization, beta/action, larger-reference preparation and geometric premises remain supplied.",
           "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/reference_recovery/recovery.py",
+          "sha256": "dbb1cb54026558a16dea67ed8e2ceb9b5000033a92e65074327666c4e3d6d15b",
+          "independent_check": "model/reference_recovery/test_recovery.py",
+          "scope": "Bounded source words implement the faithful-reference Petz channel and its adjoint observation effects, retaining environments, arbitrary input/reference columns, both pointer outcomes and every export branch. The two-site interacting Gibbs instance uses supplied blanks, reference and design parameters; recovery is neither a retraction nor physical clock selection.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/particle_comparison/dictionary.py",
+          "sha256": "a1f72f68d8379cb2c55bdab706dace43903aff2eccb6ec838402e492c99bc327",
+          "independent_check": "model/particle_comparison/test_dictionary.py",
+          "scope": "An executable sixteen-state benchmark supplies Q=e(N-2), S=hbar*S_internal and one measured electron energy scale, giving assigned Hamiltonian-time and lattice-length units. Complete candidate electric-current/dipole response obeys continuity and charge conjugation, but the pure-gauge open bond measures no magnetic moment and its bare contact kernel is not Coulomb exchange. A separately declared four-site periodic extension checks momentum, all number sectors, particle-hole residues and free doublers. Its charged poles fail the fixed dimer-mass/bare-speed lattice-Dirac benchmark and a same-volume rest-gap variant. Finite-volume shifts and a possible renormalized velocity remain distinct: two momentum-squared values cannot validate a fitted dispersion. This rejects only that supplied finite dictionary benchmark, not an OPH continuum; physical electron/positron identity and QED remain unestablished.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
         }
       ]
     },
@@ -1085,7 +1143,7 @@
         },
         {
           "path": "model/biased_reset/results.json",
-          "sha256": "85ec874fd62d501c58dcbe1497843ee927c7ddb98ff6a9b8f4440238e2c22501",
+          "sha256": "0a5430e040152c78521a5a6582e6367e7fd511b504a247f7aeb3f2c042d034f4",
           "independent_check": "model/biased_reset/test_reset.py",
           "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the reviewed fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
@@ -1099,7 +1157,7 @@
         },
         {
           "path": "model/particle_screening/mobile_results.json",
-          "sha256": "ca9789f4a9e51e2f0f78268dddfd6fbdbf7e3e452d1c577be221185a071908c9",
+          "sha256": "55306d00b699af399f5081507f83704e555228ec741d720b59d6bb4d3a90d879",
           "independent_check": "model/particle_screening/test_mobile_packet.py",
           "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
           "campaign_id": "mobile-screened-memory-20261029-v1"
@@ -1373,7 +1431,15 @@
         "model/exchange_sector/STATISTICS.md",
         "model/exchange_sector/statistics_results.json",
         "model/exchange_sector/presentation.py",
-        "model/exchange_sector/PRESENTATION.md"
+        "model/exchange_sector/PRESENTATION.md",
+        "model/particle_response/spectrum.py",
+        "model/particle_response/README.md",
+        "model/particle_comparison/dictionary.py",
+        "model/particle_comparison/test_dictionary.py",
+        "model/particle_comparison/electromagnetism.py",
+        "model/particle_comparison/test_electromagnetism.py",
+        "model/particle_response/dispersion.py",
+        "model/particle_response/test_dispersion.py"
       ],
       "legacy_issues": [
         1026,
@@ -1398,7 +1464,7 @@
         },
         {
           "path": "model/particle_screening/mobile_results.json",
-          "sha256": "ca9789f4a9e51e2f0f78268dddfd6fbdbf7e3e452d1c577be221185a071908c9",
+          "sha256": "55306d00b699af399f5081507f83704e555228ec741d720b59d6bb4d3a90d879",
           "independent_check": "model/particle_screening/test_mobile_packet.py",
           "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
           "campaign_id": "mobile-screened-memory-20261029-v1"
@@ -1422,6 +1488,20 @@
           "sha256": "220f4d9638cb445e2e3cfdf310fcf40d5f6e25a31525e0cea2020305d557bfb7",
           "independent_check": "model/exchange_sector/test_presentation.py",
           "scope": "Exact noncommutative Tietze replay on the original native collision-free two-complex reduces235generators and495relators to <g|g^2>, with odd ordered-cover parity. No physical species, spin or sign selection.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/particle_response/spectrum.py",
+          "sha256": "1e8932166a0038d5343835cedb3a4fed1a348ced8f263c23545c3433f6b344d8",
+          "independent_check": "model/particle_response/test_response.py",
+          "scope": "Complete all-number Lehmann measures and source Ramsey readout distinguish a faithful thermal reference from a supplied pure half-filled ground. Exact dimer maps identify charge-one particle/hole doublets and charge-two singlets with nonzero residues, parity and internal spin; physical species, Lorentz spin, topological defects and absolute masses are not derived.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/particle_comparison/dictionary.py",
+          "sha256": "a1f72f68d8379cb2c55bdab706dace43903aff2eccb6ec838402e492c99bc327",
+          "independent_check": "model/particle_comparison/test_dictionary.py",
+          "scope": "An executable sixteen-state benchmark supplies Q=e(N-2), S=hbar*S_internal and one measured electron energy scale, giving assigned Hamiltonian-time and lattice-length units. Complete candidate electric-current/dipole response obeys continuity and charge conjugation, but the pure-gauge open bond measures no magnetic moment and its bare contact kernel is not Coulomb exchange. A separately declared four-site periodic extension checks momentum, all number sectors, particle-hole residues and free doublers. Its charged poles fail the fixed dimer-mass/bare-speed lattice-Dirac benchmark and a same-volume rest-gap variant. Finite-volume shifts and a possible renormalized velocity remain distinct: two momentum-squared values cannot validate a fitted dispersion. This rejects only that supplied finite dictionary benchmark, not an OPH continuum; physical electron/positron identity and QED remain unestablished.",
           "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
         }
       ]
@@ -1465,7 +1545,17 @@
         "model/full_fock_field/local_simulation.py",
         "model/full_fock_field/LOCAL_SIMULATION.md",
         "model/field_thermal/thermal.py",
-        "model/field_thermal/README.md"
+        "model/field_thermal/README.md",
+        "model/contact_scattering/scattering.py",
+        "model/contact_scattering/README.md",
+        "model/particle_response/spectrum.py",
+        "model/particle_response/README.md",
+        "model/particle_comparison/dictionary.py",
+        "model/particle_comparison/test_dictionary.py",
+        "model/particle_comparison/electromagnetism.py",
+        "model/particle_comparison/test_electromagnetism.py",
+        "model/particle_response/dispersion.py",
+        "model/particle_response/test_dispersion.py"
       ],
       "legacy_issues": [
         1026,
@@ -1536,6 +1626,27 @@
           "independent_check": "model/field_thermal/test_thermal.py",
           "scope": "Complete source words prepare a faithful interacting Gibbs marginal on one/two sites with retained purification, all exports and a subsequent field/pointer history. All-number CAR restrictions compose and the matrix first law holds; initialization, beta/action, larger-reference preparation and geometric premises remain supplied.",
           "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/contact_scattering/scattering.py",
+          "sha256": "e84fac5c941a04fbdab7fa0fd02db53b5628254c37e682d11e1e883621d0c143",
+          "independent_check": "model/contact_scattering/test_scattering.py",
+          "scope": "The same Weyl/contact pair pole occurs in the exact complete two-fermion T matrix, with an optical identity and uniform fixed-broadening thermodynamic bounds. A separate complete source interaction echo has a rational positive signal bound. Fixed lattice spacing, model time and supplied preparations are explicit; no on-shell physical S matrix or chiral continuum is obtained.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/particle_response/spectrum.py",
+          "sha256": "1e8932166a0038d5343835cedb3a4fed1a348ced8f263c23545c3433f6b344d8",
+          "independent_check": "model/particle_response/test_response.py",
+          "scope": "Complete all-number Lehmann measures and source Ramsey readout distinguish a faithful thermal reference from a supplied pure half-filled ground. Exact dimer maps identify charge-one particle/hole doublets and charge-two singlets with nonzero residues, parity and internal spin; physical species, Lorentz spin, topological defects and absolute masses are not derived.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/particle_comparison/dictionary.py",
+          "sha256": "a1f72f68d8379cb2c55bdab706dace43903aff2eccb6ec838402e492c99bc327",
+          "independent_check": "model/particle_comparison/test_dictionary.py",
+          "scope": "An executable sixteen-state benchmark supplies Q=e(N-2), S=hbar*S_internal and one measured electron energy scale, giving assigned Hamiltonian-time and lattice-length units. Complete candidate electric-current/dipole response obeys continuity and charge conjugation, but the pure-gauge open bond measures no magnetic moment and its bare contact kernel is not Coulomb exchange. A separately declared four-site periodic extension checks momentum, all number sectors, particle-hole residues and free doublers. Its charged poles fail the fixed dimer-mass/bare-speed lattice-Dirac benchmark and a same-volume rest-gap variant. Finite-volume shifts and a possible renormalized velocity remain distinct: two momentum-squared values cannot validate a fitted dispersion. This rejects only that supplied finite dictionary benchmark, not an OPH continuum; physical electron/positron identity and QED remain unestablished.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
         }
       ]
     },
@@ -1563,7 +1674,19 @@
         "docs/research/OPH_PARTICLE_MASS_RESPONSE.md",
         "code/particles/ledger.yaml",
         "docs/POSTDICTION_LEDGER.md",
-        "model/bound_pair/results.json"
+        "model/bound_pair/results.json",
+        "model/particle_response/spectrum.py",
+        "model/particle_response/README.md",
+        "model/contact_scattering/scattering.py",
+        "model/contact_scattering/README.md",
+        "model/particle_comparison/compare.py",
+        "model/particle_comparison/README.md",
+        "model/particle_comparison/dictionary.py",
+        "model/particle_comparison/test_dictionary.py",
+        "model/particle_comparison/electromagnetism.py",
+        "model/particle_comparison/test_electromagnetism.py",
+        "model/particle_response/dispersion.py",
+        "model/particle_response/test_dispersion.py"
       ],
       "legacy_issues": [
         1026,
@@ -1577,6 +1700,34 @@
           "independent_check": "model/bound_pair/test_mass.py",
           "scope": "One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
+        },
+        {
+          "path": "model/particle_response/spectrum.py",
+          "sha256": "1e8932166a0038d5343835cedb3a4fed1a348ced8f263c23545c3433f6b344d8",
+          "independent_check": "model/particle_response/test_response.py",
+          "scope": "Complete all-number Lehmann measures and source Ramsey readout distinguish a faithful thermal reference from a supplied pure half-filled ground. Exact dimer maps identify charge-one particle/hole doublets and charge-two singlets with nonzero residues, parity and internal spin; physical species, Lorentz spin, topological defects and absolute masses are not derived.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/contact_scattering/scattering.py",
+          "sha256": "e84fac5c941a04fbdab7fa0fd02db53b5628254c37e682d11e1e883621d0c143",
+          "independent_check": "model/contact_scattering/test_scattering.py",
+          "scope": "The same Weyl/contact pair pole occurs in the exact complete two-fermion T matrix, with an optical identity and uniform fixed-broadening thermodynamic bounds. A separate complete source interaction echo has a rational positive signal bound. Fixed lattice spacing, model time and supplied preparations are explicit; no on-shell physical S matrix or chiral continuum is obtained.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/particle_comparison/compare.py",
+          "sha256": "a3428c6f85f670eb79f95561c6acefe96e6795706a89561cd8cd65b33f60e57d",
+          "independent_check": "model/particle_comparison/test_compare.py",
+          "scope": "Exact current-source dimer spectroscopy excludes all 672 common-scale/common-chemical-potential three-lepton assignments to the declared broad ratio windows. A conditional electron-like/positron-like pair has equal gaps after one supplied electron calibration, with zero independently predicted absolute masses. The actual CODATA/ACT replay is retrospective and adds zero eligible CP11 comparisons.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/particle_comparison/dictionary.py",
+          "sha256": "a1f72f68d8379cb2c55bdab706dace43903aff2eccb6ec838402e492c99bc327",
+          "independent_check": "model/particle_comparison/test_dictionary.py",
+          "scope": "An executable sixteen-state benchmark supplies Q=e(N-2), S=hbar*S_internal and one measured electron energy scale, giving assigned Hamiltonian-time and lattice-length units. Complete candidate electric-current/dipole response obeys continuity and charge conjugation, but the pure-gauge open bond measures no magnetic moment and its bare contact kernel is not Coulomb exchange. A separately declared four-site periodic extension checks momentum, all number sectors, particle-hole residues and free doublers. Its charged poles fail the fixed dimer-mass/bare-speed lattice-Dirac benchmark and a same-volume rest-gap variant. Finite-volume shifts and a possible renormalized velocity remain distinct: two momentum-squared values cannot validate a fitted dispersion. This rejects only that supplied finite dictionary benchmark, not an OPH continuum; physical electron/positron identity and QED remain unestablished.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
         }
       ]
     },
@@ -1760,14 +1911,37 @@
       "evidence": [
         "docs/OPH_FALSIFICATION_PROGRAM.md",
         "docs/research/PUBLIC_DATA_PREDICTION_AUDIT.md",
-        "docs/FROZEN_PREDICTION_LADDER.md"
+        "docs/FROZEN_PREDICTION_LADDER.md",
+        "model/particle_comparison/compare.py",
+        "model/particle_comparison/README.md",
+        "model/particle_comparison/dictionary.py",
+        "model/particle_comparison/test_dictionary.py",
+        "model/particle_comparison/electromagnetism.py",
+        "model/particle_comparison/test_electromagnetism.py",
+        "model/particle_response/dispersion.py",
+        "model/particle_response/test_dispersion.py"
       ],
       "legacy_issues": [
         1025,
         1078
       ],
       "accepted_evidence": [],
-      "progress_evidence": []
+      "progress_evidence": [
+        {
+          "path": "model/particle_comparison/compare.py",
+          "sha256": "a3428c6f85f670eb79f95561c6acefe96e6795706a89561cd8cd65b33f60e57d",
+          "independent_check": "model/particle_comparison/test_compare.py",
+          "scope": "Exact current-source dimer spectroscopy excludes all 672 common-scale/common-chemical-potential three-lepton assignments to the declared broad ratio windows. A conditional electron-like/positron-like pair has equal gaps after one supplied electron calibration, with zero independently predicted absolute masses. The actual CODATA/ACT replay is retrospective and adds zero eligible CP11 comparisons.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/particle_comparison/dictionary.py",
+          "sha256": "a1f72f68d8379cb2c55bdab706dace43903aff2eccb6ec838402e492c99bc327",
+          "independent_check": "model/particle_comparison/test_dictionary.py",
+          "scope": "An executable sixteen-state benchmark supplies Q=e(N-2), S=hbar*S_internal and one measured electron energy scale, giving assigned Hamiltonian-time and lattice-length units. Complete candidate electric-current/dipole response obeys continuity and charge conjugation, but the pure-gauge open bond measures no magnetic moment and its bare contact kernel is not Coulomb exchange. A separately declared four-site periodic extension checks momentum, all number sectors, particle-hole residues and free doublers. Its charged poles fail the fixed dimer-mass/bare-speed lattice-Dirac benchmark and a same-volume rest-gap variant. Finite-volume shifts and a possible renormalized velocity remain distinct: two momentum-squared values cannot validate a fitted dispersion. This rejects only that supplied finite dictionary benchmark, not an OPH continuum; physical electron/positron identity and QED remain unestablished.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        }
+      ]
     },
     {
       "id": "CP-12",
@@ -1832,7 +2006,7 @@
         },
         {
           "path": "model/biased_reset/results.json",
-          "sha256": "85ec874fd62d501c58dcbe1497843ee927c7ddb98ff6a9b8f4440238e2c22501",
+          "sha256": "0a5430e040152c78521a5a6582e6367e7fd511b504a247f7aeb3f2c042d034f4",
           "independent_check": "model/biased_reset/test_reset.py",
           "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the reviewed fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
@@ -2201,7 +2375,7 @@
       ],
       "contract": {
         "path": "model/recovery_elision/campaign.json",
-        "sha256": "0d79a57f3855522f6b21c4fd63f6cf7464567dcfbfa1a32b1e886d3225b22e57",
+        "sha256": "68d441ac86e44975905af685d08deb351d9fb95490e9d4075b8612f4abc162e7",
         "independent_check": "model/recovery_elision/test_variant.py",
         "scope": "Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.",
         "campaign_id": "OPH-INTEGRATION-RECOVERY-ELISION-2026-10-29-v1"
@@ -2218,7 +2392,7 @@
       ],
       "contract": {
         "path": "model/biased_code_universality/campaign.json",
-        "sha256": "05220b651ccadfa9946894e8adf9f35f9a2ff8d4c1acbba75b474c8709b5850b",
+        "sha256": "d6acab1583cb569de6c8d1e3f8a9db448d0d581cc5ba4ba132706f0252c88ecd",
         "independent_check": "model/biased_code_universality/test_universality.py",
         "scope": "Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.",
         "campaign_id": "OPH-INTEGRATION-BIASED-CODE-UNIVERSALITY-2026-10-29-v1"
@@ -2237,13 +2411,15 @@
         "CP-06",
         "CP-09",
         "CP-13",
-        "CP-08"
+        "CP-08",
+        "CP-07",
+        "CP-11"
       ],
       "contract": {
         "path": "model/completion/component_interfaces.json",
-        "sha256": "44a0d6fc4dc932fd26087993e784763f0efcd070b1dac2e1c714a8d703316157",
+        "sha256": "a55680e690fbc21b335ab68ed8ac937916b3f01f6273fa386558bee87d86b57b",
         "independent_check": "model/compiled_native_history/test_compiler.py",
-        "scope": "Complete native-history evaluation, common-reference observations and conservation bounds, full-Fock interacting lattice dynamics, and same-pair gauge/current/residue attachment. Physical action, clock, vacuum and chiral-continuum joins remain explicit. Original-complex exchange certificates, both-character GNS bounds, local complete-history budgets, rational support chain maps and bounded source-prepared interacting Gibbs references have separate explicit domains.",
+        "scope": "Complete native-history evaluation, common-reference observations and conservation bounds, full-Fock interacting lattice dynamics, and same-pair gauge/current/residue attachment. Physical action, clock, vacuum and chiral-continuum joins remain explicit. Original-complex exchange certificates, both-character GNS bounds, local complete-history budgets, rational support chain maps and bounded source-prepared interacting Gibbs references have separate explicit domains. Bounded compiled faithful-reference recovery, complete-field charged response and same-pole contact interactions retain their separate reference and clock domains. Exact finite mass-attachment exclusion and actual-data replay add zero eligible physical comparisons.",
         "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
       }
     },
@@ -2267,13 +2443,13 @@
     }
   ],
   "next_wave": {
-    "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-30-v11",
+    "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-30-v12",
     "status": "PLANNED_PROVISIONAL_PARALLEL_WORK",
     "scope": "SOURCE_BOUND_COMPONENT_WORK_WITH_OPEN_ACCEPTANCE_JOINS",
     "changes_frozen_campaign": false,
     "successor_class_frozen": false,
     "physical_comparison_count_added": 0,
-    "rationale": "Five current construction targets connect native signed dynamics and exchange, local interacting field schedules, support refinement and the prepared finite thermal reference. Each retains its actual source, state, operation, clock and refinement domain.",
+    "rationale": "Five current owners join compiled reference recovery, complete same-ground charged response, controlled contact interactions, physical mass attachment and actual-data comparison. Each keeps its source, state, operation, model clock and refinement domain explicit.",
     "shared_interface": {
       "baseline_campaign_id": "OPH-RECORD-DERIVED-CONTINUING-CLOCK-v1",
       "baseline_contract": "model/local_repair_family/record_clock_campaign.json",
@@ -2298,87 +2474,81 @@
     },
     "owners": [
       {
-        "gate": "CP-03",
-        "issue": 1139,
-        "title": "Complete localized native protection and its field-state attachment",
-        "why_now": "Both exchange characters have full source algebra and the same diagonal-reference GNS contraction bounds. Exact branchwise nonpositive similarity transfers spectra; no physical gauge or protected charge follows. Exact noncommutative Tietze replay on the original native collision-free two-complex reduces235generators and495relators to <g|g^2>, with odd ordered-cover parity. No physical species, spin or sign selection.",
-        "deliverable": "A localized native excitation with reference-like exterior and the full-law protecting invariant or controlled lifetime, attached to the actual field excitation.",
-        "may_start_now": "Use complete band wavepackets and all-outcome active memory/reset controls with their explicit law and reference differences.",
-        "join_condition": "Spectral isolation under the supplied Hamiltonian is not invariance under every native repair branch; active information transport and trivial band topology do not supply the required defect invariant.",
+        "gate": "CP-02",
+        "issue": 1138,
+        "title": "Join source reference recovery to the continuing observer clock",
+        "why_now": "Bounded source words implement the faithful-reference Petz channel and its adjoint observation effects, retaining environments, arbitrary input/reference columns, both pointer outcomes and every export branch. The two-site interacting Gibbs instance uses supplied blanks, reference and design parameters; recovery is neither a retraction nor physical clock selection.",
+        "deliverable": "Extend the compiled faithful-reference observation/recovery service to a common native field reference and compatible continuing clock normalization.",
+        "may_start_now": "Use complete regional Petz source words and supplied interacting Gibbs preparation, retaining all environments and records.",
+        "join_condition": "The pure half-filled ground, faithful Gibbs reference and inherited native reference are distinct; bounded recovery is not reference selection, modular covariance or physical calibration.",
         "evidence": [
-          "bound_pair",
-          "moving_defect",
-          "particle_premise_contract",
-          "native_localization",
-          "mobile_screened_memory",
-          "native_fixed_algebra",
-          "gauged_field",
-          "exchange_statistics",
-          "signed_native",
-          "native_presentation"
+          "reference_recovery",
+          "field_thermal",
+          "reference_observation",
+          "band_clock_budget",
+          "particle_applicability"
         ]
       },
       {
         "gate": "CP-05",
         "issue": 1141,
-        "title": "Attach particle transport, charges and currents on one native process",
-        "why_now": "Exact noncommutative Tietze replay on the original native collision-free two-complex reduces235generators and495relators to <g|g^2>, with odd ordered-cover parity. No physical species, spin or sign selection.",
-        "deliverable": "A native particle/field map with physical accessible currents and spin/statistics content, including leakage, all tastes and actual source services.",
-        "may_start_now": "Use complete Peierls-link Ward identities and the exact Feshbach current/residue map, keeping separated-pair and native active-memory domains explicit.",
-        "join_condition": "CAR number charge and supplied external links do not select electromagnetic normalization, a dynamical gauge field, a physical species or native protection.",
+        "title": "Attach the charged field excitations to physical particle structure",
+        "why_now": "Complete all-number Lehmann measures and source Ramsey readout distinguish a faithful thermal reference from a supplied pure half-filled ground. Exact dimer maps identify charge-one particle/hole doublets and charge-two singlets with nonzero residues, parity and internal spin; physical species, Lorentz spin, topological defects and absolute masses are not derived. The executable unit/operator dictionary passes finite electric continuity but fails the fixed bare-speed ring dispersion benchmark; finite-volume and renormalized-velocity qualifications are retained.",
+        "deliverable": "Join the exact charged projectors, nonzero residues, number charge and internal spin to the same protected native excitation and physical currents.",
+        "may_start_now": "Use complete all-number response and the explicit particle-hole/SU(2) maps together with existing gauge/current and exchange controls.",
+        "join_condition": "Finite internal SU(2), CAR charge, odd logical probes and supplied symmetry do not establish Lorentz spin, electromagnetic identity, native topological protection or detector access.",
         "evidence": [
+          "particle_response",
           "gauged_field",
-          "full_fock_field",
+          "native_presentation",
           "bound_pair",
-          "particle_obstruction",
-          "native_presentation"
+          "particle_applicability"
         ]
       },
       {
         "gate": "CP-06",
         "issue": 1142,
-        "title": "Complete the interacting chiral field and observable-domain comparison",
-        "why_now": "Overlapping CAR supports give an extensive Strang coefficient and integrated factorial locality tail. Nested backward buffers bound complete local histories with arbitrary references and exact source schedules, independently of ambient volume; initial restriction, action, readout and model clock remain supplied. Complete source words prepare a faithful interacting Gibbs marginal on one/two sites with retained purification, all exports and a subsequent field/pointer history. All-number CAR restrictions compose and the matrix first law holds; initialization, beta/action, larger-reference preparation and geometric premises remain supplied.",
-        "deliverable": "A same-process chiral effective or continuum field description with all modes, currents, interactions, reference and complete intervention errors controlled.",
-        "may_start_now": "Retain every Weyl taste and scattering output; test the contact interaction against the proposed momentum-sector removal and compose the existing regional history maps.",
-        "join_condition": "A finite band or infinite-volume fixed lattice is not a chiral continuum. No unwanted mode can be dropped without a derived complete-law decoupling map.",
+        "title": "Extend complete interacting response to a physical field limit",
+        "why_now": "The same Weyl/contact pair pole occurs in the exact complete two-fermion T matrix, with an optical identity and uniform fixed-broadening thermodynamic bounds. A separate complete source interaction echo has a rational positive signal bound. Fixed lattice spacing, model time and supplied preparations are explicit; no on-shell physical S matrix or chiral continuum is obtained. Complete all-number Lehmann measures and source Ramsey readout distinguish a faithful thermal reference from a supplied pure half-filled ground. Exact dimer maps identify charge-one particle/hole doublets and charge-two singlets with nonzero residues, parity and internal spin; physical species, Lorentz spin, topological defects and absolute masses are not derived.",
+        "deliverable": "Construct a controlled physical detector and continuum attachment for the same interacting field, retaining all Weyl tastes and complete outcomes.",
+        "may_start_now": "Use the exact contact T matrix, same bound-pair residue, fixed-eta volume certificate and rational complete-source interaction signal.",
+        "join_condition": "Fixed lattice spacing and eta>0 do not give an on-shell S matrix or interacting chiral continuum; the local echo is not an asymptotic scattering detector.",
         "evidence": [
-          "bound_pair",
-          "field_regions",
-          "interacting_field",
-          "band_clock",
+          "contact_scattering",
+          "particle_response",
           "full_fock_field",
-          "gauged_field",
           "local_field_schedule",
-          "field_thermal"
+          "particle_applicability"
         ]
       },
       {
-        "gate": "CP-08",
-        "issue": 1144,
-        "title": "Join support refinement to observer fields",
-        "why_now": "Exact rational strong chain deformation retracts on the actual12/42/162/642-vertex supports compose and intertwine all60proper actions. Rational chain maps are not vertex selectors, physical geometry or quantum channels.",
-        "deliverable": "Attach the explicit support chain retracts to compatible observer state/algebra and dynamical maps, with controlled geometry and continuum limits.",
-        "may_start_now": "Use the exact source-derived finite C/S/H tower and the nested local-field buffers.",
-        "join_condition": "Rational chain homotopy is not a deterministic vertex selector, physical metric, quantum channel or exact dynamical intertwiner.",
+        "gate": "CP-07",
+        "issue": 1143,
+        "title": "Derive a physical spectrum from the same charged response",
+        "why_now": "Complete all-number Lehmann measures and source Ramsey readout distinguish a faithful thermal reference from a supplied pure half-filled ground. Exact dimer maps identify charge-one particle/hole doublets and charge-two singlets with nonzero residues, parity and internal spin; physical species, Lorentz spin, topological defects and absolute masses are not derived. Exact current-source dimer spectroscopy excludes all 672 common-scale/common-chemical-potential three-lepton assignments to the declared broad ratio windows. A conditional electron-like/positron-like pair has equal gaps after one supplied electron calibration, with zero independently predicted absolute masses. The actual CODATA/ACT replay is retrospective and adds zero eligible CP11 comparisons. The same Weyl/contact pair pole occurs in the exact complete two-fermion T matrix, with an optical identity and uniform fixed-broadening thermodynamic bounds. A separate complete source interaction echo has a rational positive signal bound. Fixed lattice spacing, model time and supplied preparations are explicit; no on-shell physical S matrix or chiral continuum is obtained. The executable unit/operator dictionary passes finite electric continuity but fails the fixed bare-speed ring dispersion benchmark; finite-volume and renormalized-velocity qualifications are retained.",
+        "deliverable": "Attach source-selected masses, mixing and physical currents to the same excitation, protected defect and observer clock without fitting each target.",
+        "may_start_now": "Use exact half-filled charged and pair gaps, their nonzero residues, higher interaction poles and the exhaustive affine three-lepton exclusion.",
+        "join_condition": "One electron mass calibration predicts no absolute mass; conditional electron/positron labels and equal model gaps supply no physical vacuum, clock, defect or full observed spectrum.",
         "evidence": [
-          "support_refinement",
-          "local_field_schedule",
-          "field_regions"
+          "particle_response",
+          "particle_comparison",
+          "contact_scattering",
+          "bound_pair",
+          "particle_applicability"
         ]
       },
       {
-        "gate": "CP-09",
-        "issue": 1145,
-        "title": "Realize common-reference entropy and geometric interfaces",
-        "why_now": "Complete source words prepare a faithful interacting Gibbs marginal on one/two sites with retained purification, all exports and a subsequent field/pointer history. All-number CAR restrictions compose and the matrix first law holds; initialization, beta/action, larger-reference preparation and geometric premises remain supplied.",
-        "deliverable": "Extend complete source preparation and compatible reference observations on a common interacting field; realize the geometric/null/stress/area hypotheses explicitly.",
-        "may_start_now": "Use the bounded interacting Gibbs purification, all-number CAR tower and matrix first-law remainder with every export/pointer outcome.",
-        "join_condition": "The pure retained purification is not faithful; supplied beta/action and bounded Gibbs execution do not close G1--G6 or establish Einstein dynamics.",
+        "gate": "CP-11",
+        "issue": 1147,
+        "title": "Test eligible physical attachments against actual observations",
+        "why_now": "Exact current-source dimer spectroscopy excludes all 672 common-scale/common-chemical-potential three-lepton assignments to the declared broad ratio windows. A conditional electron-like/positron-like pair has equal gaps after one supplied electron calibration, with zero independently predicted absolute masses. The actual CODATA/ACT replay is retrospective and adds zero eligible CP11 comparisons. Complete all-number Lehmann measures and source Ramsey readout distinguish a faithful thermal reference from a supplied pure half-filled ground. Exact dimer maps identify charge-one particle/hole doublets and charge-two singlets with nonzero residues, parity and internal spin; physical species, Lorentz spin, topological defects and absolute masses are not derived. The executable unit/operator dictionary passes finite electric continuity but fails the fixed bare-speed ring dispersion benchmark; finite-volume and renormalized-velocity qualifications are retained.",
+        "deliverable": "Develop one common CP07/CP10 physical dictionary and complete comparison error contract, preserving all known-data exposure and bounded rejections.",
+        "may_start_now": "Replay the exact all-assignment mass test, conditional calibrated particle-hole equality and actual CODATA/ACT observations.",
+        "join_condition": "The current comparisons are retrospective, add zero eligible physical comparisons and neither confirm nor reject OPH-universe membership.",
         "evidence": [
-          "field_thermal",
-          "reference_observation",
-          "field_stress"
+          "particle_comparison",
+          "particle_response",
+          "particle_applicability"
         ]
       }
     ],
@@ -2407,6 +2577,53 @@
         ]
       },
       {
+        "gate": "CP-03",
+        "issue": 1139,
+        "role": "Spectral isolation under the supplied Hamiltonian is not invariance under every native repair branch; active information transport and trivial band topology do not supply the required defect invariant.",
+        "evidence": [
+          "bound_pair",
+          "moving_defect",
+          "particle_premise_contract",
+          "native_localization",
+          "mobile_screened_memory",
+          "native_fixed_algebra",
+          "gauged_field",
+          "exchange_statistics",
+          "signed_native",
+          "native_presentation"
+        ]
+      },
+      {
+        "gate": "CP-04",
+        "issue": 1140,
+        "role": "Retain same-excitation energy/current/dispersion and vacuum-relative mass joins; sign similarity and simulation savings supply no physical energy.",
+        "evidence": [
+          "gauged_field",
+          "energy_identifiability",
+          "signed_native"
+        ]
+      },
+      {
+        "gate": "CP-08",
+        "issue": 1144,
+        "role": "Rational chain homotopy is not a deterministic vertex selector, physical metric, quantum channel or exact dynamical intertwiner.",
+        "evidence": [
+          "support_refinement",
+          "local_field_schedule",
+          "field_regions"
+        ]
+      },
+      {
+        "gate": "CP-09",
+        "issue": 1145,
+        "role": "The pure retained purification is not faithful; supplied beta/action and bounded Gibbs execution do not close G1--G6 or establish Einstein dynamics.",
+        "evidence": [
+          "field_thermal",
+          "reference_observation",
+          "field_stress"
+        ]
+      },
+      {
         "gate": "CP-12",
         "issue": 1148,
         "role": "Audit each stopped-code, kinetic/reference, anomaly/family and regulator exclusion within its stated class; retain the surviving alternatives and all earlier empirical exposure.",
@@ -2423,14 +2640,6 @@
         ]
       },
       {
-        "gate": "CP-07",
-        "issue": 1143,
-        "role": "Retain complete spectral measures, scattering complements, coordinate conventions and physical matching gaps.",
-        "evidence": [
-          "bound_pair"
-        ]
-      },
-      {
         "gate": "CP-13",
         "issue": 1137,
         "role": "Maintain the accepted finite theorem map, including the nonnegative pinching no-cancellation proof and the exact domains of new source/reference/field constructions. Canonical physical premises keep their own discharge requirements.",
@@ -2441,34 +2650,13 @@
           "full_fock_field",
           "exchange_statistics"
         ]
-      },
-      {
-        "gate": "CP-02",
-        "issue": 1138,
-        "role": "Keep source-prepared reference domains, modular parameters, record clocks and physical calibration distinct.",
-        "evidence": [
-          "field_thermal",
-          "band_clock_budget",
-          "reference_observation"
-        ]
-      },
-      {
-        "gate": "CP-04",
-        "issue": 1140,
-        "role": "Retain same-excitation energy/current/dispersion and vacuum-relative mass joins; sign similarity and simulation savings supply no physical energy.",
-        "evidence": [
-          "gauged_field",
-          "energy_identifiability",
-          "signed_native"
-        ]
       }
     ],
-    "acceptance_policy": "CP00,CP01 andCP13 retain their independently accepted finite scope. The five construction gates remain open until their complete physical same-process acceptance conditions hold; finite mathematical interfaces do not discharge the84canonical physical premises.",
+    "acceptance_policy": "CP00, CP01 and CP13 retain their independently accepted finite scope. The five selected owners keep their existing unaccepted statuses until their full physical same-process conditions hold. Finite maps, calibrated equal gaps and retrospective comparisons discharge none of the 84 canonical physical premises.",
     "deferred_gates": [
-      "CP-10",
-      "CP-11"
+      "CP-10"
     ],
-    "deferred_reason": "Physical Einstein composition and joint empirical validation require accepted particle, field, geometry and common normalization joins. Finite components and scoped exclusions do not supply those predecessors.",
+    "deferred_reason": "Physical Einstein composition requires the common matter, geometry, null/stress and normalization joins. The active empirical owner may reject bounded attachments or replay known data while its physical-acceptance predecessors remain unaccepted.",
     "evidence": [
       {
         "path": "model/completion/campaign.json",
@@ -2865,7 +3053,7 @@
       {
         "id": "finite_attachment_map",
         "path": "model/completion/finite_attachment_map.json",
-        "sha256": "87f7b5f08a1a8935aa3bb6b6f7acffd9ef67c7f54df4a774124ec6dacacd7d97",
+        "sha256": "bd43ab88ff733b6de3e2f448a851cea7572867a7017cb722c046249ee088ad34",
         "independent_check": "model/completion/test_finite_attachment_map.py",
         "scope": "Exhaustive ownership and relevance navigation for the existing 84-premise register, with source-bound finite model attachments and explicit unresolved construction/acceptance joins. It is not a new audit of every Lean module or discharge of global physical premises.",
         "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
@@ -2881,7 +3069,7 @@
       {
         "id": "biased_reset",
         "path": "model/biased_reset/results.json",
-        "sha256": "85ec874fd62d501c58dcbe1497843ee927c7ddb98ff6a9b8f4440238e2c22501",
+        "sha256": "0a5430e040152c78521a5a6582e6367e7fd511b504a247f7aeb3f2c042d034f4",
         "independent_check": "model/biased_reset/test_reset.py",
         "scope": "Bounded reset and source-interface progress under the stated endpoint-biased code process, distinguished from the reviewed fair-coin mobile-memory construction. Active quantum transport is not a native topological particle or a clock-compatible field encoding.",
         "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
@@ -2912,7 +3100,7 @@
       },
       {
         "path": "model/particle_screening/mobile_results.json",
-        "sha256": "ca9789f4a9e51e2f0f78268dddfd6fbdbf7e3e452d1c577be221185a071908c9",
+        "sha256": "55306d00b699af399f5081507f83704e555228ec741d720b59d6bb4d3a90d879",
         "independent_check": "model/particle_screening/test_mobile_packet.py",
         "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
         "campaign_id": "mobile-screened-memory-20261029-v1",
@@ -3061,6 +3249,46 @@
         "scope": "Complete source words prepare a faithful interacting Gibbs marginal on one/two sites with retained purification, all exports and a subsequent field/pointer history. All-number CAR restrictions compose and the matrix first law holds; initialization, beta/action, larger-reference preparation and geometric premises remain supplied.",
         "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1",
         "id": "field_thermal"
+      },
+      {
+        "path": "model/reference_recovery/recovery.py",
+        "sha256": "dbb1cb54026558a16dea67ed8e2ceb9b5000033a92e65074327666c4e3d6d15b",
+        "independent_check": "model/reference_recovery/test_recovery.py",
+        "scope": "Bounded source words implement the faithful-reference Petz channel and its adjoint observation effects, retaining environments, arbitrary input/reference columns, both pointer outcomes and every export branch. The two-site interacting Gibbs instance uses supplied blanks, reference and design parameters; recovery is neither a retraction nor physical clock selection.",
+        "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1",
+        "id": "reference_recovery"
+      },
+      {
+        "path": "model/particle_response/spectrum.py",
+        "sha256": "1e8932166a0038d5343835cedb3a4fed1a348ced8f263c23545c3433f6b344d8",
+        "independent_check": "model/particle_response/test_response.py",
+        "scope": "Complete all-number Lehmann measures and source Ramsey readout distinguish a faithful thermal reference from a supplied pure half-filled ground. Exact dimer maps identify charge-one particle/hole doublets and charge-two singlets with nonzero residues, parity and internal spin; physical species, Lorentz spin, topological defects and absolute masses are not derived.",
+        "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1",
+        "id": "particle_response"
+      },
+      {
+        "path": "model/contact_scattering/scattering.py",
+        "sha256": "e84fac5c941a04fbdab7fa0fd02db53b5628254c37e682d11e1e883621d0c143",
+        "independent_check": "model/contact_scattering/test_scattering.py",
+        "scope": "The same Weyl/contact pair pole occurs in the exact complete two-fermion T matrix, with an optical identity and uniform fixed-broadening thermodynamic bounds. A separate complete source interaction echo has a rational positive signal bound. Fixed lattice spacing, model time and supplied preparations are explicit; no on-shell physical S matrix or chiral continuum is obtained.",
+        "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1",
+        "id": "contact_scattering"
+      },
+      {
+        "path": "model/particle_comparison/compare.py",
+        "sha256": "a3428c6f85f670eb79f95561c6acefe96e6795706a89561cd8cd65b33f60e57d",
+        "independent_check": "model/particle_comparison/test_compare.py",
+        "scope": "Exact current-source dimer spectroscopy excludes all 672 common-scale/common-chemical-potential three-lepton assignments to the declared broad ratio windows. A conditional electron-like/positron-like pair has equal gaps after one supplied electron calibration, with zero independently predicted absolute masses. The actual CODATA/ACT replay is retrospective and adds zero eligible CP11 comparisons.",
+        "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1",
+        "id": "particle_comparison"
+      },
+      {
+        "id": "particle_applicability",
+        "path": "model/particle_comparison/dictionary.py",
+        "sha256": "a1f72f68d8379cb2c55bdab706dace43903aff2eccb6ec838402e492c99bc327",
+        "independent_check": "model/particle_comparison/test_dictionary.py",
+        "scope": "An executable sixteen-state benchmark supplies Q=e(N-2), S=hbar*S_internal and one measured electron energy scale, giving assigned Hamiltonian-time and lattice-length units. Complete candidate electric-current/dipole response obeys continuity and charge conjugation, but the pure-gauge open bond measures no magnetic moment and its bare contact kernel is not Coulomb exchange. A separately declared four-site periodic extension checks momentum, all number sectors, particle-hole residues and free doublers. Its charged poles fail the fixed dimer-mass/bare-speed lattice-Dirac benchmark and a same-volume rest-gap variant. Finite-volume shifts and a possible renormalized velocity remain distinct: two momentum-squared values cannot validate a fitted dispersion. This rejects only that supplied finite dictionary benchmark, not an OPH continuum; physical electron/positron identity and QED remain unestablished.",
+        "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
       }
     ]
   },
@@ -3072,13 +3300,13 @@
   },
   "adopted_class": {
     "path": "model/completion/program_class_v2.json",
-    "sha256": "3caf0503745d317faeb36e29a6cdf87fdf7ffea14b5c23e905c6859cf625edb2",
+    "sha256": "b0a9e78500a272c7f98c03152e64de67fc5dc19366c80536ed938e49aca91796",
     "independent_check": "model/completion/test_program_class_v2.py",
     "scope": "Reviewed successor executable class with actual native/program interfaces, resource ceilings, all71retrospective observations, physical targets, calibration/error/exposure and stop/version rules. No physical prediction or class exclusion is claimed."
   },
   "acceptance_review": {
     "path": "model/completion/program_class_v2_review.json",
-    "sha256": "7bf0c78af38a3cea64ae1dfe2974874c247138b85c053c688dfce65606c5c2a9",
+    "sha256": "81cd48b18363be051f3295de1b782ee58d60006158f9f16a2241bcf7999d4133",
     "independent_check": "model/completion/independent_program_review.py",
     "scope": "Independent exact class, actual declared-service observer and17attachment theorem-map review. Closes no canonical physical premise or downstream particle/field/gravity gate."
   }

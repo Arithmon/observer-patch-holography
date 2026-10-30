@@ -1,6 +1,10 @@
 """Independent feasibility and exact-matrix adversaries for particle attachments."""
 from fractions import Fraction as F
+from copy import deepcopy
 import itertools
+import json
+from pathlib import Path
+import tempfile
 import unittest
 from unittest.mock import patch
 
@@ -129,6 +133,23 @@ class PhysicalScopeTests(unittest.TestCase):
         self.assertTrue(pair["calibration_errors_fully_correlated"])
         self.assertFalse(pair["prediction"]["physical_rest_mass_interpretation_derived"])
 
+    def test_supplied_dictionary_does_not_override_dispersion_or_QED_checks(self):
+        dictionary = self.result["assigned_operator_dictionary"]
+        self.assertTrue(dictionary["physical_dictionary_supplied"])
+        self.assertFalse(dictionary["physical_identity_derived"])
+        self.assertEqual(dictionary["calibration"]["independently_predicted_absolute_masses"],0)
+        verdict = self.result["particle_identity_verdict"]
+        self.assertFalse(verdict["electron_positron_identification_established"])
+        self.assertFalse(verdict["fixed_dictionary_dispersion_benchmark_satisfied"])
+        self.assertFalse(verdict["whole_OPH_or_continuum_excluded"])
+        electric = self.result["electromagnetic_applicability"]
+        self.assertIsNone(electric["magnetic_moment_or_gyromagnetic_ratio"])
+        self.assertFalse(electric["bare_interaction_comparison"]["bare_contact_equals_nonzero_Coulomb_kernel"])
+        ring = self.result["periodic_dispersion_applicability"]["benchmark"]
+        self.assertFalse(ring["same_volume_anchor_and_declared_speed_benchmark_satisfied"])
+        self.assertTrue(ring["envelope_fit_is_underdetermined_as_a_dispersion_test"])
+        self.assertFalse(ring["emergent_Lorentz_with_renormalized_velocity_excluded"])
+
     def test_retrospective_real_data_replay_not_universe_confirmation(self):
         self.assertEqual(self.result["actual_data_replay"]["ACT_posterior_lower_tail_mass"],
                          ["3114/508985"]*2)
@@ -152,6 +173,69 @@ class PhysicalScopeTests(unittest.TestCase):
         prediction["exact_normalized_mass_difference"] = "1"
         with self.assertRaises(ValueError):
             c.calibrated_pair(prediction,gap,observations)
+
+    def test_observable_units_confidence_assumptions_and_roles_cannot_be_relabelled(self):
+        prediction,gap = c.half_filled_candidates()
+        observations = c.load_observations(c.ROOT/c.TARGETS)
+        changes = [
+            ("electron_calibration", "unit", "eV"),
+            ("electron_calibration", "observable", "electron_g_factor"),
+            ("electron_calibration", "role", "independent mass prediction"),
+            ("electron_calibration", "citation", "https://example.invalid/unverified"),
+            ("positron_electron_difference", "observable", "g_factor_difference"),
+            ("positron_electron_difference", "is_g_factor_equality_measurement", True),
+            ("positron_electron_difference", "is_g_factor_equality_measurement", 0),
+            ("positron_electron_difference", "unit", "MeV"),
+            ("positron_electron_difference", "confidence_level_percent", 95),
+            ("positron_electron_difference", "confidence_level_percent", 90.),
+            ("positron_electron_difference", "assumption", "none"),
+            ("positron_electron_difference", "role", "independent absolute mass measurement"),
+            ("positron_electron_difference", "source", "unverified mass summary"),
+            ("positron_electron_difference", "measurement_citation", "https://example.invalid/gfactor"),
+        ]
+        for section,key,value in changes:
+            with self.subTest(section=section,key=key,value=value):
+                changed = deepcopy(observations)
+                changed[section][key] = value
+                with self.assertRaises(ValueError):
+                    c.calibrated_pair(prediction,gap,changed)
+        for key,value in (("schema", "unknown"),("exposure", "prospective")):
+            changed = deepcopy(observations)
+            changed[key] = value
+            with self.assertRaises(ValueError):
+                c.calibrated_pair(prediction,gap,changed)
+
+    def test_observation_structure_and_nonfinite_numeric_inputs_fail_closed(self):
+        observations = c.load_observations(c.ROOT/c.TARGETS)
+        for section,key in (("electron_calibration","value"),
+                            ("electron_calibration","standard_uncertainty"),
+                            ("positron_electron_difference","upper_bound")):
+            for value in (True,1.,"NaN","Infinity","0","-1","1/0"):
+                changed = deepcopy(observations)
+                changed[section][key] = value
+                with self.subTest(section=section,key=key,value=value), self.assertRaises(ValueError):
+                    c.validate_observations(changed)
+        changed = deepcopy(observations)
+        del changed["positron_electron_difference"]["assumption"]
+        with self.assertRaises(ValueError):
+            c.validate_observations(changed)
+        changed = deepcopy(observations)
+        changed["electron_calibration"]["undeclared_conversion"] = 1000
+        with self.assertRaises(ValueError):
+            c.validate_observations(changed)
+
+    def test_observation_file_loader_rejects_duplicate_keys_and_json_nonfinite_values(self):
+        observations = (c.ROOT/c.TARGETS).read_text()
+        damaged = [observations.replace('"unit": "MeV"', '"unit": "eV", "unit": "MeV"'),
+                   observations.replace('"value": "0.51099895069"', '"value": NaN')]
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/"observations.json"
+            for contents in damaged:
+                # A permissive JSON decoder would accept both damaged files.
+                json.loads(contents)
+                path.write_text(contents)
+                with self.assertRaises(ValueError):
+                    c.load_observations(path)
 
 
 if __name__ == "__main__":

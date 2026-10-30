@@ -51,11 +51,11 @@ work under the [shared interface conditions](completion/SAME_PROCESS_INTERFACES.
 
 | Owner | Current construction and remaining join |
 | --- | --- |
-| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) | [Both exchange lifts](native_fixed_algebra/SIGNED.md) have scalar conserved source observables and identical channel spectra and GNS bounds. Their exact similarity is nonpositive, so it supplies no physical gauge or protection mechanism. Active memories and relational charges retain their own domains. |
-| [#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141) | A [noncommutative presentation certificate](exchange_sector/PRESENTATION.md) reduces 235 generators and 495 native relators to `Z/2`. The two characters have complete source-operated instruments; sign selection, physical spin, localized particle identity and species remain open. |
-| [#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142) | [Local full-Fock schedules](full_fock_field/LOCAL_SIMULATION.md) give a volume-linear split coefficient and complete local-history bounds independent of ambient volume. The `2x2x2` example needs 10,560 rather than 105,600 pulses at its stated accuracy. Initial restricted states, observation services, a chiral spatial continuum and physical action selection remain supplied or open. |
-| [#1144](https://github.com/FloatingPragma/observer-patch-holography/issues/1144) | [Rational support retracts](support_refinement/README.md) commute with all sixty proper actions on all six intervals of the four-level support tower. They preserve rational homology; they are neither vertex-valued coarsenings nor quantum channels, and supply no responsive geometry. |
-| [#1145](https://github.com/FloatingPragma/observer-patch-holography/issues/1145) | [Interacting Gibbs preparation](field_thermal/README.md) executes on the complete one- or two-site field algebra, retaining purifier, reads and aborts. It supplies a faithful field reference and same-action entropy checks; temperature, action, physical clock and geometric entropy premises remain declared or open. |
+| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) | [Compiled reference recovery](reference_recovery/README.md) implements the bounded Petz adjoint and occupation observations on the complete interacting field, with retained environments and every export outcome. Common native full-field reference selection and physical clock calibration are unestablished. |
+| [#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141) | [Particle response](particle_response/README.md) constructs charge −1 and +1 doublets about one half-filled ground, with explicit symmetry, probe residues and complete source spectroscopy. They are conditional electron/positron-like candidates; electromagnetic charge, Lorentz spin, transport and topological-defect identification are unestablished. |
+| [#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142) | [Contact response](contact_scattering/README.md) connects the existing pair pole to the exact two-fermion T operator, bounds fixed-broadening volume errors and source-executes a nonzero interaction echo. A physical on-shell scattering map and chiral spatial continuum are unestablished. |
+| [#1143](https://github.com/FloatingPragma/observer-patch-holography/issues/1143) | [Mass comparison](particle_comparison/README.md) declares two equal-gap candidates and a common electron calibration. Their zero mass difference meets a conditional experimental bound; neither absolute mass is independently predicted. An exact exclusion rules out fitting all three charged leptons from this dimer's transition frequencies, even with a shared offset and scale. |
+| [#1147](https://github.com/FloatingPragma/observer-patch-holography/issues/1147) | [Actual-data replay](particle_comparison/README.md) checks the fixed alpha/ACT comparisons and the conditional particle mass equality. All targets are retrospective; the packet adds no eligible integrated physical comparison and does not confirm an OPH universe. |
 
 The [port/support incidence audit](../code/a5_closure/port_support_source_audit.md)
 retains all sixty oriented relative seed maps. A fixed support mark leaves
@@ -72,7 +72,7 @@ physical golden representation.
 
 [Common-reference observations](reference_observation/README.md) and the
 [pair-current map](gauged_field/README.md) connect these constructions to
-the clock and energy owners. Their native implementation, physical vacuum
+the clock and energy owners. Their bounded source implementation retains supplied reference and apparatus inputs. Physical vacuum
 and common rest/kinetic/stress normalization retain the
 [energy-identification conditions](energy_identifiability/README.md).
 

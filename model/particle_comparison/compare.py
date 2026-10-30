@@ -26,6 +26,62 @@ TARGETS = "model/particle_comparison/observations.json"
 CHIRAL = "model/common_source/chiral_candidate/results.json"
 
 
+def validate_observations(observations):
+    """Admit only the named mass observables with their declared source roles.
+
+    Numeric strings remain explicit data inputs. Changing units, replacing a
+    mass limit by a g-factor limit, or dropping its assumption is not a new
+    value of the same observable and must not reuse this comparison.
+    """
+    def fields(value, expected, numeric=()):
+        if type(value) is not dict or set(value) != set(expected) | set(numeric):
+            raise ValueError("physical observation schema mismatch")
+        for key, wanted in expected.items():
+            if type(value[key]) is not type(wanted) or value[key] != wanted:
+                raise ValueError(f"physical observation contract changed: {key}")
+        for key in numeric:
+            if type(value[key]) is not str:
+                raise ValueError("physical observations require exact numeric strings")
+            try:
+                number = F(value[key])
+            except (ValueError, ZeroDivisionError) as exc:
+                raise ValueError("finite positive rational observation required") from exc
+            if number <= 0:
+                raise ValueError("finite positive rational observation required")
+
+    if (type(observations) is not dict or set(observations) !=
+            {"schema", "exposure", "electron_calibration", "positron_electron_difference"}):
+        raise ValueError("physical observation schema mismatch")
+    fields({key:observations[key] for key in ("schema", "exposure")}, {
+        "schema":"oph.particle_comparison.observations.v1",
+        "exposure":"retrospective_known_data"})
+    fields(observations["electron_calibration"], {
+        "observable":"electron_mass_energy_equivalent", "unit":"MeV",
+        "source":"CODATA 2022 recommended values",
+        "citation":"https://physics.nist.gov/cuu/pdf/wall_2022.pdf",
+        "role":"one common energy calibration input; not an absolute mass prediction"},
+        ("value", "standard_uncertainty"))
+    fields(observations["positron_electron_difference"], {
+        "observable":"absolute_mass_difference_divided_by_average_mass",
+        "confidence_level_percent":90, "unit":"dimensionless",
+        "source":"PDG 2025 electron listing, Fee 1993 positronium spectroscopy",
+        "citation":"https://pdgweb.lbl.gov/2025/listings/rpp2025-list-electron.pdf",
+        "measurement_citation":"https://doi.org/10.1103/PhysRevA.48.192",
+        "assumption":"positronium Rydberg constant exactly half the hydrogen one",
+        "role":"conditional retrospective equality check; not a second absolute mass measurement",
+        "is_g_factor_equality_measurement":False}, ("upper_bound",))
+    electron = observations["electron_calibration"]
+    if (F(electron["standard_uncertainty"]) >= F(electron["value"])
+            or F(observations["positron_electron_difference"]["upper_bound"]) >= 2):
+        raise ValueError("nontrivial positive mass calibration and normalized difference bound required")
+    return observations
+
+
+def load_observations(path):
+    """Duplicate keys and JSON nonfinite numbers fail before schema admission."""
+    return validate_observations(strict_json.loads(Path(path).read_text(encoding="utf-8")))
+
+
 def rational(value):
     if type(value) not in (int, F):
         raise ValueError("exact integer or Fraction required")
@@ -237,6 +293,7 @@ def lepton_no_go(frequencies, windows):
 
 
 def calibrated_pair(prediction, gap, observations):
+    observations = validate_observations(observations)
     if not isinstance(gap,Q) or gap.sign() <= 0 or prediction["gap"] != gap.as_json():
         raise ValueError("positive certified common particle-hole gap required")
     predicted_difference = F(prediction["exact_normalized_mass_difference"])
@@ -272,15 +329,19 @@ def build(*, root=ROOT):
     pair_prediction, gap = half_filled_candidates()
     prediction = {"source":certificate,"pair":pair_prediction}
     seal = hashlib.sha256(cross_scale.canonical(prediction).encode()).hexdigest()
-    observations = strict_json.loads((root/TARGETS).read_text(encoding="utf-8"))
-    if observations["exposure"] != "retrospective_known_data":
-        raise ValueError("known targets cannot be relabelled prospective")
+    observations = load_observations(root/TARGETS)
     chiral = strict_json.loads((root/CHIRAL).read_text(encoding="utf-8"))
     windows = [tuple(map(F,w)) for w in chiral["separate_empirical_comparison"]["conservative_ratio_windows"]]
     if windows != [(F(206),F(207)),(F(3470),F(3485))]:
         raise ValueError("inherited broad mass comparison windows changed")
     no_go = lepton_no_go(frequencies, windows)
     pair = calibrated_pair(pair_prediction,gap,observations)
+    from .dictionary import build as build_dictionary
+    dictionary = build_dictionary(root=root)
+    from .electromagnetism import build as build_electromagnetism
+    electric_response = build_electromagnetism()
+    from model.particle_response.dispersion import build as build_dispersion
+    dispersion = build_dispersion()
     # This recomputes both the exact spectral prediction and actual ACT weights;
     # it does not merely read a previous cross-scale success receipt.
     replay = cross_scale.build(root=root)
@@ -288,11 +349,29 @@ def build(*, root=ROOT):
         raise ArithmeticError("prediction changed after comparison")
     paths = ("model/particle_comparison/compare.py", TARGETS,
              "model/particle_comparison/test_compare.py", "model/particle_comparison/README.md",
-             "model/full_fock_field/field.py",CHIRAL)
+             "model/full_fock_field/field.py",CHIRAL,
+             "model/particle_comparison/dictionary.py", "model/particle_comparison/test_dictionary.py",
+             "model/particle_comparison/electromagnetism.py", "model/particle_comparison/test_electromagnetism.py",
+             "model/particle_response/dimer.py", "model/particle_response/spectrum.py",
+             "model/gauged_field/links.py",
+             "model/particle_response/dispersion.py", "model/particle_response/test_dispersion.py")
+    source_bindings = {p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in paths}
+    source_bindings.update(replay["custody"]["input_sha256"])
     return {"schema":"oph.particle_comparison.v1", "classification":"retrospective conditional benchmark",
+            "source_bindings":source_bindings,
             "source_spectrum":certificate,"prediction_sha256_before_comparison":seal,
             "sealing_after_prior_target_exposure_makes_prospective":False,
-            "two_candidate_assignment":pair, "three_lepton_exhaustive_comparison":no_go,
+            "two_candidate_assignment":pair, "assigned_operator_dictionary":dictionary,
+            "electromagnetic_applicability":electric_response,
+            "periodic_dispersion_applicability":dispersion,
+            "particle_identity_verdict":{
+                "electron_positron_identification_established":False,
+                "fixed_dictionary_dispersion_benchmark_satisfied":dispersion["benchmark"]["declared_dimer_anchor_and_speed_benchmark_satisfied"],
+                "QED_identification":electric_response["QED_identification"],
+                "finite_volume_shift_is_separate_from_same_volume_dispersion_test":True,
+                "adjusting_effective_velocity_would_be_an_additional_unverified_attachment":True,
+                "whole_OPH_or_continuum_excluded":False},
+            "three_lepton_exhaustive_comparison":no_go,
             "actual_data_replay":{
                 "full_replay_sha256":hashlib.sha256(cross_scale.canonical(replay).encode()).hexdigest(),
                 "coupling":replay["coupling"],
