@@ -61,28 +61,11 @@ proof shows that the whole class of laws cannot work.
   [integrated verdict](model/CONSTRUCTION.md#integrated-effective-description)
   has the details.
 - **Particles are the big open piece.** The finite theory gives the charges
-  of one Standard Model generation and its Higgs couplings, but no masses.
-  Every mass law tested on the running model misses the measured lepton
-  hierarchy. The adjacent-pair candidate on the native carrier has mean
-  first exit after 15 uniform repair attempts in the
-  [localized-pair diagnostic](model/clock_defect_energy/LOCALIZED.md).
-  Its [excess movement](model/clock_defect_energy/ENERGY.md) also fails the
-  tested positive repair-energy ansatz. A finite campaign rules out the simplest
-  kind of protected charge: no hidden carrier quantity commutes with every
-  repair. An exact [exchange-history class](model/clock_defect_energy/DEFECT_HISTORY.md)
-  supplies a topological candidate under declared local deformations; its
-  [particle interpretation](model/clock_defect_energy/THEOREM_JOINS.md#from-exchange-history-to-a-particle)
-  remains open. A [sharp-sector test](model/exchange_sector/README.md) finds
-  an actively corrected qubit but also a full-exterior mismatch and a
-  rank-one limit on uninterrupted odd exchange records. Its repair activity
-  has no assigned rest-energy unit. An [improved screened code](model/particle_screening/README.md)
-  reaches the optimal one-port exterior distance among the tested exact
-  qubits, while a [same-code energy test](model/active_code_energy/README.md)
-  shows why stationary sector weights and repair counts leave its
-  rest energy undetermined. Its [compiled recovery and transport](model/screened_transport/README.md)
-  preserve the logical state at a reset core; a coherent rest gap is not
-  identified. An [SI conversion](model/clock_defect_energy/SI_UNITS.md) keeps
-  the supplied clock calibration explicit. Finding a stable defect is the work
+  of one Standard Model generation and its Higgs couplings, but no masses,
+  and every mass law tried on the running model misses the measured lepton
+  hierarchy. The obvious defect on the native carrier comes apart after a few
+  repairs. Better-protected candidates keep their state under repair but do
+  not yet carry a rest energy. Finding a stable defect with a mass is the work
   of the [particle paper](paper/deriving_the_particle_zoo_from_observer_consistency.pdf)
   and the [current particle/mass join](docs/research/OPH_NATIVE_PARTICLE_MASS_JOIN.md).
 - **Standard physics from finite agreement.** Under stated premises, finite
