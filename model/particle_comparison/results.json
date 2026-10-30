@@ -1,0 +1,515 @@
+{
+  "CP11": {
+    "OPH_universe_membership_confirmed": false,
+    "eligible_physical_comparisons_added": 0,
+    "eligible_physical_dictionary": false,
+    "global_likelihood_or_probability": null,
+    "prospective_comparisons_added": 0,
+    "status": "open: CP07/CP10 common physical dictionary and complete error contract absent"
+  },
+  "actual_data_replay": {
+    "ACT_posterior_lower_tail_mass": [
+      "3114/508985",
+      "3114/508985"
+    ],
+    "ACT_posterior_mass_is_p_value": false,
+    "cosmology_contract": {
+      "archive_product": "p-actbase-l-b_lcdm_camb",
+      "cosmological_model": "baseline six-parameter flat Lambda-CDM",
+      "data_combination": "P-ACT-LB: Planck, full multifrequency ACT DR6, ACT/Planck lensing, DESI 2024 DR1 BAO",
+      "documentation": "code/cosmology/tilt_posterior/README.md",
+      "native_primordial_embedding_derived": false,
+      "ns_prior": {
+        "bounds": [
+          "0.85",
+          "1.1"
+        ],
+        "family": "uniform"
+      },
+      "pivot_Mpc_inverse": "0.05",
+      "posterior_marginal_not_joint_model_likelihood": true,
+      "primary_parameter_paper": "https://arxiv.org/html/2503.14452v1",
+      "quantity": "primordial scalar power-law spectral index n_s",
+      "supplied_physics": "standard radiation transfer, recombination, foreground, calibration and nuisance models"
+    },
+    "coupling": {
+      "interpretation": "Retrospective scalar agreement; reported standard uncertainty is not a model-error bound or model probability.",
+      "inverse_alpha_decimal_enclosure": {
+        "hi": "137.03599918956615502918374402086679956640868467385426554124952443939012544588656",
+        "lo": "137.03599918956615502918374402086679956640868467385426554124946829116314913743238"
+      },
+      "signed_difference_over_reported_standard_uncertainty": {
+        "hi": "0.59838833472303542956508569363850879399306026386902497330429168789935981693336434",
+        "lo": "0.59838833472303542956508569363850879399306026386902229957919757797297075900149921"
+      },
+      "target": {
+        "citation": "https://physics.nist.gov/cuu/pdf/wall_2022.pdf",
+        "comparison_half_width_in_standard_uncertainties": "5",
+        "exposure": "retrospective_known_data",
+        "observable": "inverse_fine_structure_constant_thomson_limit",
+        "schema": "oph.predictions.empirical_endpoint.v1",
+        "source": "CODATA 2022 recommended values, NIST wall table",
+        "standard_uncertainty": "0.000000021",
+        "unit": "dimensionless",
+        "value": "137.035999177"
+      },
+      "within_one_reported_standard_uncertainty": true
+    },
+    "custody": {
+      "ACT_weighted_projection_recomputed_here": true,
+      "exact_spectral_enclosure_recomputed_here": true,
+      "input_sha256": {
+        "code/cosmology/tilt_posterior/README.md": "9d27696b3460f2aab794b8c94a53f66520af1c63474239f67fabb972efa26955",
+        "code/cosmology/tilt_posterior/act_dr6_ns_weight.json.gz": "13dab540b652300bd000cf1ac3b197af55c7c411de215682482ea55993f40485",
+        "model/common_source/chiral_candidate/results.json": "15f34779cc8e18d9c41fe7ce8984dbd5a56681fea7aedad0678900ad6e39771b",
+        "model/empirical_diagnostics/cross_scale.py": "899a07e79a6943eaa801d42face356c0800a84d878e556e436e3c92d90bb68f3",
+        "model/observer_particles/results/entangled_alpha.json": "1536bdceda74bb6849ecdb1a9840c681d7dc1dbb83b74e97720ec776112927f0",
+        "model/predictions/endpoint_audit.py": "f362374fe6156ea9ceb4cd17d694fd1091bdb34c2085ef4080ee5dcdfbee90cb",
+        "model/predictions/shared_parameter.py": "fa3fb9161fdf1238e8e5058d14cce8029c2f137e0e82f7bb0d2eff1d3e601058",
+        "model/scalar_observations/experimental_readout/executable_results.json": "b705f069be26d2df957b8dfde3565ab0965f9183a3cd1086a90c9909e520c04d"
+      },
+      "upstream_histories_reexecuted_here": false
+    },
+    "full_replay_sha256": "adbe0ba92ab9cbcd1f6d6508618a7c494d7edadd3d2e8d875e4035c403f25b9c",
+    "joint_status": {
+      "all_public_datasets_reproduced": false,
+      "declared_chiral_prescriptions": [
+        "linear_F",
+        "a_Hubbard_function",
+        "b_Hubbard_function",
+        "J_Hubbard_function"
+      ],
+      "declared_chiral_prescriptions_failing_both_ratio_requirement": [
+        "linear_F",
+        "a_Hubbard_function",
+        "b_Hubbard_function",
+        "J_Hubbard_function"
+      ],
+      "declared_chiral_prescriptions_passing_both_lepton_ratios": [],
+      "joint_likelihood_or_significance": null,
+      "missing_contracts": [
+        "spectral_scalar_to_Thomson_photon_residue",
+        "same_cell_P_alpha_identification",
+        "same_reconstructed_native_spacetime_field_history_proved",
+        "quantum_gauge_and_Higgs_dynamics_executed",
+        "observed_standard_model_mass_spectrum_derived",
+        "oscillator_apparatus_action_and_preparation_from_fixed_repair",
+        "physical_clock_for_quantum_comparison",
+        "native_curvature_to_CMB_transfer_and_background",
+        "common_physical_action_and_complete_comparison_error_contract"
+      ],
+      "source_only_measured_universe_established": false,
+      "status": "not_evaluable_as_one_complete_physical_construction"
+    }
+  },
+  "classification": "retrospective conditional benchmark",
+  "custody": {
+    "all_assignment_cases_recomputed": true,
+    "exact_current_Hamiltonian_certified": true,
+    "existing_actual_data_projection_recomputed": true,
+    "input_sha256": {
+      "model/common_source/chiral_candidate/results.json": "15f34779cc8e18d9c41fe7ce8984dbd5a56681fea7aedad0678900ad6e39771b",
+      "model/full_fock_field/field.py": "70a17a7d129b328ec755cd11257c839c2cfc5ef1c1f2d215c8af9645b5b29709",
+      "model/particle_comparison/README.md": "58a3162f64e7ec61c022c382995e029e5a404c6bbe329b57ff051e35648dadef",
+      "model/particle_comparison/compare.py": "c9cee8c48288d8406935f900e2540bcc87f01bd949ce6220eac0de406b1444b7",
+      "model/particle_comparison/observations.json": "44a8e4615c3497542c114d600ddde99973a9eb9400c379c6117c010204dabf1c",
+      "model/particle_comparison/test_compare.py": "e889d8ab8f9964e92b9a0cb9081852924b83208cbfffdae1567cfe7da0aa6fb4"
+    },
+    "physical_experiment_performed": false
+  },
+  "prediction_sha256_before_comparison": "508410b5e83733792d78cdeb70dc5a50295624af7d3a5725e0a09554d05e0d08",
+  "schema": "oph.particle_comparison.v1",
+  "sealing_after_prior_target_exposure_makes_prospective": false,
+  "source_spectrum": {
+    "geometry": {
+      "coordinate_speed": "1/8",
+      "interaction": "1",
+      "sides": [
+        2,
+        1,
+        1
+      ],
+      "unit": "dimensionless Hamiltonian model-coordinate energy"
+    },
+    "includes_dark_transitions": true,
+    "method": "exact characteristic polynomials of current source matrix in Gaussian rationals",
+    "number_sectors": [
+      {
+        "characteristic_polynomial": "x",
+        "dimension": 1,
+        "eigenvalues_with_multiplicity": [
+          {
+            "decimal_enclosure": {
+              "hi": "0",
+              "lo": "0"
+            },
+            "rational": "0",
+            "sqrt17_coefficient": "0"
+          }
+        ],
+        "number": 0
+      },
+      {
+        "characteristic_polynomial": "x**4 - x**2/128 + 1/65536",
+        "dimension": 4,
+        "eigenvalues_with_multiplicity": [
+          {
+            "decimal_enclosure": {
+              "hi": "-0.0625",
+              "lo": "-0.0625"
+            },
+            "rational": "-1/16",
+            "sqrt17_coefficient": "0"
+          },
+          {
+            "decimal_enclosure": {
+              "hi": "-0.0625",
+              "lo": "-0.0625"
+            },
+            "rational": "-1/16",
+            "sqrt17_coefficient": "0"
+          },
+          {
+            "decimal_enclosure": {
+              "hi": "0.0625",
+              "lo": "0.0625"
+            },
+            "rational": "1/16",
+            "sqrt17_coefficient": "0"
+          },
+          {
+            "decimal_enclosure": {
+              "hi": "0.0625",
+              "lo": "0.0625"
+            },
+            "rational": "1/16",
+            "sqrt17_coefficient": "0"
+          }
+        ],
+        "number": 1
+      },
+      {
+        "characteristic_polynomial": "x**6 - 2*x**5 + 63*x**4/64 + x**3/64",
+        "dimension": 6,
+        "eigenvalues_with_multiplicity": [
+          {
+            "decimal_enclosure": {
+              "hi": "-0.0153882032022075687276762319967596281433875",
+              "lo": "-0.0153882032022075687276762319967596281434"
+            },
+            "rational": "1/2",
+            "sqrt17_coefficient": "-1/8"
+          },
+          {
+            "decimal_enclosure": {
+              "hi": "0",
+              "lo": "0"
+            },
+            "rational": "0",
+            "sqrt17_coefficient": "0"
+          },
+          {
+            "decimal_enclosure": {
+              "hi": "0",
+              "lo": "0"
+            },
+            "rational": "0",
+            "sqrt17_coefficient": "0"
+          },
+          {
+            "decimal_enclosure": {
+              "hi": "0",
+              "lo": "0"
+            },
+            "rational": "0",
+            "sqrt17_coefficient": "0"
+          },
+          {
+            "decimal_enclosure": {
+              "hi": "1",
+              "lo": "1"
+            },
+            "rational": "1",
+            "sqrt17_coefficient": "0"
+          },
+          {
+            "decimal_enclosure": {
+              "hi": "1.0153882032022075687276762319967596281434",
+              "lo": "1.0153882032022075687276762319967596281433875"
+            },
+            "rational": "1/2",
+            "sqrt17_coefficient": "1/8"
+          }
+        ],
+        "number": 2
+      },
+      {
+        "characteristic_polynomial": "x**4 - 4*x**3 + 767*x**2/128 - 255*x/64 + 65025/65536",
+        "dimension": 4,
+        "eigenvalues_with_multiplicity": [
+          {
+            "decimal_enclosure": {
+              "hi": "0.9375",
+              "lo": "0.9375"
+            },
+            "rational": "15/16",
+            "sqrt17_coefficient": "0"
+          },
+          {
+            "decimal_enclosure": {
+              "hi": "0.9375",
+              "lo": "0.9375"
+            },
+            "rational": "15/16",
+            "sqrt17_coefficient": "0"
+          },
+          {
+            "decimal_enclosure": {
+              "hi": "1.0625",
+              "lo": "1.0625"
+            },
+            "rational": "17/16",
+            "sqrt17_coefficient": "0"
+          },
+          {
+            "decimal_enclosure": {
+              "hi": "1.0625",
+              "lo": "1.0625"
+            },
+            "rational": "17/16",
+            "sqrt17_coefficient": "0"
+          }
+        ],
+        "number": 3
+      },
+      {
+        "characteristic_polynomial": "x - 2",
+        "dimension": 1,
+        "eigenvalues_with_multiplicity": [
+          {
+            "decimal_enclosure": {
+              "hi": "2",
+              "lo": "2"
+            },
+            "rational": "2",
+            "sqrt17_coefficient": "0"
+          }
+        ],
+        "number": 4
+      }
+    ],
+    "numerical_eigenvalue_tolerance": null,
+    "signed_charge_one_frequency_superset": [
+      {
+        "decimal_enclosure": {
+          "hi": "-0.0778882032022075687276762319967596281433875",
+          "lo": "-0.0778882032022075687276762319967596281434"
+        },
+        "rational": "7/16",
+        "sqrt17_coefficient": "-1/8"
+      },
+      {
+        "decimal_enclosure": {
+          "hi": "-0.0625",
+          "lo": "-0.0625"
+        },
+        "rational": "-1/16",
+        "sqrt17_coefficient": "0"
+      },
+      {
+        "decimal_enclosure": {
+          "hi": "0.0471117967977924312723237680032403718566125",
+          "lo": "0.0471117967977924312723237680032403718566"
+        },
+        "rational": "9/16",
+        "sqrt17_coefficient": "-1/8"
+      },
+      {
+        "decimal_enclosure": {
+          "hi": "0.0625",
+          "lo": "0.0625"
+        },
+        "rational": "1/16",
+        "sqrt17_coefficient": "0"
+      },
+      {
+        "decimal_enclosure": {
+          "hi": "0.9375",
+          "lo": "0.9375"
+        },
+        "rational": "15/16",
+        "sqrt17_coefficient": "0"
+      },
+      {
+        "decimal_enclosure": {
+          "hi": "0.9528882032022075687276762319967596281434",
+          "lo": "0.9528882032022075687276762319967596281433875"
+        },
+        "rational": "7/16",
+        "sqrt17_coefficient": "1/8"
+      },
+      {
+        "decimal_enclosure": {
+          "hi": "1.0625",
+          "lo": "1.0625"
+        },
+        "rational": "17/16",
+        "sqrt17_coefficient": "0"
+      },
+      {
+        "decimal_enclosure": {
+          "hi": "1.0778882032022075687276762319967596281434",
+          "lo": "1.0778882032022075687276762319967596281433875"
+        },
+        "rational": "9/16",
+        "sqrt17_coefficient": "1/8"
+      }
+    ],
+    "source_dimension": 16,
+    "visibility_threshold": null
+  },
+  "three_lepton_exhaustive_comparison": {
+    "attachment": "m_i=kappa*abs(omega_i-mu), common kappa>0 and arbitrary common real mu",
+    "cases_above_tau_window": 64,
+    "cases_below_tau_window": 608,
+    "distinct_ordered_assignments": 336,
+    "electron_sign_choices": 2,
+    "feasible_cases": 0,
+    "full_case_sha256": "afcfba6eb4e769c99e98b2005b675cdc4cdd5da2f2ae2570358ecbb6f9d69de9",
+    "largest_rejected_upper_tau_ratio": {
+      "decimal_enclosure": {
+        "hi": "2163.007462660591742953566562553260026538272",
+        "lo": "2163.007462660591742953566562553260026538246"
+      },
+      "rational": "1091",
+      "sqrt17_coefficient": "260"
+    },
+    "repeated_frequency_assignments": "excluded because equal frequencies give equal masses, contrary to disjoint target ratios",
+    "scope": "fixed two-site action and charge-one transitions, including dark transitions; no sector-dependent shifts or nonlinear dictionary",
+    "smallest_rejected_lower_tau_ratio": {
+      "decimal_enclosure": {
+        "hi": "11655.656572761342888993723143322800531086232",
+        "lo": "11655.6565727613428889937231433228005310860885"
+      },
+      "rational": "5739",
+      "sqrt17_coefficient": "1435"
+    },
+    "status": "bounded_three_lepton_attachment_rejected",
+    "target_ratios": [
+      [
+        "206",
+        "207"
+      ],
+      [
+        "3470",
+        "3485"
+      ]
+    ],
+    "target_windows_are_joint_confidence_region": false,
+    "total_cases": 672,
+    "universe_or_OPH_program_rejected": false,
+    "zero_mu_absolute_frequency_dynamic_range": {
+      "decimal_enclosure": {
+        "hi": "22.879369424787367676428519601158982531176861538461538461538461538461538461538462",
+        "lo": "22.879369424787367676428519601158982531176584615384615384615384615384615384615384"
+      },
+      "rational": "149/13",
+      "sqrt17_coefficient": "36/13"
+    }
+  },
+  "two_candidate_assignment": {
+    "calibrated_energy_scale_MeV_per_model_energy": {
+      "decimal_enclosure": {
+        "hi": "1.1283114620273005488197487299339354687481580622288085970149253731343283582089553",
+        "lo": "1.1283114620273005488197487299339354687481336563087756417910447761194029850746268"
+      },
+      "rational": "51099895069/418750000000",
+      "sqrt17_coefficient": "51099895069/209375000000"
+    },
+    "calibration": {
+      "citation": "https://physics.nist.gov/cuu/pdf/wall_2022.pdf",
+      "observable": "electron_mass_energy_equivalent",
+      "role": "one common energy calibration input; not an absolute mass prediction",
+      "source": "CODATA 2022 recommended values",
+      "standard_uncertainty": "0.00000000016",
+      "unit": "MeV",
+      "value": "0.51099895069"
+    },
+    "calibration_errors_fully_correlated": true,
+    "candidate_mass_energy_MeV": [
+      "0.51099895069",
+      "0.51099895069"
+    ],
+    "candidate_mass_uncertainty_MeV_from_shared_calibration": [
+      "0.00000000016",
+      "0.00000000016"
+    ],
+    "comparison": {
+      "assumption": "positronium Rydberg constant exactly half the hydrogen one",
+      "citation": "https://pdgweb.lbl.gov/2025/listings/rpp2025-list-electron.pdf",
+      "confidence_level_percent": 90,
+      "is_g_factor_equality_measurement": false,
+      "measurement_citation": "https://doi.org/10.1103/PhysRevA.48.192",
+      "observable": "absolute_mass_difference_divided_by_average_mass",
+      "role": "conditional retrospective equality check; not a second absolute mass measurement",
+      "source": "PDG 2025 electron listing, Fee 1993 positronium spectroscopy",
+      "unit": "dimensionless",
+      "upper_bound": "0.000000008"
+    },
+    "independently_predicted_absolute_masses": 0,
+    "missing_identity_contracts": [
+      "physical vacuum and chemical-potential selection",
+      "physical electric charge and Lorentz spin representation",
+      "same observer proper clock and physical energy calibration independent of target mass",
+      "spatial continuum dispersion and isolated stable pole",
+      "common topological defect, transport, interactions and mass on the same excitation"
+    ],
+    "normalized_difference_prediction": "0",
+    "prediction": {
+      "Lorentz_spin_or_physical_particle_identity_derived": false,
+      "candidates": [
+        {
+          "assignment": "electron-like hole",
+          "multiplicity": 2,
+          "number_sector": 1,
+          "relative_number_charge": -1
+        },
+        {
+          "assignment": "positron-like particle",
+          "multiplicity": 2,
+          "number_sector": 3,
+          "relative_number_charge": 1
+        }
+      ],
+      "chemical_potential": "1/2",
+      "exact_normalized_mass_difference": "0",
+      "gap": {
+        "decimal_enclosure": {
+          "hi": "0.4528882032022075687276762319967596281434",
+          "lo": "0.4528882032022075687276762319967596281433875"
+        },
+        "rational": "-1/16",
+        "sqrt17_coefficient": "1/8"
+      },
+      "gap_unit": "inverse Hamiltonian model coordinate; hbar_model=1",
+      "ground_energy": {
+        "decimal_enclosure": {
+          "hi": "-1.0153882032022075687276762319967596281433875",
+          "lo": "-1.0153882032022075687276762319967596281434"
+        },
+        "rational": "-1/2",
+        "sqrt17_coefficient": "-1/8"
+      },
+      "ground_multiplicity": 1,
+      "hamiltonian": "K=H-(1/2)N",
+      "physical_electric_charge_identification_supplied": true,
+      "physical_rest_mass_interpretation_derived": false,
+      "reference": "supplied zero-temperature unique N=2 ground of K",
+      "reference_is_executed_beta1_mu0_Gibbs_state": false,
+      "time_parameter": "Hamiltonian model coordinate, not calibrated observer proper time"
+    },
+    "status": "retrospective_conditional_equality_compatible_after_one_mass_calibration",
+    "unique_OPH_signature": false,
+    "within_reported_conditional_bound": true
+  }
+}
