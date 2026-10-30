@@ -3,6 +3,21 @@ name: Arithmon interface contracts
 on:
   push:
     paths:
+      - 'Lean/ObserverPatchHolography/CoreAxioms.lean'
+      - 'Lean/Geometry/ScreenCarrierMapCandidate.lean'
+      - 'Lean/Screen/PortFrameGram.lean'
+      - 'Lean/Screen/PortGramRepairBand.lean'
+      - 'code/m1_source_realization/topology.py'
+      - 'code/m1_source_realization/README.md'
+      - 'code/a5_closure/port_gram_support_attachment_certificate.py'
+      - 'code/a5_closure/verify_port_gram_support_attachment_independent.py'
+      - 'code/a5_closure/*port_support_source_audit*'
+      - 'code/a5_closure/*equivariant_degree*'
+      - 'code/a5_closure/continuous_equivariant_degree_proof.md'
+      - 'code/a5_closure/tests/*port_support_source_audit*'
+      - 'code/a5_closure/tests/*equivariant_degree*'
+      - 'code/a5_closure/receipts/port_support_source_audit.json'
+      - 'code/a5_closure/receipts/equivariant_degree_crosscheck.json'
       - 'code/a5_closure/*marked_triplet*'
       - 'code/a5_closure/*proper_code_attachment*'
       - 'code/a5_closure/*c12_current_attachment*'
@@ -67,6 +82,21 @@ on:
       - '.github/workflows/arithmon-interface-contracts.yml'
   pull_request:
     paths:
+      - 'Lean/ObserverPatchHolography/CoreAxioms.lean'
+      - 'Lean/Geometry/ScreenCarrierMapCandidate.lean'
+      - 'Lean/Screen/PortFrameGram.lean'
+      - 'Lean/Screen/PortGramRepairBand.lean'
+      - 'code/m1_source_realization/topology.py'
+      - 'code/m1_source_realization/README.md'
+      - 'code/a5_closure/port_gram_support_attachment_certificate.py'
+      - 'code/a5_closure/verify_port_gram_support_attachment_independent.py'
+      - 'code/a5_closure/*port_support_source_audit*'
+      - 'code/a5_closure/*equivariant_degree*'
+      - 'code/a5_closure/continuous_equivariant_degree_proof.md'
+      - 'code/a5_closure/tests/*port_support_source_audit*'
+      - 'code/a5_closure/tests/*equivariant_degree*'
+      - 'code/a5_closure/receipts/port_support_source_audit.json'
+      - 'code/a5_closure/receipts/equivariant_degree_crosscheck.json'
       - 'code/a5_closure/*marked_triplet*'
       - 'code/a5_closure/*proper_code_attachment*'
       - 'code/a5_closure/*c12_current_attachment*'
@@ -150,6 +180,12 @@ jobs:
         run: python3 -m pip install -r requirements.txt
       - name: Independently verify the marked-triplet packet
         run: python3 -B code/a5_closure/verify_marked_triplet_attachment_independent.py
+      - name: Verify the source-relative seed and degree cross-controls
+        run: |
+          python3 -B code/a5_closure/port_support_source_audit.py --check
+          python3 -B code/a5_closure/verify_port_support_source_audit.py
+          python3 -B code/a5_closure/equivariant_degree_crosscheck.py --check
+          python3 -B code/a5_closure/verify_equivariant_degree_crosscheck.py
       - name: Verify the finite proper-code attachment probe
         run: |
           python3 -B code/a5_closure/proper_code_attachment_probe.py --check
@@ -187,6 +223,8 @@ jobs:
         run: >-
           python3 -B -m pytest -q
           code/a5_closure/tests/test_marked_triplet_attachment_certificate.py
+          code/a5_closure/tests/test_port_support_source_audit.py
+          code/a5_closure/tests/test_equivariant_degree_crosscheck.py
           code/a5_closure/tests/test_proper_code_attachment_probe.py
           code/a5_closure/tests/test_c12_current_attachment_probe.py
           code/a5_closure/tests/test_coherent_native_access_probe.py
