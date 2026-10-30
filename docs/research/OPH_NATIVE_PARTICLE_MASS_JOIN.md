@@ -1,8 +1,8 @@
 # Native particle and mass join: current finite status
 
 The [particle-mass response audit](OPH_PARTICLE_MASS_RESPONSE.md) retains the
-earlier source-bound evidence and its tested mass prescriptions. This page
-tracks the newer native candidate in the [completion program](../COMPLETION_PROGRAM.md).
+source-bound evidence and its tested mass prescriptions. This page
+tracks native candidates in the [completion program](../COMPLETION_PROGRAM.md).
 Neither component has yet identified a physical particle or its rest mass.
 
 The [mobile-memory construction](../../model/particle_screening/mobile.py)
@@ -23,7 +23,8 @@ differs by at least `4/9` from the transported reference on the full ten-port
 exterior. An uninterrupted positive odd closed exchange flag has a rank-one
 source input domain, so it cannot carry an unknown coherent qubit through a
 final decoder. Intermediate active recovery changes that grammar. These
-results leave physical localization and coherent exchange statistics open.
+results leave physical localization open; coherent statistics requires the
+separate complete operations specified below.
 
 The [screening successor](../../model/particle_screening/README.md) reuses the
 finite all-seam code theorem to improve the candidate. Exact correction
@@ -99,6 +100,14 @@ homology. Its two irreducible flat unitary characters are `+1` and `-1`.
 This classifies transport phases on that fixed complex; it does not enumerate
 all possible defects on arbitrary carrier refinements.
 
+The [finite presentation certificate](../../model/exchange_sector/PRESENTATION.md)
+establishes the same classification directly from all 235 generators and
+495 native relators. Its 234 verified noncommutative Tietze eliminations
+leave `<g|g^2>`; the generator and native exchange both have odd ordered-cover
+parity. The trace uses 167 identity substitutions and 67 single-letter
+substitutions. This supplies a compact exact proof without adding higher
+cells or relying on continuous surface classification.
+
 The negative lift's moving blocks agree with number-conserving fermionic
 bilinears on the two-occupation sector. Bare C/E uses the positive lift.
 They have the same classical trajectories, but need not have the same complete quantum
@@ -106,6 +115,16 @@ outputs. A record-selected, source-compiled diagonal operation implements
 the negative lift, and a coherent read distinguishes it from bare C/E.
 The coherent exchange-loop experiment separately makes the loop sign
 observable. Committing which-path information destroys that contrast.
+
+The [signed conservation theorem](../../model/native_fixed_algebra/SIGNED.md)
+shows that both lifts have the same faithful diagonal reference, full source
+matrix algebra and scalar universally conserved source observables under
+positive exploration. An exact operator-space sign involution intertwines
+every complete branch, so their channel spectra and GNS contraction bounds
+coincide. Its `-1/3` positivity counterexample prevents treating it as a
+quantum channel or physical gauge. The negative lift includes its supplied
+phase service, and the common contraction bound is per complete lift
+application. It is neither a common physical duration nor a mass gap.
 
 Thus the exchange sign has an explicit operation and measurement interface,
 rather than being a name assigned to a retained classical path. The coherent
@@ -115,6 +134,32 @@ localized excitation, a rest gap or a Standard Model species by itself.
 Creation and annihilation are outside this fixed total-two carrier. CP-03,
 CP-04 and CP-05 require those additional same-process identifications before
 an observed particle can be assigned.
+
+## Local field and reference attachments
+
+The separate supplied [complete-Fock Weyl/contact field](../../model/full_fock_field/LOCAL_SIMULATION.md)
+has a volume-linear split coefficient and complete local-history error
+bounds using nested buffers. On the `2x2x2` field at model duration `1/32`,
+one step and 10,560 pulses meet operator error `10^-4`; the norm-sum bound
+requires ten steps. This retains every number sector and untouched reference.
+The local schedules are independent of ambient volume, but their initial
+restricted states and observation services remain supplied. These bounds
+do not identify a field excitation with the actively recovered native qubit.
+
+An [executed Gibbs preparation](../../model/field_thermal/README.md) supplies
+the same interacting action's reference on one or two sites. All number
+sectors, purifier, read outcomes and aborts are retained. The faithful field
+marginal supports signed CAR restrictions and the noncommuting finite
+entropy identity; the pure joint purification is not a faithful full-algebra
+reference. This bounded preparation does not provide the separate many-site
+field reference, select a vacuum or calibrate physical energy and time.
+
+The [rational support retract](../../model/support_refinement/README.md)
+preserves homology equivariantly across the 12-, 42-, 162- and 642-vertex
+support levels. Its midpoint averages and chain homotopy supply a compatible
+finite refinement interface. They are not vertex-valued port attachments
+or quantum channels, so they do not yet transport a native particle into
+the spatial field or generate responsive geometry.
 
 ## Completed recovery, transport and unit attachment
 
@@ -261,8 +306,8 @@ The current native catalogue is:
 | Object | Established invariant or dynamics | Particle assignment |
 | --- | --- | --- |
 | Double-load collision | Transient under complete native repair | None |
-| Collision-free exchange history | Fundamental group `Z/2` for the declared face/square deformations; an uninterrupted odd closed flag resolves its input | Bare C/E has the positive lift |
-| Source-operated exchange statistics | Both flat characters have complete instruments and coherent readouts; negative moving blocks are CAR bilinears | Supplied sign and controls; no physical spin or species assignment |
+| Collision-free exchange history | Exact 234-step Tietze certificate gives fundamental group `Z/2`; an uninterrupted odd closed flag resolves its input | Bare C/E has the positive lift |
+| Source-operated exchange statistics | Both flat characters have complete instruments, coherent readouts and equal channel spectra; negative moving blocks are CAR bilinears | Similarity is nonpositive; sign and controls supplied, no physical spin, protection or species assignment |
 | Relational source/core overlap `q` | Conserved under simultaneous current transport | A relational sector, not a source-only charge |
 | Sharp `q=2` edge pair | Mean native-edge first exit 15 attempts | No protected edge bond or measured decay law |
 | Mobile sharp `q=1` qubit | Exact active correction, 60 admissible cores, optimal resets | A transported quantum memory; rotations act trivially on its logical qubit |

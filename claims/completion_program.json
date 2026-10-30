@@ -439,7 +439,17 @@
         "model/full_fock_field/field.py",
         "model/full_fock_field/README.md",
         "model/exchange_sector/STATISTICS.md",
-        "model/exchange_sector/statistics_results.json"
+        "model/exchange_sector/statistics_results.json",
+        "model/native_fixed_algebra/signed.py",
+        "model/native_fixed_algebra/SIGNED.md",
+        "model/exchange_sector/presentation.py",
+        "model/exchange_sector/PRESENTATION.md",
+        "model/full_fock_field/local_simulation.py",
+        "model/full_fock_field/LOCAL_SIMULATION.md",
+        "model/support_refinement/construction.py",
+        "model/support_refinement/README.md",
+        "model/field_thermal/thermal.py",
+        "model/field_thermal/README.md"
       ],
       "legacy_issues": [
         1033,
@@ -451,7 +461,7 @@
           "path": "model/completion/finite_attachment_map.json",
           "sha256": "166ad07bb60bff30c168ebfa213589d5afcf75bf3a8fec1635ab6dc4fc491805",
           "independent_check": "model/completion/test_finite_attachment_map.py",
-          "scope": "Complete84premise ownership/relevance review,17inspected finite attachments with12realized instances, corrected active routes and explicit finite CP01 joins. Allcanonicalphysicaldischarge statuses preserved."
+          "scope": "Complete84premise ownership/relevance review,20inspected finite attachments with15realized instances, corrected active routes and explicit finite CP01 joins. Allcanonicalphysicaldischarge statuses preserved."
         },
         {
           "path": "model/completion/program_class_v2_review.json",
@@ -726,6 +736,41 @@
           "independent_check": "model/exchange_sector/test_statistics_packet.py",
           "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
           "campaign_id": "native-exchange-statistics-20261029-v1"
+        },
+        {
+          "path": "model/native_fixed_algebra/signed.py",
+          "sha256": "6c4ff716d47a62f90c2bdc46792a25db0a77e896116a3588d04235fca38355fe",
+          "independent_check": "model/native_fixed_algebra/test_signed.py",
+          "scope": "Both exchange characters have full source algebra and the same diagonal-reference GNS contraction bounds. Exact branchwise nonpositive similarity transfers spectra; no physical gauge or protected charge follows.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/exchange_sector/presentation.py",
+          "sha256": "220f4d9638cb445e2e3cfdf310fcf40d5f6e25a31525e0cea2020305d557bfb7",
+          "independent_check": "model/exchange_sector/test_presentation.py",
+          "scope": "Exact noncommutative Tietze replay on the original native collision-free two-complex reduces235generators and495relators to <g|g^2>, with odd ordered-cover parity. No physical species, spin or sign selection.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/full_fock_field/local_simulation.py",
+          "sha256": "3a8a221cd988f9c8741610c7f1bb4cbc114607bedd311981dfd9543c821a62e9",
+          "independent_check": "model/full_fock_field/test_local_simulation.py",
+          "scope": "Overlapping CAR supports give an extensive Strang coefficient and integrated factorial locality tail. Nested backward buffers bound complete local histories with arbitrary references and exact source schedules, independently of ambient volume; initial restriction, action, readout and model clock remain supplied.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/support_refinement/construction.py",
+          "sha256": "80b0a5ce83c7b89988a05a2c34385b5427a81a1a70c1c5dcb853b5987dd902bd",
+          "independent_check": "model/support_refinement/test_refinement.py",
+          "scope": "Exact rational strong chain deformation retracts on the actual12/42/162/642-vertex supports compose and intertwine all60proper actions. Rational chain maps are not vertex selectors, physical geometry or quantum channels.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/field_thermal/thermal.py",
+          "sha256": "79279646ac75e1ed7254003435c650f37ab259f8ca5133fe683a2f8b8a9ffcd9",
+          "independent_check": "model/field_thermal/test_thermal.py",
+          "scope": "Complete source words prepare a faithful interacting Gibbs marginal on one/two sites with retained purification, all exports and a subsequent field/pointer history. All-number CAR restrictions compose and the matrix first law holds; initialization, beta/action, larger-reference preparation and geometric premises remain supplied.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
         }
       ]
     },
@@ -770,7 +815,9 @@
         "model/energy_identifiability/certificate.py",
         "model/energy_identifiability/README.md",
         "model/band_clock_budget/budget.py",
-        "model/band_clock_budget/README.md"
+        "model/band_clock_budget/README.md",
+        "model/field_thermal/thermal.py",
+        "model/field_thermal/README.md"
       ],
       "legacy_issues": [
         1077,
@@ -903,6 +950,13 @@
           "independent_check": "model/band_clock_budget/test_budget.py",
           "scope": "Full 8,128-state 21-step schedule saves9,019,648 supplied pulses under the previous complete error ceiling; preparation and physical calibration remain separate.",
           "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/field_thermal/thermal.py",
+          "sha256": "79279646ac75e1ed7254003435c650f37ab259f8ca5133fe683a2f8b8a9ffcd9",
+          "independent_check": "model/field_thermal/test_thermal.py",
+          "scope": "Complete source words prepare a faithful interacting Gibbs marginal on one/two sites with retained purification, all exports and a subsequent field/pointer history. All-number CAR restrictions compose and the matrix first law holds; initialization, beta/action, larger-reference preparation and geometric premises remain supplied.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
         }
       ]
     },
@@ -946,7 +1000,11 @@
         "model/native_fixed_algebra/fixed.py",
         "model/native_fixed_algebra/README.md",
         "model/exchange_sector/STATISTICS.md",
-        "model/exchange_sector/statistics_results.json"
+        "model/exchange_sector/statistics_results.json",
+        "model/native_fixed_algebra/signed.py",
+        "model/native_fixed_algebra/SIGNED.md",
+        "model/exchange_sector/presentation.py",
+        "model/exchange_sector/PRESENTATION.md"
       ],
       "legacy_issues": [
         1026,
@@ -1073,6 +1131,20 @@
           "independent_check": "model/exchange_sector/test_statistics_packet.py",
           "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
           "campaign_id": "native-exchange-statistics-20261029-v1"
+        },
+        {
+          "path": "model/native_fixed_algebra/signed.py",
+          "sha256": "6c4ff716d47a62f90c2bdc46792a25db0a77e896116a3588d04235fca38355fe",
+          "independent_check": "model/native_fixed_algebra/test_signed.py",
+          "scope": "Both exchange characters have full source algebra and the same diagonal-reference GNS contraction bounds. Exact branchwise nonpositive similarity transfers spectra; no physical gauge or protected charge follows.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/exchange_sector/presentation.py",
+          "sha256": "220f4d9638cb445e2e3cfdf310fcf40d5f6e25a31525e0cea2020305d557bfb7",
+          "independent_check": "model/exchange_sector/test_presentation.py",
+          "scope": "Exact noncommutative Tietze replay on the original native collision-free two-complex reduces235generators and495relators to <g|g^2>, with odd ordered-cover parity. No physical species, spin or sign selection.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
         }
       ]
     },
@@ -1299,7 +1371,9 @@
         "model/gauged_field/links.py",
         "model/gauged_field/README.md",
         "model/exchange_sector/STATISTICS.md",
-        "model/exchange_sector/statistics_results.json"
+        "model/exchange_sector/statistics_results.json",
+        "model/exchange_sector/presentation.py",
+        "model/exchange_sector/PRESENTATION.md"
       ],
       "legacy_issues": [
         1026,
@@ -1342,6 +1416,13 @@
           "independent_check": "model/exchange_sector/test_statistics_packet.py",
           "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
           "campaign_id": "native-exchange-statistics-20261029-v1"
+        },
+        {
+          "path": "model/exchange_sector/presentation.py",
+          "sha256": "220f4d9638cb445e2e3cfdf310fcf40d5f6e25a31525e0cea2020305d557bfb7",
+          "independent_check": "model/exchange_sector/test_presentation.py",
+          "scope": "Exact noncommutative Tietze replay on the original native collision-free two-complex reduces235generators and495relators to <g|g^2>, with odd ordered-cover parity. No physical species, spin or sign selection.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
         }
       ]
     },
@@ -1380,7 +1461,11 @@
         "model/full_fock_field/field.py",
         "model/full_fock_field/README.md",
         "model/gauged_field/links.py",
-        "model/gauged_field/README.md"
+        "model/gauged_field/README.md",
+        "model/full_fock_field/local_simulation.py",
+        "model/full_fock_field/LOCAL_SIMULATION.md",
+        "model/field_thermal/thermal.py",
+        "model/field_thermal/README.md"
       ],
       "legacy_issues": [
         1026,
@@ -1436,6 +1521,20 @@
           "sha256": "b3fa18ee10908a53c177877123bb80384282473c163b166da49f02d7288ca421",
           "independent_check": "model/gauged_field/test_links.py",
           "scope": "Exact CAR link covariance and Ward identities; the Feshbach norm metric joins charge-two pair transport, current and residue on one full eigenstate.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/full_fock_field/local_simulation.py",
+          "sha256": "3a8a221cd988f9c8741610c7f1bb4cbc114607bedd311981dfd9543c821a62e9",
+          "independent_check": "model/full_fock_field/test_local_simulation.py",
+          "scope": "Overlapping CAR supports give an extensive Strang coefficient and integrated factorial locality tail. Nested backward buffers bound complete local histories with arbitrary references and exact source schedules, independently of ambient volume; initial restriction, action, readout and model clock remain supplied.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/field_thermal/thermal.py",
+          "sha256": "79279646ac75e1ed7254003435c650f37ab259f8ca5133fe683a2f8b8a9ffcd9",
+          "independent_check": "model/field_thermal/test_thermal.py",
+          "scope": "Complete source words prepare a faithful interacting Gibbs marginal on one/two sites with retained purification, all exports and a subsequent field/pointer history. All-number CAR restrictions compose and the matrix first law holds; initialization, beta/action, larger-reference preparation and geometric premises remain supplied.",
           "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
         }
       ]
@@ -1505,7 +1604,11 @@
         "model/PHYSICAL_AUDIT.md",
         "model/physical_space_time/README.md",
         "paper/tex_fragments/COMMON_MATTER_METRIC_AND_RESPONSE.tex",
-        "model/field_regions/results.json"
+        "model/field_regions/results.json",
+        "model/support_refinement/construction.py",
+        "model/support_refinement/README.md",
+        "model/full_fock_field/local_simulation.py",
+        "model/full_fock_field/LOCAL_SIMULATION.md"
       ],
       "legacy_issues": [
         1026,
@@ -1519,6 +1622,20 @@
           "independent_check": "model/field_regions/test_regions.py",
           "scope": "Actual signed CAR restrictions retain local N=0,1,2, references and every history outcome; CP expectations and cube embeddings compose. Exact Hamiltonian compression does not intertwine dynamics. Fixed-spacing locality is not physical Lorentz geometry.",
           "campaign_id": "OPH-SAME-ACTION-PARTICLE-PREMISES-2026-10-29-v1"
+        },
+        {
+          "path": "model/support_refinement/construction.py",
+          "sha256": "80b0a5ce83c7b89988a05a2c34385b5427a81a1a70c1c5dcb853b5987dd902bd",
+          "independent_check": "model/support_refinement/test_refinement.py",
+          "scope": "Exact rational strong chain deformation retracts on the actual12/42/162/642-vertex supports compose and intertwine all60proper actions. Rational chain maps are not vertex selectors, physical geometry or quantum channels.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/full_fock_field/local_simulation.py",
+          "sha256": "3a8a221cd988f9c8741610c7f1bb4cbc114607bedd311981dfd9543c821a62e9",
+          "independent_check": "model/full_fock_field/test_local_simulation.py",
+          "scope": "Overlapping CAR supports give an extensive Strang coefficient and integrated factorial locality tail. Nested backward buffers bound complete local histories with arbitrary references and exact source schedules, independently of ambient volume; initial restriction, action, readout and model clock remain supplied.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
         }
       ]
     },
@@ -1550,7 +1667,9 @@
         "model/regional_modular/retraction.py",
         "model/regional_modular/README.md",
         "model/reference_observation/observation.py",
-        "model/reference_observation/README.md"
+        "model/reference_observation/README.md",
+        "model/field_thermal/thermal.py",
+        "model/field_thermal/README.md"
       ],
       "legacy_issues": [
         1026,
@@ -1577,6 +1696,13 @@
           "sha256": "bfa8f88bdb13d256f9e61d2156bf7d3238ca98a970d39c0f664174bcaa0c6df6",
           "independent_check": "model/reference_observation/test_observation.py",
           "scope": "Common-reference UCP Petz-transpose observations with exact nested tower; neither local retraction nor modular covariance is assumed.",
+          "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/field_thermal/thermal.py",
+          "sha256": "79279646ac75e1ed7254003435c650f37ab259f8ca5133fe683a2f8b8a9ffcd9",
+          "independent_check": "model/field_thermal/test_thermal.py",
+          "scope": "Complete source words prepare a faithful interacting Gibbs marginal on one/two sites with retained purification, all exports and a subsequent field/pointer history. All-number CAR restrictions compose and the matrix first law holds; initialization, beta/action, larger-reference preparation and geometric premises remain supplied.",
           "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
         }
       ]
@@ -2110,13 +2236,14 @@
         "CP-05",
         "CP-06",
         "CP-09",
-        "CP-13"
+        "CP-13",
+        "CP-08"
       ],
       "contract": {
         "path": "model/completion/component_interfaces.json",
         "sha256": "40d3447b484a6dc302fbf8afcf47dd25f8cfe6f52e9adb94d24c0c266a30005e",
         "independent_check": "model/compiled_native_history/test_compiler.py",
-        "scope": "Complete native-history evaluation, common-reference observations and conservation bounds, full-Fock interacting lattice dynamics, and same-pair gauge/current/residue attachment. Physical action, clock, vacuum and chiral-continuum joins remain explicit.",
+        "scope": "Complete native-history evaluation, common-reference observations and conservation bounds, full-Fock interacting lattice dynamics, and same-pair gauge/current/residue attachment. Physical action, clock, vacuum and chiral-continuum joins remain explicit. Original-complex exchange certificates, both-character GNS bounds, local complete-history budgets, rational support chain maps and bounded source-prepared interacting Gibbs references have separate explicit domains.",
         "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
       }
     },
@@ -2140,13 +2267,13 @@
     }
   ],
   "next_wave": {
-    "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-29-v10",
+    "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-30-v11",
     "status": "PLANNED_PROVISIONAL_PARALLEL_WORK",
     "scope": "SOURCE_BOUND_COMPONENT_WORK_WITH_OPEN_ACCEPTANCE_JOINS",
     "changes_frozen_campaign": false,
     "successor_class_frozen": false,
     "physical_comparison_count_added": 0,
-    "rationale": "Join the current native reference/conservation results, complete interacting CAR field and same-pair gauge response across five construction owners. Source selection of the physical action, protected matter, vacuum/clock calibration and chiral continuum remain acceptance requirements.",
+    "rationale": "Five current construction targets connect native signed dynamics and exchange, local interacting field schedules, support refinement and the prepared finite thermal reference. Each retains its actual source, state, operation, clock and refinement domain.",
     "shared_interface": {
       "baseline_campaign_id": "OPH-RECORD-DERIVED-CONTINUING-CLOCK-v1",
       "baseline_contract": "model/local_repair_family/record_clock_campaign.json",
@@ -2171,25 +2298,10 @@
     },
     "owners": [
       {
-        "gate": "CP-02",
-        "issue": 1138,
-        "title": "Implement compatible reference observations and local clocks",
-        "why_now": "One reference gives an exact observation tower without factorization; the native reference has uniform conditional conservation and exogenous convergence bounds.",
-        "deliverable": "Native implementation of the common-reference observation effects and compatible local clock/energy maps with all preparation and disturbance costs.",
-        "may_start_now": "Use the explicit Petz-transpose effects and their complete-reference tests, native GNS bounds and the reduced full-field rate schedule.",
-        "join_condition": "Reference-preserving observation composition is not local retraction, modular covariance, physical seconds or preparation of a global field Gibbs state.",
-        "evidence": [
-          "reference_observation",
-          "native_fixed_algebra",
-          "band_clock_budget",
-          "energy_identifiability"
-        ]
-      },
-      {
         "gate": "CP-03",
         "issue": 1139,
         "title": "Complete localized native protection and its field-state attachment",
-        "why_now": "The native source-only conservation boundary has an exact robust gap; active and relational sectors remain available, while the supplied field pair has a current/residue attachment.",
+        "why_now": "Both exchange characters have full source algebra and the same diagonal-reference GNS contraction bounds. Exact branchwise nonpositive similarity transfers spectra; no physical gauge or protected charge follows. Exact noncommutative Tietze replay on the original native collision-free two-complex reduces235generators and495relators to <g|g^2>, with odd ordered-cover parity. No physical species, spin or sign selection.",
         "deliverable": "A localized native excitation with reference-like exterior and the full-law protecting invariant or controlled lifetime, attached to the actual field excitation.",
         "may_start_now": "Use complete band wavepackets and all-outcome active memory/reset controls with their explicit law and reference differences.",
         "join_condition": "Spectral isolation under the supplied Hamiltonian is not invariance under every native repair branch; active information transport and trivial band topology do not supply the required defect invariant.",
@@ -2201,33 +2313,16 @@
           "mobile_screened_memory",
           "native_fixed_algebra",
           "gauged_field",
-          "exchange_statistics"
-        ]
-      },
-      {
-        "gate": "CP-04",
-        "issue": 1140,
-        "title": "Complete the common particle energy, propagation and stress dictionary",
-        "why_now": "The same interacting pair has an exact gauge-current, energy-derivative and residue map; fixed-sector energy identifiability and vacuum calibration are explicitly separated.",
-        "deliverable": "Source-derived maintenance energy and kinetic response with one justified physical normalization and the stress map consumed by gravity.",
-        "may_start_now": "Use the bound-pair energy/residue identity, exact curvature interval, complete clock records and interaction-dependent local energy conservation.",
-        "join_condition": "Supplied U and c, coordinate masses and one corner clock do not select a physical full-field dictionary. Preserve the proved same-speed relativistic mismatch and regional modular countercontrol.",
-        "evidence": [
-          "bound_pair",
-          "particle_clock",
-          "field_stress",
-          "band_clock",
-          "native_localization",
-          "inherited_clock",
-          "gauged_field",
-          "energy_identifiability"
+          "exchange_statistics",
+          "signed_native",
+          "native_presentation"
         ]
       },
       {
         "gate": "CP-05",
         "issue": 1141,
         "title": "Attach particle transport, charges and currents on one native process",
-        "why_now": "The same interacting pair has exact gauge covariance, charge-two effective hopping and a residue-normalized current matched to its full eigenstate.",
+        "why_now": "Exact noncommutative Tietze replay on the original native collision-free two-complex reduces235generators and495relators to <g|g^2>, with odd ordered-cover parity. No physical species, spin or sign selection.",
         "deliverable": "A native particle/field map with physical accessible currents and spin/statistics content, including leakage, all tastes and actual source services.",
         "may_start_now": "Use complete Peierls-link Ward identities and the exact Feshbach current/residue map, keeping separated-pair and native active-memory domains explicit.",
         "join_condition": "CAR number charge and supplied external links do not select electromagnetic normalization, a dynamical gauge field, a physical species or native protection.",
@@ -2235,14 +2330,15 @@
           "gauged_field",
           "full_fock_field",
           "bound_pair",
-          "particle_obstruction"
+          "particle_obstruction",
+          "native_presentation"
         ]
       },
       {
         "gate": "CP-06",
         "issue": 1142,
         "title": "Complete the interacting chiral field and observable-domain comparison",
-        "why_now": "The supplied interacting action has complete Fock execution and controlled fixed-spacing thermodynamic local dynamics, leaving source selection, chiral decoupling and physical continuum comparison as concrete targets.",
+        "why_now": "Overlapping CAR supports give an extensive Strang coefficient and integrated factorial locality tail. Nested backward buffers bound complete local histories with arbitrary references and exact source schedules, independently of ambient volume; initial restriction, action, readout and model clock remain supplied. Complete source words prepare a faithful interacting Gibbs marginal on one/two sites with retained purification, all exports and a subsequent field/pointer history. All-number CAR restrictions compose and the matrix first law holds; initialization, beta/action, larger-reference preparation and geometric premises remain supplied.",
         "deliverable": "A same-process chiral effective or continuum field description with all modes, currents, interactions, reference and complete intervention errors controlled.",
         "may_start_now": "Retain every Weyl taste and scattering output; test the contact interaction against the proposed momentum-sector removal and compose the existing regional history maps.",
         "join_condition": "A finite band or infinite-volume fixed lattice is not a chiral continuum. No unwanted mode can be dropped without a derived complete-law decoupling map.",
@@ -2252,7 +2348,37 @@
           "interacting_field",
           "band_clock",
           "full_fock_field",
-          "gauged_field"
+          "gauged_field",
+          "local_field_schedule",
+          "field_thermal"
+        ]
+      },
+      {
+        "gate": "CP-08",
+        "issue": 1144,
+        "title": "Join support refinement to observer fields",
+        "why_now": "Exact rational strong chain deformation retracts on the actual12/42/162/642-vertex supports compose and intertwine all60proper actions. Rational chain maps are not vertex selectors, physical geometry or quantum channels.",
+        "deliverable": "Attach the explicit support chain retracts to compatible observer state/algebra and dynamical maps, with controlled geometry and continuum limits.",
+        "may_start_now": "Use the exact source-derived finite C/S/H tower and the nested local-field buffers.",
+        "join_condition": "Rational chain homotopy is not a deterministic vertex selector, physical metric, quantum channel or exact dynamical intertwiner.",
+        "evidence": [
+          "support_refinement",
+          "local_field_schedule",
+          "field_regions"
+        ]
+      },
+      {
+        "gate": "CP-09",
+        "issue": 1145,
+        "title": "Realize common-reference entropy and geometric interfaces",
+        "why_now": "Complete source words prepare a faithful interacting Gibbs marginal on one/two sites with retained purification, all exports and a subsequent field/pointer history. All-number CAR restrictions compose and the matrix first law holds; initialization, beta/action, larger-reference preparation and geometric premises remain supplied.",
+        "deliverable": "Extend complete source preparation and compatible reference observations on a common interacting field; realize the geometric/null/stress/area hypotheses explicitly.",
+        "may_start_now": "Use the bounded interacting Gibbs purification, all-number CAR tower and matrix first-law remainder with every export/pointer outcome.",
+        "join_condition": "The pure retained purification is not faithful; supplied beta/action and bounded Gibbs execution do not close G1--G6 or establish Einstein dynamics.",
+        "evidence": [
+          "field_thermal",
+          "reference_observation",
+          "field_stress"
         ]
       }
     ],
@@ -2305,22 +2431,6 @@
         ]
       },
       {
-        "gate": "CP-08",
-        "issue": 1144,
-        "role": "Review signed regional algebra maps and finite box embeddings without promoting supplied geometry.",
-        "evidence": [
-          "field_regions"
-        ]
-      },
-      {
-        "gate": "CP-09",
-        "issue": 1145,
-        "role": "Review exact energy continuity and quantum entropy attachments against every unresolved G1--G6 field.",
-        "evidence": [
-          "field_stress"
-        ]
-      },
-      {
         "gate": "CP-13",
         "issue": 1137,
         "role": "Maintain the accepted finite theorem map, including the nonnegative pinching no-cancellation proof and the exact domains of new source/reference/field constructions. Canonical physical premises keep their own discharge requirements.",
@@ -2331,9 +2441,29 @@
           "full_fock_field",
           "exchange_statistics"
         ]
+      },
+      {
+        "gate": "CP-02",
+        "issue": 1138,
+        "role": "Keep source-prepared reference domains, modular parameters, record clocks and physical calibration distinct.",
+        "evidence": [
+          "field_thermal",
+          "band_clock_budget",
+          "reference_observation"
+        ]
+      },
+      {
+        "gate": "CP-04",
+        "issue": 1140,
+        "role": "Retain same-excitation energy/current/dispersion and vacuum-relative mass joins; sign similarity and simulation savings supply no physical energy.",
+        "evidence": [
+          "gauged_field",
+          "energy_identifiability",
+          "signed_native"
+        ]
       }
     ],
-    "acceptance_policy": "CP00, CP01 and CP13 retain their independently accepted finite scope. CP02 through CP06 remain construction gates: component proofs and controlled lattice dynamics do not by themselves establish the required physical same-process joins.",
+    "acceptance_policy": "CP00,CP01 andCP13 retain their independently accepted finite scope. The five construction gates remain open until their complete physical same-process acceptance conditions hold; finite mathematical interfaces do not discharge the84canonical physical premises.",
     "deferred_gates": [
       "CP-10",
       "CP-11"
@@ -2891,6 +3021,46 @@
         "independent_check": "model/exchange_sector/test_statistics_packet.py",
         "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
         "campaign_id": "native-exchange-statistics-20261029-v1"
+      },
+      {
+        "path": "model/native_fixed_algebra/signed.py",
+        "sha256": "6c4ff716d47a62f90c2bdc46792a25db0a77e896116a3588d04235fca38355fe",
+        "independent_check": "model/native_fixed_algebra/test_signed.py",
+        "scope": "Both exchange characters have full source algebra and the same diagonal-reference GNS contraction bounds. Exact branchwise nonpositive similarity transfers spectra; no physical gauge or protected charge follows.",
+        "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1",
+        "id": "signed_native"
+      },
+      {
+        "path": "model/exchange_sector/presentation.py",
+        "sha256": "220f4d9638cb445e2e3cfdf310fcf40d5f6e25a31525e0cea2020305d557bfb7",
+        "independent_check": "model/exchange_sector/test_presentation.py",
+        "scope": "Exact noncommutative Tietze replay on the original native collision-free two-complex reduces235generators and495relators to <g|g^2>, with odd ordered-cover parity. No physical species, spin or sign selection.",
+        "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1",
+        "id": "native_presentation"
+      },
+      {
+        "path": "model/full_fock_field/local_simulation.py",
+        "sha256": "3a8a221cd988f9c8741610c7f1bb4cbc114607bedd311981dfd9543c821a62e9",
+        "independent_check": "model/full_fock_field/test_local_simulation.py",
+        "scope": "Overlapping CAR supports give an extensive Strang coefficient and integrated factorial locality tail. Nested backward buffers bound complete local histories with arbitrary references and exact source schedules, independently of ambient volume; initial restriction, action, readout and model clock remain supplied.",
+        "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1",
+        "id": "local_field_schedule"
+      },
+      {
+        "path": "model/support_refinement/construction.py",
+        "sha256": "80b0a5ce83c7b89988a05a2c34385b5427a81a1a70c1c5dcb853b5987dd902bd",
+        "independent_check": "model/support_refinement/test_refinement.py",
+        "scope": "Exact rational strong chain deformation retracts on the actual12/42/162/642-vertex supports compose and intertwine all60proper actions. Rational chain maps are not vertex selectors, physical geometry or quantum channels.",
+        "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1",
+        "id": "support_refinement"
+      },
+      {
+        "path": "model/field_thermal/thermal.py",
+        "sha256": "79279646ac75e1ed7254003435c650f37ab259f8ca5133fe683a2f8b8a9ffcd9",
+        "independent_check": "model/field_thermal/test_thermal.py",
+        "scope": "Complete source words prepare a faithful interacting Gibbs marginal on one/two sites with retained purification, all exports and a subsequent field/pointer history. All-number CAR restrictions compose and the matrix first law holds; initialization, beta/action, larger-reference preparation and geometric premises remain supplied.",
+        "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1",
+        "id": "field_thermal"
       }
     ]
   },

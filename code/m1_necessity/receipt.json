@@ -1807,7 +1807,7 @@
           "declared_finite_Gibbs_reference"
         ],
         "disposition": "existing_contract_retained_without_automatic_transfer",
-        "original_claim_sha256": "59a8b079611b111683a99f8b106bd1deed7ccd95ff34b3e07b75d8364f6133c5"
+        "original_claim_sha256": "d8c90d3270a5bf9f1e0a0e20e918062470972c374e2af53e7b70fcc0dd11baee"
       },
       "OPH-NATIVE-CONDITIONAL-STORED-PROGRAM": {
         "assumptions": [

@@ -46,16 +46,22 @@ at least `1/2` from the selected modular action on the fixed full support
 algebra. Real joint ancillary inputs and the fixed encoding are premises;
 the separating observable is a mathematical witness, not a native detector.
 
-The five [construction owners](../docs/COMPLETION_PROGRAM.md) share the
-[current interface conditions](completion/SAME_PROCESS_INTERFACES.md):
+Five [construction owners](../docs/COMPLETION_PROGRAM.md) organize the current
+work under the [shared interface conditions](completion/SAME_PROCESS_INTERFACES.md):
 
 | Owner | Current construction and remaining join |
 | --- | --- |
-| [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138) | [Common-reference observations](reference_observation/README.md) form an exact UCP tower without product-state assumptions. Their native implementation, local modular-clock covariance and physical calibration remain open. |
-| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) | [Faithful native conservation bounds](native_fixed_algebra/README.md) sharpen the source-only obstruction and control near conservation. Active memories and relational charges survive outside that class; a protected localized native particle remains open. |
-| [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) | The [pair-current map](gauged_field/README.md) joins energy derivative, full current and contact residue through one Feshbach metric. [Energy-identification conditions](energy_identifiability/README.md) retain the missing physical vacuum, clock and rest/kinetic/stress normalization. |
-| [#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141) | [CAR link covariance and Ward identities](gauged_field/README.md) derive charge-two pair hopping with a scattering remainder. Physical gauge normalization, spin/statistics selection and native particle identity remain unassigned. |
-| [#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142) | The [full-Fock field](full_fock_field/README.md) has all number sectors and controlled interacting thermodynamic local dynamics at fixed spacing. The chiral spatial continuum, physical state and source selection of the action remain open. |
+| [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139) | [Both exchange lifts](native_fixed_algebra/SIGNED.md) have scalar conserved source observables and identical channel spectra and GNS bounds. Their exact similarity is nonpositive, so it supplies no physical gauge or protection mechanism. Active memories and relational charges retain their own domains. |
+| [#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141) | A [noncommutative presentation certificate](exchange_sector/PRESENTATION.md) reduces 235 generators and 495 native relators to `Z/2`. The two characters have complete source-operated instruments; sign selection, physical spin, localized particle identity and species remain open. |
+| [#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142) | [Local full-Fock schedules](full_fock_field/LOCAL_SIMULATION.md) give a volume-linear split coefficient and complete local-history bounds independent of ambient volume. The `2x2x2` example needs 10,560 rather than 105,600 pulses at its stated accuracy. Initial restricted states, observation services, a chiral spatial continuum and physical action selection remain supplied or open. |
+| [#1144](https://github.com/FloatingPragma/observer-patch-holography/issues/1144) | [Rational support retracts](support_refinement/README.md) commute with all sixty proper actions on all six intervals of the four-level support tower. They preserve rational homology; they are neither vertex-valued coarsenings nor quantum channels, and supply no responsive geometry. |
+| [#1145](https://github.com/FloatingPragma/observer-patch-holography/issues/1145) | [Interacting Gibbs preparation](field_thermal/README.md) executes on the complete one- or two-site field algebra, retaining purifier, reads and aborts. It supplies a faithful field reference and same-action entropy checks; temperature, action, physical clock and geometric entropy premises remain declared or open. |
+
+[Common-reference observations](reference_observation/README.md) and the
+[pair-current map](gauged_field/README.md) connect these constructions to
+the clock and energy owners. Their native implementation, physical vacuum
+and common rest/kinetic/stress normalization retain the
+[energy-identification conditions](energy_identifiability/README.md).
 
 The [accepted executable class and observer](../docs/COMPLETION_ADOPTION_2026-10-29.md)
 resolve the finite contracts of #1135 and #1136, including declared services,

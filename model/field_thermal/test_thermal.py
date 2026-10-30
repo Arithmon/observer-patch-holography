@@ -68,15 +68,34 @@ def test_complete_export_vectors_retain_first_failure_and_untouched_reference(mo
     first = initial.copy(); first[[0, 2]] *= math.cos(.2)
     expected = first.copy(); expected[0] *= math.cos(.4)
     np.testing.assert_allclose(success, expected, atol=1e-15)
-    expected_first = np.zeros((8, 2), complex)
-    expected_first[:2] = 1j*math.sin(.2)*initial[[0, 2]]
-    expected_second = np.zeros((2, 2), complex)
-    expected_second[0] = -1j*math.sin(.4)*first[0]
+    expected_first = [np.zeros((2, 2), complex) for _ in range(4)]
+    expected_first[0] = 1j*math.sin(.2)*initial[[0, 2]]
+    expected_second = [np.zeros((1, 2), complex) for _ in range(2)]
+    expected_second[0][0] = -1j*math.sin(.4)*first[0]
     np.testing.assert_allclose(failures[0], expected_first, atol=1e-15)
     np.testing.assert_allclose(failures[1], expected_second, atol=1e-15)
-    total_gram = success.conj().T@success+sum(x.conj().T@x for x in failures)
+    total_gram = success.conj().T@success+sum(x.conj().T@x for event in failures for x in event)
     np.testing.assert_allclose(total_gram, initial.conj().T@initial, atol=1e-15)
     assert np.linalg.norm(success.conj().T@success-initial.conj().T@initial) > .005
+
+
+def test_export_resets_sender_and_combines_complement_Kraus_branches_incoherently(monkeypatch):
+    generator = np.zeros((6, 6), complex)
+    generator[0, 2] = generator[2, 0] = .4
+    generator[1, 3] = generator[3, 1] = .7
+    primitive = expm(1j*generator)
+    monkeypatch.setattr(compiler, 'native_pulse', lambda *_: primitive)
+    initial = np.array([[1., 2j], [3j, 4.]], complex)/6
+    _, events = t.execute_with_exports([compiler.pulse('X', .2, [0])], 1, initial)
+    vectors = events[0]
+    actual = sum(np.outer(v.ravel(), v.ravel().conj()) for v in vectors)
+    expected = np.zeros((2, 2), complex)
+    for k in compiler.transfer_kraus(2)[1:]:
+        failed = (k@primitive[:, :2]@initial)[2]
+        expected += np.outer(failed, failed.conj())
+    np.testing.assert_allclose(actual, expected, atol=1e-15)
+    coherent = sum(vectors).ravel()
+    assert np.linalg.norm(np.outer(coherent, coherent.conj())-expected) > .01
 
 
 def test_preparation_rejects_wrong_complete_source_amplitudes(monkeypatch):
@@ -88,6 +107,40 @@ def test_preparation_rejects_wrong_complete_source_amplitudes(monkeypatch):
     monkeypatch.setattr(t, 'execute_with_exports', damaged)
     with pytest.raises(ArithmeticError):
         t.ThermalField().prepare()
+
+
+def test_nonfinite_continuation_cannot_pass_report_comparisons(monkeypatch):
+    original = t.execute_with_exports
+    def damaged(word, bits, initial):
+        output, failures = original(word, bits, initial)
+        if bits == 9:
+            output = output.copy(); output[0] = complex('nan')
+        return output, failures
+    monkeypatch.setattr(t, 'execute_with_exports', damaged)
+    with pytest.raises(ArithmeticError):
+        t.ThermalField().report()
+
+
+def test_continuation_abort_norm_is_part_of_complete_output_error(monkeypatch):
+    original = t.execute_with_exports
+    def damaged(word, bits, initial):
+        output, failures = original(word, bits, initial)
+        if bits == 9:
+            altered = failures[0][0].copy(); altered[0] = .0001
+            failures = ((altered,)+failures[0][1:],)+failures[1:]
+        return output, failures
+    monkeypatch.setattr(t, 'execute_with_exports', damaged)
+    # The inserted probability is below the loose total-probability gate,
+    # but its complete-output amplitude exceeds the stated split budget.
+    with pytest.raises(ArithmeticError):
+        t.ThermalField().report()
+
+
+@pytest.mark.parametrize('bad', (np.full((6, 6), float('nan')), np.eye(6)*.9))
+def test_bad_full_source_primitive_fails_closed(monkeypatch, bad):
+    monkeypatch.setattr(compiler, 'native_pulse', lambda *_: bad)
+    with pytest.raises(ArithmeticError):
+        t.execute_with_exports([compiler.pulse('X', .2, [0])], 1, np.array([1., 0.]))
 
 
 def test_purifier_is_retained_and_conditioning_does_not_give_the_Gibbs_state():

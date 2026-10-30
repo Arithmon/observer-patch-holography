@@ -309,6 +309,7 @@ REPLAYS = (
     ("model.field_regions", None, "model/field_regions/results.json"),
     ("model.field_stress", None, "model/field_stress/results.json"),
     ("model.field_tastes", None, "model/field_tastes/results.json"),
+    ("model.support_refinement", None, "model/support_refinement/results.json"),
     ("model.biased_reset", None, "model/biased_reset/results.json"),
     ("model.band_clock", None, "model/band_clock/results.json"),
     ("model.band_clock_budget", None, "model/band_clock_budget/results.json"),

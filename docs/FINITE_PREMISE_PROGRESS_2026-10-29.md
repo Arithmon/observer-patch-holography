@@ -1,16 +1,18 @@
-# Finite theorem attachments after the particle push
+# Current finite theorem attachments
 
-29 October 2026. CP-13 / [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137),
-with the selected construction issues [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139),
-[#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140) and
-[#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142).
+CP-13 / [#1137](https://github.com/FloatingPragma/observer-patch-holography/issues/1137)
+joins the construction owners [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139),
+[#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141),
+[#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142),
+[#1144](https://github.com/FloatingPragma/observer-patch-holography/issues/1144) and
+[#1145](https://github.com/FloatingPragma/observer-patch-holography/issues/1145).
 
-The work supplies twelve realized finite attachments across the declared
-Weyl-contact action, native coherence and continuing observer interfaces.
+The work supplies fifteen realized finite attachments across the declared
+Weyl-contact action, native coherence, support and continuing observer interfaces.
 It discharges no canonical physical premise. Gate acceptance is recorded
 separately in the [completion registry](COMPLETION_PROGRAM.md). The [source-bound map](../model/completion/finite_attachment_map.json)
 assigns an owner and a relevance decision to every one of the 84 canonical
-premise rows. Its seventeen inspected theorem/model attachments specify the
+premise rows. Its twenty inspected theorem/model attachments specify the
 state, algebra, operation, time parameter and refinement domain separately.
 
 This review starts from the existing
@@ -41,6 +43,9 @@ No exact equivalence of their finite observation laws is assumed.
 | Quantum first law on that action | On the full finite N=2 Gibbs algebra, `DS_tau(delta)=beta Tr(delta H)` and `Delta S=beta Delta E-D(rho||tau)`; a noncommuting pair variation is tested. | The reference is declared. Geometric bulk/central/edge and fixed-volume area identifications are absent. |
 | Finite thermal positivity and KMS | A spectral Gram factorization and direct trace check on the complete physical N=2,K=0 Gibbs fiber, with all pockets and a non-Hermitian observable. | No local continuum OS reconstruction, physical vacuum or native full-field thermal preparation. |
 | One pair's energy, curvature and number current | Complete two-fermion fibers, exact CAR charge-two/even-parity identities, number continuity and rational bounds on kinetic curvature. | The supplied pair is not an identified Standard Model species or native topological defect; its same-c relativistic mass relation fails. |
+| Bounded interacting Gibbs preparation | Source-executed canonical purification on one or two complete-Fock sites, retaining purifier, all first-failure export branches and both read outcomes. Signed CAR restrictions and a noncommuting entropy control use the same action. | The field marginal is faithful; the joint purification is pure. No many-site reference, physical vacuum, clock or G1--G6 attachment follows. |
+| Rational support refinement | Exact equivariant strong chain retracts on all three transitions and six intervals of the 12-, 42-, 162- and 642-vertex tower. | Rational chain averages are not vertex-valued source coarsenings, quantum channels or responsive geometry. |
+| Native exchange presentation and lifts | A 234-step noncommutative Tietze certificate reduces the original presentation to `Z/2`; both characters have complete source-operated instruments and coherent readouts. | Sign choice, phase services, physical spin, protected localization and species remain separate inputs or open joins. |
 
 These are component obligations with explicit hypotheses. Calling them
 realized does not turn a supplied quantum carrier, action, source service or
@@ -67,7 +72,7 @@ also demands contravariant star-homomorphic retractions. The existing
 [`no_matrix_factor_over_scalar_restriction`](../Lean/QFT/NoncommutativeWitness.lean)
 excludes that interface above a scalar bottom and a full matrix factor.
 It remains a valid conditional theorem and an alternative historical route.
-The new full-matrix CAR construction uses the attainable CP restriction
+The full-matrix CAR construction uses the attainable CP restriction
 instead. Its explicit witness `E(X)=0`, `E(X^2)!=0` prevents accidental
 promotion to multiplicativity. No theorem or frozen receipt was deleted.
 
@@ -83,7 +88,7 @@ is not faithful on the entire spatial field.
 The nearest existing finite entropy result,
 [`thermoFirstLawData_passes`](../Lean/Thermodynamics/EinsteinPremiseLink.lean),
 acts on the classical simplex tangent space and assumes a bulk/central split.
-The new matrix-algebra proof uses spectral calculus and arbitrary Hermitian
+The matrix-algebra proof uses spectral calculus and arbitrary Hermitian
 trace-zero variations, with a noncommuting test direction. It supplies a
 concrete noncommutative field attachment; it is not a new Lean proof or a
 direct invocation of the older scalar theorem on differently typed data.
@@ -163,7 +168,7 @@ All canonical discharge statuses and dispositions are preserved. In
 particular, a physical premise can remain unfulfilled while a restricted
 instance of its interface is executable.
 
-The twelve finite obligations are recorded separately. **Zero canonical
+The fifteen realized finite obligations are recorded separately. **Zero canonical
 physical premises are marked discharged.** The reviewed map and observer
 acceptance have a separate scope from those physical obligations.
 No imported source, frozen receipt or historical evidence is deleted.
@@ -174,8 +179,12 @@ CP-03 requires a native boundary invariant and protected defect sector.
 The constructed exterior-matched coherence has a fixed core and zero energy
 excess, so it does not complete that requirement. CP-04 requires the same
 native excitation's maintenance action, physical clock and stress/refinement
-map. CP-06 requires the interacting chiral field and its complete physical
-matter/current/vacuum attachments. The CP-13 map has a different acceptance
+map. CP-05 requires a common particle, charge and statistics assignment beyond
+the finite exchange-character catalogue. CP-06 requires the interacting
+chiral field and its complete physical matter/current/vacuum attachments.
+CP-08 requires physical geometry beyond rational chain compatibility;
+CP-09 requires geometric modular and entropy identities beyond a prepared
+bounded Gibbs reference. The CP-13 map has a different acceptance
 contract: reviewed theorem interfaces and cleanup joined to accepted CP-00
 and CP-01 predecessors. Their [versioned class and observer review](EXECUTABLE_PROGRAM_CLASS_V2_PROPOSAL.md)
 provides the concrete predecessor specification; the completion registry
@@ -187,7 +196,6 @@ provenance claims. PR-03 and PR-65 retain their canonical statements and
 discharge statuses. Their global derivation routes are alternative branches
 for this finite observer; they remain obligations before any later claim
 invokes those physical conclusions. FA-17 proves the actual finite instance.
-The predecessor review is retained at commit `c35b09c099e5950f736befcf126c654542d78e15`.
 
 ```sh
 python -m model.completion.finite_attachment_map --check
@@ -202,7 +210,7 @@ missing controls and unsupported issue or premise closure. It verifies
 custody and domain declarations; the mathematical proofs and model tests
 remain the cited evidence.
 
-## Further native and complete-band attachments
+## Native, complete-band and refinement interfaces
 
 FA-14 constructs a faithful native coherence with the complete exterior and
 native tape equal to the same product reference. Its exact integrated contrast
@@ -214,8 +222,10 @@ retains its complete source preparation and 128 raw continuation histories.
 
 FA-15 drives the full 8,128-state interacting field using native record-derived
 rate estimates, counted local source words and all four pointer outcomes.
-Its ideal-word average halfdiamond bound is below 0.038565 for |s|<=1, uniform
-in inputs and untouched references. It adds a supplied global field Gibbs
+The [centered spectral budget](../model/band_clock_budget/README.md) bounds
+ideal-word average half-diamond error below 0.037991 for |s|<=1 using
+21 split steps and 17,219,334 pulses, uniformly in inputs and untouched
+references. It requires a supplied global field Gibbs
 reference; it does not inherit that reference from native repairs.
 FA-16 proves why every finite independent native product fails that exact
 inheritance: the eta-calibrated integer modular gaps conflict with the
@@ -228,3 +238,34 @@ complete quantum instruments, record-only controls and independent resource
 accounting. It includes an actual binary-federation intercell transfer and
 retains larger-request resource stops. Its declared quantum representation,
 coherent services and physical apparatus boundary are explicit.
+
+FA-18 executes [Gibbs preparation](../model/field_thermal/README.md) on the
+complete one- or two-site field, rather than its fixed-number projection.
+At two sites with beta=1, c=1/8 and U=1, the preparation uses 10,249 pulses
+and 20,498 load/export service events. Its field marginal is faithful and
+non-Gaussian; the purifier remains present. The noncommuting entropy identity
+and signed CAR restriction tower apply to this same reference. Observation
+Petz maps remain uncompiled, and no geometric G1--G6 premise is discharged.
+
+FA-19 gives [rational support retracts](../model/support_refinement/README.md)
+with `CS=id`, `dH+Hd=id-SC` and `CH=HS=H^2=0`. All sixty proper seed actions
+commute with the maps and homotopies. The endpoint-valued coarsening obstruction
+is retained, so this rational chain interface cannot silently replace the
+source process or supply a physical port map.
+
+FA-20 joins the [exact native presentation](../model/exchange_sector/PRESENTATION.md)
+to complete operations for both exchange characters. Separately, the
+[signed conservation result](../model/native_fixed_algebra/SIGNED.md) transfers
+channel spectra and GNS bounds by an exact branchwise similarity whose
+`-1/3` positivity counterexample excludes a physical-channel interpretation.
+Both characters retain the same source-only conservation obstruction.
+
+The [local full-Fock bounds](../model/full_fock_field/LOCAL_SIMULATION.md)
+sharpen the finite-volume observation interface: overlapping CAR supports
+give a volume-linear split coefficient, and nested buffers give complete
+local-history bounds independent of ambient volume. On `2x2x2` with c=1/8,
+U=1 and model duration 1/32, operator error below `10^-4` requires one
+split step and 10,560 pulses instead
+of ten steps and 105,600 pulses under the norm-sum bound. Initial restricted
+states and observation services remain supplied; a spatial continuum and
+physical action selection are unfulfilled.

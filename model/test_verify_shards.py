@@ -168,7 +168,7 @@ def test_completion_candidate_receipts_have_replay_custody_and_workflow_coverage
                     'python -m model.particle_obstruction.classification --check',
                     'python -m model.interacting_field --check model/interacting_field/results.json'):
         assert command in commands
-    for packet in ('bound_pair', 'particle_clock', 'field_regions', 'field_stress', 'field_tastes', 'biased_reset'):
+    for packet in ('bound_pair', 'particle_clock', 'field_regions', 'field_stress', 'field_tastes', 'biased_reset', 'support_refinement'):
         assert f'model/{packet}' in pytest_command
         receipt_path=f'model/{packet}/results.json'
         assert (f'model.{packet}',None,receipt_path) in verify.REPLAYS

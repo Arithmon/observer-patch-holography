@@ -6,7 +6,7 @@
   "integrated_gate_accepted": false,
   "physical_comparison_count_added": 0,
   "source_law_changed": false,
-  "description": "Complete native-history evaluation, common-reference observations and conservation bounds, full-Fock interacting lattice dynamics, and same-pair gauge/current/residue attachment. Physical action, clock, vacuum and chiral-continuum joins remain explicit.",
+  "description": "Complete native-history evaluation, common-reference observations and conservation bounds, full-Fock interacting lattice dynamics, and same-pair gauge/current/residue attachment. Physical action, clock, vacuum and chiral-continuum joins remain explicit. Original-complex exchange certificates, both-character GNS bounds, local complete-history budgets, rational support chain maps and bounded source-prepared interacting Gibbs references have separate explicit domains.",
   "domain_and_proof": "model/completion/SAME_PROCESS_INTERFACES.md",
   "independent_checks": [
     "model/compiled_native_history/test_compiler.py",
@@ -16,7 +16,12 @@
     "model/reference_observation/test_observation.py",
     "model/native_fixed_algebra/test_fixed.py",
     "model/gauged_field/test_links.py",
-    "model/full_fock_field/test_field.py"
+    "model/full_fock_field/test_field.py",
+    "model/native_fixed_algebra/test_signed.py",
+    "model/exchange_sector/test_presentation.py",
+    "model/full_fock_field/test_local_simulation.py",
+    "model/support_refinement/test_refinement.py",
+    "model/field_thermal/test_thermal.py"
   ],
   "source_receipts": [
     "model/native_program/results.json",
@@ -25,7 +30,9 @@
     "model/field_regions/results.json",
     "model/field_stress/results.json",
     "model/bound_pair/results.json",
-    "model/biased_reset/results.json"
+    "model/biased_reset/results.json",
+    "model/exchange_sector/statistics_results.json",
+    "model/support_refinement/results.json"
   ],
   "source_custody_scope": "Recursive repository Python imports and eager initializers, complete owning receipt manifests, current finite proofs and independent checks.",
   "source_bindings": {
@@ -490,6 +497,21 @@
     "model/screened_transport/transport.py": "0f8d71595034ff584541e51fd4c3b71f50446b18d807159c500723b3ef849e0a",
     "tools/build_completion_program.py": "eb7e45529a4abe19f34cf21cf93c39bfbbb9b976a5d46045dac666258a13a9ab",
     "tools/strict_json.py": "77e2fb33745e518bdc69738d88eae1e0d13f171ee5f791e33050dfca826f0c89",
-    "tools/test_completion_program.py": "33d9567ae99e248871307aabc9d36067d9afa32ad1d6f521a25e0302c3ba2219"
+    "tools/test_completion_program.py": "33d9567ae99e248871307aabc9d36067d9afa32ad1d6f521a25e0302c3ba2219",
+    "model/native_fixed_algebra/signed.py": "6c4ff716d47a62f90c2bdc46792a25db0a77e896116a3588d04235fca38355fe",
+    "model/native_fixed_algebra/test_signed.py": "c4daaec9df9b8138d27e36bbce09e8ab11c2e4cdf5ec807be4bc24574ce484da",
+    "model/native_fixed_algebra/SIGNED.md": "8dd8c9bbee90e269e34237e335a7499577d216f51d6baf14f052d40bc92fd651",
+    "model/exchange_sector/presentation.py": "220f4d9638cb445e2e3cfdf310fcf40d5f6e25a31525e0cea2020305d557bfb7",
+    "model/exchange_sector/test_presentation.py": "6dde812a9e29e68cda08bff7a31450368f1afb92aaca60f1790dacef2390be74",
+    "model/exchange_sector/PRESENTATION.md": "082aadcdba3d7964d9fd0260159520ef920d60aefaa7b286c80ddc78e088eaa3",
+    "model/full_fock_field/local_simulation.py": "3a8a221cd988f9c8741610c7f1bb4cbc114607bedd311981dfd9543c821a62e9",
+    "model/full_fock_field/test_local_simulation.py": "e80d1f4fb2255e3f3eac6db0614674e5057cd69e03a6db169ca470b73aef6d60",
+    "model/full_fock_field/LOCAL_SIMULATION.md": "11d04226952501c0f1e6f4df0d952999218eb9c5cdb7629a76e8d9337e3a5fa0",
+    "model/support_refinement/construction.py": "80b0a5ce83c7b89988a05a2c34385b5427a81a1a70c1c5dcb853b5987dd902bd",
+    "model/support_refinement/test_refinement.py": "2e8c85f2d906cab87c3311bbe3b86056e2ad8d901a5d028d64792acf617c8711",
+    "model/support_refinement/README.md": "b1c4af706144fae38451a198f0cafb846eada2935bc3324b0de3631084ae3fd5",
+    "model/field_thermal/thermal.py": "79279646ac75e1ed7254003435c650f37ab259f8ca5133fe683a2f8b8a9ffcd9",
+    "model/field_thermal/test_thermal.py": "b139fb60b4e1de46a10970dc450b0459070bb2f379f3e8a00673902141436c1b",
+    "model/field_thermal/README.md": "9397d7361245c10f94f9b6c4d0a2a8276f78a60b406c6aa2ff32340ac7e5dc39"
   }
 }

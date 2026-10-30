@@ -22,9 +22,11 @@ NUMERICAL_LIMIT = 2e-9
 def execute_with_exports(word, bits, initial):
     """Retain the valid output and every first failed proper-code export.
 
-    Failure terminates this finite program. Each failure vector uses the
-    current source-complement coordinate followed by the untouched register
-    axes in their original order. No failed output is normalized or trimmed.
+    Failure terminates this finite program and resets the source sender.
+    Each event contains separate Kraus vectors for the complement basis
+    values; its coarse abort density is their sum of outer products, never
+    the outer product of their coherent sum. A vector contains only the
+    untouched register/reference axes; the common failure flag is implicit.
     """
     if type(bits) is not int or not 1 <= bits <= 9:
         raise ValueError('one through nine bounded work bits required')
@@ -47,15 +49,24 @@ def execute_with_exports(word, bits, initial):
         targets = event['targets']
         dimension = 1 << len(targets)
         full = compiler.native_pulse(event['kind'], event['angle'])
+        if (np.ma.isMaskedArray(full) or np.asarray(full).shape != (6, 6)
+                or np.asarray(full).dtype.kind not in 'iufc' or not np.isfinite(full).all()
+                or np.linalg.norm(full.conj().T@full-np.eye(6), 2) > 2e-11):
+            raise ArithmeticError('source primitive is not an admitted finite full unitary')
         axes = [bits-1-j for j in targets]
         axes += [axis for axis in range(bits) if axis not in axes]
         axes += [bits]
         arranged = state.reshape([2]*bits+[state.shape[1]]).transpose(axes)
         failed = (full[dimension:, :dimension]@arranged.reshape(dimension, -1))
-        failed = failed.reshape(-1, state.shape[1])
-        failures.append(frozen(failed[:, 0] if vector else failed))
+        failed = failed.reshape(6-dimension, -1, state.shape[1])
+        failures.append(tuple(frozen(row[:, 0] if vector else row) for row in failed))
         state = compiler._apply(state, full[:dimension, :dimension], targets, bits)
     return frozen(state[:, 0] if vector else state), tuple(failures)
+
+
+def failure_probability(events):
+    """Sum the coarse first-failure event weights over their Kraus branches."""
+    return math.fsum(float(np.vdot(branch, branch).real) for event in events for branch in event)
 
 
 def _matrix(value, dimension):
@@ -186,7 +197,7 @@ class ThermalField:
         blank[0] = 1
         state, failures = execute_with_exports(word, 2*self.geometry.modes, blank)
         error = math.sqrt(float(np.linalg.norm(state-target['purification']))**2+
-                          math.fsum(float(np.vdot(x, x).real) for x in failures))
+                          failure_probability(failures))
         if not math.isfinite(error) or error > NUMERICAL_LIMIT:
             raise ArithmeticError('source-prepared purification exceeds its numerical admission bound')
         columns = state.reshape(self.dimension, self.dimension).T
@@ -199,6 +210,7 @@ class ThermalField:
                     'field_modes': self.geometry.modes,
                     'retained_purifier_bits': self.geometry.modes,
                     'retained_first_export_failure_slots': len(failures),
+                    'retained_export_complement_Kraus_branches': sum(map(len, failures)),
                     'purifier_discard_or_postselection_applied': False,
                     'physical_initialization_cost_calibrated': False}}
 
@@ -220,9 +232,9 @@ class ThermalField:
                         for bit in (0, 1))
         effects = (np.eye(size)-space.number(0).toarray(), space.number(0).toarray())
         pointer_error = math.sqrt(math.fsum(float(np.linalg.norm(x-p@exact))**2
-                                          for x, p in zip(pointer, effects, strict=True)))
-        failure_probability = math.fsum(float(np.vdot(x, x).real)
-                                       for x in prepared['first_export_failures']+continuation_failures)
+                                          for x, p in zip(pointer, effects, strict=True))+
+                                  failure_probability(continuation_failures))
+        failed_probability = failure_probability(prepared['first_export_failures']+continuation_failures)
         target_vector = np.zeros(size, complex); target_vector[3] = 1
         direction = np.outer(target_vector, target_vector.conj())-rho
         epsilon = 1/64
@@ -256,9 +268,9 @@ class ThermalField:
                   self.geometry.interaction*self.geometry.volume)**3*abs(duration)**3/(3*steps**2)
         checks = {'source_reference_trace_norm_error': float(np.linalg.norm(actual-rho, 'nuc')),
                   'source_purification_vector_error': prepared['purification_error'],
-                  'complete_pointer_and_abort_probability_sum': float(sum(np.vdot(x, x).real for x in pointer))+failure_probability,
+                  'complete_pointer_and_abort_probability_sum': float(sum(np.vdot(x, x).real for x in pointer))+failed_probability,
                   'complete_pointer_source_error': pointer_error,
-                  'retained_export_failure_probability': failure_probability,
+                  'retained_export_failure_probability': failed_probability,
                   'ideal_source_split_operator_bound': budget,
                   'exact_evolution_field_reference_drift': float(np.linalg.norm(exact@exact.conj().T-actual, 'nuc')),
                   'noncommuting_variation_norm': float(np.linalg.norm(direction@rho-rho@direction)),
@@ -267,7 +279,8 @@ class ThermalField:
                   'relative_entropy_remainder_upper': remainder,
                   'onsite_non_Gaussian_Wick_defect': wick_defect,
                   'common_reference_observation_tower_max_error': tower}
-        if (checks['source_reference_trace_norm_error'] > 3*NUMERICAL_LIMIT
+        if (not all(math.isfinite(value) for value in checks.values())
+                or checks['source_reference_trace_norm_error'] > 3*NUMERICAL_LIMIT
                 or abs(checks['complete_pointer_and_abort_probability_sum']-1) > 10*NUMERICAL_LIMIT
                 or checks['complete_pointer_source_error'] > budget+10*NUMERICAL_LIMIT
                 or checks['first_law_identity_residual'] > NUMERICAL_LIMIT
@@ -283,9 +296,11 @@ class ThermalField:
                 'continuation_resources': {**compiler.resources(continuation),
                     'additional_initialized_pointer_bits_required': 1,
                     'retained_pointer_outcomes': 2,
-                    'retained_first_export_failure_slots': len(continuation_failures)},
+                    'retained_first_export_failure_slots': len(continuation_failures),
+                    'retained_export_complement_Kraus_branches': sum(map(len, continuation_failures))},
                 'checks': checks,
                 'scope': {'source_preparation_executed': True,
+                          'continuation_error_starts_from_same_executed_success_block': True,
                           'purifier_retained': True,
                           'joint_purification_faithful_on_full_algebra': False,
                           'reference_observation_maps_source_compiled': False,

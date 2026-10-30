@@ -1,18 +1,20 @@
 {
   "schema": "oph.finite_attachment_map.v2",
-  "as_of": "2026-10-29",
+  "as_of": "2026-10-30",
   "gate": "CP-13",
   "selected_issues": [
     1139,
-    1140,
+    1141,
     1142,
+    1144,
+    1145,
     1137
   ],
   "canonical_registry": "tracking/premise_register.json",
   "physical_comparison_count_added": 0,
   "canonical_premises_discharged": [],
-  "finite_obligations_realized": 12,
-  "scope": "Exhaustive ownership/relevance review of all84canonical premise rows for the declared particle/field and native-coherence campaigns, plus17inspected theorem/model attachments. This is not a fresh proof audit of every imported theorem or tracked Lean module.",
+  "finite_obligations_realized": 15,
+  "scope": "Exhaustive ownership/relevance navigation for all84canonical premise rows, with20explicit finite theorem/model attachments,15realized on their stated domains. This is not a fresh proof audit of every imported theorem or tracked Lean module; no canonical physical premise is discharged.",
   "existing_navigation_coverage": {
     "claim_count": 346,
     "lean_module_count": 662,
@@ -1526,6 +1528,48 @@
         "def original_observer_witness"
       ],
       "boundary": "Declared quantum representation, input preparation and counted coherent service. The exact branch certificate extends to arbitrary references but is not a source-selection or physical-apparatus proof."
+    },
+    "signed_native": {
+      "path": "model/native_fixed_algebra/signed.py",
+      "anchors": [
+        "def similarity_certificate",
+        "def uniform_gap_certificate"
+      ],
+      "boundary": "Both exchange characters have full source algebra and the same diagonal-reference GNS contraction bounds. Exact branchwise nonpositive similarity transfers spectra; no physical gauge or protected charge follows."
+    },
+    "native_presentation": {
+      "path": "model/exchange_sector/presentation.py",
+      "anchors": [
+        "def native_presentation",
+        "def replay_eliminations"
+      ],
+      "boundary": "Exact noncommutative Tietze replay on the original native collision-free two-complex reduces235generators and495relators to <g|g^2>, with odd ordered-cover parity. No physical species, spin or sign selection."
+    },
+    "local_field_schedule": {
+      "path": "model/full_fock_field/local_simulation.py",
+      "anchors": [
+        "def overlap_split_certificate",
+        "def local_observer_schedule"
+      ],
+      "boundary": "Overlapping CAR supports give an extensive Strang coefficient and integrated factorial locality tail. Nested backward buffers bound complete local histories with arbitrary references and exact source schedules, independently of ambient volume; initial restriction, action, readout and model clock remain supplied."
+    },
+    "support_refinement": {
+      "path": "model/support_refinement/construction.py",
+      "anchors": [
+        "class Refinement",
+        "class Tower",
+        "def certificate"
+      ],
+      "boundary": "Exact rational strong chain deformation retracts on the actual12/42/162/642-vertex supports compose and intertwine all60proper actions. Rational chain maps are not vertex selectors, physical geometry or quantum channels."
+    },
+    "field_thermal": {
+      "path": "model/field_thermal/thermal.py",
+      "anchors": [
+        "def execute_with_exports",
+        "class ThermalField",
+        "def car_restriction"
+      ],
+      "boundary": "Complete source words prepare a faithful interacting Gibbs marginal on one/two sites with retained purification, all exports and a subsequent field/pointer history. All-number CAR restrictions compose and the matrix first law holds; initialization, beta/action, larger-reference preparation and geometric premises remain supplied."
     }
   },
   "attachments": [
@@ -1614,16 +1658,17 @@
         "CP-08"
       ],
       "reviewed_sources": [
-        "regions"
+        "regions",
+        "local_field_schedule"
       ],
       "interface": {
-        "state": "Complete finite two-fermion state, with arbitrary untouched references where an instrument is claimed.",
+        "state": "Complete finite two-fermion state, with arbitrary untouched references where an instrument is claimed. The full-Fock local-history extension allows arbitrary particle number and external references.",
         "algebra": "The declared matrix/CAR algebra; no physical spacetime identification.",
-        "operation": "Exterior-square coordinate/spin inclusion J, same source-compiled complete two-read instrument and CP regional trace.",
+        "operation": "Exterior-square coordinate/spin inclusion J, same source-compiled complete two-read instrument and CP regional trace. Nested backward buffers contain later effects, with complete even local instruments and no branch conditioning.",
         "clock": "Hamiltonian model time or named native modular parameter, kept distinct.",
         "refinement": "J* H_large J=H_small exactly; full flow intertwining fails and is not assumed. Fixed-spacing Taylor and splitting error bounds transport under CP contraction."
       },
-      "conclusion": "Same-observable regional histories have explicit finite-volume maps and controlled ideal-action errors. On full Fock space, the same local action also has a uniform CAR boundary estimate yielding norm-Cauchy fixed-spacing thermodynamic local dynamics. This does not make the finite box embedding an exact dynamical intertwiner or take spatial spacing to zero.",
+      "conclusion": "Same-observable regional histories have explicit finite-volume maps and controlled ideal-action errors. On full Fock space, the same local action also has a uniform CAR boundary estimate yielding norm-Cauchy fixed-spacing thermodynamic local dynamics. This does not make the finite box embedding an exact dynamical intertwiner or take spatial spacing to zero. Overlapping-support Strang bounds and integrated factorial tails give explicit source schedules independent of the ambient volume.",
       "remaining": [
         "Shrinking lattice spacing, native geometry, chiral continuum and physical rods/clocks."
       ],
@@ -1632,11 +1677,14 @@
         "model/field_regions/results.json",
         "model/interacting_field/DERIVATION.md",
         "model/full_fock_field/README.md",
-        "model/full_fock_field/bounds.py"
+        "model/full_fock_field/bounds.py",
+        "model/full_fock_field/local_simulation.py",
+        "model/full_fock_field/LOCAL_SIMULATION.md"
       ],
       "countercontrols": [
         "model/field_regions/test_regions.py",
-        "model/full_fock_field/test_field.py"
+        "model/full_fock_field/test_field.py",
+        "model/full_fock_field/test_local_simulation.py"
       ],
       "proof_kind": "Exact finite inclusion/compression, explicit nonzero intertwining countercontrol and analytic complete-output norm bound.",
       "new_lean_inhabitant": false,
@@ -2017,7 +2065,8 @@
         "CP-04"
       ],
       "reviewed_sources": [
-        "native_localization"
+        "native_localization",
+        "signed_native"
       ],
       "interface": {
         "state": "Faithful H66 native state with reference diagonal and coherent blocks theta_k/7505 [[25,8],[8,8]] on core{1,7}; every exterior correlation retained.",
@@ -2026,7 +2075,7 @@
         "clock": "Native attempt count n for contrast lifetime; dimensionless modular s for phase log25/8. No physical clock identification.",
         "refinement": "One native carrier; finite-history induction is uniform in history length. No spatial continuum or carrier growth claim."
       },
-      "conclusion": "An explicit faithful localized coherence has reference-identical tape/exterior, exact finite contrast lifetime and zero modular-energy excess; arbitrary exact codes obey exterior and clock exclusions. Faithful H66 source-only universal conservation under positive exploration/classical record feedback is scalar by the exact weighted Dirichlet identity. A rational gap controls near conservation and exogenous selectors; joint feedback charges, active recovery and H78 are distinct domains.",
+      "conclusion": "An explicit faithful localized coherence has reference-identical tape/exterior, exact finite contrast lifetime and zero modular-energy excess; arbitrary exact codes obey exterior and clock exclusions. Faithful H66 source-only universal conservation under positive exploration/classical record feedback is scalar by the exact weighted Dirichlet identity. A rational gap controls near conservation and exogenous selectors; joint feedback charges, active recovery and H78 are distinct domains. Both exchange characters obey the same bounds via an exact branchwise GNS-isometric sign similarity; the similarity is nonpositive and is not a quantum channel.",
       "remaining": [
         "Native protected boundary charge and motion of the same excitation; physical energy and lifetime calibration."
       ],
@@ -2034,11 +2083,14 @@
         "model/native_localization/README.md",
         "model/native_localization/results.json",
         "model/native_fixed_algebra/README.md",
-        "model/native_fixed_algebra/fixed.py"
+        "model/native_fixed_algebra/fixed.py",
+        "model/native_fixed_algebra/signed.py",
+        "model/native_fixed_algebra/SIGNED.md"
       ],
       "countercontrols": [
         "model/native_localization/test_localization.py",
-        "model/native_fixed_algebra/test_fixed.py"
+        "model/native_fixed_algebra/test_fixed.py",
+        "model/native_fixed_algebra/test_signed.py"
       ],
       "proof_kind": "Explicit analytic finite-domain argument with independent exact arithmetic and complete source checks.",
       "new_lean_inhabitant": false,
@@ -2153,6 +2205,108 @@
       "proof_kind": "Exact complete-effect and partial-injection certificate, explicit service words, retained continuing observer, independent endpoint and hostile-admission tests.",
       "new_lean_inhabitant": false,
       "physical_identification": false
+    },
+    {
+      "id": "FA-18",
+      "title": "Source-prepared bounded interacting Gibbs marginal and complete continuation",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-02",
+        "CP-06",
+        "CP-09"
+      ],
+      "reviewed_sources": [
+        "field_thermal"
+      ],
+      "interface": {
+        "state": "Full Fock density on one/two sites; supplied zero work bits and an equally large retained purifier. Field marginal faithful; joint state pure.",
+        "algebra": "Full all-number field matrix algebra and signed CAR regional CPTP restrictions, with arbitrary external references.",
+        "operation": "Compiled amplitudes/phases, all reset-export Kraus branches, Weyl/contact continuation and complete occupation pointer. Reference observation effects remain mathematical maps.",
+        "clock": "Declared inverse temperature beta and Hamiltonian model duration; no physical seconds or temperature identification.",
+        "refinement": "Finite bounded source execution and exact algebraic nested restrictions, not scalable global Gibbs preparation or a spatial continuum."
+      },
+      "conclusion": "Complete source words prepare a faithful interacting Gibbs marginal on one/two sites with retained purification, all exports and a subsequent field/pointer history. All-number CAR restrictions compose and the matrix first law holds; initialization, beta/action, larger-reference preparation and geometric premises remain supplied.",
+      "remaining": [
+        "Full band-reference preparation, source-selected beta/action and physical clock/vacuum.",
+        "Compiled common-reference observations and all geometric/null/area/refinement premises."
+      ],
+      "witnesses": [
+        "model/field_thermal/thermal.py",
+        "model/field_thermal/README.md"
+      ],
+      "countercontrols": [
+        "model/field_thermal/test_thermal.py"
+      ],
+      "proof_kind": "Finite spectral/purification proof, source word execution and independent full-export/reference/entropy countercontrols.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-19",
+      "title": "Equivariant rational strong chain deformation retracts",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-08"
+      ],
+      "reviewed_sources": [
+        "support_refinement"
+      ],
+      "interface": {
+        "state": "Rational simplicial chains on source-derived supports with12,42,162,642vertices.",
+        "algebra": "Oriented chain complexes in degrees0,1,2, with all60proper incidence actions.",
+        "operation": "Explicit C,S,H satisfy CS=id and dH+Hd=id-SC, with CH=HS=H^2=0 and exact action intertwining.",
+        "clock": "Refinement level is a mathematical index; no temporal or physical clock identification.",
+        "refinement": "All three consecutive and six retained intervals compose by H=H2+S2H1C2. No additional infinite-tower claim."
+      },
+      "conclusion": "Exact rational strong chain deformation retracts on the actual12/42/162/642-vertex supports compose and intertwine all60proper actions. Rational chain maps are not vertex selectors, physical geometry or quantum channels.",
+      "remaining": [
+        "State/algebra/dynamics maps on refined observers and physical metric/continuum identification.",
+        "The rational chain map is neither a deterministic endpoint selector nor a CPTP quantum map."
+      ],
+      "witnesses": [
+        "model/support_refinement/construction.py",
+        "model/support_refinement/README.md"
+      ],
+      "countercontrols": [
+        "model/support_refinement/test_refinement.py"
+      ],
+      "proof_kind": "Exact rational arithmetic certificate with independent determinant/minor and homotopy-filling controls.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-20",
+      "title": "Original native exchange presentation and character classification",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-03",
+        "CP-05"
+      ],
+      "reviewed_sources": [
+        "native_presentation"
+      ],
+      "interface": {
+        "state": "The original66-vertex collision-free native two-configuration complex with300edges and495two-cells.",
+        "algebra": "Based noncommutative edge-path presentation with235generators; no homology-only replacement.",
+        "operation": "167identity eliminations and67single-letter substitutions replay exact Tietze moves, leaving <g|g^2> and odd ordered-cover parity.",
+        "clock": "Path concatenation and model/source service counts, not physical rotation or calibrated exchange time.",
+        "refinement": "The original finite two-complex; no added cells or continuum configuration-space assumption."
+      },
+      "conclusion": "Exact noncommutative Tietze replay on the original native collision-free two-complex reduces235generators and495relators to <g|g^2>, with odd ordered-cover parity. No physical species, spin or sign selection.",
+      "remaining": [
+        "Source selection of character, physical spin-statistics, protected moving species and mass.",
+        "Common full-field/native reference, action and clock attachment."
+      ],
+      "witnesses": [
+        "model/exchange_sector/presentation.py",
+        "model/exchange_sector/PRESENTATION.md"
+      ],
+      "countercontrols": [
+        "model/exchange_sector/test_presentation.py"
+      ],
+      "proof_kind": "Explicit noncommutative finite presentation certificate and independent relator/parity replay.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
     }
   ],
   "cleanup": {
@@ -2182,21 +2336,6 @@
         "CP-13"
       ]
     },
-    "1140": {
-      "close_issue": false,
-      "unaccepted_predecessors": [
-        "CP-02",
-        "CP-03"
-      ],
-      "unfulfilled_acceptance": [
-        "Source-selected native defect maintenance/rest action with a common physical propagation clock.",
-        "One justified physical stress tensor and its Ward/refinement map; finite energy currents only are constructed."
-      ],
-      "required_predecessors": [
-        "CP-02",
-        "CP-03"
-      ]
-    },
     "1142": {
       "close_issue": false,
       "unaccepted_predecessors": [
@@ -2224,6 +2363,48 @@
       "finite_map_review_complete": true,
       "acceptance_scope": "Ownership, exact finite interfaces, relevance and active-route cleanup; downstream physical premises remain conditional.",
       "unaccepted_predecessors": []
+    },
+    "1141": {
+      "close_issue": false,
+      "required_predecessors": [
+        "CP-03",
+        "CP-04"
+      ],
+      "unaccepted_predecessors": [
+        "CP-03",
+        "CP-04"
+      ],
+      "unfulfilled_acceptance": [
+        "Native identification of exchange character, spin, protected moving species and mass with a common reference/action/clock."
+      ]
+    },
+    "1144": {
+      "close_issue": false,
+      "required_predecessors": [
+        "CP-02",
+        "CP-04"
+      ],
+      "unaccepted_predecessors": [
+        "CP-02",
+        "CP-04"
+      ],
+      "unfulfilled_acceptance": [
+        "Physical geometry and compatible state, algebra, operation and dynamical refinement maps; rational chain homotopy supplies only the support chain interface."
+      ]
+    },
+    "1145": {
+      "close_issue": false,
+      "required_predecessors": [
+        "CP-06",
+        "CP-08"
+      ],
+      "unaccepted_predecessors": [
+        "CP-06",
+        "CP-08"
+      ],
+      "unfulfilled_acceptance": [
+        "Shared geometric entropy stationarity, null/stress/area and common scaling premises G1--G6; finite Gibbs preparation does not discharge them."
+      ]
     }
   },
   "source_bindings": {
@@ -2240,8 +2421,8 @@
     "model/bound_pair/fiber.py": "a5a21df2e5e6a4c71c66feaff2436390e357da8ae019df794280577afa48a49e",
     "model/bound_pair/identity.py": "749a1ce10431e8a72b76b96c9568d7cbd0960a9f41e32c92498ba352d753a333",
     "model/bound_pair/mass.py": "45ab64c1b74d060e4ae380c9f5f5896ca7d1d7a84c18c022c9bd2e3d99735034",
-    "model/completion/finite_attachment_map.py": "471e5de0ed6d448fe73b1585f9ca87eb8dcc94020f4ed759bae514d6cb99761b",
-    "model/completion/test_finite_attachment_map.py": "b71bf57b0f26e7cd70941f9da42c70dcb5e7d8584033ad3dcd1f3c89791dccd9",
+    "model/completion/finite_attachment_map.py": "d76a3fe3c44f69cb028f935242d937b2c709a00c52b7a35b62fc4955e06684ae",
+    "model/completion/test_finite_attachment_map.py": "c7835794925e221a29ee4b2077fb60b0ee47ec1869db57fd880fdd4a78733925",
     "model/field_regions/README.md": "5073a68fc7c604335ad9aeac76ea0fd509857a73fb088148e66e0764cd6005ae",
     "model/field_regions/regions.py": "82620a99ed565ab0371295700f828151133d863d92e7fb12330d57a3a7603dc9",
     "model/field_stress/README.md": "8e5b2d4bf9f49d782512c17c6ccda0b2e54d69255a5d169154ba53c6c5c6c213",
@@ -2280,7 +2461,22 @@
     "model/band_clock_budget/README.md": "a376123c132c7e7bfc1d8738bae29a815a6a0aee494cd874fe5752a625a7afa2",
     "model/band_clock_budget/budget.py": "529a1f0556eae334c61cf6a3b9d4234b7a86937e276356e190db64a6cdc20e65",
     "model/band_clock_budget/results.json": "dbedbe4b1be887d5cf1b317bb0d3acd9186442e3b6bc8fc7bac6b08a4e501052",
-    "model/band_clock_budget/test_budget.py": "6c63bee46b2c8d9332bdf0c3ef7a802e6ede6e08d79e0315bb30293e5da4dbfd"
+    "model/band_clock_budget/test_budget.py": "6c63bee46b2c8d9332bdf0c3ef7a802e6ede6e08d79e0315bb30293e5da4dbfd",
+    "model/native_fixed_algebra/signed.py": "6c4ff716d47a62f90c2bdc46792a25db0a77e896116a3588d04235fca38355fe",
+    "model/native_fixed_algebra/test_signed.py": "c4daaec9df9b8138d27e36bbce09e8ab11c2e4cdf5ec807be4bc24574ce484da",
+    "model/native_fixed_algebra/SIGNED.md": "8dd8c9bbee90e269e34237e335a7499577d216f51d6baf14f052d40bc92fd651",
+    "model/exchange_sector/presentation.py": "220f4d9638cb445e2e3cfdf310fcf40d5f6e25a31525e0cea2020305d557bfb7",
+    "model/exchange_sector/test_presentation.py": "6dde812a9e29e68cda08bff7a31450368f1afb92aaca60f1790dacef2390be74",
+    "model/exchange_sector/PRESENTATION.md": "082aadcdba3d7964d9fd0260159520ef920d60aefaa7b286c80ddc78e088eaa3",
+    "model/full_fock_field/local_simulation.py": "3a8a221cd988f9c8741610c7f1bb4cbc114607bedd311981dfd9543c821a62e9",
+    "model/full_fock_field/test_local_simulation.py": "e80d1f4fb2255e3f3eac6db0614674e5057cd69e03a6db169ca470b73aef6d60",
+    "model/full_fock_field/LOCAL_SIMULATION.md": "11d04226952501c0f1e6f4df0d952999218eb9c5cdb7629a76e8d9337e3a5fa0",
+    "model/support_refinement/construction.py": "80b0a5ce83c7b89988a05a2c34385b5427a81a1a70c1c5dcb853b5987dd902bd",
+    "model/support_refinement/test_refinement.py": "2e8c85f2d906cab87c3311bbe3b86056e2ad8d901a5d028d64792acf617c8711",
+    "model/support_refinement/README.md": "b1c4af706144fae38451a198f0cafb846eada2935bc3324b0de3631084ae3fd5",
+    "model/field_thermal/thermal.py": "79279646ac75e1ed7254003435c650f37ab259f8ca5133fe683a2f8b8a9ffcd9",
+    "model/field_thermal/test_thermal.py": "b139fb60b4e1de46a10970dc450b0459070bb2f379f3e8a00673902141436c1b",
+    "model/field_thermal/README.md": "9397d7361245c10f94f9b6c4d0a2a8276f78a60b406c6aa2ff32340ac7e5dc39"
   },
   "gate_acceptance_owner": "claims/completion_program.json",
   "predecessor_review": {

@@ -30,16 +30,24 @@ degenerate energy eigenspaces is part of the target. The existing source
 compiler prepares the absolute amplitudes and then all their complex phases.
 The word includes its scalar phase and zero-angle service requests.
 
-Each actual six-dimensional primitive is separated into its valid-code
-output and complement output. A complement terminates the program in its
-own first-failure slot. Summing the success and failure Gram matrices
+Each actual six-dimensional primitive is followed by the existing
+code-plus-failure export, which resets the sender. Every complement basis
+value has a separate Kraus vector. They are combined incoherently within
+the common first-failure event; the basis value is not an extra observed
+record or a surviving coherent source register. A complement terminates
+the program in that event's slot. Summing success and failure Gram matrices
 preserves every untouched reference marginal in the exact unitary model;
 this follows by telescoping the complete local export isometries. The
-implementation retains the full failure vectors, including numerical
+implementation retains all failure Kraus vectors, including numerical
 near-zero vectors, and never renormalizes the success block. A deliberately
 leaking-unitary test checks that failures and reference coherences really
 survive. Valid-code failures are zero for the exact source generators.
 Floating residual admission is not an outward or hardware certificate.
+The preparation error includes its orthogonal abort blocks. The continuation
+error separately compares its complete output, including its aborts, with
+exact Hamiltonian evolution and readout of the same executed preparation
+success block. For comparison with the ideal Gibbs experiment these errors
+add; the earlier preparation aborts remain unchanged terminal outputs.
 
 At `beta=1`, `c=1/8`, `U=1` on two sites, preparation requests **10,249
 source pulses** and **20,498 load/export service events**, eight initialized
