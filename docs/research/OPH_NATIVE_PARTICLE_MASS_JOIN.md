@@ -90,6 +90,32 @@ response with a common signal speed and calibrated clock, and conserved
 stress. Defining `m=E/c²` before those independent checks would rename an
 assumed energy. No particle species or mass in SI units is identified.
 
+## Exchange topology and observable statistics
+
+The [exchange-statistics construction](../../model/exchange_sector/STATISTICS.md)
+completes the path classification on the declared native two-particle
+configuration complex: its fundamental group is `Z/2`, not merely its first
+homology. Its two irreducible flat unitary characters are `+1` and `-1`.
+This classifies transport phases on that fixed complex; it does not enumerate
+all possible defects on arbitrary carrier refinements.
+
+The negative lift's moving blocks agree with number-conserving fermionic
+bilinears on the two-occupation sector. Bare C/E uses the positive lift.
+They have the same classical trajectories, but need not have the same complete quantum
+outputs. A record-selected, source-compiled diagonal operation implements
+the negative lift, and a coherent read distinguishes it from bare C/E.
+The coherent exchange-loop experiment separately makes the loop sign
+observable. Committing which-path information destroys that contrast.
+
+Thus the exchange sign has an explicit operation and measurement interface,
+rather than being a name assigned to a retained classical path. The coherent
+controls and sign choice remain supplied parts of the observer program.
+Neither choice produces physical spin, a protected reference-compatible
+localized excitation, a rest gap or a Standard Model species by itself.
+Creation and annihilation are outside this fixed total-two carrier. CP-03,
+CP-04 and CP-05 require those additional same-process identifications before
+an observed particle can be assigned.
+
 ## Completed recovery, transport and unit attachment
 
 The screened code's own uniform-seam service costs `37499681/60` C or
@@ -235,7 +261,8 @@ The current native catalogue is:
 | Object | Established invariant or dynamics | Particle assignment |
 | --- | --- | --- |
 | Double-load collision | Transient under complete native repair | None |
-| Collision-free exchange history | Integral first homology `Z/2`; an uninterrupted odd closed flag resolves its input | No coherent fermionic phase |
+| Collision-free exchange history | Fundamental group `Z/2` for the declared face/square deformations; an uninterrupted odd closed flag resolves its input | Bare C/E has the positive lift |
+| Source-operated exchange statistics | Both flat characters have complete instruments and coherent readouts; negative moving blocks are CAR bilinears | Supplied sign and controls; no physical spin or species assignment |
 | Relational source/core overlap `q` | Conserved under simultaneous current transport | A relational sector, not a source-only charge |
 | Sharp `q=2` edge pair | Mean native-edge first exit 15 attempts | No protected edge bond or measured decay law |
 | Mobile sharp `q=1` qubit | Exact active correction, 60 admissible cores, optimal resets | A transported quantum memory; rotations act trivially on its logical qubit |

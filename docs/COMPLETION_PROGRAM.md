@@ -48,6 +48,7 @@ These source-bound component campaigns record actual progress without accepting 
 - [OPH-INTEGRATION-RECOVERY-ELISION-2026-10-29-v1](../model/recovery_elision/campaign.json): Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection. Owning gates: CP-01, CP-03, CP-13.
 - [OPH-INTEGRATION-BIASED-CODE-UNIVERSALITY-2026-10-29-v1](../model/biased_code_universality/campaign.json): Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved. Owning gates: CP-01, CP-03, CP-13.
 - [OPH-COMMON-FIELD-INTERFACES-v1](../model/completion/component_interfaces.json): Complete native-history evaluation, common-reference observations and conservation bounds, full-Fock interacting lattice dynamics, and same-pair gauge/current/residue attachment. Physical action, clock, vacuum and chiral-continuum joins remain explicit. Owning gates: CP-01, CP-02, CP-03, CP-04, CP-05, CP-06, CP-09, CP-13.
+- [native-exchange-statistics-20261029-v1](../model/exchange_sector/statistics_contract.json): The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified. Owning gates: CP-01, CP-03, CP-05, CP-13.
 
 ## Next five parallel workstreams
 
@@ -66,7 +67,7 @@ Join the current native reference/conservation results, complete interacting CAR
 Parallel starting work and the required joins:
 
 - **CP-02 / [#1138](https://github.com/FloatingPragma/observer-patch-holography/issues/1138):** Use the explicit Petz-transpose effects and their complete-reference tests, native GNS bounds and the reduced full-field rate schedule. Reference-preserving observation composition is not local retraction, modular covariance, physical seconds or preparation of a global field Gibbs state. Starting evidence: [reference observation](../model/reference_observation/observation.py), [native fixed algebra](../model/native_fixed_algebra/fixed.py), [band clock budget](../model/band_clock_budget/budget.py), [energy identifiability](../model/energy_identifiability/certificate.py).
-- **CP-03 / [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139):** Use complete band wavepackets and all-outcome active memory/reset controls with their explicit law and reference differences. Spectral isolation under the supplied Hamiltonian is not invariance under every native repair branch; active information transport and trivial band topology do not supply the required defect invariant. Starting evidence: [bound pair](../model/bound_pair/results.json), [moving defect](../model/moving_defect/results.json), [particle premise contract](../model/completion/particle_premise_campaign.json), [native localization](../model/native_localization/results.json), [mobile screened memory](../model/particle_screening/mobile_results.json), [native fixed algebra](../model/native_fixed_algebra/fixed.py), [gauged field](../model/gauged_field/links.py).
+- **CP-03 / [#1139](https://github.com/FloatingPragma/observer-patch-holography/issues/1139):** Use complete band wavepackets and all-outcome active memory/reset controls with their explicit law and reference differences. Spectral isolation under the supplied Hamiltonian is not invariance under every native repair branch; active information transport and trivial band topology do not supply the required defect invariant. Starting evidence: [bound pair](../model/bound_pair/results.json), [moving defect](../model/moving_defect/results.json), [particle premise contract](../model/completion/particle_premise_campaign.json), [native localization](../model/native_localization/results.json), [mobile screened memory](../model/particle_screening/mobile_results.json), [native fixed algebra](../model/native_fixed_algebra/fixed.py), [gauged field](../model/gauged_field/links.py), [exchange statistics](../model/exchange_sector/statistics_results.json).
 - **CP-04 / [#1140](https://github.com/FloatingPragma/observer-patch-holography/issues/1140):** Use the bound-pair energy/residue identity, exact curvature interval, complete clock records and interaction-dependent local energy conservation. Supplied U and c, coordinate masses and one corner clock do not select a physical full-field dictionary. Preserve the proved same-speed relativistic mismatch and regional modular countercontrol. Starting evidence: [bound pair](../model/bound_pair/results.json), [particle clock](../model/particle_clock/results.json), [field stress](../model/field_stress/results.json), [band clock](../model/band_clock/results.json), [native localization](../model/native_localization/results.json), [inherited clock](../model/completion/acceptance_audit.py), [gauged field](../model/gauged_field/links.py), [energy identifiability](../model/energy_identifiability/certificate.py).
 - **CP-05 / [#1141](https://github.com/FloatingPragma/observer-patch-holography/issues/1141):** Use complete Peierls-link Ward identities and the exact Feshbach current/residue map, keeping separated-pair and native active-memory domains explicit. CAR number charge and supplied external links do not select electromagnetic normalization, a dynamical gauge field, a physical species or native protection. Starting evidence: [gauged field](../model/gauged_field/links.py), [full fock field](../model/full_fock_field/field.py), [bound pair](../model/bound_pair/results.json), [particle obstruction](../model/particle_obstruction/results.json).
 - **CP-06 / [#1142](https://github.com/FloatingPragma/observer-patch-holography/issues/1142):** Retain every Weyl taste and scattering output; test the contact interaction against the proposed momentum-sector removal and compose the existing regional history maps. A finite band or infinite-volume fixed lattice is not a chiral continuum. No unwanted mode can be dropped without a derived complete-law decoupling map. Starting evidence: [bound pair](../model/bound_pair/results.json), [field regions](../model/field_regions/results.json), [interacting field](../model/interacting_field/results.json), [band clock](../model/band_clock/results.json), [full fock field](../model/full_fock_field/field.py), [gauged field](../model/gauged_field/links.py).
@@ -273,6 +274,8 @@ Retained starting evidence:
 - [universality.py](../model/biased_code_universality/universality.py)
 - [compiler.py](../model/compiled_native_history/compiler.py)
 - [README.md](../model/compiled_native_history/README.md)
+- [STATISTICS.md](../model/exchange_sector/STATISTICS.md)
+- [statistics_results.json](../model/exchange_sector/statistics_results.json)
 
 Reviewed acceptance evidence:
 
@@ -296,6 +299,7 @@ Current component progress (not gate acceptance):
 - [variant.py](../model/recovery_elision/variant.py): Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.
 - [universality.py](../model/biased_code_universality/universality.py): Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.
 - [compiler.py](../model/compiled_native_history/compiler.py): Exact complete-history partial-map evaluator with shared controller/FIFO/stops and arbitrary references; host storage reduction only.
+- [statistics_results.json](../model/exchange_sector/statistics_results.json): The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.
 
 Earlier related work: [#1077](https://github.com/FloatingPragma/observer-patch-holography/issues/1077), [#1076](https://github.com/FloatingPragma/observer-patch-holography/issues/1076), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026).
 
@@ -356,6 +360,8 @@ Retained starting evidence:
 - [README.md](../model/native_fixed_algebra/README.md)
 - [field.py](../model/full_fock_field/field.py)
 - [README.md](../model/full_fock_field/README.md)
+- [STATISTICS.md](../model/exchange_sector/STATISTICS.md)
+- [statistics_results.json](../model/exchange_sector/statistics_results.json)
 
 Reviewed acceptance evidence:
 
@@ -401,6 +407,7 @@ Current component progress (not gate acceptance):
 - [observation.py](../model/reference_observation/observation.py): Common-reference UCP Petz-transpose observations with exact nested tower; neither local retraction nor modular covariance is assumed.
 - [fixed.py](../model/native_fixed_algebra/fixed.py): All-input source-only H66 conservation exclusion and exact GNS contraction/near-conservation bounds; joint feedback, active recovery and physical energy are separate.
 - [field.py](../model/full_fock_field/field.py): All-number full-Fock source construction and fixed-spacing interacting thermodynamic local dynamics with rational locality bounds; no chiral spatial-continuum or native action selection.
+- [statistics_results.json](../model/exchange_sector/statistics_results.json): The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.
 
 Earlier related work: [#1033](https://github.com/FloatingPragma/observer-patch-holography/issues/1033), [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 
@@ -501,6 +508,8 @@ Retained starting evidence:
 - [universality.py](../model/biased_code_universality/universality.py)
 - [fixed.py](../model/native_fixed_algebra/fixed.py)
 - [README.md](../model/native_fixed_algebra/README.md)
+- [STATISTICS.md](../model/exchange_sector/STATISTICS.md)
+- [statistics_results.json](../model/exchange_sector/statistics_results.json)
 
 Current component progress (not gate acceptance):
 
@@ -520,6 +529,7 @@ Current component progress (not gate acceptance):
 - [variant.py](../model/recovery_elision/variant.py): Separate exact identity-recovery variant removes3120 redundant words and saves48391.49 supplied pulses per stationary native attempt; original benchmark retained, no physical energy or new protection.
 - [universality.py](../model/biased_code_universality/universality.py): Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.
 - [fixed.py](../model/native_fixed_algebra/fixed.py): All-input source-only H66 conservation exclusion and exact GNS contraction/near-conservation bounds; joint feedback, active recovery and physical energy are separate.
+- [statistics_results.json](../model/exchange_sector/statistics_results.json): The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.
 
 Earlier related work: [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 
@@ -616,6 +626,8 @@ Retained starting evidence:
 - [results.json](../model/bound_pair/results.json)
 - [links.py](../model/gauged_field/links.py)
 - [README.md](../model/gauged_field/README.md)
+- [STATISTICS.md](../model/exchange_sector/STATISTICS.md)
+- [statistics_results.json](../model/exchange_sector/statistics_results.json)
 
 Current component progress (not gate acceptance):
 
@@ -623,6 +635,7 @@ Current component progress (not gate acceptance):
 - [results.json](../model/bound_pair/results.json): One supplied Weyl/contact action has an isolated moving charge-two pair band, complete physical spectral records and exact curvature bounds. Its band is topologically trivial; the same-speed relativistic mass relation fails. No native topological particle or physical mass is identified.
 - [mobile_results.json](../model/particle_screening/mobile_results.json): Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.
 - [links.py](../model/gauged_field/links.py): Exact CAR link covariance and Ward identities; the Feshbach norm metric joins charge-two pair transport, current and residue on one full eigenstate.
+- [statistics_results.json](../model/exchange_sector/statistics_results.json): The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.
 
 Earlier related work: [#1026](https://github.com/FloatingPragma/observer-patch-holography/issues/1026), [#1078](https://github.com/FloatingPragma/observer-patch-holography/issues/1078).
 

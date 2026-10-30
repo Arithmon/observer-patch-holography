@@ -46,7 +46,7 @@
     },
     "parents": {
       "claims/claim_registry.yaml": "63cf9b3dc24b08dc8d214f5195b4d89d5dbcec017561bb9fe41b1ac460da2304",
-      "claims/completion_program.json": "7399c52ed09dab30b0258d1536201d32cf4bd26907d6005bbc4dd00a0d1d3855",
+      "claims/completion_program.json": "91bc8cee9dd3ef55381c6637ba43238cb84ebba1d905dbe3b2c54bf943c9f30d",
       "claims/executable_model_hypothesis.json": "1855a611870a64b3d97fbaa8759385761dda9130a1517233193af2c7f170cd2b",
       "docs/OPH_EXECUTABLE_HYPOTHESIS.md": "c503247a2b333c2e27b3eba865d47f2d15c966a5052eceb4aadb14fc9002f35a"
     },
@@ -415,7 +415,7 @@
             "independent_check": "model/biased_code_universality/test_universality.py",
             "path": "model/biased_code_universality/campaign.json",
             "scope": "Positive-coin classification transfer proves the fixed biased optimal asymptotic reset rate across arbitrary adaptive exact all-seam sharp-q1 codes. Separate clock-factor composition is operational; finite-horizon biased optimality and particle mass remain unproved.",
-            "sha256": "1b31902bf5f72a0b7c36790ef8d361cbe19aeee5514f28aa940a8f2d46552883"
+            "sha256": "1d84b3a9bea548aa7d799b8f5e6808c555e20ba18a16ba975cdcbd0bddf66ded"
           },
           "id": "OPH-INTEGRATION-BIASED-CODE-UNIVERSALITY-2026-10-29-v1",
           "scope": "FINITE_COMPONENT_FAMILY",
@@ -444,6 +444,24 @@
             "CP-05",
             "CP-06",
             "CP-09",
+            "CP-13"
+          ],
+          "whole_program_frozen": false
+        },
+        {
+          "contract": {
+            "campaign_id": "native-exchange-statistics-20261029-v1",
+            "independent_check": "model/exchange_sector/test_statistics_packet.py",
+            "path": "model/exchange_sector/statistics_contract.json",
+            "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
+            "sha256": "fe979eb6e059f059d3196b785bdf578e71371bcc60fc6e3af68e6862aea1349b"
+          },
+          "id": "native-exchange-statistics-20261029-v1",
+          "scope": "FINITE_COMPONENT_FAMILY",
+          "supports": [
+            "CP-01",
+            "CP-03",
+            "CP-05",
             "CP-13"
           ],
           "whole_program_frozen": false
@@ -572,7 +590,8 @@
               "clock_services",
               "continuation",
               "observer",
-              "record_derived_clock"
+              "record_derived_clock",
+              "exchange_statistics"
             ],
             "gate": "CP-01",
             "issue": 1136,
@@ -623,7 +642,8 @@
               "particle_premise_contract",
               "reference_observation",
               "native_fixed_algebra",
-              "full_fock_field"
+              "full_fock_field",
+              "exchange_statistics"
             ],
             "gate": "CP-13",
             "issue": 1137,
@@ -1077,7 +1097,7 @@
             "independent_check": "model/particle_screening/test_mobile_packet.py",
             "path": "model/particle_screening/mobile_results.json",
             "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
-            "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08"
+            "sha256": "a3371b39e0316a739526d696e5d93b252adf7c7a125c0d0ce724ae7333d60d77"
           },
           {
             "campaign_id": "OPH-INTEGRATION-PAIR-CYCLIC-CONTROL-2026-10-29-v1",
@@ -1166,6 +1186,22 @@
             "path": "model/full_fock_field/field.py",
             "scope": "All-number full-Fock source construction and fixed-spacing interacting thermodynamic local dynamics with rational locality bounds; no chiral spatial-continuum or native action selection.",
             "sha256": "70a17a7d129b328ec755cd11257c839c2cfc5ef1c1f2d215c8af9645b5b29709"
+          },
+          {
+            "campaign_id": "native-exchange-statistics-20261029-v1",
+            "id": "exchange_statistics",
+            "independent_check": "model/exchange_sector/test_statistics_packet.py",
+            "path": "model/exchange_sector/statistics_results.json",
+            "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
+            "sha256": "4dae0171a6b8af0f30616d5cae90851a97763f6e4e3f12b6572a073cae243457"
+          },
+          {
+            "campaign_id": "native-exchange-statistics-20261029-v1",
+            "id": "exchange_statistics_contract",
+            "independent_check": "model/exchange_sector/test_statistics_packet.py",
+            "path": "model/exchange_sector/statistics_contract.json",
+            "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
+            "sha256": "fe979eb6e059f059d3196b785bdf578e71371bcc60fc6e3af68e6862aea1349b"
           }
         ],
         "id": "OPH-COMPLETION-NEXT-WAVE-2026-10-29-v10",
@@ -1194,7 +1230,8 @@
               "native_localization",
               "mobile_screened_memory",
               "native_fixed_algebra",
-              "gauged_field"
+              "gauged_field",
+              "exchange_statistics"
             ],
             "gate": "CP-03",
             "issue": 1139,
@@ -1428,7 +1465,9 @@
             "model/recovery_elision/variant.py",
             "model/biased_code_universality/universality.py",
             "model/compiled_native_history/compiler.py",
-            "model/compiled_native_history/README.md"
+            "model/compiled_native_history/README.md",
+            "model/exchange_sector/STATISTICS.md",
+            "model/exchange_sector/statistics_results.json"
           ],
           "id": "CP-01",
           "issue": 1136,
@@ -1525,7 +1564,7 @@
               "independent_check": "model/particle_screening/test_mobile_packet.py",
               "path": "model/particle_screening/mobile_results.json",
               "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
-              "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08"
+              "sha256": "a3371b39e0316a739526d696e5d93b252adf7c7a125c0d0ce724ae7333d60d77"
             },
             {
               "campaign_id": "OPH-INTEGRATION-RECOVERY-ELISION-2026-10-29-v1",
@@ -1547,6 +1586,13 @@
               "path": "model/compiled_native_history/compiler.py",
               "scope": "Exact complete-history partial-map evaluator with shared controller/FIFO/stops and arbitrary references; host storage reduction only.",
               "sha256": "778e8b7e0dfff45519cb5748db5654a8caf25e38e053a97cecbaadfd81329611"
+            },
+            {
+              "campaign_id": "native-exchange-statistics-20261029-v1",
+              "independent_check": "model/exchange_sector/test_statistics_packet.py",
+              "path": "model/exchange_sector/statistics_results.json",
+              "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
+              "sha256": "4dae0171a6b8af0f30616d5cae90851a97763f6e4e3f12b6572a073cae243457"
             }
           ],
           "requires": [
@@ -1617,7 +1663,9 @@
             "model/native_fixed_algebra/fixed.py",
             "model/native_fixed_algebra/README.md",
             "model/full_fock_field/field.py",
-            "model/full_fock_field/README.md"
+            "model/full_fock_field/README.md",
+            "model/exchange_sector/STATISTICS.md",
+            "model/exchange_sector/statistics_results.json"
           ],
           "id": "CP-13",
           "issue": 1137,
@@ -1835,7 +1883,7 @@
               "independent_check": "model/particle_screening/test_mobile_packet.py",
               "path": "model/particle_screening/mobile_results.json",
               "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
-              "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08"
+              "sha256": "a3371b39e0316a739526d696e5d93b252adf7c7a125c0d0ce724ae7333d60d77"
             },
             {
               "campaign_id": "OPH-INTEGRATION-PAIR-CYCLIC-CONTROL-2026-10-29-v1",
@@ -1892,6 +1940,13 @@
               "path": "model/full_fock_field/field.py",
               "scope": "All-number full-Fock source construction and fixed-spacing interacting thermodynamic local dynamics with rational locality bounds; no chiral spatial-continuum or native action selection.",
               "sha256": "70a17a7d129b328ec755cd11257c839c2cfc5ef1c1f2d215c8af9645b5b29709"
+            },
+            {
+              "campaign_id": "native-exchange-statistics-20261029-v1",
+              "independent_check": "model/exchange_sector/test_statistics_packet.py",
+              "path": "model/exchange_sector/statistics_results.json",
+              "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
+              "sha256": "4dae0171a6b8af0f30616d5cae90851a97763f6e4e3f12b6572a073cae243457"
             }
           ],
           "requires": [
@@ -2105,7 +2160,9 @@
             "model/recovery_elision/variant.py",
             "model/biased_code_universality/universality.py",
             "model/native_fixed_algebra/fixed.py",
-            "model/native_fixed_algebra/README.md"
+            "model/native_fixed_algebra/README.md",
+            "model/exchange_sector/STATISTICS.md",
+            "model/exchange_sector/statistics_results.json"
           ],
           "id": "CP-03",
           "issue": 1139,
@@ -2208,7 +2265,7 @@
               "independent_check": "model/particle_screening/test_mobile_packet.py",
               "path": "model/particle_screening/mobile_results.json",
               "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
-              "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08"
+              "sha256": "a3371b39e0316a739526d696e5d93b252adf7c7a125c0d0ce724ae7333d60d77"
             },
             {
               "campaign_id": "OPH-INTEGRATION-RECOVERY-ELISION-2026-10-29-v1",
@@ -2230,6 +2287,13 @@
               "path": "model/native_fixed_algebra/fixed.py",
               "scope": "All-input source-only H66 conservation exclusion and exact GNS contraction/near-conservation bounds; joint feedback, active recovery and physical energy are separate.",
               "sha256": "ba57d8c26ff98d06db30525420299a5477531349a623e985257c6cf115234b70"
+            },
+            {
+              "campaign_id": "native-exchange-statistics-20261029-v1",
+              "independent_check": "model/exchange_sector/test_statistics_packet.py",
+              "path": "model/exchange_sector/statistics_results.json",
+              "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
+              "sha256": "4dae0171a6b8af0f30616d5cae90851a97763f6e4e3f12b6572a073cae243457"
             }
           ],
           "requires": [
@@ -2448,7 +2512,9 @@
             "model/particle_obstruction/results.json",
             "model/bound_pair/results.json",
             "model/gauged_field/links.py",
-            "model/gauged_field/README.md"
+            "model/gauged_field/README.md",
+            "model/exchange_sector/STATISTICS.md",
+            "model/exchange_sector/statistics_results.json"
           ],
           "id": "CP-05",
           "issue": 1141,
@@ -2482,7 +2548,7 @@
               "independent_check": "model/particle_screening/test_mobile_packet.py",
               "path": "model/particle_screening/mobile_results.json",
               "scope": "Exact all-code moving-core law and finite-horizon optimal reset policy, attaining one reset per 150 native attempts. All 60 encoders and complete C/E recoveries compile with full-register checks and counted errors/resources; complete source histories execute motion, forced reset and identity-holonomy exchange. Recovery remains active every attempt; no localized particle, physical energy, statistics or spin is identified.",
-              "sha256": "b0493bc9e0fdb42b6332c0ac2273de955922d841c8922b1287b92582f783da08"
+              "sha256": "a3371b39e0316a739526d696e5d93b252adf7c7a125c0d0ce724ae7333d60d77"
             },
             {
               "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1",
@@ -2490,6 +2556,13 @@
               "path": "model/gauged_field/links.py",
               "scope": "Exact CAR link covariance and Ward identities; the Feshbach norm metric joins charge-two pair transport, current and residue on one full eigenstate.",
               "sha256": "b3fa18ee10908a53c177877123bb80384282473c163b166da49f02d7288ca421"
+            },
+            {
+              "campaign_id": "native-exchange-statistics-20261029-v1",
+              "independent_check": "model/exchange_sector/test_statistics_packet.py",
+              "path": "model/exchange_sector/statistics_results.json",
+              "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
+              "sha256": "4dae0171a6b8af0f30616d5cae90851a97763f6e4e3f12b6572a073cae243457"
             }
           ],
           "requires": [
