@@ -177,7 +177,7 @@ def test_completion_candidate_receipts_have_replay_custody_and_workflow_coverage
         for event in ('push','pull_request'):
             assert f'model/{packet}/**' in events[event]['paths']
         receipt=json.loads((verify.ROOT/receipt_path).read_text())
-        sources=receipt['source_sha256' if packet=='particle_clock' else 'source_bindings']
+        sources=receipt['source_sha256' if packet in ('particle_clock', 'support_refinement') else 'source_bindings']
         assert sources and all((verify.ROOT/path).is_file() for path in sources)
 
 

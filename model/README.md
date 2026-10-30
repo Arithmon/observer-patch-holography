@@ -57,6 +57,19 @@ work under the [shared interface conditions](completion/SAME_PROCESS_INTERFACES.
 | [#1144](https://github.com/FloatingPragma/observer-patch-holography/issues/1144) | [Rational support retracts](support_refinement/README.md) commute with all sixty proper actions on all six intervals of the four-level support tower. They preserve rational homology; they are neither vertex-valued coarsenings nor quantum channels, and supply no responsive geometry. |
 | [#1145](https://github.com/FloatingPragma/observer-patch-holography/issues/1145) | [Interacting Gibbs preparation](field_thermal/README.md) executes on the complete one- or two-site field algebra, retaining purifier, reads and aborts. It supplies a faithful field reference and same-action entropy checks; temperature, action, physical clock and geometric entropy premises remain declared or open. |
 
+The [port/support incidence audit](../code/a5_closure/port_support_source_audit.md)
+retains all sixty oriented relative seed maps. A fixed support mark leaves
+C5 freedom; it does not select a carrier-local port frame. Midpoint
+subdivision intertwines all sixty actions, while only the identity commutes
+with the declared `max(edge)` endpoint coarsening at each tested transition.
+The endpoint-selector obstruction and the rational chain retract concern
+different map categories. A source-selected relative map, compatible local
+incidence tower and common oriented sphere comparison remain required.
+The [continuous degree argument](../code/a5_closure/continuous_equivariant_degree_proof.md)
+retains proof-candidate status; its independent finite character and
+polynomial controls do not certify that universal theorem or select a
+physical golden representation.
+
 [Common-reference observations](reference_observation/README.md) and the
 [pair-current map](gauged_field/README.md) connect these constructions to
 the clock and energy owners. Their native implementation, physical vacuum

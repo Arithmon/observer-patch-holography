@@ -2093,9 +2093,9 @@
         "sha256": "sha256:acc1ee4e289cbf45792b4e58f50af0c04037016f987062c0321194414fb9f35d"
       },
       {
-        "byte_count": 13350,
+        "byte_count": 12040,
         "path": "code/a5_closure/continuous_equivariant_degree_proof.md",
-        "sha256": "sha256:20636d7cb3ae9ceb0b7637809b3c373c35d0fa57bbb57e7556f4b1795617c211"
+        "sha256": "sha256:783fca6e8de9bcc57251d70eacb914482fa48dcf025fc498d0f45948d85f16db"
       },
       {
         "byte_count": 23355,
@@ -2523,9 +2523,9 @@
         "sha256": "sha256:6d165e0f80d85fd52f7b8e19ecfde87f7aa64d8b7a6396bf8c7ada5170d361cd"
       },
       {
-        "byte_count": 21029,
+        "byte_count": 14012,
         "path": "code/a5_closure/port_support_source_audit.md",
-        "sha256": "sha256:a40f71aae8f6c0adf557d778ebb139dd37fcedac488c76611474183a8f0f3921"
+        "sha256": "sha256:8b08ccfc5e653b5541d404fd77b336fd46ff286feddd1b0606a660f5d114fe67"
       },
       {
         "byte_count": 14645,
@@ -4918,7 +4918,7 @@
         "sha256": "sha256:e27040d16417838d35b3481e7cd3f848967096d31b5dc689702157e7e2febe78"
       }
     ],
-    "files_sha256": "sha256:c0170daf658b7ead458a0e355bb4f31415525363b5851ab1acbd7c50b3d15b10",
+    "files_sha256": "sha256:418b1ef0a6794338a37051b96d76d6d308f1e2d5c76c16cd85d703cbb6f6245f",
     "staleness_rule": "any added, removed, renamed, or byte-changed included file below an audited directory invalidates the committed inventory"
   },
   "audited_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f",
@@ -7827,7 +7827,7 @@
     ],
     "through_upstream_main_sha": "4511928b1d4bee6bca5601e309b44595a76f797f"
   },
-  "inventory_sha256": "sha256:cf102e2b9481d472450e87b289631d7328cebff37a8aa2f237db4a9eb70eb7e2",
+  "inventory_sha256": "sha256:c3596e86fa15c745f076d53a0a027aa307d1ace7e64ecfd9b89bcdc059d98a0f",
   "minimal_missing_fields": [
     {
       "field": "perturbation_families",

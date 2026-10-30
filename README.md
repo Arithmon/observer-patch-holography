@@ -64,8 +64,8 @@ proof shows that the whole class of laws cannot work.
   of one Standard Model generation and its Higgs couplings, but no masses,
   and every mass law tried on the running model misses the measured lepton
   hierarchy. The obvious defect on the native carrier comes apart after a few
-  repairs. Better-protected candidates keep their state under repair but do
-  not yet carry a rest energy. Finding a stable defect with a mass is the work
+  repairs. Better-protected candidates keep their state under repair but
+  lack a rest energy. Finding a stable defect with a mass is the work
   of the [particle paper](paper/deriving_the_particle_zoo_from_observer_consistency.pdf)
   and the [current particle/mass join](docs/research/OPH_NATIVE_PARTICLE_MASS_JOIN.md).
 - **Standard physics from finite agreement.** Under stated premises, finite
