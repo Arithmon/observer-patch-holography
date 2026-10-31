@@ -71,9 +71,16 @@ def source_bindings():
             for path in sorted(seen)}
 
 
+# A warm interpreter executes its imported code, even if the files have since
+# changed. Bind that import lifetime as well as the start/end of each replay.
+_IMPORTED_SOURCE_BINDINGS = tuple(source_bindings().items())
+
+
 def report():
     declared = contract()
     pins = source_bindings()
+    if pins != dict(_IMPORTED_SOURCE_BINDINGS):
+        raise ArithmeticError('source files changed since packet import; restart the replay process')
     result = dict(schema='oph.charged_action_dynamics.receipt.v1', campaign_id=CAMPAIGN,
                   scope=declared['scope'], contract_sha256=CONTRACT_SHA256,
                   band_and_transfer=certification.certificate(),

@@ -2,6 +2,7 @@
 from copy import deepcopy
 import hashlib
 import json
+import shutil
 
 import pytest
 
@@ -93,6 +94,30 @@ def test_recursive_source_custody_covers_primitives_and_all_owning_tests():
     assert len(bindings) == len(set(bindings))
     for relative, digest in bindings.items():
         assert hashlib.sha256((packet.ROOT/relative).read_bytes()).hexdigest() == digest
+
+
+def test_warm_packet_refuses_new_file_hashes_for_stale_imported_code(tmp_path, monkeypatch):
+    original = packet.source_bindings()
+    for relative in original:
+        destination = tmp_path/relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(packet.ROOT/relative, destination)
+    changed = tmp_path/'model/charged_dynamics/chain.py'
+    text = changed.read_text(encoding='utf-8')
+    old = 'return FieldGeometry(tuple(sides), speed=1/8, interaction=1.)'
+    assert old in text
+    changed.write_text(text.replace(old, 'return FieldGeometry(tuple(sides), speed=1/7, interaction=1.)'),
+                       encoding='utf-8')
+    monkeypatch.setattr(packet, 'ROOT', tmp_path)
+    monkeypatch.setattr(packet, 'HERE', tmp_path/'model/charged_dynamics')
+    assert packet.source_bindings()['model/charged_dynamics/chain.py'] != original['model/charged_dynamics/chain.py']
+    # The old imported producer must not be relabelled with the changed file's
+    # new hash. Refusal precedes every scientific producer and source service.
+    def should_not_execute():
+        pytest.fail('stale imported producer was executed')
+    monkeypatch.setattr(packet.certification, 'certificate', should_not_execute)
+    with pytest.raises(ArithmeticError, match='changed since packet import'):
+        packet.report()
 
 
 def test_workflow_and_replay_registry_cover_the_current_receipt():
