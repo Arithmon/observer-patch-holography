@@ -18,7 +18,7 @@ not evidence of a nontrivial overlap frequency or a spacetime clock net.
 
 The historical construction base above is retained. The current integration
 and validation base is upstream main at
-`4d485074bc6a6e80f722dc9744634166dea592b7`, merged into the agent branch.
+`a444d48606ab3611f02ac0e0e29a883f0cac56fc`, merged into the agent branch.
 Both commits are recorded separately in the contract and generated receipt.
 The combined completion workflow preserves the regional tests/replay and
 all upstream charged-dynamics and complete-field service checks. Upstream's

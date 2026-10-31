@@ -191,3 +191,9 @@ integration invocation; test selection, assertions and warning policy are
 unchanged. Final source and staged whitespace checks pass. The merge
 preserves the historical construction commit and current upstream as separate
 ancestors; no PR is published or merged into a hosting-service target.
+
+The subsequent CI correction and current validation base are documented in
+[the focused integration review](codex_oph_regional_clock_ci_integration_review_2026-10-31.md).
+That review preserves the earlier construction/validation history above,
+examines the original construction-source pin and its consumers, and records
+the owned regional receipt/inventory diffs and nonzero-step hypothesis audit.

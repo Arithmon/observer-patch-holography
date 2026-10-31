@@ -17,11 +17,15 @@ retain the learned/prepared-reference confidence and archive qualifications.
 
 Validation on the current upstream base includes 16 regional hostile-control
 tests, the regenerated regional receipt replay and the completion-program
-generator check. A further 719 passing integration tests cover the completion contracts and
-workflow, native program admission, source compiler, regional references and
-complete-field modular services, together with acceptance and finite-map
-audits. All tests use warnings as errors. Only the new regional receipt is
-regenerated; its scientific payload is unchanged after integration. Frozen
+generator check. Integration validation reviews the construction-source pin
+and all theorem-map consumers, preserves the nonzero-step theorem conditions,
+and checks the split workflow's complete coverage. The owned regional receipt
+is regenerated without changing any scientific or resource field, and the
+active-surface inventory adds exactly the regional README. The mandatory
+public-surface command passes 176 tests under its existing warning policy;
+the targeted provenance and regional suites use warnings as errors.
+The previously failing complete program-contract command passes 422 tests
+with warnings treated as errors. Acceptance, V2, independent-review and finite-map audits also pass. Frozen
 receipts and CP-02 acceptance remain unchanged. Physical time/energy
 normalization and field/gravity joins remain open.
 
@@ -34,5 +38,5 @@ tests and replay commands.
 Historical construction base: upstream main @
 1f14865fe560f5788a990a1b25884d6f91d12858.
 Current integration and validation base: upstream main @
-4d485074bc6a6e80f722dc9744634166dea592b7.
+a444d48606ab3611f02ac0e0e29a883f0cac56fc.
 Prepared text only: no pull request has been published or merged.
