@@ -46,7 +46,7 @@
     },
     "parents": {
       "claims/claim_registry.yaml": "3aa97ecf13d3b32b38f40fde1c9fc66f2fc4afb1067a2911221f0c926a2b0f01",
-      "claims/completion_program.json": "218fb24d3b4a8ef6795bf9dd6931d0d1670e1c8a4960e2214b69dbc21e6617cd",
+      "claims/completion_program.json": "6ea356dac11c493a4e045ed04b01ee2af8be4f8aeccb44c8313bc6aa9e5f7a33",
       "claims/executable_model_hypothesis.json": "1855a611870a64b3d97fbaa8759385761dda9130a1517233193af2c7f170cd2b",
       "docs/OPH_EXECUTABLE_HYPOTHESIS.md": "c503247a2b333c2e27b3eba865d47f2d15c966a5052eceb4aadb14fc9002f35a"
     },
@@ -466,6 +466,23 @@
             "CP-03",
             "CP-05",
             "CP-13"
+          ],
+          "whole_program_frozen": false
+        },
+        {
+          "contract": {
+            "campaign_id": "charged-action-dynamics-20261031-v1",
+            "independent_check": "model/charged_dynamics/test_packet.py",
+            "path": "model/charged_dynamics/contract.json",
+            "scope": "Unchanged uniform four-site Weyl/contact action on all 256 Fock states: exact full-path charged-band isolation, residue-derived hopping, physical charge/current, full coupled-ground response and complete T=4 source histories. Polar dressing has small physical charge contrast; native passive/topological protection, a physical clock and electron/positron identity are not established.",
+            "sha256": "af2a56e8af97c68dcfe986203d80950ca382b0db1417de64475dcbc67f286b24"
+          },
+          "id": "charged-action-dynamics-20261031-v1",
+          "scope": "FINITE_COMPONENT_FAMILY",
+          "supports": [
+            "CP-03",
+            "CP-04",
+            "CP-05"
           ],
           "whole_program_frozen": false
         }
@@ -2522,6 +2539,13 @@
               "path": "model/exchange_sector/presentation.py",
               "scope": "Exact noncommutative Tietze replay on the original native collision-free two-complex reduces235generators and495relators to <g|g^2>, with odd ordered-cover parity. No physical species, spin or sign selection.",
               "sha256": "220f4d9638cb445e2e3cfdf310fcf40d5f6e25a31525e0cea2020305d557bfb7"
+            },
+            {
+              "campaign_id": "charged-action-dynamics-20261031-v1",
+              "independent_check": "model/charged_dynamics/test_packet.py",
+              "path": "model/charged_dynamics/results.json",
+              "scope": "Unchanged uniform four-site Weyl/contact action on all 256 Fock states: exact full-path charged-band isolation, residue-derived hopping, physical charge/current, full coupled-ground response and complete T=4 source histories. Polar dressing has small physical charge contrast; native passive/topological protection, a physical clock and electron/positron identity are not established.",
+              "sha256": "6e5a7f2125d26a35e82d9e854e2642047de832e1a6071dbfaa09616605d033d4"
             }
           ],
           "requires": [
@@ -2713,6 +2737,13 @@
               "path": "model/energy_identifiability/certificate.py",
               "scope": "Sector/fiber energy-offset conditions, same-history zero energy and fixed-number vacuum-comparison boundary; no physical calibration.",
               "sha256": "2a77c4e99f761faab90eafeeea420d816d7f28b0429f881669dbdda707060d40"
+            },
+            {
+              "campaign_id": "charged-action-dynamics-20261031-v1",
+              "independent_check": "model/charged_dynamics/test_packet.py",
+              "path": "model/charged_dynamics/results.json",
+              "scope": "Unchanged uniform four-site Weyl/contact action on all 256 Fock states: exact full-path charged-band isolation, residue-derived hopping, physical charge/current, full coupled-ground response and complete T=4 source histories. Polar dressing has small physical charge contrast; native passive/topological protection, a physical clock and electron/positron identity are not established.",
+              "sha256": "6e5a7f2125d26a35e82d9e854e2642047de832e1a6071dbfaa09616605d033d4"
             }
           ],
           "requires": [
@@ -2822,6 +2853,13 @@
               "path": "model/particle_comparison/dictionary.py",
               "scope": "An executable sixteen-state benchmark supplies Q=e(N-2), S=hbar*S_internal and one measured electron energy scale, giving assigned Hamiltonian-time and lattice-length units. Complete candidate electric-current/dipole response obeys continuity and charge conjugation, but the pure-gauge open bond measures no magnetic moment and its bare contact kernel is not Coulomb exchange. A separately declared four-site periodic extension checks momentum, all number sectors, particle-hole residues and free doublers. Its charged poles fail the fixed dimer-mass/bare-speed lattice-Dirac benchmark and a same-volume rest-gap variant. Finite-volume shifts and a possible renormalized velocity remain distinct: two momentum-squared values cannot validate a fitted dispersion. This rejects only that supplied finite dictionary benchmark, not an OPH continuum; physical electron/positron identity and QED remain unestablished.",
               "sha256": "a1f72f68d8379cb2c55bdab706dace43903aff2eccb6ec838402e492c99bc327"
+            },
+            {
+              "campaign_id": "charged-action-dynamics-20261031-v1",
+              "independent_check": "model/charged_dynamics/test_packet.py",
+              "path": "model/charged_dynamics/results.json",
+              "scope": "Unchanged uniform four-site Weyl/contact action on all 256 Fock states: exact full-path charged-band isolation, residue-derived hopping, physical charge/current, full coupled-ground response and complete T=4 source histories. Polar dressing has small physical charge contrast; native passive/topological protection, a physical clock and electron/positron identity are not established.",
+              "sha256": "6e5a7f2125d26a35e82d9e854e2642047de832e1a6071dbfaa09616605d033d4"
             }
           ],
           "requires": [

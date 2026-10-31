@@ -1203,6 +1203,13 @@
           "independent_check": "model/exchange_sector/test_presentation.py",
           "scope": "Exact noncommutative Tietze replay on the original native collision-free two-complex reduces235generators and495relators to <g|g^2>, with odd ordered-cover parity. No physical species, spin or sign selection.",
           "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/charged_dynamics/results.json",
+          "sha256": "6e5a7f2125d26a35e82d9e854e2642047de832e1a6071dbfaa09616605d033d4",
+          "independent_check": "model/charged_dynamics/test_packet.py",
+          "scope": "Unchanged uniform four-site Weyl/contact action on all 256 Fock states: exact full-path charged-band isolation, residue-derived hopping, physical charge/current, full coupled-ground response and complete T=4 source histories. Polar dressing has small physical charge contrast; native passive/topological protection, a physical clock and electron/positron identity are not established.",
+          "campaign_id": "charged-action-dynamics-20261031-v1"
         }
       ]
     },
@@ -1394,6 +1401,13 @@
           "independent_check": "model/energy_identifiability/test_certificate.py",
           "scope": "Sector/fiber energy-offset conditions, same-history zero energy and fixed-number vacuum-comparison boundary; no physical calibration.",
           "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/charged_dynamics/results.json",
+          "sha256": "6e5a7f2125d26a35e82d9e854e2642047de832e1a6071dbfaa09616605d033d4",
+          "independent_check": "model/charged_dynamics/test_packet.py",
+          "scope": "Unchanged uniform four-site Weyl/contact action on all 256 Fock states: exact full-path charged-band isolation, residue-derived hopping, physical charge/current, full coupled-ground response and complete T=4 source histories. Polar dressing has small physical charge contrast; native passive/topological protection, a physical clock and electron/positron identity are not established.",
+          "campaign_id": "charged-action-dynamics-20261031-v1"
         }
       ]
     },
@@ -1503,6 +1517,13 @@
           "independent_check": "model/particle_comparison/test_dictionary.py",
           "scope": "An executable sixteen-state benchmark supplies Q=e(N-2), S=hbar*S_internal and one measured electron energy scale, giving assigned Hamiltonian-time and lattice-length units. Complete candidate electric-current/dipole response obeys continuity and charge conjugation, but the pure-gauge open bond measures no magnetic moment and its bare contact kernel is not Coulomb exchange. A separately declared four-site periodic extension checks momentum, all number sectors, particle-hole residues and free doublers. Its charged poles fail the fixed dimer-mass/bare-speed lattice-Dirac benchmark and a same-volume rest-gap variant. Finite-volume shifts and a possible renormalized velocity remain distinct: two momentum-squared values cannot validate a fitted dispersion. This rejects only that supplied finite dictionary benchmark, not an OPH continuum; physical electron/positron identity and QED remain unestablished.",
           "campaign_id": "OPH-COMMON-FIELD-INTERFACES-v1"
+        },
+        {
+          "path": "model/charged_dynamics/results.json",
+          "sha256": "6e5a7f2125d26a35e82d9e854e2642047de832e1a6071dbfaa09616605d033d4",
+          "independent_check": "model/charged_dynamics/test_packet.py",
+          "scope": "Unchanged uniform four-site Weyl/contact action on all 256 Fock states: exact full-path charged-band isolation, residue-derived hopping, physical charge/current, full coupled-ground response and complete T=4 source histories. Polar dressing has small physical charge contrast; native passive/topological protection, a physical clock and electron/positron identity are not established.",
+          "campaign_id": "charged-action-dynamics-20261031-v1"
         }
       ]
     },
@@ -2439,6 +2460,23 @@
         "independent_check": "model/exchange_sector/test_statistics_packet.py",
         "scope": "The native collision-free two-particle path group is exactly Z/2. Its positive and negative flat lifts have complete C/E quantum instruments, an exact number-conserving CAR correspondence, and source-compiled phase readouts. The coherent controls and sign choice are explicit; physical spin, localized matter, species and mass are not identified.",
         "campaign_id": "native-exchange-statistics-20261029-v1"
+      }
+    },
+    {
+      "id": "charged-action-dynamics-20261031-v1",
+      "scope": "FINITE_COMPONENT_FAMILY",
+      "whole_program_frozen": false,
+      "supports": [
+        "CP-03",
+        "CP-04",
+        "CP-05"
+      ],
+      "contract": {
+        "path": "model/charged_dynamics/contract.json",
+        "sha256": "af2a56e8af97c68dcfe986203d80950ca382b0db1417de64475dcbc67f286b24",
+        "independent_check": "model/charged_dynamics/test_packet.py",
+        "scope": "Unchanged uniform four-site Weyl/contact action on all 256 Fock states: exact full-path charged-band isolation, residue-derived hopping, physical charge/current, full coupled-ground response and complete T=4 source histories. Polar dressing has small physical charge contrast; native passive/topological protection, a physical clock and electron/positron identity are not established.",
+        "campaign_id": "charged-action-dynamics-20261031-v1"
       }
     }
   ],
