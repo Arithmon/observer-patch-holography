@@ -7,7 +7,7 @@
     "independent_review": {
       "verdict": "PASS",
       "path": "model/completion/program_class_v2_review.json",
-      "sha256": "0eeb6e78418632685cdeda6b1245e7de9a5689f2260d913114696a9a64b7db29",
+      "sha256": "243a1dea591eec51662244095cfa69fe2bfbbc4a4c0b163a7795117d39af00ed",
       "reviewed_contract_digest": "9e753015cfcd1251790f4ca1550325e1c6005b3ecbc4809040509c2bde5b25f2"
     }
   },

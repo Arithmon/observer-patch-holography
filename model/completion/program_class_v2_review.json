@@ -72,7 +72,7 @@
     "docs/PROGRAM_CLASS_V2_INDEPENDENT_REVIEW_2026-10-29.md": "c22860b380c6f49cabc15be459e9d52241f227690c176af248797cfad99940f1",
     "model/band_clock/results.json": "230af5e47983434a8e6640a498b4f0ba6f019bff87cc2bb8c06672b95b5926c4",
     "model/completion/acceptance_audit.py": "dd7cdd1ae6f1b915afc6e30b573a47c7027cbf8bd9500d8c07e2076ada42d1ec",
-    "model/completion/finite_attachment_map.json": "51c29f9442d3ee04209344c17ba1d921f9efc80577e970e2a8baba7ff3d7e0b5",
+    "model/completion/finite_attachment_map.json": "475b3a07353267a75589c04db202ff932e366a43d3906c084302ea8e6c95da36",
     "model/completion/finite_attachment_map.py": "08ac8a3c629da083aca0d5fe3e7b8ee9ae3c74aec4f64e8f750be173a2515ff0",
     "model/completion/independent_program_review.py": "ec4e30b6e7c858538fa391db84a40a770f829c54d987dd2b147d22fdd40153ac",
     "model/completion/test_acceptance_audit.py": "eefeb82b3db0bf89f4e1d049ad5aa30b0461c51eef497d22d5c8842a05a432c8",
@@ -176,7 +176,7 @@
     "model/defect_field_modular/controls.py": "c48ea442ee692028e948963c73d1db8eb3fd7a6636e7673cf767279a6857ed86",
     "model/defect_field_modular/modular.py": "f3a362ee694f158591d18dd5c08b1c99bc1483fe3d532064847502dbe21766dd",
     "model/defect_field_modular/packet.py": "9f1b728debb5fbed6b4a424f7f60cedccff5e7ed3a1f099888f9b7e8ab3a367f",
-    "model/defect_field_modular/results.json": "f7840321452cb538f7181188d312b335a7e37f8038afc709efe384bb53b2bedf",
+    "model/defect_field_modular/results.json": "1d1793b2216be81f7336a6d5457a21793a1278491ed4b118b24edc8523caee9f",
     "model/defect_field_modular/results.npz": "dd68f02fe32c6a50ffc15ef3640151aaa68f5dfd9cdca398d32ab7209576681e",
     "model/defect_field_modular/source_controls.npz": "d893634749ade81827cfbb110165565237d12524b4f39e84933241296cb06274",
     "model/defect_field_modular/test_modular.py": "3bf88de8afffe6e77a7357ae7c0fc42368a1d6bbe96595b07c952b6cb12bb5e4"
