@@ -107,6 +107,50 @@ zero-angle requests. Initialized bits, retained records, the purifier and
 abort tape are accounted separately. No host runtime, event count, memory
 cost or pulse count is assigned a physical duration or energy.
 
+## Portable preparation resource certificate
+
+The canonical square-root purification is unique as a mathematical vector.
+Floating eigensolvers can nevertheless assign different phases to its
+numerically tiny entries. Compiling those entries produces slightly
+different pulse angles and unitary completions away from the prepared
+input. Both the complete prepared-output error and the actual source
+resource cost must still be checked. Equality of the angle cost across
+linear-algebra platforms is not an invariant of this preparation.
+
+The report retains each executed word's actual sum of absolute pulse
+angles. The executor independently recomputes that sum from its immutable
+source tape and rejects inconsistent resource accounting. Portable replay
+checks this sum against a compiler-derived certificate, rather than
+loosening the numerical comparisons of states, probabilities or errors.
+Pulse, service and memory counts still compare exactly.
+
+For b preparation bits and D=2^b amplitudes, split the preparation word
+into fixed scaffold rotations and variable Walsh rotations. Fixed
+rotations have absolute angles pi/2 for H, pi for J and pi/4 for the X/Y
+basis changes. Their counts determine an exact coefficient of pi.
+For normalized Walsh coefficients of n angles, Parseval and Cauchy--Schwarz
+give `sum |coefficient| <= ||angles||_2`.
+
+The amplitude input is nonnegative. Every conditional tree angle therefore
+has magnitude at most pi/2. For the b=8 tree, the variable-angle cost is
+at most `(pi/2) sum_(k=0)^(b-1) sqrt(2^k)`. For the b=4 Gray construction,
+each of D-1 rotations distributes one angle across its Walsh factors, so
+the corresponding bound is `(D-1)pi/2`. The final diagonal phases belong
+to [-pi,pi], giving variable cost at most `pi sqrt(D)`. Replacing each
+square root by its integer ceiling and using `pi<22/7` gives the recorded
+rational upper bound. All variable rotations, including zeros, remain
+in the fixed compiler schedule; their exact count is checked too.
+The fixed scaffold also supplies a mandatory lower cost, so a fabricated
+zero-cost preparation cannot pass the portable comparison.
+
+The total prepared-read cost must equal its recorded preparation cost
+plus the independently replayed field-continuation cost and the 2pi cost
+of one CNOT pointer. Historical and current actual costs are each checked
+against the same certificate. Tests reject forged totals, changed pulse
+counts, padded identity words, resource costs outside the proved budget
+and changed complete-output errors. No state amplitude is clipped, no
+preparation is replaced and no source-law parameter changes for portability.
+
 ## Regional clocks are a separate statement
 
 The [reference observation tower](../reference_observation/README.md)

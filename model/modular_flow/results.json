@@ -88,6 +88,14 @@
       "valid_code_failure_probability_in_exact_arithmetic": 0,
       "initialization_storage_readout_physical_costs_included": false
     },
+    "preparation_resource_certificate": {
+      "scheme": "fixed-scaffold-plus-Walsh-Parseval-v1",
+      "preparation_work_bits": 8,
+      "fixed_scaffold_pi_coefficient": "12559/2",
+      "variable_angle_sum_pi_coefficient_upper": "35",
+      "processor_norm_upper_rational": "138919/7",
+      "measured_preparation_processor_norm_upper": 19758.270982875958
+    },
     "initialized_work_bits": 9,
     "retained_purifier_bits": 4,
     "retained_pointer_bits": 1,

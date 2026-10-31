@@ -1,4 +1,5 @@
 """Independent Jordan-Wigner, gauge, finite-difference and degeneracy checks."""
+import copy
 import json
 import math
 from pathlib import Path
@@ -7,7 +8,7 @@ import numpy as np
 import pytest
 from scipy.linalg import expm
 
-from .response import FluxRing, _json_value, report
+from .response import FluxRing, _json_value, _summary, report, verify_receipt, spectral_subspaces
 
 
 def jw():
@@ -174,9 +175,83 @@ def test_gauge_equivalence_cannot_change_action_or_total_flux(ring):
 
 def test_retained_receipt_and_physical_scope():
     result = _json_value(report())
-    assert result == json.loads(Path(__file__).with_name('results.json').read_text())
+    assert verify_receipt(json.loads(Path(__file__).with_name('results.json').read_text()), result)
     assert result['integrated_completion_gate_accepted'] is False
     assert result['dynamical_photon_or_physical_QED_identified'] is False
     assert result['physical_clock_or_current_calibrated'] is False
     assert result['source_pulse_execution_added'] is False
     assert result['rigorous_numerical_error_bound'] is False
+
+
+def test_degenerate_unitary_basis_rotations_preserve_the_complete_replay():
+    from ..reference_observation.observation import frozen
+    baseline = _json_value(report())
+    rotated = copy.deepcopy(baseline)
+    rng = np.random.default_rng(881)
+    largest_weight_change = 0.
+    for index, flux in enumerate((0., .4, 1.2)):
+        ring = FluxRing(flux)
+        old = ring.ground_response()['complete_current_weights']
+        vectors = ring.vectors.copy()
+        groups = spectral_subspaces(baseline['interacting_responses'][index])
+        start = 0
+        for group in groups:
+            size = group['multiplicity']
+            if size > 1:
+                q, _ = np.linalg.qr(rng.normal(size=(size, size))+1j*rng.normal(size=(size, size)))
+                vectors[:, start:start+size] = vectors[:, start:start+size]@q
+            start += size
+        ring.vectors = frozen(vectors)
+        response = ring.ground_response()
+        largest_weight_change = max(largest_weight_change,
+            float(np.max(abs(old-response['complete_current_weights']))))
+        rotated['interacting_responses'][index] = _json_value(_summary(ring))
+        assert len(response['complete_current_weights']) == 256
+        assert np.linalg.norm(ring.generator@vectors-vectors*ring.energies, 2) < 1e-13
+    assert largest_weight_change > 1e-5  # far larger than any numerical replay budget
+    assert verify_receipt(baseline, rotated)
+
+
+@pytest.mark.parametrize('damage', ['cross_energy_weight', 'missing_state', 'energy',
+                                    'negative_weight', 'nan_weight', 'scope', 'multiplicity'])
+def test_basis_invariant_replay_rejects_changed_measure_or_missing_modes(damage):
+    expected = json.loads(Path(__file__).with_name('results.json').read_text())
+    changed = copy.deepcopy(expected)
+    row = changed['interacting_responses'][0]
+    if damage == 'cross_energy_weight':
+        donor = int(np.argmax(row['complete_current_weights']))
+        transfer = row['complete_current_weights'][donor]/2
+        row['complete_current_weights'][donor] -= transfer
+        row['complete_current_weights'][0] += transfer  # preserve total weight but change its energy
+    elif damage == 'missing_state':
+        row['complete_gaps'].pop(); row['complete_current_weights'].pop()
+    elif damage == 'energy':
+        row['complete_gaps'][-1] += .001
+    elif damage == 'negative_weight':
+        row['complete_current_weights'][1] = -1e-8
+    elif damage == 'nan_weight':
+        row['complete_current_weights'][1] = float('nan')
+    elif damage == 'multiplicity':
+        row['complete_gaps'][1] = row['complete_gaps'][0]
+    else:
+        changed['integrated_completion_gate_accepted'] = True
+    with pytest.raises(ValueError):
+        verify_receipt(expected, changed)
+
+
+def test_cli_uses_the_same_basis_invariant_verifier(monkeypatch, tmp_path):
+    import sys
+    from . import response
+    receipt = tmp_path/'receipt.json'
+    packet = json.loads(Path(__file__).with_name('results.json').read_text())
+    receipt.write_text(json.dumps(packet))
+    calls = []
+    def verifier(expected, actual):
+        calls.append((expected, actual))
+        raise ValueError('deliberate verifier rejection')
+    monkeypatch.setattr(response, 'verify_receipt', verifier)
+    monkeypatch.setattr(response, 'report', lambda: packet)
+    monkeypatch.setattr(sys, 'argv', ['flux', '--check', str(receipt)])
+    with pytest.raises(SystemExit, match='deliberate verifier rejection'):
+        response.main()
+    assert len(calls) == 1

@@ -1,6 +1,7 @@
 """Independent logarithm, complex-reference and complete-output controls."""
 from fractions import Fraction as F
 import json
+import copy
 from pathlib import Path
 
 import numpy as np
@@ -179,20 +180,90 @@ def test_invalid_history_domain_is_rejected(segments, mode):
 def test_retained_report_replays_with_unchanged_domains_and_resources():
     retained = json.loads(Path(__file__).with_name('results.json').read_text())
     current = m.report()
+    m.validate_report_replay(retained, current)
 
-    def compare(expected, actual):
-        assert type(expected) is type(actual)
-        if isinstance(expected, dict):
-            assert set(expected) == set(actual)
-            for key in expected:
-                compare(expected[key], actual[key])
-        elif isinstance(expected, list):
-            assert len(expected) == len(actual)
-            for a, b in zip(expected, actual, strict=True):
-                compare(a, b)
-        elif isinstance(expected, float):
-            assert actual == pytest.approx(expected, rel=1e-9, abs=1e-11)
-        else:
-            assert actual == expected
 
-    compare(retained, current)
+def test_resource_certificate_accepts_equivalent_phase_costs_without_hiding_accounting():
+    retained = json.loads(Path(__file__).with_name('results.json').read_text())
+    alternate = copy.deepcopy(retained)
+    read = alternate['prepared_reference_readout']
+    # Observed Linux/Mac difference; both actual costs remain reported and
+    # independently satisfy the compiler-derived bound and additive ledger.
+    difference = 21673.76874403813-21675.17375156573
+    read['resources']['integrated_processor_norm_upper'] += difference
+    read['preparation_resource_certificate']['measured_preparation_processor_norm_upper'] += difference
+    m.validate_report_replay(retained, alternate)
+    read['resources']['integrated_processor_norm_upper'] += 1
+    with pytest.raises(ValueError, match='accounting'):
+        m.validate_report_replay(retained, alternate)
+
+
+@pytest.mark.parametrize('damage', ('pulse_count', 'understated_error', 'over_budget', 'under_cost'))
+def test_portable_resource_replay_rejects_regressions(damage):
+    retained = json.loads(Path(__file__).with_name('results.json').read_text())
+    changed = copy.deepcopy(retained)
+    read = changed['prepared_reference_readout']
+    if damage == 'pulse_count':
+        read['resources']['native_pulses'] += 1
+    elif damage == 'understated_error':
+        read['complete_preparation_and_readout_error'] /= 2
+    elif damage == 'over_budget':
+        certificate = read['preparation_resource_certificate']
+        excess = float(F(certificate['processor_norm_upper_rational']))+1-certificate['measured_preparation_processor_norm_upper']
+        certificate['measured_preparation_processor_norm_upper'] += excess
+        read['resources']['integrated_processor_norm_upper'] += excess
+    else:
+        certificate = read['preparation_resource_certificate']
+        read['resources']['integrated_processor_norm_upper'] -= certificate['measured_preparation_processor_norm_upper']
+        certificate['measured_preparation_processor_norm_upper'] = 0.
+    with pytest.raises(ValueError):
+        m.validate_report_replay(retained, changed)
+
+
+def test_actual_resource_count_is_recomputed_from_executed_immutable_tape(monkeypatch):
+    original = compiler.resources
+    def undercount(word):
+        result = original(word)
+        result['integrated_processor_norm_upper'] -= 1
+        return result
+    monkeypatch.setattr(compiler, 'resources', undercount)
+    with pytest.raises(ArithmeticError, match='executed source tape'):
+        m.ModularFlow().prepared_readout()
+
+
+def test_extra_identity_pulses_cannot_hide_in_portable_preparation_budget(monkeypatch):
+    original = m.ThermalField.word
+    def padded(self):
+        return original(self)+[compiler.pulse('I', 2*np.pi, [0])]
+    monkeypatch.setattr(m.ThermalField, 'word', padded)
+    with pytest.raises(ArithmeticError, match='schedule'):
+        m.ModularFlow().prepared_readout()
+
+
+@pytest.mark.parametrize('bits', (4, 8))
+def test_preparation_budget_covers_arbitrary_nonnegative_amplitudes_and_phases(bits):
+    rng = np.random.default_rng(bits+709)
+    amplitudes = rng.random(1 << bits)
+    amplitudes /= np.linalg.norm(amplitudes)
+    phases = rng.uniform(-np.pi, np.pi, 1 << bits)
+    word = compiler.compile_real_state(amplitudes)+compiler.compile_diagonal(phases)
+    result = m.preparation_resources(word, bits)
+    assert result['measured_preparation_processor_norm_upper'] == pytest.approx(
+        compiler.resources(word)['integrated_processor_norm_upper'], abs=1e-12)
+    assert result['measured_preparation_processor_norm_upper'] <= float(F(result['processor_norm_upper_rational']))
+
+
+def test_actual_tiny_amplitude_phase_variants_keep_outputs_and_audited_costs(monkeypatch):
+    retained = json.loads(Path(__file__).with_name('results.json').read_text())
+    def alternative_word(self):
+        target = self.target()['purification']
+        phases = np.angle(target)
+        small = abs(target) < 1e-15
+        phases[small] = np.random.default_rng(702).uniform(-np.pi, np.pi, np.count_nonzero(small))
+        return compiler.compile_real_state(abs(target))+compiler.compile_diagonal(phases)
+    monkeypatch.setattr(m.ThermalField, 'word', alternative_word)
+    current = m.report()
+    difference = (current['prepared_reference_readout']['resources']['integrated_processor_norm_upper']-
+                  retained['prepared_reference_readout']['resources']['integrated_processor_norm_upper'])
+    assert abs(difference) > .1
+    m.validate_report_replay(retained, current)

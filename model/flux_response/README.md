@@ -84,7 +84,23 @@ producer checks both identities and retains all 256 gap/weight entries,
 including the elastic term and numerically tiny dark-channel amplitudes.
 No visibility threshold enters any sum. The JSON rounds numbers for
 portable display/replay; the in-memory arrays and computations retain the
-unrounded values. Exact identities are distinguished from floating
+unrounded values. Replay compares complete spectral-subspace weights
+`<0|J P_E J|0>` and multiplicities, because individual eigenvector residues
+inside a degenerate eigenspace depend on the eigensolver's arbitrary basis.
+Every original eigenvalue and weight remains in the receipt. Only this
+comparison projection groups levels within `2e-10`; an intergroup separation
+below `2e-8` is rejected as numerically ambiguous. These are numerical replay
+rules, not a proof of exact degeneracy. The retained fixtures' distinct gaps
+are separated by at least `2.7e-6`.
+
+Energy comparisons allow two eleven-decimal serialization units; group-weight
+comparisons allow the sum of the two lists' rounding budgets plus two units
+for floating reconstruction. No bound on individual basis-dependent residues
+is relaxed. Nonspectral fields, aggregate current/curvature, source hashes
+and claim flags remain exact comparisons. Tests rotate complete degenerate
+eigenspaces by random complex unitaries and reject shifted interlevel weight,
+changed energies or multiplicities, missing modes, nonfinite weights and
+scope promotion. The CLI uses this same verifier. Exact identities are distinguished from floating
 numerical evaluations; no outward numerical error certificate is claimed.
 
 ## Results and controls

@@ -7,6 +7,7 @@ here are floating diagnostics on every state of the 256-dimensional Fock space.
 """
 from __future__ import annotations
 
+import copy
 import hashlib
 import json
 import math
@@ -20,6 +21,11 @@ from ..reference_observation.observation import frozen
 
 DIMENSION = 256
 TOLERANCE = 5e-11
+# Only the replay projection uses clustering. All dynamics and Kubo sums use
+# the unclustered complete eigensystem. The retained fixtures have distinct
+# gaps at least 2.7e-6 apart, well beyond this numerical resolution.
+SPECTRAL_CLUSTER_WIDTH = 2e-10
+SERIALIZATION_UNIT = 1e-11
 
 
 def _real(value, name, *, nonnegative=False):
@@ -188,6 +194,75 @@ def _json_value(value):
     return value
 
 
+
+def spectral_subspaces(row):
+    """Basis-independent replay projection, retaining every state and weight.
+
+    Equal-eigenvalue eigenvectors have no canonical basis. Their complete
+    projector weight <0|J P_E J|0>, multiplicity and energy are invariant.
+    Numerically ambiguous near-degeneracies are rejected, not merged into
+    a claim of exact spectral degeneracy.
+    """
+    gaps, weights = row['complete_gaps'], row['complete_current_weights']
+    if (type(gaps) is not list or type(weights) is not list or
+            len(gaps) != DIMENSION or len(weights) != DIMENSION or
+            row['retained_spectral_entries'] != DIMENSION):
+        raise ValueError('complete 256-state spectrum and every current weight required')
+    for values in (gaps, weights):
+        if any(type(x) not in (int, float) or not math.isfinite(x) or x < 0 for x in values):
+            raise ValueError('finite nonnegative spectral entries required')
+    if gaps[0] != 0 or any(a > b for a, b in zip(gaps, gaps[1:])):
+        raise ValueError('ordered ground-relative complete spectrum required')
+    groups = []
+    start = 0
+    while start < DIMENSION:
+        end = start+1
+        while end < DIMENSION and gaps[end]-gaps[start] <= SPECTRAL_CLUSTER_WIDTH:
+            end += 1
+        if end < DIMENSION and gaps[end]-gaps[end-1] <= 100*SPECTRAL_CLUSTER_WIDTH:
+            raise ValueError('unresolved spectral cluster separation')
+        groups.append(dict(minimum_gap=gaps[start], maximum_gap=gaps[end-1],
+                           multiplicity=end-start,
+                           current_weight=math.fsum(weights[start:end])))
+        start = end
+    return groups
+
+
+def verify_receipt(expected, actual):
+    """Compare physical spectral measures, never a degenerate basis choice.
+
+    All nonspectral fields (including source hashes, budgets, aggregate
+    responses and scope flags) still compare exactly. Group weight budgets
+    are the sum of both lists' eleven-decimal serialization roundings plus
+    two serialization units for binary64 spectral reconstruction; this does
+    not enlarge an eigenvector-residue tolerance to hide a basis change.
+    """
+    left, right = copy.deepcopy(expected), copy.deepcopy(actual)
+    try:
+        if len(left['interacting_responses']) != len(right['interacting_responses']):
+            raise ValueError('different retained flux domain')
+        for a, b in zip(left['interacting_responses'], right['interacting_responses'], strict=True):
+            ag, bg = spectral_subspaces(a), spectral_subspaces(b)
+            if len(ag) != len(bg):
+                raise ValueError('different complete spectral subspace count')
+            for x, y in zip(ag, bg, strict=True):
+                if x['multiplicity'] != y['multiplicity']:
+                    raise ValueError('different spectral multiplicity')
+                if any(abs(x[k]-y[k]) > 2*SERIALIZATION_UNIT
+                       for k in ('minimum_gap', 'maximum_gap')):
+                    raise ValueError('different spectral energy')
+                weight_budget = (x['multiplicity']+2)*SERIALIZATION_UNIT
+                if abs(x['current_weight']-y['current_weight']) > weight_budget:
+                    raise ValueError('different complete spectral projector weight')
+            for key in ('complete_gaps', 'complete_current_weights'):
+                a.pop(key); b.pop(key)
+    except (KeyError, TypeError, OverflowError) as error:
+        raise ValueError('malformed complete spectral receipt') from error
+    if left != right:
+        raise ValueError('flux response receipt differs outside the spectral basis choice')
+    return True
+
+
 def main():
     import argparse
     parser = argparse.ArgumentParser(description=__doc__)
@@ -199,8 +274,10 @@ def main():
     result = _json_value(report())
     rendered = json.dumps(result, indent=2, sort_keys=True, allow_nan=False)+'\n'
     if args.check:
-        if json.loads(args.check.read_text()) != result:
-            raise SystemExit('flux response receipt differs from fresh replay')
+        try:
+            verify_receipt(json.loads(args.check.read_text()), result)
+        except ValueError as error:
+            raise SystemExit(str(error)) from error
         print('complete finite flux response replay passed')
     elif args.write:
         with args.write.open('x') as output:

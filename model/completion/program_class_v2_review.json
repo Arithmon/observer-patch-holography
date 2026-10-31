@@ -72,7 +72,7 @@
     "docs/PROGRAM_CLASS_V2_INDEPENDENT_REVIEW_2026-10-29.md": "c22860b380c6f49cabc15be459e9d52241f227690c176af248797cfad99940f1",
     "model/band_clock/results.json": "230af5e47983434a8e6640a498b4f0ba6f019bff87cc2bb8c06672b95b5926c4",
     "model/completion/acceptance_audit.py": "dd7cdd1ae6f1b915afc6e30b573a47c7027cbf8bd9500d8c07e2076ada42d1ec",
-    "model/completion/finite_attachment_map.json": "6b8d814c6515cfb98cc6188028e1d6f648d1473c8ff19e2855c0b3fbd3306d55",
+    "model/completion/finite_attachment_map.json": "a8ecf6439eb4268b0eaca5a6ea64f69776b009e61f6ed45b256bf49146e3f5e2",
     "model/completion/finite_attachment_map.py": "36ce469c21f3347221ff147bea2baa2307b4e4d381093a1dd2a11259ea41c8f5",
     "model/completion/independent_program_review.py": "ec4e30b6e7c858538fa391db84a40a770f829c54d987dd2b147d22fdd40153ac",
     "model/completion/test_acceptance_audit.py": "eefeb82b3db0bf89f4e1d049ad5aa30b0461c51eef497d22d5c8842a05a432c8",
@@ -128,7 +128,16 @@
         "All-input adaptive records and injected source leakage",
         "Symbolic all-sector polynomials including U=0 and changed-mu controls"
       ],
-      "package_tests_passed": 112
+      "package_tests_passed": 112,
+      "portable_replay_review": {
+        "scope": "Degenerate flux-eigenbasis changes are compared through complete spectral projectors; actual preparation angle costs are retained and checked against fixed-scaffold lower and Walsh-Parseval upper bounds. All state multiplicities, source counts, output errors and physical results are preserved.",
+        "tests": [
+          "random complex rotations inside degenerate spectral subspaces",
+          "interlevel spectral-weight and missing-state mutations",
+          "actual alternate preparation phase word",
+          "forged, undercounted and over-budget source-resource mutations"
+        ]
+      }
     }
   ]
 }
