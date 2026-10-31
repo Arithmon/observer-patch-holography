@@ -199,7 +199,10 @@ every native C/E repair branch. The [native conservation obstruction](
 constructions keep their own domains.
 
 The existing [periodic dispersion benchmark](../particle_comparison/README.md)
-still fails under its fixed particle dictionary. This open-chain result
+still fails under its fixed particle dictionary. The [isolated-dimer
+family exclusion](../dimer_family/README.md) also remains in force: the
+four-site construction does not supply a three-generation lepton spectrum
+or repair that dimer dictionary. This open-chain result
 neither changes that benchmark nor establishes electromagnetic charge,
 Lorentz spin, a chiral continuum, native passive protection or a physical
 electron/positron assignment. Those are explicit remaining joins in the

@@ -1042,7 +1042,7 @@
     "model/__init__.py": "eff7e4cc748c51d89ef0dd1626dbe42a9bd453a2d6933eb26eb96cbc36113078",
     "model/anharmonic_transfer/__init__.py": "2a37d8911ef47c17a261f7d6e361092a4c8f00214d576c9975291d96e559903d",
     "model/anharmonic_transfer/environment.py": "861a218c6962a7244b877df12231a44c15f5cbaf59a9ea7700d6419c5065c466",
-    "model/charged_dynamics/README.md": "dda05bb1f579d4931497c2de97c5c343daebd293078dbb438337726e46c820e8",
+    "model/charged_dynamics/README.md": "7dcd2ef88c63d6070532a8297fbcac96ce43d9ca230a4f9a1002ca860ce02f6e",
     "model/charged_dynamics/__init__.py": "033656c3825354d047fdc141bbc2b12e80f31a81f7b4134b6224f7f7708d92f1",
     "model/charged_dynamics/certification.py": "db44c4ead94184b9834d573c5ec330e51b9546a1e194915f612f6e9c7408e7e5",
     "model/charged_dynamics/chain.py": "f36bed4a46af04c41c93c6d2b3d976630b2dc7ba261b2017c948c21e5f02fc8b",

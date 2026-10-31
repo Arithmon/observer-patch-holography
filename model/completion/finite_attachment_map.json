@@ -1,9 +1,10 @@
 {
   "schema": "oph.finite_attachment_map.v2",
-  "as_of": "2026-10-30",
+  "as_of": "2026-10-31",
   "gate": "CP-13",
   "selected_issues": [
     1138,
+    1140,
     1141,
     1142,
     1143,
@@ -13,8 +14,8 @@
   "canonical_registry": "tracking/premise_register.json",
   "physical_comparison_count_added": 0,
   "canonical_premises_discharged": [],
-  "finite_obligations_realized": 17,
-  "scope": "Exhaustive ownership/relevance navigation for all 84 canonical premise rows, with 22 explicit finite theorem/model attachments, 17 realized on their stated domains. The empirical comparison remains retrospective and ineligible for CP11 physical acceptance. This is not a fresh proof audit of every imported theorem or tracked Lean module; no canonical physical premise is discharged.",
+  "finite_obligations_realized": 22,
+  "scope": "Exhaustive ownership/relevance navigation for all 84 canonical premise rows, with 27 explicit finite theorem/model attachments, 22 realized on their stated domains. The empirical comparison remains retrospective and ineligible for CP11 physical acceptance. This is not a fresh proof audit of every imported theorem or tracked Lean module; no canonical physical premise is discharged.",
   "existing_navigation_coverage": {
     "claim_count": 346,
     "lean_module_count": 662,
@@ -1612,6 +1613,41 @@
         "def report"
       ],
       "boundary": "An executable sixteen-state benchmark supplies Q=e(N-2), S=hbar*S_internal and one measured electron energy scale, giving assigned Hamiltonian-time and lattice-length units. Complete candidate electric-current/dipole response obeys continuity and charge conjugation, but the pure-gauge open bond measures no magnetic moment and its bare contact kernel is not Coulomb exchange. A separately declared four-site periodic extension checks momentum, all number sectors, particle-hole residues and free doublers. Its charged poles fail the fixed dimer-mass/bare-speed lattice-Dirac benchmark and a same-volume rest-gap variant. Finite-volume shifts and a possible renormalized velocity remain distinct: two momentum-squared values cannot validate a fitted dispersion. This rejects only that supplied finite dictionary benchmark, not an OPH continuum; physical electron/positron identity and QED remain unestablished."
+    },
+    "modular_flow": {
+      "path": "model/modular_flow/flow.py",
+      "anchors": [
+        "class ModularFlow"
+      ],
+      "boundary": "On the same supplied faithful one/two-site full-Fock Gibbs reference, source words implement sigma_s(A)=rho^(is) A rho^(-is)=tau_{-beta*s}(A). Complete input columns, retained purifiers, all number-read outcomes and every export-failure map supply an arbitrary-reference implementation certificate and rational ideal-word splitting bound. Physical clock calibration, source-selected action/reference and same-excitation native defect map."
+    },
+    "full_fock_energy": {
+      "path": "model/full_fock_energy/energy.py",
+      "anchors": [
+        "def certify("
+      ],
+      "boundary": "Exact binary-rational full-Fock matrices satisfy H=sum_x h_x and i[H,h_x]=-sum_y i[h_x,h_y] on every occupation sector, including range-two energy currents. Source-prepared Gibbs continuation and complete pointer reads charge backaction by -Tr(rho[n,[n,H]]); export failures retain probability and have no assigned physical energy. Maintenance-to-rest-energy derivation and calibrated stress on the same physical source."
+    },
+    "flux_response": {
+      "path": "model/flux_response/response.py",
+      "anchors": [
+        "class FluxRing"
+      ],
+      "boundary": "The periodic four-site Weyl/contact action with a supplied Peierls loop flux retains all 256 Fock states. Exact operator differentiation, CAR continuity and the nondegenerate-ground Hellmann-Feynman/Kubo identity bind persistent current and curvature; gauge redistribution leaves their totals invariant. Degenerate free/atomic controls reject the unique-ground formula. Physical current/photon and native localized-defect transport identification."
+    },
+    "field_protocols": {
+      "path": "model/field_protocols/protocol.py",
+      "anchors": [
+        "def adaptive("
+      ],
+      "boundary": "A two-read full-Fock source protocol selects the second signed evolution from the actual first record. All four joint records, each terminating export-failure map and arbitrary untouched references are retained. The rational ideal-word half-diamond bound is e_first+max(e_second_0,e_second_1), capped at one; numerical admission and deliberate leakage diagnostics remain distinct. Physical action selection, scalable preparation and a joint chiral effective-field comparison."
+    },
+    "dimer_family": {
+      "path": "model/dimer_family/family.py",
+      "anchors": [
+        "def certificate("
+      ],
+      "boundary": "Symbolic complete-Fock sector polynomials prove that for every t>0 and U>=0 at mu=U/2, each charge-one sector has only two doublet gaps sqrt(U^2+16t^2)/2 +/- t, with ratio in (1,3]. Thus one common positive linear gap-to-mass conversion cannot yield the charged-lepton hierarchy or three same-charge generations anywhere in this family. A changed-mu countercontrol retains the limit of the ratio theorem. A larger or different same-process particle carrier and independently justified physical dictionary."
     }
   },
   "attachments": [
@@ -2432,6 +2468,172 @@
       "proof_kind": "Exact rank-one/optical identities and analytic complex-strip Fourier bound; rational local-signal enclosure and independent complete-matrix/source-export controls.",
       "new_lean_inhabitant": false,
       "physical_identification": false
+    },
+    {
+      "id": "FA-23",
+      "title": "Complete full-field modular source histories",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-02"
+      ],
+      "reviewed_sources": [
+        "modular_flow"
+      ],
+      "interface": {
+        "state": "Full one/two-site CAR algebra and its faithful Gibbs field restriction; retained purification is pure, not faithful on field plus purifier.",
+        "algebra": "Complete finite CAR matrix algebra with all declared number sectors and untouched reference inputs where a channel is claimed.",
+        "operation": "Complete source words for exp(+i beta s H), number-read instruments and their complete histories.",
+        "clock": "Dimensionless modular s and Hamiltonian coordinate t=-beta*s. Neither is identified with physical proper time.",
+        "refinement": "Finite bounded source implementation; no continuum or regional modular covariance follows."
+      },
+      "conclusion": "On the same supplied faithful one/two-site full-Fock Gibbs reference, source words implement sigma_s(A)=rho^(is) A rho^(-is)=tau_{-beta*s}(A). Complete input columns, retained purifiers, all number-read outcomes and every export-failure map supply an arbitrary-reference implementation certificate and rational ideal-word splitting bound.",
+      "remaining": [
+        "Physical clock calibration, source-selected action/reference and same-excitation native defect map.",
+        "Geometric regional modular flow and joint gravitational stationarity remain unestablished."
+      ],
+      "witnesses": [
+        "model/modular_flow/flow.py",
+        "model/modular_flow/README.md"
+      ],
+      "countercontrols": [
+        "model/modular_flow/test_flow.py"
+      ],
+      "proof_kind": "Explicit finite derivation and independent exact-symbolic or full-matrix/source controls; floating residuals are not outward hardware bounds.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-24",
+      "title": "Complete-Fock local energy, currents and measurement work",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-04"
+      ],
+      "reviewed_sources": [
+        "full_fock_energy"
+      ],
+      "interface": {
+        "state": "All number sectors on one through four sites for the exact operator certificate; source-prepared Gibbs demonstration on two sites.",
+        "algebra": "Complete finite CAR matrix algebra with all declared number sectors and untouched reference inputs where a channel is claimed.",
+        "operation": "Local CAR energy/current operators, all regional sums, and complete source continuation and occupation read.",
+        "clock": "Hamiltonian model coordinate and supplied model energy; no physical work or rest-mass conversion.",
+        "refinement": "Finite all-sector identities; no Lorentz stress tensor or geometric continuum is asserted."
+      },
+      "conclusion": "Exact binary-rational full-Fock matrices satisfy H=sum_x h_x and i[H,h_x]=-sum_y i[h_x,h_y] on every occupation sector, including range-two energy currents. Source-prepared Gibbs continuation and complete pointer reads charge backaction by -Tr(rho[n,[n,H]]); export failures retain probability and have no assigned physical energy. For K=H-mu*N the exact local grand-canonical energy is k_x=h_x-mu*n_x and its current is j_K=j_H-mu*j_N. Charge-changing probes satisfy Delta K=Delta H-mu*Delta N: in the centered dimer the equal particle/hole K gaps have different H-energy changes. No physical reservoir cost is inferred.",
+      "remaining": [
+        "Maintenance-to-rest-energy derivation and calibrated stress on the same physical source.",
+        "Energy of source apparatus, resets and abort spaces remains a separate physical input."
+      ],
+      "witnesses": [
+        "model/full_fock_energy/energy.py",
+        "model/full_fock_energy/README.md"
+      ],
+      "countercontrols": [
+        "model/full_fock_energy/test_energy.py"
+      ],
+      "proof_kind": "Explicit finite derivation and independent exact-symbolic or full-matrix/source controls; floating residuals are not outward hardware bounds.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-25",
+      "title": "Complete ring loop-current and spectral curvature response",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-05",
+        "CP-04"
+      ],
+      "reviewed_sources": [
+        "flux_response"
+      ],
+      "interface": {
+        "state": "Complete 256-state periodic ring with its checked isolated half-filled ground; supplied loop flux and external Peierls coupling.",
+        "algebra": "Complete finite CAR matrix algebra with all declared number sectors and untouched reference inputs where a channel is claimed.",
+        "operation": "Oriented bond currents, first/second flux derivatives and complete spectral response, with independent finite-difference and Jordan-Wigner checks.",
+        "clock": "Flux angle and Hamiltonian model-energy derivatives; no physical flux quantum, magnetic moment or clock inferred.",
+        "refinement": "Finite-volume matrix calculation without additional source execution; thermodynamic and chiral continuum limits remain separate."
+      },
+      "conclusion": "The periodic four-site Weyl/contact action with a supplied Peierls loop flux retains all 256 Fock states. Exact operator differentiation, CAR continuity and the nondegenerate-ground Hellmann-Feynman/Kubo identity bind persistent current and curvature; gauge redistribution leaves their totals invariant. Degenerate free/atomic controls reject the unique-ground formula.",
+      "remaining": [
+        "Physical current/photon and native localized-defect transport identification.",
+        "Continuum, renormalized electromagnetic response and physical clock normalization."
+      ],
+      "witnesses": [
+        "model/flux_response/response.py",
+        "model/flux_response/README.md"
+      ],
+      "countercontrols": [
+        "model/flux_response/test_response.py"
+      ],
+      "proof_kind": "Explicit finite derivation and independent exact-symbolic or full-matrix/source controls; floating residuals are not outward hardware bounds.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-26",
+      "title": "Complete adaptive all-sector observer protocol",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-06"
+      ],
+      "reviewed_sources": [
+        "field_protocols"
+      ],
+      "interface": {
+        "state": "Every input on the complete one/two-site Fock algebra, including arbitrary entangled reference columns; preparation is separately supplied.",
+        "algebra": "Complete finite CAR matrix algebra with all declared number sectors and untouched reference inputs where a channel is claimed.",
+        "operation": "Actual source/export instruments, initialized pointers, two retained record bits and explicit record-controlled signed continuation.",
+        "clock": "Signed Hamiltonian model durations, with source pulse/service counts distinct from physical time.",
+        "refinement": "One finite complete-observable-law instance; does not supply chiral 3+1 continuum correspondence."
+      },
+      "conclusion": "A two-read full-Fock source protocol selects the second signed evolution from the actual first record. All four joint records, each terminating export-failure map and arbitrary untouched references are retained. The rational ideal-word half-diamond bound is e_first+max(e_second_0,e_second_1), capped at one; numerical admission and deliberate leakage diagnostics remain distinct.",
+      "remaining": [
+        "Physical action selection, scalable preparation and a joint chiral effective-field comparison.",
+        "Hardware, initialization, memory and physical clock errors require independent bounds."
+      ],
+      "witnesses": [
+        "model/field_protocols/protocol.py",
+        "model/field_protocols/README.md"
+      ],
+      "countercontrols": [
+        "model/field_protocols/test_protocol.py"
+      ],
+      "proof_kind": "Explicit finite derivation and independent exact-symbolic or full-matrix/source controls; floating residuals are not outward hardware bounds.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
+    },
+    {
+      "id": "FA-27",
+      "title": "Universal repulsive half-filled dimer charged-family exclusion",
+      "classification": "realized_on_claimed_domain",
+      "owners": [
+        "CP-07"
+      ],
+      "reviewed_sources": [
+        "dimer_family"
+      ],
+      "interface": {
+        "state": "Complete sixteen-state two-site action with unique N=2 ground; t>0, U>=0 and centered mu=U/2.",
+        "algebra": "Complete finite CAR matrix algebra with all declared number sectors and untouched reference inputs where a channel is claimed.",
+        "operation": "Exact symbolic sector characteristic polynomials and all-axis full-matrix controls; no fitted parameter scan or deleted dark states.",
+        "clock": "Ground-relative K=H-(U/2)N frequencies with one common positive mass conversion; no absolute physical mass prediction.",
+        "refinement": "Universal within the specified parameter family; changed references/actions/carriers and nonlinear mass maps remain outside it."
+      },
+      "conclusion": "Symbolic complete-Fock sector polynomials prove that for every t>0 and U>=0 at mu=U/2, each charge-one sector has only two doublet gaps sqrt(U^2+16t^2)/2 +/- t, with ratio in (1,3]. Thus one common positive linear gap-to-mass conversion cannot yield the charged-lepton hierarchy or three same-charge generations anywhere in this family. A changed-mu countercontrol retains the limit of the ratio theorem.",
+      "remaining": [
+        "A larger or different same-process particle carrier and independently justified physical dictionary.",
+        "Measured Yukawas, mixing and physical particle identification remain unresolved."
+      ],
+      "witnesses": [
+        "model/dimer_family/family.py",
+        "model/dimer_family/README.md"
+      ],
+      "countercontrols": [
+        "model/dimer_family/test_family.py"
+      ],
+      "proof_kind": "Explicit finite derivation and independent exact-symbolic or full-matrix/source controls; floating residuals are not outward hardware bounds.",
+      "new_lean_inhabitant": false,
+      "physical_identification": false
     }
   ],
   "cleanup": {
@@ -2530,6 +2732,18 @@
       "finite_map_review_complete": true,
       "acceptance_scope": "Ownership, exact finite interfaces, relevance and active-route cleanup; downstream physical premises remain conditional.",
       "unaccepted_predecessors": []
+    },
+    "1140": {
+      "close_issue": false,
+      "required_predecessors": [
+        "CP-02",
+        "CP-03"
+      ],
+      "unaccepted_predecessors": [
+        "CP-02",
+        "CP-03"
+      ],
+      "unfulfilled_acceptance": "Full-Fock local energy/current and read work are now supplied, but native defect maintenance, physical rest-energy/clock normalization and gravitational stress remain unestablished."
     }
   },
   "source_bindings": {
@@ -2546,8 +2760,8 @@
     "model/bound_pair/fiber.py": "a5a21df2e5e6a4c71c66feaff2436390e357da8ae019df794280577afa48a49e",
     "model/bound_pair/identity.py": "749a1ce10431e8a72b76b96c9568d7cbd0960a9f41e32c92498ba352d753a333",
     "model/bound_pair/mass.py": "45ab64c1b74d060e4ae380c9f5f5896ca7d1d7a84c18c022c9bd2e3d99735034",
-    "model/completion/finite_attachment_map.py": "5caeef531e62175aa5d727fd90f18655cb5ab5a1a82ff2463fc8172d6f96925e",
-    "model/completion/test_finite_attachment_map.py": "fe1a6b1c6790535dd850bf9d2d11530b743281cda0bacf17cde9c79f4ebedb10",
+    "model/completion/finite_attachment_map.py": "36ce469c21f3347221ff147bea2baa2307b4e4d381093a1dd2a11259ea41c8f5",
+    "model/completion/test_finite_attachment_map.py": "f42294a1e80a2ebe6cd92cf53d76b6f2b9c7801a11ab017f1f8b1fb2064ab4f9",
     "model/field_regions/README.md": "5073a68fc7c604335ad9aeac76ea0fd509857a73fb088148e66e0764cd6005ae",
     "model/field_regions/regions.py": "82620a99ed565ab0371295700f828151133d863d92e7fb12330d57a3a7603dc9",
     "model/field_stress/README.md": "8e5b2d4bf9f49d782512c17c6ccda0b2e54d69255a5d169154ba53c6c5c6c213",
@@ -2625,7 +2839,32 @@
     "model/particle_comparison/electromagnetism.py": "411aaed0c05a2cb64dcee3ad2d9b5e3b0faea0455e370b61f9c590949e8ee02b",
     "model/particle_comparison/test_electromagnetism.py": "246a9338a4a2c1c66ef84ece8d1148122e1a8881e2ff6304d94fbd9876b58927",
     "model/particle_response/dispersion.py": "519b95af7691e9a3990d4e4f555dfbe63856fd8959444858e1c8fdcbd376c628",
-    "model/particle_response/test_dispersion.py": "b44480fccbce6b4eed74360a818bb5a52258057c7d3da91e9df5d63a3658186d"
+    "model/particle_response/test_dispersion.py": "b44480fccbce6b4eed74360a818bb5a52258057c7d3da91e9df5d63a3658186d",
+    "model/modular_flow/README.md": "073eda5a18db689b2bf20e0cadee9ec2612621a121093180e1a130487077ff1c",
+    "model/modular_flow/__init__.py": "9c58f54e6b7a5f04c07c8dfd33bd6933e463155980ef76d29c33143d3486b8be",
+    "model/modular_flow/flow.py": "71a8f16174f288b4f42437ce0f330c72c0c01da47d3c529b8a43010fe88f3840",
+    "model/modular_flow/results.json": "62bc1b6af39e043f22e56aeb7347b78bc6f7282f5061faa713b56da9bbcaeafb",
+    "model/modular_flow/test_flow.py": "59c3946a3dcab20f2441529fb9dafa073d4552f24f49e8d07bfd59175c0a76b1",
+    "model/full_fock_energy/README.md": "9b42146662f01ea76fcacbfed2f947db4062aabc199503fc8e8815e697ab07aa",
+    "model/full_fock_energy/__init__.py": "38962a996ba0005fe4b48ae6a34bd38e6a7631d12f0306c7ca5d92cbad12e902",
+    "model/full_fock_energy/__main__.py": "24bba5e32b75fe07c1d0e16b42abc5ee0c5b8b9074c0b5e110f7ddfc9c914d54",
+    "model/full_fock_energy/energy.py": "68ea4848938b011ddd2ff6e20557f3820b6d5db6bb64117f8ab64ddd10da3c6f",
+    "model/full_fock_energy/instrument.py": "35baf67cac2efb4e7095a71e77f1f17d1ef8f0fad380f6baafd281f06aa7e0d3",
+    "model/full_fock_energy/test_energy.py": "983cf63fa80d6cf3e737a3ee78c5317d63674d32aa3f62119f14a12e01430621",
+    "model/flux_response/README.md": "bb86abb6ea1708a0da3923f95fd47639ffd560685ba8e2be3cc46120d31884ce",
+    "model/flux_response/__init__.py": "30053c9eff28869eb45e5346a5690de16306a54976c66fbd9e28beee959d022b",
+    "model/flux_response/__main__.py": "2aec6d09fd2fe30cfce879eee86e106edbbd2c5c4986bd9713d4ac54f099de32",
+    "model/flux_response/response.py": "b65b8db73932a9feaf2b1c145b703d1362646e16ac24f6d235ae4ca2b8c4c360",
+    "model/flux_response/results.json": "93ce5afc83163d32a681f2145ec9ac4cf8b546176e9d184fcd59dcae0f20dd7d",
+    "model/flux_response/test_response.py": "34e1dab8dab7e3535d6c520dc062d762fe080fe65dc4304f0712d0bae7f2ac48",
+    "model/field_protocols/README.md": "fb00db7565238072361cc252475c579bd427ffee0ba98b47217f60a40d1c5c43",
+    "model/field_protocols/__init__.py": "333adaaaa2bd4af26f34fa235cbf44322fdb718987a4fb82259ceb559088b83a",
+    "model/field_protocols/protocol.py": "116d7b2539015cc72ea0235994f0b572daa3a1ef90d1762def607fb29322c430",
+    "model/field_protocols/test_protocol.py": "ab83582bca57dd0aa482156c84a1f4714aeb3b2c25d768ebf8550349a0a7d234",
+    "model/dimer_family/README.md": "ff03f4ad653eac8e66997cfe38bbd404c50c835dbcad41cf56377766cd90ef91",
+    "model/dimer_family/__init__.py": "e868d536ae9bcc16a241dcb83ea273a2769f4e73e7b69d72e3c6420dbe09a421",
+    "model/dimer_family/family.py": "9467aa337f3a28de7bb92ede385f08e411fbabf9925dcf97add06f706a4a069f",
+    "model/dimer_family/test_family.py": "c380290051c635040acee7d25ccdf51a45ae9afbf906f47e53eff98a3c8312a0"
   },
   "gate_acceptance_owner": "claims/completion_program.json",
   "predecessor_review": {
