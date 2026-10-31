@@ -101,6 +101,35 @@ def test_mutated_returned_metadata_does_not_poison_later_models():
     assert not np.shares_memory(c.bare_columns(), c.bare_columns())
 
 
+@pytest.mark.parametrize('nonfinite', (float('nan'), float('inf')))
+def test_complete_spectrum_rejects_nonfinite_vectors_with_finite_energies(monkeypatch, nonfinite):
+    original = np.linalg.eigh
+    def changed(matrix, *args, **kwargs):
+        values, vectors = original(matrix, *args, **kwargs)
+        # Eight-dimensional blocks belong to the chain, not the dimer helper.
+        if matrix.shape == (8, 8):
+            vectors[:, 0] = nonfinite
+        return values, vectors
+    monkeypatch.setattr(np.linalg, 'eigh', changed)
+    with pytest.raises(ArithmeticError, match='complete chain spectral admission'):
+        c.setup()
+
+
+@pytest.mark.parametrize('nonfinite', (float('nan'), float('inf')))
+def test_polar_dressing_rejects_nonfinite_vectors_with_positive_gram_spectrum(monkeypatch, nonfinite):
+    original = np.linalg.eigh
+    def changed(matrix, *args, **kwargs):
+        values, vectors = original(matrix, *args, **kwargs)
+        # The positive four-column Gram matrix is distinct from the dimer's
+        # negative-energy four-dimensional number blocks.
+        if matrix.shape == (4, 4) and values[0] > 0:
+            vectors[:, 0] = nonfinite
+        return values, vectors
+    monkeypatch.setattr(np.linalg, 'eigh', changed)
+    with pytest.raises(ArithmeticError, match='polar chart is singular or unresolved'):
+        c.dressed_columns()
+
+
 @pytest.mark.parametrize('axis', (True, 0., -1, 3))
 def test_axis_validation(axis):
     with pytest.raises(ValueError): c.setup(axis)

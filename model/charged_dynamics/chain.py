@@ -172,6 +172,8 @@ def setup(axis=0, link_strength=F(1)):
                    for a in range(2) for b in range(2))
     V = transfer+transfer.conj().T
     K = K0+float(link_strength)*V
+    if any(not np.isfinite(value).all() for value in (K0, V, K)):
+        raise ArithmeticError('finite complete chain generators required')
     numbers = np.array([j.bit_count() for j in range(256)])
     nA = np.array([(j & 15).bit_count() for j in range(256)])
     rows = []
@@ -185,9 +187,12 @@ def setup(axis=0, link_strength=F(1)):
     energies = np.array([row[0] for row in rows])
     vectors = np.column_stack([row[2] for row in rows])
     sectors = np.array([row[1] for row in rows])
-    if (not np.isfinite(energies).all() or sectors[0] != 4
-            or np.linalg.norm(K@vectors-vectors*energies) > 2e-11
-            or np.linalg.norm(vectors.conj().T@vectors-np.eye(256)) > 2e-11):
+    if (not np.isfinite(energies).all() or not np.isfinite(vectors).all() or sectors[0] != 4):
+        raise ArithmeticError('complete chain spectral admission failed')
+    with np.errstate(over='ignore', invalid='ignore'):
+        residuals = (float(np.linalg.norm(K@vectors-vectors*energies)),
+                     float(np.linalg.norm(vectors.conj().T@vectors-np.eye(256))))
+    if any(not math.isfinite(value) or value > 2e-11 for value in residuals):
         raise ArithmeticError('complete chain spectral admission failed')
     ground = vectors[:, 0]
     return Chain(axis, F(link_strength.numerator, link_strength.denominator),
@@ -218,9 +223,14 @@ def dressed_columns(kind='hole', axis=0, link_strength=F(1)):
     bare = bare_columns(kind, axis)
     gram = bare.conj().T@projector@bare
     values, vectors = np.linalg.eigh(gram)
-    if not np.isfinite(values).all() or values[0] <= 1e-12:
+    if (not np.isfinite(values).all() or not np.isfinite(vectors).all()
+            or np.any(values <= 1e-12)):
         raise ArithmeticError('bare-to-band polar chart is singular or unresolved')
     result = projector@bare@((vectors*(1/np.sqrt(values)))@vectors.conj().T)
-    if np.linalg.norm(result.conj().T@result-np.eye(4)) > 2e-11:
+    if not np.isfinite(result).all():
+        raise ArithmeticError('dressed band chart failed its isometry admission')
+    with np.errstate(over='ignore', invalid='ignore'):
+        residual = float(np.linalg.norm(result.conj().T@result-np.eye(4)))
+    if not math.isfinite(residual) or residual > 2e-11:
         raise ArithmeticError('dressed band chart failed its isometry admission')
     return frozen(result)
