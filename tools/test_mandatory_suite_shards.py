@@ -48,7 +48,15 @@ def test_all_standard_shards_dispatch_exact_ordered_coverage(dispatch, capsys, c
         assert f"mandatory shard OK ({index + 1}/{count}; standard mode)" in output
         assert "mandatory suite OK" not in output
     assert all(partitions)
-    assert max(map(len, partitions)) - min(map(len, partitions)) <= 1
+    # Cost-weighted cut points: an optimal contiguous partition never exceeds
+    # the even share plus the largest single step.
+    titles = [title for title, _ in _standard_steps()]
+    costs, position = [], 0
+    for partition in partitions:
+        costs.append(sum(runner.step_cost(t) for t in titles[position:position + len(partition)]))
+        position += len(partition)
+    largest = max(runner.step_cost(t) for t in titles)
+    assert max(costs) <= sum(costs) / count + largest
     # Exact concatenation checks both contiguous order and multiplicity.
     assert [command for partition in partitions for command in partition] == expected
 
@@ -164,3 +172,18 @@ def test_failed_child_stops_its_shard_and_cannot_report_success(monkeypatch, cap
         runner.main()
     assert commands == [["fails"]]
     assert "shard OK" not in capsys.readouterr().out
+
+
+def test_step_costs_name_existing_steps():
+    titles = {title for title, _ in runner.MANDATORY_STEPS}
+    assert set(runner.STEP_COST_SECONDS) <= titles
+    assert all(cost > 0 for cost in runner.STEP_COST_SECONDS.values())
+
+
+def test_shard_bounds_minimize_the_most_expensive_contiguous_shard(monkeypatch):
+    monkeypatch.setattr(runner, "STEP_COST_SECONDS", {"a": 9, "b": 1, "c": 1, "d": 8, "e": 1})
+    steps = [(title, ["command", title]) for title in "abcde"]
+    bounds = runner.shard_bounds(steps, 3)
+    assert bounds == [0, 1, 3, 5]  # [a] [b c] [d e]: maximum cost 9, the single largest step
+    assert runner.shard_bounds(steps, 5) == [0, 1, 2, 3, 4, 5]
+    assert runner.shard_bounds(steps, 1) == [0, 5]

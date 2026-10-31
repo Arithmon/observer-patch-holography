@@ -9,7 +9,8 @@ This is the one command REPRODUCE.md documents and CI enforces:
     python tools/run_mandatory_suite.py --certificate-smoke-only
     python tools/run_mandatory_suite.py --shard-index 0 --shard-count 2
 
-CI can partition the standard suite into nonempty contiguous shards. The
+CI can partition the standard suite into nonempty contiguous shards, cut by
+measured step cost (STEP_COST_SECONDS). The
 zero-based shard index and shard count must be supplied together; sharding
 cannot be combined with full or certificate modes. Concatenating the shard
 command lists reproduces the unchanged standard list in order.
@@ -1273,12 +1274,21 @@ MANDATORY_STEPS: list[tuple[str, list[str]]] = [
             "code/a5_closure/tests/test_family_band_attachment_certificate.py",
             "code/particles/flavor/test_entropy_w5_shape_certificate.py",
             "code/particles/leptons/test_koide_balance_comparison_certificate.py",
-            "code/particles/scripts/test_build_postdiction_ledger.py",
             "code/a5_closure/tests/test_flux_defect_criterion_certificate.py",
             "code/a5_closure/tests/test_coset_carrier_certificate.py",
             "code/cosmology/test_edge_center_clock_certificate.py",
             "code/consensus/test_compiled_lattice_settling_certificate.py",
             "code/thermodynamics/test_conditional_repair_certificate.py",
+        ],
+    ),
+    (
+        "Replay the postdiction ledger regression suite",
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "-q",
+            "code/particles/scripts/test_build_postdiction_ledger.py",
         ],
     ),
     (
@@ -1472,6 +1482,67 @@ HEAVY_STEP_TITLES: frozenset[str] = frozenset(
 )
 
 
+# Measured CI seconds for the standard steps that take 40 s or more on an
+# Ubuntu runner (mandatory shard logs, 31 October 2026); every other step
+# counts DEFAULT_STEP_COST. Shards stay contiguous and nonempty, and their cut
+# points minimize the most expensive shard, so a few long steps no longer set
+# the whole matrix's wall time. Stale or missing entries change only balance.
+DEFAULT_STEP_COST = 5
+STEP_COST_SECONDS: dict[str, int] = {
+    "Replay the postdiction ledger regression suite": 955,
+    "Execute same-action real continuum, charged observer, dynamical clock and quantum trial controls": 312,
+    "Validate the deterministic postdiction ledger": 250,
+    "Execute the A5 fingerprint and frozen primitive-port prediction suites": 248,
+    "Execute the three-axiom campaign certificate suites": 182,
+    "Verify Maxwell measurement contract, uncertainty and external trust boundaries": 123,
+    "Regression-test offline Phase-0 scientific gates": 112,
+    "Execute the target-free current bracket search-space gates": 105,
+    "Execute stationary Whitney volume, exact stability, readback and charged-data controls": 100,
+    "Reconstruct scalar action time from authenticated reads and perturbation bounds": 89,
+    "Validate the null-model scorecard": 89,
+    "Verify native work ambiguity, scalar pressure enclosures and Maxwell thermal stress": 77,
+    "Replay the surface tests that bind claims to their published statements": 70,
+    "Execute coupled Whitney spatial, interacting Hilbert and charged evolution controls": 66,
+    "Execute the scientific validation fixtures (E4 stale-absence guards excluded here; they run in Lean CI)": 52,
+    "Verify finite fermionic current, exact continuity and mean Gauss custody": 46,
+    "Execute cone Whitney interpolation, full action derivatives and custody controls": 42,
+    "Execute the mass-energy selection cross-surface gates": 42,
+}
+
+
+def step_cost(title: str) -> int:
+    return STEP_COST_SECONDS.get(title, DEFAULT_STEP_COST)
+
+
+def shard_bounds(steps: list[tuple[str, list[str]]], count: int) -> list[int]:
+    """Cut points of ``count`` contiguous nonempty shards with minimal maximum cost.
+
+    Returns ``count + 1`` indices; shard ``i`` is ``steps[bounds[i]:bounds[i + 1]]``.
+    Among optimal partitions the earliest cut points win, so the layout is
+    deterministic for a given step list.
+    """
+    total = len(steps)
+    prefix = [0]
+    for title, _ in steps:
+        prefix.append(prefix[-1] + step_cost(title))
+    infinity = float("inf")
+    # best[k][n]: minimal maximum shard cost of the first n steps in k shards.
+    best = [[infinity] * (total + 1) for _ in range(count + 1)]
+    cut = [[0] * (total + 1) for _ in range(count + 1)]
+    best[0][0] = 0
+    for k in range(1, count + 1):
+        for n in range(k, total - (count - k) + 1):
+            for m in range(k - 1, n):
+                value = max(best[k - 1][m], prefix[n] - prefix[m])
+                if value < best[k][n]:
+                    best[k][n] = value
+                    cut[k][n] = m
+    bounds = [total]
+    for k in range(count, 0, -1):
+        bounds.append(cut[k][bounds[-1]])
+    return bounds[::-1]
+
+
 def run_steps(steps: list[tuple[str, list[str]]]) -> None:
     for title, command in steps:
         print(f"==> {title}", flush=True)
@@ -1549,8 +1620,8 @@ def main() -> None:
             parser.error(f"--shard-count must be between 1 and {total}; shards must be nonempty")
         if not 0 <= args.shard_index < args.shard_count:
             parser.error("--shard-index must satisfy 0 <= index < --shard-count")
-        start = total * args.shard_index // args.shard_count
-        stop = total * (args.shard_index + 1) // args.shard_count
+        bounds = shard_bounds(steps, args.shard_count)
+        start, stop = bounds[args.shard_index], bounds[args.shard_index + 1]
         steps = steps[start:stop]
         print(
             f"standard shard {args.shard_index + 1}/{args.shard_count}: "
