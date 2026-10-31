@@ -46,7 +46,7 @@
     },
     "parents": {
       "claims/claim_registry.yaml": "3aa97ecf13d3b32b38f40fde1c9fc66f2fc4afb1067a2911221f0c926a2b0f01",
-      "claims/completion_program.json": "6ea356dac11c493a4e045ed04b01ee2af8be4f8aeccb44c8313bc6aa9e5f7a33",
+      "claims/completion_program.json": "edf2c17e62ca06191d23ca9155895510ac842e610fdb4c8e1e13a6c3b003e311",
       "claims/executable_model_hypothesis.json": "1855a611870a64b3d97fbaa8759385761dda9130a1517233193af2c7f170cd2b",
       "docs/OPH_EXECUTABLE_HYPOTHESIS.md": "c503247a2b333c2e27b3eba865d47f2d15c966a5052eceb4aadb14fc9002f35a"
     },
@@ -2545,7 +2545,7 @@
               "independent_check": "model/charged_dynamics/test_packet.py",
               "path": "model/charged_dynamics/results.json",
               "scope": "Unchanged uniform four-site Weyl/contact action on all 256 Fock states: exact full-path charged-band isolation, residue-derived hopping, physical charge/current, full coupled-ground response and complete T=4 source histories. Polar dressing has small physical charge contrast; native passive/topological protection, a physical clock and electron/positron identity are not established.",
-              "sha256": "6e5a7f2125d26a35e82d9e854e2642047de832e1a6071dbfaa09616605d033d4"
+              "sha256": "b489dc8b1e34b9d66aedc3b41c445ba363a36087f497a889fab95bb38f69b8e9"
             }
           ],
           "requires": [
@@ -2743,7 +2743,7 @@
               "independent_check": "model/charged_dynamics/test_packet.py",
               "path": "model/charged_dynamics/results.json",
               "scope": "Unchanged uniform four-site Weyl/contact action on all 256 Fock states: exact full-path charged-band isolation, residue-derived hopping, physical charge/current, full coupled-ground response and complete T=4 source histories. Polar dressing has small physical charge contrast; native passive/topological protection, a physical clock and electron/positron identity are not established.",
-              "sha256": "6e5a7f2125d26a35e82d9e854e2642047de832e1a6071dbfaa09616605d033d4"
+              "sha256": "b489dc8b1e34b9d66aedc3b41c445ba363a36087f497a889fab95bb38f69b8e9"
             }
           ],
           "requires": [
@@ -2859,7 +2859,7 @@
               "independent_check": "model/charged_dynamics/test_packet.py",
               "path": "model/charged_dynamics/results.json",
               "scope": "Unchanged uniform four-site Weyl/contact action on all 256 Fock states: exact full-path charged-band isolation, residue-derived hopping, physical charge/current, full coupled-ground response and complete T=4 source histories. Polar dressing has small physical charge contrast; native passive/topological protection, a physical clock and electron/positron identity are not established.",
-              "sha256": "6e5a7f2125d26a35e82d9e854e2642047de832e1a6071dbfaa09616605d033d4"
+              "sha256": "b489dc8b1e34b9d66aedc3b41c445ba363a36087f497a889fab95bb38f69b8e9"
             }
           ],
           "requires": [
