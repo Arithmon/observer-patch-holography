@@ -152,8 +152,11 @@ Each local source word is executed on its entire input algebra, including
 every six-level export complement. An immutable factorized archive owns the
 primitive matrices and input, and reconstructs every first-failure quantum
 output by its exact prefix and literal target remapping. Failure mass is
-summed without clipping or renormalizing success. The eight pointer
-interactions are counted. Their eight fresh blank bits and the seven field
+summed without clipping or renormalizing success. Archive consumers bind the
+executed schedule, input, outputs and resource counts; dropping a step or
+replacing a retained field cannot produce a smaller accepted error budget.
+The eight pointer interactions are counted. Their eight fresh blank bits and
+the seven field
 blanks accompanying the unknown input qubit are supplied initialization
 resources; their physical preparation cost is uncalibrated.
 

@@ -37,6 +37,7 @@ COUNT_KEYS = ('native_pulses', 'single_code_pulses', 'pair_code_pulses',
               'proper_code_service_events', 'integrated_processor_norm_upper')
 SEEDS = {'hole': (1, 2), 'particle': (7, 11)}
 _MACRO_AUTHORITY = {}
+_ARCHIVE_AUTHORITY = {}
 
 
 def _array(value, rows, *, columns=256):
@@ -208,13 +209,9 @@ class Archive:
     resources: object
 
     def failure(self, macro_index, event_index):
+        _admit_archive(self)
         if type(macro_index) is not int or not 0 <= macro_index < len(self.schedule):
             raise ValueError('a retained macro index required')
-        checked = set()
-        for placement in self.schedule[:macro_index+1]:
-            if id(placement.macro) not in checked:
-                _admit_macro(placement.macro)
-                checked.add(id(placement.macro))
         state = self.initial.copy()
         for placement in self.schedule[:macro_index]:
             state = _apply(state, placement.macro.success, tuple(reversed(placement.targets)), self.bits)
@@ -234,6 +231,39 @@ class Archive:
             value = value.reshape([2]*len(retained)+[reference]).transpose(permutation).reshape(-1, reference)
             output.append(chain.frozen(value[:, 0] if state.ndim == 1 else value))
         return tuple(output)
+
+
+def _archive_fingerprint(archive):
+    """Bind every consumed archive field, not only its retained local macros."""
+    def array(value):
+        return (type(value), id(value), value.shape, value.dtype.str,
+                value.flags.writeable, hashlib.sha256(value.tobytes()).hexdigest())
+
+    return ((type(archive.bits), archive.bits), array(archive.initial),
+            type(archive.schedule), tuple((type(placement), id(placement),
+                id(placement.macro), type(placement.targets),
+                tuple((type(target), target) for target in placement.targets))
+                for placement in archive.schedule), array(archive.success),
+            (type(archive.failure_probability), archive.failure_probability),
+            type(archive.resources), tuple((type(key), key, type(value), value)
+                                           for key, value in archive.resources.items()))
+
+
+def _admit_archive(archive):
+    retained = _ARCHIVE_AUTHORITY.get(id(archive))
+    if type(archive) is not Archive or retained is None or retained[0]() is not archive:
+        raise ValueError('an unchanged, owned complete archive from execute_schedule is required')
+    try:
+        fingerprint = _archive_fingerprint(archive)
+    except (AttributeError, TypeError, ValueError):
+        raise ValueError('an unchanged, owned complete archive from execute_schedule is required') from None
+    if fingerprint != retained[1]:
+        raise ValueError('an unchanged, owned complete archive from execute_schedule is required')
+    seen = set()
+    for placement in archive.schedule:
+        if id(placement.macro) not in seen:
+            _admit_macro(placement.macro)
+            seen.add(id(placement.macro))
 
 
 def execute_schedule(schedule, bits, initial):
@@ -278,14 +308,17 @@ def execute_schedule(schedule, bits, initial):
                   conditional_complete_Stinespring_error_upper=str(error_sum/(1-error_sum)),
                   numerical_admission_is_outward_certificate=False,
                   physical_service_error_included=False)
-    return Archive(bits, chain.frozen(initial), schedule, chain.frozen(state), math.fsum(failures),
-                   MappingProxyType(totals))
+    archive = Archive(bits, chain.frozen(initial), schedule, chain.frozen(state), math.fsum(failures),
+                      MappingProxyType(totals))
+    identity = id(archive)
+    _ARCHIVE_AUTHORITY[identity] = (weakref.ref(archive, lambda _: _ARCHIVE_AUTHORITY.pop(identity, None)),
+                                   _archive_fingerprint(archive))
+    return archive
 
 
 def literal_word(archive):
     """Actual pulse tape, with every scalar-phase target literally remapped."""
-    if type(archive) is not Archive:
-        raise ValueError('an executed source archive required')
+    _admit_archive(archive)
     return tuple({'kind': event.kind, 'angle': event.angle,
                   'targets': [placement.targets[j] for j in event.targets]}
                  for placement in archive.schedule for event in placement.macro.events)
@@ -302,12 +335,8 @@ def composition_bound(archives):
     """
     if type(archives) not in (tuple, list) or not archives or any(type(a) is not Archive for a in archives):
         raise ValueError('a nonempty executed archive list required')
-    seen = set()
     for archive in archives:
-        for placement in archive.schedule:
-            if id(placement.macro) not in seen:
-                _admit_macro(placement.macro)
-                seen.add(id(placement.macro))
+        _admit_archive(archive)
     total = sum((placement.macro.gate for archive in archives for placement in archive.schedule), F())
     if total >= 1:
         raise ValueError('small-error composition requires sum epsilon below one')

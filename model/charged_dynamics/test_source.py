@@ -200,6 +200,56 @@ def test_composition_uses_norm_growth_not_linear_residual_sum():
     assert source.composition_bound([archive]) >= (1+source.SMALL_GATE)**10-1 > s
 
 
+@pytest.mark.parametrize('damage', ('schedule', 'initial', 'success', 'failure', 'resources', 'bits', 'targets'))
+@pytest.mark.parametrize('in_place', (False, True))
+def test_owned_archive_rejects_forged_or_warm_mutated_evidence(damage, in_place, monkeypatch):
+    # A valid nonidentity instrument with a genuinely nonzero abort output:
+    # the independent complement rotation makes omission measurable.
+    angle = 1e-8
+    full = np.eye(6, dtype=complex)
+    full[:2, :2] = [[0, 1], [1, 0]]
+    turn = np.eye(6, dtype=complex)
+    turn[np.ix_((0, 2), (0, 2))] = [[math.cos(angle), 1j*math.sin(angle)],
+                                    [1j*math.sin(angle), math.cos(angle)]]
+    monkeypatch.setattr(compiler, 'native_pulse', lambda *_: turn@full)
+    macro = source.compile_macro([compiler.pulse('X', 0, [0])], 1,
+                                 np.array([[0, 1], [1, 0]]), source.ENCODER_GATE)
+    initial = np.array([[1, 2j], [-3j, 4]], complex)/math.sqrt(30)
+    archive = source.execute_schedule((source.Placement(macro, (0,)),), 1, initial)
+    baseline = archive.failure(0, 0)
+    assert archive.failure_probability > 0
+    assert sum(np.linalg.norm(row)**2 for row in baseline) == pytest.approx(
+        archive.failure_probability, rel=2e-14)
+    assert source.composition_bound([archive]) > 0
+    assert len(source.literal_word(archive)) == 1
+    complete = archive.success.conj().T@archive.success
+    for row in baseline: complete += row.conj().T@row
+    assert np.linalg.norm(complete-initial.conj().T@initial) < 2e-14
+    assert not archive.initial.flags.writeable and not archive.success.flags.writeable
+
+    field, changed = {
+        'schedule': ('schedule', ()),
+        'initial': ('initial', np.zeros_like(archive.initial)),
+        'success': ('success', np.zeros_like(archive.success)),
+        'failure': ('failure_probability', -1.),
+        'resources': ('resources', {**archive.resources, 'native_pulses': 0}),
+        'bits': ('bits', True),
+        'targets': ('schedule', (source.Placement(macro, (False,)),)),
+    }[damage]
+    if in_place:
+        # Frozen dataclasses stop ordinary assignment, but verification also
+        # rejects deserialization/object-level tampering after warm use.
+        object.__setattr__(archive, field, changed)
+        forged = archive
+    else:
+        forged = replace(archive, **{field: changed})
+    for consumer in (lambda: source.composition_bound([forged]),
+                     lambda: source.literal_word(forged),
+                     lambda: forged.failure(0, 0)):
+        with pytest.raises(ValueError, match='unchanged, owned complete archive'):
+            consumer()
+
+
 @pytest.mark.parametrize('change', ({'failure_gram': -np.eye(2)}, {'success': np.zeros((2, 2))},
                                   {'gate': F(0)}, {'resources': {}}, {'bits': True}))
 def test_forged_public_macro_is_rejected(change):
