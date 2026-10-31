@@ -56,7 +56,7 @@
   ],
   "requires_registry_acceptance_and_predecessor_joins": true,
   "review_date": "2026-10-29",
-  "reviewed_contract_digest": "0c1ea893dc2b10107286481ce22e8dca527d920f46be0a2c0e55e53c38b6b84d",
+  "reviewed_contract_digest": "ff84e38f1cec12a91e18297d95450d4e6f37f93a0b24f00ee6000d1eea1612c4",
   "schema": "oph.program_class_independent_review.v1",
   "scope": "CP00 executable class, CP01 declared-service continuing observer, CP13 theorem ownership and active-route cleanup; acceptance on this exact finite scope only",
   "scope_corrections": [
@@ -72,11 +72,11 @@
     "docs/PROGRAM_CLASS_V2_INDEPENDENT_REVIEW_2026-10-29.md": "c22860b380c6f49cabc15be459e9d52241f227690c176af248797cfad99940f1",
     "model/band_clock/results.json": "230af5e47983434a8e6640a498b4f0ba6f019bff87cc2bb8c06672b95b5926c4",
     "model/completion/acceptance_audit.py": "dd7cdd1ae6f1b915afc6e30b573a47c7027cbf8bd9500d8c07e2076ada42d1ec",
-    "model/completion/finite_attachment_map.json": "bd43ab88ff733b6de3e2f448a851cea7572867a7017cb722c046249ee088ad34",
-    "model/completion/finite_attachment_map.py": "5caeef531e62175aa5d727fd90f18655cb5ab5a1a82ff2463fc8172d6f96925e",
+    "model/completion/finite_attachment_map.json": "6b8d814c6515cfb98cc6188028e1d6f648d1473c8ff19e2855c0b3fbd3306d55",
+    "model/completion/finite_attachment_map.py": "36ce469c21f3347221ff147bea2baa2307b4e4d381093a1dd2a11259ea41c8f5",
     "model/completion/independent_program_review.py": "ec4e30b6e7c858538fa391db84a40a770f829c54d987dd2b147d22fdd40153ac",
     "model/completion/test_acceptance_audit.py": "eefeb82b3db0bf89f4e1d049ad5aa30b0461c51eef497d22d5c8842a05a432c8",
-    "model/completion/test_finite_attachment_map.py": "fe1a6b1c6790535dd850bf9d2d11530b743281cda0bacf17cde9c79f4ebedb10",
+    "model/completion/test_finite_attachment_map.py": "f42294a1e80a2ebe6cd92cf53d76b6f2b9c7801a11ab017f1f8b1fb2064ab4f9",
     "model/native_localization/results.json": "eba1771dce527ac4d5aa3bb1cc0a3c6cf5ab89ea2946ae62d43e5463bed8732f",
     "model/native_program/results.json": "89fcad6b42291b1e657456759c765801c7687e74ccdf107587efacc3f23dcf3c"
   },
@@ -112,5 +112,23 @@
         "verdict": "PASS"
       }
     ]
-  }
+  },
+  "review_refreshes": [
+    {
+      "date": "2026-10-31",
+      "scope": "Independent review of complete-field modular, energy/chemical-potential, loop response, adaptive records and parameter-family exclusion; current map has 27 attachments and 22 finite realizations. Canonical physical premises and accepted integrated gates retain their previous status.",
+      "canonical_premise_rows_unchanged": 84,
+      "observation_targets_and_statuses_unchanged": 71,
+      "substantive_class_contract_unchanged": true,
+      "prior_exposure_retained": true,
+      "independent_checks": [
+        "Full density logarithm and wrong-sign source control",
+        "Independent Jordan-Wigner matrices, energy/number currents and charged-probe accounting",
+        "Gauge redistribution and finite-difference flux curvature",
+        "All-input adaptive records and injected source leakage",
+        "Symbolic all-sector polynomials including U=0 and changed-mu controls"
+      ],
+      "package_tests_passed": 112
+    }
+  ]
 }

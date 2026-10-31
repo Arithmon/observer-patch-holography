@@ -843,7 +843,7 @@
         "OPH-MODEL-SCALAR-RESPONSE-EXECUTION"
       ],
       "owner_issues": [],
-      "where": "model/observer/ specifies a two-event tape, uniform binary preparation, supplied forecast, record-only seam controller and halt. Its capacity adapter declares exact terminal reread and reached-prefix encoding. model/observer/p_response/ additionally specifies charge Q_v=g(P)N_v, a prepared path qubit, calibrated external exposure and a bit-only actuator while consuming the declared P coupling map. model/local_tick/ separately supplies the N4 tracial preparation, uniform schedule, incident detector and bare occupation reads. These are implemented finite designs with completed scoped checks. Their validity does not require proving that self-consistency uniquely selects the design. Physical field, clock, hardware and whole-universe attachments keep their separate premises. model/observer/scalar_response/ supplies the scalar Hamiltonian and original vacuum, signed native-current preparation, binary Weyl branch instrument, fixed model-time window and bit-only native continuation. Its inherited golden refinement compares this same designed detector; the Hamiltonian is not selected by integer averaging. model/SOURCE_SELECTION.md organizes the target into carrier architecture, observer interface and implementation, and complete repair rule. The coherent native continuation and source-executed record-phase tests leave these obligations conditional: structural covariance does not select the continuation, committed histories hide scalar branch phases, and a declared pre-commitment X read exposes 3/4 versus 1/4 for source implementations of the same committed C/E instrument. The record algebra, coherent access and readout remain interface choices; the complementary label is not a simultaneous native current. These tests add no forced selection or new compression menu.",
+      "where": "model/observer/ specifies a two-event tape, uniform binary preparation, supplied forecast, record-only seam controller and halt. Its capacity adapter declares exact terminal reread and reached-prefix encoding. model/observer/p_response/ additionally specifies charge Q_v=g(P)N_v, a prepared path qubit, calibrated external exposure and a bit-only actuator while consuming the declared P coupling map. model/local_tick/ separately supplies the N4 tracial preparation, uniform schedule, incident detector and bare occupation reads. These are implemented finite designs with completed scoped checks. Their validity does not require proving that self-consistency uniquely selects the design. Physical field, clock, hardware and whole-universe attachments keep their separate premises. model/observer/scalar_response/ supplies the scalar Hamiltonian and original vacuum, signed native-current preparation, binary Weyl branch instrument, fixed model-time window and bit-only native continuation. Its inherited golden refinement compares this same designed detector; the Hamiltonian is not selected by integer averaging. model/SOURCE_SELECTION.md organizes the target into carrier architecture, observer interface and implementation, and complete repair rule. The coherent native continuation and source-executed record-phase tests leave these obligations conditional: structural covariance does not select the continuation, committed histories hide scalar branch phases, and a declared pre-commitment X read exposes 3/4 versus 1/4 for source implementations of the same committed C/E instrument. The record algebra, coherent access and readout remain interface choices; the complementary label is not a simultaneous native current. These tests add no forced selection or new compression menu. The full-field modular and prepared-energy instances use the declared Weyl/contact action, faithful thermal reference, initialized pointers and explicit source services. The adaptive-record construction accepts arbitrary supplied field/reference inputs under the same action and source services. Their loop-flux calculation additionally supplies Peierls coupling and an isolated finite-ring ground. These finite interface closures do not select the action or a physical dictionary. The centered repulsive dimer family has only two same-charge doublets with gap ratio at most three, excluding the three-lepton linear dictionary for every repulsive coupling.",
       "menu": {
         "size": null,
         "alternatives": "No finite enumeration of apparatus, memory, exposure or continuation designs is claimed.",
@@ -858,7 +858,9 @@
         "model/local_tick/results.json",
         "model/observer/scalar_response/results.json",
         "model/observer/results/coherent_continuation.json",
-        "model/observer/results/source_selection.json"
+        "model/observer/results/source_selection.json",
+        "model/modular_flow/results.json",
+        "model/flux_response/results.json"
       ],
       "lean": [],
       "negative_controls": [
@@ -869,7 +871,9 @@
         "The scalar adapter retains zero-preparation, disconnected-bit and sign-reversal controls for the native feedback statistic; preserving a configuration marginal alone does not select its supplied scalar action.",
         "Two native coherent continuations share the first event and proper-carrier covariance yet differ under the same complete Ramsey read.",
         "An all-moving-arc sign preserves proper covariance and committed CP branches but changes the coherent spectral trace.",
-        "Committing the native record before the source-executed complementary read makes both phase variants predict 1/2 instead of their coherent 3/4 and 1/4."
+        "Committing the native record before the source-executed complementary read makes both phase variants predict 1/2 instead of their coherent 3/4 and 1/4.",
+        "model/dimer_family/family.py",
+        "model/field_protocols/test_protocol.py"
       ],
       "paper_anchors": []
     }

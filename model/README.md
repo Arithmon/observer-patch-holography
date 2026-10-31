@@ -7,6 +7,16 @@ evidence needed to accept or stop each stage. The packages below are retained
 components and controls; they do not constitute separate particle definitions
 or a completed physical realization.
 
+The complete finite field has [modular source histories](modular_flow/README.md),
+[all-sector energy and chemical-potential accounting](full_fock_energy/README.md),
+and [adaptive observations with every output retained](field_protocols/README.md).
+The [periodic loop response](flux_response/README.md) tests the same local
+action on a separate finite ring. An [exact parameter-family test](dimer_family/README.md)
+excludes the centered repulsive two-site linear mass dictionary: its two
+charge-one doublets cannot supply three lepton generations. These results
+retain the supplied action, reference, source services and physical matching
+obligations.
+
 The [first bounded completion campaign](completion/README.md) executes a
 continuing C/E observer with explicit memory export and a delayed-mixture
 control. For the repair-only endpoints, an exact stationary source/current-sign
