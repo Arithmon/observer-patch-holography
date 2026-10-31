@@ -87,6 +87,9 @@ def report():
     # The fixed contract is a decision boundary, not a mutable report label.
     contract = json.loads(Path(__file__).with_name('contract.json').read_text())
     if (contract['regions'] != [list(p) for p in a.REGIONS]
+            or contract['baseline_upstream'] != '1f14865fe560f5788a990a1b25884d6f91d12858'
+            or len(contract['validation_upstream']) != 40
+            or any(c not in '0123456789abcdef' for c in contract['validation_upstream'])
             or F(contract['fixed_operator_error_cap']) != a.OPERATOR_CAP
             or contract['common_lift_gauge_port'] != a.BASE_PORT
             or contract['CP02_accepted'] is not False):
@@ -95,6 +98,7 @@ def report():
     total_pulses = sum(x['resources']['native_pulses'] for x in results)
     return {'schema': 'oph.regional_clock.v1', 'task': 'OPH–ARITHMON–REGIONAL-CLOCK-IMPLEMENTATION-0',
             'baseline_upstream': '1f14865fe560f5788a990a1b25884d6f91d12858',
+            'validation_upstream': contract['validation_upstream'],
             'status': 'SOURCE_BOUND_REGIONAL_CLOCK_IMPLEMENTED',
             'scope': 'approximate complete-channel implementation using the accepted supplied services',
             'reference': 'learned conditional product on H66; stationary true product is a separate comparator',

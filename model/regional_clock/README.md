@@ -16,6 +16,16 @@ number-preserving algebra is commutative with trivial modular action, so two
 ports is minimal. The exhibited overlap itself has trivial action; this is
 not evidence of a nontrivial overlap frequency or a spacetime clock net.
 
+The historical construction base above is retained. The current integration
+and validation base is upstream main at
+`4d485074bc6a6e80f722dc9744634166dea592b7`, merged into the agent branch.
+Both commits are recorded separately in the contract and generated receipt.
+The combined completion workflow preserves the regional tests/replay and
+all upstream charged-dynamics and complete-field service checks. Upstream's
+[complete-field modular histories](../modular_flow/README.md) use the supplied
+interacting Gibbs reference; they do not replace this regional product-reference
+contract or discharge its physical calibration obligations.
+
 ## Carrier, algebras and references
 
 H66 has basis `|x>`, `x in {0,1}^12`, `sum x=2`. For a region U,

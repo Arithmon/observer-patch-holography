@@ -3,6 +3,7 @@
   "task": "OPH–ARITHMON–REGIONAL-CLOCK-IMPLEMENTATION-0",
   "owner_interface": "CP-02 / #1138",
   "baseline_upstream": "1f14865fe560f5788a990a1b25884d6f91d12858",
+  "validation_upstream": "4d485074bc6a6e80f722dc9744634166dea592b7",
   "carrier": "H66 binary occupation of twelve ports, fixed global number two",
   "law": "record_clock canonical endpoint weights (25,25,8,...,8), equal tagged C/E mixture, uniform seams; all raw slots retained",
   "regions": [[1, 7], [1, 2]],
