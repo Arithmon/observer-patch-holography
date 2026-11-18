@@ -17,6 +17,14 @@ CCF-LT-2 model and its evidence are unchanged. The observers copy orthogonal
 bit records; their copies do not clone arbitrary quantum states. Source and
 reference coherences within a public pointer outcome are retained.
 
+## Independent reconstruction
+
+A [separate reconstruction](INDEPENDENT.md) compares the native rule and all
+five complete program prefixes over every source basis word. Sparse public
+isometry columns preserve arbitrary untouched references and private archive
+coherence, with unfinished outcomes retained. The checks concern this finite
+construction and supply no physical clock calibration or OpenWave validation.
+
 ## Offline replay
 
 With `model/requirements.txt` installed, run from the repository root:

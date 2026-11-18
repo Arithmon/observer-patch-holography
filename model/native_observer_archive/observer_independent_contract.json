@@ -1,0 +1,57 @@
+{
+  "schema": "observer-independent-contract.v1",
+  "upstream_revision": "374b2390801842d38de9b9c326e79a8ab29a6be5",
+  "reference_revision": "374b2390801842d38de9b9c326e79a8ab29a6be5",
+  "audited_sha256": {
+    "model/native_memory_clock/PROOF.md": "2270cc9d474978c21ecc5abcf8256794e09caed5c5685c7bf81cfac1e444c977",
+    "model/native_memory_clock/__init__.py": "e46530638262c7185e3fc1e5870fe2e8170d39b72697572368d44cc8cb7a8940",
+    "model/native_memory_clock/freeze.json": "b8508339b54f72b68f04fd0dd28463cd0bcca23ffd8f6c4cde978d02abab2d4c",
+    "model/native_memory_clock/native.py": "cb4b988ca456a6b294f960aa52923064b38190803fa2c8e664353a4750cf2352",
+    "model/native_memory_clock/provenance.json": "e3d0489375cb06435a1a88465326c14c717753d25205052398fc9029f92baae4",
+    "model/native_observer_archive/PROOF.md": "ec5b91b729aa8fe66c09aac24ad6d3358e95736e8dd2a35216dc19cd890e979c",
+    "model/native_observer_archive/__init__.py": "d1cbd5965b544dca1215edf3f714525daaec620bba2c18014a14d8543b985b88",
+    "model/native_observer_archive/experiment.py": "21d0622c6918a6e4a4494af517c59d7a3346fe8aaa567f9c13f29d0c723f4ae5",
+    "model/native_observer_archive/freeze.json": "1ca8a064502eff524817b55e49ff37f253ae2195ae236c099f072c6a1bc03493",
+    "model/native_observer_archive/oracle.py": "3f1c907cd5cf0dc3609db800449f84d4e11909f83a1d15cbe2c8f8a15b179400",
+    "model/native_observer_archive/packet.py": "b2cd251f53d2318229b80f142ee2ac030cd4d3df3446d886c6d07c8da641adc5",
+    "model/native_observer_archive/program.py": "628fc8a8414224e01bbc1a1e72123bc0045e2fb5ef804385ceee7892a4430d69",
+    "model/native_observer_archive/protocol.json": "578554c74f5970c00a99e1c103ca42fa5028bc0af286589aa92f68fb8562b231",
+    "model/native_observer_archive/provenance.json": "4813748c6d9e5454d848d3ef9d21bf999d722a7492084d2ff2c186b045dd58da"
+  },
+  "oracle_inputs": [
+    "observer_independent_contract.json",
+    "protocol.json"
+  ],
+  "dependencies": "Python standard library only; tetrahedral incidence and gate instructions derived from the written proofs. No production imports, receipts or published result arrays. Separate adapter imports production after standalone execution.",
+  "exposure": "Proof, protocol, source85 and thresholds are public and read. Separate implementation, not blind, external acceptance or independent physical measurement.",
+  "domains": {
+    "prepared": "4096 sources x 12 addresses x 2 backgrounds x 5 variants x all five prefixes; complete register columns; exact rational squared weight 1/12",
+    "native_dirty": "4096 sources x 12 addresses x 2 memories x 2 backgrounds x native/uphill",
+    "program_dirty": "256 deterministic states per variant/background; every gate, both inverse orders; not full carrier enumeration",
+    "quantum": "all 4096 input columns and public pointer partitions; injectivity and 12 unit entries per column establish completeness, arbitrary untouched-reference equality after producer comparison",
+    "diagnostic_witness": "complex source/reference coefficients (0,0):1,(0,1):i,(3,0):1,(3,1):1, normalized by 2; exploratory declared choice before calculation",
+    "clock": "exact order64 binomial moments, monotonic one-sided bound and finite-boundary tail; small rail N48 offset8 order4 time24 for composition only"
+  },
+  "controls": [
+    "uphill",
+    "no_communication",
+    "no_feedback",
+    "no_publish"
+  ],
+  "mutations": [
+    "private archive dephasing",
+    "unfinished outcome omission",
+    "swapped adjacent source-bit convention",
+    "wrong event inverse",
+    "dirty memory overwrite"
+  ],
+  "tolerances": {
+    "exact": "integer records and Fraction equality",
+    "numerical": 2e-10,
+    "readiness_failure": "1/1000",
+    "feedback_completed_source_tv_minimum": "1/4",
+    "uphill_completed_source_tv_minimum": "1/2"
+  },
+  "stopping": "One exhaustive sparse pass per declared configuration, no dense Choi/full carrier, no full-size literal propagation or extended sweep. Preserve unresolved checks as INCONCLUSIVE.",
+  "physical_scope": "Finite declared construction only; no physical time, energy, particle, continuum, permanent archive, CCF-LT-2 or OpenWave physical-row validation."
+}

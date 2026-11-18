@@ -1,0 +1,932 @@
+{
+  "schema": "observer-independent-local-evidence.v1",
+  "scientific_verdict": "VERIFIED_WITHIN_SCOPE",
+  "integration_verdict": "HOLD",
+  "audited_revision": "374b2390801842d38de9b9c326e79a8ab29a6be5",
+  "upstream_after_audit": "972d81b9b6068938e52457b59497766499222b5d",
+  "environment": {
+    "python": "3.14.4",
+    "numpy": "2.4.4",
+    "scipy": "1.17.1",
+    "pinned_producer_environment_reproduced": false,
+    "thread_limits": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1"
+    },
+    "installations_performed": false
+  },
+  "executions": {
+    "independent": {
+      "stderr_and_timing": "\tCommand being timed: \"python3 -B model/native_observer_archive/independent.py\"\n\tUser time (seconds): 56.15\n\tSystem time (seconds): 0.18\n\tPercent of CPU this job got: 99%\n\tElapsed (wall clock) time (h:mm:ss or m:ss): 0:56.35\n\tAverage shared text size (kbytes): 0\n\tAverage unshared data size (kbytes): 0\n\tAverage stack size (kbytes): 0\n\tAverage total size (kbytes): 0\n\tMaximum resident set size (kbytes): 44804\n\tAverage resident set size (kbytes): 0\n\tMajor (requiring I/O) page faults: 0\n\tMinor (reclaiming a frame) page faults: 46364\n\tVoluntary context switches: 2\n\tInvoluntary context switches: 777\n\tSwaps: 0\n\tFile system inputs: 88\n\tFile system outputs: 0\n\tSocket messages sent: 0\n\tSocket messages received: 0\n\tSignals delivered: 0\n\tPage size (bytes): 4096\n\tExit status: 0\n"
+    },
+    "comparison": {
+      "stderr_and_timing": "\tCommand being timed: \"python3 -B -m model.native_observer_archive.compare_independent\"\n\tUser time (seconds): 58.38\n\tSystem time (seconds): 0.06\n\tPercent of CPU this job got: 99%\n\tElapsed (wall clock) time (h:mm:ss or m:ss): 0:58.61\n\tAverage shared text size (kbytes): 0\n\tAverage unshared data size (kbytes): 0\n\tAverage stack size (kbytes): 0\n\tAverage total size (kbytes): 0\n\tMaximum resident set size (kbytes): 73048\n\tAverage resident set size (kbytes): 0\n\tMajor (requiring I/O) page faults: 172\n\tMinor (reclaiming a frame) page faults: 11712\n\tVoluntary context switches: 540\n\tInvoluntary context switches: 578\n\tSwaps: 0\n\tFile system inputs: 52784\n\tFile system outputs: 0\n\tSocket messages sent: 0\n\tSocket messages received: 0\n\tSignals delivered: 0\n\tPage size (bytes): 4096\n\tExit status: 0\n"
+    },
+    "existing_replay": {
+      "stdout": "{\"verified\": true, \"extended\": false, \"seconds\": 0.8446474740012491, \"source_freeze\": \"1ca8a064502eff524817b55e49ff37f253ae2195ae236c099f072c6a1bc03493\", \"physical_rows_validated\": []}\n",
+      "stderr_and_timing": "\tCommand being timed: \"python3 -B -O -m model.native_observer_archive.experiment\"\n\tUser time (seconds): 2.10\n\tSystem time (seconds): 0.06\n\tPercent of CPU this job got: 95%\n\tElapsed (wall clock) time (h:mm:ss or m:ss): 0:02.27\n\tAverage shared text size (kbytes): 0\n\tAverage unshared data size (kbytes): 0\n\tAverage stack size (kbytes): 0\n\tAverage total size (kbytes): 0\n\tMaximum resident set size (kbytes): 77352\n\tAverage resident set size (kbytes): 0\n\tMajor (requiring I/O) page faults: 3\n\tMinor (reclaiming a frame) page faults: 14478\n\tVoluntary context switches: 435\n\tInvoluntary context switches: 23\n\tSwaps: 0\n\tFile system inputs: 18888\n\tFile system outputs: 0\n\tSocket messages sent: 0\n\tSocket messages received: 0\n\tSignals delivered: 0\n\tPage size (bytes): 4096\n\tExit status: 0\n"
+    },
+    "observer_normal": {
+      "stdout": "",
+      "stderr_and_timing": "test_complete_kraus_maps_keep_reference_and_incomplete_observer_branches (model.native_observer_archive.test_channel.ChannelTests.test_complete_kraus_maps_keep_reference_and_incomplete_observer_branches) ... ok\ntest_every_prefix_matches_independent_all_register_semantics (model.native_observer_archive.test_channel.ChannelTests.test_every_prefix_matches_independent_all_register_semantics) ... ok\ntest_feedback_follows_received_pointer_under_source_counterfactuals (model.native_observer_archive.test_channel.ChannelTests.test_feedback_follows_received_pointer_under_source_counterfactuals) ... ok\ntest_pointer_only_instrument_preserves_coherence_between_private_histories (model.native_observer_archive.test_channel.ChannelTests.test_pointer_only_instrument_preserves_coherence_between_private_histories) ... ok\ntest_retained_orthogonal_copies_block_native_only_coherence_recovery (model.native_observer_archive.test_channel.ChannelTests.test_retained_orthogonal_copies_block_native_only_coherence_recovery) ... ok\ntest_selected_bit_feedback_and_same_apparatus_law_controls (model.native_observer_archive.test_channel.ChannelTests.test_selected_bit_feedback_and_same_apparatus_law_controls) ... ok\ntest_aggregate_l1_cannot_hide_in_per_scalar_tolerance (model.native_observer_archive.test_experiment.ExperimentTests.test_aggregate_l1_cannot_hide_in_per_scalar_tolerance) ... ok\ntest_discrete_missing_mode_branch_domain_and_scalar_mutations_fail (model.native_observer_archive.test_experiment.ExperimentTests.test_discrete_missing_mode_branch_domain_and_scalar_mutations_fail) ... ok\ntest_every_rational_bound_and_weight_is_compared_exactly (model.native_observer_archive.test_experiment.ExperimentTests.test_every_rational_bound_and_weight_is_compared_exactly) ... ok\ntest_freeze_requires_exact_members_and_rejects_each_source_change (model.native_observer_archive.test_experiment.ExperimentTests.test_freeze_requires_exact_members_and_rejects_each_source_change) ... ok\ntest_invalid_regenerated_science_cannot_be_recorded (model.native_observer_archive.test_experiment.ExperimentTests.test_invalid_regenerated_science_cannot_be_recorded) ... ok\ntest_optimized_cli_preserves_failed_evidence_and_checks_binding_first (model.native_observer_archive.test_experiment.ExperimentTests.test_optimized_cli_preserves_failed_evidence_and_checks_binding_first) ... ok\ntest_optimized_cli_replays_complete_fixture_and_rejects_scientific_corruption (model.native_observer_archive.test_experiment.ExperimentTests.test_optimized_cli_replays_complete_fixture_and_rejects_scientific_corruption) ... ok\ntest_optimized_cli_scopes_package_initializer_changes (model.native_observer_archive.test_experiment.ExperimentTests.test_optimized_cli_scopes_package_initializer_changes) ... ok\ntest_prose_tests_and_unscoped_custody_changes_do_not_invalidate_freeze (model.native_observer_archive.test_experiment.ExperimentTests.test_prose_tests_and_unscoped_custody_changes_do_not_invalidate_freeze) ... ok\ntest_protocol_exhausts_declared_cases_modes_and_all_branches (model.native_observer_archive.test_experiment.ExperimentTests.test_protocol_exhausts_declared_cases_modes_and_all_branches) ... ok\ntest_public_laws_retain_structural_zeros_and_record_factorization (model.native_observer_archive.test_experiment.ExperimentTests.test_public_laws_retain_structural_zeros_and_record_factorization) ... ok\ntest_reconstruct_complete_factored_law_and_public_marginals (model.native_observer_archive.test_experiment.ExperimentTests.test_reconstruct_complete_factored_law_and_public_marginals) ... ok\ntest_scientific_scalar_probability_and_error_domains (model.native_observer_archive.test_experiment.ExperimentTests.test_scientific_scalar_probability_and_error_domains) ... ok\ntest_stored_gates_are_independent_of_replay_tolerance (model.native_observer_archive.test_experiment.ExperimentTests.test_stored_gates_are_independent_of_replay_tolerance) ... ok\ntest_coherence_and_retained_failure_weights (model.native_observer_archive.test_independent.IndependentTests.test_coherence_and_retained_failure_weights) ... ok\ntest_controls_reach_scientific_predicates (model.native_observer_archive.test_independent.IndependentTests.test_controls_reach_scientific_predicates) ... ok\ntest_full_domain_columns_and_public_partitions (model.native_observer_archive.test_independent.IndependentTests.test_full_domain_columns_and_public_partitions) ... ok\ntest_input_admission_survives_optimization (model.native_observer_archive.test_independent.IndependentTests.test_input_admission_survives_optimization) ... ok\ntest_direction_and_late_return_are_separate_exploratory_controls (model.native_observer_archive.test_packet.PacketTests.test_direction_and_late_return_are_separate_exploratory_controls) ... ok\ntest_dirty_joint_hermiticity_and_actual_local_support (model.native_observer_archive.test_packet.PacketTests.test_dirty_joint_hermiticity_and_actual_local_support) ... ok\ntest_dst_evolution_against_literal_open_rail_and_complete_spectrum (model.native_observer_archive.test_packet.PacketTests.test_dst_evolution_against_literal_open_rail_and_complete_spectrum) ... ok\ntest_entire_interval_certificate_uses_exact_moments_and_boundary_tail (model.native_observer_archive.test_packet.PacketTests.test_entire_interval_certificate_uses_exact_moments_and_boundary_tail) ... ok\ntest_integer_binomial_moments_and_zero_symmetric_covariance (model.native_observer_archive.test_packet.PacketTests.test_integer_binomial_moments_and_zero_symmetric_covariance) ... ok\ntest_literal_joint_columns_match_gauge_for_complex_sources_and_controls (model.native_observer_archive.test_packet.PacketTests.test_literal_joint_columns_match_gauge_for_complex_sources_and_controls) ... ok\ntest_packet_bound_covers_phase_error_and_support_leakage (model.native_observer_archive.test_packet.PacketTests.test_packet_bound_covers_phase_error_and_support_leakage) ... ok\ntest_packet_representation_bound_covers_actual_binary_amplitudes (model.native_observer_archive.test_packet.PacketTests.test_packet_representation_bound_covers_actual_binary_amplitudes) ... ok\ntest_pointer_dephasing_energy_for_preparation_and_complex_clock_control (model.native_observer_archive.test_packet.PacketTests.test_pointer_dephasing_energy_for_preparation_and_complex_clock_control) ... ok\ntest_reducing_span_rejects_complement_and_missing_reverse_column (model.native_observer_archive.test_packet.PacketTests.test_reducing_span_rejects_complement_and_missing_reverse_column) ... ok\ntest_actual_received_memory_controls_source_with_fixed_source_input (model.native_observer_archive.test_program.ProgramTests.test_actual_received_memory_controls_source_with_fixed_source_input) ... ok\ntest_dirty_inverses_columns_and_local_support_all_controls (model.native_observer_archive.test_program.ProgramTests.test_dirty_inverses_columns_and_local_support_all_controls) ... ok\ntest_first_event_matches_primary_rule_on_every_source_and_address (model.native_observer_archive.test_program.ProgramTests.test_first_event_matches_primary_rule_on_every_source_and_address) ... ok\ntest_fresh_records_are_actual_register_values_and_controls_retain_invalid (model.native_observer_archive.test_program.ProgramTests.test_fresh_records_are_actual_register_values_and_controls_retain_invalid) ... ok\ntest_invalid_inputs_fail_under_optimized_python (model.native_observer_archive.test_program.ProgramTests.test_invalid_inputs_fail_under_optimized_python) ... ok\ntest_pointer_writer_and_sender_complete_small_domain (model.native_observer_archive.test_program.ProgramTests.test_pointer_writer_and_sender_complete_small_domain) ... ok\ntest_receiver_feedback_complete_pointer_address_domain (model.native_observer_archive.test_program.ProgramTests.test_receiver_feedback_complete_pointer_address_domain) ... ok\n\n----------------------------------------------------------------------\nRan 41 tests in 179.238s\n\nOK\n\tCommand being timed: \"python3 -B -m unittest discover -s model/native_observer_archive -t . -v\"\n\tUser time (seconds): 178.13\n\tSystem time (seconds): 1.42\n\tPercent of CPU this job got: 99%\n\tElapsed (wall clock) time (h:mm:ss or m:ss): 2:59.66\n\tAverage shared text size (kbytes): 0\n\tAverage unshared data size (kbytes): 0\n\tAverage stack size (kbytes): 0\n\tAverage total size (kbytes): 0\n\tMaximum resident set size (kbytes): 89308\n\tAverage resident set size (kbytes): 0\n\tMajor (requiring I/O) page faults: 15\n\tMinor (reclaiming a frame) page faults: 393803\n\tVoluntary context switches: 193\n\tInvoluntary context switches: 2209\n\tSwaps: 0\n\tFile system inputs: 5728\n\tFile system outputs: 0\n\tSocket messages sent: 0\n\tSocket messages received: 0\n\tSignals delivered: 0\n\tPage size (bytes): 4096\n\tExit status: 0\n"
+    },
+    "observer_optimized": {
+      "stdout": "",
+      "stderr_and_timing": "test_complete_kraus_maps_keep_reference_and_incomplete_observer_branches (model.native_observer_archive.test_channel.ChannelTests.test_complete_kraus_maps_keep_reference_and_incomplete_observer_branches) ... ok\ntest_every_prefix_matches_independent_all_register_semantics (model.native_observer_archive.test_channel.ChannelTests.test_every_prefix_matches_independent_all_register_semantics) ... ok\ntest_feedback_follows_received_pointer_under_source_counterfactuals (model.native_observer_archive.test_channel.ChannelTests.test_feedback_follows_received_pointer_under_source_counterfactuals) ... ok\ntest_pointer_only_instrument_preserves_coherence_between_private_histories (model.native_observer_archive.test_channel.ChannelTests.test_pointer_only_instrument_preserves_coherence_between_private_histories) ... ok\ntest_retained_orthogonal_copies_block_native_only_coherence_recovery (model.native_observer_archive.test_channel.ChannelTests.test_retained_orthogonal_copies_block_native_only_coherence_recovery) ... ok\ntest_selected_bit_feedback_and_same_apparatus_law_controls (model.native_observer_archive.test_channel.ChannelTests.test_selected_bit_feedback_and_same_apparatus_law_controls) ... ok\ntest_aggregate_l1_cannot_hide_in_per_scalar_tolerance (model.native_observer_archive.test_experiment.ExperimentTests.test_aggregate_l1_cannot_hide_in_per_scalar_tolerance) ... ok\ntest_discrete_missing_mode_branch_domain_and_scalar_mutations_fail (model.native_observer_archive.test_experiment.ExperimentTests.test_discrete_missing_mode_branch_domain_and_scalar_mutations_fail) ... ok\ntest_every_rational_bound_and_weight_is_compared_exactly (model.native_observer_archive.test_experiment.ExperimentTests.test_every_rational_bound_and_weight_is_compared_exactly) ... ok\ntest_freeze_requires_exact_members_and_rejects_each_source_change (model.native_observer_archive.test_experiment.ExperimentTests.test_freeze_requires_exact_members_and_rejects_each_source_change) ... ok\ntest_invalid_regenerated_science_cannot_be_recorded (model.native_observer_archive.test_experiment.ExperimentTests.test_invalid_regenerated_science_cannot_be_recorded) ... ok\ntest_optimized_cli_preserves_failed_evidence_and_checks_binding_first (model.native_observer_archive.test_experiment.ExperimentTests.test_optimized_cli_preserves_failed_evidence_and_checks_binding_first) ... ok\ntest_optimized_cli_replays_complete_fixture_and_rejects_scientific_corruption (model.native_observer_archive.test_experiment.ExperimentTests.test_optimized_cli_replays_complete_fixture_and_rejects_scientific_corruption) ... ok\ntest_optimized_cli_scopes_package_initializer_changes (model.native_observer_archive.test_experiment.ExperimentTests.test_optimized_cli_scopes_package_initializer_changes) ... ok\ntest_prose_tests_and_unscoped_custody_changes_do_not_invalidate_freeze (model.native_observer_archive.test_experiment.ExperimentTests.test_prose_tests_and_unscoped_custody_changes_do_not_invalidate_freeze) ... ok\ntest_protocol_exhausts_declared_cases_modes_and_all_branches (model.native_observer_archive.test_experiment.ExperimentTests.test_protocol_exhausts_declared_cases_modes_and_all_branches) ... ok\ntest_public_laws_retain_structural_zeros_and_record_factorization (model.native_observer_archive.test_experiment.ExperimentTests.test_public_laws_retain_structural_zeros_and_record_factorization) ... ok\ntest_reconstruct_complete_factored_law_and_public_marginals (model.native_observer_archive.test_experiment.ExperimentTests.test_reconstruct_complete_factored_law_and_public_marginals) ... ok\ntest_scientific_scalar_probability_and_error_domains (model.native_observer_archive.test_experiment.ExperimentTests.test_scientific_scalar_probability_and_error_domains) ... ok\ntest_stored_gates_are_independent_of_replay_tolerance (model.native_observer_archive.test_experiment.ExperimentTests.test_stored_gates_are_independent_of_replay_tolerance) ... ok\ntest_coherence_and_retained_failure_weights (model.native_observer_archive.test_independent.IndependentTests.test_coherence_and_retained_failure_weights) ... ok\ntest_controls_reach_scientific_predicates (model.native_observer_archive.test_independent.IndependentTests.test_controls_reach_scientific_predicates) ... ok\ntest_full_domain_columns_and_public_partitions (model.native_observer_archive.test_independent.IndependentTests.test_full_domain_columns_and_public_partitions) ... ok\ntest_input_admission_survives_optimization (model.native_observer_archive.test_independent.IndependentTests.test_input_admission_survives_optimization) ... ok\ntest_direction_and_late_return_are_separate_exploratory_controls (model.native_observer_archive.test_packet.PacketTests.test_direction_and_late_return_are_separate_exploratory_controls) ... ok\ntest_dirty_joint_hermiticity_and_actual_local_support (model.native_observer_archive.test_packet.PacketTests.test_dirty_joint_hermiticity_and_actual_local_support) ... ok\ntest_dst_evolution_against_literal_open_rail_and_complete_spectrum (model.native_observer_archive.test_packet.PacketTests.test_dst_evolution_against_literal_open_rail_and_complete_spectrum) ... ok\ntest_entire_interval_certificate_uses_exact_moments_and_boundary_tail (model.native_observer_archive.test_packet.PacketTests.test_entire_interval_certificate_uses_exact_moments_and_boundary_tail) ... ok\ntest_integer_binomial_moments_and_zero_symmetric_covariance (model.native_observer_archive.test_packet.PacketTests.test_integer_binomial_moments_and_zero_symmetric_covariance) ... ok\ntest_literal_joint_columns_match_gauge_for_complex_sources_and_controls (model.native_observer_archive.test_packet.PacketTests.test_literal_joint_columns_match_gauge_for_complex_sources_and_controls) ... ok\ntest_packet_bound_covers_phase_error_and_support_leakage (model.native_observer_archive.test_packet.PacketTests.test_packet_bound_covers_phase_error_and_support_leakage) ... ok\ntest_packet_representation_bound_covers_actual_binary_amplitudes (model.native_observer_archive.test_packet.PacketTests.test_packet_representation_bound_covers_actual_binary_amplitudes) ... ok\ntest_pointer_dephasing_energy_for_preparation_and_complex_clock_control (model.native_observer_archive.test_packet.PacketTests.test_pointer_dephasing_energy_for_preparation_and_complex_clock_control) ... ok\ntest_reducing_span_rejects_complement_and_missing_reverse_column (model.native_observer_archive.test_packet.PacketTests.test_reducing_span_rejects_complement_and_missing_reverse_column) ... ok\ntest_actual_received_memory_controls_source_with_fixed_source_input (model.native_observer_archive.test_program.ProgramTests.test_actual_received_memory_controls_source_with_fixed_source_input) ... ok\ntest_dirty_inverses_columns_and_local_support_all_controls (model.native_observer_archive.test_program.ProgramTests.test_dirty_inverses_columns_and_local_support_all_controls) ... ok\ntest_first_event_matches_primary_rule_on_every_source_and_address (model.native_observer_archive.test_program.ProgramTests.test_first_event_matches_primary_rule_on_every_source_and_address) ... ok\ntest_fresh_records_are_actual_register_values_and_controls_retain_invalid (model.native_observer_archive.test_program.ProgramTests.test_fresh_records_are_actual_register_values_and_controls_retain_invalid) ... ok\ntest_invalid_inputs_fail_under_optimized_python (model.native_observer_archive.test_program.ProgramTests.test_invalid_inputs_fail_under_optimized_python) ... ok\ntest_pointer_writer_and_sender_complete_small_domain (model.native_observer_archive.test_program.ProgramTests.test_pointer_writer_and_sender_complete_small_domain) ... ok\ntest_receiver_feedback_complete_pointer_address_domain (model.native_observer_archive.test_program.ProgramTests.test_receiver_feedback_complete_pointer_address_domain) ... ok\n\n----------------------------------------------------------------------\nRan 41 tests in 181.357s\n\nOK\n\tCommand being timed: \"python3 -B -O -m unittest discover -s model/native_observer_archive -t . -v\"\n\tUser time (seconds): 181.27\n\tSystem time (seconds): 1.50\n\tPercent of CPU this job got: 99%\n\tElapsed (wall clock) time (h:mm:ss or m:ss): 3:02.84\n\tAverage shared text size (kbytes): 0\n\tAverage unshared data size (kbytes): 0\n\tAverage stack size (kbytes): 0\n\tAverage total size (kbytes): 0\n\tMaximum resident set size (kbytes): 89452\n\tAverage resident set size (kbytes): 0\n\tMajor (requiring I/O) page faults: 0\n\tMinor (reclaiming a frame) page faults: 393452\n\tVoluntary context switches: 138\n\tInvoluntary context switches: 2218\n\tSwaps: 0\n\tFile system inputs: 1216\n\tFile system outputs: 0\n\tSocket messages sent: 0\n\tSocket messages received: 0\n\tSignals delivered: 0\n\tPage size (bytes): 4096\n\tExit status: 0\n"
+    },
+    "custody_normal": {
+      "stdout": "",
+      "stderr_and_timing": "test_proof_digest_is_snapshot_metadata_and_code_is_bound (model.native_observer_archive.test_independent.PinScopeTests.test_proof_digest_is_snapshot_metadata_and_code_is_bound) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.003s\n\nOK\n"
+    },
+    "custody_optimized": {
+      "stdout": "",
+      "stderr_and_timing": "test_proof_digest_is_snapshot_metadata_and_code_is_bound (model.native_observer_archive.test_independent.PinScopeTests.test_proof_digest_is_snapshot_metadata_and_code_is_bound) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.003s\n\nOK\n"
+    },
+    "memory_normal": {
+      "stdout": "",
+      "stderr_and_timing": "test_dirty_columns_inverse_phase_hermiticity_and_patch_support (model.native_memory_clock.test_clock.ClockTests.test_dirty_columns_inverse_phase_hermiticity_and_patch_support) ... ok\ntest_disjoint_actual_data_gates_commute_including_phases (model.native_memory_clock.test_clock.ClockTests.test_disjoint_actual_data_gates_commute_including_phases) ... ok\ntest_full_carrier_gauge_on_dirty_orbits_and_spectral_multiplicity (model.native_memory_clock.test_clock.ClockTests.test_full_carrier_gauge_on_dirty_orbits_and_spectral_multiplicity) ... ok\ntest_inputs_fail_without_implicit_normalization (model.native_memory_clock.test_clock.ClockTests.test_inputs_fail_without_implicit_normalization) ... ok\ntest_interior_clock_measurement_retains_failed_return_outcomes (model.native_memory_clock.test_clock.ClockTests.test_interior_clock_measurement_retains_failed_return_outcomes) ... ok\ntest_literal_evolution_reference_and_full_native_density (model.native_memory_clock.test_clock.ClockTests.test_literal_evolution_reference_and_full_native_density) ... ok\ntest_optimized_python_real_scientific_guards_reject_mutations (model.native_memory_clock.test_clock.ClockTests.test_optimized_python_real_scientific_guards_reject_mutations) ... ok\ntest_phase_completion_preserves_basis_records_and_changes_interference (model.native_memory_clock.test_clock.ClockTests.test_phase_completion_preserves_basis_records_and_changes_interference) ... ok\ntest_uniform_clock_competing_profile_has_own_complete_spectrum (model.native_memory_clock.test_clock.ClockTests.test_uniform_clock_competing_profile_has_own_complete_spectrum) ... ok\ntest_actual_cli_rejects_overwrite_and_bad_freeze_under_optimization (model.native_memory_clock.test_experiment.ExperimentTests.test_actual_cli_rejects_overwrite_and_bad_freeze_under_optimization) ... ok\ntest_actual_cli_rejects_scientific_receipt_mutation_read_only (model.native_memory_clock.test_experiment.ExperimentTests.test_actual_cli_rejects_scientific_receipt_mutation_read_only) ... ok\ntest_actual_cli_rejects_understated_sampling_bound_under_optimization (model.native_memory_clock.test_experiment.ExperimentTests.test_actual_cli_rejects_understated_sampling_bound_under_optimization) ... ok\ntest_aggregate_probability_corruption_cannot_hide_in_scalar_tolerance (model.native_memory_clock.test_experiment.ExperimentTests.test_aggregate_probability_corruption_cannot_hide_in_scalar_tolerance) ... ok\ntest_binary_operator_budget_distinguishes_exact_uniform_profile (model.native_memory_clock.test_experiment.ExperimentTests.test_binary_operator_budget_distinguishes_exact_uniform_profile) ... ok\ntest_coherent_decoder_is_same_apparatus_and_needed_for_interference (model.native_memory_clock.test_experiment.ExperimentTests.test_coherent_decoder_is_same_apparatus_and_needed_for_interference) ... ok\ntest_dephasing_has_nonzero_work_for_a_coherent_clock_preparation (model.native_memory_clock.test_experiment.ExperimentTests.test_dephasing_has_nonzero_work_for_a_coherent_clock_preparation) ... ok\ntest_every_required_source_is_bound_and_byte_changes_fail (model.native_memory_clock.test_experiment.ExperimentTests.test_every_required_source_is_bound_and_byte_changes_fail) ... ok\ntest_exact_native_history_counter_retains_all_addresses_and_no_operations (model.native_memory_clock.test_experiment.ExperimentTests.test_exact_native_history_counter_retains_all_addresses_and_no_operations) ... ok\ntest_float_budget_replay_allows_legitimate_table_roundoff (model.native_memory_clock.test_experiment.ExperimentTests.test_float_budget_replay_allows_legitimate_table_roundoff) ... ok\ntest_prose_and_tests_are_exempt_in_current_and_retained_pin_maps (model.native_memory_clock.test_experiment.ExperimentTests.test_prose_and_tests_are_exempt_in_current_and_retained_pin_maps) ... ok\ntest_protocol_matches_executed_cases_and_sampling_apparatus (model.native_memory_clock.test_experiment.ExperimentTests.test_protocol_matches_executed_cases_and_sampling_apparatus) ... ok\ntest_recursive_comparison_rejects_types_fields_outcomes_and_shots (model.native_memory_clock.test_experiment.ExperimentTests.test_recursive_comparison_rejects_types_fields_outcomes_and_shots) ... ok\ntest_retained_sampling_bounds_are_checked_against_their_own_data (model.native_memory_clock.test_experiment.ExperimentTests.test_retained_sampling_bounds_are_checked_against_their_own_data) ... ok\ntest_sampler_bias_encloses_exact_finite_grid_distribution (model.native_memory_clock.test_experiment.ExperimentTests.test_sampler_bias_encloses_exact_finite_grid_distribution) ... ok\ntest_zero_shots_are_unsampled_and_do_not_report_zero_uncertainty (model.native_memory_clock.test_experiment.ExperimentTests.test_zero_shots_are_unsampled_and_do_not_report_zero_uncertainty) ... ok\ntest_controls_are_distinct_with_same_records (model.native_memory_clock.test_native.NativeTests.test_controls_are_distinct_with_same_records) ... ok\ntest_endpoint_star_support_exhaustive (model.native_memory_clock.test_native.NativeTests.test_endpoint_star_support_exhaustive) ... ok\ntest_explicit_information_loss_and_reuse_witnesses (model.native_memory_clock.test_native.NativeTests.test_explicit_information_loss_and_reuse_witnesses) ... ok\ntest_invalid_inputs_rejected_under_optimized_python (model.native_memory_clock.test_native.NativeTests.test_invalid_inputs_rejected_under_optimized_python) ... ok\ntest_primary_crossing_and_native_ledger_exhaustive (model.native_memory_clock.test_native.NativeTests.test_primary_crossing_and_native_ledger_exhaustive) ... ok\ntest_terminal_decoder_all_two_address_pairs_and_controls (model.native_memory_clock.test_native.NativeTests.test_terminal_decoder_all_two_address_pairs_and_controls) ... ok\ntest_terminal_decoder_rejects_impossible_or_malformed_histories (model.native_memory_clock.test_native.NativeTests.test_terminal_decoder_rejects_impossible_or_malformed_histories) ... ok\ntest_total_permutation_including_dirty_records_exhaustive (model.native_memory_clock.test_native.NativeTests.test_total_permutation_including_dirty_records_exhaustive) ... ok\n\n----------------------------------------------------------------------\nRan 33 tests in 40.553s\n\nOK\n\tCommand being timed: \"python3 -B -m unittest discover -s model/native_memory_clock -t . -v\"\n\tUser time (seconds): 40.31\n\tSystem time (seconds): 0.54\n\tPercent of CPU this job got: 99%\n\tElapsed (wall clock) time (h:mm:ss or m:ss): 0:40.88\n\tAverage shared text size (kbytes): 0\n\tAverage unshared data size (kbytes): 0\n\tAverage stack size (kbytes): 0\n\tAverage total size (kbytes): 0\n\tMaximum resident set size (kbytes): 99296\n\tAverage resident set size (kbytes): 0\n\tMajor (requiring I/O) page faults: 19\n\tMinor (reclaiming a frame) page faults: 150985\n\tVoluntary context switches: 67\n\tInvoluntary context switches: 381\n\tSwaps: 0\n\tFile system inputs: 2616\n\tFile system outputs: 0\n\tSocket messages sent: 0\n\tSocket messages received: 0\n\tSignals delivered: 0\n\tPage size (bytes): 4096\n\tExit status: 0\n"
+    },
+    "memory_optimized": {
+      "stdout": "",
+      "stderr_and_timing": "test_dirty_columns_inverse_phase_hermiticity_and_patch_support (model.native_memory_clock.test_clock.ClockTests.test_dirty_columns_inverse_phase_hermiticity_and_patch_support) ... ok\ntest_disjoint_actual_data_gates_commute_including_phases (model.native_memory_clock.test_clock.ClockTests.test_disjoint_actual_data_gates_commute_including_phases) ... ok\ntest_full_carrier_gauge_on_dirty_orbits_and_spectral_multiplicity (model.native_memory_clock.test_clock.ClockTests.test_full_carrier_gauge_on_dirty_orbits_and_spectral_multiplicity) ... ok\ntest_inputs_fail_without_implicit_normalization (model.native_memory_clock.test_clock.ClockTests.test_inputs_fail_without_implicit_normalization) ... ok\ntest_interior_clock_measurement_retains_failed_return_outcomes (model.native_memory_clock.test_clock.ClockTests.test_interior_clock_measurement_retains_failed_return_outcomes) ... ok\ntest_literal_evolution_reference_and_full_native_density (model.native_memory_clock.test_clock.ClockTests.test_literal_evolution_reference_and_full_native_density) ... ok\ntest_optimized_python_real_scientific_guards_reject_mutations (model.native_memory_clock.test_clock.ClockTests.test_optimized_python_real_scientific_guards_reject_mutations) ... ok\ntest_phase_completion_preserves_basis_records_and_changes_interference (model.native_memory_clock.test_clock.ClockTests.test_phase_completion_preserves_basis_records_and_changes_interference) ... ok\ntest_uniform_clock_competing_profile_has_own_complete_spectrum (model.native_memory_clock.test_clock.ClockTests.test_uniform_clock_competing_profile_has_own_complete_spectrum) ... ok\ntest_actual_cli_rejects_overwrite_and_bad_freeze_under_optimization (model.native_memory_clock.test_experiment.ExperimentTests.test_actual_cli_rejects_overwrite_and_bad_freeze_under_optimization) ... ok\ntest_actual_cli_rejects_scientific_receipt_mutation_read_only (model.native_memory_clock.test_experiment.ExperimentTests.test_actual_cli_rejects_scientific_receipt_mutation_read_only) ... ok\ntest_actual_cli_rejects_understated_sampling_bound_under_optimization (model.native_memory_clock.test_experiment.ExperimentTests.test_actual_cli_rejects_understated_sampling_bound_under_optimization) ... ok\ntest_aggregate_probability_corruption_cannot_hide_in_scalar_tolerance (model.native_memory_clock.test_experiment.ExperimentTests.test_aggregate_probability_corruption_cannot_hide_in_scalar_tolerance) ... ok\ntest_binary_operator_budget_distinguishes_exact_uniform_profile (model.native_memory_clock.test_experiment.ExperimentTests.test_binary_operator_budget_distinguishes_exact_uniform_profile) ... ok\ntest_coherent_decoder_is_same_apparatus_and_needed_for_interference (model.native_memory_clock.test_experiment.ExperimentTests.test_coherent_decoder_is_same_apparatus_and_needed_for_interference) ... ok\ntest_dephasing_has_nonzero_work_for_a_coherent_clock_preparation (model.native_memory_clock.test_experiment.ExperimentTests.test_dephasing_has_nonzero_work_for_a_coherent_clock_preparation) ... ok\ntest_every_required_source_is_bound_and_byte_changes_fail (model.native_memory_clock.test_experiment.ExperimentTests.test_every_required_source_is_bound_and_byte_changes_fail) ... ok\ntest_exact_native_history_counter_retains_all_addresses_and_no_operations (model.native_memory_clock.test_experiment.ExperimentTests.test_exact_native_history_counter_retains_all_addresses_and_no_operations) ... ok\ntest_float_budget_replay_allows_legitimate_table_roundoff (model.native_memory_clock.test_experiment.ExperimentTests.test_float_budget_replay_allows_legitimate_table_roundoff) ... ok\ntest_prose_and_tests_are_exempt_in_current_and_retained_pin_maps (model.native_memory_clock.test_experiment.ExperimentTests.test_prose_and_tests_are_exempt_in_current_and_retained_pin_maps) ... ok\ntest_protocol_matches_executed_cases_and_sampling_apparatus (model.native_memory_clock.test_experiment.ExperimentTests.test_protocol_matches_executed_cases_and_sampling_apparatus) ... ok\ntest_recursive_comparison_rejects_types_fields_outcomes_and_shots (model.native_memory_clock.test_experiment.ExperimentTests.test_recursive_comparison_rejects_types_fields_outcomes_and_shots) ... ok\ntest_retained_sampling_bounds_are_checked_against_their_own_data (model.native_memory_clock.test_experiment.ExperimentTests.test_retained_sampling_bounds_are_checked_against_their_own_data) ... ok\ntest_sampler_bias_encloses_exact_finite_grid_distribution (model.native_memory_clock.test_experiment.ExperimentTests.test_sampler_bias_encloses_exact_finite_grid_distribution) ... ok\ntest_zero_shots_are_unsampled_and_do_not_report_zero_uncertainty (model.native_memory_clock.test_experiment.ExperimentTests.test_zero_shots_are_unsampled_and_do_not_report_zero_uncertainty) ... ok\ntest_controls_are_distinct_with_same_records (model.native_memory_clock.test_native.NativeTests.test_controls_are_distinct_with_same_records) ... ok\ntest_endpoint_star_support_exhaustive (model.native_memory_clock.test_native.NativeTests.test_endpoint_star_support_exhaustive) ... ok\ntest_explicit_information_loss_and_reuse_witnesses (model.native_memory_clock.test_native.NativeTests.test_explicit_information_loss_and_reuse_witnesses) ... ok\ntest_invalid_inputs_rejected_under_optimized_python (model.native_memory_clock.test_native.NativeTests.test_invalid_inputs_rejected_under_optimized_python) ... ok\ntest_primary_crossing_and_native_ledger_exhaustive (model.native_memory_clock.test_native.NativeTests.test_primary_crossing_and_native_ledger_exhaustive) ... ok\ntest_terminal_decoder_all_two_address_pairs_and_controls (model.native_memory_clock.test_native.NativeTests.test_terminal_decoder_all_two_address_pairs_and_controls) ... ok\ntest_terminal_decoder_rejects_impossible_or_malformed_histories (model.native_memory_clock.test_native.NativeTests.test_terminal_decoder_rejects_impossible_or_malformed_histories) ... ok\ntest_total_permutation_including_dirty_records_exhaustive (model.native_memory_clock.test_native.NativeTests.test_total_permutation_including_dirty_records_exhaustive) ... ok\n\n----------------------------------------------------------------------\nRan 33 tests in 40.818s\n\nOK\n\tCommand being timed: \"python3 -B -O -m unittest discover -s model/native_memory_clock -t . -v\"\n\tUser time (seconds): 41.57\n\tSystem time (seconds): 0.59\n\tPercent of CPU this job got: 99%\n\tElapsed (wall clock) time (h:mm:ss or m:ss): 0:42.17\n\tAverage shared text size (kbytes): 0\n\tAverage unshared data size (kbytes): 0\n\tAverage stack size (kbytes): 0\n\tAverage total size (kbytes): 0\n\tMaximum resident set size (kbytes): 101984\n\tAverage resident set size (kbytes): 0\n\tMajor (requiring I/O) page faults: 0\n\tMinor (reclaiming a frame) page faults: 152783\n\tVoluntary context switches: 50\n\tInvoluntary context switches: 378\n\tSwaps: 0\n\tFile system inputs: 0\n\tFile system outputs: 0\n\tSocket messages sent: 0\n\tSocket messages received: 0\n\tSignals delivered: 0\n\tPage size (bytes): 4096\n\tExit status: 0\n"
+    },
+    "inventory_initial": {
+      "stdout": "",
+      "stderr_and_timing": "claims/active_surface_inventory.json: stale; regenerate with python3 tools/check_axiom_consistency.py --inventory\naxiom consistency: 1 violation(s)\n"
+    },
+    "inventory_final": {
+      "stdout": "axiom consistency OK: the basis and the three library premises are coherent across active surfaces\n",
+      "stderr_and_timing": ""
+    },
+    "style": {
+      "stdout": "reader style check OK\n",
+      "stderr_and_timing": ""
+    },
+    "style_final": {
+      "stdout": "reader style check OK\n",
+      "stderr": ""
+    },
+    "inventory_check_commit": {
+      "stdout": "axiom consistency OK: the basis and the three library premises are coherent across active surfaces\n",
+      "stderr": ""
+    }
+  },
+  "diagnostics": {
+    "independent": {
+      "target": "374b2390801842d38de9b9c326e79a8ab29a6be5",
+      "status": "INDEPENDENT_CONSTRUCTION_CHECKED",
+      "native_dirty_states_both_inverse_orders": 393216,
+      "program_dirty_states_per_configuration": 256,
+      "configurations": [
+        {
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "variant": "native",
+          "columns": 4096,
+          "entries_per_prefix": [
+            49152,
+            49152,
+            49152,
+            49152,
+            49152
+          ],
+          "first_noops": 19200,
+          "public_partitions": [
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(2, 0)": 24576,
+              "(3, 0)": 24576
+            },
+            {
+              "(2, 0)": 24576,
+              "(3, 0)": 24576
+            },
+            {
+              "(2, 2)": 24576,
+              "(3, 3)": 24576
+            }
+          ]
+        },
+        {
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "variant": "uphill",
+          "columns": 4096,
+          "entries_per_prefix": [
+            49152,
+            49152,
+            49152,
+            49152,
+            49152
+          ],
+          "first_noops": 39360,
+          "public_partitions": [
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(2, 0)": 24576,
+              "(3, 0)": 24576
+            },
+            {
+              "(2, 0)": 24576,
+              "(3, 0)": 24576
+            },
+            {
+              "(2, 2)": 24576,
+              "(3, 3)": 24576
+            }
+          ]
+        },
+        {
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "variant": "no_communication",
+          "columns": 4096,
+          "entries_per_prefix": [
+            49152,
+            49152,
+            49152,
+            49152,
+            49152
+          ],
+          "first_noops": 19200,
+          "public_partitions": [
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(2, 0)": 24576,
+              "(3, 0)": 24576
+            },
+            {
+              "(2, 0)": 24576,
+              "(3, 0)": 24576
+            },
+            {
+              "(2, 0)": 24576,
+              "(3, 0)": 24576
+            }
+          ]
+        },
+        {
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "variant": "no_feedback",
+          "columns": 4096,
+          "entries_per_prefix": [
+            49152,
+            49152,
+            49152,
+            49152,
+            49152
+          ],
+          "first_noops": 19200,
+          "public_partitions": [
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(2, 0)": 24576,
+              "(3, 0)": 24576
+            },
+            {
+              "(2, 0)": 24576,
+              "(3, 0)": 24576
+            },
+            {
+              "(2, 2)": 24576,
+              "(3, 3)": 24576
+            }
+          ]
+        },
+        {
+          "background": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "variant": "no_publish",
+          "columns": 4096,
+          "entries_per_prefix": [
+            49152,
+            49152,
+            49152,
+            49152,
+            49152
+          ],
+          "first_noops": 19200,
+          "public_partitions": [
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(0, 0)": 49152
+            }
+          ]
+        },
+        {
+          "background": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "variant": "native",
+          "columns": 4096,
+          "entries_per_prefix": [
+            49152,
+            49152,
+            49152,
+            49152,
+            49152
+          ],
+          "first_noops": 19536,
+          "public_partitions": [
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(3, 0)": 24576,
+              "(2, 0)": 24576
+            },
+            {
+              "(3, 0)": 24576,
+              "(2, 0)": 24576
+            },
+            {
+              "(3, 3)": 24576,
+              "(2, 2)": 24576
+            }
+          ]
+        },
+        {
+          "background": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "variant": "uphill",
+          "columns": 4096,
+          "entries_per_prefix": [
+            49152,
+            49152,
+            49152,
+            49152,
+            49152
+          ],
+          "first_noops": 38544,
+          "public_partitions": [
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(2, 0)": 24576,
+              "(3, 0)": 24576
+            },
+            {
+              "(2, 0)": 24576,
+              "(3, 0)": 24576
+            },
+            {
+              "(2, 2)": 24576,
+              "(3, 3)": 24576
+            }
+          ]
+        },
+        {
+          "background": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "variant": "no_communication",
+          "columns": 4096,
+          "entries_per_prefix": [
+            49152,
+            49152,
+            49152,
+            49152,
+            49152
+          ],
+          "first_noops": 19536,
+          "public_partitions": [
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(3, 0)": 24576,
+              "(2, 0)": 24576
+            },
+            {
+              "(3, 0)": 24576,
+              "(2, 0)": 24576
+            },
+            {
+              "(3, 0)": 24576,
+              "(2, 0)": 24576
+            }
+          ]
+        },
+        {
+          "background": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "variant": "no_feedback",
+          "columns": 4096,
+          "entries_per_prefix": [
+            49152,
+            49152,
+            49152,
+            49152,
+            49152
+          ],
+          "first_noops": 19536,
+          "public_partitions": [
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(3, 0)": 24576,
+              "(2, 0)": 24576
+            },
+            {
+              "(3, 0)": 24576,
+              "(2, 0)": 24576
+            },
+            {
+              "(3, 3)": 24576,
+              "(2, 2)": 24576
+            }
+          ]
+        },
+        {
+          "background": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "variant": "no_publish",
+          "columns": 4096,
+          "entries_per_prefix": [
+            49152,
+            49152,
+            49152,
+            49152,
+            49152
+          ],
+          "first_noops": 19536,
+          "public_partitions": [
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(0, 0)": 49152
+            },
+            {
+              "(0, 0)": 49152
+            }
+          ]
+        }
+      ],
+      "source85_background0_completed_source_laws": {
+        "native": {
+          "84": 3,
+          "23": 1,
+          "80": 1,
+          "29": 1,
+          "68": 1,
+          "53": 1,
+          "20": 1,
+          "213": 1,
+          "533": 1,
+          "1045": 1
+        },
+        "uphill": {
+          "85": 10,
+          "341": 1,
+          "2133": 1
+        },
+        "no_communication": {
+          "84": 3,
+          "86": 1,
+          "80": 1,
+          "92": 1,
+          "68": 1,
+          "116": 1,
+          "20": 1,
+          "212": 1,
+          "596": 1,
+          "1108": 1
+        },
+        "no_feedback": {
+          "84": 3,
+          "86": 1,
+          "80": 1,
+          "92": 1,
+          "68": 1,
+          "116": 1,
+          "20": 1,
+          "212": 1,
+          "596": 1,
+          "1108": 1
+        },
+        "no_publish": {
+          "84": 3,
+          "86": 1,
+          "80": 1,
+          "92": 1,
+          "68": 1,
+          "116": 1,
+          "20": 1,
+          "212": 1,
+          "596": 1,
+          "1108": 1
+        }
+      },
+      "completed_source_tv": {
+        "feedback": "1/2",
+        "uphill": "1"
+      },
+      "clock": {
+        "normalization": "23951146041928082866135587776380551750",
+        "mean": "32",
+        "variance": "1024/127",
+        "overlaps": [
+          "64/65",
+          "672/715"
+        ],
+        "velocity_variance": "43/92950",
+        "cantelli": "226536448/278318778205",
+        "boundary_distance": 1984,
+        "boundary_ratio": "24/31",
+        "boundary_dyadic_power": 731,
+        "binary_vector_error_upper": 2.108891954864196e-16,
+        "combined_failure_upper": 0.0008139459703766681
+      },
+      "coherence": {
+        "trace": 1.0000000000000002,
+        "dephasing_public_probability_change": 0,
+        "block_density_difference_frobenius": 0.8975274678557612,
+        "nonzero_entry": {
+          "outcome": [
+            2,
+            2
+          ],
+          "left": [
+            2016,
+            0
+          ],
+          "right": [
+            51168,
+            0
+          ],
+          "coherence": [
+            0.02083333333333334,
+            0.0
+          ]
+        }
+      },
+      "isolation": "production imports blocked; repository reads limited to contract and protocol"
+    },
+    "comparison": {
+      "status": "VERIFIED_WITHIN_SCOPE",
+      "prepared_register_columns_compared": 2457600,
+      "arbitrary_reference": "all columns and public partitions equal with common real amplitude 1/sqrt(12)",
+      "small_rail": {
+        "sites": 48,
+        "joint_dimension": 1152,
+        "reference_dimension": 2,
+        "time": 24,
+        "literal_vector_l2": 3.0083633851818164e-14,
+        "spectrum_error": 6.661338147750939e-16,
+        "producer_clock_vector_l2": 7.32851613686794e-15,
+        "unnormalized_block_max_error": 1.5959455978986625e-16,
+        "prefix_weights": [
+          0.022581126980837286,
+          0.009281196259426732,
+          3.211937902293253e-05,
+          0.013009725223904194,
+          0.9550958321568088
+        ],
+        "completion_weight": 0.9550958321568088,
+        "half_diamond_from_flag_argument": 0.04490416784319118,
+        "scope": "N48 composition diagnostic only; no numerical transfer to N4096"
+      },
+      "mutations": {
+        "swapped_address_bit": {
+          "input": [
+            1,
+            0,
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "native_target": 0,
+          "mutated_target": 3,
+          "predicate": "complete-register isometry column mismatch"
+        },
+        "wrong_inverse": {
+          "dirty_input": [
+            0,
+            0,
+            1
+          ],
+          "forward": [
+            1,
+            0
+          ],
+          "wrong_recovery": [
+            1,
+            0
+          ],
+          "predicate": "dirty inverse identity"
+        },
+        "dirty_overwrite": {
+          "dirty_input": [
+            0,
+            0,
+            1
+          ],
+          "wrong_recovery": [
+            0,
+            0
+          ],
+          "predicate": "dirty inverse identity"
+        },
+        "missing_unfinished": {
+          "retained_trace": "1/4",
+          "predicate": "complete-law normalization"
+        },
+        "silent_postselection": {
+          "completion_weight": "1/4",
+          "predicate": "no silent completion postselection"
+        },
+        "private_dephasing": {
+          "public_probabilities_equal": true,
+          "predicate": "retained coherent block differs after dephasing",
+          "density_difference_frobenius": 0.8975274678557612
+        }
+      }
+    },
+    "final_diagnostics": {
+      "clock": {
+        "normalization": "23951146041928082866135587776380551750",
+        "mean": "32",
+        "variance": "1024/127",
+        "overlaps": [
+          "64/65",
+          "672/715"
+        ],
+        "velocity_variance": "43/92950",
+        "cantelli": "226536448/278318778205",
+        "boundary_distance": 1984,
+        "boundary_ratio": "24/31",
+        "boundary_dyadic_power": 731,
+        "binary_vector_error_upper": 2.108891954864196e-16,
+        "combined_failure_upper": 0.0008139459703766681
+      },
+      "coherence": {
+        "trace": 1.0000000000000002,
+        "dephasing_public_probability_change": 0,
+        "block_density_difference_frobenius": 0.8975274678557612,
+        "nonzero_entry": {
+          "outcome": [
+            2,
+            2
+          ],
+          "left": [
+            {
+              "sources": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "addresses": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "couriers": [
+                0,
+                0,
+                2
+              ],
+              "pa": 2,
+              "pb": 2,
+              "memories": [
+                0,
+                0
+              ],
+              "action": 0
+            },
+            0
+          ],
+          "right": [
+            {
+              "sources": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "addresses": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "couriers": [
+                0,
+                0,
+                2
+              ],
+              "pa": 2,
+              "pb": 2,
+              "memories": [
+                0,
+                0
+              ],
+              "action": 0
+            },
+            0
+          ],
+          "coherence": [
+            0.02083333333333334,
+            0.0
+          ]
+        }
+      },
+      "mutations": {
+        "swapped_address_bit": {
+          "input": [
+            1,
+            0,
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "native_target": 0,
+          "mutated_target": 3,
+          "predicate": "complete-register isometry column mismatch"
+        },
+        "wrong_inverse": {
+          "dirty_input": [
+            0,
+            0,
+            1
+          ],
+          "forward": [
+            1,
+            0
+          ],
+          "wrong_recovery": [
+            1,
+            0
+          ],
+          "predicate": "dirty inverse identity"
+        },
+        "dirty_overwrite": {
+          "dirty_input": [
+            0,
+            0,
+            1
+          ],
+          "wrong_recovery": [
+            0,
+            0
+          ],
+          "predicate": "dirty inverse identity"
+        },
+        "missing_unfinished": {
+          "retained_trace": "1/4",
+          "predicate": "complete-law normalization"
+        },
+        "silent_postselection": {
+          "completion_weight": "1/4",
+          "predicate": "no silent completion postselection"
+        },
+        "private_dephasing": {
+          "public_probabilities_equal": true,
+          "predicate": "retained coherent block differs after dephasing",
+          "density_difference_frobenius": 0.8975274678557612
+        }
+      },
+      "small_rail": {
+        "sites": 48,
+        "joint_dimension": 1152,
+        "reference_dimension": 2,
+        "time": 24,
+        "literal_vector_l2": 3.0083633851818164e-14,
+        "spectrum_error": 6.661338147750939e-16,
+        "producer_clock_vector_l2": 7.32851613686794e-15,
+        "unnormalized_block_max_error": 1.5959455978986625e-16,
+        "prefix_weights": [
+          0.022581126980837286,
+          0.009281196259426732,
+          3.211937902293253e-05,
+          0.013009725223904194,
+          0.9550958321568088
+        ],
+        "completion_weight": 0.9550958321568088,
+        "half_diamond_from_flag_argument": 0.04490416784319118,
+        "missing_unfinished_predicate": "complete-law normalization",
+        "silent_postselection_predicate": "no silent completion postselection",
+        "unconditional_S4_source85_TV": {
+          "feedback": 0.4775479160784044,
+          "uphill": 0.9550958321568088
+        },
+        "scope": "N48 composition diagnostic only; no numerical transfer to N4096"
+      },
+      "actual_source_event_witness": {
+        "initial_source": 85,
+        "first_address": 1,
+        "first_successor": 87,
+        "received_pointer": 3,
+        "native_action": 6,
+        "native_S4": 23,
+        "no_feedback_action": 0,
+        "no_feedback_S4": 86
+      }
+    },
+    "upstream_check": {
+      "initial": {
+        "upstream_main": "374b2390801842d38de9b9c326e79a8ab29a6be5",
+        "reference_same": true,
+        "upstream_open_prs": [
+          1207
+        ],
+        "fork_open_prs": [],
+        "M10_search_matches": 0,
+        "local_worktree": "/home/galerie/gift-framework/.wt/codex-oph-observer-feedback-audit-0",
+        "branch": "agent/oph-observer-feedback-audit-0",
+        "existing_coverage_gap": "Existing oracle imports production native_event; existing quantum tests use eight sources. Full independent 4096-column public-instrument coverage absent."
+      },
+      "final": {
+        "upstream_main": "972d81b9b6068938e52457b59497766499222b5d",
+        "merged_pr": 1207,
+        "merged_at": "2026-11-18T14:58:33Z",
+        "semantic_drift": "Both audited packages are deleted by upstream. Explicit audited target retained as historical 374b2390801842d38de9b9c326e79a8ab29a6be5. No rebase or restoration of retired packages.",
+        "integration_verdict": "HOLD"
+      },
+      "discussions": {
+        "1033": "Reviewed standing defect-repair scope and recent audit comments. This contribution is validation coverage, no defect reproduced.",
+        "1203": "Reviewed merged construction, maintainer review and custody amendment requests; no source-law defect alleged in that review.",
+        "1204": "Reviewed merged construction, hand-checked readiness review, custody amendment requests and maintainer merge comment."
+      },
+      "sources": [
+        "https://github.com/FloatingPragma/observer-patch-holography/pull/1203",
+        "https://github.com/FloatingPragma/observer-patch-holography/pull/1204",
+        "https://github.com/FloatingPragma/observer-patch-holography/issues/1033",
+        "https://github.com/FloatingPragma/observer-patch-holography/pull/1207"
+      ]
+    },
+    "frozen_evidence_check": {
+      "binding_counts": {
+        "native_memory_clock": 6,
+        "native_observer_archive": 10
+      },
+      "frozen_bindings_match": true,
+      "observer_tests_collected": 42
+    }
+  },
+  "negative_or_incomplete": {
+    "initial_inventory": "Failed because INDEPENDENT.md was absent from inventory; generator added only that path. Initial and passing check outputs retained.",
+    "initial_filesystem_write": "EROFS in dedicated worktree; first escalation interrupted by server restart. Clean state rechecked and explicit escalated copies succeeded.",
+    "upstream_semantic_drift": "Both target packages removed by merged PR1207. Historical audited target retained explicitly; no restoration/rebase.",
+    "environment": "Installed numerical versions differ from model/requirements.txt. Pinned producer environment replay unperformed.",
+    "remote_CI": "Not triggered or claimed.",
+    "full_size_literal_propagation": "Unperformed under bounded scope. No extended replay, dense carrier, dense Choi or paid compute."
+  },
+  "upstream_changed_paths": [
+    "M\tAGENTS.md",
+    "D\tmodel/native_memory_clock/PROOF.md",
+    "D\tmodel/native_memory_clock/README.md",
+    "D\tmodel/native_memory_clock/__init__.py",
+    "D\tmodel/native_memory_clock/clock.py",
+    "D\tmodel/native_memory_clock/experiment.py",
+    "D\tmodel/native_memory_clock/extended_results.json.gz",
+    "D\tmodel/native_memory_clock/freeze.json",
+    "D\tmodel/native_memory_clock/native.py",
+    "D\tmodel/native_memory_clock/protocol.json",
+    "D\tmodel/native_memory_clock/provenance.json",
+    "D\tmodel/native_memory_clock/results.json",
+    "D\tmodel/native_memory_clock/test_clock.py",
+    "D\tmodel/native_memory_clock/test_experiment.py",
+    "D\tmodel/native_memory_clock/test_native.py",
+    "D\tmodel/native_observer_archive/PROOF.md",
+    "D\tmodel/native_observer_archive/README.md",
+    "D\tmodel/native_observer_archive/__init__.py",
+    "D\tmodel/native_observer_archive/experiment.py",
+    "D\tmodel/native_observer_archive/extended_results.json.gz",
+    "D\tmodel/native_observer_archive/freeze.json",
+    "D\tmodel/native_observer_archive/oracle.py",
+    "D\tmodel/native_observer_archive/packet.py",
+    "D\tmodel/native_observer_archive/program.py",
+    "D\tmodel/native_observer_archive/protocol.json",
+    "D\tmodel/native_observer_archive/provenance.json",
+    "D\tmodel/native_observer_archive/results.json.gz",
+    "D\tmodel/native_observer_archive/test_channel.py",
+    "D\tmodel/native_observer_archive/test_experiment.py",
+    "D\tmodel/native_observer_archive/test_packet.py",
+    "D\tmodel/native_observer_archive/test_program.py",
+    "M\ttools/ci_lanes.py"
+  ],
+  "evidence_sequence": [
+    "Contract fixed before calculation.",
+    "First independent CLI ran with imports and repository reads blocked.",
+    "First complete producer comparison passed.",
+    "Added human-readable witness coordinates, actual small-rail omission checks and load/current comparison.",
+    "Normal and optimized observer suites passed (41 tests each).",
+    "Shared editorial pin-scope policy applied; its focused test passed in both modes.",
+    "Parent suites passed (33 tests each).",
+    "Final focused diagnostics regenerated under optimized Python."
+  ],
+  "validated_code_sha256": {
+    "independent.py": "d86743a9d7ff2aae0a4b95f70b9680ff085f359766caf2ebaf5f04903620f0f6",
+    "compare_independent.py": "52069a579b5a8cbd2ce8966e4da69332c929ddecfcafea6482d5e293949972a1",
+    "observer_independent_contract.json": "e64071493d9c47de58f900880b7c8d0f251794d3f2124bb1df66d7ea01f9ea23"
+  },
+  "final_review_checks": {
+    "upstream_fetch_rechecked": true,
+    "upstream_main": "972d81b9b6068938e52457b59497766499222b5d",
+    "semantic_drift": "unchanged retirement of both audited packages",
+    "git_diff_cached_check": "PASS",
+    "final_observer_collection": 42,
+    "remote_publication_or_push": false
+  }
+}
